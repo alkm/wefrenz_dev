@@ -182,6 +182,7 @@ export class VideoPlayerComponent implements OnInit {
 		this.videoAlbumList = result;
 	}
 
+	//Need to activate/deactivate edit btn later based on changes in title field
 	private editVideoAlbum(event){
 		this.albumInfo = event.data;
   		this.isCreateAlbum = true;
