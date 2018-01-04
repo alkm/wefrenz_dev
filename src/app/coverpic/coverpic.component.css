@@ -1,0 +1,50 @@
+.cover-pic{
+	background-size: cover !important;
+}
+.edit-cover-pic{
+	position: absolute;
+    margin: -275px 0px 0px 20px;
+}
+.edit-cover-pic i{
+	background: #fff;
+    padding: 1px 1px 0px 2px;
+    border-radius: 3px;
+    border: 1px solid #2b90d9;
+}
+
+.edit-cover-pic i:hover{
+	border: 1px solid #007bff;
+	background: rgba(255, 255, 255, 0.5);
+}
+
+.edit-cover-pic-items{
+	width: 100px;
+}
+.add-friend-controls, .save-coverpic-controls{
+	float: right;
+    margin: -45px 15px;	
+}
+.save-btn{
+	margin-right: 6px;
+    float: left;
+    line-height: 16px;
+    padding-left: 15px !important;
+}
+.file-input-container{
+	display: none;
+	height: 0px;
+	width: 0px;
+}
+
+.preview-cover-pic img{
+	width: 100%;
+}
+.pending-btn{
+	padding-left: 15px !important;
+}
+.msg-btn{
+	padding-left: 15px !important;
+}
+.add-btn{
+	padding-left: 17px !important;
+}

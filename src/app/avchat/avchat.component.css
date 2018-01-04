@@ -1,0 +1,75 @@
+#connectControls, #audioSinkButtons, #acceptCallBox{
+	display: none;
+}
+#callControls{
+    width: 50px;
+    margin: 50px auto;
+    position: absolute;
+    left: 295px;
+    top: 200px;
+    z-index: 1003;
+}
+.easyrtcMirror{
+	width: 628px;
+    position: absolute;
+    top: 40px;
+}
+#callerVideo{
+	display: none;
+}
+
+#hangupButton{
+    display: none;
+}
+#callButton{
+    display: none;
+}
+#acceptCallBox{
+    position: absolute;
+    z-index: 10000;
+    width: 100%;
+    top: 100px;
+}
+#acceptCallLabel, #callStatusMessage{
+    /*width: 280px;
+    margin: 50px auto; 
+    background: rgba(0, 0, 0, 0.6);
+    padding: 9px;
+    border-radius: 5px;
+    border: 1px solid #ff0000;  */
+}
+
+.host-img{
+    width: 100px;
+    margin: auto;
+}
+#acceptCallBtn{
+    width: 100px;
+    margin: 10px auto;  
+}
+#callAcceptButton{
+    margin-right: 30px;
+    width: 25px;
+    float: left;
+}
+#buddyImg{
+    height: 200px;
+    width: 200px;
+    /* position: absolute; */
+    /* z-index: 200000; */
+    background-size: cover;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    margin: 50px auto;
+}
+#callStatusMessage{
+    position: absolute;
+    z-index: 1005;
+    margin: -140px auto;
+    display: inline-block;
+    width: 100%;
+    top: 240px;
+}
+
+
+

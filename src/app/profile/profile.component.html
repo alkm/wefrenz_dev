@@ -1,0 +1,14 @@
+<app-private-nav (onFriendConfirmedFromNotification)= "onFriendConfirmedFromNotification($event)"></app-private-nav>
+<div class="container" >
+	<div class="opaque-bg cover-pic-area top-margin">
+		<app-coverpic #appCoverPic ></app-coverpic>
+	</div>
+	<div class="cover-profile-pic" [ngStyle]="{ 'background-image': 'url(' + profilePic + ')'}">
+		<ng-container *ngIf="isMyProfile">
+			<div class='title-bar row no-margin white-fonts full-name'><a href="/#/home" class="default-link">{{fullName}}</a></div>
+		</ng-container>
+		<ng-container *ngIf="!isMyProfile">
+			<div class='title-bar row no-margin white-fonts full-name'>{{fullName}}</div>
+		</ng-container>
+	</div>
+</div>

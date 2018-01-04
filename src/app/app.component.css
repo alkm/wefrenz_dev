@@ -1,0 +1,9 @@
+#chatControl{
+    position: fixed;
+    right: 10px;
+    bottom: 0px;
+    width: 250px;
+    border-radius: 0px;
+    padding: 0px;
+    border-bottom: 0px;
+}

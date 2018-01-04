@@ -1,0 +1,44 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded" (window:resize)="onResize($event)">
+  <button (click)="toggleNav()" class="navbar-toggler navbar-toggler-right fa fa-bars" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+  </button>
+  <div [ngClass]="('navbar-collapse ' + (active ? 'collapse' : ''))" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fa fa-users" aria-hidden="true">
+            <ng-container *ngIf="isFriendRequestPendingDisplay">
+              <div class="request-count" (click)='requestCountClick($event)'>{{friendRequestCount}}</div>
+            </ng-container>
+          </i><span>Friends</span></a>
+          <div class='friend-request-pending-list' [ngClass]="(isFriendReuestBorder ? 'add-border' : '')" (click)="clickedInside($event)">
+            <app-friend-request-pending-list (onFriendConfirmed)='onFriendConfirmed($event)'  class="in-line" *ngFor="let item of friendRequestPendingList" [item]="item" >
+            </app-friend-request-pending-list>
+          </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fa fa-envelope" aria-hidden="true"></i><span>Messages</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fa fa-bell" aria-hidden="true"></i><span>Notifications</span></a>
+      </li>
+      <li class="nav-item search-box">
+        <div>
+          <input class="search-input pull-left blue-fonts" type="text" id="search-query" placeholder="Search Wefrenz"  autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" [value]="searchValue" (input)="querySearch($event.target.value)"/>
+          <i class="fa fa-search pull-right cursor-pointer" aria-hidden="true"></i>
+        </div>
+        <div class='search-result-contents' [ngClass]="(isBorder ? 'add-border' : '')" (click)="clickedInside($event)">
+          <app-search-result-list-item  class="in-line" *ngFor="let item of searchResultList" [item]="item">
+          </app-search-result-list-item>
+        </div>
+      </li>
+      <li class="nav-item setting-btn">
+        <span class="nav-link"><i class="fa fa-cog cursor-pointer" aria-hidden="true"></i></span>
+      </li>
+      <li class="nav-item logout-btn" >
+        <span class="nav-link">
+          <i class="fa fa-sign-out cursor-pointer" aria-hidden="true" (click)="logOut()"></i>
+        </span>
+      </li>
+    </ul>
+  </div>
+</nav>

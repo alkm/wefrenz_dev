@@ -1,0 +1,27 @@
+<div class="blue-fonts"><h4 class="text-center">Please Sign Up</h4></div>
+<form [formGroup]="signupForm">
+	<div class="form-group">
+		<input type="text" class="form-control" placeholder="Name" formControlName="fullName" id="fullName">
+		<app-control-messages [control]="signupForm.controls.fullName"></app-control-messages>
+	</div>
+	<div class="form-group">
+		<input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email" formControlName="email" id="email">
+		<app-control-messages [control]="signupForm.controls.email"></app-control-messages>
+		<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	</div>
+	<div class="form-group">
+		<input type="password" class="form-control" placeholder="Password" formControlName="password" id="password">
+		<app-control-messages [control]="signupForm.controls.password"></app-control-messages>
+	</div>
+	<div class="form-group row justify-content-center align-items-center no-margin">
+		<button type="button" class="btn btn-primary" (click)="showLogin()">
+			<i class="fa fa-sign-in rotate-left" aria-hidden="true"></i>
+			<span>Login</span>
+		</button>
+		<button type="button" class="btn btn-primary" [disabled]="!signupForm.valid" (click)="signUp()">
+			<span>Sign Up</span>
+			<i class="fa fa-sign-in" aria-hidden="true"></i>
+		</button>
+	</div>
+	<div [ngClass]="{'error-message': isError, 'status-message': isStatus}"><div class="server-msg text-center">{{serverMessage}}</div></div>
+</form>

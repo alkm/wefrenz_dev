@@ -1,0 +1,14 @@
+<div class="row no-margin pull-left inline-block hand-cursor item-row">
+	<div class="profile-pic-medium pull-left" [ngStyle]="{ 'background-image': 'url(' + profilePic + ')'}"></div>
+	<div class="row no-margin blue-fonts full-name pull-left">{{fullName}}</div> 
+	<div class="row no-margin pull-right btn-group">
+		<button type="button" class="btn btn-primary text-center save-btn" (click)="confirm()">
+			<span class="pull-left">Confirm</span>
+			<i class="fa fa-floppy-o" aria-hidden="true"></i>
+		</button>
+		<button id="loginBtn" type="button" class="btn btn-primary text-center" (click)="ignore()">
+			<i class="fa fa-times pull-left" aria-hidden="true"></i>
+			<span class="pull-left">Ignore</span>
+		</button>
+	</div>
+</div>

@@ -1,0 +1,29 @@
+.cover-pic-area{
+	padding: 5px !important;
+	width: 768px;
+}
+.cover-profile-pic{
+	background-size: cover;
+    margin: -125px 0px 0px 20px;
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+.cover-profile-pic .title-bar{
+	position: absolute;
+    bottom: 0px;
+    background: rgba(0,0,0, 0.6);
+    width: 144px;
+    margin-left: 0px !important;
+    padding: 5px;
+}
+.default-link{
+    text-decoration: none;
+    color: #fff;
+}
+.default-link:hover{
+    color: #2b90d9;
+}
+

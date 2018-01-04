@@ -1,0 +1,8 @@
+@media only screen and (max-width: 575px) {
+	.tile-menu-container{
+		padding: 15px !important;
+	}
+	.info-panel{
+		margin-bottom: 15px;
+	}
+}

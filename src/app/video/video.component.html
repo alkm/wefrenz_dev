@@ -1,0 +1,12 @@
+<div class="wrapper-content">
+  <h2>Simple Audio/Video Demo</h2>
+  <div><strong>I am:</strong> {{myId}}</div>
+  <div class="connect-caller-buttons">
+    <h3>Connected Clients:</h3>
+    <div id="otherClients"><button *ngFor="let easyrtcId of (connectedClientsList)" (click)="performCall(easyrtcId)">{{easyrtcId}}</button></div>
+  </div>
+  <div class="video-frames">
+    <div class="video-self"><video id="videoSelf" (click)="connectVideo();" #selfVideo></video></div>
+    <div class="video-caller"><video id="videoCaller" #callerVideo></video></div>
+  </div>
+</div>

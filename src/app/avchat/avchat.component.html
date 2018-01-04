@@ -1,0 +1,37 @@
+<div id="demoContainer">
+	<div id="connectControls">
+		<input type="checkbox" checked="checked" id="shareAudio" />Share audio
+		<input type="checkbox" checked="checked" id="shareVideo" />Share video<br />
+		<input type="checkbox" checked="checked" id="expectAudio" />Expect audio
+		<input type="checkbox" checked="checked" id="expectVideo" />Expect video<br />
+
+		<!--<input type="checkbox" id="useFreshIce" onclick="easyrtc.setUseFreshIceEachPeerConnection(this.value);"/>Fresh Ice<br />
+		<button id="connectButton" onclick="connect()">Connect</button>
+		<button id="disconnectButton" onclick="disconnect()">Disconnect</button>
+		<button id="hangupButton" disabled="disabled" onclick="hangup()">Hangup</button>
+		<div id="iam">Not yet connected...</div>
+		<br />
+		<strong>Connected users:</strong>
+		<div id="otherClients"></div>-->
+	</div>
+ 
+	<div id="videos">
+		<div id="buddyImg" [ngStyle]="{ 'background-image': 'url(' + buddyImg + ')'}">
+		</div>
+		<video autoplay="autoplay" id="selfVideo"  class="easyrtcMirror" muted="muted" volume="0" onclick = "changeVideoSize(false)"></video>
+		<video autoplay="autoplay" id="callerVideo"  onclick = "changeVideoSize(true)"></video>
+		<div id="callControls">
+			<i id="hangupButton" disabled="disabled" class="fa fa-phone-square fa-3x red-fonts" aria-hidden="true" onclick="hangup()"></i>
+			<i id="callButton" disabled="disabled" class="fa fa-phone-square fa-3x green-fonts" aria-hidden="true" onclick="callbuddy()"></i>
+		</div>
+		<div id="acceptCallBox"> <!-- Should be initially hidden using CSS -->
+			<div id="acceptCallLabel"></div>
+			<div id="acceptCallBtn">
+				<div><i id="callAcceptButton" class="fa fa-phone-square fa-3x green-fonts pull-left" aria-hidden="true"></i></div>
+				<div><i id="callRejectButton" class="fa fa-phone-square fa-3x red-fonts pull-left" aria-hidden="true"></i></div>
+			</div>
+		</div>
+		<div id="callStatusMessage"></div>
+	</div>
+	<div id="audioSinkButtons"></div>
+</div>

@@ -1,0 +1,89 @@
+.search-box:hover, .setting-btn:hover, .logout-btn:hover{
+	border: none;
+}
+.setting-btn, .logout-btn{
+	width: 15px;
+    margin: 0px 5px;
+
+}
+.search-box{
+    background-color: #f5f8fa;
+    border-radius: 2px;
+    box-sizing: border-box;
+    color: #14171a;
+    display: block;
+    font-size: 12px;
+    height: 25px;
+    line-height: 16px;
+    width: 180px;
+    margin-top: 15px;
+}
+@-moz-document url-prefix() { 
+    .search-box{
+        margin-top: 2px !important;
+    }
+}
+.search-input{
+    line-height: 25px;
+    height: 25px;
+    display: block;
+    width: 154px;
+    border: none;
+    outline: none;
+    margin-left: 2px;
+}
+
+.fa-search{
+	float: right;
+	color: #2b90d9 !important;
+	font-size: 15px;
+	line-height: 25px;
+}
+.fa-search:hover{
+	color: #1da1f2;
+}
+.search-result-contents{
+    position: absolute;
+    width: 180px;
+    top: 34px;
+    z-index: 1000;
+    background: #fff;
+
+}
+
+.friend-request-pending-list{
+    position: absolute;
+    width: 301px;
+    top: 34px;
+    z-index: 1000;
+    background: #fff;
+}
+
+app-search-result-list-item{
+    width: 179px;
+    line-height: 30px;
+}
+app-friend-request-pending-list{
+    width: 300px;
+    line-height: 40px;
+}
+
+.add-border{
+    border: 1px solid #e6e6e6;
+    border-bottom: none;
+}
+.request-count{
+    position: absolute;
+    height: 15px;
+    width: auto;
+    background: red;
+    margin-top: 0px;
+    margin-left: 12px;
+    border: 1px solid white;
+    color: white;
+    padding: 0px 3px 1px 1px;
+}
+.request-count:hover{
+    background: #E74C3C;
+}
+

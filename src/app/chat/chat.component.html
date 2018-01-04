@@ -1,0 +1,23 @@
+<div class="chat-window-container">
+	<app-modal [modalTitle]="'Video Chat'" [blocking]='false' [modalId]='modalId' #avChatModal>
+    	<app-avchat [loginData]="loginData"></app-avchat>
+    </app-modal>
+	<app-chat-window #appChatWindow class="pull-left opaque-bg" *ngFor="let chatObj of chatWindowList" [chatObj] = "chatObj" (chatWindowClose)="chatWindowClose($event)" (sendMsg)="sendMsg($event)" (chatWindowReady) = "chatWindowReady($event)" [attr.id]="'chatWindow_' + chatObj.username" (startVideoChat) = "startVideoChat($event)"></app-chat-window>
+</div>
+<div class="chat-panel-container">
+	<div class="chat-panel-header">
+		<div class="white-fonts pull-left">Messaging</div>
+		<div class="chat-panel-settings-btn pull-right">
+		<span class="white-fonts"><i class="fa fa-cog cursor-pointer" aria-hidden="true"></i></span>
+		<span class="white-fonts"><i class="fa fa-external-link cursor-pointer" aria-hidden="true"></i></span>
+	    </div>
+	</div>
+	<app-chat-item class="pull-left colw100" *ngFor="let item of chatBuddyList | chatSearch : searchText" [item]="item" (click)="searchChat.value=''; searchText = ''; openChatWindow(item);"></app-chat-item>
+	<div class="chat-search-box pull-left">
+		<div class="pull-left"><i class="fa fa-search cursor-pointer" aria-hidden="true"></i></div>
+		<div class="pull-left">
+			<input class="search-input blue-fonts" type="text" placeholder="Search"  autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" [(ngModel)]="searchText" #searchChat/>
+		</div>
+	</div>
+</div>
+

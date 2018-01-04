@@ -1,0 +1,126 @@
+<div id="coverPic" #coverPic class="cover-pic" (mousedown)="canvasMouseDown()"
+[ngStyle]="{'background': 'url(' + coverPicURL+ ')', 
+			'cursor':' '+ mouseCursor +'', 
+			'background-repeat': 'no-repeat', 'height':' '+ coverPicHeight +'px', 'width':' '+ coverPicWidth +'px', 'background-size': ' '+ bgSize +' ',
+			'background-position-x':' '+ posX +'px', 
+			'background-position-y':' '+ posY +'px'}" 
+(mouseup)="canvasMouseUp()"></div>
+<div *ngIf="isMyProfile === 'true'; then editCoverPicControls"></div>
+<ng-template #editCoverPicControls>
+    <app-modal [modalTitle]="'Cover Pic Preview'" [blocking]='false' [modalId]='modalId' #previewPicModal>
+    	<div class="preview-cover-pic"><img *ngIf="encodedImage" [src]="encodedImage"/></div>
+      	<div>			
+    		<button id="okBtn" type="button" class="btn btn-primary text-center small-btn ok-btn" (click)="ok()">
+				<span class="pull-left">Ok</span>
+				<i class="fa fa-floppy-o" aria-hidden="true"></i>
+			</button>
+		</div>
+    </app-modal>
+	<div class="file-input-container">
+		<form [formGroup]="coverPicUploadForm" action="/upload" method="post" enctype="multipart/form-data">
+			<div class="form-group" [formGroup]="coverPicGroup">
+	  			<input type="file" accept="image/*" class="file-input" name="uploadfile" #fileInput (change)="fileChangeEvent($event)"/>
+	  		</div>
+		</form>
+	</div>
+	<div class="edit-cover-pic" (click)="clickedInside($event)">
+		<i class="fa fa-pencil-square-o fa-2x blue-fonts cursor-pointer" aria-hidden="true"  (click)="editCoverPicClick($event)">
+		</i>
+		<div *ngIf="isEditCoverPic; then editCoverPicItems"></div>
+		<ng-template #editCoverPicItems>
+			<div class="list-items edit-cover-pic-items">
+				<div class="arrow-up white-bg"></div>
+				<div class="cursor-pointer list-item" (click)="moveClick($event)">Move</div>
+				<div class="cursor-pointer list-item" (click)="changeClick(); fileInput.value = ''; fileInput.click()"><span>Change</span></div>
+				<div class="cursor-pointer list-item" (click)="selectClick($event)">Select</div>
+				<div class="cursor-pointer list-item" (click)="defaultClick($event)">Default</div>
+			</div>
+		</ng-template>
+	</div>
+</ng-template>
+
+<div *ngIf="isSaveCoverPic; then saveCoverPicControls"></div>
+<ng-template #saveCoverPicControls>
+	<div class="save-coverpic-controls">
+		<div class="row no-margin">
+			<button type="button" class="btn btn-primary text-center save-btn" (click)="save()">
+				<span class="pull-left">Save</span>
+				<i class="fa fa-floppy-o" aria-hidden="true"></i>
+			</button>
+			<button id="loginBtn" type="button" class="btn btn-primary text-center" (click)="cancel()">
+				<i class="fa fa-times pull-left" aria-hidden="true"></i>
+				<span class="pull-left">Cancel</span>
+			</button>
+		</div>
+	</div>
+</ng-template>	
+
+
+
+<div class="add-friend-controls">
+	<div class="row no-margin">
+		<div *ngIf="isAddFriend; then addFriendControls"></div>
+		<ng-template #addFriendControls>
+			<button type="button" class="btn btn-primary text-center add-btn" (click)="addFriend()">
+				<span class="pull-left">Add</span>
+				<i class="fa fa-user-plus" aria-hidden="true"></i>
+			</button>
+		</ng-template>
+		<div *ngIf="isRequestPending; then pendingControls"></div>
+		<ng-template #pendingControls>
+			<div class="pull-left btn-div">
+				<button type="button" class="btn btn-primary large-btn pending-btn">
+					<span class="pull-left">Request Pending</span>
+					<i class="fa fa-user-secret" aria-hidden="true"></i>
+				</button>
+			</div>
+		</ng-template>
+		<div *ngIf="isRequestConfirmed; then confirmedControls"></div>
+		<ng-template #confirmedControls>
+			<div class="pull-left btn-div">
+				<button type="button" class="btn btn-primary med-btn pending-btn">
+					<span class="pull-left">Freind</span>
+					<i class="fa fa-user" aria-hidden="true"></i>
+				</button>
+			</div>
+		</ng-template>
+		<div *ngIf="isConfirmFriend; then confirmFriendControls"></div>
+		<ng-template #confirmFriendControls>
+			<div class="pull-left btn-div">
+				<button type="button" class="btn btn-primary large-btn pending-btn" (click)="confirm()">
+					<span class="pull-left">Confirm Freind</span>
+					<i class="fa fa-user" aria-hidden="true"></i>
+				</button>
+			</div>
+		</ng-template>
+		<div *ngIf="isMyProfile === 'false'; then sendMsgBtn"></div>
+		<ng-template #sendMsgBtn>
+			<button type="button" class="btn btn-primary text-center med-btn msg-btn" (click)="sendMEssage()">
+				<span class="pull-left">Message</span>
+				<i class="fa fa-commenting" aria-hidden="true"></i>
+			</button>
+		</ng-template>
+	</div>
+</div>
+	
+				<!--<div class="row btn-div-container" ng-show="isProfileBtnShow" id="friendsBtnContainer">
+						<div class="pull-left btn-div" id="addFriendBtn" data="{{profileIdOnAddBtn}}" ng-click="onAddBtnClick($event)">
+							<input type="submit" class="btn btn-primary" name="submit" value="Add"><i class="fa fa-plus-square-o"></i>
+						</div>
+						<div class="pull-left btn-div" id="pendingFriendBtn" style="display : none;" data="{{profileIdOnAddBtn}}">
+							<input type="submit" class="btn btn-primary" name="submit" value="Request Pending"><i class="fa fa-plus-square-o"></i>
+						</div>
+						<div class="pull-left btn-div" id="respondFriendBtn" style="display : none;" data="{{profileIdOnAddBtn}}" ng-click="onConfirmFriendBtnClick($event);">
+							<input type="submit" class="btn btn-primary" name="submit" value="Respond Request"><i class="fa fa-plus-square-o"></i>
+						</div>
+						<div class="pull-left btn-div" id="confirmedFriendBtn" style="display : none;" data="{{profileID}}">
+							<input type="submit" class="btn btn-primary" name="submit" value="Friend"><i class="fa fa-plus-square-o"></i>
+						</div>
+						<div class="pull-left btn-div" id="msgBtn">
+							<input type="submit" class="btn btn-primary" name="submit" value="Message"><i class="fa fa-pencil-square-o"></i></i>
+						</div>
+					</div>
+					-->
+
+<div class="profile-pic" [ngStyle]="{ 'background-image': 'url(' + profilePic + ')', 'height': profilePicHeight, 'width': profilePicWidth}">
+</div>

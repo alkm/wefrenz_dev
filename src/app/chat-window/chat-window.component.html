@@ -1,0 +1,20 @@
+<!--<div class="chat-panel" id="{{info._id || info.id}}">-->
+<div class="chat-window">
+	<div class="chat-window-header white-fonts">
+		<!--<div class="pull-left white-font use-handcursor small-padding">{{info.fullname | limitTo : chatNameLimit || info.name | limitTo : chatNameLimit}}</div>-->
+		<div class="pull-left white-font use-handcursor small-padding full-name">{{chatObj.fullname}}</div>
+		<div class="pull-left white-font use-handcursor small-padding"></div>
+		<div class="pull-right"><i class="fa fa-times cursor-pointer" (click)="closeChatWindow(chatObj.username)"></i></div>
+		<div class="pull-right"><i class="fa fa-location-arrow cursor-pointer"></i></div>
+		<div class="pull-right"><i class="fa fa-cog cursor-pointer"></i></div>
+		<div class="pull-right"><i class="fa fa-headphones cursor-pointer"></i></div>
+		<!--<div class="pull-right"><i class="fa fa-video-camera" data="{{info}}" ng-click="connectEasyRTCVideo($event);"></i></div>-->
+		<div class="pull-right"><i class="fa fa-video-camera cursor-pointer" (click)="startVideoCall()"></i></div>
+		<div class="pull-right"><i class="fa fa-desktop cursor-pointer"></i></div>
+	</div>
+	<div class="chat-window-body chat-body-height mCustomScrollbar" #chatWindowBody>
+	</div>
+	<div class="chat-input gray-bg">
+		<textarea (keydown)="onEnterPressed($event)" [(ngModel)]="msgInput"></textarea>
+	</div>
+</div>

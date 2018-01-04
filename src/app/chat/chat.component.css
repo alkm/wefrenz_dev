@@ -1,0 +1,56 @@
+.chat-panel-header{
+	height: 23px;
+    background: #2b90d9;
+    width: 250px;
+    margin-left: -1px;
+    margin-top: -1px;
+    padding: 0px 3px;
+    line-height: 23px;
+}
+.chat-panel-header i:hover{
+    color: #e9ebee;
+}
+app-chat-item:hover{
+	background: #e9ebee;
+	cursor: pointer;
+	width: 100%;
+}
+.chat-search-box input[type="text"]{
+	line-height: 25px;
+    height: 25px;
+    display: block;
+    width: 225px;
+    border: none;
+    outline: none;
+    margin-left: 2px;
+    background: none;
+}
+
+.chat-search-box i{
+    color: #2b90d9 !important;
+    font-size: 15px;
+    line-height: 25px;
+    padding: 0px 2px;
+}
+.chat-search-box{
+	display: inline-block;
+    border-top: 1px solid #e6e6e6;
+    width: 249px;
+}
+.chat-panel-settings-btn i{
+    padding: 2px;
+}
+.chat-window-container{
+    position: fixed;
+    right: 260px;
+    bottom: 0px;
+    height: 250px;
+}
+app-chat-window {
+    border-radius: 0px;
+    border-bottom: none;
+    height: 250px;
+    margin-right: 10px;
+}
+
+

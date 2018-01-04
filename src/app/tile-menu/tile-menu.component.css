@@ -1,0 +1,60 @@
+.stories-tile{
+    margin: 5px;
+}
+.entertainment-tile{
+	margin: 5px 5px 0px 0px;
+}
+.people-tile{
+	margin: 0px 5px;
+}
+.market-tile{
+	margin: 0px 5px 0px 0px;
+}
+.tile-name{
+	color: #2b90d9;
+	font-size: 15px;
+	margin-left: 5px;
+}
+.tile-info{
+	color: #2b90d9;	
+}
+.tile-thumb:hover{
+	border: 1px solid #1da1f2;
+}
+.tile-thumb:hover .tile-name, .tile-thumb:hover .tile-info, .tile-thumb:hover i{
+	color: #1da1f2;
+} 
+.high-light-border{
+	border: 1px solid #1da1f2 !important;
+}
+
+.low-light-border{
+	border: 1px solid ##2b90d9 !important;
+}
+.tile-thumb, .tile-thumb *{
+	cursor: pointer;
+}
+.tile-thumb{
+	min-height: 105px;
+}
+
+@media only screen and (max-width: 991px) {
+	.tile-thumb{
+		min-height: 150px;
+	}
+   .entertainment-tile{
+   		margin: 5px 5px 5px 0px;
+   	} 
+   	.market-tile{
+   		margin: 0px 5px 0px 0px;
+   	}
+}
+
+@media only screen and (max-width: 768px) {
+	.entertainment-tile{
+    	margin: 0px 5px 5px 5px;
+    }
+    .market-tile{
+    	margin: 5px 5px 0px 5px;
+	}
+}	

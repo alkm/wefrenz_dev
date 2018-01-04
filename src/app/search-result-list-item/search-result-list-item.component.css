@@ -1,0 +1,9 @@
+.item-row{
+	width: 178px;
+	padding-right: 5px;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.item-row:hover{
+	background: #f5f8fa;
+}

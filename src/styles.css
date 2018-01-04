@@ -1,0 +1,378 @@
+/* You can add global styles to this file, and also import other style files */
+
+html{
+
+}
+body{
+	/*background: #d9e1e8 !important;*/
+	font-family: 'Open Sans', sans-serif !important;
+	font-size: 12px !important;
+	background-image: url("assets/images/bg.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+button{
+	cursor: pointer;
+}
+.navbar-toggler{
+	display: none;
+	visibility: visible;
+	opacity: 0;
+    padding: 4px !important;
+    border-radius: 1px !important;
+    margin-left: 5px;
+    border: 1px solid #FFF !important;
+    color: #fff !important;
+    position: absolute;
+}
+.collapse{
+	display: none;
+	visibility: hidden;
+	opacity: 0;
+}
+.navbar-collapse{
+	text-align: center;
+}
+.navbar-collapse ul{
+	display: inline-block;
+}
+.navbar-collapse ul li{
+	width: 120px; 
+	float: left;
+	text-align: center;
+	color: #d9e1e8;
+	margin: 0px 10px;
+	line-height: 40px;
+	height: 50px;
+}
+@-moz-document url-prefix() { 
+  .navbar-collapse ul li {
+     line-height: 15px;
+     height: 37px;
+  }
+}
+
+.navbar{
+	height: 45px;
+}
+.navbar-collapse ul li:hover{
+	border-bottom: 2px solid #fff;
+	color: #fff !important;
+}
+
+.navbar-collapse ul li:hover i, .navbar-collapse ul li:hover a, .navbar-collapse ul li:hover span{
+	color: #fff;
+}
+
+.navbar-collapse ul li a, .navbar-collapse ul li i, .navbar-collapse ul li span{
+	color: #d9e1e8 !important;
+}
+.navbar-collapse ul li i{
+	margin-right: 5px;
+}
+.navbar{
+	border-bottom: 1px solid #9baec8;
+	padding: 0px;
+	background: #2b90d9;
+}
+.nav-link{
+	height: 50px;
+}
+.large-fonts{
+	font-size: 32px;
+}
+
+.medium-fonts{
+	font-size: 18px;
+}
+.blue-fonts{
+	color: #2b90d9 !important;
+}
+.bold-fonts{
+	font-weight: bold;
+}
+.white-fonts{
+	color: white;
+}
+.red-fonts{
+	color: red !important;
+}
+.white-border{
+	border: 1px solid #fff !important;
+}
+.blue-border{
+	border: 1px solid #2b90d9 !important;
+}
+.green-fonts{
+	color: green !important;
+}
+.error-message{
+	color: red; 
+	margin: 10px 0px;
+}
+.status-message{
+	color: #2b90d9; 
+	margin: 10px 0px;
+}
+
+.no-margin{
+	margin: 0px !important;
+}
+.no-brder-radius{
+	border-radius: 0px !important;
+}
+.no-bg{
+	background: none !important;
+}
+.no-resize{
+	resize: none;
+}
+.no-text-decoration{
+	text-decoration: none !important;
+}
+.server-msg{width: 205px;}
+
+.rotate-left{
+	-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+
+.form-control{
+	font-size: 12px !important;
+}
+
+.btn-primary {
+    color: #fff !important;
+    background-color: #2b90d9 !important;
+    border-color: #d9e1e8 !important;
+    font-size: 12px !important;
+    padding: 5px !important;
+    height: 30px;
+    width: 75px;
+    margin-left: 5px;
+}
+
+
+
+.form-control{
+	padding: 6px !important;
+	height: 30px !important;
+}
+.btn-primary i {
+	margin-left: 5px;
+}
+
+.btn-primary i.rotate-left{
+	margin-left: 0px;
+	margin-right: 5px;
+}
+
+.cursor-pointer {
+   cursor: pointer;
+}
+.opaque-bg{
+	background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #e6e6e6;
+    border-radius: 1px;
+    padding: 0px 0px 5px 0px;
+    border-radius: 5px;
+}
+.semi-transparent-bg{
+	background: rgba(255,255,255,0.6);
+    margin: 5px 0px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.line-height-sixteen{
+	line-height: 16px;
+}
+.no-padding{
+	padding: 0px !important;
+}
+
+.no-margin{
+	margin: 0px !important;
+}
+
+.top-margin{
+	margin-top: 15px;
+}
+.bottom-margin{
+	margin-bottom: 15px;
+}
+.inner-padding{
+	padding: 15px;
+}
+.inline-block{
+	display: inline-block !important;
+}
+.colw100{
+	width: 100%;
+}
+.in-line{
+	display: inline;
+}
+.hand-cursor{
+	cursor: pointer;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.text-left{
+	text-align: left;
+}
+
+i.fa-3x{
+	color: #2b90d9;
+}
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 10px solid #2b90d9;
+  /* margin-top: -10px; */
+  /* background: #fff; */
+  position: absolute;
+  margin-top: -15px;
+  margin-left: 8px;
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #f00;
+}
+
+.arrow-right {
+  width: 0; 
+  height: 0; 
+  border-top: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  
+  border-left: 60px solid green;
+}
+
+.arrow-left {
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent; 
+  
+  border-right:10px solid blue; 
+}
+
+.list-items{
+	background: rgba(255, 255, 255, 0.8);
+    border-radius: 3px;
+    margin-top: 10px;
+    width: 100px;
+    padding: 5px 0px;
+    border: 1px solid #2b90d9;
+}
+.list-item{
+	padding: 0px 3px;
+}
+.list-item:hover{
+	background: #2b90d9;
+	color: #fff;
+}
+
+.ok-btn{
+	display: block !important;
+	margin: 10px auto;
+}
+.small-btn{
+	width: 50px;
+}
+
+.med-btn{
+	width: 100px;
+}
+.large-btn{
+	width: 150px;
+}
+.btn-primary, .btn-primary i{
+	line-height: 16px;
+}
+.add-btn i{
+	margin-left: 10px;
+    float: left;
+    /* vertical-align: bottom; */
+    line-height: 16px;
+}
+.profile-pic-small{
+    height: 26px;
+    width: 26px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 2px;
+}
+
+.profile-pic-medium{
+	height: 35px;
+    width: 35px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 2px;	
+}
+
+#avModal .modal{
+	position: absolute !important;
+	width: 100% !important;
+	left: 0px !important;
+	top: 0px !important;
+}
+
+#avModal .title{
+	height: 0px !important;
+}
+.no-outline{
+	outline: none;
+}
+
+
+@media only screen and (max-width: 768px) {
+	.navbar-toggler{
+		display: block;
+		visibility: show;
+		opacity: 1;
+		position: relative;
+	}
+
+	.navbar-toggler:active{
+		/*margin-top: 10px;*/
+	}
+
+	.navbar-collapse{
+		text-align: left;
+		background: #4AB3F4;
+		margin-top: 10px;
+		display: inline-block;
+	}
+
+	.navbar-collapse ul li{
+		width: 100%; 
+		float: left;
+		text-align: left;
+	}
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #2b90d9;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #2b90d9;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #2b90d9;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #2b90d9;
+}

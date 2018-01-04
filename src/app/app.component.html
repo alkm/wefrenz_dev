@@ -1,0 +1,9 @@
+<!--<app-public></app-public>-->
+<router-outlet></router-outlet>
+<div id="chatControl" class="opaque-bg">
+	<div *ngIf="isLoggedIn;then chatPanel"></div>
+	<ng-template #chatPanel>
+		<app-chat></app-chat>
+	</ng-template>
+</div>
+
