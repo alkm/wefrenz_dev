@@ -6,7 +6,8 @@ export class AppSettingsService {
 	static API_ENDPOINT(environment){
 		switch(environment) {
 		    case "local":
-		        return "https://localhost:"+port;
+		    	return "https://198.1.96.83:"+port;
+		        //return "https://localhost:"+port;
 		        //return "https://10.20.17.49:"+port;
 		        //return "https://192.168.225.177:"+port;
 		    case "dev":
