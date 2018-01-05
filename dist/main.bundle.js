@@ -1009,7 +1009,8 @@ var ChatComponent = (function () {
         var self = this;
         var chatObj = { 'userid': this.userId, 'easyrtcid': easyrtcId };
         //require(['socket-io'], function(io) {
-        this.socket = __WEBPACK_IMPORTED_MODULE_2__libs_socket_io__('https://localhost:3000/');
+        //this.socket = io('https://localhost:3000/');
+        this.socket = __WEBPACK_IMPORTED_MODULE_2__libs_socket_io__('https://198.1.96.83:3000/');
         //this.socket = io("'"+ AppSettingsService.API_ENDPOINT("local") +"'");
         //this.socket = io('https://10.20.17.49:3000');
         //socket = io('https://de8a3aa6.ngrok.io/');
@@ -4086,7 +4087,8 @@ var AppSettingsService = (function () {
     AppSettingsService.API_ENDPOINT = function (environment) {
         switch (environment) {
             case "local":
-                return "https://localhost:" + port;
+                return "https://198.1.96.83:" + port;
+            //return "https://localhost:"+port;
             //return "https://10.20.17.49:"+port;
             //return "https://192.168.225.177:"+port;
             case "dev":
@@ -4696,6 +4698,7 @@ var VideoPlayerComponent = (function () {
     VideoPlayerComponent.prototype.afterVideoAbumInfo = function (result) {
         this.videoAlbumList = result;
     };
+    //Need to activate/deactivate edit btn later based on changes in title field
     VideoPlayerComponent.prototype.editVideoAlbum = function (event) {
         this.albumInfo = event.data;
         this.isCreateAlbum = true;
