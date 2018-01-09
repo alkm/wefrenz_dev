@@ -7,7 +7,7 @@ module.exports ={
 			if(error){
 				console.log("Error"+error);
 			}else{
-				console.log("video feed updated");
+				console.log("update easyrtc id  to db");
 			}
 		});
 	},
@@ -16,7 +16,7 @@ module.exports ={
 			if(error){
 				console.log("Error"+error);
 			}else{
-				console.log("video feed updated");
+				console.log("Update socket id to db");
 			}
 		});
 	},
