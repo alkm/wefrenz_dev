@@ -193,8 +193,8 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
 		var self = this;
 		let chatObj = {'userid': this.userId, 'easyrtcid': easyrtcId};
 		//require(['socket-io'], function(io) {
-		this.socket = io('https://localhost:3000/');
-		//this.socket = io('https://wefrenz.com:3000/');
+		//this.socket = io('https://localhost:3000/');
+		this.socket = io('https://wefrenz.com:3000/');
 		//this.socket = io("'"+ AppSettingsService.API_ENDPOINT("local") +"'");
 		//this.socket = io('https://10.20.17.49:3000');
 		//socket = io('https://de8a3aa6.ngrok.io/');
