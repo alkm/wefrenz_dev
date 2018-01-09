@@ -194,6 +194,7 @@ app.use(function(req, res, next) {
 		var _obj = {};
 		_obj.email = userid;
 		_obj.appearance = "online";
+		console.log('_obj'+_obj);
 		easyRTCHandler.updateSocketStatusToDB(_obj);
 		//chatHandler.updateEasyRTCIdToDB(obj);
 	}

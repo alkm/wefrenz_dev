@@ -1009,8 +1009,8 @@ var ChatComponent = (function () {
         var self = this;
         var chatObj = { 'userid': this.userId, 'easyrtcid': easyrtcId };
         //require(['socket-io'], function(io) {
-        this.socket = __WEBPACK_IMPORTED_MODULE_2__libs_socket_io__('https://localhost:3000/');
-        //this.socket = io('https://wefrenz.com:3000/');
+        //this.socket = io('https://localhost:3000/');
+        this.socket = __WEBPACK_IMPORTED_MODULE_2__libs_socket_io__('https://wefrenz.com:3000/');
         //this.socket = io("'"+ AppSettingsService.API_ENDPOINT("local") +"'");
         //this.socket = io('https://10.20.17.49:3000');
         //socket = io('https://de8a3aa6.ngrok.io/');

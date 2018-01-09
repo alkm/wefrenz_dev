@@ -7,7 +7,7 @@ module.exports ={
 			if(error){
 				console.log("Error"+error);
 			}else{
-				console.log("update easyrtc id  to db");
+				console.log("update easyrtc id  to db"+data.email+'/'+data.easyrtcid);
 			}
 		});
 	},
@@ -16,7 +16,7 @@ module.exports ={
 			if(error){
 				console.log("Error"+error);
 			}else{
-				console.log("Update socket id to db");
+				console.log("Update socket id to db"+data.email+'/'+data.appearance);
 			}
 		});
 	},
