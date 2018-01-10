@@ -44,6 +44,8 @@ import { VideoPlayerComponent } from './video-player/video-player.component';;
 import { AdComponent } from './ad/ad.component';
 import { VideoAlbumIconComponent } from './video-album-icon/video-album-icon.component';
 import { AlbumSearchPipe } from './pipes/album-search.pipe';
+import { VideoIconComponent } from './video-icon/video-icon.component';
+import { VideoSearchPipe } from './pipes/video-search.pipe';
 
 
 
@@ -79,7 +81,9 @@ import { AlbumSearchPipe } from './pipes/album-search.pipe';
     VideoPlayerComponent,
     AdComponent,
     VideoAlbumIconComponent,
-    AlbumSearchPipe
+    AlbumSearchPipe,
+    VideoIconComponent,
+    VideoSearchPipe
   ],
   imports: [
     BrowserModule,

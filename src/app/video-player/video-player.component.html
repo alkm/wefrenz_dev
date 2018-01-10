@@ -1,18 +1,18 @@
 <div class="video-container">
-    <video id='video'
-        controls preload='none'
-        poster="https://media.w3.org/2010/05/sintel/poster.png">
+    <video #videoPlayer id='video'
+        controls 
+        poster="{{posterPath}}">
    <!-- <video id='video'
         poster="https://media.w3.org/2010/05/sintel/poster.png">-->
         <source id='mp4'
-            src="https://media.w3.org/2010/05/sintel/trailer.mp4"
+            src="{{mp4VideoPath}}" 
             type='video/mp4'>
         <source id='webm'
-            src="https://media.w3.org/2010/05/sintel/trailer.webm"
+            src="{{webmVideoPath}}" 
             type='video/webm'>
-        <source id='ogv'
+       <!-- <source id='ogv'
             src="https://media.w3.org/2010/05/sintel/trailer.ogv"
-            type='video/ogg'>
+            type='video/ogg'>-->
       <p>Your browser does not support the HTML5 Video element.</p>
     </video>
       <!-- Video Controls -->
@@ -33,78 +33,115 @@
             <span class="blue-fonts medium-fonts">Videos</span>
         </div>
     </div>
-    <div class="inline-block semi-transparent-bg colw100">
-        <div class="pull-left">
-            <div class="file-input-container">
-                <form [formGroup]="videoUploadForm" action="/upload" method="post" enctype="multipart/form-data">
-                    <div class="form-group" [formGroup]="videoGroup">
-                        <input type="file" accept="video/*" class="file-input" name="uploadfile" #fileInput (change)="fileChangeEvent($event)"/>
-                    </div>
-                </form>
-            </div>
-            <div class="uplod-new" (click)= "cancelAlbum(null); fileInput.value = ''; fileInput.click();" >
-                <i class="fa fa-upload blue-fonts" aria-hidden="true"></i>
-                <span class="blue-fonts">Upload New Videos</span>
-            </div>
-            <div class="title-div red-fonts">
-                <i class="fa fa-info-circle" aria-hidden="true"></i>
-                <span>The video will be uploaded to your untitled album.</span>
-            </div>
-            <div class="new-album">
-                <span class="blue-fonts" (click)="createVideoAlbum($event)">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                    <span>Create New Album</span>
-                </span>
-            </div>
-            <div *ngIf="isCreateAlbum ; then createAlbum"></div>
-            <ng-template #createAlbum >
-                <form [formGroup]="albumForm">
-                    <div class="form-group">
-                        <input type="text" class="form-control no-bg no-brder-radius blue-fonts blue-border" aria-describedby="emailHelp" placeholder="title" formControlName="albumTitle" id="albumTitle" [(ngModel)]="albumTitle">
-                        <app-control-messages [control]="albumForm.controls.albumTitle"></app-control-messages>
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control no-resize no-bg no-brder-radius blue-fonts blue-border" rows="5" cols="30" placeholder="Add Description..." formControlName="albumDesc" id="albumDesc" [(ngModel)]="albumDesc">
-                        </textarea>
-                        <app-control-messages [control]="albumForm.controls.albumDesc"></app-control-messages>
-                    </div>
-                    <div class="form-group row justify-content-center align-items-center no-margin">
-                        <button id="loginBtn" type="button" class="btn btn-primary" (click)="cancelAlbum()" >
-                            <i class="fa fa-times no-margin" aria-hidden="true"></i>
-                            <span>Cancel</span>
-                        </button>
-                        <div *ngIf="isAddAlbum ; then addBtn"></div>
-                        <ng-template #addBtn >
-                            <button type="button" class="btn btn-primary" [disabled]="!albumForm.valid" (click)="createAlbumInfo($event)">
-                                <span>Create</span>
-                                <i class="fa fa-pencil-square" aria-hidden="true"></i>
-                            </button>
-                        </ng-template>
-                        <div *ngIf="isUpdateAlbum ; then updateBtn"></div>
-                        <ng-template #updateBtn >
-                            <button type="button" class="btn btn-primary" [disabled]="!albumForm.valid" (click)="updateAlbumInfo($event)">
-                                <span>Edit</span>
-                                <i class="fa fa-pencil-square" aria-hidden="true"></i>
-                            </button>
-                        </ng-template>
-                    </div>
-                    <div [ngClass]="{'error-message': isError, 'status-message': isStatus}">
-                        <div class="server-msg text-center">{{serverMessage}}</div>
-                    </div>
-                </form>
-            </ng-template>
-            <progress value="0" max="100" id="progressBar" [value]="uploadProgress" [hidden]="!isProgress"></progress>
-        </div>
-    </div>
-    <div class="inline-block semi-transparent-bg colw100">
-        <div class="album-search-box pull-left colw100">
+    <div *ngIf="isVideoAlbum ; then albumVideoUploader"></div>
+    <ng-template #albumVideoUploader>
+        <div class="inline-block semi-transparent-bg colw100">
             <div class="pull-left">
-                <input class="search-input blue-fonts" type="text" placeholder="Search"  autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" [(ngModel)]="albumText" #searchAlbum/>
+                <div class="file-input-container">
+                    <form [formGroup]="videoUploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                        <div class="form-group" [formGroup]="videoGroup">
+                            <input type="file" accept="video/*" class="file-input" name="uploadfile" #fileInput (change)="fileChangeEvent($event)"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="uplod-new" (click)= "cancelAlbum(null); fileInput.value = ''; fileInput.click();" >
+                    <i class="fa fa-upload blue-fonts" aria-hidden="true"></i>
+                    <span class="blue-fonts">Upload New Videos</span>
+                </div>
+                <div class="title-div red-fonts">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span>The video will be uploaded to your untitled album.</span>
+                </div>
+                <div class="new-album">
+                    <span class="blue-fonts" (click)="createVideoAlbum($event)">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <span>Create New Album</span>
+                    </span>
+                </div>
+                <div *ngIf="isCreateAlbum ; then createAlbum"></div>
+                <ng-template #createAlbum >
+                    <form [formGroup]="albumForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control no-bg no-brder-radius blue-fonts blue-border" aria-describedby="emailHelp" placeholder="title" formControlName="albumTitle" id="albumTitle" [(ngModel)]="albumTitle">
+                            <app-control-messages [control]="albumForm.controls.albumTitle"></app-control-messages>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control no-resize no-bg no-brder-radius blue-fonts blue-border" rows="5" cols="30" placeholder="Add Description..." formControlName="albumDesc" id="albumDesc" [(ngModel)]="albumDesc">
+                            </textarea>
+                            <app-control-messages [control]="albumForm.controls.albumDesc"></app-control-messages>
+                        </div>
+                        <div class="form-group row justify-content-center align-items-center no-margin">
+                            <button id="loginBtn" type="button" class="btn btn-primary" (click)="cancelAlbum()" >
+                                <i class="fa fa-times no-margin" aria-hidden="true"></i>
+                                <span>Cancel</span>
+                            </button>
+                            <div *ngIf="isAddAlbum ; then addBtn"></div>
+                            <ng-template #addBtn >
+                                <button type="button" class="btn btn-primary" [disabled]="!albumForm.valid" (click)="createAlbumInfo($event)">
+                                    <span>Create</span>
+                                    <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                                </button>
+                            </ng-template>
+                            <div *ngIf="isUpdateAlbum ; then updateBtn"></div>
+                            <ng-template #updateBtn >
+                                <button type="button" class="btn btn-primary" [disabled]="!albumForm.valid" (click)="updateAlbumInfo($event)">
+                                    <span>Edit</span>
+                                    <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                                </button>
+                            </ng-template>
+                        </div>
+                        <div [ngClass]="{'error-message': isError, 'status-message': isStatus}">
+                            <div class="server-msg text-center">{{serverMessage}}</div>
+                        </div>
+                    </form>
+                </ng-template>
+                <progress value="0" max="100" id="progressBar" [value]="uploadProgress" [hidden]="!isProgress"></progress>
             </div>
-            <div class="pull-left"><i class="fa fa-search cursor-pointer" aria-hidden="true"></i></div>
         </div>
-        <div class="album-icons">
-            <app-video-album-icon class="pull-left" *ngFor="let item of videoAlbumList | albumSearch : albumText" [item]="item" (click)="searchAlbum.value=''; albumText = '';" (onEditVideoAlbum)="editVideoAlbum($event)"></app-video-album-icon>
-        </div>
+    </ng-template>
+    <div class="inline-block semi-transparent-bg colw100">
+        <div *ngIf="isVideoAlbum ; then videoAlbum"></div>
+        <ng-template #videoAlbum >
+            <div class="album-search-box pull-left colw100">
+                <div class="pull-left">
+                    <input class="search-input blue-fonts" type="text" placeholder="Search"  autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" [(ngModel)]="albumText" #searchAlbum/>
+                </div>
+                <div class="pull-left"><i class="fa fa-search cursor-pointer" aria-hidden="true"></i></div>
+            </div>
+            <div class="album-icons">
+                <app-video-album-icon class="pull-left" *ngFor="let item of videoAlbumList | albumSearch : albumText" [item]="item" (click)="searchAlbum.value=''; albumText = '';" (onEditVideoAlbum)="editVideoAlbum($event)" 
+                (onShowVideoList)="showVideoList($event)"></app-video-album-icon>
+            </div>
+        </ng-template>
+        <div *ngIf="isAlbumVideo ; then albumVideo"></div>
+        <ng-template #albumVideo >
+            <div class="video-search-box pull-left colw100">
+                <div class="pull-left">
+                    <!--<input class="search-input blue-fonts" type="text" placeholder="Search"  autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" [(ngModel)]="videoText" #searchVideo/>-->
+                    <div class="cursor-pointer blue-fonts" (click)="goToMyAlbum($event)">My Album</div>
+                </div>
+                <!--<div class="pull-left"><i class="fa fa-search cursor-pointer" aria-hidden="true"></i></div>-->
+            </div>
+            <div class="video-uploader">
+                <div class="file-input-container">
+                    <form [formGroup]="videoUploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                        <div class="form-group" [formGroup]="videoGroup">
+                            <input type="file" accept="video/*" class="video-input" name="uploadfile" #videoInput (change)="videoChangeEvent($event)"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="uplod-new" (click)= "cancelVideo(null); videoInput.value = ''; videoInput.click();" >
+                    <i class="fa fa-upload blue-fonts" aria-hidden="true"></i>
+                    <span class="blue-fonts">Add New Videos.</span>
+                </div>
+                <div class="title-div red-fonts">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span>The video will be uploaded to this album.</span>
+                </div>
+            </div>
+            <div class="album-icons">
+                <app-video-icon (click)="playVideo(item)" class="pull-left" *ngFor="let item of videoList | videoSearch : videoText" [item]="item"></app-video-icon>
+            </div>
+        </ng-template>
     </div>
 </div>

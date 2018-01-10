@@ -187,14 +187,16 @@ module.exports = function(app) {
 					var process = new ffmpeg(actualVideoPath);
 					process.then(function (video) {
 						var posterPath = 'media/videos/myvideos/poster/';
+						//video.setVideoAspectRatio('16:9')
 						video.fnExtractFrameToJPG(posterPath, {
 							frame_rate : 1,
 							number : 1,
-							file_name : 'poster_'+Date.now()+'jpg'
+							file_name : 'poster_'+Date.now()
 						}, function (error, files) {
 							if (!error){
 								console.log('Frames: ' + files);
 								posterImg = files[1];
+								posterImg = 'video/poster/'+posterImg.split('/poster/')[1]; //Setting the virtual path
 							}
 						});
 
@@ -202,21 +204,31 @@ module.exports = function(app) {
 							video.save(saveVideoPathMP4, function (error, file) {
 								if (!error){
 									console.log('Video file: ' + file);
+									saveVideoPathMP4 = 'video/mp4/'+saveVideoPathMP4.split('/mp4/')[1];//Setting virtual path
 									emtr.emit('onVideoReady', 'mp4');
+									
 								}	
 							});
 						}else{
+							saveVideoPathMP4 = actualVideoPath;
+							saveVideoPathMP4 = 'video/original/'+saveVideoPathMP4.split('/mp4/')[1];//Setting virtual path
+							emtr.emit('onVideoReady', 'mp4');
 							console.log('The format is mp4, so keeping it as original');
+							
 						}
 
 						if(videoExt !== '.webm'){
 							video.save(saveVideoPathWEBM, function (error, file) {
 								if (!error){
 									console.log('Video file: ' + file);
+									saveVideoPathWEBM = 'video/webm/'+saveVideoPathWEBM.split('/webm/')[1];//Setting virtual path
 									emtr.emit('onVideoReady', 'webm');
 								}
 							});
 						}else{
+							saveVideoPathWEBM = actualVideoPath;
+							saveVideoPathWEBM = 'video/original/'+saveVideoPathWEBM.split('/webm/')[1];//Setting virtual path
+							emtr.emit('onVideoReady', 'webm');
 							console.log('The format is webm, so keeping it as original');
 						}
 

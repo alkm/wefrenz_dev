@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ValidationService } from 'app/services/validators/validation.service';
 import { AppSettingsService } from 'app/services/settings/app-settings.service';
@@ -13,6 +13,8 @@ import { VideoService } from 'app/services/data/video.service';
 })
 export class VideoPlayerComponent implements OnInit {
 
+	@ViewChild('videoPlayer') videoPlayer: ElementRef;
+
 	private files: any;
 	private userId: string = '';
 	private videoUploadForm: any;
@@ -21,12 +23,19 @@ export class VideoPlayerComponent implements OnInit {
 	private isProgress: boolean = false;
 	private albumForm : any;
 	private videoAlbumList: any;
+	private videoList: any;
 	private albumTitle = '';
 	private albumDesc = '';
 	private isCreateAlbum: boolean = false;
 	private isAddAlbum: boolean = false;
 	private isUpdateAlbum: boolean = false;
+	private isVideoAlbum: boolean = true;
+	private isAlbumVideo: boolean = false;
 	private albumInfo : any;
+	private videoInfo: any;
+	private mp4VideoPath = 'https://media.w3.org/2010/05/sintel/trailer.mp4';
+	private webmVideoPath = 'https://media.w3.org/2010/05/sintel/trailer.webm';
+	private posterPath = 'https://media.w3.org/2010/05/sintel/poster.png';
 
   	constructor(private formBuilder: FormBuilder, private videoService: VideoService) { 
   		let loginData = JSON.parse(localStorage.getItem('loginData'));
@@ -191,6 +200,29 @@ export class VideoPlayerComponent implements OnInit {
   		this.albumTitle = this.albumInfo.title;
   		this.albumDesc = this.albumInfo.description;
 
+  	}
+
+  	private showVideoList(event){
+  		this.videoInfo = event.data;
+  		this.isVideoAlbum = false;
+  		this.isAlbumVideo = true;
+  		this.videoList = this.videoInfo.videosList;
+
+  	}
+
+  	private goToMyAlbum(event){
+  		this.isVideoAlbum = true;
+  		this.isAlbumVideo = false;
+  	}
+
+  	private playVideo(data){
+  		console.log(data);
+  		this.videoPlayer.nativeElement.pause();
+  		this.posterPath = data.poster;
+  		this.mp4VideoPath = data.mp4Video;
+  		this.webmVideoPath = data.webmVideo;
+  		this.videoPlayer.nativeElement.load();
+  		this.videoPlayer.nativeElement.play();
   	}
 
 }

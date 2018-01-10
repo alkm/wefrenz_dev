@@ -227,6 +227,8 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__ad_ad_component__ = __webpack_require__("../../../../../src/app/ad/ad.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__video_album_icon_video_album_icon_component__ = __webpack_require__("../../../../../src/app/video-album-icon/video-album-icon.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__pipes_album_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/album-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__video_icon_video_icon_component__ = __webpack_require__("../../../../../src/app/video-icon/video-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pipes_video_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/video-search.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -274,6 +276,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 var AppModule = (function () {
     function AppModule() {
     }
@@ -311,7 +315,9 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_35__video_player_video_player_component__["a" /* VideoPlayerComponent */],
             __WEBPACK_IMPORTED_MODULE_36__ad_ad_component__["a" /* AdComponent */],
             __WEBPACK_IMPORTED_MODULE_37__video_album_icon_video_album_icon_component__["a" /* VideoAlbumIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_38__pipes_album_search_pipe__["a" /* AlbumSearchPipe */]
+            __WEBPACK_IMPORTED_MODULE_38__pipes_album_search_pipe__["a" /* AlbumSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_39__video_icon_video_icon_component__["a" /* VideoIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_40__pipes_video_search_pipe__["a" /* VideoSearchPipe */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -2717,6 +2723,45 @@ ChatSearchPipe = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/pipes/video-search.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VideoSearchPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var VideoSearchPipe = (function () {
+    function VideoSearchPipe() {
+    }
+    VideoSearchPipe.prototype.transform = function (items, videoText) {
+        if (!items)
+            return [];
+        if (!videoText)
+            return items;
+        videoText = videoText.toLowerCase();
+        return items.filter(function (it) {
+            var title = it.title;
+            return title.toLowerCase().includes(videoText);
+        });
+    };
+    return VideoSearchPipe;
+}());
+VideoSearchPipe = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */])({
+        name: 'videoSearch'
+    })
+], VideoSearchPipe);
+
+//# sourceMappingURL=video-search.pipe.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/private-nav/private-nav.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4448,7 +4493,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/video-album-icon/video-album-icon.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"video-icon-container\">\n\t<div class=\"colw100 video-edit-icon\"><i class=\"fa fa-pencil-square white-fonts pull-right\" aria-hidden=\"true\" (click)=\"editVideoAlbum($event)\"></i></div>\n\t<div class=\"colw100 blue-fonts bold-fonts\"><span>{{item.title}}</span></div>\n\t<div class=\"colw100 blue-fonts\"><span>{{item.videosList.length}}</span><span> videos</span></div>\n\t<div class=\"colw100 blue-fonts\"><span>{{item.created | date: 'dd/MM/yyyy'}}</span></div>\n</div>\n"
+module.exports = "<div class=\"video-icon-container\">\n\t<div class=\"colw100 video-edit-icon\"><i class=\"fa fa-pencil-square white-fonts pull-right\" aria-hidden=\"true\" (click)=\"editVideoAlbum($event)\"></i></div>\n\t<div class=\"colw100 blue-fonts bold-fonts cursor-pointer\" (click)=\"showVideoList($event)\"><span>{{item.title}}</span></div>\n\t<div class=\"colw100 blue-fonts\"><span>{{item.videosList.length}}</span><span> videos</span></div>\n\t<div class=\"colw100 blue-fonts\"><span>{{item.created | date: 'dd/MM/yyyy'}}</span></div>\n</div>\n"
 
 /***/ }),
 
@@ -4471,11 +4516,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var VideoAlbumIconComponent = (function () {
     function VideoAlbumIconComponent() {
         this.onEditVideoAlbum = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.onShowVideoList = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
     }
     VideoAlbumIconComponent.prototype.ngOnInit = function () {
     };
     VideoAlbumIconComponent.prototype.editVideoAlbum = function (event) {
         this.onEditVideoAlbum.emit({ data: this.item });
+    };
+    VideoAlbumIconComponent.prototype.showVideoList = function (event) {
+        this.onShowVideoList.emit({ data: this.item });
     };
     return VideoAlbumIconComponent;
 }());
@@ -4487,6 +4536,10 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
 ], VideoAlbumIconComponent.prototype, "onEditVideoAlbum", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
+], VideoAlbumIconComponent.prototype, "onShowVideoList", void 0);
 VideoAlbumIconComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-video-album-icon',
@@ -4496,8 +4549,74 @@ VideoAlbumIconComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], VideoAlbumIconComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=video-album-icon.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/video-icon/video-icon.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".video-icon{\n\twidth: 100px;\n    height: 100px;\n    border: 1px solid #2b90d9;\n    margin: 10px 5px 0px 0px;\n    background-size: cover !important;\n}\n.video-icon i{\n\tcolor: #fff;\n    text-align: center;\n    margin: 33px 35px;\n}\n.video-icon:hover{\n\tborder: 1px solid #fff;\n}\n.video-icon:hover i{\n\tcolor: #2b90d9;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/video-icon/video-icon.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"video-icon cursor-pointer\" [ngStyle]=\"{'background': 'url(' + posterURL+ ')'}\">\n<i class=\"fa fa-play-circle-o fa-3x\" aria-hidden=\"true\"></i>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/video-icon/video-icon.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VideoIconComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var VideoIconComponent = (function () {
+    function VideoIconComponent() {
+    }
+    VideoIconComponent.prototype.ngOnInit = function () {
+        this.posterURL = this.item.poster;
+    };
+    return VideoIconComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Object)
+], VideoIconComponent.prototype, "item", void 0);
+VideoIconComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-video-icon',
+        template: __webpack_require__("../../../../../src/app/video-icon/video-icon.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/video-icon/video-icon.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], VideoIconComponent);
+
+//# sourceMappingURL=video-icon.component.js.map
 
 /***/ }),
 
@@ -4522,7 +4641,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/video-player/video-player.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"video-container\">\n    <video id='video'\n        controls preload='none'\n        poster=\"https://media.w3.org/2010/05/sintel/poster.png\">\n   <!-- <video id='video'\n        poster=\"https://media.w3.org/2010/05/sintel/poster.png\">-->\n        <source id='mp4'\n            src=\"https://media.w3.org/2010/05/sintel/trailer.mp4\"\n            type='video/mp4'>\n        <source id='webm'\n            src=\"https://media.w3.org/2010/05/sintel/trailer.webm\"\n            type='video/webm'>\n        <source id='ogv'\n            src=\"https://media.w3.org/2010/05/sintel/trailer.ogv\"\n            type='video/ogg'>\n      <p>Your browser does not support the HTML5 Video element.</p>\n    </video>\n      <!-- Video Controls -->\n    <!--<div id=\"video-controls\">\n        <div><input type=\"range\" min=\"1\" max=\"100\" step=\"1\" value=\"15\" class=\"colw100 no-outline\" id=\"seek-bar\"></div>\n        <div>\n            <i id=\"play-pause\" class=\"fa fa-play-circle fa-2x blue-fonts\"></i>    \n            <button type=\"button\" id=\"mute\">Mute</button>\n            <input type=\"range\" id=\"volumeBar\" min=\"0\" max=\"1\" step=\"0.1\" value=\"1\">\n            <button type=\"button\" id=\"full-screen\">Full-Screen</button>\n        </div>\n    </div>-->\n</div>\n<div class=\"video-content\">\n    <div class=\"title semi-transparent-bg\">\n        <div class=\"line-height-sixteen\">\n            <i class=\"fa fa-file-video-o blue-fonts fa-2x\" aria-hidden=\"true\"></i>\n            <span class=\"blue-fonts medium-fonts\">Videos</span>\n        </div>\n    </div>\n    <div class=\"inline-block semi-transparent-bg colw100\">\n        <div class=\"pull-left\">\n            <div class=\"file-input-container\">\n                <form [formGroup]=\"videoUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                    <div class=\"form-group\" [formGroup]=\"videoGroup\">\n                        <input type=\"file\" accept=\"video/*\" class=\"file-input\" name=\"uploadfile\" #fileInput (change)=\"fileChangeEvent($event)\"/>\n                    </div>\n                </form>\n            </div>\n            <div class=\"uplod-new\" (click)= \"cancelAlbum(null); fileInput.value = ''; fileInput.click();\" >\n                <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                <span class=\"blue-fonts\">Upload New Videos</span>\n            </div>\n            <div class=\"title-div red-fonts\">\n                <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                <span>The video will be uploaded to your untitled album.</span>\n            </div>\n            <div class=\"new-album\">\n                <span class=\"blue-fonts\" (click)=\"createVideoAlbum($event)\">\n                    <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>\n                    <span>Create New Album</span>\n                </span>\n            </div>\n            <div *ngIf=\"isCreateAlbum ; then createAlbum\"></div>\n            <ng-template #createAlbum >\n                <form [formGroup]=\"albumForm\">\n                    <div class=\"form-group\">\n                        <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" aria-describedby=\"emailHelp\" placeholder=\"title\" formControlName=\"albumTitle\" id=\"albumTitle\" [(ngModel)]=\"albumTitle\">\n                        <app-control-messages [control]=\"albumForm.controls.albumTitle\"></app-control-messages>\n                    </div>\n                    <div class=\"form-group\">\n                        <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" formControlName=\"albumDesc\" id=\"albumDesc\" [(ngModel)]=\"albumDesc\">\n                        </textarea>\n                        <app-control-messages [control]=\"albumForm.controls.albumDesc\"></app-control-messages>\n                    </div>\n                    <div class=\"form-group row justify-content-center align-items-center no-margin\">\n                        <button id=\"loginBtn\" type=\"button\" class=\"btn btn-primary\" (click)=\"cancelAlbum()\" >\n                            <i class=\"fa fa-times no-margin\" aria-hidden=\"true\"></i>\n                            <span>Cancel</span>\n                        </button>\n                        <div *ngIf=\"isAddAlbum ; then addBtn\"></div>\n                        <ng-template #addBtn >\n                            <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"createAlbumInfo($event)\">\n                                <span>Create</span>\n                                <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                            </button>\n                        </ng-template>\n                        <div *ngIf=\"isUpdateAlbum ; then updateBtn\"></div>\n                        <ng-template #updateBtn >\n                            <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"updateAlbumInfo($event)\">\n                                <span>Edit</span>\n                                <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                            </button>\n                        </ng-template>\n                    </div>\n                    <div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n                        <div class=\"server-msg text-center\">{{serverMessage}}</div>\n                    </div>\n                </form>\n            </ng-template>\n            <progress value=\"0\" max=\"100\" id=\"progressBar\" [value]=\"uploadProgress\" [hidden]=\"!isProgress\"></progress>\n        </div>\n    </div>\n    <div class=\"inline-block semi-transparent-bg colw100\">\n        <div class=\"album-search-box pull-left colw100\">\n            <div class=\"pull-left\">\n                <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n            </div>\n            <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n        </div>\n        <div class=\"album-icons\">\n            <app-video-album-icon class=\"pull-left\" *ngFor=\"let item of videoAlbumList | albumSearch : albumText\" [item]=\"item\" (click)=\"searchAlbum.value=''; albumText = '';\" (onEditVideoAlbum)=\"editVideoAlbum($event)\"></app-video-album-icon>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"video-container\">\n    <video #videoPlayer id='video'\n        controls \n        poster=\"{{posterPath}}\">\n   <!-- <video id='video'\n        poster=\"https://media.w3.org/2010/05/sintel/poster.png\">-->\n        <source id='mp4'\n            src=\"{{mp4VideoPath}}\" \n            type='video/mp4'>\n        <source id='webm'\n            src=\"{{webmVideoPath}}\" \n            type='video/webm'>\n       <!-- <source id='ogv'\n            src=\"https://media.w3.org/2010/05/sintel/trailer.ogv\"\n            type='video/ogg'>-->\n      <p>Your browser does not support the HTML5 Video element.</p>\n    </video>\n      <!-- Video Controls -->\n    <!--<div id=\"video-controls\">\n        <div><input type=\"range\" min=\"1\" max=\"100\" step=\"1\" value=\"15\" class=\"colw100 no-outline\" id=\"seek-bar\"></div>\n        <div>\n            <i id=\"play-pause\" class=\"fa fa-play-circle fa-2x blue-fonts\"></i>    \n            <button type=\"button\" id=\"mute\">Mute</button>\n            <input type=\"range\" id=\"volumeBar\" min=\"0\" max=\"1\" step=\"0.1\" value=\"1\">\n            <button type=\"button\" id=\"full-screen\">Full-Screen</button>\n        </div>\n    </div>-->\n</div>\n<div class=\"video-content\">\n    <div class=\"title semi-transparent-bg\">\n        <div class=\"line-height-sixteen\">\n            <i class=\"fa fa-file-video-o blue-fonts fa-2x\" aria-hidden=\"true\"></i>\n            <span class=\"blue-fonts medium-fonts\">Videos</span>\n        </div>\n    </div>\n    <div *ngIf=\"isVideoAlbum ; then albumVideoUploader\"></div>\n    <ng-template #albumVideoUploader>\n        <div class=\"inline-block semi-transparent-bg colw100\">\n            <div class=\"pull-left\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"videoUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"videoGroup\">\n                            <input type=\"file\" accept=\"video/*\" class=\"file-input\" name=\"uploadfile\" #fileInput (change)=\"fileChangeEvent($event)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"cancelAlbum(null); fileInput.value = ''; fileInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Upload New Videos</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The video will be uploaded to your untitled album.</span>\n                </div>\n                <div class=\"new-album\">\n                    <span class=\"blue-fonts\" (click)=\"createVideoAlbum($event)\">\n                        <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>\n                        <span>Create New Album</span>\n                    </span>\n                </div>\n                <div *ngIf=\"isCreateAlbum ; then createAlbum\"></div>\n                <ng-template #createAlbum >\n                    <form [formGroup]=\"albumForm\">\n                        <div class=\"form-group\">\n                            <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" aria-describedby=\"emailHelp\" placeholder=\"title\" formControlName=\"albumTitle\" id=\"albumTitle\" [(ngModel)]=\"albumTitle\">\n                            <app-control-messages [control]=\"albumForm.controls.albumTitle\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group\">\n                            <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" formControlName=\"albumDesc\" id=\"albumDesc\" [(ngModel)]=\"albumDesc\">\n                            </textarea>\n                            <app-control-messages [control]=\"albumForm.controls.albumDesc\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group row justify-content-center align-items-center no-margin\">\n                            <button id=\"loginBtn\" type=\"button\" class=\"btn btn-primary\" (click)=\"cancelAlbum()\" >\n                                <i class=\"fa fa-times no-margin\" aria-hidden=\"true\"></i>\n                                <span>Cancel</span>\n                            </button>\n                            <div *ngIf=\"isAddAlbum ; then addBtn\"></div>\n                            <ng-template #addBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"createAlbumInfo($event)\">\n                                    <span>Create</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                            <div *ngIf=\"isUpdateAlbum ; then updateBtn\"></div>\n                            <ng-template #updateBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"updateAlbumInfo($event)\">\n                                    <span>Edit</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                        </div>\n                        <div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n                            <div class=\"server-msg text-center\">{{serverMessage}}</div>\n                        </div>\n                    </form>\n                </ng-template>\n                <progress value=\"0\" max=\"100\" id=\"progressBar\" [value]=\"uploadProgress\" [hidden]=\"!isProgress\"></progress>\n            </div>\n        </div>\n    </ng-template>\n    <div class=\"inline-block semi-transparent-bg colw100\">\n        <div *ngIf=\"isVideoAlbum ; then videoAlbum\"></div>\n        <ng-template #videoAlbum >\n            <div class=\"album-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n                </div>\n                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n            </div>\n            <div class=\"album-icons\">\n                <app-video-album-icon class=\"pull-left\" *ngFor=\"let item of videoAlbumList | albumSearch : albumText\" [item]=\"item\" (click)=\"searchAlbum.value=''; albumText = '';\" (onEditVideoAlbum)=\"editVideoAlbum($event)\" \n                (onShowVideoList)=\"showVideoList($event)\"></app-video-album-icon>\n            </div>\n        </ng-template>\n        <div *ngIf=\"isAlbumVideo ; then albumVideo\"></div>\n        <ng-template #albumVideo >\n            <div class=\"video-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <!--<input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"videoText\" #searchVideo/>-->\n                    <div class=\"cursor-pointer blue-fonts\" (click)=\"goToMyAlbum($event)\">My Album</div>\n                </div>\n                <!--<div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>-->\n            </div>\n            <div class=\"video-uploader\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"videoUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"videoGroup\">\n                            <input type=\"file\" accept=\"video/*\" class=\"video-input\" name=\"uploadfile\" #videoInput (change)=\"videoChangeEvent($event)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"cancelVideo(null); videoInput.value = ''; videoInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Add New Videos.</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The video will be uploaded to this album.</span>\n                </div>\n            </div>\n            <div class=\"album-icons\">\n                <app-video-icon (click)=\"playVideo(item)\" class=\"pull-left\" *ngFor=\"let item of videoList | videoSearch : videoText\" [item]=\"item\"></app-video-icon>\n            </div>\n        </ng-template>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -4562,6 +4681,11 @@ var VideoPlayerComponent = (function () {
         this.isCreateAlbum = false;
         this.isAddAlbum = false;
         this.isUpdateAlbum = false;
+        this.isVideoAlbum = true;
+        this.isAlbumVideo = false;
+        this.mp4VideoPath = 'https://media.w3.org/2010/05/sintel/trailer.mp4';
+        this.webmVideoPath = 'https://media.w3.org/2010/05/sintel/trailer.webm';
+        this.posterPath = 'https://media.w3.org/2010/05/sintel/poster.png';
         var loginData = JSON.parse(localStorage.getItem('loginData'));
         this.userId = loginData.username;
         this.videoUploadForm = this.formBuilder.group({
@@ -4707,8 +4831,31 @@ var VideoPlayerComponent = (function () {
         this.albumTitle = this.albumInfo.title;
         this.albumDesc = this.albumInfo.description;
     };
+    VideoPlayerComponent.prototype.showVideoList = function (event) {
+        this.videoInfo = event.data;
+        this.isVideoAlbum = false;
+        this.isAlbumVideo = true;
+        this.videoList = this.videoInfo.videosList;
+    };
+    VideoPlayerComponent.prototype.goToMyAlbum = function (event) {
+        this.isVideoAlbum = true;
+        this.isAlbumVideo = false;
+    };
+    VideoPlayerComponent.prototype.playVideo = function (data) {
+        console.log(data);
+        this.videoPlayer.nativeElement.pause();
+        this.posterPath = data.poster;
+        this.mp4VideoPath = data.mp4Video;
+        this.webmVideoPath = data.webmVideo;
+        this.videoPlayer.nativeElement.load();
+        this.videoPlayer.nativeElement.play();
+    };
     return VideoPlayerComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('videoPlayer'),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object)
+], VideoPlayerComponent.prototype, "videoPlayer", void 0);
 VideoPlayerComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-video-player',
@@ -4716,10 +4863,10 @@ VideoPlayerComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/video-player/video-player.component.css")],
         providers: [__WEBPACK_IMPORTED_MODULE_4_app_services_data_video_service__["a" /* VideoService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_data_video_service__["a" /* VideoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_data_video_service__["a" /* VideoService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_data_video_service__["a" /* VideoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_data_video_service__["a" /* VideoService */]) === "function" && _c || Object])
 ], VideoPlayerComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=video-player.component.js.map
 
 /***/ }),

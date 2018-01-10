@@ -11,6 +11,7 @@ export class VideoAlbumIconComponent implements OnInit {
 
 	@Input() item;
 	@Output() onEditVideoAlbum: EventEmitter<any> = new EventEmitter();
+  @Output() onShowVideoList: EventEmitter<any> = new EventEmitter();
 
   	constructor() { }
 
@@ -20,4 +21,8 @@ export class VideoAlbumIconComponent implements OnInit {
   	private editVideoAlbum(event){
   		this.onEditVideoAlbum.emit({data: this.item});
   	}
+
+    private showVideoList(event){
+      this.onShowVideoList.emit({data: this.item});
+    }
 }
