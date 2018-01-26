@@ -145,6 +145,8 @@ module.exports = function(app) {
 	app.post('/api/uploadVideo', videoUpload.single('uploadfile'), (req, res) => {
 		console.log('file uploaded');
 		var userId = req.body.userid;
+		var albumTitle = req.body.album;
+		var directUpload = req.body.directupload;
 		/*try{
 			if(ssn === undefined){
 				res.json({"status": "sessionExpired", "message": "Please Login"});
@@ -154,26 +156,12 @@ module.exports = function(app) {
 			res.json({"status": "sessionExpired", "message": "Please Login"});
 			return;
 		}*/
-
-
-		videoInfo.findOne({userid: userId, title: 'untitled'}, function(err, info){
-			var operation = '';
-			var videosList = [];
-			if(err){
-				res.send(err);
-			}else{
-				if(info == null){
-					operation = 'create';
-
-				}else{
-					operation = 'update';
-					videosList = info.videosList;
-				}
-				processVideo(userId, operation, videosList);
-			}
-		});
-
-		function processVideo(userId, operation, videosList){
+		var albumDesc = '';
+		if(directUpload){
+			albumDesc = 'Untitled Album';
+		}
+		processVideo(userId, albumTitle, albumDesc);
+		function processVideo(userId, albumTitle, albumDesc){
 			var actualVideoPath = 'media/videos/myvideos/original/'+uploadedVideoPath;
 			var saveVideoPathMP4 = 'media/videos/myvideos/mp4/video_'+Date.now()+'.mp4';
 			var saveVideoPathWEBM = 'media/videos/myvideos/webm/video_'+Date.now()+'.webm';
@@ -257,20 +245,60 @@ module.exports = function(app) {
 				}
 				if(videoReadyArr.length === 2){
 					videoReadyArr = [];
-					updateVideoList(operation, userId, videosList, saveVideoPathWEBM, saveVideoPathMP4, posterImg);
+					updateVideoList(userId, albumTitle, albumDesc, saveVideoPathWEBM, saveVideoPathMP4, posterImg);
 				}
 			});
 		}
 
-		function updateVideoList(operation, userId, videosList, saveVideoPathWEBM, saveVideoPathMP4, posterImg){
+		function updateVideoList(userId, albumTitle, albumDesc, saveVideoPathWEBM, saveVideoPathMP4, posterImg){
 			var videoObj = {}
 			videoObj.actulaVideo = 'video/original/'+uploadedVideoPath;
 			videoObj.oggVideo = '';
 			videoObj.webmVideo = saveVideoPathWEBM;
 			videoObj.mp4Video = saveVideoPathMP4;
 			videoObj.poster = posterImg;
-			videosList.push(videoObj);
-			if(operation === 'create'){
+			
+
+			videoInfo.findOne({userid: userId, title: albumTitle}, function(err, info){
+				var operation = '';
+				var videosList = [];
+				if(err){
+					res.send(err);
+				}else{
+					if(info === null){
+						operation = 'create';
+						videosList.push(videoObj);
+						videoInfo.create({
+							userid : userId,
+							title: albumTitle,
+							description: albumDesc,
+							videosList : videosList,
+							albumCover : '',
+							sharedWith: []
+						}, function(err, info) {
+							if (err){
+								res.send(err);
+							}else{
+								res.json({"status": "success", "message": "Album created successfully", "info": info});
+							}
+						});	
+
+					}else{
+						operation = 'update';
+						videosList = info.videosList;
+						videosList.push(videoObj);
+						videoInfo.update({userid: userId}, {$set: {videosList: videosList}}, function(err, info){
+							if(err){
+								console.log("Error"+err);
+								res.json({"status": "failure", "message": "Failed to update video now, please try again later."});
+							}else{
+								res.json({"status": "success", "message": "Video updated successfully.", "info": info});
+							}
+						});
+					}
+				}
+			});
+			/*if(operation === 'create'){
 				videoInfo.create({
 					userid : userId,
 					title: 'untitled',
@@ -285,16 +313,8 @@ module.exports = function(app) {
 						res.json({"status": "success", "message": "Album created successfully", "info": info});
 					}
 				});	
-			}else{
-				videoInfo.update({userid: userId, title: 'untitled'}, {$set: {videosList: videosList}}, function(err, info){
-					if(err){
-						console.log("Error"+err);
-						res.json({"status": "failure", "message": "Failed to update video now, please try again later."});
-					}else{
-						res.json({"status": "success", "message": "Video updated successfully.", "info": info});
-					}
-				});
-			}
+			}else{*/
+			//}
 		}
 
 		/*try {

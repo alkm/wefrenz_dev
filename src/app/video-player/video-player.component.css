@@ -55,6 +55,10 @@ app-video-album-icon{
     border: 1px solid #2b90d9;
     margin: 10px 5px 0px 0px;
 }
+.video-container, #video{
+    max-height: 314px;
+    background: #000;
+}
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #2b90d9;
 }

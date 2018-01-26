@@ -59,7 +59,7 @@ export class VideoPlayerComponent implements OnInit {
 
   	ngOnInit() {
   	}
-	private fileChangeEvent(event){
+	private fileChangeEvent(event, directUpload){
 		let self = this;
 		let userId = this.userId;
 		let file: any;
@@ -71,7 +71,13 @@ export class VideoPlayerComponent implements OnInit {
 			let formData = new FormData();
 			formData.append('uploadfile', file);
 			formData.append('userid', userId);
-			formData.append('album', null)
+			if(self.videoInfo){
+				formData.append('album', self.videoInfo.title);
+			}else{
+				formData.append('album', 'untitled');
+			}
+			
+			formData.append('directupload', directUpload);
 			let xhr = new XMLHttpRequest();
 			xhr.open('post', AppSettingsService.API_ENDPOINT("local")+'/api/uploadVideo', true);
 			xhr.upload.onprogress = function(e) {
