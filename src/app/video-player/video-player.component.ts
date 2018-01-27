@@ -71,13 +71,12 @@ export class VideoPlayerComponent implements OnInit {
 			let formData = new FormData();
 			formData.append('uploadfile', file);
 			formData.append('userid', userId);
-			if(self.videoInfo){
+			if(!directUpload){
 				formData.append('album', self.videoInfo.title);
 			}else{
 				formData.append('album', 'untitled');
 			}
-			
-			formData.append('directupload', directUpload);
+
 			let xhr = new XMLHttpRequest();
 			xhr.open('post', AppSettingsService.API_ENDPOINT("local")+'/api/uploadVideo', true);
 			xhr.upload.onprogress = function(e) {
@@ -105,7 +104,12 @@ export class VideoPlayerComponent implements OnInit {
 				$('div.progress').hide();
 				showMsg("alert alert-success", "File uploaded successfully!");
 				$('#myFile').val('');*/
-				self.fetchVideoAlbumInfo();
+				if(self.isVideoAlbum){
+					self.fetchVideoAlbumInfo();
+				}else{
+					self.fetchAlbumVideoInfo();	
+				}
+				
 			};
 
 			xhr.onreadystatechange = function()
@@ -189,12 +193,20 @@ export class VideoPlayerComponent implements OnInit {
 	}
 
 	private fetchVideoAlbumInfo(){
-		 let postObj = {'username': this.userId};
+		let postObj = {'username': this.userId};
 	    this.videoService.fetchVideoAlbumInfo(postObj).subscribe(data => this.afterVideoAbumInfo(data));
+	}
+
+	private fetchAlbumVideoInfo(){
+		let postObj = {'username': this.userId, 'album': this.albumTitle};
+	    this.videoService.fetchAlbumVideoInfo(postObj).subscribe(data => this.afterAbumVideoInfo(data));
 	}
 
 	private afterVideoAbumInfo(result){
 		this.videoAlbumList = result;
+	}
+	private afterAbumVideoInfo(result){
+		this.videoList = result[0].videosList;
 	}
 
 	//Need to activate/deactivate edit btn later based on changes in title field
@@ -207,12 +219,13 @@ export class VideoPlayerComponent implements OnInit {
   		this.albumDesc = this.albumInfo.description;
 
   	}
-
+  	//Diplaying the list of videos under a particular video album
   	private showVideoList(event){
   		this.videoInfo = event.data;
   		this.isVideoAlbum = false;
   		this.isAlbumVideo = true;
   		this.videoList = this.videoInfo.videosList;
+  		this.albumTitle = this.videoInfo.title;
 
   	}
 

@@ -30,4 +30,10 @@ export class VideoService {
 		return this.http.post(AppSettingsService.API_ENDPOINT("local")+"/api/fetchVideoAlbumInfo", postObj, options)
 		.map((res:Response) => res.json());
 	}
+	public fetchAlbumVideoInfo(postObj){
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.post(AppSettingsService.API_ENDPOINT("local")+"/api/fetchAlbumVideoInfo", postObj, options)
+		.map((res:Response) => res.json());
+	}
 }

@@ -39,6 +39,15 @@ module.exports = function(app) {
 			}
 		});
 	});
+	app.post('/api/fetchAlbumVideoInfo/', function(req, res) {	
+		videoInfo.find({userid: req.body.username, title: req.body.album}, function(error, docs){
+			if(error){
+				console.log("Error"+error);
+			}else{
+				res.send(docs);
+			}
+		});
+	});
 
 	app.post('/api/updateVideoAlbum/', function(req, res) {	
 

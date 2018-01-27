@@ -146,7 +146,6 @@ module.exports = function(app) {
 		console.log('file uploaded');
 		var userId = req.body.userid;
 		var albumTitle = req.body.album;
-		var directUpload = req.body.directupload;
 		/*try{
 			if(ssn === undefined){
 				res.json({"status": "sessionExpired", "message": "Please Login"});
@@ -157,9 +156,7 @@ module.exports = function(app) {
 			return;
 		}*/
 		var albumDesc = '';
-		if(directUpload){
-			albumDesc = 'Untitled Album';
-		}
+		
 		processVideo(userId, albumTitle, albumDesc);
 		function processVideo(userId, albumTitle, albumDesc){
 			var actualVideoPath = 'media/videos/myvideos/original/'+uploadedVideoPath;
@@ -287,7 +284,7 @@ module.exports = function(app) {
 						operation = 'update';
 						videosList = info.videosList;
 						videosList.push(videoObj);
-						videoInfo.update({userid: userId}, {$set: {videosList: videosList}}, function(err, info){
+						videoInfo.update({userid: userId, title: albumTitle}, {$set: {videosList: videosList}}, function(err, info){
 							if(err){
 								console.log("Error"+err);
 								res.json({"status": "failure", "message": "Failed to update video now, please try again later."});
