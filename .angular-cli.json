@@ -27,7 +27,8 @@
       "scripts": [
         "../libs/socket.io.js",
          "../libs/easyrtc.js",
-         "../libs/av.js"
+         "../libs/av.js",
+         "../libs/spectrum.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

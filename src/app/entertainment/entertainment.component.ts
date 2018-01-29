@@ -14,6 +14,8 @@ export class EntertainmentComponent implements OnInit {
 	private isMyProfile: boolean = false;
 	private userId: string = '';
     private friendId: string = '';
+    private isVideo: boolean = true;
+    private isMusic: boolean = false;
 
   	constructor(private route: ActivatedRoute, private router: Router) { 
   		route.params.subscribe(val => {
@@ -55,6 +57,15 @@ export class EntertainmentComponent implements OnInit {
 	private triggerLoggedInCheck(eventType: string, evtObj: any) {
     	let evt = new CustomEvent(eventType, evtObj);
     	window.dispatchEvent(evt);
+    }
+
+    private switchVideo(event){
+    	this.isVideo = true;
+    	this.isMusic = false;
+    }
+    private switchMusic(event){
+    	this.isVideo = false;
+    	this.isMusic = true;
     }
 
 }

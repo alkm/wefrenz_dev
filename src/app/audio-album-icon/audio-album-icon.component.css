@@ -1,0 +1,17 @@
+.audio-edit-icon{
+	display: inline-block;
+    background: #2b90d9;
+    /* margin-top: -2px; */
+    height: 16px
+}   
+.audio-edit-icon .fa-pencil-square{
+	margin-right: 2px;
+	font-size: 15px;
+}
+.audio-edit-icon .fa-pencil-square:hover{
+	color: #e9ebee;
+	cursor: pointer;
+}
+.audio-icon-container .blue-fonts{
+	padding-left: 3px;
+}

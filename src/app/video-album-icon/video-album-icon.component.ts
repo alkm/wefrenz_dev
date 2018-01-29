@@ -15,7 +15,7 @@ export class VideoAlbumIconComponent implements OnInit {
 
   	constructor() { }
 
-	ngOnInit() {
+    ngOnInit() {
   	}
 
   	private editVideoAlbum(event){

@@ -232,6 +232,7 @@ export class VideoPlayerComponent implements OnInit {
   	private goToMyAlbum(event){
   		this.isVideoAlbum = true;
   		this.isAlbumVideo = false;
+  		this.fetchVideoAlbumInfo();
   	}
 
   	private playVideo(data){
@@ -239,7 +240,7 @@ export class VideoPlayerComponent implements OnInit {
   		this.videoPlayer.nativeElement.pause();
   		this.posterPath = data.poster;
   		this.mp4VideoPath = data.mp4Video;
-  		this.webmVideoPath = data.webmVideo;
+  		//this.webmVideoPath = data.webmVideo;
   		this.videoPlayer.nativeElement.load();
   		this.videoPlayer.nativeElement.play();
   	}

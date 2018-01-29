@@ -1,0 +1,6 @@
+<div class="audio-icon-container">
+	<div class="colw100 audio-edit-icon"><i class="fa fa-pencil-square white-fonts pull-right" aria-hidden="true" (click)="editAudioAlbum($event)"></i></div>
+	<div class="colw100 blue-fonts bold-fonts cursor-pointer" (click)="showAudioList($event)"><span>{{item.title}}</span></div>
+	<div class="colw100 blue-fonts"><span>{{item.audiosList.length}}</span><span> music</span></div>
+	<div class="colw100 blue-fonts"><span>{{item.created | date: 'dd/MM/yyyy'}}</span></div>
+</div>

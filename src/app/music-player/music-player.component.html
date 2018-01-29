@@ -1,0 +1,136 @@
+<div class="audio-container">
+    <canvas id='canvas'></canvas>
+    <audio #audioPlayer id="audio" controls>
+        <source src="{{mp3AudioPath}}" type="audio/mp3">
+        <p>Your browser does not support the HTML5 Audio element.</p>
+    </audio>
+      <!-- Video Controls -->
+    <!--<div id="video-controls">
+        <div><input type="range" min="1" max="100" step="1" value="15" class="colw100 no-outline" id="seek-bar"></div>
+        <div>
+            <i id="play-pause" class="fa fa-play-circle fa-2x blue-fonts"></i>    
+            <button type="button" id="mute">Mute</button>
+            <input type="range" id="volumeBar" min="0" max="1" step="0.1" value="1">
+            <button type="button" id="full-screen">Full-Screen</button>
+        </div>
+    </div>-->
+</div>
+<div class="audio-content">
+    <div class="title semi-transparent-bg">
+        <div class="line-height-sixteen">
+            <i class="fa fa-music blue-fonts fa-2x" aria-hidden="true"></i>
+            <span class="blue-fonts medium-fonts">Music</span>
+        </div>
+    </div>
+    <div *ngIf="isAudioAlbum ; then albumAudioUploader"></div>
+    <ng-template #albumAudioUploader>
+        <div class="inline-block semi-transparent-bg colw100">
+            <div class="pull-left">
+                <div class="file-input-container">
+                    <form [formGroup]="audioUploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                        <div class="form-group" [formGroup]="audioGroup">
+                            <input type="file" accept="audio/*" class="file-input" name="uploadfile" #fileInput (change)="fileChangeEvent($event, true)"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="uplod-new" (click)= "cancelAlbum(null); fileInput.value = ''; fileInput.click();" >
+                    <i class="fa fa-upload blue-fonts" aria-hidden="true"></i>
+                    <span class="blue-fonts">Upload New Music</span>
+                </div>
+                <div class="title-div red-fonts">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span>The music will be uploaded to your untitled album.</span>
+                </div>
+                <div class="new-album">
+                    <span class="blue-fonts" (click)="createAudioAlbum($event)">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <span>Create New Album</span>
+                    </span>
+                </div>
+                <div *ngIf="isCreateAlbum ; then createAlbum"></div>
+                <ng-template #createAlbum >
+                    <form [formGroup]="albumForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control no-bg no-brder-radius blue-fonts blue-border" aria-describedby="emailHelp" placeholder="title" formControlName="albumTitle" id="albumTitle" [(ngModel)]="albumTitle">
+                            <app-control-messages [control]="albumForm.controls.albumTitle"></app-control-messages>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control no-resize no-bg no-brder-radius blue-fonts blue-border" rows="5" cols="30" placeholder="Add Description..." formControlName="albumDesc" id="albumDesc" [(ngModel)]="albumDesc">
+                            </textarea>
+                            <app-control-messages [control]="albumForm.controls.albumDesc"></app-control-messages>
+                        </div>
+                        <div class="form-group row justify-content-center align-items-center no-margin">
+                            <button id="loginBtn" type="button" class="btn btn-primary" (click)="cancelAlbum()" >
+                                <i class="fa fa-times no-margin" aria-hidden="true"></i>
+                                <span>Cancel</span>
+                            </button>
+                            <div *ngIf="isAddAlbum ; then addBtn"></div>
+                            <ng-template #addBtn >
+                                <button type="button" class="btn btn-primary" [disabled]="!albumForm.valid" (click)="createAlbumInfo($event)">
+                                    <span>Create</span>
+                                    <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                                </button>
+                            </ng-template>
+                            <div *ngIf="isUpdateAlbum ; then updateBtn"></div>
+                            <ng-template #updateBtn >
+                                <button type="button" class="btn btn-primary" [disabled]="!albumForm.valid" (click)="updateAlbumInfo($event)">
+                                    <span>Edit</span>
+                                    <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                                </button>
+                            </ng-template>
+                        </div>
+                        <div [ngClass]="{'error-message': isError, 'status-message': isStatus}">
+                            <div class="server-msg text-center">{{serverMessage}}</div>
+                        </div>
+                    </form>
+                </ng-template>
+                <progress value="0" max="100" id="progressBar" [value]="uploadProgress" [hidden]="!isProgress"></progress>
+            </div>
+        </div>
+    </ng-template>
+    <div class="inline-block semi-transparent-bg colw100">
+        <div *ngIf="isAudioAlbum ; then audioAlbum"></div>
+        <ng-template #audioAlbum >
+            <div class="album-search-box pull-left colw100">
+                <div class="pull-left">
+                    <input class="search-input blue-fonts" type="text" placeholder="Search"  autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" [(ngModel)]="albumText" #searchAlbum/>
+                </div>
+                <div class="pull-left"><i class="fa fa-search cursor-pointer" aria-hidden="true"></i></div>
+            </div>
+            <div class="album-icons">
+                <app-audio-album-icon class="pull-left" *ngFor="let item of audioAlbumList | albumSearch : albumText" [item]="item" (click)="searchAlbum.value=''; albumText = '';" (onEditAudioAlbum)="editAudioAlbum($event)" 
+                (onShowAudioList)="showAudioList($event)"></app-audio-album-icon>
+            </div>
+        </ng-template>
+        <div *ngIf="isAlbumAudio ; then albumAudio"></div>
+        <ng-template #albumAudio >
+            <div class="audio-search-box pull-left colw100">
+                <div class="pull-left">
+                    <!--<input class="search-input blue-fonts" type="text" placeholder="Search"  autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" [(ngModel)]="videoText" #searchVideo/>-->
+                    <div class="cursor-pointer blue-fonts" (click)="goToMyAlbum($event)">{{albumTitle}}</div>
+                </div>
+                <!--<div class="pull-left"><i class="fa fa-search cursor-pointer" aria-hidden="true"></i></div>-->
+            </div>
+            <div class="audio-uploader">
+                <div class="file-input-container">
+                    <form [formGroup]="audioUploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                        <div class="form-group" [formGroup]="audioGroup">
+                            <input type="file" accept="audio/*" class="audio-input" name="uploadfile" #audioInput (change)="fileChangeEvent($event, false)"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="uplod-new" (click)= "audioInput.value = ''; audioInput.click();" >
+                    <i class="fa fa-upload blue-fonts" aria-hidden="true"></i>
+                    <span class="blue-fonts">Add New Audios.</span>
+                </div>
+                <div class="title-div red-fonts">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    <span>The audio will be uploaded to this album.</span>
+                </div>
+            </div>
+            <div class="album-icons">
+                <app-audio-icon (click)="playAudio(item)" class="pull-left" *ngFor="let item of audioList | audioSearch : audioText" [item]="item"></app-audio-icon>
+            </div>
+        </ng-template>
+    </div>
+</div>

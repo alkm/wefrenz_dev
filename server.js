@@ -71,6 +71,7 @@ mongoose.connect(database.url, { useMongoClient: true }, function(err){
 	app.use('/default/', express.static(__dirname + '/dist/assets/images/')); 
 	app.use('/emotion/', express.static(__dirname + '/dist/assets/images/smileys/'));
 	app.use('/video/', express.static(__dirname + '/media/videos/myvideos/'));
+	app.use('/audio/', express.static(__dirname + '/media/audios/myaudios/'));
 
 	var httpsOptions = {
 	  key: fs.readFileSync('./private.key'),
@@ -133,6 +134,7 @@ app.use(function(req, res, next) {
 	require('./datamodel/searchhandler.js')(app);
 	require('./datamodel/chathandler.js')(app);
 	require('./datamodel/videohandler.js')(app);
+	require('./datamodel/audiohandler.js')(app);
 	var easyRTCHandler = require('./datamodel/shared/easyrtchandler');
 	//Handling the chat on socket
 	io.sockets.on('connection', function(socket){//Similar to document.ready when the socket initialized

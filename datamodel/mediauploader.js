@@ -31,11 +31,31 @@ var videoStorage = multer.diskStorage({
   	}
 });
 
+
+var uploadAudio = multer({ storage: storage });
+
+var uploadedAudioPath = '';
+var audioExt = '';
+var audioStorage = multer.diskStorage({
+  	destination: function (req, file, cb) {
+    	cb(null, 'media/audios/myaudios/original/')
+  	},
+  	filename: function (req, file, cb) {
+  		audioExt = path.extname(file.originalname);
+  		uploadedAudioPath = 'audio_'+Date.now()+audioExt;
+
+    	cb(null, uploadedAudioPath); //Appending extension
+  	}
+});
+
+
 var recentVideoFile = {};
 var videoUpload = multer({ storage: videoStorage });
+var audioUpload = multer({ storage: audioStorage });
 
 var userInfo = require('./model/userinfo');
 var videoInfo = require('./model/videoinfo');
+var audioInfo = require('./model/audioinfo');
 
 module.exports = function(app) {
 
@@ -161,13 +181,169 @@ module.exports = function(app) {
 		function processVideo(userId, albumTitle, albumDesc){
 			var actualVideoPath = 'media/videos/myvideos/original/'+uploadedVideoPath;
 			var saveVideoPathMP4 = 'media/videos/myvideos/mp4/video_'+Date.now()+'.mp4';
-			var saveVideoPathWEBM = 'media/videos/myvideos/webm/video_'+Date.now()+'.webm';
-			var saveVideoPathOGG = 'media/videos/myvideos/ogg/video_'+Date.now()+'.ogg';
+			//var saveVideoPathWEBM = 'media/videos/myvideos/webm/video_'+Date.now()+'.webm';
+			//var saveVideoPathOGG = 'media/videos/myvideos/ogg/video_'+Date.now()+'.ogg';
 			var emtr = new events.EventEmitter();
 			var videoReadyArr = [];
 			var posterImg = '';
 			
 			try {
+				if (fs.existsSync(actualVideoPath)) {
+					var process = new ffmpeg(actualVideoPath);
+					process.then(function (video) {
+						var posterPath = 'media/videos/myvideos/poster/';
+						//video.setVideoAspectRatio('16:9')
+						video.fnExtractFrameToJPG(posterPath, {
+							frame_rate : 1,
+							number : 1,
+							file_name : 'poster_'+Date.now()
+						}, function (error, files) {
+							if (!error){
+								console.log('Frames: ' + files);
+								posterImg = files[1];
+								posterImg = 'video/poster/'+posterImg.split('/poster/')[1]; //Setting the virtual path
+							}
+						});
+
+						if(videoExt !== '.mp4'){
+							video.save(saveVideoPathMP4, function (error, file) {
+								if (!error){
+									console.log('Video file: ' + file);
+									saveVideoPathMP4 = 'video/mp4/'+saveVideoPathMP4.split('/mp4/')[1];//Setting virtual path
+									emtr.emit('onVideoReady', 'mp4');
+									
+								}	
+							});
+						}else{
+							saveVideoPathMP4 = actualVideoPath;
+							saveVideoPathMP4 = 'video/original/'+saveVideoPathMP4.split('/mp4/')[1];//Setting virtual path
+							emtr.emit('onVideoReady', 'mp4');
+							console.log('The format is mp4, so keeping it as original');
+							
+						}
+
+						/*if(videoExt !== '.webm'){
+							video.save(saveVideoPathWEBM, function (error, file) {
+								if (!error){
+									console.log('Video file: ' + file);
+									saveVideoPathWEBM = 'video/webm/'+saveVideoPathWEBM.split('/webm/')[1];//Setting virtual path
+									emtr.emit('onVideoReady', 'webm');
+								}
+							});
+						}else{
+							saveVideoPathWEBM = actualVideoPath;
+							saveVideoPathWEBM = 'video/original/'+saveVideoPathWEBM.split('/webm/')[1];//Setting virtual path
+							emtr.emit('onVideoReady', 'webm');
+							console.log('The format is webm, so keeping it as original');
+						}*/
+
+						//ogg format is not supporting right now.
+						/*video.save(saveVideoPathOGG, function (error, file) {
+							if (!error)
+								console.log('Video file: ' + file);
+						});*/
+
+					}, function (err) {
+						console.log('Error: ' + err);
+					});
+				}
+			} catch (e) {
+				console.log(e.code);
+				console.log(e.msg);
+			}
+
+			emtr.on('onVideoReady', function (data) {
+				console.log('Here are the arguments' + data);
+				if(data === 'mp4'){
+					videoReadyArr.push('mp4');
+				}
+				/*if(data === 'webm'){
+					videoReadyArr.push('webm');
+				}*/
+				if(videoReadyArr.length === 1){
+					videoReadyArr = [];
+					updateVideoList(userId, albumTitle, albumDesc, saveVideoPathMP4, posterImg);
+				}
+			});
+		}
+
+		function updateVideoList(userId, albumTitle, albumDesc, saveVideoPathMP4, posterImg){
+			var videoObj = {}
+			videoObj.actualVideo = 'video/original/'+uploadedVideoPath;
+			videoObj.oggVideo = '';
+			videoObj.webmVideo = '';
+			videoObj.mp4Video = saveVideoPathMP4;
+			videoObj.poster = posterImg;
+			
+
+			videoInfo.findOne({userid: userId, title: albumTitle}, function(err, info){
+				var operation = '';
+				var videosList = [];
+				if(err){
+					res.send(err);
+				}else{
+					if(info === null){
+						operation = 'create';
+						videosList.push(videoObj);
+						videoInfo.create({
+							userid : userId,
+							title: albumTitle,
+							description: albumDesc,
+							videosList : videosList,
+							albumCover : '',
+							sharedWith: []
+						}, function(err, info) {
+							if (err){
+								res.send(err);
+							}else{
+								res.json({"status": "success", "message": "Album created successfully", "info": info});
+							}
+						});	
+
+					}else{
+						operation = 'update';
+						videosList = info.videosList;
+						videosList.push(videoObj);
+						videoInfo.update({userid: userId, title: albumTitle}, {$set: {videosList: videosList}}, function(err, info){
+							if(err){
+								console.log("Error"+err);
+								res.json({"status": "failure", "message": "Failed to update video now, please try again later."});
+							}else{
+								res.json({"status": "success", "message": "Video updated successfully.", "info": info});
+							}
+						});
+					}
+				}
+			});
+		}
+
+	});
+
+	app.post('/api/uploadAudio', audioUpload.single('uploadfile'), (req, res) => {
+		console.log('file uploaded');
+		var userId = req.body.userid;
+		var albumTitle = req.body.album;
+		/*try{
+			if(ssn === undefined){
+				res.json({"status": "sessionExpired", "message": "Please Login"});
+				return;
+			}
+		}catch(err){
+			res.json({"status": "sessionExpired", "message": "Please Login"});
+			return;
+		}*/
+		var albumDesc = '';
+		
+		processAudio(userId, albumTitle, albumDesc);
+		function processAudio(userId, albumTitle, albumDesc){
+			var actualAudioPath = 'media/audios/myaudios/original/'+uploadedAudioPath;
+			//var saveAudioPathMP3 = 'media/videos/myvideos/mp4/video_'+Date.now()+'.mp3';
+			var emtr = new events.EventEmitter();
+			var audioReadyArr = [];
+			var posterImg = '';
+			//No need of conversion
+			updateAudioList(userId, albumTitle, albumDesc, actualAudioPath, posterImg);
+			/*try {
 				if (fs.existsSync(actualVideoPath)) {
 					var process = new ffmpeg(actualVideoPath);
 					process.then(function (video) {
@@ -218,10 +394,10 @@ module.exports = function(app) {
 						}
 
 						//ogg format is not supporting right now.
-						/*video.save(saveVideoPathOGG, function (error, file) {
-							if (!error)
-								console.log('Video file: ' + file);
-						});*/
+						//video.save(saveVideoPathOGG, function (error, file) {
+						//	if (!error)
+						//		console.log('Video file: ' + file);
+						//});
 
 					}, function (err) {
 						console.log('Error: ' + err);
@@ -230,10 +406,10 @@ module.exports = function(app) {
 			} catch (e) {
 				console.log(e.code);
 				console.log(e.msg);
-			}
+			}*/
 
-			emtr.on('onVideoReady', function (data) {
-				console.log('Here are the arguments' + data);
+			emtr.on('onAudioReady', function (data) {
+				/*console.log('Here are the arguments' + data);
 				if(data === 'mp4'){
 					videoReadyArr.push('mp4');
 				}
@@ -243,33 +419,32 @@ module.exports = function(app) {
 				if(videoReadyArr.length === 2){
 					videoReadyArr = [];
 					updateVideoList(userId, albumTitle, albumDesc, saveVideoPathWEBM, saveVideoPathMP4, posterImg);
-				}
+				}*/
+
 			});
 		}
 
-		function updateVideoList(userId, albumTitle, albumDesc, saveVideoPathWEBM, saveVideoPathMP4, posterImg){
-			var videoObj = {}
-			videoObj.actulaVideo = 'video/original/'+uploadedVideoPath;
-			videoObj.oggVideo = '';
-			videoObj.webmVideo = saveVideoPathWEBM;
-			videoObj.mp4Video = saveVideoPathMP4;
-			videoObj.poster = posterImg;
+		function updateAudioList(userId, albumTitle, albumDesc, actualAudioPath, posterImg){
+			var audioObj = {}
+			audioObj.actualAudio = 'audio/original/'+uploadedAudioPath;
+			//audioObj.mp3Audio = actualAudioPath;
+			audioObj.poster = posterImg;
 			
 
-			videoInfo.findOne({userid: userId, title: albumTitle}, function(err, info){
+			audioInfo.findOne({userid: userId, title: albumTitle}, function(err, info){
 				var operation = '';
-				var videosList = [];
+				var audiosList = [];
 				if(err){
 					res.send(err);
 				}else{
 					if(info === null){
 						operation = 'create';
-						videosList.push(videoObj);
-						videoInfo.create({
+						audiosList.push(audioObj);
+						audioInfo.create({
 							userid : userId,
 							title: albumTitle,
 							description: albumDesc,
-							videosList : videosList,
+							audiosList : audiosList,
 							albumCover : '',
 							sharedWith: []
 						}, function(err, info) {
@@ -282,65 +457,20 @@ module.exports = function(app) {
 
 					}else{
 						operation = 'update';
-						videosList = info.videosList;
-						videosList.push(videoObj);
-						videoInfo.update({userid: userId, title: albumTitle}, {$set: {videosList: videosList}}, function(err, info){
+						audiosList = info.audiosList;
+						audiosList.push(audioObj);
+						audioInfo.update({userid: userId, title: albumTitle}, {$set: {audiosList: audiosList}}, function(err, info){
 							if(err){
 								console.log("Error"+err);
 								res.json({"status": "failure", "message": "Failed to update video now, please try again later."});
 							}else{
-								res.json({"status": "success", "message": "Video updated successfully.", "info": info});
+								res.json({"status": "success", "message": "Audio updated successfully.", "info": info});
 							}
 						});
 					}
 				}
 			});
-			/*if(operation === 'create'){
-				videoInfo.create({
-					userid : userId,
-					title: 'untitled',
-					description: 'Untitled Album',
-					videosList : videosList,
-					albumCover : '',
-					sharedWith: []
-				}, function(err, info) {
-					if (err){
-						res.send(err);
-					}else{
-						res.json({"status": "success", "message": "Album created successfully", "info": info});
-					}
-				});	
-			}else{*/
-			//}
 		}
-
-		/*try {
-			var actualVideoPath = 'media/videos/myvideos/original/'+uploadedVideoPath;
-			var saveVideoPath = 'media/videos/myvideos/mp4/video_'+Date.now()+'.mp4';
-			if (fs.existsSync(actualVideoPath)) {
-				console.log('video exist');
-				var process = new ffmpeg(actualVideoPath);
-				process.then(function (video) {
-					video.setVideoSize('640x360', true, true, '#fff')
-					.setAudioChannels(2)
-					.setVideoAspectRatio('16:9')
-					.setVideoBitRate(1024)
-					.setVideoFormat('mp4')
-					.save(saveVideoPath, function (error, file) {
-						if (!error)
-							console.log('Video file: ' + file);
-					});
-
-				}, function (err) {
-					console.log('Error: ' + err);
-				});
-			}
-
-		} catch (e) {
-			console.log(e.code+saveVideoPath);
-			console.log(e);
-		}*/
-
 
 	});
 }

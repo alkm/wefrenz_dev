@@ -5,11 +5,11 @@
 			<div class="opaque-bg no-padding">
 				<app-profile-area></app-profile-area>
 				<div class="left-nav">
-					<div class="nav-item highlight-nav">
+					<div class="nav-item highlight-nav" (click)="switchVideo($event)">
 						<i class="fa fa-file-video-o blue-fonts" aria-hidden="true"></i>
 						<span class="blue-fonts">Videos</span>
 					</div>
-					<div class="nav-item">
+					<div class="nav-item" (click)="switchMusic($event)">
 						<i class="fa fa-music blue-fonts" aria-hidden="true"></i>
 						<span class="blue-fonts">Music</span>
 					</div>
@@ -30,7 +30,12 @@
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 no-padding">
 			<div class="opaque-bg video-content">
-				<app-video-player></app-video-player>
+				<ng-template [ngIf]="isVideo">
+					<app-video-player></app-video-player>
+				</ng-template>	
+				<ng-template [ngIf]="isMusic">
+					<app-music-player></app-music-player>
+				</ng-template>	
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 info-panel">

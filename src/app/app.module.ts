@@ -46,6 +46,10 @@ import { VideoAlbumIconComponent } from './video-album-icon/video-album-icon.com
 import { AlbumSearchPipe } from './pipes/album-search.pipe';
 import { VideoIconComponent } from './video-icon/video-icon.component';
 import { VideoSearchPipe } from './pipes/video-search.pipe';
+import { MusicPlayerComponent } from './music-player/music-player.component';
+import { AudioIconComponent } from './audio-icon/audio-icon.component';
+import { AudioAlbumIconComponent } from './audio-album-icon/audio-album-icon.component';
+import { AudioSearchPipe } from './pipes/audio-search.pipe';
 
 
 
@@ -83,7 +87,11 @@ import { VideoSearchPipe } from './pipes/video-search.pipe';
     VideoAlbumIconComponent,
     AlbumSearchPipe,
     VideoIconComponent,
-    VideoSearchPipe
+    VideoSearchPipe,
+    MusicPlayerComponent,
+    AudioIconComponent,
+    AudioAlbumIconComponent,
+    AudioSearchPipe
   ],
   imports: [
     BrowserModule,

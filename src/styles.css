@@ -339,6 +339,19 @@ i.fa-3x{
 .no-outline{
 	outline: none;
 }
+.bar-wrapper {
+    max-height: 314px;
+    position: relative;
+}
+.bar {
+    position: relative;
+    bottom: 0;
+    width: 2px;
+    display: inline-block;
+    border: 1px solid blue;
+    height: 2px;
+    border-bottom: 1px solid #fff;
+}
 
 
 @media only screen and (max-width: 768px) {

@@ -229,6 +229,10 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__pipes_album_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/album-search.pipe.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__video_icon_video_icon_component__ = __webpack_require__("../../../../../src/app/video-icon/video-icon.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pipes_video_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/video-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__music_player_music_player_component__ = __webpack_require__("../../../../../src/app/music-player/music-player.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__audio_icon_audio_icon_component__ = __webpack_require__("../../../../../src/app/audio-icon/audio-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__audio_album_icon_audio_album_icon_component__ = __webpack_require__("../../../../../src/app/audio-album-icon/audio-album-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__pipes_audio_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/audio-search.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -278,6 +282,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
+
 var AppModule = (function () {
     function AppModule() {
     }
@@ -317,7 +325,11 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_37__video_album_icon_video_album_icon_component__["a" /* VideoAlbumIconComponent */],
             __WEBPACK_IMPORTED_MODULE_38__pipes_album_search_pipe__["a" /* AlbumSearchPipe */],
             __WEBPACK_IMPORTED_MODULE_39__video_icon_video_icon_component__["a" /* VideoIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_40__pipes_video_search_pipe__["a" /* VideoSearchPipe */]
+            __WEBPACK_IMPORTED_MODULE_40__pipes_video_search_pipe__["a" /* VideoSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_41__music_player_music_player_component__["a" /* MusicPlayerComponent */],
+            __WEBPACK_IMPORTED_MODULE_42__audio_icon_audio_icon_component__["a" /* AudioIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_43__audio_album_icon_audio_album_icon_component__["a" /* AudioAlbumIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_44__pipes_audio_search_pipe__["a" /* AudioSearchPipe */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -353,6 +365,154 @@ AppModule = __decorate([
 ], AppModule);
 
 //# sourceMappingURL=app.module.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/audio-album-icon/audio-album-icon.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".audio-edit-icon{\n\tdisplay: inline-block;\n    background: #2b90d9;\n    /* margin-top: -2px; */\n    height: 16px\n}   \n.audio-edit-icon .fa-pencil-square{\n\tmargin-right: 2px;\n\tfont-size: 15px;\n}\n.audio-edit-icon .fa-pencil-square:hover{\n\tcolor: #e9ebee;\n\tcursor: pointer;\n}\n.audio-icon-container .blue-fonts{\n\tpadding-left: 3px;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/audio-album-icon/audio-album-icon.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"audio-icon-container\">\n\t<div class=\"colw100 audio-edit-icon\"><i class=\"fa fa-pencil-square white-fonts pull-right\" aria-hidden=\"true\" (click)=\"editAudioAlbum($event)\"></i></div>\n\t<div class=\"colw100 blue-fonts bold-fonts cursor-pointer\" (click)=\"showAudioList($event)\"><span>{{item.title}}</span></div>\n\t<div class=\"colw100 blue-fonts\"><span>{{item.audiosList.length}}</span><span> music</span></div>\n\t<div class=\"colw100 blue-fonts\"><span>{{item.created | date: 'dd/MM/yyyy'}}</span></div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/audio-album-icon/audio-album-icon.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AudioAlbumIconComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AudioAlbumIconComponent = (function () {
+    function AudioAlbumIconComponent() {
+        this.onEditAudioAlbum = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.onShowAudioList = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+    }
+    AudioAlbumIconComponent.prototype.ngOnInit = function () {
+    };
+    AudioAlbumIconComponent.prototype.editAudioAlbum = function (event) {
+        this.onEditAudioAlbum.emit({ data: this.item });
+    };
+    AudioAlbumIconComponent.prototype.showAudioList = function (event) {
+        this.onShowAudioList.emit({ data: this.item });
+    };
+    return AudioAlbumIconComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Object)
+], AudioAlbumIconComponent.prototype, "item", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
+], AudioAlbumIconComponent.prototype, "onEditAudioAlbum", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
+], AudioAlbumIconComponent.prototype, "onShowAudioList", void 0);
+AudioAlbumIconComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-audio-album-icon',
+        template: __webpack_require__("../../../../../src/app/audio-album-icon/audio-album-icon.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/audio-album-icon/audio-album-icon.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], AudioAlbumIconComponent);
+
+var _a, _b;
+//# sourceMappingURL=audio-album-icon.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/audio-icon/audio-icon.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".audio-icon{\n\twidth: 100px;\n    height: 100px;\n    border: 1px solid #2b90d9;\n    margin: 10px 5px 0px 0px;\n    background-size: cover !important;\n}\n.audio-icon i{\n\tcolor: #fff;\n    text-align: center;\n    margin: 33px 35px;\n}\n.audio-icon:hover{\n\tborder: 1px solid #fff;\n}\n.audio-icon:hover i{\n\tcolor: #2b90d9;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/audio-icon/audio-icon.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"audio-icon cursor-pointer\" [ngStyle]=\"{'background': 'url(' + posterURL+ ')'}\">\n<i class=\"fa fa-play-circle-o fa-3x\" aria-hidden=\"true\"></i>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/audio-icon/audio-icon.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AudioIconComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AudioIconComponent = (function () {
+    function AudioIconComponent() {
+    }
+    AudioIconComponent.prototype.ngOnInit = function () {
+        this.posterURL = this.item.poster;
+    };
+    return AudioIconComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Object)
+], AudioIconComponent.prototype, "item", void 0);
+AudioIconComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-audio-icon',
+        template: __webpack_require__("../../../../../src/app/audio-icon/audio-icon.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/audio-icon/audio-icon.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], AudioIconComponent);
+
+//# sourceMappingURL=audio-icon.component.js.map
 
 /***/ }),
 
@@ -1655,7 +1815,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/entertainment/entertainment.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container top-margin bottom-margin\">\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\t\t\t<div class=\"opaque-bg no-padding\">\n\t\t\t\t<app-profile-area></app-profile-area>\n\t\t\t\t<div class=\"left-nav\">\n\t\t\t\t\t<div class=\"nav-item highlight-nav\">\n\t\t\t\t\t\t<i class=\"fa fa-file-video-o blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Videos</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-music blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Music</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\"><i class=\"fa fa-file-image-o blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Photos</span> \n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-list-alt blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Play List</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Album</span>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 no-padding\">\n\t\t\t<div class=\"opaque-bg video-content\">\n\t\t\t\t<app-video-player></app-video-player>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3 info-panel\">\n\t\t\t<div class=\"opaque-bg\">\n\t\t\t\t<app-info-panel></app-info-panel>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container top-margin bottom-margin\">\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\t\t\t<div class=\"opaque-bg no-padding\">\n\t\t\t\t<app-profile-area></app-profile-area>\n\t\t\t\t<div class=\"left-nav\">\n\t\t\t\t\t<div class=\"nav-item highlight-nav\" (click)=\"switchVideo($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-file-video-o blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Videos</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\" (click)=\"switchMusic($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-music blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Music</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\"><i class=\"fa fa-file-image-o blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Photos</span> \n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-list-alt blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Play List</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Album</span>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 no-padding\">\n\t\t\t<div class=\"opaque-bg video-content\">\n\t\t\t\t<ng-template [ngIf]=\"isVideo\">\n\t\t\t\t\t<app-video-player></app-video-player>\n\t\t\t\t</ng-template>\t\n\t\t\t\t<ng-template [ngIf]=\"isMusic\">\n\t\t\t\t\t<app-music-player></app-music-player>\n\t\t\t\t</ng-template>\t\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3 info-panel\">\n\t\t\t<div class=\"opaque-bg\">\n\t\t\t\t<app-info-panel></app-info-panel>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -1687,6 +1847,8 @@ var EntertainmentComponent = (function () {
         this.isMyProfile = false;
         this.userId = '';
         this.friendId = '';
+        this.isVideo = true;
+        this.isMusic = false;
         route.params.subscribe(function (val) {
             var currentUser = localStorage.getItem('currentUser');
             var id = _this.route.snapshot.paramMap.get('id');
@@ -1722,6 +1884,14 @@ var EntertainmentComponent = (function () {
     EntertainmentComponent.prototype.triggerLoggedInCheck = function (eventType, evtObj) {
         var evt = new CustomEvent(eventType, evtObj);
         window.dispatchEvent(evt);
+    };
+    EntertainmentComponent.prototype.switchVideo = function (event) {
+        this.isVideo = true;
+        this.isMusic = false;
+    };
+    EntertainmentComponent.prototype.switchMusic = function (event) {
+        this.isVideo = false;
+        this.isMusic = true;
     };
     return EntertainmentComponent;
 }());
@@ -2646,6 +2816,283 @@ ModalService = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/music-player/music-player.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#audio{\n\twidth: 100%;\n}\n.audio-content{\n\tpadding: 15px 0px;\n}\n\n.uplod-new:hover, .new-album:hover{\n\tcursor: pointer;\n}\n.uplod-new:hover span, .uplod-new:hover i, .new-album:hover span, .new-album:hover i {\n\tcolor: #fff !important;\n}\n.file-input-container{\n\tdisplay: none;\n}\n#progressBar{\n\twidth: 250px;\n}\n.under-line{\n\ttext-decoration: underline;\n}\n.search-input{\n    line-height: 25px;\n    height: 25px;\n    display: block;\n    width: 154px;\n    border: none;\n    outline: none;\n    border: 1px solid #2b90d9;\n    border-radius: 2px;\n    border-top-right-radius: 0px;\n    border-bottom-right-radius: 0px;\n    background: none;\n}\n.fa-search{\n    float: right;\n    color: #2b90d9 !important;\n    font-size: 15px;\n    line-height: 23px;\n    background: #f5f8fa;\n    padding: 0px 3px;\n    border: 1px solid #2b90d9;\n    border-left: none;\n    border-radius: 2px;\n    border-top-left-radius: 0px;\n    border-bottom-left-radius: 0px;\n}\ntextarea.form-control{\n\theight: 100px !important;\n}\napp-audio-album-icon{\n\twidth: 100px;\n    height: 100px;\n    border: 1px solid #2b90d9;\n    margin: 10px 5px 0px 0px;\n}\n.audio-container, #canvas{\n    max-height: 314px;\n    width: 100%;\n    background: #000;\n}\n::-webkit-input-placeholder { /* Chrome/Opera/Safari */\n  color: #2b90d9;\n}\n::-moz-placeholder { /* Firefox 19+ */\n  color: #2b90d9;\n}\n:-ms-input-placeholder { /* IE 10+ */\n  color: #2b90d9;\n}\n:-moz-placeholder { /* Firefox 18- */\n  color: #2b90d9;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/music-player/music-player.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"audio-container\">\n    <canvas id='canvas'></canvas>\n    <audio #audioPlayer id=\"audio\" controls>\n        <source src=\"{{mp3AudioPath}}\" type=\"audio/mp3\">\n        <p>Your browser does not support the HTML5 Audio element.</p>\n    </audio>\n      <!-- Video Controls -->\n    <!--<div id=\"video-controls\">\n        <div><input type=\"range\" min=\"1\" max=\"100\" step=\"1\" value=\"15\" class=\"colw100 no-outline\" id=\"seek-bar\"></div>\n        <div>\n            <i id=\"play-pause\" class=\"fa fa-play-circle fa-2x blue-fonts\"></i>    \n            <button type=\"button\" id=\"mute\">Mute</button>\n            <input type=\"range\" id=\"volumeBar\" min=\"0\" max=\"1\" step=\"0.1\" value=\"1\">\n            <button type=\"button\" id=\"full-screen\">Full-Screen</button>\n        </div>\n    </div>-->\n</div>\n<div class=\"audio-content\">\n    <div class=\"title semi-transparent-bg\">\n        <div class=\"line-height-sixteen\">\n            <i class=\"fa fa-music blue-fonts fa-2x\" aria-hidden=\"true\"></i>\n            <span class=\"blue-fonts medium-fonts\">Music</span>\n        </div>\n    </div>\n    <div *ngIf=\"isAudioAlbum ; then albumAudioUploader\"></div>\n    <ng-template #albumAudioUploader>\n        <div class=\"inline-block semi-transparent-bg colw100\">\n            <div class=\"pull-left\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"audioUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"audioGroup\">\n                            <input type=\"file\" accept=\"audio/*\" class=\"file-input\" name=\"uploadfile\" #fileInput (change)=\"fileChangeEvent($event, true)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"cancelAlbum(null); fileInput.value = ''; fileInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Upload New Music</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The music will be uploaded to your untitled album.</span>\n                </div>\n                <div class=\"new-album\">\n                    <span class=\"blue-fonts\" (click)=\"createAudioAlbum($event)\">\n                        <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>\n                        <span>Create New Album</span>\n                    </span>\n                </div>\n                <div *ngIf=\"isCreateAlbum ; then createAlbum\"></div>\n                <ng-template #createAlbum >\n                    <form [formGroup]=\"albumForm\">\n                        <div class=\"form-group\">\n                            <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" aria-describedby=\"emailHelp\" placeholder=\"title\" formControlName=\"albumTitle\" id=\"albumTitle\" [(ngModel)]=\"albumTitle\">\n                            <app-control-messages [control]=\"albumForm.controls.albumTitle\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group\">\n                            <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" formControlName=\"albumDesc\" id=\"albumDesc\" [(ngModel)]=\"albumDesc\">\n                            </textarea>\n                            <app-control-messages [control]=\"albumForm.controls.albumDesc\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group row justify-content-center align-items-center no-margin\">\n                            <button id=\"loginBtn\" type=\"button\" class=\"btn btn-primary\" (click)=\"cancelAlbum()\" >\n                                <i class=\"fa fa-times no-margin\" aria-hidden=\"true\"></i>\n                                <span>Cancel</span>\n                            </button>\n                            <div *ngIf=\"isAddAlbum ; then addBtn\"></div>\n                            <ng-template #addBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"createAlbumInfo($event)\">\n                                    <span>Create</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                            <div *ngIf=\"isUpdateAlbum ; then updateBtn\"></div>\n                            <ng-template #updateBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"updateAlbumInfo($event)\">\n                                    <span>Edit</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                        </div>\n                        <div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n                            <div class=\"server-msg text-center\">{{serverMessage}}</div>\n                        </div>\n                    </form>\n                </ng-template>\n                <progress value=\"0\" max=\"100\" id=\"progressBar\" [value]=\"uploadProgress\" [hidden]=\"!isProgress\"></progress>\n            </div>\n        </div>\n    </ng-template>\n    <div class=\"inline-block semi-transparent-bg colw100\">\n        <div *ngIf=\"isAudioAlbum ; then audioAlbum\"></div>\n        <ng-template #audioAlbum >\n            <div class=\"album-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n                </div>\n                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n            </div>\n            <div class=\"album-icons\">\n                <app-audio-album-icon class=\"pull-left\" *ngFor=\"let item of audioAlbumList | albumSearch : albumText\" [item]=\"item\" (click)=\"searchAlbum.value=''; albumText = '';\" (onEditAudioAlbum)=\"editAudioAlbum($event)\" \n                (onShowAudioList)=\"showAudioList($event)\"></app-audio-album-icon>\n            </div>\n        </ng-template>\n        <div *ngIf=\"isAlbumAudio ; then albumAudio\"></div>\n        <ng-template #albumAudio >\n            <div class=\"audio-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <!--<input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"videoText\" #searchVideo/>-->\n                    <div class=\"cursor-pointer blue-fonts\" (click)=\"goToMyAlbum($event)\">{{albumTitle}}</div>\n                </div>\n                <!--<div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>-->\n            </div>\n            <div class=\"audio-uploader\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"audioUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"audioGroup\">\n                            <input type=\"file\" accept=\"audio/*\" class=\"audio-input\" name=\"uploadfile\" #audioInput (change)=\"fileChangeEvent($event, false)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"audioInput.value = ''; audioInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Add New Audios.</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The audio will be uploaded to this album.</span>\n                </div>\n            </div>\n            <div class=\"album-icons\">\n                <app-audio-icon (click)=\"playAudio(item)\" class=\"pull-left\" *ngFor=\"let item of audioList | audioSearch : audioText\" [item]=\"item\"></app-audio-icon>\n            </div>\n        </ng-template>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/music-player/music-player.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MusicPlayerComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_validators_validation_service__ = __webpack_require__("../../../../../src/app/services/validators/validation.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_data_audio_service__ = __webpack_require__("../../../../../src/app/services/data/audio.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var MusicPlayerComponent = (function () {
+    function MusicPlayerComponent(formBuilder, audioService) {
+        this.formBuilder = formBuilder;
+        this.audioService = audioService;
+        this.userId = '';
+        this.uploadProgress = 0;
+        this.isProgress = false;
+        this.albumTitle = '';
+        this.albumDesc = '';
+        this.isCreateAlbum = false;
+        this.isAddAlbum = false;
+        this.isUpdateAlbum = false;
+        this.isAudioAlbum = true;
+        this.isAlbumAudio = false;
+        this.mp3AudioPath = 'assets/sound/sample.mp3';
+        this.posterPath = 'https://media.w3.org/2010/05/sintel/poster.png';
+        var loginData = JSON.parse(localStorage.getItem('loginData'));
+        this.userId = loginData.username;
+        this.audioUploadForm = this.formBuilder.group({
+            'file': ['']
+        });
+        this.audioGroup = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormGroup */]({
+            file: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]()
+        });
+        this.albumForm = this.formBuilder.group({
+            'albumTitle': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2_app_services_validators_validation_service__["a" /* ValidationService */].blankDataValidator]],
+            'albumDesc': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2_app_services_validators_validation_service__["a" /* ValidationService */].blankDataValidator]]
+        });
+        this.fetchAudioAlbumInfo();
+    }
+    MusicPlayerComponent.prototype.ngOnInit = function () {
+        this.triggerWindowEvent('playAudio', { 'event': 'playAudio', 'msgObj': {} });
+    };
+    MusicPlayerComponent.prototype.fileChangeEvent = function (event, directUpload) {
+        var self = this;
+        var userId = this.userId;
+        var file;
+        if (event.target.files && event.target.files[0]) {
+            file = event.target.files[0];
+            uploadAudio();
+        }
+        function uploadAudio() {
+            var formData = new FormData();
+            formData.append('uploadfile', file);
+            formData.append('userid', userId);
+            if (!directUpload) {
+                formData.append('album', self.audioInfo.title);
+            }
+            else {
+                formData.append('album', 'untitled');
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.open('post', __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + '/api/uploadAudio', true);
+            xhr.upload.onprogress = function (e) {
+                if (e.lengthComputable) {
+                    var percentage = (e.loaded / e.total) * 100;
+                    console.log(percentage);
+                    if ((percentage > 0) && (percentage < 100)) {
+                        self.isProgress = true;
+                    }
+                    else {
+                        self.isProgress = false;
+                    }
+                    self.uploadProgress = percentage;
+                    //$('div.progress div').css('width', percentage.toFixed(0) + '%');
+                    //$('div.progress div').html(percentage.toFixed(0) + '%');
+                }
+            };
+            xhr.onerror = function (e) {
+                alert('An error occurred while submitting the form. Maybe your file is too big');
+            };
+            xhr.onload = function () {
+                /*let file = xhr.responseText;
+                $('div.progress div').css('width','0%');
+                $('div.progress').hide();
+                showMsg("alert alert-success", "File uploaded successfully!");
+                $('#myFile').val('');*/
+                if (self.isAudioAlbum) {
+                    self.fetchAudioAlbumInfo();
+                }
+                else {
+                    self.fetchAlbumAudioInfo();
+                }
+            };
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    callback(xhr.responseText); // Another callback here
+                }
+            };
+            function callback(responseText) {
+                if (JSON.parse(responseText).status === 'sessionExpired') {
+                    alert('Session Expired, Please Login Again');
+                }
+            }
+            xhr.send(formData);
+            return false;
+        }
+        //var files = fileInput.srcElement.files;
+        //console.log(files);
+        //this.uploadService.makeFileRequest('https://localhost:3000/api/uploadCoverPic', [], files).subscribe(() => {
+        //  console.log('sent');
+        //});
+    };
+    MusicPlayerComponent.prototype.createAlbumInfo = function (event) {
+        var _this = this;
+        if (this.albumForm.dirty && this.albumForm.valid) {
+            // alert('Name: ${this.loginForm.value.email} Email: ${this.loginForm.value.password}');
+            var postObj = { 'username': this.userId,
+                'title': this.albumForm.value.albumTitle,
+                'desc': this.albumForm.value.albumDesc };
+            this.audioService.createAudioAlbum(postObj).subscribe(function (data) { return _this.afterAlbumCreated(data); });
+        }
+    };
+    MusicPlayerComponent.prototype.afterAlbumCreated = function (result) {
+        if (result.status === 'failure') {
+            alert(result.message);
+        }
+        else {
+            this.cancelAlbum(null);
+            //alert(result.message);
+            this.fetchAudioAlbumInfo();
+        }
+    };
+    MusicPlayerComponent.prototype.updateAlbumInfo = function (event) {
+        var _this = this;
+        if (this.albumForm.dirty && this.albumForm.valid) {
+            // alert('Name: ${this.loginForm.value.email} Email: ${this.loginForm.value.password}');
+            var postObj = { 'id': this.albumInfo._id,
+                'username': this.userId,
+                'title': this.albumForm.value.albumTitle,
+                'desc': this.albumForm.value.albumDesc };
+            this.audioService.updateAudioAlbum(postObj).subscribe(function (data) { return _this.afterAlbumUpdated(data); });
+        }
+    };
+    MusicPlayerComponent.prototype.afterAlbumUpdated = function (result) {
+        if (result.status === 'failure') {
+            alert(result.message);
+        }
+        else {
+            this.cancelAlbum(null);
+            //alert(result.message);
+            this.fetchAudioAlbumInfo();
+        }
+    };
+    MusicPlayerComponent.prototype.createAudioAlbum = function (event) {
+        this.isCreateAlbum = true;
+        this.isAddAlbum = true;
+        this.isUpdateAlbum = false;
+    };
+    MusicPlayerComponent.prototype.cancelAlbum = function (event) {
+        this.isCreateAlbum = false;
+        this.isAddAlbum = false;
+        this.isUpdateAlbum = false;
+        this.albumForm.reset();
+    };
+    MusicPlayerComponent.prototype.fetchAudioAlbumInfo = function () {
+        var _this = this;
+        var postObj = { 'username': this.userId };
+        this.audioService.fetchAudioAlbumInfo(postObj).subscribe(function (data) { return _this.afterAudioAbumInfo(data); });
+    };
+    MusicPlayerComponent.prototype.fetchAlbumAudioInfo = function () {
+        var _this = this;
+        var postObj = { 'username': this.userId, 'album': this.albumTitle };
+        this.audioService.fetchAlbumAudioInfo(postObj).subscribe(function (data) { return _this.afterAbumAudioInfo(data); });
+    };
+    MusicPlayerComponent.prototype.afterAudioAbumInfo = function (result) {
+        this.audioAlbumList = result;
+    };
+    MusicPlayerComponent.prototype.afterAbumAudioInfo = function (result) {
+        this.audioList = result[0].audiosList;
+    };
+    //Need to activate/deactivate edit btn later based on changes in title field
+    MusicPlayerComponent.prototype.editAudioAlbum = function (event) {
+        this.albumInfo = event.data;
+        this.isCreateAlbum = true;
+        this.isAddAlbum = false;
+        this.isUpdateAlbum = true;
+        this.albumTitle = this.albumInfo.title;
+        this.albumDesc = this.albumInfo.description;
+    };
+    //Diplaying the list of audios under a particular audio album
+    MusicPlayerComponent.prototype.showAudioList = function (event) {
+        this.audioInfo = event.data;
+        this.isAudioAlbum = false;
+        this.isAlbumAudio = true;
+        this.audioList = this.audioInfo.audiosList;
+        this.albumTitle = this.audioInfo.title;
+        //this.fetchAlbumAudioInfo();
+    };
+    MusicPlayerComponent.prototype.goToMyAlbum = function (event) {
+        this.isAudioAlbum = true;
+        this.isAlbumAudio = false;
+        this.fetchAudioAlbumInfo();
+    };
+    MusicPlayerComponent.prototype.playAudio = function (data) {
+        console.log(data);
+        this.audioPlayer.nativeElement.pause();
+        this.posterPath = data.poster;
+        this.mp3AudioPath = data.actualAudio;
+        this.audioPlayer.nativeElement.load();
+        this.audioPlayer.nativeElement.play();
+        //this.triggerWindowEvent('playAudio', {'event': 'playAudio', 'msgObj': {}});
+    };
+    MusicPlayerComponent.prototype.triggerWindowEvent = function (eventType, evtObj) {
+        var evt = new CustomEvent(eventType, { 'detail': evtObj });
+        window.dispatchEvent(evt);
+    };
+    return MusicPlayerComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('audioPlayer'),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object)
+], MusicPlayerComponent.prototype, "audioPlayer", void 0);
+MusicPlayerComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-music-player',
+        template: __webpack_require__("../../../../../src/app/music-player/music-player.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/music-player/music-player.component.css")],
+        providers: [__WEBPACK_IMPORTED_MODULE_4_app_services_data_audio_service__["a" /* AudioService */]]
+    }),
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_data_audio_service__["a" /* AudioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_data_audio_service__["a" /* AudioService */]) === "function" && _c || Object])
+], MusicPlayerComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=music-player.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/pipes/album-search.pipe.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2682,6 +3129,45 @@ AlbumSearchPipe = __decorate([
 ], AlbumSearchPipe);
 
 //# sourceMappingURL=album-search.pipe.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/pipes/audio-search.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AudioSearchPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var AudioSearchPipe = (function () {
+    function AudioSearchPipe() {
+    }
+    AudioSearchPipe.prototype.transform = function (items, audioText) {
+        if (!items)
+            return [];
+        if (!audioText)
+            return items;
+        audioText = audioText.toLowerCase();
+        return items.filter(function (it) {
+            var title = it.title;
+            return title.toLowerCase().includes(audioText);
+        });
+    };
+    return AudioSearchPipe;
+}());
+AudioSearchPipe = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */])({
+        name: 'audioSearch'
+    })
+], AudioSearchPipe);
+
+//# sourceMappingURL=audio-search.pipe.js.map
 
 /***/ }),
 
@@ -3678,6 +4164,69 @@ var _a;
 
 /***/ }),
 
+/***/ "../../../../../src/app/services/data/audio.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AudioService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var AudioService = (function () {
+    function AudioService(http) {
+        this.http = http;
+    }
+    AudioService.prototype.createAudioAlbum = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/createAudioAlbum", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    AudioService.prototype.updateAudioAlbum = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/updateAudioAlbum", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    AudioService.prototype.fetchAudioAlbumInfo = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchAudioAlbumInfo", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    AudioService.prototype.fetchAlbumAudioInfo = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchAlbumAudioInfo", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    return AudioService;
+}());
+AudioService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+], AudioService);
+
+var _a;
+//# sourceMappingURL=audio.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/services/data/chat.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4647,7 +5196,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/video-player/video-player.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"video-container\">\n    <video #videoPlayer id='video'\n        controls \n        poster=\"{{posterPath}}\">\n   <!-- <video id='video'\n        poster=\"https://media.w3.org/2010/05/sintel/poster.png\">-->\n        <source id='mp4'\n            src=\"{{mp4VideoPath}}\" \n            type='video/mp4'>\n        <source id='webm'\n            src=\"{{webmVideoPath}}\" \n            type='video/webm'>\n       <!-- <source id='ogv'\n            src=\"https://media.w3.org/2010/05/sintel/trailer.ogv\"\n            type='video/ogg'>-->\n      <p>Your browser does not support the HTML5 Video element.</p>\n    </video>\n      <!-- Video Controls -->\n    <!--<div id=\"video-controls\">\n        <div><input type=\"range\" min=\"1\" max=\"100\" step=\"1\" value=\"15\" class=\"colw100 no-outline\" id=\"seek-bar\"></div>\n        <div>\n            <i id=\"play-pause\" class=\"fa fa-play-circle fa-2x blue-fonts\"></i>    \n            <button type=\"button\" id=\"mute\">Mute</button>\n            <input type=\"range\" id=\"volumeBar\" min=\"0\" max=\"1\" step=\"0.1\" value=\"1\">\n            <button type=\"button\" id=\"full-screen\">Full-Screen</button>\n        </div>\n    </div>-->\n</div>\n<div class=\"video-content\">\n    <div class=\"title semi-transparent-bg\">\n        <div class=\"line-height-sixteen\">\n            <i class=\"fa fa-file-video-o blue-fonts fa-2x\" aria-hidden=\"true\"></i>\n            <span class=\"blue-fonts medium-fonts\">Videos</span>\n        </div>\n    </div>\n    <div *ngIf=\"isVideoAlbum ; then albumVideoUploader\"></div>\n    <ng-template #albumVideoUploader>\n        <div class=\"inline-block semi-transparent-bg colw100\">\n            <div class=\"pull-left\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"videoUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"videoGroup\">\n                            <input type=\"file\" accept=\"video/*\" class=\"file-input\" name=\"uploadfile\" #fileInput (change)=\"fileChangeEvent($event, true)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"cancelAlbum(null); fileInput.value = ''; fileInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Upload New Videos</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The video will be uploaded to your untitled album.</span>\n                </div>\n                <div class=\"new-album\">\n                    <span class=\"blue-fonts\" (click)=\"createVideoAlbum($event)\">\n                        <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>\n                        <span>Create New Album</span>\n                    </span>\n                </div>\n                <div *ngIf=\"isCreateAlbum ; then createAlbum\"></div>\n                <ng-template #createAlbum >\n                    <form [formGroup]=\"albumForm\">\n                        <div class=\"form-group\">\n                            <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" aria-describedby=\"emailHelp\" placeholder=\"title\" formControlName=\"albumTitle\" id=\"albumTitle\" [(ngModel)]=\"albumTitle\">\n                            <app-control-messages [control]=\"albumForm.controls.albumTitle\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group\">\n                            <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" formControlName=\"albumDesc\" id=\"albumDesc\" [(ngModel)]=\"albumDesc\">\n                            </textarea>\n                            <app-control-messages [control]=\"albumForm.controls.albumDesc\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group row justify-content-center align-items-center no-margin\">\n                            <button id=\"loginBtn\" type=\"button\" class=\"btn btn-primary\" (click)=\"cancelAlbum()\" >\n                                <i class=\"fa fa-times no-margin\" aria-hidden=\"true\"></i>\n                                <span>Cancel</span>\n                            </button>\n                            <div *ngIf=\"isAddAlbum ; then addBtn\"></div>\n                            <ng-template #addBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"createAlbumInfo($event)\">\n                                    <span>Create</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                            <div *ngIf=\"isUpdateAlbum ; then updateBtn\"></div>\n                            <ng-template #updateBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"updateAlbumInfo($event)\">\n                                    <span>Edit</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                        </div>\n                        <div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n                            <div class=\"server-msg text-center\">{{serverMessage}}</div>\n                        </div>\n                    </form>\n                </ng-template>\n                <progress value=\"0\" max=\"100\" id=\"progressBar\" [value]=\"uploadProgress\" [hidden]=\"!isProgress\"></progress>\n            </div>\n        </div>\n    </ng-template>\n    <div class=\"inline-block semi-transparent-bg colw100\">\n        <div *ngIf=\"isVideoAlbum ; then videoAlbum\"></div>\n        <ng-template #videoAlbum >\n            <div class=\"album-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n                </div>\n                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n            </div>\n            <div class=\"album-icons\">\n                <app-video-album-icon class=\"pull-left\" *ngFor=\"let item of videoAlbumList | albumSearch : albumText\" [item]=\"item\" (click)=\"searchAlbum.value=''; albumText = '';\" (onEditVideoAlbum)=\"editVideoAlbum($event)\" \n                (onShowVideoList)=\"showVideoList($event)\"></app-video-album-icon>\n            </div>\n        </ng-template>\n        <div *ngIf=\"isAlbumVideo ; then albumVideo\"></div>\n        <ng-template #albumVideo >\n            <div class=\"video-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <!--<input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"videoText\" #searchVideo/>-->\n                    <div class=\"cursor-pointer blue-fonts\" (click)=\"goToMyAlbum($event)\">{{albumTitle}}</div>\n                </div>\n                <!--<div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>-->\n            </div>\n            <div class=\"video-uploader\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"videoUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"videoGroup\">\n                            <input type=\"file\" accept=\"video/*\" class=\"video-input\" name=\"uploadfile\" #videoInput (change)=\"fileChangeEvent($event, false)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"videoInput.value = ''; videoInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Add New Videos.</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The video will be uploaded to this album.</span>\n                </div>\n            </div>\n            <div class=\"album-icons\">\n                <app-video-icon (click)=\"playVideo(item)\" class=\"pull-left\" *ngFor=\"let item of videoList | videoSearch : videoText\" [item]=\"item\"></app-video-icon>\n            </div>\n        </ng-template>\n    </div>\n</div>"
+module.exports = "<div class=\"video-container\">\n    <video #videoPlayer id='video'\n        controls \n        poster=\"{{posterPath}}\">\n   <!-- <video id='video'\n        poster=\"https://media.w3.org/2010/05/sintel/poster.png\">-->\n        <source id='mp4'\n            src=\"{{mp4VideoPath}}\" \n            type='video/mp4'>\n       <!-- <source id='webm'\n            src=\"{{webmVideoPath}}\" \n            type='video/webm'>-->\n       <!-- <source id='ogv'\n            src=\"https://media.w3.org/2010/05/sintel/trailer.ogv\"\n            type='video/ogg'>-->\n      <p>Your browser does not support the HTML5 Video element.</p>\n    </video>\n      <!-- Video Controls -->\n    <!--<div id=\"video-controls\">\n        <div><input type=\"range\" min=\"1\" max=\"100\" step=\"1\" value=\"15\" class=\"colw100 no-outline\" id=\"seek-bar\"></div>\n        <div>\n            <i id=\"play-pause\" class=\"fa fa-play-circle fa-2x blue-fonts\"></i>    \n            <button type=\"button\" id=\"mute\">Mute</button>\n            <input type=\"range\" id=\"volumeBar\" min=\"0\" max=\"1\" step=\"0.1\" value=\"1\">\n            <button type=\"button\" id=\"full-screen\">Full-Screen</button>\n        </div>\n    </div>-->\n</div>\n<div class=\"video-content\">\n    <div class=\"title semi-transparent-bg\">\n        <div class=\"line-height-sixteen\">\n            <i class=\"fa fa-file-video-o blue-fonts fa-2x\" aria-hidden=\"true\"></i>\n            <span class=\"blue-fonts medium-fonts\">Videos</span>\n        </div>\n    </div>\n    <div *ngIf=\"isVideoAlbum ; then albumVideoUploader\"></div>\n    <ng-template #albumVideoUploader>\n        <div class=\"inline-block semi-transparent-bg colw100\">\n            <div class=\"pull-left\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"videoUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"videoGroup\">\n                            <input type=\"file\" accept=\"video/*\" class=\"file-input\" name=\"uploadfile\" #fileInput (change)=\"fileChangeEvent($event, true)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"cancelAlbum(null); fileInput.value = ''; fileInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Upload New Videos</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The video will be uploaded to your untitled album.</span>\n                </div>\n                <div class=\"new-album\">\n                    <span class=\"blue-fonts\" (click)=\"createVideoAlbum($event)\">\n                        <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>\n                        <span>Create New Album</span>\n                    </span>\n                </div>\n                <div *ngIf=\"isCreateAlbum ; then createAlbum\"></div>\n                <ng-template #createAlbum >\n                    <form [formGroup]=\"albumForm\">\n                        <div class=\"form-group\">\n                            <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" aria-describedby=\"emailHelp\" placeholder=\"title\" formControlName=\"albumTitle\" id=\"albumTitle\" [(ngModel)]=\"albumTitle\">\n                            <app-control-messages [control]=\"albumForm.controls.albumTitle\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group\">\n                            <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" formControlName=\"albumDesc\" id=\"albumDesc\" [(ngModel)]=\"albumDesc\">\n                            </textarea>\n                            <app-control-messages [control]=\"albumForm.controls.albumDesc\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group row justify-content-center align-items-center no-margin\">\n                            <button id=\"loginBtn\" type=\"button\" class=\"btn btn-primary\" (click)=\"cancelAlbum()\" >\n                                <i class=\"fa fa-times no-margin\" aria-hidden=\"true\"></i>\n                                <span>Cancel</span>\n                            </button>\n                            <div *ngIf=\"isAddAlbum ; then addBtn\"></div>\n                            <ng-template #addBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"createAlbumInfo($event)\">\n                                    <span>Create</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                            <div *ngIf=\"isUpdateAlbum ; then updateBtn\"></div>\n                            <ng-template #updateBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"updateAlbumInfo($event)\">\n                                    <span>Edit</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                        </div>\n                        <div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n                            <div class=\"server-msg text-center\">{{serverMessage}}</div>\n                        </div>\n                    </form>\n                </ng-template>\n                <progress value=\"0\" max=\"100\" id=\"progressBar\" [value]=\"uploadProgress\" [hidden]=\"!isProgress\"></progress>\n            </div>\n        </div>\n    </ng-template>\n    <div class=\"inline-block semi-transparent-bg colw100\">\n        <div *ngIf=\"isVideoAlbum ; then videoAlbum\"></div>\n        <ng-template #videoAlbum >\n            <div class=\"album-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n                </div>\n                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n            </div>\n            <div class=\"album-icons\">\n                <app-video-album-icon class=\"pull-left\" *ngFor=\"let item of videoAlbumList | albumSearch : albumText\" [item]=\"item\" (click)=\"searchAlbum.value=''; albumText = '';\" (onEditVideoAlbum)=\"editVideoAlbum($event)\" \n                (onShowVideoList)=\"showVideoList($event)\"></app-video-album-icon>\n            </div>\n        </ng-template>\n        <div *ngIf=\"isAlbumVideo ; then albumVideo\"></div>\n        <ng-template #albumVideo >\n            <div class=\"video-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <!--<input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"videoText\" #searchVideo/>-->\n                    <div class=\"cursor-pointer blue-fonts\" (click)=\"goToMyAlbum($event)\">{{albumTitle}}</div>\n                </div>\n                <!--<div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>-->\n            </div>\n            <div class=\"video-uploader\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"videoUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"videoGroup\">\n                            <input type=\"file\" accept=\"video/*\" class=\"video-input\" name=\"uploadfile\" #videoInput (change)=\"fileChangeEvent($event, false)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"videoInput.value = ''; videoInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Add New Videos.</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The video will be uploaded to this album.</span>\n                </div>\n            </div>\n            <div class=\"album-icons\">\n                <app-video-icon (click)=\"playVideo(item)\" class=\"pull-left\" *ngFor=\"let item of videoList | videoSearch : videoText\" [item]=\"item\"></app-video-icon>\n            </div>\n        </ng-template>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -4866,13 +5415,14 @@ var VideoPlayerComponent = (function () {
     VideoPlayerComponent.prototype.goToMyAlbum = function (event) {
         this.isVideoAlbum = true;
         this.isAlbumVideo = false;
+        this.fetchVideoAlbumInfo();
     };
     VideoPlayerComponent.prototype.playVideo = function (data) {
         console.log(data);
         this.videoPlayer.nativeElement.pause();
         this.posterPath = data.poster;
         this.mp4VideoPath = data.mp4Video;
-        this.webmVideoPath = data.webmVideo;
+        //this.webmVideoPath = data.webmVideo;
         this.videoPlayer.nativeElement.load();
         this.videoPlayer.nativeElement.play();
     };
