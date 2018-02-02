@@ -1,19 +1,19 @@
-var audioInfo = require('./model/audioinfo');
+var photosInfo = require('./model/photosinfo');
 
 module.exports = function(app) {
 
 	// api ---------------------------------------------------------------------
-	app.post('/api/createAudioAlbum/', function(req, res) {	
-		audioInfo.findOne({userid: req.body.username, title: req.body.title}, function(err, item){
+	app.post('/api/createPhotosAlbum/', function(req, res) {	
+		photosInfo.findOne({userid: req.body.username, title: req.body.title}, function(err, item){
 			if(err){
 				res.send(err);
 			}else{
 				if(item == null){
-					audioInfo.create({
+					photosInfo.create({
 						userid : req.body.username,
 						title: req.body.title,
 						description: req.body.desc,
-						audiosList : [],
+						photosList : [],
 						albumCover : '',
 						sharedWith: []
 					}, function(err, info) {
@@ -30,8 +30,8 @@ module.exports = function(app) {
 		});
 	});
 
-	app.post('/api/fetchAudioAlbumInfo/', function(req, res) {	
-		audioInfo.find({userid: req.body.username}, function(error, docs){
+	app.post('/api/fetchPhotosAlbumInfo/', function(req, res) {	
+		photosInfo.find({userid: req.body.username}, function(error, docs){
 			if(error){
 				console.log("Error"+error);
 			}else{
@@ -39,8 +39,8 @@ module.exports = function(app) {
 			}
 		});
 	});
-	app.post('/api/fetchAlbumAudioInfo/', function(req, res) {	
-		audioInfo.find({userid: req.body.username, title: req.body.album}, function(error, docs){
+	app.post('/api/fetchAlbumPhotosInfo/', function(req, res) {	
+		photosInfo.find({userid: req.body.username, title: req.body.album}, function(error, docs){
 			if(error){
 				console.log("Error"+error);
 			}else{
@@ -49,14 +49,14 @@ module.exports = function(app) {
 		});
 	});
 
-	app.post('/api/updateAudioAlbum/', function(req, res) {	
+	app.post('/api/updatePhotosAlbum/', function(req, res) {	
 
-		audioInfo.findOne({userid: req.body.username, title: req.body.title}, function(err, item){
+		photosInfo.findOne({userid: req.body.username, title: req.body.title}, function(err, item){
 			if(err){
 				res.send(err);
 			}else{
 				if(item == null){
-					audioInfo.update({_id: req.body.id}, {$set: {title: req.body.title, description: req.body.desc}}, function(error, info){
+					photosInfo.update({_id: req.body.id}, {$set: {title: req.body.title, description: req.body.desc}}, function(error, info){
 						if(error){
 							console.log("Error"+error);
 						}else{
@@ -70,3 +70,5 @@ module.exports = function(app) {
 		});
 	});
 }
+/*	//usedSockets[data.userid].emit("ON_VIDEO_PUBLISH", data.videoPath);
+});*/

@@ -48,14 +48,32 @@ var audioStorage = multer.diskStorage({
   	}
 });
 
+var uploadPhoto = multer({ storage: storage });
+
+var uploadedPhotoPath = '';
+var photoExt = '';
+var photoStorage = multer.diskStorage({
+  	destination: function (req, file, cb) {
+    	cb(null, 'media/photos/myphotos/original/')
+  	},
+  	filename: function (req, file, cb) {
+  		photoExt = path.extname(file.originalname);
+  		uploadedPhotoPath = 'photo_'+Date.now()+photoExt;
+
+    	cb(null, uploadedPhotoPath); //Appending extension
+  	}
+});
+
 
 var recentVideoFile = {};
 var videoUpload = multer({ storage: videoStorage });
 var audioUpload = multer({ storage: audioStorage });
+var photoUpload = multer({ storage: photoStorage });
 
 var userInfo = require('./model/userinfo');
 var videoInfo = require('./model/videoinfo');
 var audioInfo = require('./model/audioinfo');
+var photosInfo = require('./model/photosinfo');
 
 module.exports = function(app) {
 
@@ -465,6 +483,77 @@ module.exports = function(app) {
 								res.json({"status": "failure", "message": "Failed to update video now, please try again later."});
 							}else{
 								res.json({"status": "success", "message": "Audio updated successfully.", "info": info});
+							}
+						});
+					}
+				}
+			});
+		}
+
+	});
+
+
+	app.post('/api/uploadPhotos', photoUpload.single('uploadfile'), (req, res) => {
+		console.log('file uploaded');
+		var userId = req.body.userid;
+		var albumTitle = req.body.album;
+		var albumDesc = '';
+		
+		processPhoto(userId, albumTitle, albumDesc);
+		function processPhoto(userId, albumTitle, albumDesc){
+			var actualPhotoPath = 'media/photos/myphotos/original/'+uploadedPhotoPath;
+			var emtr = new events.EventEmitter();
+			var photoReadyArr = [];
+			var posterImg = '';
+			//No need of conversion
+			updatePhotoList(userId, albumTitle, albumDesc, actualPhotoPath, posterImg);
+
+			emtr.on('onPhotoReady', function (data) {
+
+			});
+		}
+
+		function updatePhotoList(userId, albumTitle, albumDesc, actualPhotoPath, posterImg){
+			var photoObj = {}
+			photoObj.actualPhoto = 'photo/original/'+uploadedPhotoPath;
+			//audioObj.mp3Audio = actualAudioPath;
+			photoObj.poster = posterImg;
+			
+
+			photosInfo.findOne({userid: userId, title: albumTitle}, function(err, info){
+				var operation = '';
+				var photosList = [];
+				if(err){
+					res.send(err);
+				}else{
+					if(info === null){
+						operation = 'create';
+						photosList.push(photoObj);
+						photosInfo.create({
+							userid : userId,
+							title: albumTitle,
+							description: albumDesc,
+							photosList : photosList,
+							albumCover : '',
+							sharedWith: []
+						}, function(err, info) {
+							if (err){
+								res.send(err);
+							}else{
+								res.json({"status": "success", "message": "Album created successfully", "info": info});
+							}
+						});	
+
+					}else{
+						operation = 'update';
+						photosList = info.photosList;
+						photosList.push(photoObj);
+						photosInfo.update({userid: userId, title: albumTitle}, {$set: {photosList: photosList}}, function(err, info){
+							if(err){
+								console.log("Error"+err);
+								res.json({"status": "failure", "message": "Failed to update photo now, please try again later."});
+							}else{
+								res.json({"status": "success", "message": "Photo updated successfully.", "info": info});
 							}
 						});
 					}

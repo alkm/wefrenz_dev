@@ -1,7 +1,4 @@
-#audio{
-	width: 100%;
-}
-.audio-content{
+.photos-content{
 	padding: 15px 0px;
 }
 
@@ -49,24 +46,13 @@
 textarea.form-control{
 	height: 100px !important;
 }
-app-audio-album-icon{
+app-photos-album-icon{
 	width: 100px;
     height: 100px;
     border: 1px solid #2b90d9;
     margin: 10px 5px 0px 0px;
 }
-.music-play-list{
-    max-height: 314px;
-    width: 50px;
-    background: #ff0000;
-    display: inline-block;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    height: 275px;
-    background-color: #2b90d9;
-}
-.audio-container, #canvas{
+.photos-container{
     max-height: 314px;
     width: 100%;
     background: #000;

@@ -6232,6 +6232,888 @@ AngularFontAwesomeComponent = __decorate([
 
 /***/ }),
 
+/***/ "../../../../angular4-carousel/index.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_app_index__ = __webpack_require__("../../../../angular4-carousel/src/app/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_app_services__ = __webpack_require__("../../../../angular4-carousel/src/app/services/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_app_services_declarations__ = __webpack_require__("../../../../angular4-carousel/src/app/services/declarations/index.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__src_app_index__["a"]; });
+/* unused harmony reexport CarouselService */
+/* unused harmony reexport WindowWidthService */
+/* unused harmony reexport ICarouselConfig */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__src_app_services_declarations__["a"]; });
+
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/app.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services__ = __webpack_require__("../../../../angular4-carousel/src/app/services/index.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var AppComponent = (function () {
+    function AppComponent() {
+        this.imageSources = [
+            'http://www.violinshoptampa.com/assets/images/Panorama2a.jpg',
+            'http://gomighty.com/wp-content/themes/gomighty/lib/goal_images/files/SMusicPianoAntiqueshutterstock_-1920.jpg',
+            'https://d1llvcsapfiksz.cloudfront.net/vendors/samplephonics/deep-sax/images/DeepSax_mobile.jpg',
+            'https://www.abamet.ru/images/press/haas/press-releases/2013/gaboi-rigoutat.jpg'
+        ];
+        // example config
+        this.config = {
+            verifyBeforeLoad: true,
+            log: true,
+            animation: true,
+            animationType: __WEBPACK_IMPORTED_MODULE_1__services__["a" /* AnimationConfig */].SLIDE,
+            autoplay: true,
+            autoplayDelay: 2000,
+            stopAutoplayMinWidth: 768
+        };
+    }
+    return AppComponent;
+}());
+AppComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-root',
+        template: __webpack_require__("../../../../angular4-carousel/src/app/components/app.template.html"),
+        styles: [__webpack_require__("../../../../angular4-carousel/src/app/components/assets/app.styles.scss")]
+    })
+], AppComponent);
+
+//# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/app.template.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"wrapper\">\r\n  <carousel [sources]=\"imageSources\" [config]=\"config\"></carousel>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/assets/app.styles.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".wrapper {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translateY(-50%) translateX(-50%);\n          transform: translateY(-50%) translateX(-50%);\n  width: 80%;\n  margin: 0 auto;\n  height: 400px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/carousel/arrows/arrows.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CarouselArrowsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var CarouselArrowsComponent = (function () {
+    function CarouselArrowsComponent() {
+        this.DISABLE_ELEMENT_TIME = 750;
+        this.changeSlide = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+    }
+    CarouselArrowsComponent.prototype.onChangeSlide = function (direction) {
+        this.changeSlide.emit(direction);
+    };
+    CarouselArrowsComponent.prototype.disableNavButtons = function () {
+        var _this = this;
+        this.disableElement = true;
+        setTimeout(function () { return _this.disableElement = false; }, this.DISABLE_ELEMENT_TIME);
+    };
+    return CarouselArrowsComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
+], CarouselArrowsComponent.prototype, "changeSlide", void 0);
+CarouselArrowsComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'carousel-arrows',
+        template: __webpack_require__("../../../../angular4-carousel/src/app/components/carousel/arrows/arrows.template.html"),
+        styles: [__webpack_require__("../../../../angular4-carousel/src/app/components/carousel/arrows/assets/arrows.styles.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], CarouselArrowsComponent);
+
+var _a;
+//# sourceMappingURL=arrows.component.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/carousel/arrows/arrows.template.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"carousel-nav\">\r\n  <div (click)=\"onChangeSlide('prev')\"\r\n       [class.carousel-nav__btn--disabled]=\"disableElement\">\r\n    <div class=\"carousel-nav__clickable-area carousel-nav__clickable-area--left\">\r\n      <i class=\"fa fa-angle-left carousel-nav__btn carousel-nav__btn--left\" aria-hidden=\"true\"></i>\r\n    </div>\r\n  </div>\r\n  <div (click)=\"onChangeSlide('next')\"\r\n       [class.carousel-nav__btn--disabled]=\"disableElement\">\r\n    <div class=\"carousel-nav__clickable-area carousel-nav__clickable-area--right\">\r\n      <i class=\"fa fa-angle-right carousel-nav__btn carousel-nav__btn--right\" aria-hidden=\"true\"></i>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/carousel/arrows/assets/arrows.styles.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".carousel-nav__clickable-area {\n  position: absolute;\n  top: 0;\n  bottom: 0; }\n  .carousel-nav__clickable-area:hover {\n    cursor: pointer; }\n  .carousel-nav__clickable-area--left {\n    right: auto;\n    left: 0; }\n    .carousel-nav__clickable-area--left:hover .carousel-nav__btn--left {\n      color: rgba(255, 255, 255, 0.8); }\n  .carousel-nav__clickable-area--right {\n    left: auto;\n    right: 0; }\n    .carousel-nav__clickable-area--right:hover .carousel-nav__btn--right {\n      color: rgba(255, 255, 255, 0.8); }\n\n.carousel-nav__btn {\n  position: absolute;\n  top: 50%;\n  font-size: 46px;\n  -webkit-transform: scaleX(0.8) translateY(-50%);\n          transform: scaleX(0.8) translateY(-50%);\n  text-shadow: rgba(0, 0, 0, 0.8) 0 0 7px;\n  color: rgba(255, 255, 255, 0.6);\n  cursor: pointer; }\n  .carousel-nav__btn:hover {\n    color: rgba(255, 255, 255, 0.8); }\n  .carousel-nav__btn--left {\n    left: 15px; }\n  .carousel-nav__btn--right {\n    right: 15px; }\n  .carousel-nav__btn--disabled {\n    pointer-events: none; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/carousel/arrows/index.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__arrows_component__ = __webpack_require__("../../../../angular4-carousel/src/app/components/carousel/arrows/arrows.component.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__arrows_component__["a"]; });
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/carousel/assets/carousel.styles.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".carousel-wrapper {\n  position: relative;\n  height: 100%;\n  overflow: hidden; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/carousel/carousel.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CarouselComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_takeWhile__ = __webpack_require__("../../../../rxjs/add/operator/takeWhile.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_takeWhile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_takeWhile__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services__ = __webpack_require__("../../../../angular4-carousel/src/app/services/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pins__ = __webpack_require__("../../../../angular4-carousel/src/app/components/carousel/pins/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__arrows__ = __webpack_require__("../../../../angular4-carousel/src/app/components/carousel/arrows/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__directives__ = __webpack_require__("../../../../angular4-carousel/src/app/directives/index.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var CarouselComponent = (function () {
+    function CarouselComponent(carouselService, windowWidthService) {
+        this.carouselService = carouselService;
+        this.windowWidthService = windowWidthService;
+        this.currentSlide = 0;
+    }
+    CarouselComponent.prototype.ngOnInit = function () {
+        this.initData();
+    };
+    CarouselComponent.prototype.initData = function () {
+        var _this = this;
+        this.galleryLength = this.sources.length;
+        var _a = this.sources, showImmediate = _a[0], showWhenLoad = _a.slice(1);
+        this.loadedImages = this.config.verifyBeforeLoad ? [showImmediate] : this.sources;
+        if (this.galleryLength < 2) {
+            return;
+        }
+        this.carouselService.init(showWhenLoad, this.config);
+        this.carouselService.onImageLoad()
+            .takeWhile(function () { return !!_this.galleryLength; })
+            .subscribe(function (image) { return _this.loadedImages.push(image); });
+        if (this.config.autoplay) {
+            this.config.autoplayDelay = this.config.autoplayDelay < 1000 ? 1000 : this.config.autoplayDelay;
+            var minWidth = this.config.stopAutoplayMinWidth;
+            this.windowWidthService.onResize(minWidth, true)
+                .takeWhile(function () { return !!_this.galleryLength; })
+                .subscribe(function (isMinWidth) {
+                _this.preventAutoplay = !isMinWidth;
+                _this.onHandleAutoplay(!_this.config.autoplay);
+            });
+        }
+    };
+    CarouselComponent.prototype.onChangeSlide = function (direction) {
+        if (direction === 'prev') {
+            this.currentSlide = this.currentSlide === 0 ? this.loadedImages.length - 1 : --this.currentSlide;
+        }
+        else {
+            this.currentSlide = this.currentSlide === this.loadedImages.length - 1 ? 0 : ++this.currentSlide;
+        }
+        this.carouselHandlerDirective.setNewSlide(this.currentSlide, direction);
+        this.disableCarouselNavBtns();
+    };
+    CarouselComponent.prototype.onChangeSlideIndex = function (index) {
+        if (index === this.currentSlide) {
+            return;
+        }
+        var direction = index > this.currentSlide ? 'next' : 'prev';
+        this.currentSlide = index;
+        this.carouselHandlerDirective.setNewSlide(this.currentSlide, direction);
+        this.disableCarouselNavBtns();
+    };
+    CarouselComponent.prototype.onHandleAutoplay = function (stopAutoplay) {
+        if (stopAutoplay || this.preventAutoplay) {
+            clearInterval(this.autoplayIntervalId);
+            return;
+        }
+        this.startAutoplay(this.config.autoplayDelay);
+    };
+    CarouselComponent.prototype.startAutoplay = function (delay) {
+        var _this = this;
+        this.autoplayIntervalId = setInterval(function () {
+            _this.onChangeSlide('next');
+            _this.pinsComponent.disableNavButtons();
+            _this.carouselArrowsComponent.disableNavButtons();
+        }, delay);
+    };
+    CarouselComponent.prototype.disableCarouselNavBtns = function () {
+        if (!this.config.animation) {
+            return;
+        }
+        this.carouselArrowsComponent.disableNavButtons();
+        this.pinsComponent.disableNavButtons();
+    };
+    CarouselComponent.prototype.ngOnDestroy = function () {
+        if (this.autoplayIntervalId) {
+            clearInterval(this.autoplayIntervalId);
+        }
+    };
+    return CarouselComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Array)
+], CarouselComponent.prototype, "sources", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services__["c" /* ICarouselConfig */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services__["c" /* ICarouselConfig */]) === "function" && _a || Object)
+], CarouselComponent.prototype, "config", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])(Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_24" /* forwardRef */])(function () { return __WEBPACK_IMPORTED_MODULE_5__directives__["a" /* CarouselHandlerDirective */]; })),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__directives__["a" /* CarouselHandlerDirective */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__directives__["a" /* CarouselHandlerDirective */]) === "function" && _b || Object)
+], CarouselComponent.prototype, "carouselHandlerDirective", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_4__arrows__["a" /* CarouselArrowsComponent */]),
+    __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__arrows__["a" /* CarouselArrowsComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__arrows__["a" /* CarouselArrowsComponent */]) === "function" && _c || Object)
+], CarouselComponent.prototype, "carouselArrowsComponent", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_3__pins__["a" /* PinsComponent */]),
+    __metadata("design:type", typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__pins__["a" /* PinsComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__pins__["a" /* PinsComponent */]) === "function" && _d || Object)
+], CarouselComponent.prototype, "pinsComponent", void 0);
+CarouselComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'carousel',
+        template: __webpack_require__("../../../../angular4-carousel/src/app/components/carousel/carousel.template.html"),
+        styles: [__webpack_require__("../../../../angular4-carousel/src/app/components/carousel/assets/carousel.styles.scss")]
+    }),
+    __metadata("design:paramtypes", [typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__services__["b" /* CarouselService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services__["b" /* CarouselService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__services__["d" /* WindowWidthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services__["d" /* WindowWidthService */]) === "function" && _f || Object])
+], CarouselComponent);
+
+var _a, _b, _c, _d, _e, _f;
+//# sourceMappingURL=carousel.component.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/carousel/carousel.template.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"carousel-wrapper\" appCarouselHandler (handleAutoplay)=\"onHandleAutoplay($event)\">\r\n  <carousel-slide\r\n       *ngFor=\"let img of loadedImages; let i = index\"\r\n       [src]=\"img\"\r\n       [slideNo]=\"i\"\r\n       [isHidden]=\"i !== 0\">\r\n  </carousel-slide>\r\n\r\n  <carousel-pins\r\n    *ngIf=\"galleryLength > 1\"\r\n    [images]=\"loadedImages\"\r\n    [currentSlide]=\"currentSlide\"\r\n    (changeSlide)=\"onChangeSlideIndex($event);\">\r\n  </carousel-pins>\r\n\r\n  <carousel-arrows\r\n    *ngIf=\"galleryLength > 1\"\r\n    (changeSlide)=\"onChangeSlide($event);\"></carousel-arrows>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/carousel/index.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__carousel_component__ = __webpack_require__("../../../../angular4-carousel/src/app/components/carousel/carousel.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__arrows__ = __webpack_require__("../../../../angular4-carousel/src/app/components/carousel/arrows/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pins__ = __webpack_require__("../../../../angular4-carousel/src/app/components/carousel/pins/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__slide__ = __webpack_require__("../../../../angular4-carousel/src/app/components/carousel/slide/index.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_3__slide__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__carousel_component__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__arrows__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__pins__["a"]; });
+
+
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/carousel/pins/assets/pins.styles.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".carousel-nav-list {\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: 9px;\n  margin: 0;\n  text-align: center; }\n  .carousel-nav-list__item {\n    display: inline-block;\n    margin: 0 6px;\n    width: 10px;\n    height: 10px;\n    border-radius: 50%;\n    background-color: #2b90d9;\n    cursor: pointer;\n    opacity: 0.6; }\n    .carousel-nav-list__item:hover {\n      opacity: 0.9; }\n    .carousel-nav-list__item--active {\n      opacity: 0.9; }\n  .carousel-nav-list__item--current {\n    background-color: #e55342;\n    opacity: 1; }\n  .carousel-nav-list__item--disabled {\n    pointer-events: none; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/carousel/pins/index.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pins_component__ = __webpack_require__("../../../../angular4-carousel/src/app/components/carousel/pins/pins.component.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__pins_component__["a"]; });
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/carousel/pins/pins.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PinsComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var PinsComponent = (function () {
+    function PinsComponent() {
+        this.DISABLE_ELEMENT_TIME = 750;
+        this.changeSlide = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+    }
+    PinsComponent.prototype.onChangeSlide = function (slideIndex) {
+        this.changeSlide.emit(slideIndex);
+    };
+    PinsComponent.prototype.disableNavButtons = function () {
+        var _this = this;
+        this.disableElement = true;
+        setTimeout(function () { return _this.disableElement = false; }, this.DISABLE_ELEMENT_TIME);
+    };
+    return PinsComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Array)
+], PinsComponent.prototype, "images", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Number)
+], PinsComponent.prototype, "currentSlide", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
+], PinsComponent.prototype, "changeSlide", void 0);
+PinsComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'carousel-pins',
+        template: __webpack_require__("../../../../angular4-carousel/src/app/components/carousel/pins/pins.template.html"),
+        styles: [__webpack_require__("../../../../angular4-carousel/src/app/components/carousel/pins/assets/pins.styles.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], PinsComponent);
+
+var _a;
+//# sourceMappingURL=pins.component.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/carousel/pins/pins.template.html":
+/***/ (function(module, exports) {
+
+module.exports = "<ul class=\"carousel-nav-list\">\r\n  <li class=\"carousel-nav-list__item\"\r\n      *ngFor=\"let counter of images; let i = index\"\r\n      (click)=\"onChangeSlide(i)\"\r\n      [class.carousel-nav-list__item--current]=\"currentSlide === i\"\r\n      [class.carousel-nav-list__item--disabled]=\"disableElement\">\r\n  </li>\r\n</ul>\r\n"
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/carousel/slide/assets/slide.styles.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".slide {\n  position: absolute;\n  left: 0;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  min-height: 400px;\n  -webkit-backface-visibility: hidden;\n  -webkit-transform: translateZ(0) scale(1, 1); }\n  .slide--hidden-initial {\n    display: none; }\n  .slide--hidden-1-next {\n    left: -100%;\n    transition: left 0.7s linear; }\n  .slide--hidden-1-prev {\n    left: 100%;\n    transition: left 0.7s linear; }\n\n@-webkit-keyframes next {\n  0% {\n    left: 99%; }\n  100% {\n    left: 0; } }\n\n@keyframes next {\n  0% {\n    left: 99%; }\n  100% {\n    left: 0; } }\n\n@-webkit-keyframes prev {\n  0% {\n    left: -99%; }\n  100% {\n    left: 0; } }\n\n@keyframes prev {\n  0% {\n    left: -99%; }\n  100% {\n    left: 0; } }\n  .slide--show-1-next {\n    -webkit-animation: next 0.7s 1 ease-out;\n            animation: next 0.7s 1 ease-out; }\n  .slide--show-1-prev {\n    -webkit-animation: prev 0.7s 1 ease-out;\n            animation: prev 0.7s 1 ease-out; }\n  .slide--hidden-2-next {\n    left: -100%;\n    transition: left 0.7s ease-out; }\n  .slide--hidden-2-prev {\n    left: 100%;\n    transition: left 0.7s ease-out; }\n\n@-webkit-keyframes next-overlap {\n  0% {\n    left: 99%; }\n  100% {\n    left: 0; } }\n\n@keyframes next-overlap {\n  0% {\n    left: 99%; }\n  100% {\n    left: 0; } }\n\n@-webkit-keyframes prev-overlap {\n  0% {\n    left: -99%; }\n  100% {\n    left: 0; } }\n\n@keyframes prev-overlap {\n  0% {\n    left: -99%; }\n  100% {\n    left: 0; } }\n  .slide--show-2-next {\n    -webkit-animation: next-overlap 0.7s 1 ease-out;\n            animation: next-overlap 0.7s 1 ease-out; }\n  .slide--show-2-prev {\n    -webkit-animation: prev-overlap 0.7s 1 ease-out;\n            animation: prev-overlap 0.7s 1 ease-out; }\n  .slide--hidden-0-next {\n    transition: opacity 0.7s ease-in;\n    opacity: 0; }\n  .slide--hidden-0-prev {\n    transition: opacity 0.7s ease-in;\n    opacity: 0; }\n\n@-webkit-keyframes next-appear {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@keyframes next-appear {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@-webkit-keyframes prev-appear {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n\n@keyframes prev-appear {\n  0% {\n    opacity: 0; }\n  100% {\n    opacity: 1; } }\n  .slide--show-0-next {\n    -webkit-animation: next-appear 0.7s 1 ease-out;\n            animation: next-appear 0.7s 1 ease-out; }\n  .slide--show-0-prev {\n    -webkit-animation: prev-appear 0.7s 1 ease-out;\n            animation: prev-appear 0.7s 1 ease-out; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/carousel/slide/index.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__slide_component__ = __webpack_require__("../../../../angular4-carousel/src/app/components/carousel/slide/slide.component.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__slide_component__["a"]; });
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/carousel/slide/slide.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SlideComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var SlideComponent = (function () {
+    function SlideComponent() {
+    }
+    return SlideComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", String)
+], SlideComponent.prototype, "src", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Number)
+], SlideComponent.prototype, "slideNo", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Boolean)
+], SlideComponent.prototype, "isHidden", void 0);
+SlideComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'carousel-slide',
+        template: __webpack_require__("../../../../angular4-carousel/src/app/components/carousel/slide/slide.template.html"),
+        styles: [__webpack_require__("../../../../angular4-carousel/src/app/components/carousel/slide/assets/slide.styles.scss")]
+    }),
+    __metadata("design:paramtypes", [])
+], SlideComponent);
+
+//# sourceMappingURL=slide.component.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/carousel/slide/slide.template.html":
+/***/ (function(module, exports) {
+
+module.exports = "<img class=\"slide\" [src]=\"src\"\r\n     [class.slide--hidden-initial]=\"isHidden\"\r\n     [attr.data-slide]=\"slideNo\">\r\n"
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/components/index.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_component__ = __webpack_require__("../../../../angular4-carousel/src/app/components/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__carousel__ = __webpack_require__("../../../../angular4-carousel/src/app/components/carousel/index.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__app_component__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_1__carousel__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_1__carousel__["d"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__carousel__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_1__carousel__["c"]; });
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/directives/carouselHandler.directive.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CarouselHandlerDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services__ = __webpack_require__("../../../../angular4-carousel/src/app/services/index.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var CarouselHandlerDirective = (function () {
+    function CarouselHandlerDirective(el, carouselService) {
+        this.el = el;
+        this.carouselService = carouselService;
+        this.handleAutoplay = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.currentSlide = 0;
+    }
+    CarouselHandlerDirective.prototype.setNewSlide = function (newSlide, direction) {
+        var currentSlide = this.el.nativeElement.querySelector("[data-slide=\"" + this.currentSlide + "\"]");
+        var nextSlide = this.el.nativeElement.querySelector("[data-slide=\"" + newSlide + "\"]");
+        this.animate(currentSlide, nextSlide, direction);
+        this.currentSlide = newSlide;
+    };
+    CarouselHandlerDirective.prototype.animate = function (currentSlide, nextSlide, direction) {
+        if (!this.config.animation) {
+            this.toggleClass('slide--hidden-initial', currentSlide, nextSlide);
+            return;
+        }
+        var animationType = this.config.animationType;
+        currentSlide.className = nextSlide.className = 'slide';
+        this.toggleClass("slide--hidden-" + animationType + "-" + direction, currentSlide);
+        this.toggleClass("slide--show-" + animationType + "-" + direction, nextSlide);
+    };
+    CarouselHandlerDirective.prototype.toggleClass = function (className) {
+        var elements = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            elements[_i - 1] = arguments[_i];
+        }
+        elements.forEach(function (element) {
+            element.classList.toggle(className);
+        });
+    };
+    CarouselHandlerDirective.prototype.ngOnInit = function () {
+        this.config = this.carouselService.getConfig();
+        if (this.config.autoplay) {
+            this.autoplayHandler();
+        }
+    };
+    CarouselHandlerDirective.prototype.autoplayHandler = function () {
+        var _this = this;
+        this.el.nativeElement.addEventListener('mouseenter', function () {
+            _this.handleAutoplay.emit(true);
+        });
+        this.el.nativeElement.addEventListener('mouseleave', function () {
+            _this.handleAutoplay.emit(false);
+        });
+        document.addEventListener('visibilitychange', function () {
+            _this.handleAutoplay.emit(document.hidden);
+        });
+    };
+    return CarouselHandlerDirective;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
+], CarouselHandlerDirective.prototype, "handleAutoplay", void 0);
+CarouselHandlerDirective = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Directive */])({
+        selector: '[appCarouselHandler]'
+    }),
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__services__["b" /* CarouselService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services__["b" /* CarouselService */]) === "function" && _c || Object])
+], CarouselHandlerDirective);
+
+var _a, _b, _c;
+//# sourceMappingURL=carouselHandler.directive.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/directives/index.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__carouselHandler_directive__ = __webpack_require__("../../../../angular4-carousel/src/app/directives/carouselHandler.directive.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__carouselHandler_directive__["a"]; });
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/index.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CarouselModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services__ = __webpack_require__("../../../../angular4-carousel/src/app/services/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components__ = __webpack_require__("../../../../angular4-carousel/src/app/components/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives__ = __webpack_require__("../../../../angular4-carousel/src/app/directives/index.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+var CarouselModule = (function () {
+    function CarouselModule() {
+    }
+    return CarouselModule;
+}());
+CarouselModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgModule */])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_3__components__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_3__components__["c" /* CarouselComponent */],
+            __WEBPACK_IMPORTED_MODULE_3__components__["e" /* SlideComponent */],
+            __WEBPACK_IMPORTED_MODULE_3__components__["b" /* CarouselArrowsComponent */],
+            __WEBPACK_IMPORTED_MODULE_3__components__["d" /* PinsComponent */],
+            __WEBPACK_IMPORTED_MODULE_4__directives__["a" /* CarouselHandlerDirective */]
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */]
+        ],
+        exports: [__WEBPACK_IMPORTED_MODULE_3__components__["c" /* CarouselComponent */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_2__services__["b" /* CarouselService */], __WEBPACK_IMPORTED_MODULE_2__services__["d" /* WindowWidthService */]],
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_3__components__["a" /* AppComponent */]]
+    })
+], CarouselModule);
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/services/carousel.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CarouselService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__ = __webpack_require__("../../../../rxjs/Subject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var CarouselService = (function () {
+    function CarouselService() {
+        this.imageLoadedCount = 0;
+    }
+    CarouselService.prototype.init = function (imageSources, config) {
+        this.imageLoadedCount = 0;
+        this.imageLoad = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__["Subject"]();
+        config.autoplayDelay = config.autoplayDelay < 1000 ? 1000 : config.autoplayDelay;
+        this.config = config;
+        if (!this.config.verifyBeforeLoad) {
+            return;
+        }
+        this.loadImages(imageSources);
+    };
+    CarouselService.prototype.onImageLoad = function () {
+        return this.imageLoad.asObservable();
+    };
+    CarouselService.prototype.getConfig = function () {
+        return Object.assign({}, this.config);
+    };
+    CarouselService.prototype.loadImages = function (imageSources) {
+        var _this = this;
+        var createImageElement = function (image) {
+            var imgElement = document.createElement('img');
+            imgElement.src = image;
+            imgElement.onload = _this.onImageElementLoad.bind(_this, imageSources, image);
+            imgElement.onerror = _this.onImageElementLoadError.bind(_this, imageSources, image);
+        };
+        imageSources.forEach(createImageElement);
+    };
+    CarouselService.prototype.onImageElementLoad = function (imageSources, image) {
+        this.imageLoadedCount++;
+        this.imageLoad.next(image);
+        this.carouselTinyLogger(image, true);
+        this.emitIfAllImagesLoaded(imageSources);
+    };
+    CarouselService.prototype.onImageElementLoadError = function (imageSources, image) {
+        imageSources.splice(imageSources.indexOf(image), 1);
+        this.carouselTinyLogger(image, false);
+        this.emitIfAllImagesLoaded(imageSources);
+    };
+    CarouselService.prototype.emitIfAllImagesLoaded = function (imageSources) {
+        if (this.imageLoadedCount === imageSources.length) {
+            this.imageLoad.complete();
+        }
+    };
+    CarouselService.prototype.carouselTinyLogger = function (image, isLoaded) {
+        if (!this.config.log) {
+            return;
+        }
+        if (isLoaded) {
+            console.log("Carousel module: image loaded: " + image);
+            return;
+        }
+        console.error("Carousel module: image load error: " + image);
+    };
+    return CarouselService;
+}());
+CarouselService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [])
+], CarouselService);
+
+//# sourceMappingURL=carousel.service.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/services/declarations/index.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AnimationConfig; });
+var AnimationConfig;
+(function (AnimationConfig) {
+    AnimationConfig[AnimationConfig["APPEAR"] = 0] = "APPEAR";
+    AnimationConfig[AnimationConfig["SLIDE_OVERLAP"] = 1] = "SLIDE_OVERLAP";
+    AnimationConfig[AnimationConfig["SLIDE"] = 2] = "SLIDE";
+})(AnimationConfig || (AnimationConfig = {}));
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/services/index.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__carousel_service__ = __webpack_require__("../../../../angular4-carousel/src/app/services/carousel.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__window_width_service__ = __webpack_require__("../../../../angular4-carousel/src/app/services/window-width.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__declarations__ = __webpack_require__("../../../../angular4-carousel/src/app/services/declarations/index.ts");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__carousel_service__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__declarations__["ICarouselConfig"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__declarations__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_1__window_width_service__["a"]; });
+
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../angular4-carousel/src/app/services/window-width.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WindowWidthService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__("../../../../rxjs/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_fromEvent__ = __webpack_require__("../../../../rxjs/add/observable/fromEvent.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_fromEvent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_fromEvent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_startWith__ = __webpack_require__("../../../../rxjs/add/operator/startWith.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_startWith___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_startWith__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__("../../../../rxjs/add/operator/distinctUntilChanged.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+var WindowWidthService = (function () {
+    function WindowWidthService() {
+    }
+    WindowWidthService.prototype.onResize = function (minWidthBreakpoint, scrollBar) {
+        var _this = this;
+        this.minWidthBreakpoint = minWidthBreakpoint;
+        return __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["Observable"].fromEvent(window, 'resize')
+            .map(function () { return _this.assertSize(scrollBar); })
+            .startWith(this.assertSize(scrollBar))
+            .distinctUntilChanged();
+    };
+    ;
+    WindowWidthService.prototype.assertSize = function (scrollBar) {
+        var area = scrollBar ? window.innerWidth : document.documentElement.clientWidth;
+        return this.minWidthBreakpoint <= area;
+    };
+    return WindowWidthService;
+}());
+WindowWidthService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])()
+], WindowWidthService);
+
+//# sourceMappingURL=window-width.service.js.map
+
+/***/ }),
+
 /***/ "../../../../css-loader/lib/css-base.js":
 /***/ (function(module, exports) {
 
@@ -7966,6 +8848,30 @@ function flattenUnsubscriptionErrors(errors) {
 
 /***/ }),
 
+/***/ "../../../../rxjs/add/observable/fromEvent.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Observable_1 = __webpack_require__("../../../../rxjs/Observable.js");
+var fromEvent_1 = __webpack_require__("../../../../rxjs/observable/fromEvent.js");
+Observable_1.Observable.fromEvent = fromEvent_1.fromEvent;
+//# sourceMappingURL=fromEvent.js.map
+
+/***/ }),
+
+/***/ "../../../../rxjs/add/operator/distinctUntilChanged.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Observable_1 = __webpack_require__("../../../../rxjs/Observable.js");
+var distinctUntilChanged_1 = __webpack_require__("../../../../rxjs/operator/distinctUntilChanged.js");
+Observable_1.Observable.prototype.distinctUntilChanged = distinctUntilChanged_1.distinctUntilChanged;
+//# sourceMappingURL=distinctUntilChanged.js.map
+
+/***/ }),
+
 /***/ "../../../../rxjs/add/operator/filter.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8002,6 +8908,18 @@ Observable_1.Observable.prototype.pairwise = pairwise_1.pairwise;
 
 /***/ }),
 
+/***/ "../../../../rxjs/add/operator/startWith.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Observable_1 = __webpack_require__("../../../../rxjs/Observable.js");
+var startWith_1 = __webpack_require__("../../../../rxjs/operator/startWith.js");
+Observable_1.Observable.prototype.startWith = startWith_1.startWith;
+//# sourceMappingURL=startWith.js.map
+
+/***/ }),
+
 /***/ "../../../../rxjs/add/operator/switchMap.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8011,6 +8929,18 @@ var Observable_1 = __webpack_require__("../../../../rxjs/Observable.js");
 var switchMap_1 = __webpack_require__("../../../../rxjs/operator/switchMap.js");
 Observable_1.Observable.prototype.switchMap = switchMap_1.switchMap;
 //# sourceMappingURL=switchMap.js.map
+
+/***/ }),
+
+/***/ "../../../../rxjs/add/operator/takeWhile.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Observable_1 = __webpack_require__("../../../../rxjs/Observable.js");
+var takeWhile_1 = __webpack_require__("../../../../rxjs/operator/takeWhile.js");
+Observable_1.Observable.prototype.takeWhile = takeWhile_1.takeWhile;
+//# sourceMappingURL=takeWhile.js.map
 
 /***/ }),
 
@@ -9431,6 +10361,187 @@ var CatchSubscriber = (function (_super) {
 
 /***/ }),
 
+/***/ "../../../../rxjs/operator/concat.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Observable_1 = __webpack_require__("../../../../rxjs/Observable.js");
+var isScheduler_1 = __webpack_require__("../../../../rxjs/util/isScheduler.js");
+var ArrayObservable_1 = __webpack_require__("../../../../rxjs/observable/ArrayObservable.js");
+var mergeAll_1 = __webpack_require__("../../../../rxjs/operator/mergeAll.js");
+/* tslint:enable:max-line-length */
+/**
+ * Creates an output Observable which sequentially emits all values from every
+ * given input Observable after the current Observable.
+ *
+ * <span class="informal">Concatenates multiple Observables together by
+ * sequentially emitting their values, one Observable after the other.</span>
+ *
+ * <img src="./img/concat.png" width="100%">
+ *
+ * Joins this Observable with multiple other Observables by subscribing to them
+ * one at a time, starting with the source, and merging their results into the
+ * output Observable. Will wait for each Observable to complete before moving
+ * on to the next.
+ *
+ * @example <caption>Concatenate a timer counting from 0 to 3 with a synchronous sequence from 1 to 10</caption>
+ * var timer = Rx.Observable.interval(1000).take(4);
+ * var sequence = Rx.Observable.range(1, 10);
+ * var result = timer.concat(sequence);
+ * result.subscribe(x => console.log(x));
+ *
+ * // results in:
+ * // 1000ms-> 0 -1000ms-> 1 -1000ms-> 2 -1000ms-> 3 -immediate-> 1 ... 10
+ *
+ * @example <caption>Concatenate 3 Observables</caption>
+ * var timer1 = Rx.Observable.interval(1000).take(10);
+ * var timer2 = Rx.Observable.interval(2000).take(6);
+ * var timer3 = Rx.Observable.interval(500).take(10);
+ * var result = timer1.concat(timer2, timer3);
+ * result.subscribe(x => console.log(x));
+ *
+ * // results in the following:
+ * // (Prints to console sequentially)
+ * // -1000ms-> 0 -1000ms-> 1 -1000ms-> ... 9
+ * // -2000ms-> 0 -2000ms-> 1 -2000ms-> ... 5
+ * // -500ms-> 0 -500ms-> 1 -500ms-> ... 9
+ *
+ * @see {@link concatAll}
+ * @see {@link concatMap}
+ * @see {@link concatMapTo}
+ *
+ * @param {ObservableInput} other An input Observable to concatenate after the source
+ * Observable. More than one input Observables may be given as argument.
+ * @param {Scheduler} [scheduler=null] An optional IScheduler to schedule each
+ * Observable subscription on.
+ * @return {Observable} All values of each passed Observable merged into a
+ * single Observable, in order, in serial fashion.
+ * @method concat
+ * @owner Observable
+ */
+function concat() {
+    var observables = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        observables[_i - 0] = arguments[_i];
+    }
+    return this.lift.call(concatStatic.apply(void 0, [this].concat(observables)));
+}
+exports.concat = concat;
+/* tslint:enable:max-line-length */
+/**
+ * Creates an output Observable which sequentially emits all values from given
+ * Observable and then moves on to the next.
+ *
+ * <span class="informal">Concatenates multiple Observables together by
+ * sequentially emitting their values, one Observable after the other.</span>
+ *
+ * <img src="./img/concat.png" width="100%">
+ *
+ * `concat` joins multiple Observables together, by subscribing to them one at a time and
+ * merging their results into the output Observable. You can pass either an array of
+ * Observables, or put them directly as arguments. Passing an empty array will result
+ * in Observable that completes immediately.
+ *
+ * `concat` will subscribe to first input Observable and emit all its values, without
+ * changing or affecting them in any way. When that Observable completes, it will
+ * subscribe to then next Observable passed and, again, emit its values. This will be
+ * repeated, until the operator runs out of Observables. When last input Observable completes,
+ * `concat` will complete as well. At any given moment only one Observable passed to operator
+ * emits values. If you would like to emit values from passed Observables concurrently, check out
+ * {@link merge} instead, especially with optional `concurrent` parameter. As a matter of fact,
+ * `concat` is an equivalent of `merge` operator with `concurrent` parameter set to `1`.
+ *
+ * Note that if some input Observable never completes, `concat` will also never complete
+ * and Observables following the one that did not complete will never be subscribed. On the other
+ * hand, if some Observable simply completes immediately after it is subscribed, it will be
+ * invisible for `concat`, which will just move on to the next Observable.
+ *
+ * If any Observable in chain errors, instead of passing control to the next Observable,
+ * `concat` will error immediately as well. Observables that would be subscribed after
+ * the one that emitted error, never will.
+ *
+ * If you pass to `concat` the same Observable many times, its stream of values
+ * will be "replayed" on every subscription, which means you can repeat given Observable
+ * as many times as you like. If passing the same Observable to `concat` 1000 times becomes tedious,
+ * you can always use {@link repeat}.
+ *
+ * @example <caption>Concatenate a timer counting from 0 to 3 with a synchronous sequence from 1 to 10</caption>
+ * var timer = Rx.Observable.interval(1000).take(4);
+ * var sequence = Rx.Observable.range(1, 10);
+ * var result = Rx.Observable.concat(timer, sequence);
+ * result.subscribe(x => console.log(x));
+ *
+ * // results in:
+ * // 0 -1000ms-> 1 -1000ms-> 2 -1000ms-> 3 -immediate-> 1 ... 10
+ *
+ *
+ * @example <caption>Concatenate an array of 3 Observables</caption>
+ * var timer1 = Rx.Observable.interval(1000).take(10);
+ * var timer2 = Rx.Observable.interval(2000).take(6);
+ * var timer3 = Rx.Observable.interval(500).take(10);
+ * var result = Rx.Observable.concat([timer1, timer2, timer3]); // note that array is passed
+ * result.subscribe(x => console.log(x));
+ *
+ * // results in the following:
+ * // (Prints to console sequentially)
+ * // -1000ms-> 0 -1000ms-> 1 -1000ms-> ... 9
+ * // -2000ms-> 0 -2000ms-> 1 -2000ms-> ... 5
+ * // -500ms-> 0 -500ms-> 1 -500ms-> ... 9
+ *
+ *
+ * @example <caption>Concatenate the same Observable to repeat it</caption>
+ * const timer = Rx.Observable.interval(1000).take(2);
+ *
+ * Rx.Observable.concat(timer, timer) // concating the same Observable!
+ * .subscribe(
+ *   value => console.log(value),
+ *   err => {},
+ *   () => console.log('...and it is done!')
+ * );
+ *
+ * // Logs:
+ * // 0 after 1s
+ * // 1 after 2s
+ * // 0 after 3s
+ * // 1 after 4s
+ * // "...and it is done!" also after 4s
+ *
+ * @see {@link concatAll}
+ * @see {@link concatMap}
+ * @see {@link concatMapTo}
+ *
+ * @param {ObservableInput} input1 An input Observable to concatenate with others.
+ * @param {ObservableInput} input2 An input Observable to concatenate with others.
+ * More than one input Observables may be given as argument.
+ * @param {Scheduler} [scheduler=null] An optional IScheduler to schedule each
+ * Observable subscription on.
+ * @return {Observable} All values of each passed Observable merged into a
+ * single Observable, in order, in serial fashion.
+ * @static true
+ * @name concat
+ * @owner Observable
+ */
+function concatStatic() {
+    var observables = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        observables[_i - 0] = arguments[_i];
+    }
+    var scheduler = null;
+    var args = observables;
+    if (isScheduler_1.isScheduler(args[observables.length - 1])) {
+        scheduler = args.pop();
+    }
+    if (scheduler === null && observables.length === 1 && observables[0] instanceof Observable_1.Observable) {
+        return observables[0];
+    }
+    return new ArrayObservable_1.ArrayObservable(observables, scheduler).lift(new mergeAll_1.MergeAllOperator(1));
+}
+exports.concatStatic = concatStatic;
+//# sourceMappingURL=concat.js.map
+
+/***/ }),
+
 /***/ "../../../../rxjs/operator/concatAll.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9565,6 +10676,121 @@ function concatMap(project, resultSelector) {
 }
 exports.concatMap = concatMap;
 //# sourceMappingURL=concatMap.js.map
+
+/***/ }),
+
+/***/ "../../../../rxjs/operator/distinctUntilChanged.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var Subscriber_1 = __webpack_require__("../../../../rxjs/Subscriber.js");
+var tryCatch_1 = __webpack_require__("../../../../rxjs/util/tryCatch.js");
+var errorObject_1 = __webpack_require__("../../../../rxjs/util/errorObject.js");
+/* tslint:enable:max-line-length */
+/**
+ * Returns an Observable that emits all items emitted by the source Observable that are distinct by comparison from the previous item.
+ *
+ * If a comparator function is provided, then it will be called for each item to test for whether or not that value should be emitted.
+ *
+ * If a comparator function is not provided, an equality check is used by default.
+ *
+ * @example <caption>A simple example with numbers</caption>
+ * Observable.of(1, 1, 2, 2, 2, 1, 1, 2, 3, 3, 4)
+ *   .distinctUntilChanged()
+ *   .subscribe(x => console.log(x)); // 1, 2, 1, 2, 3, 4
+ *
+ * @example <caption>An example using a compare function</caption>
+ * interface Person {
+ *    age: number,
+ *    name: string
+ * }
+ *
+ * Observable.of<Person>(
+ *     { age: 4, name: 'Foo'},
+ *     { age: 7, name: 'Bar'},
+ *     { age: 5, name: 'Foo'})
+ *     { age: 6, name: 'Foo'})
+ *     .distinctUntilChanged((p: Person, q: Person) => p.name === q.name)
+ *     .subscribe(x => console.log(x));
+ *
+ * // displays:
+ * // { age: 4, name: 'Foo' }
+ * // { age: 7, name: 'Bar' }
+ * // { age: 5, name: 'Foo' }
+ *
+ * @see {@link distinct}
+ * @see {@link distinctUntilKeyChanged}
+ *
+ * @param {function} [compare] Optional comparison function called to test if an item is distinct from the previous item in the source.
+ * @return {Observable} An Observable that emits items from the source Observable with distinct values.
+ * @method distinctUntilChanged
+ * @owner Observable
+ */
+function distinctUntilChanged(compare, keySelector) {
+    return this.lift(new DistinctUntilChangedOperator(compare, keySelector));
+}
+exports.distinctUntilChanged = distinctUntilChanged;
+var DistinctUntilChangedOperator = (function () {
+    function DistinctUntilChangedOperator(compare, keySelector) {
+        this.compare = compare;
+        this.keySelector = keySelector;
+    }
+    DistinctUntilChangedOperator.prototype.call = function (subscriber, source) {
+        return source.subscribe(new DistinctUntilChangedSubscriber(subscriber, this.compare, this.keySelector));
+    };
+    return DistinctUntilChangedOperator;
+}());
+/**
+ * We need this JSDoc comment for affecting ESDoc.
+ * @ignore
+ * @extends {Ignored}
+ */
+var DistinctUntilChangedSubscriber = (function (_super) {
+    __extends(DistinctUntilChangedSubscriber, _super);
+    function DistinctUntilChangedSubscriber(destination, compare, keySelector) {
+        _super.call(this, destination);
+        this.keySelector = keySelector;
+        this.hasKey = false;
+        if (typeof compare === 'function') {
+            this.compare = compare;
+        }
+    }
+    DistinctUntilChangedSubscriber.prototype.compare = function (x, y) {
+        return x === y;
+    };
+    DistinctUntilChangedSubscriber.prototype._next = function (value) {
+        var keySelector = this.keySelector;
+        var key = value;
+        if (keySelector) {
+            key = tryCatch_1.tryCatch(this.keySelector)(value);
+            if (key === errorObject_1.errorObject) {
+                return this.destination.error(errorObject_1.errorObject.e);
+            }
+        }
+        var result = false;
+        if (this.hasKey) {
+            result = tryCatch_1.tryCatch(this.compare)(this.key, key);
+            if (result === errorObject_1.errorObject) {
+                return this.destination.error(errorObject_1.errorObject.e);
+            }
+        }
+        else {
+            this.hasKey = true;
+        }
+        if (Boolean(result) === false) {
+            this.key = key;
+            this.destination.next(value);
+        }
+    };
+    return DistinctUntilChangedSubscriber;
+}(Subscriber_1.Subscriber));
+//# sourceMappingURL=distinctUntilChanged.js.map
 
 /***/ }),
 
@@ -11146,6 +12372,59 @@ exports.share = share;
 
 /***/ }),
 
+/***/ "../../../../rxjs/operator/startWith.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var ArrayObservable_1 = __webpack_require__("../../../../rxjs/observable/ArrayObservable.js");
+var ScalarObservable_1 = __webpack_require__("../../../../rxjs/observable/ScalarObservable.js");
+var EmptyObservable_1 = __webpack_require__("../../../../rxjs/observable/EmptyObservable.js");
+var concat_1 = __webpack_require__("../../../../rxjs/operator/concat.js");
+var isScheduler_1 = __webpack_require__("../../../../rxjs/util/isScheduler.js");
+/* tslint:enable:max-line-length */
+/**
+ * Returns an Observable that emits the items you specify as arguments before it begins to emit
+ * items emitted by the source Observable.
+ *
+ * <img src="./img/startWith.png" width="100%">
+ *
+ * @param {...T} values - Items you want the modified Observable to emit first.
+ * @param {Scheduler} [scheduler] - A {@link IScheduler} to use for scheduling
+ * the emissions of the `next` notifications.
+ * @return {Observable} An Observable that emits the items in the specified Iterable and then emits the items
+ * emitted by the source Observable.
+ * @method startWith
+ * @owner Observable
+ */
+function startWith() {
+    var array = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        array[_i - 0] = arguments[_i];
+    }
+    var scheduler = array[array.length - 1];
+    if (isScheduler_1.isScheduler(scheduler)) {
+        array.pop();
+    }
+    else {
+        scheduler = null;
+    }
+    var len = array.length;
+    if (len === 1) {
+        return concat_1.concatStatic(new ScalarObservable_1.ScalarObservable(array[0], scheduler), this);
+    }
+    else if (len > 1) {
+        return concat_1.concatStatic(new ArrayObservable_1.ArrayObservable(array, scheduler), this);
+    }
+    else {
+        return concat_1.concatStatic(new EmptyObservable_1.EmptyObservable(scheduler), this);
+    }
+}
+exports.startWith = startWith;
+//# sourceMappingURL=startWith.js.map
+
+/***/ }),
+
 /***/ "../../../../rxjs/operator/switchMap.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11290,6 +12569,105 @@ var SwitchMapSubscriber = (function (_super) {
     return SwitchMapSubscriber;
 }(OuterSubscriber_1.OuterSubscriber));
 //# sourceMappingURL=switchMap.js.map
+
+/***/ }),
+
+/***/ "../../../../rxjs/operator/takeWhile.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var Subscriber_1 = __webpack_require__("../../../../rxjs/Subscriber.js");
+/**
+ * Emits values emitted by the source Observable so long as each value satisfies
+ * the given `predicate`, and then completes as soon as this `predicate` is not
+ * satisfied.
+ *
+ * <span class="informal">Takes values from the source only while they pass the
+ * condition given. When the first value does not satisfy, it completes.</span>
+ *
+ * <img src="./img/takeWhile.png" width="100%">
+ *
+ * `takeWhile` subscribes and begins mirroring the source Observable. Each value
+ * emitted on the source is given to the `predicate` function which returns a
+ * boolean, representing a condition to be satisfied by the source values. The
+ * output Observable emits the source values until such time as the `predicate`
+ * returns false, at which point `takeWhile` stops mirroring the source
+ * Observable and completes the output Observable.
+ *
+ * @example <caption>Emit click events only while the clientX property is greater than 200</caption>
+ * var clicks = Rx.Observable.fromEvent(document, 'click');
+ * var result = clicks.takeWhile(ev => ev.clientX > 200);
+ * result.subscribe(x => console.log(x));
+ *
+ * @see {@link take}
+ * @see {@link takeLast}
+ * @see {@link takeUntil}
+ * @see {@link skip}
+ *
+ * @param {function(value: T, index: number): boolean} predicate A function that
+ * evaluates a value emitted by the source Observable and returns a boolean.
+ * Also takes the (zero-based) index as the second argument.
+ * @return {Observable<T>} An Observable that emits the values from the source
+ * Observable so long as each value satisfies the condition defined by the
+ * `predicate`, then completes.
+ * @method takeWhile
+ * @owner Observable
+ */
+function takeWhile(predicate) {
+    return this.lift(new TakeWhileOperator(predicate));
+}
+exports.takeWhile = takeWhile;
+var TakeWhileOperator = (function () {
+    function TakeWhileOperator(predicate) {
+        this.predicate = predicate;
+    }
+    TakeWhileOperator.prototype.call = function (subscriber, source) {
+        return source.subscribe(new TakeWhileSubscriber(subscriber, this.predicate));
+    };
+    return TakeWhileOperator;
+}());
+/**
+ * We need this JSDoc comment for affecting ESDoc.
+ * @ignore
+ * @extends {Ignored}
+ */
+var TakeWhileSubscriber = (function (_super) {
+    __extends(TakeWhileSubscriber, _super);
+    function TakeWhileSubscriber(destination, predicate) {
+        _super.call(this, destination);
+        this.predicate = predicate;
+        this.index = 0;
+    }
+    TakeWhileSubscriber.prototype._next = function (value) {
+        var destination = this.destination;
+        var result;
+        try {
+            result = this.predicate(value, this.index++);
+        }
+        catch (err) {
+            destination.error(err);
+            return;
+        }
+        this.nextOrComplete(value, result);
+    };
+    TakeWhileSubscriber.prototype.nextOrComplete = function (value, predicateResult) {
+        var destination = this.destination;
+        if (Boolean(predicateResult)) {
+            destination.next(value);
+        }
+        else {
+            destination.complete();
+        }
+    };
+    return TakeWhileSubscriber;
+}(Subscriber_1.Subscriber));
+//# sourceMappingURL=takeWhile.js.map
 
 /***/ }),
 

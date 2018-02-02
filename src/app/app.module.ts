@@ -30,6 +30,7 @@ import { ModalComponent } from './modal/modal.component';
 
 import { ModalModule } from './modal/modal.module';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { CarouselModule } from 'angular4-carousel';
 import { ImageCropperComponent } from './image-cropper/image-cropper.component';
 import { CapturePicComponent } from './capture-pic/capture-pic.component';
 import { FriendRequestPendingListComponent } from './friend-request-pending-list/friend-request-pending-list.component';
@@ -50,6 +51,12 @@ import { MusicPlayerComponent } from './music-player/music-player.component';
 import { AudioIconComponent } from './audio-icon/audio-icon.component';
 import { AudioAlbumIconComponent } from './audio-album-icon/audio-album-icon.component';
 import { AudioSearchPipe } from './pipes/audio-search.pipe';
+import { PhotosComponent } from './photos/photos.component';
+import { PhotosIconComponent } from './photos-icon/photos-icon.component';
+import { PhotosAlbumIconComponent } from './photos-album-icon/photos-album-icon.component';
+import { PhotosSearchPipe } from './pipes/photos-search.pipe';
+import { PhotosCarouselComponent } from './photos-carousel/photos-carousel.component';
+import { MusicListComponent } from './music-list/music-list.component';
 
 
 
@@ -91,7 +98,13 @@ import { AudioSearchPipe } from './pipes/audio-search.pipe';
     MusicPlayerComponent,
     AudioIconComponent,
     AudioAlbumIconComponent,
-    AudioSearchPipe
+    AudioSearchPipe,
+    PhotosComponent,
+    PhotosIconComponent,
+    PhotosAlbumIconComponent,
+    PhotosSearchPipe,
+    PhotosCarouselComponent,
+    MusicListComponent
   ],
   imports: [
     BrowserModule,
@@ -101,6 +114,7 @@ import { AudioSearchPipe } from './pipes/audio-search.pipe';
     ReactiveFormsModule,
     HttpModule,
     ImageCropperModule,
+    CarouselModule,
     RouterModule.forRoot([
       {
         path: 'public',
@@ -121,7 +135,7 @@ import { AudioSearchPipe } from './pipes/audio-search.pipe';
     ], { useHash: true })
   ],
   providers: [RouteinfoService, ModalService],
-  entryComponents: [AppComponent, LoginComponent, SignupComponent],
+  entryComponents: [AppComponent, LoginComponent, SignupComponent, PhotosCarouselComponent, MusicListComponent],
   bootstrap: [AppComponent]
 })
 

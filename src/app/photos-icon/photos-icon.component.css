@@ -1,4 +1,4 @@
-.audio-icon{
+.photos-icon{
 	width: 100px;
     height: 100px;
     border: 1px solid #2b90d9;
@@ -6,14 +6,14 @@
     background-size: cover !important;
     background-color: #000 !important;
 }
-.audio-icon i{
+.photos-icon i{
 	color: #fff;
     text-align: center;
     margin: 33px 35px;
 }
-.audio-icon:hover{
+.photos-icon:hover{
 	border: 1px solid #fff;
 }
-.audio-icon:hover i{
+.photos-icon:hover i{
 	color: #2b90d9;
 }

@@ -1,10 +1,7 @@
-<div class="audio-container">
-    <canvas id='canvas'></canvas>
-    <audio #audioPlayer id="audio" controls>
-        <source src="{{mp3AudioPath}}" type="audio/mp3">
-        <p>Your browser does not support the HTML5 Audio element.</p>
-    </audio>
-    <div #musicList></div>
+<div class="photos-container">
+    <div style="width: 100%; height: 314px">
+        <div #photosCarousel></div>
+	</div>
       <!-- Video Controls -->
     <!--<div id="video-controls">
         <div><input type="range" min="1" max="100" step="1" value="15" class="colw100 no-outline" id="seek-bar"></div>
@@ -16,34 +13,34 @@
         </div>
     </div>-->
 </div>
-<div class="audio-content">
+<div class="photos-content">
     <div class="title semi-transparent-bg">
         <div class="line-height-sixteen">
             <i class="fa fa-music blue-fonts fa-2x" aria-hidden="true"></i>
-            <span class="blue-fonts medium-fonts">Music</span>
+            <span class="blue-fonts medium-fonts">Photos</span>
         </div>
     </div>
-    <div *ngIf="isAudioAlbum ; then albumAudioUploader"></div>
-    <ng-template #albumAudioUploader>
+    <div *ngIf="isPhotosAlbum ; then albumPhotosUploader"></div>
+    <ng-template #albumPhotosUploader>
         <div class="inline-block semi-transparent-bg colw100">
             <div class="pull-left">
                 <div class="file-input-container">
-                    <form [formGroup]="audioUploadForm" action="/upload" method="post" enctype="multipart/form-data">
-                        <div class="form-group" [formGroup]="audioGroup">
-                            <input type="file" accept="audio/*" class="file-input" name="uploadfile" #fileInput (change)="fileChangeEvent($event, true)"/>
+                    <form [formGroup]="photosUploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                        <div class="form-group" [formGroup]="photosGroup">
+                            <input type="file" accept="image/*" class="file-input" name="uploadfile" #fileInput (change)="fileChangeEvent($event, true)"/>
                         </div>
                     </form>
                 </div>
                 <div class="uplod-new" (click)= "cancelAlbum(null); fileInput.value = ''; fileInput.click();" >
                     <i class="fa fa-upload blue-fonts" aria-hidden="true"></i>
-                    <span class="blue-fonts">Upload New Music</span>
+                    <span class="blue-fonts">Upload New Photo</span>
                 </div>
                 <div class="title-div red-fonts">
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
                     <span>The music will be uploaded to your untitled album.</span>
                 </div>
                 <div class="new-album">
-                    <span class="blue-fonts" (click)="createAudioAlbum($event)">
+                    <span class="blue-fonts" (click)="createPhotosAlbum($event)">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         <span>Create New Album</span>
                     </span>
@@ -90,8 +87,8 @@
         </div>
     </ng-template>
     <div class="inline-block semi-transparent-bg colw100">
-        <div *ngIf="isAudioAlbum ; then audioAlbum"></div>
-        <ng-template #audioAlbum >
+        <div *ngIf="isPhotosAlbum ; then photosAlbum"></div>
+        <ng-template #photosAlbum >
             <div class="album-search-box pull-left colw100">
                 <div class="pull-left">
                     <input class="search-input blue-fonts" type="text" placeholder="Search"  autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" [(ngModel)]="albumText" #searchAlbum/>
@@ -99,38 +96,38 @@
                 <div class="pull-left"><i class="fa fa-search cursor-pointer" aria-hidden="true"></i></div>
             </div>
             <div class="album-icons">
-                <app-audio-album-icon class="pull-left" *ngFor="let item of audioAlbumList | albumSearch : albumText" [item]="item" (click)="searchAlbum.value=''; albumText = '';" (onEditAudioAlbum)="editAudioAlbum($event)" 
-                (onShowAudioList)="showAudioList($event)"></app-audio-album-icon>
+                <app-photos-album-icon class="pull-left" *ngFor="let item of photosAlbumList | albumSearch : albumText" [item]="item" (click)="searchAlbum.value=''; albumText = '';" (onEditPhotosAlbum)="editPhotosAlbum($event)" 
+                (onShowPhotosList)="showPhotosList($event)"></app-photos-album-icon>
             </div>
         </ng-template>
-        <div *ngIf="isAlbumAudio ; then albumAudio"></div>
-        <ng-template #albumAudio >
-            <div class="audio-search-box pull-left colw100">
+        <div *ngIf="isAlbumPhotos ; then albumPhotos"></div>
+        <ng-template #albumPhotos >
+            <div class="photos-search-box pull-left colw100">
                 <div class="pull-left">
                     <!--<input class="search-input blue-fonts" type="text" placeholder="Search"  autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" [(ngModel)]="videoText" #searchVideo/>-->
                     <div class="cursor-pointer blue-fonts" (click)="goToMyAlbum($event)">{{albumTitle}}</div>
                 </div>
                 <!--<div class="pull-left"><i class="fa fa-search cursor-pointer" aria-hidden="true"></i></div>-->
             </div>
-            <div class="audio-uploader">
+            <div class="photos-uploader">
                 <div class="file-input-container">
-                    <form [formGroup]="audioUploadForm" action="/upload" method="post" enctype="multipart/form-data">
-                        <div class="form-group" [formGroup]="audioGroup">
-                            <input type="file" accept="audio/*" class="audio-input" name="uploadfile" #audioInput (change)="fileChangeEvent($event, false)"/>
+                    <form [formGroup]="photosUploadForm" action="/upload" method="post" enctype="multipart/form-data">
+                        <div class="form-group" [formGroup]="photosGroup">
+                            <input type="file" accept="image/*" class="photos-input" name="uploadfile" #photosInput (change)="fileChangeEvent($event, false)"/>
                         </div>
                     </form>
                 </div>
-                <div class="uplod-new" (click)= "audioInput.value = ''; audioInput.click();" >
+                <div class="uplod-new" (click)= "photosInput.value = ''; photosInput.click();" >
                     <i class="fa fa-upload blue-fonts" aria-hidden="true"></i>
-                    <span class="blue-fonts">Add New Audios.</span>
+                    <span class="blue-fonts">Add New Photos.</span>
                 </div>
                 <div class="title-div red-fonts">
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
-                    <span>The audio will be uploaded to this album.</span>
+                    <span>The photo will be uploaded to this album.</span>
                 </div>
             </div>
             <div class="album-icons">
-                <app-audio-icon (click)="playAudio(item)" class="pull-left" *ngFor="let item of audioList | audioSearch : audioText" [item]="item"></app-audio-icon>
+                <app-photos-icon (click)="playAudio(item)" class="pull-left" *ngFor="let item of photosList | photosSearch : photosText" [item]="item"></app-photos-icon>
             </div>
         </ng-template>
     </div>

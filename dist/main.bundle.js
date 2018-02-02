@@ -213,26 +213,33 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__coverpic_coverpic_component__ = __webpack_require__("../../../../../src/app/coverpic/coverpic.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__modal_modal_component__ = __webpack_require__("../../../../../src/app/modal/modal.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_ngx_image_cropper__ = __webpack_require__("../../../../ngx-image-cropper/ngx-image-cropper/ngx-image-cropper.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__image_cropper_image_cropper_component__ = __webpack_require__("../../../../../src/app/image-cropper/image-cropper.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__capture_pic_capture_pic_component__ = __webpack_require__("../../../../../src/app/capture-pic/capture-pic.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__friend_request_pending_list_friend_request_pending_list_component__ = __webpack_require__("../../../../../src/app/friend-request-pending-list/friend-request-pending-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__chat_chat_component__ = __webpack_require__("../../../../../src/app/chat/chat.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__chat_item_chat_item_component__ = __webpack_require__("../../../../../src/app/chat-item/chat-item.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__chat_window_chat_window_component__ = __webpack_require__("../../../../../src/app/chat-window/chat-window.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pipes_chat_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/chat-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__video_video_component__ = __webpack_require__("../../../../../src/app/video/video.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__avchat_avchat_component__ = __webpack_require__("../../../../../src/app/avchat/avchat.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__entertainment_entertainment_component__ = __webpack_require__("../../../../../src/app/entertainment/entertainment.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__video_player_video_player_component__ = __webpack_require__("../../../../../src/app/video-player/video-player.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__ad_ad_component__ = __webpack_require__("../../../../../src/app/ad/ad.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__video_album_icon_video_album_icon_component__ = __webpack_require__("../../../../../src/app/video-album-icon/video-album-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__pipes_album_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/album-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__video_icon_video_icon_component__ = __webpack_require__("../../../../../src/app/video-icon/video-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pipes_video_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/video-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__music_player_music_player_component__ = __webpack_require__("../../../../../src/app/music-player/music-player.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__audio_icon_audio_icon_component__ = __webpack_require__("../../../../../src/app/audio-icon/audio-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__audio_album_icon_audio_album_icon_component__ = __webpack_require__("../../../../../src/app/audio-album-icon/audio-album-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__pipes_audio_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/audio-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_angular4_carousel__ = __webpack_require__("../../../../angular4-carousel/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__image_cropper_image_cropper_component__ = __webpack_require__("../../../../../src/app/image-cropper/image-cropper.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__capture_pic_capture_pic_component__ = __webpack_require__("../../../../../src/app/capture-pic/capture-pic.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__friend_request_pending_list_friend_request_pending_list_component__ = __webpack_require__("../../../../../src/app/friend-request-pending-list/friend-request-pending-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__chat_chat_component__ = __webpack_require__("../../../../../src/app/chat/chat.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__chat_item_chat_item_component__ = __webpack_require__("../../../../../src/app/chat-item/chat-item.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__chat_window_chat_window_component__ = __webpack_require__("../../../../../src/app/chat-window/chat-window.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pipes_chat_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/chat-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__video_video_component__ = __webpack_require__("../../../../../src/app/video/video.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__avchat_avchat_component__ = __webpack_require__("../../../../../src/app/avchat/avchat.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__entertainment_entertainment_component__ = __webpack_require__("../../../../../src/app/entertainment/entertainment.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__video_player_video_player_component__ = __webpack_require__("../../../../../src/app/video-player/video-player.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__ad_ad_component__ = __webpack_require__("../../../../../src/app/ad/ad.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__video_album_icon_video_album_icon_component__ = __webpack_require__("../../../../../src/app/video-album-icon/video-album-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pipes_album_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/album-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__video_icon_video_icon_component__ = __webpack_require__("../../../../../src/app/video-icon/video-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pipes_video_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/video-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__music_player_music_player_component__ = __webpack_require__("../../../../../src/app/music-player/music-player.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__audio_icon_audio_icon_component__ = __webpack_require__("../../../../../src/app/audio-icon/audio-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__audio_album_icon_audio_album_icon_component__ = __webpack_require__("../../../../../src/app/audio-album-icon/audio-album-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__pipes_audio_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/audio-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__photos_photos_component__ = __webpack_require__("../../../../../src/app/photos/photos.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__photos_icon_photos_icon_component__ = __webpack_require__("../../../../../src/app/photos-icon/photos-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__photos_album_icon_photos_album_icon_component__ = __webpack_require__("../../../../../src/app/photos-album-icon/photos-album-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pipes_photos_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/photos-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__photos_carousel_photos_carousel_component__ = __webpack_require__("../../../../../src/app/photos-carousel/photos-carousel.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__music_list_music_list_component__ = __webpack_require__("../../../../../src/app/music-list/music-list.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -276,7 +283,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 ;
+
+
+
+
+
+
 
 
 
@@ -310,26 +324,32 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_21__profile_profile_component__["a" /* ProfileComponent */],
             __WEBPACK_IMPORTED_MODULE_22__coverpic_coverpic_component__["a" /* CoverpicComponent */],
             __WEBPACK_IMPORTED_MODULE_23__modal_modal_component__["a" /* ModalComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__image_cropper_image_cropper_component__["a" /* ImageCropperComponent */],
-            __WEBPACK_IMPORTED_MODULE_26__capture_pic_capture_pic_component__["a" /* CapturePicComponent */],
-            __WEBPACK_IMPORTED_MODULE_27__friend_request_pending_list_friend_request_pending_list_component__["a" /* FriendRequestPendingListComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__chat_chat_component__["a" /* ChatComponent */],
-            __WEBPACK_IMPORTED_MODULE_29__chat_item_chat_item_component__["a" /* ChatItemComponent */],
-            __WEBPACK_IMPORTED_MODULE_31__pipes_chat_search_pipe__["a" /* ChatSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_30__chat_window_chat_window_component__["a" /* ChatWindowComponent */],
-            __WEBPACK_IMPORTED_MODULE_32__video_video_component__["a" /* VideoComponent */],
-            __WEBPACK_IMPORTED_MODULE_33__avchat_avchat_component__["a" /* AvchatComponent */],
-            __WEBPACK_IMPORTED_MODULE_34__entertainment_entertainment_component__["a" /* EntertainmentComponent */],
-            __WEBPACK_IMPORTED_MODULE_35__video_player_video_player_component__["a" /* VideoPlayerComponent */],
-            __WEBPACK_IMPORTED_MODULE_36__ad_ad_component__["a" /* AdComponent */],
-            __WEBPACK_IMPORTED_MODULE_37__video_album_icon_video_album_icon_component__["a" /* VideoAlbumIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_38__pipes_album_search_pipe__["a" /* AlbumSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_39__video_icon_video_icon_component__["a" /* VideoIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_40__pipes_video_search_pipe__["a" /* VideoSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_41__music_player_music_player_component__["a" /* MusicPlayerComponent */],
-            __WEBPACK_IMPORTED_MODULE_42__audio_icon_audio_icon_component__["a" /* AudioIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_43__audio_album_icon_audio_album_icon_component__["a" /* AudioAlbumIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_44__pipes_audio_search_pipe__["a" /* AudioSearchPipe */]
+            __WEBPACK_IMPORTED_MODULE_26__image_cropper_image_cropper_component__["a" /* ImageCropperComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__capture_pic_capture_pic_component__["a" /* CapturePicComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__friend_request_pending_list_friend_request_pending_list_component__["a" /* FriendRequestPendingListComponent */],
+            __WEBPACK_IMPORTED_MODULE_29__chat_chat_component__["a" /* ChatComponent */],
+            __WEBPACK_IMPORTED_MODULE_30__chat_item_chat_item_component__["a" /* ChatItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_32__pipes_chat_search_pipe__["a" /* ChatSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_31__chat_window_chat_window_component__["a" /* ChatWindowComponent */],
+            __WEBPACK_IMPORTED_MODULE_33__video_video_component__["a" /* VideoComponent */],
+            __WEBPACK_IMPORTED_MODULE_34__avchat_avchat_component__["a" /* AvchatComponent */],
+            __WEBPACK_IMPORTED_MODULE_35__entertainment_entertainment_component__["a" /* EntertainmentComponent */],
+            __WEBPACK_IMPORTED_MODULE_36__video_player_video_player_component__["a" /* VideoPlayerComponent */],
+            __WEBPACK_IMPORTED_MODULE_37__ad_ad_component__["a" /* AdComponent */],
+            __WEBPACK_IMPORTED_MODULE_38__video_album_icon_video_album_icon_component__["a" /* VideoAlbumIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_39__pipes_album_search_pipe__["a" /* AlbumSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_40__video_icon_video_icon_component__["a" /* VideoIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_41__pipes_video_search_pipe__["a" /* VideoSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_42__music_player_music_player_component__["a" /* MusicPlayerComponent */],
+            __WEBPACK_IMPORTED_MODULE_43__audio_icon_audio_icon_component__["a" /* AudioIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_44__audio_album_icon_audio_album_icon_component__["a" /* AudioAlbumIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_45__pipes_audio_search_pipe__["a" /* AudioSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_46__photos_photos_component__["a" /* PhotosComponent */],
+            __WEBPACK_IMPORTED_MODULE_47__photos_icon_photos_icon_component__["a" /* PhotosIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_48__photos_album_icon_photos_album_icon_component__["a" /* PhotosAlbumIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_49__pipes_photos_search_pipe__["a" /* PhotosSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_50__photos_carousel_photos_carousel_component__["a" /* PhotosCarouselComponent */],
+            __WEBPACK_IMPORTED_MODULE_51__music_list_music_list_component__["a" /* MusicListComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -339,6 +359,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* ReactiveFormsModule */],
             __WEBPACK_IMPORTED_MODULE_5__angular_http__["c" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_24_ngx_image_cropper__["a" /* ImageCropperModule */],
+            __WEBPACK_IMPORTED_MODULE_25_angular4_carousel__["b" /* CarouselModule */],
             __WEBPACK_IMPORTED_MODULE_6__angular_router__["d" /* RouterModule */].forRoot([
                 {
                     path: 'public',
@@ -354,12 +375,12 @@ AppModule = __decorate([
                 },
                 {
                     path: 'entertainment/:id',
-                    component: __WEBPACK_IMPORTED_MODULE_34__entertainment_entertainment_component__["a" /* EntertainmentComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_35__entertainment_entertainment_component__["a" /* EntertainmentComponent */]
                 }
             ], { useHash: true })
         ],
         providers: [__WEBPACK_IMPORTED_MODULE_7_app_services_shareobject_routeinfo_service__["a" /* RouteinfoService */], __WEBPACK_IMPORTED_MODULE_8_app_modal_modal_service__["a" /* ModalService */]],
-        entryComponents: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_11__login_login_component__["a" /* LoginComponent */], __WEBPACK_IMPORTED_MODULE_12__signup_signup_component__["a" /* SignupComponent */]],
+        entryComponents: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_11__login_login_component__["a" /* LoginComponent */], __WEBPACK_IMPORTED_MODULE_12__signup_signup_component__["a" /* SignupComponent */], __WEBPACK_IMPORTED_MODULE_50__photos_carousel_photos_carousel_component__["a" /* PhotosCarouselComponent */], __WEBPACK_IMPORTED_MODULE_51__music_list_music_list_component__["a" /* MusicListComponent */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -458,7 +479,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".audio-icon{\n\twidth: 100px;\n    height: 100px;\n    border: 1px solid #2b90d9;\n    margin: 10px 5px 0px 0px;\n    background-size: cover !important;\n}\n.audio-icon i{\n\tcolor: #fff;\n    text-align: center;\n    margin: 33px 35px;\n}\n.audio-icon:hover{\n\tborder: 1px solid #fff;\n}\n.audio-icon:hover i{\n\tcolor: #2b90d9;\n}\n", ""]);
+exports.push([module.i, ".audio-icon{\n\twidth: 100px;\n    height: 100px;\n    border: 1px solid #2b90d9;\n    margin: 10px 5px 0px 0px;\n    background-size: cover !important;\n    background-color: #000 !important;\n}\n.audio-icon i{\n\tcolor: #fff;\n    text-align: center;\n    margin: 33px 35px;\n}\n.audio-icon:hover{\n\tborder: 1px solid #fff;\n}\n.audio-icon:hover i{\n\tcolor: #2b90d9;\n}\n", ""]);
 
 // exports
 
@@ -1802,7 +1823,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".video-content{\n\tpadding: 5px;\n}\n.left-nav{\n\tpadding: 5px;\n}\n.left-nav .nav-item{\n\tpadding: 2px;\n}\n.left-nav .nav-item:hover{\n\tbackground: #2b90d9;\n\tcursor: pointer;\n}\n.left-nav .nav-item:hover i, .left-nav .nav-item:hover span{\n\tcolor: #fff !important;\n\t\n}\n\n.highlight-nav{\n\tbackground: #2b90d9;\n}\n.highlight-nav i, .highlight-nav span{\n\tcolor: #fff !important;\n}", ""]);
+exports.push([module.i, ".video-content{\n\tpadding: 5px;\n}\n.left-nav{\n\tpadding: 5px;\n}\n.left-nav .nav-item{\n\tpadding: 2px;\n}\n.left-nav .nav-item:hover{\n\tbackground: #2b90d9;\n\tcursor: pointer;\n\topacity: 0.5;\n}\n.left-nav .nav-item:hover i, .left-nav .nav-item:hover span{\n\tcolor: #fff !important;\n\t\n}\n\n.highlight-nav{\n\tbackground: #2b90d9;\n}\n.highlight-nav:hover{\n\topacity: 1 !important;\n\tcursor: default !important;\n}\n.highlight-nav i, .highlight-nav span{\n\tcolor: #fff !important;\n}", ""]);
 
 // exports
 
@@ -1815,7 +1836,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/entertainment/entertainment.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container top-margin bottom-margin\">\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\t\t\t<div class=\"opaque-bg no-padding\">\n\t\t\t\t<app-profile-area></app-profile-area>\n\t\t\t\t<div class=\"left-nav\">\n\t\t\t\t\t<div class=\"nav-item highlight-nav\" (click)=\"switchVideo($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-file-video-o blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Videos</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\" (click)=\"switchMusic($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-music blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Music</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\"><i class=\"fa fa-file-image-o blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Photos</span> \n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-list-alt blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Play List</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Album</span>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 no-padding\">\n\t\t\t<div class=\"opaque-bg video-content\">\n\t\t\t\t<ng-template [ngIf]=\"isVideo\">\n\t\t\t\t\t<app-video-player></app-video-player>\n\t\t\t\t</ng-template>\t\n\t\t\t\t<ng-template [ngIf]=\"isMusic\">\n\t\t\t\t\t<app-music-player></app-music-player>\n\t\t\t\t</ng-template>\t\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3 info-panel\">\n\t\t\t<div class=\"opaque-bg\">\n\t\t\t\t<app-info-panel></app-info-panel>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container top-margin bottom-margin\">\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\t\t\t<div class=\"opaque-bg no-padding\">\n\t\t\t\t<app-profile-area></app-profile-area>\n\t\t\t\t<div class=\"left-nav\">\n\t\t\t\t\t<div class=\"nav-item\" (click)=\"switchVideo($event)\" [ngClass]=\"(isHighLightVideos ? 'highlight-nav' : '')\">\n\t\t\t\t\t\t<i class=\"fa fa-file-video-o blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Videos</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\" [ngClass]=\"(isHighLightMusic ? 'highlight-nav' : '')\" (click)=\"switchMusic($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-music blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Music</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\" [ngClass]=\"(isHighLightPhotos ? 'highlight-nav' : '')\" (click)=\"switchPhotos($event)\"><i class=\"fa fa-file-image-o blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Photos</span> \n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-list-alt blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Play List</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Album</span>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 no-padding\">\n\t\t\t<div class=\"opaque-bg video-content\">\n\t\t\t\t<ng-template [ngIf]=\"isVideo\">\n\t\t\t\t\t<app-video-player></app-video-player>\n\t\t\t\t</ng-template>\t\n\t\t\t\t<ng-template [ngIf]=\"isMusic\">\n\t\t\t\t\t<app-music-player></app-music-player>\n\t\t\t\t</ng-template>\t\n\t\t\t\t<ng-template [ngIf]=\"isPhotos\">\n\t\t\t\t\t<app-photos></app-photos>\n\t\t\t\t</ng-template>\t\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3 info-panel\">\n\t\t\t<div class=\"opaque-bg\">\n\t\t\t\t<app-info-panel></app-info-panel>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -1849,6 +1870,10 @@ var EntertainmentComponent = (function () {
         this.friendId = '';
         this.isVideo = true;
         this.isMusic = false;
+        this.isPhotos = false;
+        this.isHighLightVideos = true;
+        this.isHighLightMusic = false;
+        this.isHighLightPhotos = false;
         route.params.subscribe(function (val) {
             var currentUser = localStorage.getItem('currentUser');
             var id = _this.route.snapshot.paramMap.get('id');
@@ -1887,11 +1912,27 @@ var EntertainmentComponent = (function () {
     };
     EntertainmentComponent.prototype.switchVideo = function (event) {
         this.isVideo = true;
+        this.isPhotos = false;
         this.isMusic = false;
+        this.isHighLightVideos = true;
+        this.isHighLightMusic = false;
+        this.isHighLightPhotos = false;
     };
     EntertainmentComponent.prototype.switchMusic = function (event) {
         this.isVideo = false;
+        this.isPhotos = false;
         this.isMusic = true;
+        this.isHighLightVideos = false;
+        this.isHighLightPhotos = false;
+        this.isHighLightMusic = true;
+    };
+    EntertainmentComponent.prototype.switchPhotos = function (event) {
+        this.isVideo = false;
+        this.isMusic = false;
+        this.isPhotos = true;
+        this.isHighLightVideos = false;
+        this.isHighLightPhotos = true;
+        this.isHighLightMusic = false;
     };
     return EntertainmentComponent;
 }());
@@ -2816,6 +2857,87 @@ ModalService = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/music-list/music-list.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/music-list/music-list.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"player-controls\" style=\"background-color: #f00;\n    /* margin-top: -30px; */\n    position: absolute;\n    right: 10px;\n    top: 10px;\n    width: 102px;\">\n\t<div class=\"pull-left\"><i class=\"fa fa-step-backward\"></i></div>\n\t<div class=\"pull-left\"><i class=\"fa fa-play\"></i></div>\n\t<div class=\"pull-left\"><i class=\"fa fa-step-forward\"></i></div>\n</div>\n<div #musicPlayList classs=\"music-play-list\" \n\tstyle=\"background-color: rgba(43, 144, 217, 0);\n    \tdisplay: inline-block;\n    \tbox-sizing: border-box;\n    \twidth: 102px;\n    \ttext-overflow: ellipsis;\n    \toverflow-y: auto;\n    \ttext-align: left;\n    \tborder-bottom: none;\n    \tposition: absolute;\n    \tborder-bottom: 1px solid #fff;\n    \ttop: 30px;\n    \tright: 10px;\">\n\t<div class=\"music-list\"  *ngFor=\"let item of musicSource\">\n\t\t<div class=\"row no-margin pull-left inline-block hand-cursor item-row\" (click)=\"musicListItemClick($event)\"\n\t\t\tstyle=\"border: 1px solid #fff; border-bottom: none;\">\n\t\t\t<div class=\"row no-margin white-fonts red-highlight music-name pull-right\">\n\t\t\t\t<span style=\"white-space: nowrap;\n    \t\t\t\ttext-overflow: ellipsis;\n    \t\t\t\toverflow: hidden;\n    \t\t\t\tdisplay: block;\n    \t\t\t\tpadding: 0px 4px;\n    \t\t\t\twidth: 100px;\n    \t\t\t\tmax-height: 267px;\">\n    \t\t\t\t{{item}}\n\t    \t\t</span>\n\t    \t</div> \n\t\t</div>\n\t</div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/music-list/music-list.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MusicListComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MusicListComponent = (function () {
+    function MusicListComponent(el) {
+        this.el = el;
+    }
+    MusicListComponent.prototype.ngOnInit = function () {
+    };
+    MusicListComponent.prototype.ngAfterViewInit = function () {
+        var cutOffHeight = 100;
+        var playListHeight = this.musicPlayList.nativeElement.offsetHeight;
+        var hostElem = this.el.nativeElement;
+        var playListContentHeight = hostElem.parentNode.offsetHeight;
+        if (playListHeight >= (playListContentHeight - cutOffHeight)) {
+            playListHeight = playListContentHeight - cutOffHeight;
+            this.musicPlayList.nativeElement.style.height = playListHeight + 'px';
+        }
+    };
+    return MusicListComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('musicPlayList'),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object)
+], MusicListComponent.prototype, "musicPlayList", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('musicSource'),
+    __metadata("design:type", Object)
+], MusicListComponent.prototype, "musicSource", void 0);
+MusicListComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-music-list',
+        template: __webpack_require__("../../../../../src/app/music-list/music-list.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/music-list/music-list.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _b || Object])
+], MusicListComponent);
+
+var _a, _b;
+//# sourceMappingURL=music-list.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/music-player/music-player.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2824,7 +2946,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#audio{\n\twidth: 100%;\n}\n.audio-content{\n\tpadding: 15px 0px;\n}\n\n.uplod-new:hover, .new-album:hover{\n\tcursor: pointer;\n}\n.uplod-new:hover span, .uplod-new:hover i, .new-album:hover span, .new-album:hover i {\n\tcolor: #fff !important;\n}\n.file-input-container{\n\tdisplay: none;\n}\n#progressBar{\n\twidth: 250px;\n}\n.under-line{\n\ttext-decoration: underline;\n}\n.search-input{\n    line-height: 25px;\n    height: 25px;\n    display: block;\n    width: 154px;\n    border: none;\n    outline: none;\n    border: 1px solid #2b90d9;\n    border-radius: 2px;\n    border-top-right-radius: 0px;\n    border-bottom-right-radius: 0px;\n    background: none;\n}\n.fa-search{\n    float: right;\n    color: #2b90d9 !important;\n    font-size: 15px;\n    line-height: 23px;\n    background: #f5f8fa;\n    padding: 0px 3px;\n    border: 1px solid #2b90d9;\n    border-left: none;\n    border-radius: 2px;\n    border-top-left-radius: 0px;\n    border-bottom-left-radius: 0px;\n}\ntextarea.form-control{\n\theight: 100px !important;\n}\napp-audio-album-icon{\n\twidth: 100px;\n    height: 100px;\n    border: 1px solid #2b90d9;\n    margin: 10px 5px 0px 0px;\n}\n.audio-container, #canvas{\n    max-height: 314px;\n    width: 100%;\n    background: #000;\n}\n::-webkit-input-placeholder { /* Chrome/Opera/Safari */\n  color: #2b90d9;\n}\n::-moz-placeholder { /* Firefox 19+ */\n  color: #2b90d9;\n}\n:-ms-input-placeholder { /* IE 10+ */\n  color: #2b90d9;\n}\n:-moz-placeholder { /* Firefox 18- */\n  color: #2b90d9;\n}\n", ""]);
+exports.push([module.i, "#audio{\n\twidth: 100%;\n}\n.audio-content{\n\tpadding: 15px 0px;\n}\n\n.uplod-new:hover, .new-album:hover{\n\tcursor: pointer;\n}\n.uplod-new:hover span, .uplod-new:hover i, .new-album:hover span, .new-album:hover i {\n\tcolor: #fff !important;\n}\n.file-input-container{\n\tdisplay: none;\n}\n#progressBar{\n\twidth: 250px;\n}\n.under-line{\n\ttext-decoration: underline;\n}\n.search-input{\n    line-height: 25px;\n    height: 25px;\n    display: block;\n    width: 154px;\n    border: none;\n    outline: none;\n    border: 1px solid #2b90d9;\n    border-radius: 2px;\n    border-top-right-radius: 0px;\n    border-bottom-right-radius: 0px;\n    background: none;\n}\n.fa-search{\n    float: right;\n    color: #2b90d9 !important;\n    font-size: 15px;\n    line-height: 23px;\n    background: #f5f8fa;\n    padding: 0px 3px;\n    border: 1px solid #2b90d9;\n    border-left: none;\n    border-radius: 2px;\n    border-top-left-radius: 0px;\n    border-bottom-left-radius: 0px;\n}\ntextarea.form-control{\n\theight: 100px !important;\n}\napp-audio-album-icon{\n\twidth: 100px;\n    height: 100px;\n    border: 1px solid #2b90d9;\n    margin: 10px 5px 0px 0px;\n}\n.music-play-list{\n    max-height: 314px;\n    width: 50px;\n    background: #ff0000;\n    display: inline-block;\n    position: absolute;\n    top: 10px;\n    right: 10px;\n    height: 275px;\n    background-color: #2b90d9;\n}\n.audio-container, #canvas{\n    max-height: 314px;\n    width: 100%;\n    background: #000;\n}\n::-webkit-input-placeholder { /* Chrome/Opera/Safari */\n  color: #2b90d9;\n}\n::-moz-placeholder { /* Firefox 19+ */\n  color: #2b90d9;\n}\n:-ms-input-placeholder { /* IE 10+ */\n  color: #2b90d9;\n}\n:-moz-placeholder { /* Firefox 18- */\n  color: #2b90d9;\n}\n", ""]);
 
 // exports
 
@@ -2837,7 +2959,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/music-player/music-player.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"audio-container\">\n    <canvas id='canvas'></canvas>\n    <audio #audioPlayer id=\"audio\" controls>\n        <source src=\"{{mp3AudioPath}}\" type=\"audio/mp3\">\n        <p>Your browser does not support the HTML5 Audio element.</p>\n    </audio>\n      <!-- Video Controls -->\n    <!--<div id=\"video-controls\">\n        <div><input type=\"range\" min=\"1\" max=\"100\" step=\"1\" value=\"15\" class=\"colw100 no-outline\" id=\"seek-bar\"></div>\n        <div>\n            <i id=\"play-pause\" class=\"fa fa-play-circle fa-2x blue-fonts\"></i>    \n            <button type=\"button\" id=\"mute\">Mute</button>\n            <input type=\"range\" id=\"volumeBar\" min=\"0\" max=\"1\" step=\"0.1\" value=\"1\">\n            <button type=\"button\" id=\"full-screen\">Full-Screen</button>\n        </div>\n    </div>-->\n</div>\n<div class=\"audio-content\">\n    <div class=\"title semi-transparent-bg\">\n        <div class=\"line-height-sixteen\">\n            <i class=\"fa fa-music blue-fonts fa-2x\" aria-hidden=\"true\"></i>\n            <span class=\"blue-fonts medium-fonts\">Music</span>\n        </div>\n    </div>\n    <div *ngIf=\"isAudioAlbum ; then albumAudioUploader\"></div>\n    <ng-template #albumAudioUploader>\n        <div class=\"inline-block semi-transparent-bg colw100\">\n            <div class=\"pull-left\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"audioUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"audioGroup\">\n                            <input type=\"file\" accept=\"audio/*\" class=\"file-input\" name=\"uploadfile\" #fileInput (change)=\"fileChangeEvent($event, true)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"cancelAlbum(null); fileInput.value = ''; fileInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Upload New Music</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The music will be uploaded to your untitled album.</span>\n                </div>\n                <div class=\"new-album\">\n                    <span class=\"blue-fonts\" (click)=\"createAudioAlbum($event)\">\n                        <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>\n                        <span>Create New Album</span>\n                    </span>\n                </div>\n                <div *ngIf=\"isCreateAlbum ; then createAlbum\"></div>\n                <ng-template #createAlbum >\n                    <form [formGroup]=\"albumForm\">\n                        <div class=\"form-group\">\n                            <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" aria-describedby=\"emailHelp\" placeholder=\"title\" formControlName=\"albumTitle\" id=\"albumTitle\" [(ngModel)]=\"albumTitle\">\n                            <app-control-messages [control]=\"albumForm.controls.albumTitle\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group\">\n                            <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" formControlName=\"albumDesc\" id=\"albumDesc\" [(ngModel)]=\"albumDesc\">\n                            </textarea>\n                            <app-control-messages [control]=\"albumForm.controls.albumDesc\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group row justify-content-center align-items-center no-margin\">\n                            <button id=\"loginBtn\" type=\"button\" class=\"btn btn-primary\" (click)=\"cancelAlbum()\" >\n                                <i class=\"fa fa-times no-margin\" aria-hidden=\"true\"></i>\n                                <span>Cancel</span>\n                            </button>\n                            <div *ngIf=\"isAddAlbum ; then addBtn\"></div>\n                            <ng-template #addBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"createAlbumInfo($event)\">\n                                    <span>Create</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                            <div *ngIf=\"isUpdateAlbum ; then updateBtn\"></div>\n                            <ng-template #updateBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"updateAlbumInfo($event)\">\n                                    <span>Edit</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                        </div>\n                        <div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n                            <div class=\"server-msg text-center\">{{serverMessage}}</div>\n                        </div>\n                    </form>\n                </ng-template>\n                <progress value=\"0\" max=\"100\" id=\"progressBar\" [value]=\"uploadProgress\" [hidden]=\"!isProgress\"></progress>\n            </div>\n        </div>\n    </ng-template>\n    <div class=\"inline-block semi-transparent-bg colw100\">\n        <div *ngIf=\"isAudioAlbum ; then audioAlbum\"></div>\n        <ng-template #audioAlbum >\n            <div class=\"album-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n                </div>\n                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n            </div>\n            <div class=\"album-icons\">\n                <app-audio-album-icon class=\"pull-left\" *ngFor=\"let item of audioAlbumList | albumSearch : albumText\" [item]=\"item\" (click)=\"searchAlbum.value=''; albumText = '';\" (onEditAudioAlbum)=\"editAudioAlbum($event)\" \n                (onShowAudioList)=\"showAudioList($event)\"></app-audio-album-icon>\n            </div>\n        </ng-template>\n        <div *ngIf=\"isAlbumAudio ; then albumAudio\"></div>\n        <ng-template #albumAudio >\n            <div class=\"audio-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <!--<input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"videoText\" #searchVideo/>-->\n                    <div class=\"cursor-pointer blue-fonts\" (click)=\"goToMyAlbum($event)\">{{albumTitle}}</div>\n                </div>\n                <!--<div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>-->\n            </div>\n            <div class=\"audio-uploader\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"audioUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"audioGroup\">\n                            <input type=\"file\" accept=\"audio/*\" class=\"audio-input\" name=\"uploadfile\" #audioInput (change)=\"fileChangeEvent($event, false)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"audioInput.value = ''; audioInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Add New Audios.</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The audio will be uploaded to this album.</span>\n                </div>\n            </div>\n            <div class=\"album-icons\">\n                <app-audio-icon (click)=\"playAudio(item)\" class=\"pull-left\" *ngFor=\"let item of audioList | audioSearch : audioText\" [item]=\"item\"></app-audio-icon>\n            </div>\n        </ng-template>\n    </div>\n</div>"
+module.exports = "<div class=\"audio-container\">\n    <canvas id='canvas'></canvas>\n    <audio #audioPlayer id=\"audio\" controls>\n        <source src=\"{{mp3AudioPath}}\" type=\"audio/mp3\">\n        <p>Your browser does not support the HTML5 Audio element.</p>\n    </audio>\n    <div #musicList></div>\n      <!-- Video Controls -->\n    <!--<div id=\"video-controls\">\n        <div><input type=\"range\" min=\"1\" max=\"100\" step=\"1\" value=\"15\" class=\"colw100 no-outline\" id=\"seek-bar\"></div>\n        <div>\n            <i id=\"play-pause\" class=\"fa fa-play-circle fa-2x blue-fonts\"></i>    \n            <button type=\"button\" id=\"mute\">Mute</button>\n            <input type=\"range\" id=\"volumeBar\" min=\"0\" max=\"1\" step=\"0.1\" value=\"1\">\n            <button type=\"button\" id=\"full-screen\">Full-Screen</button>\n        </div>\n    </div>-->\n</div>\n<div class=\"audio-content\">\n    <div class=\"title semi-transparent-bg\">\n        <div class=\"line-height-sixteen\">\n            <i class=\"fa fa-music blue-fonts fa-2x\" aria-hidden=\"true\"></i>\n            <span class=\"blue-fonts medium-fonts\">Music</span>\n        </div>\n    </div>\n    <div *ngIf=\"isAudioAlbum ; then albumAudioUploader\"></div>\n    <ng-template #albumAudioUploader>\n        <div class=\"inline-block semi-transparent-bg colw100\">\n            <div class=\"pull-left\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"audioUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"audioGroup\">\n                            <input type=\"file\" accept=\"audio/*\" class=\"file-input\" name=\"uploadfile\" #fileInput (change)=\"fileChangeEvent($event, true)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"cancelAlbum(null); fileInput.value = ''; fileInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Upload New Music</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The music will be uploaded to your untitled album.</span>\n                </div>\n                <div class=\"new-album\">\n                    <span class=\"blue-fonts\" (click)=\"createAudioAlbum($event)\">\n                        <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>\n                        <span>Create New Album</span>\n                    </span>\n                </div>\n                <div *ngIf=\"isCreateAlbum ; then createAlbum\"></div>\n                <ng-template #createAlbum >\n                    <form [formGroup]=\"albumForm\">\n                        <div class=\"form-group\">\n                            <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" aria-describedby=\"emailHelp\" placeholder=\"title\" formControlName=\"albumTitle\" id=\"albumTitle\" [(ngModel)]=\"albumTitle\">\n                            <app-control-messages [control]=\"albumForm.controls.albumTitle\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group\">\n                            <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" formControlName=\"albumDesc\" id=\"albumDesc\" [(ngModel)]=\"albumDesc\">\n                            </textarea>\n                            <app-control-messages [control]=\"albumForm.controls.albumDesc\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group row justify-content-center align-items-center no-margin\">\n                            <button id=\"loginBtn\" type=\"button\" class=\"btn btn-primary\" (click)=\"cancelAlbum()\" >\n                                <i class=\"fa fa-times no-margin\" aria-hidden=\"true\"></i>\n                                <span>Cancel</span>\n                            </button>\n                            <div *ngIf=\"isAddAlbum ; then addBtn\"></div>\n                            <ng-template #addBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"createAlbumInfo($event)\">\n                                    <span>Create</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                            <div *ngIf=\"isUpdateAlbum ; then updateBtn\"></div>\n                            <ng-template #updateBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"updateAlbumInfo($event)\">\n                                    <span>Edit</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                        </div>\n                        <div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n                            <div class=\"server-msg text-center\">{{serverMessage}}</div>\n                        </div>\n                    </form>\n                </ng-template>\n                <progress value=\"0\" max=\"100\" id=\"progressBar\" [value]=\"uploadProgress\" [hidden]=\"!isProgress\"></progress>\n            </div>\n        </div>\n    </ng-template>\n    <div class=\"inline-block semi-transparent-bg colw100\">\n        <div *ngIf=\"isAudioAlbum ; then audioAlbum\"></div>\n        <ng-template #audioAlbum >\n            <div class=\"album-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n                </div>\n                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n            </div>\n            <div class=\"album-icons\">\n                <app-audio-album-icon class=\"pull-left\" *ngFor=\"let item of audioAlbumList | albumSearch : albumText\" [item]=\"item\" (click)=\"searchAlbum.value=''; albumText = '';\" (onEditAudioAlbum)=\"editAudioAlbum($event)\" \n                (onShowAudioList)=\"showAudioList($event)\"></app-audio-album-icon>\n            </div>\n        </ng-template>\n        <div *ngIf=\"isAlbumAudio ; then albumAudio\"></div>\n        <ng-template #albumAudio >\n            <div class=\"audio-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <!--<input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"videoText\" #searchVideo/>-->\n                    <div class=\"cursor-pointer blue-fonts\" (click)=\"goToMyAlbum($event)\">{{albumTitle}}</div>\n                </div>\n                <!--<div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>-->\n            </div>\n            <div class=\"audio-uploader\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"audioUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"audioGroup\">\n                            <input type=\"file\" accept=\"audio/*\" class=\"audio-input\" name=\"uploadfile\" #audioInput (change)=\"fileChangeEvent($event, false)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"audioInput.value = ''; audioInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Add New Audios.</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The audio will be uploaded to this album.</span>\n                </div>\n            </div>\n            <div class=\"album-icons\">\n                <app-audio-icon (click)=\"playAudio(item)\" class=\"pull-left\" *ngFor=\"let item of audioList | audioSearch : audioText\" [item]=\"item\"></app-audio-icon>\n            </div>\n        </ng-template>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -2851,6 +2973,7 @@ module.exports = "<div class=\"audio-container\">\n    <canvas id='canvas'></can
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_validators_validation_service__ = __webpack_require__("../../../../../src/app/services/validators/validation.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_data_audio_service__ = __webpack_require__("../../../../../src/app/services/data/audio.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__music_list_music_list_component__ = __webpack_require__("../../../../../src/app/music-list/music-list.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2865,10 +2988,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var MusicPlayerComponent = (function () {
-    function MusicPlayerComponent(formBuilder, audioService) {
+    function MusicPlayerComponent(formBuilder, audioService, componentFactoryResolver) {
         this.formBuilder = formBuilder;
         this.audioService = audioService;
+        this.componentFactoryResolver = componentFactoryResolver;
         this.userId = '';
         this.uploadProgress = 0;
         this.isProgress = false;
@@ -2881,6 +3006,7 @@ var MusicPlayerComponent = (function () {
         this.isAlbumAudio = false;
         this.mp3AudioPath = 'assets/sound/sample.mp3';
         this.posterPath = 'https://media.w3.org/2010/05/sintel/poster.png';
+        this.musicSource = [];
         var loginData = JSON.parse(localStorage.getItem('loginData'));
         this.userId = loginData.username;
         this.audioUploadForm = this.formBuilder.group({
@@ -3032,6 +3158,11 @@ var MusicPlayerComponent = (function () {
     };
     MusicPlayerComponent.prototype.afterAudioAbumInfo = function (result) {
         this.audioAlbumList = result;
+        this.musicSource = [];
+        for (var i in this.audioAlbumList[0].audiosList) {
+            this.musicSource.push(this.audioAlbumList[0].audiosList[i].actualAudio);
+        }
+        this.createMusicList(this.musicSource);
     };
     MusicPlayerComponent.prototype.afterAbumAudioInfo = function (result) {
         this.audioList = result[0].audiosList;
@@ -3052,6 +3183,11 @@ var MusicPlayerComponent = (function () {
         this.isAlbumAudio = true;
         this.audioList = this.audioInfo.audiosList;
         this.albumTitle = this.audioInfo.title;
+        this.musicSource = [];
+        for (var i in this.audioList) {
+            this.musicSource.push(this.audioList[i].actualAudio);
+        }
+        this.createMusicList(this.musicSource);
         //this.fetchAlbumAudioInfo();
     };
     MusicPlayerComponent.prototype.goToMyAlbum = function (event) {
@@ -3068,6 +3204,14 @@ var MusicPlayerComponent = (function () {
         this.audioPlayer.nativeElement.play();
         //this.triggerWindowEvent('playAudio', {'event': 'playAudio', 'msgObj': {}});
     };
+    MusicPlayerComponent.prototype.createMusicList = function (musicSource) {
+        if (this.musicListRef) {
+            this.musicListRef.destroy();
+        }
+        this.musicListComponent = this.componentFactoryResolver.resolveComponentFactory(__WEBPACK_IMPORTED_MODULE_5__music_list_music_list_component__["a" /* MusicListComponent */]);
+        this.musicListRef = this.musicList.createComponent(this.musicListComponent);
+        this.musicListRef.instance.musicSource = musicSource;
+    };
     MusicPlayerComponent.prototype.triggerWindowEvent = function (eventType, evtObj) {
         var evt = new CustomEvent(eventType, { 'detail': evtObj });
         window.dispatchEvent(evt);
@@ -3078,6 +3222,10 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('audioPlayer'),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object)
 ], MusicPlayerComponent.prototype, "audioPlayer", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('musicList', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ViewContainerRef */] }),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ViewContainerRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ViewContainerRef */]) === "function" && _b || Object)
+], MusicPlayerComponent.prototype, "musicList", void 0);
 MusicPlayerComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-music-player',
@@ -3085,11 +3233,536 @@ MusicPlayerComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/music-player/music-player.component.css")],
         providers: [__WEBPACK_IMPORTED_MODULE_4_app_services_data_audio_service__["a" /* AudioService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_data_audio_service__["a" /* AudioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_data_audio_service__["a" /* AudioService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_data_audio_service__["a" /* AudioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_data_audio_service__["a" /* AudioService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */]) === "function" && _e || Object])
 ], MusicPlayerComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=music-player.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/photos-album-icon/photos-album-icon.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".photos-edit-icon{\n\tdisplay: inline-block;\n    background: #2b90d9;\n    /* margin-top: -2px; */\n    height: 16px\n}   \n.photos-edit-icon .fa-pencil-square{\n\tmargin-right: 2px;\n\tfont-size: 15px;\n}\n.photos-edit-icon .fa-pencil-square:hover{\n\tcolor: #e9ebee;\n\tcursor: pointer;\n}\n.photos-icon-container .blue-fonts{\n\tpadding-left: 3px;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/photos-album-icon/photos-album-icon.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"photos-icon-container\">\n\t<div class=\"colw100 photos-edit-icon\"><i class=\"fa fa-pencil-square white-fonts pull-right\" aria-hidden=\"true\" (click)=\"editPhotosAlbum($event)\"></i></div>\n\t<div class=\"colw100 blue-fonts bold-fonts cursor-pointer\" (click)=\"showPhotosList($event)\"><span>{{item.title}}</span></div>\n\t<div class=\"colw100 blue-fonts\"><span>{{item.photosList.length}}</span><span> photo</span></div>\n\t<div class=\"colw100 blue-fonts\"><span>{{item.created | date: 'dd/MM/yyyy'}}</span></div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/photos-album-icon/photos-album-icon.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PhotosAlbumIconComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var PhotosAlbumIconComponent = (function () {
+    function PhotosAlbumIconComponent() {
+        this.onEditPhotosAlbum = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.onShowPhotosList = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+    }
+    PhotosAlbumIconComponent.prototype.ngOnInit = function () {
+    };
+    PhotosAlbumIconComponent.prototype.editPhotosAlbum = function (event) {
+        this.onEditPhotosAlbum.emit({ data: this.item });
+    };
+    PhotosAlbumIconComponent.prototype.showPhotosList = function (event) {
+        this.onShowPhotosList.emit({ data: this.item });
+    };
+    return PhotosAlbumIconComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Object)
+], PhotosAlbumIconComponent.prototype, "item", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
+], PhotosAlbumIconComponent.prototype, "onEditPhotosAlbum", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
+], PhotosAlbumIconComponent.prototype, "onShowPhotosList", void 0);
+PhotosAlbumIconComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-photos-album-icon',
+        template: __webpack_require__("../../../../../src/app/photos-album-icon/photos-album-icon.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/photos-album-icon/photos-album-icon.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], PhotosAlbumIconComponent);
+
+var _a, _b;
+//# sourceMappingURL=photos-album-icon.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/photos-carousel/photos-carousel.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/photos-carousel/photos-carousel.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<carousel [sources]=\"imageSource\" [config]=\"config\"></carousel>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/photos-carousel/photos-carousel.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PhotosCarouselComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular4_carousel__ = __webpack_require__("../../../../angular4-carousel/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_shareobject_carouseldata_service__ = __webpack_require__("../../../../../src/app/services/shareobject/carouseldata.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var PhotosCarouselComponent = (function () {
+    function PhotosCarouselComponent(carouseldataService) {
+        //this.carouselImages = this.imageSources;
+        this.carouseldataService = carouseldataService;
+        this.config = {
+            verifyBeforeLoad: true,
+            log: false,
+            animation: true,
+            animationType: __WEBPACK_IMPORTED_MODULE_1_angular4_carousel__["a" /* AnimationConfig */].SLIDE,
+            autoplay: true,
+            autoplayDelay: 2000,
+            stopAutoplayMinWidth: 768
+        };
+    }
+    PhotosCarouselComponent.prototype.ngOnInit = function () {
+        //this.imageSource = ["photo/original/photo_1517345597409.png","photo/original/photo_1517346068877.png","photo/original/photo_1517346220159.png","photo/original/photo_1517346343644.png"];
+        //this.imageSource = ["photo/original/photo_1517345597409.png","photo/original/photo_1517346068877.png","photo/original/photo_1517346220159.png","photo/original/photo_1517346343644.png"];
+    };
+    return PhotosCarouselComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('imageSource'),
+    __metadata("design:type", Object)
+], PhotosCarouselComponent.prototype, "imageSource", void 0);
+PhotosCarouselComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-photos-carousel',
+        template: __webpack_require__("../../../../../src/app/photos-carousel/photos-carousel.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/photos-carousel/photos-carousel.component.css")],
+        providers: [__WEBPACK_IMPORTED_MODULE_2_app_services_shareobject_carouseldata_service__["a" /* CarouseldataService */]]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_shareobject_carouseldata_service__["a" /* CarouseldataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_shareobject_carouseldata_service__["a" /* CarouseldataService */]) === "function" && _a || Object])
+], PhotosCarouselComponent);
+
+var _a;
+//# sourceMappingURL=photos-carousel.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/photos-icon/photos-icon.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".photos-icon{\n\twidth: 100px;\n    height: 100px;\n    border: 1px solid #2b90d9;\n    margin: 10px 5px 0px 0px;\n    background-size: cover !important;\n    background-color: #000 !important;\n}\n.photos-icon i{\n\tcolor: #fff;\n    text-align: center;\n    margin: 33px 35px;\n}\n.photos-icon:hover{\n\tborder: 1px solid #fff;\n}\n.photos-icon:hover i{\n\tcolor: #2b90d9;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/photos-icon/photos-icon.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"photos-icon cursor-pointer\" [ngStyle]=\"{'background': 'url(' + posterURL+ ')'}\">\n<<!--i class=\"fa fa-play-circle-o fa-3x\" aria-hidden=\"true\"></i>-->\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/photos-icon/photos-icon.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PhotosIconComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var PhotosIconComponent = (function () {
+    function PhotosIconComponent() {
+        this.posterURL = '';
+    }
+    PhotosIconComponent.prototype.ngOnInit = function () {
+        this.posterURL = this.item.actualPhoto;
+    };
+    return PhotosIconComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Object)
+], PhotosIconComponent.prototype, "item", void 0);
+PhotosIconComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-photos-icon',
+        template: __webpack_require__("../../../../../src/app/photos-icon/photos-icon.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/photos-icon/photos-icon.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], PhotosIconComponent);
+
+//# sourceMappingURL=photos-icon.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/photos/photos.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".photos-content{\n\tpadding: 15px 0px;\n}\n\n.uplod-new:hover, .new-album:hover{\n\tcursor: pointer;\n}\n.uplod-new:hover span, .uplod-new:hover i, .new-album:hover span, .new-album:hover i {\n\tcolor: #fff !important;\n}\n.file-input-container{\n\tdisplay: none;\n}\n#progressBar{\n\twidth: 250px;\n}\n.under-line{\n\ttext-decoration: underline;\n}\n.search-input{\n    line-height: 25px;\n    height: 25px;\n    display: block;\n    width: 154px;\n    border: none;\n    outline: none;\n    border: 1px solid #2b90d9;\n    border-radius: 2px;\n    border-top-right-radius: 0px;\n    border-bottom-right-radius: 0px;\n    background: none;\n}\n.fa-search{\n    float: right;\n    color: #2b90d9 !important;\n    font-size: 15px;\n    line-height: 23px;\n    background: #f5f8fa;\n    padding: 0px 3px;\n    border: 1px solid #2b90d9;\n    border-left: none;\n    border-radius: 2px;\n    border-top-left-radius: 0px;\n    border-bottom-left-radius: 0px;\n}\ntextarea.form-control{\n\theight: 100px !important;\n}\napp-photos-album-icon{\n\twidth: 100px;\n    height: 100px;\n    border: 1px solid #2b90d9;\n    margin: 10px 5px 0px 0px;\n}\n.photos-container{\n    max-height: 314px;\n    width: 100%;\n    background: #000;\n}\n::-webkit-input-placeholder { /* Chrome/Opera/Safari */\n  color: #2b90d9;\n}\n::-moz-placeholder { /* Firefox 19+ */\n  color: #2b90d9;\n}\n:-ms-input-placeholder { /* IE 10+ */\n  color: #2b90d9;\n}\n:-moz-placeholder { /* Firefox 18- */\n  color: #2b90d9;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/photos/photos.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"photos-container\">\n    <div style=\"width: 100%; height: 314px\">\n        <div #photosCarousel></div>\n\t</div>\n      <!-- Video Controls -->\n    <!--<div id=\"video-controls\">\n        <div><input type=\"range\" min=\"1\" max=\"100\" step=\"1\" value=\"15\" class=\"colw100 no-outline\" id=\"seek-bar\"></div>\n        <div>\n            <i id=\"play-pause\" class=\"fa fa-play-circle fa-2x blue-fonts\"></i>    \n            <button type=\"button\" id=\"mute\">Mute</button>\n            <input type=\"range\" id=\"volumeBar\" min=\"0\" max=\"1\" step=\"0.1\" value=\"1\">\n            <button type=\"button\" id=\"full-screen\">Full-Screen</button>\n        </div>\n    </div>-->\n</div>\n<div class=\"photos-content\">\n    <div class=\"title semi-transparent-bg\">\n        <div class=\"line-height-sixteen\">\n            <i class=\"fa fa-music blue-fonts fa-2x\" aria-hidden=\"true\"></i>\n            <span class=\"blue-fonts medium-fonts\">Photos</span>\n        </div>\n    </div>\n    <div *ngIf=\"isPhotosAlbum ; then albumPhotosUploader\"></div>\n    <ng-template #albumPhotosUploader>\n        <div class=\"inline-block semi-transparent-bg colw100\">\n            <div class=\"pull-left\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"photosUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"photosGroup\">\n                            <input type=\"file\" accept=\"image/*\" class=\"file-input\" name=\"uploadfile\" #fileInput (change)=\"fileChangeEvent($event, true)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"cancelAlbum(null); fileInput.value = ''; fileInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Upload New Photo</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The music will be uploaded to your untitled album.</span>\n                </div>\n                <div class=\"new-album\">\n                    <span class=\"blue-fonts\" (click)=\"createPhotosAlbum($event)\">\n                        <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>\n                        <span>Create New Album</span>\n                    </span>\n                </div>\n                <div *ngIf=\"isCreateAlbum ; then createAlbum\"></div>\n                <ng-template #createAlbum >\n                    <form [formGroup]=\"albumForm\">\n                        <div class=\"form-group\">\n                            <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" aria-describedby=\"emailHelp\" placeholder=\"title\" formControlName=\"albumTitle\" id=\"albumTitle\" [(ngModel)]=\"albumTitle\">\n                            <app-control-messages [control]=\"albumForm.controls.albumTitle\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group\">\n                            <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" formControlName=\"albumDesc\" id=\"albumDesc\" [(ngModel)]=\"albumDesc\">\n                            </textarea>\n                            <app-control-messages [control]=\"albumForm.controls.albumDesc\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group row justify-content-center align-items-center no-margin\">\n                            <button id=\"loginBtn\" type=\"button\" class=\"btn btn-primary\" (click)=\"cancelAlbum()\" >\n                                <i class=\"fa fa-times no-margin\" aria-hidden=\"true\"></i>\n                                <span>Cancel</span>\n                            </button>\n                            <div *ngIf=\"isAddAlbum ; then addBtn\"></div>\n                            <ng-template #addBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"createAlbumInfo($event)\">\n                                    <span>Create</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                            <div *ngIf=\"isUpdateAlbum ; then updateBtn\"></div>\n                            <ng-template #updateBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"updateAlbumInfo($event)\">\n                                    <span>Edit</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                        </div>\n                        <div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n                            <div class=\"server-msg text-center\">{{serverMessage}}</div>\n                        </div>\n                    </form>\n                </ng-template>\n                <progress value=\"0\" max=\"100\" id=\"progressBar\" [value]=\"uploadProgress\" [hidden]=\"!isProgress\"></progress>\n            </div>\n        </div>\n    </ng-template>\n    <div class=\"inline-block semi-transparent-bg colw100\">\n        <div *ngIf=\"isPhotosAlbum ; then photosAlbum\"></div>\n        <ng-template #photosAlbum >\n            <div class=\"album-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n                </div>\n                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n            </div>\n            <div class=\"album-icons\">\n                <app-photos-album-icon class=\"pull-left\" *ngFor=\"let item of photosAlbumList | albumSearch : albumText\" [item]=\"item\" (click)=\"searchAlbum.value=''; albumText = '';\" (onEditPhotosAlbum)=\"editPhotosAlbum($event)\" \n                (onShowPhotosList)=\"showPhotosList($event)\"></app-photos-album-icon>\n            </div>\n        </ng-template>\n        <div *ngIf=\"isAlbumPhotos ; then albumPhotos\"></div>\n        <ng-template #albumPhotos >\n            <div class=\"photos-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <!--<input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"videoText\" #searchVideo/>-->\n                    <div class=\"cursor-pointer blue-fonts\" (click)=\"goToMyAlbum($event)\">{{albumTitle}}</div>\n                </div>\n                <!--<div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>-->\n            </div>\n            <div class=\"photos-uploader\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"photosUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"photosGroup\">\n                            <input type=\"file\" accept=\"image/*\" class=\"photos-input\" name=\"uploadfile\" #photosInput (change)=\"fileChangeEvent($event, false)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"photosInput.value = ''; photosInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Add New Photos.</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The photo will be uploaded to this album.</span>\n                </div>\n            </div>\n            <div class=\"album-icons\">\n                <app-photos-icon (click)=\"playAudio(item)\" class=\"pull-left\" *ngFor=\"let item of photosList | photosSearch : photosText\" [item]=\"item\"></app-photos-icon>\n            </div>\n        </ng-template>\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/photos/photos.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PhotosComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_validators_validation_service__ = __webpack_require__("../../../../../src/app/services/validators/validation.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_data_photos_service__ = __webpack_require__("../../../../../src/app/services/data/photos.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__photos_carousel_photos_carousel_component__ = __webpack_require__("../../../../../src/app/photos-carousel/photos-carousel.component.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var PhotosComponent = (function () {
+    function PhotosComponent(formBuilder, photosService, componentFactoryResolver) {
+        this.formBuilder = formBuilder;
+        this.photosService = photosService;
+        this.componentFactoryResolver = componentFactoryResolver;
+        this.userId = '';
+        this.uploadProgress = 0;
+        this.isProgress = false;
+        this.albumTitle = '';
+        this.albumDesc = '';
+        this.isCreateAlbum = false;
+        this.isAddAlbum = false;
+        this.isUpdateAlbum = false;
+        this.isPhotosAlbum = true;
+        this.isAlbumPhotos = false;
+        this.imageSource = [];
+        var loginData = JSON.parse(localStorage.getItem('loginData'));
+        this.userId = loginData.username;
+        this.photosUploadForm = this.formBuilder.group({
+            'file': ['']
+        });
+        this.photosGroup = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormGroup */]({
+            file: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]()
+        });
+        this.albumForm = this.formBuilder.group({
+            'albumTitle': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2_app_services_validators_validation_service__["a" /* ValidationService */].blankDataValidator]],
+            'albumDesc': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2_app_services_validators_validation_service__["a" /* ValidationService */].blankDataValidator]]
+        });
+        this.fetchPhotosAlbumInfo();
+    }
+    PhotosComponent.prototype.ngOnInit = function () {
+    };
+    PhotosComponent.prototype.ngAfterContentInit = function () {
+    };
+    PhotosComponent.prototype.createCarouselItems = function (imageSource) {
+        if (this.carouselRef) {
+            this.carouselRef.destroy();
+        }
+        this.photosCarouselComponent = this.componentFactoryResolver.resolveComponentFactory(__WEBPACK_IMPORTED_MODULE_5__photos_carousel_photos_carousel_component__["a" /* PhotosCarouselComponent */]);
+        this.carouselRef = this.photosCarousel.createComponent(this.photosCarouselComponent);
+        this.carouselRef.instance.imageSource = imageSource;
+    };
+    PhotosComponent.prototype.fileChangeEvent = function (event, directUpload) {
+        var self = this;
+        var userId = this.userId;
+        var file;
+        if (event.target.files && event.target.files[0]) {
+            file = event.target.files[0];
+            uploadPhoto();
+        }
+        function uploadPhoto() {
+            var formData = new FormData();
+            formData.append('uploadfile', file);
+            formData.append('userid', userId);
+            if (!directUpload) {
+                formData.append('album', self.photosInfo.title);
+            }
+            else {
+                formData.append('album', 'untitled');
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.open('post', __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + '/api/uploadPhotos', true);
+            xhr.upload.onprogress = function (e) {
+                if (e.lengthComputable) {
+                    var percentage = (e.loaded / e.total) * 100;
+                    console.log(percentage);
+                    if ((percentage > 0) && (percentage < 100)) {
+                        self.isProgress = true;
+                    }
+                    else {
+                        self.isProgress = false;
+                    }
+                    self.uploadProgress = percentage;
+                    //$('div.progress div').css('width', percentage.toFixed(0) + '%');
+                    //$('div.progress div').html(percentage.toFixed(0) + '%');
+                }
+            };
+            xhr.onerror = function (e) {
+                alert('An error occurred while submitting the form. Maybe your file is too big');
+            };
+            xhr.onload = function () {
+                /*let file = xhr.responseText;
+                $('div.progress div').css('width','0%');
+                $('div.progress').hide();
+                showMsg("alert alert-success", "File uploaded successfully!");
+                $('#myFile').val('');*/
+                if (self.isPhotosAlbum) {
+                    self.fetchPhotosAlbumInfo();
+                }
+                else {
+                    self.fetchAlbumPhotosInfo();
+                }
+            };
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    callback(xhr.responseText); // Another callback here
+                }
+            };
+            function callback(responseText) {
+                if (JSON.parse(responseText).status === 'sessionExpired') {
+                    alert('Session Expired, Please Login Again');
+                }
+            }
+            xhr.send(formData);
+            return false;
+        }
+        //var files = fileInput.srcElement.files;
+        //console.log(files);
+        //this.uploadService.makeFileRequest('https://localhost:3000/api/uploadCoverPic', [], files).subscribe(() => {
+        //  console.log('sent');
+        //});
+    };
+    PhotosComponent.prototype.createAlbumInfo = function (event) {
+        var _this = this;
+        if (this.albumForm.dirty && this.albumForm.valid) {
+            // alert('Name: ${this.loginForm.value.email} Email: ${this.loginForm.value.password}');
+            var postObj = { 'username': this.userId,
+                'title': this.albumForm.value.albumTitle,
+                'desc': this.albumForm.value.albumDesc };
+            this.photosService.createPhotosAlbum(postObj).subscribe(function (data) { return _this.afterAlbumCreated(data); });
+        }
+    };
+    PhotosComponent.prototype.afterAlbumCreated = function (result) {
+        if (result.status === 'failure') {
+            alert(result.message);
+        }
+        else {
+            this.cancelAlbum(null);
+            //alert(result.message);
+            this.fetchPhotosAlbumInfo();
+        }
+    };
+    PhotosComponent.prototype.updateAlbumInfo = function (event) {
+        var _this = this;
+        if (this.albumForm.dirty && this.albumForm.valid) {
+            // alert('Name: ${this.loginForm.value.email} Email: ${this.loginForm.value.password}');
+            var postObj = { 'id': this.albumInfo._id,
+                'username': this.userId,
+                'title': this.albumForm.value.albumTitle,
+                'desc': this.albumForm.value.albumDesc };
+            this.photosService.updatePhotosAlbum(postObj).subscribe(function (data) { return _this.afterAlbumUpdated(data); });
+        }
+    };
+    PhotosComponent.prototype.afterAlbumUpdated = function (result) {
+        if (result.status === 'failure') {
+            alert(result.message);
+        }
+        else {
+            this.cancelAlbum(null);
+            //alert(result.message);
+            this.fetchPhotosAlbumInfo();
+        }
+    };
+    PhotosComponent.prototype.createPhotosAlbum = function (event) {
+        this.isCreateAlbum = true;
+        this.isAddAlbum = true;
+        this.isUpdateAlbum = false;
+    };
+    PhotosComponent.prototype.cancelAlbum = function (event) {
+        this.isCreateAlbum = false;
+        this.isAddAlbum = false;
+        this.isUpdateAlbum = false;
+        this.albumForm.reset();
+    };
+    PhotosComponent.prototype.fetchPhotosAlbumInfo = function () {
+        var _this = this;
+        var postObj = { 'username': this.userId };
+        this.photosService.fetchPhotosAlbumInfo(postObj).subscribe(function (data) { return _this.afterPhotosAbumInfo(data); });
+    };
+    PhotosComponent.prototype.fetchAlbumPhotosInfo = function () {
+        var _this = this;
+        var postObj = { 'username': this.userId, 'album': this.albumTitle };
+        this.photosService.fetchAlbumPhotosInfo(postObj).subscribe(function (data) { return _this.afterAlbumPhotosInfo(data); });
+    };
+    PhotosComponent.prototype.afterPhotosAbumInfo = function (result) {
+        var self = this;
+        this.photosAlbumList = result;
+        self.imageSource = [];
+        for (var i in this.photosAlbumList[0].photosList) {
+            self.imageSource.push(this.photosAlbumList[0].photosList[i].actualPhoto);
+        }
+        this.createCarouselItems(self.imageSource);
+    };
+    PhotosComponent.prototype.afterAlbumPhotosInfo = function (result) {
+        this.photosList = result[0].photosList;
+    };
+    //Need to activate/deactivate edit btn later based on changes in title field
+    PhotosComponent.prototype.editPhotosAlbum = function (event) {
+        this.albumInfo = event.data;
+        this.isCreateAlbum = true;
+        this.isAddAlbum = false;
+        this.isUpdateAlbum = true;
+        this.albumTitle = this.albumInfo.title;
+        this.albumDesc = this.albumInfo.description;
+    };
+    //Diplaying the list of photos under a particular audio album
+    PhotosComponent.prototype.showPhotosList = function (event) {
+        var self = this;
+        this.photosInfo = event.data;
+        this.isPhotosAlbum = false;
+        this.isAlbumPhotos = true;
+        this.photosList = this.photosInfo.photosList;
+        this.albumTitle = this.photosInfo.title;
+        self.imageSource = [];
+        for (var i in this.photosList) {
+            self.imageSource.push(this.photosList[i].actualPhoto);
+        }
+        this.createCarouselItems(self.imageSource);
+        //console.log('this.imageSources'+this.imageSources);
+        //this.fetchAlbumPhotosInfo();
+    };
+    PhotosComponent.prototype.goToMyAlbum = function (event) {
+        this.isPhotosAlbum = true;
+        this.isAlbumPhotos = false;
+        this.fetchPhotosAlbumInfo();
+    };
+    PhotosComponent.prototype.triggerWindowEvent = function (eventType, evtObj) {
+        var evt = new CustomEvent(eventType, { 'detail': evtObj });
+        window.dispatchEvent(evt);
+    };
+    return PhotosComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('photosCarousel', { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ViewContainerRef */] }),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ViewContainerRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ViewContainerRef */]) === "function" && _a || Object)
+], PhotosComponent.prototype, "photosCarousel", void 0);
+PhotosComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-photos',
+        template: __webpack_require__("../../../../../src/app/photos/photos.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/photos/photos.component.css")],
+        providers: [__WEBPACK_IMPORTED_MODULE_4_app_services_data_photos_service__["a" /* PhotosService */]]
+    }),
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_data_photos_service__["a" /* PhotosService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_data_photos_service__["a" /* PhotosService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */]) === "function" && _d || Object])
+], PhotosComponent);
+
+var _a, _b, _c, _d;
+//# sourceMappingURL=photos.component.js.map
 
 /***/ }),
 
@@ -3206,6 +3879,45 @@ ChatSearchPipe = __decorate([
 ], ChatSearchPipe);
 
 //# sourceMappingURL=chat-search.pipe.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/pipes/photos-search.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PhotosSearchPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var PhotosSearchPipe = (function () {
+    function PhotosSearchPipe() {
+    }
+    PhotosSearchPipe.prototype.transform = function (items, photosText) {
+        if (!items)
+            return [];
+        if (!photosText)
+            return items;
+        photosText = photosText.toLowerCase();
+        return items.filter(function (it) {
+            var title = it.title;
+            return title.toLowerCase().includes(photosText);
+        });
+    };
+    return PhotosSearchPipe;
+}());
+PhotosSearchPipe = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */])({
+        name: 'photosSearch'
+    })
+], PhotosSearchPipe);
+
+//# sourceMappingURL=photos-search.pipe.js.map
 
 /***/ }),
 
@@ -4392,6 +5104,69 @@ var _a;
 
 /***/ }),
 
+/***/ "../../../../../src/app/services/data/photos.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PhotosService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var PhotosService = (function () {
+    function PhotosService(http) {
+        this.http = http;
+    }
+    PhotosService.prototype.createPhotosAlbum = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/createPhotosAlbum", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    PhotosService.prototype.updatePhotosAlbum = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/updatePhotosAlbum", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    PhotosService.prototype.fetchPhotosAlbumInfo = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchPhotosAlbumInfo", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    PhotosService.prototype.fetchAlbumPhotosInfo = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchAlbumPhotosInfo", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    return PhotosService;
+}());
+PhotosService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+], PhotosService);
+
+var _a;
+//# sourceMappingURL=photos.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/services/data/profile.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4701,6 +5476,44 @@ var AppSettingsService = (function () {
 }());
 
 //# sourceMappingURL=app-settings.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/shareobject/carouseldata.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CarouseldataService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__ = __webpack_require__("../../../../rxjs/BehaviorSubject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var CarouseldataService = (function () {
+    function CarouseldataService() {
+        this.carouselSource = new __WEBPACK_IMPORTED_MODULE_1_rxjs_BehaviorSubject__["BehaviorSubject"]("default message");
+        this.currentCarouselSource = this.carouselSource.asObservable();
+    }
+    CarouseldataService.prototype.changeCarouselSource = function (msg) {
+        this.carouselSource.next(msg);
+    };
+    return CarouseldataService;
+}());
+CarouseldataService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [])
+], CarouseldataService);
+
+//# sourceMappingURL=carouseldata.service.js.map
 
 /***/ }),
 

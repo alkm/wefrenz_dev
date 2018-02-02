@@ -16,6 +16,10 @@ export class EntertainmentComponent implements OnInit {
     private friendId: string = '';
     private isVideo: boolean = true;
     private isMusic: boolean = false;
+    private isPhotos: boolean = false;
+    private isHighLightVideos: boolean = true;
+    private isHighLightMusic: boolean = false;
+    private isHighLightPhotos: boolean = false;
 
   	constructor(private route: ActivatedRoute, private router: Router) { 
   		route.params.subscribe(val => {
@@ -61,11 +65,27 @@ export class EntertainmentComponent implements OnInit {
 
     private switchVideo(event){
     	this.isVideo = true;
+    	this.isPhotos = false;
     	this.isMusic = false;
+    	this.isHighLightVideos = true;
+    	this.isHighLightMusic = false;
+    	this.isHighLightPhotos = false;
     }
     private switchMusic(event){
     	this.isVideo = false;
+    	this.isPhotos = false;
     	this.isMusic = true;
+    	this.isHighLightVideos = false;
+    	this.isHighLightPhotos = false;
+    	this.isHighLightMusic = true;
+    }
+    private switchPhotos(event){
+    	this.isVideo = false;
+    	this.isMusic = false;
+    	this.isPhotos = true;
+    	this.isHighLightVideos = false;
+    	this.isHighLightPhotos = true;
+    	this.isHighLightMusic = false;
     }
 
 }

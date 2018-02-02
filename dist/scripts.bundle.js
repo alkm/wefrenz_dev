@@ -8959,6 +8959,7 @@ window.addEventListener('onAVModalClose', function (e) {
         hangup();
       }
       else{
+        hangup();
         document.getElementById("callRejectButton").click();
       }
       stopMyCam();

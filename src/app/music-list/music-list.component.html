@@ -1,0 +1,40 @@
+<div class="player-controls" style="background-color: #f00;
+    /* margin-top: -30px; */
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 102px;">
+	<div class="pull-left"><i class="fa fa-step-backward"></i></div>
+	<div class="pull-left"><i class="fa fa-play"></i></div>
+	<div class="pull-left"><i class="fa fa-step-forward"></i></div>
+</div>
+<div #musicPlayList classs="music-play-list" 
+	style="background-color: rgba(43, 144, 217, 0);
+    	display: inline-block;
+    	box-sizing: border-box;
+    	width: 102px;
+    	text-overflow: ellipsis;
+    	overflow-y: auto;
+    	text-align: left;
+    	border-bottom: none;
+    	position: absolute;
+    	border-bottom: 1px solid #fff;
+    	top: 30px;
+    	right: 10px;">
+	<div class="music-list"  *ngFor="let item of musicSource">
+		<div class="row no-margin pull-left inline-block hand-cursor item-row" (click)="musicListItemClick($event)"
+			style="border: 1px solid #fff; border-bottom: none;">
+			<div class="row no-margin white-fonts red-highlight music-name pull-right">
+				<span style="white-space: nowrap;
+    				text-overflow: ellipsis;
+    				overflow: hidden;
+    				display: block;
+    				padding: 0px 4px;
+    				width: 100px;
+    				max-height: 267px;">
+    				{{item}}
+	    		</span>
+	    	</div> 
+		</div>
+	</div>
+</div>

@@ -1,0 +1,6 @@
+<div class="photos-icon-container">
+	<div class="colw100 photos-edit-icon"><i class="fa fa-pencil-square white-fonts pull-right" aria-hidden="true" (click)="editPhotosAlbum($event)"></i></div>
+	<div class="colw100 blue-fonts bold-fonts cursor-pointer" (click)="showPhotosList($event)"><span>{{item.title}}</span></div>
+	<div class="colw100 blue-fonts"><span>{{item.photosList.length}}</span><span> photo</span></div>
+	<div class="colw100 blue-fonts"><span>{{item.created | date: 'dd/MM/yyyy'}}</span></div>
+</div>

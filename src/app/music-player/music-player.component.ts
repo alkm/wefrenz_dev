@@ -1,8 +1,9 @@
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, ViewContainerRef, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ValidationService } from 'app/services/validators/validation.service';
 import { AppSettingsService } from 'app/services/settings/app-settings.service';
 import { AudioService } from 'app/services/data/audio.service';
+import { MusicListComponent } from '../music-list/music-list.component';
 
 @Component({
   selector: 'app-music-player',
@@ -11,7 +12,9 @@ import { AudioService } from 'app/services/data/audio.service';
   providers: [AudioService]
 })
 export class MusicPlayerComponent implements OnInit {
+	
 	@ViewChild('audioPlayer') audioPlayer: ElementRef;
+	@ViewChild('musicList', {read: ViewContainerRef}) musicList: ViewContainerRef;
 
 	private files: any;
 	private userId: string = '';
@@ -33,8 +36,11 @@ export class MusicPlayerComponent implements OnInit {
 	private audioInfo: any;
 	private mp3AudioPath = 'assets/sound/sample.mp3';
 	private posterPath = 'https://media.w3.org/2010/05/sintel/poster.png';
+	private musicListRef: any;
+	private musicSource: string[] = [];
+	private musicListComponent: any;
 
-	constructor(private formBuilder: FormBuilder, private audioService: AudioService) { 
+	constructor(private formBuilder: FormBuilder, private audioService: AudioService, private componentFactoryResolver: ComponentFactoryResolver) { 
 		let loginData = JSON.parse(localStorage.getItem('loginData'));
 	    this.userId = loginData.username;
 
@@ -204,6 +210,11 @@ export class MusicPlayerComponent implements OnInit {
 
 	private afterAudioAbumInfo(result){
 		this.audioAlbumList = result;
+		this.musicSource = [];
+		for(var i in this.audioAlbumList[0].audiosList){
+			this.musicSource.push(this.audioAlbumList[0].audiosList[i].actualAudio);
+		}
+		this.createMusicList(this.musicSource);
 	}
 	private afterAbumAudioInfo(result){
 		this.audioList = result[0].audiosList;
@@ -226,6 +237,11 @@ export class MusicPlayerComponent implements OnInit {
   		this.isAlbumAudio = true;
   		this.audioList = this.audioInfo.audiosList;
   		this.albumTitle = this.audioInfo.title;
+  		this.musicSource = [];
+		for(var i in this.audioList){
+			this.musicSource.push(this.audioList[i].actualAudio);
+		}
+		this.createMusicList(this.musicSource);
   		//this.fetchAlbumAudioInfo();
 
   	}
@@ -244,6 +260,15 @@ export class MusicPlayerComponent implements OnInit {
   		this.audioPlayer.nativeElement.load();
   		this.audioPlayer.nativeElement.play();
   		//this.triggerWindowEvent('playAudio', {'event': 'playAudio', 'msgObj': {}});
+  	}
+
+  	private createMusicList(musicSource){
+    	if(this.musicListRef){
+      		this.musicListRef.destroy();
+    	}
+    	this.musicListComponent = this.componentFactoryResolver.resolveComponentFactory(MusicListComponent);
+    	this.musicListRef = this.musicList.createComponent(this.musicListComponent);
+    	this.musicListRef.instance.musicSource = musicSource;
   	}
 
 	private triggerWindowEvent(eventType: string, evtObj: any) {

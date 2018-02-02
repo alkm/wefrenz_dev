@@ -352,6 +352,9 @@ i.fa-3x{
     height: 2px;
     border-bottom: 1px solid #fff;
 }
+.red-highlight:hover{
+	color: red;
+}
 
 
 @media only screen and (max-width: 768px) {
