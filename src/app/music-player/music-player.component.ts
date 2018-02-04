@@ -34,7 +34,7 @@ export class MusicPlayerComponent implements OnInit {
 	private isAlbumAudio: boolean = false;
 	private albumInfo : any;
 	private audioInfo: any;
-	private mp3AudioPath = 'assets/sound/sample.mp3';
+	private mp3AudioPath = '';
 	private posterPath = 'https://media.w3.org/2010/05/sintel/poster.png';
 	private musicListRef: any;
 	private musicSource: string[] = [];
@@ -62,7 +62,7 @@ export class MusicPlayerComponent implements OnInit {
   	}
 
 	ngOnInit() {
-		this.triggerWindowEvent('playAudio', {'event': 'playAudio', 'msgObj': {}});
+		this.triggerWindowEvent('setSpectrum', {'event': 'setSpectrum', 'msgObj': {}});
 	}
 
 	private fileChangeEvent(event, directUpload){
@@ -211,10 +211,11 @@ export class MusicPlayerComponent implements OnInit {
 	private afterAudioAbumInfo(result){
 		this.audioAlbumList = result;
 		this.musicSource = [];
-		for(var i in this.audioAlbumList[0].audiosList){
-			this.musicSource.push(this.audioAlbumList[0].audiosList[i].actualAudio);
-		}
+		//for(var i in this.audioAlbumList[0].audiosList){
+			this.musicSource = this.audioAlbumList[0].audiosList;
+		//}
 		this.createMusicList(this.musicSource);
+		this.playAudio(this.audioAlbumList[0].audiosList[0]); 	
 	}
 	private afterAbumAudioInfo(result){
 		this.audioList = result[0].audiosList;
@@ -238,11 +239,12 @@ export class MusicPlayerComponent implements OnInit {
   		this.audioList = this.audioInfo.audiosList;
   		this.albumTitle = this.audioInfo.title;
   		this.musicSource = [];
-		for(var i in this.audioList){
-			this.musicSource.push(this.audioList[i].actualAudio);
-		}
+		//for(var i in this.audioList){
+			this.musicSource= this.audioList;
+		//}
 		this.createMusicList(this.musicSource);
   		//this.fetchAlbumAudioInfo();
+		this.playAudio(this.audioList[0]); 		
 
   	}
 
@@ -254,21 +256,82 @@ export class MusicPlayerComponent implements OnInit {
 
   	private playAudio(data){
   		console.log(data);
-  		this.audioPlayer.nativeElement.pause();
+  		
   		this.posterPath = data.poster;
-  		this.mp3AudioPath = data.actualAudio;
-  		this.audioPlayer.nativeElement.load();
-  		this.audioPlayer.nativeElement.play();
-  		//this.triggerWindowEvent('playAudio', {'event': 'playAudio', 'msgObj': {}});
+  		
+  		let isPlaying = this.audioPlayer.nativeElement.currentTime > 0 && !this.audioPlayer.nativeElement.paused && !this.audioPlayer.nativeElement.ended 
+    	&& this.audioPlayer.nativeElement.readyState > 2;
+		if (isPlaying) {
+			this.audioPlayer.nativeElement.pause();
+		}
+			
+		this.mp3AudioPath = data.actualAudio;
+		try{
+			this.musicListRef.instance.actualAudio = this.mp3AudioPath;
+			this.audioPlayer.nativeElement.load();
+			this.audioPlayer.nativeElement.play();			
+		}catch(err){
+			console.log(err);
+		}
+
+  		//this.audioPlayer.nativeElement.play();
+  		
   	}
 
   	private createMusicList(musicSource){
     	if(this.musicListRef){
+    		this.musicListRef.instance.playMusic.unsubscribe((data) => this.playMusic(data));
+    		this.musicListRef.instance.pauseMusic.unsubscribe((data) => this.pauseMusic(data));
+    		this.musicListRef.instance.resumeMusic.unsubscribe((data) => this.resumeMusic(data));
+    		//this.audioPlayer.nativeElement.removeEventListener("ended", this.playNextItem());
+    		this.musicListRef.instance.replayMusic.unsubscribe((data) => this.replayMusic(data));
+    		this.musicListRef.instance.removeEventListeners();
+    		this.musicListRef.instance.musicSource = [];
+    		this.musicListRef.instance.actualAudio = '';
       		this.musicListRef.destroy();
     	}
     	this.musicListComponent = this.componentFactoryResolver.resolveComponentFactory(MusicListComponent);
     	this.musicListRef = this.musicList.createComponent(this.musicListComponent);
     	this.musicListRef.instance.musicSource = musicSource;
+    	this.musicListRef.instance.actualAudio = musicSource[0].actualAudio;
+    	this.musicListRef.instance.playMusic.subscribe((data) => this.playMusic(data));
+    	this.musicListRef.instance.pauseMusic.subscribe((data) => this.pauseMusic(data));
+    	this.musicListRef.instance.resumeMusic.subscribe((data) => this.resumeMusic(data));
+    	this.musicListRef.instance.replayMusic.subscribe((data) => this.replayMusic(data));
+    	//this.audioPlayer.nativeElement.addEventListener("ended", this.playNextItem());
+
+  	}
+
+  	private playNextItem(){
+  		alert('audio ended');
+  	}
+
+  	private replayMusic(data){
+  		this.audioPlayer.nativeElement.currentTime = 0;
+  		//this.audioPlayer.nativeElement.play();	
+  	}
+
+  	private playMusic(data){
+  		let isPlaying = this.audioPlayer.nativeElement.currentTime > 0 && !this.audioPlayer.nativeElement.paused && !this.audioPlayer.nativeElement.ended 
+    	&& this.audioPlayer.nativeElement.readyState > 2;
+		if (isPlaying) {
+			this.audioPlayer.nativeElement.pause();
+		}
+			
+		this.mp3AudioPath = data.actualAudio;
+		try{
+			this.audioPlayer.nativeElement.load();
+			this.audioPlayer.nativeElement.play();			
+		}catch(err){
+			console.log(err);
+		}
+  	}
+
+  	private pauseMusic(data){
+  		this.audioPlayer.nativeElement.pause();
+  	}
+  	private resumeMusic(data){
+  		this.audioPlayer.nativeElement.play();
   	}
 
 	private triggerWindowEvent(eventType: string, evtObj: any) {

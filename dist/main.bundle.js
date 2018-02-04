@@ -2878,7 +2878,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/music-list/music-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"player-controls\" style=\"background-color: #f00;\n    /* margin-top: -30px; */\n    position: absolute;\n    right: 10px;\n    top: 10px;\n    width: 102px;\">\n\t<div class=\"pull-left\"><i class=\"fa fa-step-backward\"></i></div>\n\t<div class=\"pull-left\"><i class=\"fa fa-play\"></i></div>\n\t<div class=\"pull-left\"><i class=\"fa fa-step-forward\"></i></div>\n</div>\n<div #musicPlayList classs=\"music-play-list\" \n\tstyle=\"background-color: rgba(43, 144, 217, 0);\n    \tdisplay: inline-block;\n    \tbox-sizing: border-box;\n    \twidth: 102px;\n    \ttext-overflow: ellipsis;\n    \toverflow-y: auto;\n    \ttext-align: left;\n    \tborder-bottom: none;\n    \tposition: absolute;\n    \tborder-bottom: 1px solid #fff;\n    \ttop: 30px;\n    \tright: 10px;\">\n\t<div class=\"music-list\"  *ngFor=\"let item of musicSource\">\n\t\t<div class=\"row no-margin pull-left inline-block hand-cursor item-row\" (click)=\"musicListItemClick($event)\"\n\t\t\tstyle=\"border: 1px solid #fff; border-bottom: none;\">\n\t\t\t<div class=\"row no-margin white-fonts red-highlight music-name pull-right\">\n\t\t\t\t<span style=\"white-space: nowrap;\n    \t\t\t\ttext-overflow: ellipsis;\n    \t\t\t\toverflow: hidden;\n    \t\t\t\tdisplay: block;\n    \t\t\t\tpadding: 0px 4px;\n    \t\t\t\twidth: 100px;\n    \t\t\t\tmax-height: 267px;\">\n    \t\t\t\t{{item}}\n\t    \t\t</span>\n\t    \t</div> \n\t\t</div>\n\t</div>\n</div>\n"
+module.exports = "<div class=\"player-controls\" \n\tstyle=\"position: absolute;\n    right: 10px;\n    top: 10px;\n    width: 140px;\">\n    <div class=\"pull-left control-item\" (click)=\"replayMusiic($event)\">\n        <i class=\"fa fa-repeat\"></i>\n    </div>\n\t<div class=\"pull-left control-item\" (click)=\"playPreviousItem($event)\">\n\t\t<i class=\"fa fa-step-backward\"></i>\n\t</div>\n    <div *ngIf=\"isPlaying ; then pauseBtn\"></div>\n    <ng-template #pauseBtn>\n        <div class=\"pull-left control-item\" (click)=\"pauseMusiic($event)\">\n            <i class=\"fa fa-stop\"></i>\n        </div>\n    </ng-template>\n    <div *ngIf=\"isPause; then playBtn\"></div>\n    <ng-template #playBtn>\n\t   <div class=\"pull-left control-item\" (click)=\"resumeMusiic($event)\">\n            <i class=\"fa fa-play\"></i>\n        </div>\n    </ng-template>\n\t<div class=\"pull-left control-item\" (click)=\"playNextItem($event)\"><i class=\"fa fa-step-forward\"></i></div>\n</div>\n<div #musicPlayList classs=\"music-play-list\" \n\tstyle=\"background-color: rgba(43, 144, 217, 0);\n    \tdisplay: inline-block;\n    \tbox-sizing: border-box;\n    \twidth: 140px;\n    \ttext-overflow: ellipsis;\n    \toverflow-y: auto;\n    \ttext-align: left;\n    \tborder-bottom: none;\n    \tposition: absolute;\n    \tborder-bottom: 1px solid #fff;\n    \ttop: 40px;\n    \tright: 10px;\">\n\t<div class=\"music-list\"  *ngFor=\"let item of musicSource; let i = index\">\n\t\t<div class=\"row no-margin pull-left inline-block hand-cursor red-highlight item-row music-item\" (click)=\"musicListItemClick($event, item)\" [attr.id]=\"item.actualAudio\" [class.item-highlight]=\"item.actualAudio === actualAudio\"\n\t\t\tstyle=\"border: 1px solid #fff; border-bottom: none;\">\n\t\t\t<div class=\"row no-margin white-fonts music-name pull-right\">\n                <span style=\"width: 12px; margin-left: 2px;\">{{i+1}}</span>\n\t\t\t\t<span style=\"white-space: nowrap;\n    \t\t\t\ttext-overflow: ellipsis;\n    \t\t\t\toverflow: hidden;\n    \t\t\t\tdisplay: block;\n    \t\t\t\tpadding: 0px 4px;\n    \t\t\t\twidth: 107px;\n    \t\t\t\tmax-height: 267px;\">\n    \t\t\t\t{{item.actualAudio}}\n\t    \t\t</span>\n                <span style=\"width: 12px; margin-left: 3px; margin-right: 2px;\"><i aria-hidden=\"true\" class=\"fa fa-music white-fonts\"></i></span>\n\n\t    \t</div> \n\t\t</div>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -2900,6 +2900,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var MusicListComponent = (function () {
     function MusicListComponent(el) {
+        this.playMusic = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.pauseMusic = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.resumeMusic = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.replayMusic = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.isPlaying = true;
+        this.isPause = false;
+        this.itemCount = 0;
+        this.musicListClick = false;
         this.el = el;
     }
     MusicListComponent.prototype.ngOnInit = function () {
@@ -2913,6 +2921,78 @@ var MusicListComponent = (function () {
             playListHeight = playListContentHeight - cutOffHeight;
             this.musicPlayList.nativeElement.style.height = playListHeight + 'px';
         }
+        //this.actualAudio = this.musicSource[0].actualAudio;
+        this.addEventListeners();
+    };
+    MusicListComponent.prototype.removeEventListeners = function () {
+        //let self = this;
+        if (document.removeEventListener) {
+            //document.removeEventListener('playNext', this.playNextItem);
+            //document.removeEventListener('onPauseAudio', this.onPauseAudio);
+            //document.removeEventListener('onPlayAudio', this.onPlayAudio);
+        }
+    };
+    MusicListComponent.prototype.addEventListeners = function () {
+        //document.addEventListener('playNext', this.playNextItem);
+        //document.addEventListener('onPauseAudio', this.onPauseAudio);
+        //document.addEventListener('onPlayAudio', this.onPlayAudio);
+    };
+    MusicListComponent.prototype.onPlayAudio = function (event) {
+        //if(!this.musicListClick){
+        var element = document.getElementById(this.actualAudio);
+        element.scrollIntoView({ behavior: "smooth" });
+        //}
+        this.isPlaying = true;
+        this.isPause = false;
+        this.musicListClick = false;
+    };
+    MusicListComponent.prototype.onPauseAudio = function (event) {
+        this.isPlaying = false;
+        this.isPause = true;
+    };
+    MusicListComponent.prototype.musicListItemClick = function (event, item) {
+        this.musicListClick = true;
+        this.playMusic.emit(item);
+        this.isPlaying = true;
+        this.isPause = false;
+        this.actualAudio = item.actualAudio;
+    };
+    MusicListComponent.prototype.pauseMusiic = function (event) {
+        this.pauseMusic.emit('pause');
+        this.isPause = true;
+        this.isPlaying = false;
+    };
+    MusicListComponent.prototype.resumeMusiic = function (event) {
+        this.resumeMusic.emit('resume');
+        this.isPause = false;
+        this.isPlaying = true;
+    };
+    MusicListComponent.prototype.replayMusiic = function (event) {
+        this.replayMusic.emit('replay');
+    };
+    MusicListComponent.prototype.playNextItem = function (event) {
+        this.musicListClick = false;
+        if (this.itemCount < (this.musicSource.length - 1)) {
+            this.itemCount++;
+        }
+        else {
+            this.itemCount = 0;
+        }
+        var item = this.musicSource[this.itemCount];
+        this.musicListItemClick(null, item);
+        this.actualAudio = item.actualAudio;
+    };
+    MusicListComponent.prototype.playPreviousItem = function ($event) {
+        this.musicListClick = false;
+        if (this.itemCount >= 1) {
+            this.itemCount--;
+        }
+        else {
+            this.itemCount = this.musicSource.length - 1;
+        }
+        var item = this.musicSource[this.itemCount];
+        this.musicListItemClick(null, item);
+        this.actualAudio = item.actualAudio;
     };
     return MusicListComponent;
 }());
@@ -2924,11 +3004,20 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('musicSource'),
     __metadata("design:type", Object)
 ], MusicListComponent.prototype, "musicSource", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('actualAudio'),
+    __metadata("design:type", Object)
+], MusicListComponent.prototype, "actualAudio", void 0);
 MusicListComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-music-list',
         template: __webpack_require__("../../../../../src/app/music-list/music-list.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/music-list/music-list.component.css")]
+        styles: [__webpack_require__("../../../../../src/app/music-list/music-list.component.css")],
+        host: {
+            '(document:playNext)': 'playNextItem($event)',
+            '(document:onPlayAudio)': 'onPlayAudio($event)',
+            '(document:onPauseAudio)': 'onPauseAudio($event)'
+        }
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _b || Object])
 ], MusicListComponent);
@@ -3004,7 +3093,7 @@ var MusicPlayerComponent = (function () {
         this.isUpdateAlbum = false;
         this.isAudioAlbum = true;
         this.isAlbumAudio = false;
-        this.mp3AudioPath = 'assets/sound/sample.mp3';
+        this.mp3AudioPath = '';
         this.posterPath = 'https://media.w3.org/2010/05/sintel/poster.png';
         this.musicSource = [];
         var loginData = JSON.parse(localStorage.getItem('loginData'));
@@ -3022,7 +3111,7 @@ var MusicPlayerComponent = (function () {
         this.fetchAudioAlbumInfo();
     }
     MusicPlayerComponent.prototype.ngOnInit = function () {
-        this.triggerWindowEvent('playAudio', { 'event': 'playAudio', 'msgObj': {} });
+        this.triggerWindowEvent('setSpectrum', { 'event': 'setSpectrum', 'msgObj': {} });
     };
     MusicPlayerComponent.prototype.fileChangeEvent = function (event, directUpload) {
         var self = this;
@@ -3159,10 +3248,11 @@ var MusicPlayerComponent = (function () {
     MusicPlayerComponent.prototype.afterAudioAbumInfo = function (result) {
         this.audioAlbumList = result;
         this.musicSource = [];
-        for (var i in this.audioAlbumList[0].audiosList) {
-            this.musicSource.push(this.audioAlbumList[0].audiosList[i].actualAudio);
-        }
+        //for(var i in this.audioAlbumList[0].audiosList){
+        this.musicSource = this.audioAlbumList[0].audiosList;
+        //}
         this.createMusicList(this.musicSource);
+        this.playAudio(this.audioAlbumList[0].audiosList[0]);
     };
     MusicPlayerComponent.prototype.afterAbumAudioInfo = function (result) {
         this.audioList = result[0].audiosList;
@@ -3184,11 +3274,12 @@ var MusicPlayerComponent = (function () {
         this.audioList = this.audioInfo.audiosList;
         this.albumTitle = this.audioInfo.title;
         this.musicSource = [];
-        for (var i in this.audioList) {
-            this.musicSource.push(this.audioList[i].actualAudio);
-        }
+        //for(var i in this.audioList){
+        this.musicSource = this.audioList;
+        //}
         this.createMusicList(this.musicSource);
         //this.fetchAlbumAudioInfo();
+        this.playAudio(this.audioList[0]);
     };
     MusicPlayerComponent.prototype.goToMyAlbum = function (event) {
         this.isAudioAlbum = true;
@@ -3197,20 +3288,73 @@ var MusicPlayerComponent = (function () {
     };
     MusicPlayerComponent.prototype.playAudio = function (data) {
         console.log(data);
-        this.audioPlayer.nativeElement.pause();
         this.posterPath = data.poster;
+        var isPlaying = this.audioPlayer.nativeElement.currentTime > 0 && !this.audioPlayer.nativeElement.paused && !this.audioPlayer.nativeElement.ended
+            && this.audioPlayer.nativeElement.readyState > 2;
+        if (isPlaying) {
+            this.audioPlayer.nativeElement.pause();
+        }
         this.mp3AudioPath = data.actualAudio;
-        this.audioPlayer.nativeElement.load();
-        this.audioPlayer.nativeElement.play();
-        //this.triggerWindowEvent('playAudio', {'event': 'playAudio', 'msgObj': {}});
+        try {
+            this.musicListRef.instance.actualAudio = this.mp3AudioPath;
+            this.audioPlayer.nativeElement.load();
+            this.audioPlayer.nativeElement.play();
+        }
+        catch (err) {
+            console.log(err);
+        }
+        //this.audioPlayer.nativeElement.play();
     };
     MusicPlayerComponent.prototype.createMusicList = function (musicSource) {
+        var _this = this;
         if (this.musicListRef) {
+            this.musicListRef.instance.playMusic.unsubscribe(function (data) { return _this.playMusic(data); });
+            this.musicListRef.instance.pauseMusic.unsubscribe(function (data) { return _this.pauseMusic(data); });
+            this.musicListRef.instance.resumeMusic.unsubscribe(function (data) { return _this.resumeMusic(data); });
+            //this.audioPlayer.nativeElement.removeEventListener("ended", this.playNextItem());
+            this.musicListRef.instance.replayMusic.unsubscribe(function (data) { return _this.replayMusic(data); });
+            this.musicListRef.instance.removeEventListeners();
+            this.musicListRef.instance.musicSource = [];
+            this.musicListRef.instance.actualAudio = '';
             this.musicListRef.destroy();
         }
         this.musicListComponent = this.componentFactoryResolver.resolveComponentFactory(__WEBPACK_IMPORTED_MODULE_5__music_list_music_list_component__["a" /* MusicListComponent */]);
         this.musicListRef = this.musicList.createComponent(this.musicListComponent);
         this.musicListRef.instance.musicSource = musicSource;
+        this.musicListRef.instance.actualAudio = musicSource[0].actualAudio;
+        this.musicListRef.instance.playMusic.subscribe(function (data) { return _this.playMusic(data); });
+        this.musicListRef.instance.pauseMusic.subscribe(function (data) { return _this.pauseMusic(data); });
+        this.musicListRef.instance.resumeMusic.subscribe(function (data) { return _this.resumeMusic(data); });
+        this.musicListRef.instance.replayMusic.subscribe(function (data) { return _this.replayMusic(data); });
+        //this.audioPlayer.nativeElement.addEventListener("ended", this.playNextItem());
+    };
+    MusicPlayerComponent.prototype.playNextItem = function () {
+        alert('audio ended');
+    };
+    MusicPlayerComponent.prototype.replayMusic = function (data) {
+        this.audioPlayer.nativeElement.currentTime = 0;
+        //this.audioPlayer.nativeElement.play();	
+    };
+    MusicPlayerComponent.prototype.playMusic = function (data) {
+        var isPlaying = this.audioPlayer.nativeElement.currentTime > 0 && !this.audioPlayer.nativeElement.paused && !this.audioPlayer.nativeElement.ended
+            && this.audioPlayer.nativeElement.readyState > 2;
+        if (isPlaying) {
+            this.audioPlayer.nativeElement.pause();
+        }
+        this.mp3AudioPath = data.actualAudio;
+        try {
+            this.audioPlayer.nativeElement.load();
+            this.audioPlayer.nativeElement.play();
+        }
+        catch (err) {
+            console.log(err);
+        }
+    };
+    MusicPlayerComponent.prototype.pauseMusic = function (data) {
+        this.audioPlayer.nativeElement.pause();
+    };
+    MusicPlayerComponent.prototype.resumeMusic = function (data) {
+        this.audioPlayer.nativeElement.play();
     };
     MusicPlayerComponent.prototype.triggerWindowEvent = function (eventType, evtObj) {
         var evt = new CustomEvent(eventType, { 'detail': evtObj });

@@ -9270,15 +9270,15 @@ function triggerWindowEvent(eventType, evtObj) {
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
 
-window.addEventListener('playAudio', function (e) {
+window.addEventListener('setSpectrum', function (e) {
     try {
-        playAudio();
+        setSpectrum();
     }
     catch (err) {
         console.log(err);
     }
 }, false);
-function playAudio() {
+function setSpectrum() {
     var audio = document.getElementById('audio');
     var ctx = new AudioContext();
     var analyser = ctx.createAnalyser();
@@ -9331,5 +9331,25 @@ function playAudio() {
         requestAnimationFrame(renderFrame);
     }
     renderFrame();
-    audio.play();
+    audio.addEventListener("ended", playNext);
+    audio.addEventListener("pause", onPause);
+    audio.addEventListener("play", onPlay);
+  //  audio.play();
 };
+
+function playNext(){
+    //alert('ended');
+    triggerDocumentEvent('playNext', {'event': 'playNext', 'eventObj': ''});
+}
+
+function onPause(){
+    triggerDocumentEvent('onPauseAudio', {'event': 'onPauseAudio', 'eventObj': ''});
+}
+function onPlay(){
+    triggerDocumentEvent('onPlayAudio', {'event': 'onPlayAudio', 'eventObj': ''});
+}
+
+function triggerDocumentEvent(eventType, evtObj) {
+  var evt = new CustomEvent(eventType, {'detail': evtObj});
+  document.dispatchEvent(evt);
+}

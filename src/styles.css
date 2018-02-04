@@ -352,8 +352,34 @@ i.fa-3x{
     height: 2px;
     border-bottom: 1px solid #fff;
 }
-.red-highlight:hover{
-	color: red;
+.red-highlight:hover *{
+	color: red !important;
+}
+.item-highlight *{
+	color: #2b90d9 !important;
+}
+.player-controls .control-item{
+	width: 20px;
+    height: 20px;
+    margin: 0px 7px;
+}
+.player-controls .control-item i{
+    font-size: 15px;
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    background: #2b90d9;
+    border-radius: 50%;
+    padding: 4px;
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+}
+.player-controls .control-item i:hover{
+	background: #f00;
+}
+.player-controls .control-item .fa-play{
+	padding: 4px 7px;
 }
 
 
