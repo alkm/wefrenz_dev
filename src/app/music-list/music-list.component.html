@@ -36,11 +36,11 @@
     	border-bottom: 1px solid #fff;
     	top: 40px;
     	right: 10px;">
-	<div class="music-list"  *ngFor="let item of musicSource; let i = index">
-		<div class="row no-margin pull-left inline-block hand-cursor red-highlight item-row music-item" (click)="musicListItemClick($event, item)" [attr.id]="item.actualAudio" [class.item-highlight]="item.actualAudio === actualAudio"
+	<div class="music-list"  *ngFor="let item of musicSource; let indx = index">
+		<div class="row no-margin pull-left inline-block hand-cursor red-highlight item-row music-item" (click)="musicListItemClick($event, item, indx)" [attr.id]="item.actualAudio" [class.item-highlight]="item.actualAudio === actualAudio"
 			style="border: 1px solid #fff; border-bottom: none;">
 			<div class="row no-margin white-fonts music-name pull-right">
-                <span style="width: 12px; margin-left: 2px;">{{i+1}}</span>
+                <span style="width: 12px; margin-left: 2px;">{{indx+1}}</span>
 				<span style="white-space: nowrap;
     				text-overflow: ellipsis;
     				overflow: hidden;

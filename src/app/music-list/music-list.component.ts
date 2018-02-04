@@ -61,32 +61,33 @@ export class MusicListComponent implements OnInit {
 		//document.addEventListener('onPlayAudio', this.onPlayAudio);
   	}
   	onPlayAudio(event){
-  		//if(!this.musicListClick){
-  			let element = document.getElementById(this.actualAudio);
-			element.scrollIntoView({behavior:"smooth"});
+  		//if(this.musicListClick === false){
   		//}
   		this.isPlaying = true;
   		this.isPause = false;
   		this.musicListClick = false;
   	}
   	onPauseAudio(event){
+  		this.musicListClick = false;
   		this.isPlaying = false;
   		this.isPause = true;
   	}
-  	private musicListItemClick(event, item){
+  	private musicListItemClick(event, item, indx){
   		this.musicListClick = true;
   		this.playMusic.emit(item);
   		this.isPlaying = true;
   		this.isPause = false;
   		this.actualAudio = item.actualAudio;
-  		
+  		this.itemCount = Number(indx);
   	}
   	private pauseMusiic(event){
+  		this.musicListClick = false;
   		this.pauseMusic.emit('pause');
   		this.isPause = true;
   		this.isPlaying = false;
   	}
   	private resumeMusiic(event){
+  		this.musicListClick = false;
   		this.resumeMusic.emit('resume');
   		this.isPause = false;
   		this.isPlaying = true;
@@ -103,11 +104,12 @@ export class MusicListComponent implements OnInit {
   			this.itemCount = 0;
   		}
   		let item = this.musicSource[this.itemCount];
-  		this.musicListItemClick(null, item);
+  		this.musicListItemClick(null, item, this.itemCount);
   		this.actualAudio = item.actualAudio;
+  		this.smoothItemScroll();
   	}
 
-  	private playPreviousItem($event){
+  	private playPreviousItem(event){
   		this.musicListClick = false;
   		if(this.itemCount >=1){
   			this.itemCount--;
@@ -115,7 +117,13 @@ export class MusicListComponent implements OnInit {
   			this.itemCount = this.musicSource.length-1;
   		}
   		let item = this.musicSource[this.itemCount];
-  		this.musicListItemClick(null, item);
+  		this.musicListItemClick(null, item, this.itemCount);
   		this.actualAudio = item.actualAudio;
+  		this.smoothItemScroll();
+  	}
+
+  	private smoothItemScroll(){
+  		let element = document.getElementById(this.actualAudio);
+		element.scrollIntoView({behavior:"smooth"});
   	}
 }

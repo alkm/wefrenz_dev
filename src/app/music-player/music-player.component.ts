@@ -215,7 +215,7 @@ export class MusicPlayerComponent implements OnInit {
 			this.musicSource = this.audioAlbumList[0].audiosList;
 		//}
 		this.createMusicList(this.musicSource);
-		this.playAudio(this.audioAlbumList[0].audiosList[0]); 	
+		this.playAudio(this.audioAlbumList[0].audiosList[0], -1); 	
 	}
 	private afterAbumAudioInfo(result){
 		this.audioList = result[0].audiosList;
@@ -244,7 +244,7 @@ export class MusicPlayerComponent implements OnInit {
 		//}
 		this.createMusicList(this.musicSource);
   		//this.fetchAlbumAudioInfo();
-		this.playAudio(this.audioList[0]); 		
+		this.playAudio(this.audioList[0], -1); 		
 
   	}
 
@@ -254,20 +254,44 @@ export class MusicPlayerComponent implements OnInit {
   		this.fetchAudioAlbumInfo();
   	}
 
-  	private playAudio(data){
-  		console.log(data);
-  		
-  		this.posterPath = data.poster;
-  		
-  		let isPlaying = this.audioPlayer.nativeElement.currentTime > 0 && !this.audioPlayer.nativeElement.paused && !this.audioPlayer.nativeElement.ended 
-    	&& this.audioPlayer.nativeElement.readyState > 2;
-		if (isPlaying) {
-			this.audioPlayer.nativeElement.pause();
+  	private pauseAudio(){
+  		let playPromise = this.audioPlayer.nativeElement.play();
+		if (playPromise !== undefined) {
+			playPromise.then(_ => {
+			  // Automatic playback started!
+			  // Show playing UI.
+			  // We can now safely pause video...
+			  let isPlaying = this.audioPlayer.nativeElement.currentTime > 0 && !this.audioPlayer.nativeElement.paused && !this.audioPlayer.nativeElement.ended 
+    			&& this.audioPlayer.nativeElement.readyState > 2;
+				if (isPlaying) {
+				//this.audioPlayer.nativeElement.pause();
+					this.audioPlayer.nativeElement.pause();
+				}
+			})
+			.catch(error => {
+			  // Auto-play was prevented
+			  // Show paused UI.
+			});
 		}
+  	}
+  	private playAudio(data, indx){
+  		console.log(data);
+  		this.posterPath = data.poster;
+		this.pauseAudio();
 			
 		this.mp3AudioPath = data.actualAudio;
 		try{
 			this.musicListRef.instance.actualAudio = this.mp3AudioPath;
+			this.musicListRef.instance.itemCount = indx;
+			if(indx === -1){
+				this.musicListRef.instance.itemCount = 0;
+			}
+			
+			if(indx !== -1){
+				//this.smoothItemScroll(this.mp3AudioPath);
+				this.musicListRef.instance.smoothItemScroll();
+			}
+			
 			this.audioPlayer.nativeElement.load();
 			this.audioPlayer.nativeElement.play();			
 		}catch(err){
@@ -277,6 +301,11 @@ export class MusicPlayerComponent implements OnInit {
   		//this.audioPlayer.nativeElement.play();
   		
   	}
+
+  	/*private smoothItemScroll(itemName){
+  		let element = document.getElementById(itemName);
+		element.scrollIntoView({behavior:"smooth"});
+  	}*/
 
   	private createMusicList(musicSource){
     	if(this.musicListRef){
@@ -312,12 +341,7 @@ export class MusicPlayerComponent implements OnInit {
   	}
 
   	private playMusic(data){
-  		let isPlaying = this.audioPlayer.nativeElement.currentTime > 0 && !this.audioPlayer.nativeElement.paused && !this.audioPlayer.nativeElement.ended 
-    	&& this.audioPlayer.nativeElement.readyState > 2;
-		if (isPlaying) {
-			this.audioPlayer.nativeElement.pause();
-		}
-			
+		this.pauseAudio();
 		this.mp3AudioPath = data.actualAudio;
 		try{
 			this.audioPlayer.nativeElement.load();
@@ -328,7 +352,7 @@ export class MusicPlayerComponent implements OnInit {
   	}
 
   	private pauseMusic(data){
-  		this.audioPlayer.nativeElement.pause();
+		this.pauseAudio();
   	}
   	private resumeMusic(data){
   		this.audioPlayer.nativeElement.play();

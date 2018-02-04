@@ -1,6 +1,6 @@
 <div class="audio-container">
     <canvas id='canvas'></canvas>
-    <audio #audioPlayer id="audio" controls>
+    <audio #audioPlayer id="audio"  preload="none" controls>
         <source src="{{mp3AudioPath}}" type="audio/mp3">
         <p>Your browser does not support the HTML5 Audio element.</p>
     </audio>
@@ -130,7 +130,7 @@
                 </div>
             </div>
             <div class="album-icons">
-                <app-audio-icon (click)="playAudio(item)" class="pull-left" *ngFor="let item of audioList | audioSearch : audioText" [item]="item"></app-audio-icon>
+                <app-audio-icon  class="pull-left" *ngFor="let item of audioList | audioSearch : audioText;  let indx = index" [item]="item" (click)="playAudio(item, indx)"></app-audio-icon>
             </div>
         </ng-template>
     </div>

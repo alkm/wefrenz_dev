@@ -2878,7 +2878,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/music-list/music-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"player-controls\" \n\tstyle=\"position: absolute;\n    right: 10px;\n    top: 10px;\n    width: 140px;\">\n    <div class=\"pull-left control-item\" (click)=\"replayMusiic($event)\">\n        <i class=\"fa fa-repeat\"></i>\n    </div>\n\t<div class=\"pull-left control-item\" (click)=\"playPreviousItem($event)\">\n\t\t<i class=\"fa fa-step-backward\"></i>\n\t</div>\n    <div *ngIf=\"isPlaying ; then pauseBtn\"></div>\n    <ng-template #pauseBtn>\n        <div class=\"pull-left control-item\" (click)=\"pauseMusiic($event)\">\n            <i class=\"fa fa-stop\"></i>\n        </div>\n    </ng-template>\n    <div *ngIf=\"isPause; then playBtn\"></div>\n    <ng-template #playBtn>\n\t   <div class=\"pull-left control-item\" (click)=\"resumeMusiic($event)\">\n            <i class=\"fa fa-play\"></i>\n        </div>\n    </ng-template>\n\t<div class=\"pull-left control-item\" (click)=\"playNextItem($event)\"><i class=\"fa fa-step-forward\"></i></div>\n</div>\n<div #musicPlayList classs=\"music-play-list\" \n\tstyle=\"background-color: rgba(43, 144, 217, 0);\n    \tdisplay: inline-block;\n    \tbox-sizing: border-box;\n    \twidth: 140px;\n    \ttext-overflow: ellipsis;\n    \toverflow-y: auto;\n    \ttext-align: left;\n    \tborder-bottom: none;\n    \tposition: absolute;\n    \tborder-bottom: 1px solid #fff;\n    \ttop: 40px;\n    \tright: 10px;\">\n\t<div class=\"music-list\"  *ngFor=\"let item of musicSource; let i = index\">\n\t\t<div class=\"row no-margin pull-left inline-block hand-cursor red-highlight item-row music-item\" (click)=\"musicListItemClick($event, item)\" [attr.id]=\"item.actualAudio\" [class.item-highlight]=\"item.actualAudio === actualAudio\"\n\t\t\tstyle=\"border: 1px solid #fff; border-bottom: none;\">\n\t\t\t<div class=\"row no-margin white-fonts music-name pull-right\">\n                <span style=\"width: 12px; margin-left: 2px;\">{{i+1}}</span>\n\t\t\t\t<span style=\"white-space: nowrap;\n    \t\t\t\ttext-overflow: ellipsis;\n    \t\t\t\toverflow: hidden;\n    \t\t\t\tdisplay: block;\n    \t\t\t\tpadding: 0px 4px;\n    \t\t\t\twidth: 107px;\n    \t\t\t\tmax-height: 267px;\">\n    \t\t\t\t{{item.actualAudio}}\n\t    \t\t</span>\n                <span style=\"width: 12px; margin-left: 3px; margin-right: 2px;\"><i aria-hidden=\"true\" class=\"fa fa-music white-fonts\"></i></span>\n\n\t    \t</div> \n\t\t</div>\n\t</div>\n</div>\n"
+module.exports = "<div class=\"player-controls\" \n\tstyle=\"position: absolute;\n    right: 10px;\n    top: 10px;\n    width: 140px;\">\n    <div class=\"pull-left control-item\" (click)=\"replayMusiic($event)\">\n        <i class=\"fa fa-repeat\"></i>\n    </div>\n\t<div class=\"pull-left control-item\" (click)=\"playPreviousItem($event)\">\n\t\t<i class=\"fa fa-step-backward\"></i>\n\t</div>\n    <div *ngIf=\"isPlaying ; then pauseBtn\"></div>\n    <ng-template #pauseBtn>\n        <div class=\"pull-left control-item\" (click)=\"pauseMusiic($event)\">\n            <i class=\"fa fa-stop\"></i>\n        </div>\n    </ng-template>\n    <div *ngIf=\"isPause; then playBtn\"></div>\n    <ng-template #playBtn>\n\t   <div class=\"pull-left control-item\" (click)=\"resumeMusiic($event)\">\n            <i class=\"fa fa-play\"></i>\n        </div>\n    </ng-template>\n\t<div class=\"pull-left control-item\" (click)=\"playNextItem($event)\"><i class=\"fa fa-step-forward\"></i></div>\n</div>\n<div #musicPlayList classs=\"music-play-list\" \n\tstyle=\"background-color: rgba(43, 144, 217, 0);\n    \tdisplay: inline-block;\n    \tbox-sizing: border-box;\n    \twidth: 140px;\n    \ttext-overflow: ellipsis;\n    \toverflow-y: auto;\n    \ttext-align: left;\n    \tborder-bottom: none;\n    \tposition: absolute;\n    \tborder-bottom: 1px solid #fff;\n    \ttop: 40px;\n    \tright: 10px;\">\n\t<div class=\"music-list\"  *ngFor=\"let item of musicSource; let indx = index\">\n\t\t<div class=\"row no-margin pull-left inline-block hand-cursor red-highlight item-row music-item\" (click)=\"musicListItemClick($event, item, indx)\" [attr.id]=\"item.actualAudio\" [class.item-highlight]=\"item.actualAudio === actualAudio\"\n\t\t\tstyle=\"border: 1px solid #fff; border-bottom: none;\">\n\t\t\t<div class=\"row no-margin white-fonts music-name pull-right\">\n                <span style=\"width: 12px; margin-left: 2px;\">{{indx+1}}</span>\n\t\t\t\t<span style=\"white-space: nowrap;\n    \t\t\t\ttext-overflow: ellipsis;\n    \t\t\t\toverflow: hidden;\n    \t\t\t\tdisplay: block;\n    \t\t\t\tpadding: 0px 4px;\n    \t\t\t\twidth: 107px;\n    \t\t\t\tmax-height: 267px;\">\n    \t\t\t\t{{item.actualAudio}}\n\t    \t\t</span>\n                <span style=\"width: 12px; margin-left: 3px; margin-right: 2px;\"><i aria-hidden=\"true\" class=\"fa fa-music white-fonts\"></i></span>\n\n\t    \t</div> \n\t\t</div>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -2938,31 +2938,33 @@ var MusicListComponent = (function () {
         //document.addEventListener('onPlayAudio', this.onPlayAudio);
     };
     MusicListComponent.prototype.onPlayAudio = function (event) {
-        //if(!this.musicListClick){
-        var element = document.getElementById(this.actualAudio);
-        element.scrollIntoView({ behavior: "smooth" });
+        //if(this.musicListClick === false){
         //}
         this.isPlaying = true;
         this.isPause = false;
         this.musicListClick = false;
     };
     MusicListComponent.prototype.onPauseAudio = function (event) {
+        this.musicListClick = false;
         this.isPlaying = false;
         this.isPause = true;
     };
-    MusicListComponent.prototype.musicListItemClick = function (event, item) {
+    MusicListComponent.prototype.musicListItemClick = function (event, item, indx) {
         this.musicListClick = true;
         this.playMusic.emit(item);
         this.isPlaying = true;
         this.isPause = false;
         this.actualAudio = item.actualAudio;
+        this.itemCount = Number(indx);
     };
     MusicListComponent.prototype.pauseMusiic = function (event) {
+        this.musicListClick = false;
         this.pauseMusic.emit('pause');
         this.isPause = true;
         this.isPlaying = false;
     };
     MusicListComponent.prototype.resumeMusiic = function (event) {
+        this.musicListClick = false;
         this.resumeMusic.emit('resume');
         this.isPause = false;
         this.isPlaying = true;
@@ -2979,10 +2981,11 @@ var MusicListComponent = (function () {
             this.itemCount = 0;
         }
         var item = this.musicSource[this.itemCount];
-        this.musicListItemClick(null, item);
+        this.musicListItemClick(null, item, this.itemCount);
         this.actualAudio = item.actualAudio;
+        this.smoothItemScroll();
     };
-    MusicListComponent.prototype.playPreviousItem = function ($event) {
+    MusicListComponent.prototype.playPreviousItem = function (event) {
         this.musicListClick = false;
         if (this.itemCount >= 1) {
             this.itemCount--;
@@ -2991,8 +2994,13 @@ var MusicListComponent = (function () {
             this.itemCount = this.musicSource.length - 1;
         }
         var item = this.musicSource[this.itemCount];
-        this.musicListItemClick(null, item);
+        this.musicListItemClick(null, item, this.itemCount);
         this.actualAudio = item.actualAudio;
+        this.smoothItemScroll();
+    };
+    MusicListComponent.prototype.smoothItemScroll = function () {
+        var element = document.getElementById(this.actualAudio);
+        element.scrollIntoView({ behavior: "smooth" });
     };
     return MusicListComponent;
 }());
@@ -3048,7 +3056,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/music-player/music-player.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"audio-container\">\n    <canvas id='canvas'></canvas>\n    <audio #audioPlayer id=\"audio\" controls>\n        <source src=\"{{mp3AudioPath}}\" type=\"audio/mp3\">\n        <p>Your browser does not support the HTML5 Audio element.</p>\n    </audio>\n    <div #musicList></div>\n      <!-- Video Controls -->\n    <!--<div id=\"video-controls\">\n        <div><input type=\"range\" min=\"1\" max=\"100\" step=\"1\" value=\"15\" class=\"colw100 no-outline\" id=\"seek-bar\"></div>\n        <div>\n            <i id=\"play-pause\" class=\"fa fa-play-circle fa-2x blue-fonts\"></i>    \n            <button type=\"button\" id=\"mute\">Mute</button>\n            <input type=\"range\" id=\"volumeBar\" min=\"0\" max=\"1\" step=\"0.1\" value=\"1\">\n            <button type=\"button\" id=\"full-screen\">Full-Screen</button>\n        </div>\n    </div>-->\n</div>\n<div class=\"audio-content\">\n    <div class=\"title semi-transparent-bg\">\n        <div class=\"line-height-sixteen\">\n            <i class=\"fa fa-music blue-fonts fa-2x\" aria-hidden=\"true\"></i>\n            <span class=\"blue-fonts medium-fonts\">Music</span>\n        </div>\n    </div>\n    <div *ngIf=\"isAudioAlbum ; then albumAudioUploader\"></div>\n    <ng-template #albumAudioUploader>\n        <div class=\"inline-block semi-transparent-bg colw100\">\n            <div class=\"pull-left\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"audioUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"audioGroup\">\n                            <input type=\"file\" accept=\"audio/*\" class=\"file-input\" name=\"uploadfile\" #fileInput (change)=\"fileChangeEvent($event, true)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"cancelAlbum(null); fileInput.value = ''; fileInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Upload New Music</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The music will be uploaded to your untitled album.</span>\n                </div>\n                <div class=\"new-album\">\n                    <span class=\"blue-fonts\" (click)=\"createAudioAlbum($event)\">\n                        <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>\n                        <span>Create New Album</span>\n                    </span>\n                </div>\n                <div *ngIf=\"isCreateAlbum ; then createAlbum\"></div>\n                <ng-template #createAlbum >\n                    <form [formGroup]=\"albumForm\">\n                        <div class=\"form-group\">\n                            <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" aria-describedby=\"emailHelp\" placeholder=\"title\" formControlName=\"albumTitle\" id=\"albumTitle\" [(ngModel)]=\"albumTitle\">\n                            <app-control-messages [control]=\"albumForm.controls.albumTitle\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group\">\n                            <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" formControlName=\"albumDesc\" id=\"albumDesc\" [(ngModel)]=\"albumDesc\">\n                            </textarea>\n                            <app-control-messages [control]=\"albumForm.controls.albumDesc\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group row justify-content-center align-items-center no-margin\">\n                            <button id=\"loginBtn\" type=\"button\" class=\"btn btn-primary\" (click)=\"cancelAlbum()\" >\n                                <i class=\"fa fa-times no-margin\" aria-hidden=\"true\"></i>\n                                <span>Cancel</span>\n                            </button>\n                            <div *ngIf=\"isAddAlbum ; then addBtn\"></div>\n                            <ng-template #addBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"createAlbumInfo($event)\">\n                                    <span>Create</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                            <div *ngIf=\"isUpdateAlbum ; then updateBtn\"></div>\n                            <ng-template #updateBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"updateAlbumInfo($event)\">\n                                    <span>Edit</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                        </div>\n                        <div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n                            <div class=\"server-msg text-center\">{{serverMessage}}</div>\n                        </div>\n                    </form>\n                </ng-template>\n                <progress value=\"0\" max=\"100\" id=\"progressBar\" [value]=\"uploadProgress\" [hidden]=\"!isProgress\"></progress>\n            </div>\n        </div>\n    </ng-template>\n    <div class=\"inline-block semi-transparent-bg colw100\">\n        <div *ngIf=\"isAudioAlbum ; then audioAlbum\"></div>\n        <ng-template #audioAlbum >\n            <div class=\"album-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n                </div>\n                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n            </div>\n            <div class=\"album-icons\">\n                <app-audio-album-icon class=\"pull-left\" *ngFor=\"let item of audioAlbumList | albumSearch : albumText\" [item]=\"item\" (click)=\"searchAlbum.value=''; albumText = '';\" (onEditAudioAlbum)=\"editAudioAlbum($event)\" \n                (onShowAudioList)=\"showAudioList($event)\"></app-audio-album-icon>\n            </div>\n        </ng-template>\n        <div *ngIf=\"isAlbumAudio ; then albumAudio\"></div>\n        <ng-template #albumAudio >\n            <div class=\"audio-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <!--<input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"videoText\" #searchVideo/>-->\n                    <div class=\"cursor-pointer blue-fonts\" (click)=\"goToMyAlbum($event)\">{{albumTitle}}</div>\n                </div>\n                <!--<div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>-->\n            </div>\n            <div class=\"audio-uploader\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"audioUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"audioGroup\">\n                            <input type=\"file\" accept=\"audio/*\" class=\"audio-input\" name=\"uploadfile\" #audioInput (change)=\"fileChangeEvent($event, false)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"audioInput.value = ''; audioInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Add New Audios.</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The audio will be uploaded to this album.</span>\n                </div>\n            </div>\n            <div class=\"album-icons\">\n                <app-audio-icon (click)=\"playAudio(item)\" class=\"pull-left\" *ngFor=\"let item of audioList | audioSearch : audioText\" [item]=\"item\"></app-audio-icon>\n            </div>\n        </ng-template>\n    </div>\n</div>"
+module.exports = "<div class=\"audio-container\">\n    <canvas id='canvas'></canvas>\n    <audio #audioPlayer id=\"audio\"  preload=\"none\" controls>\n        <source src=\"{{mp3AudioPath}}\" type=\"audio/mp3\">\n        <p>Your browser does not support the HTML5 Audio element.</p>\n    </audio>\n    <div #musicList></div>\n      <!-- Video Controls -->\n    <!--<div id=\"video-controls\">\n        <div><input type=\"range\" min=\"1\" max=\"100\" step=\"1\" value=\"15\" class=\"colw100 no-outline\" id=\"seek-bar\"></div>\n        <div>\n            <i id=\"play-pause\" class=\"fa fa-play-circle fa-2x blue-fonts\"></i>    \n            <button type=\"button\" id=\"mute\">Mute</button>\n            <input type=\"range\" id=\"volumeBar\" min=\"0\" max=\"1\" step=\"0.1\" value=\"1\">\n            <button type=\"button\" id=\"full-screen\">Full-Screen</button>\n        </div>\n    </div>-->\n</div>\n<div class=\"audio-content\">\n    <div class=\"title semi-transparent-bg\">\n        <div class=\"line-height-sixteen\">\n            <i class=\"fa fa-music blue-fonts fa-2x\" aria-hidden=\"true\"></i>\n            <span class=\"blue-fonts medium-fonts\">Music</span>\n        </div>\n    </div>\n    <div *ngIf=\"isAudioAlbum ; then albumAudioUploader\"></div>\n    <ng-template #albumAudioUploader>\n        <div class=\"inline-block semi-transparent-bg colw100\">\n            <div class=\"pull-left\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"audioUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"audioGroup\">\n                            <input type=\"file\" accept=\"audio/*\" class=\"file-input\" name=\"uploadfile\" #fileInput (change)=\"fileChangeEvent($event, true)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"cancelAlbum(null); fileInput.value = ''; fileInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Upload New Music</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The music will be uploaded to your untitled album.</span>\n                </div>\n                <div class=\"new-album\">\n                    <span class=\"blue-fonts\" (click)=\"createAudioAlbum($event)\">\n                        <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>\n                        <span>Create New Album</span>\n                    </span>\n                </div>\n                <div *ngIf=\"isCreateAlbum ; then createAlbum\"></div>\n                <ng-template #createAlbum >\n                    <form [formGroup]=\"albumForm\">\n                        <div class=\"form-group\">\n                            <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" aria-describedby=\"emailHelp\" placeholder=\"title\" formControlName=\"albumTitle\" id=\"albumTitle\" [(ngModel)]=\"albumTitle\">\n                            <app-control-messages [control]=\"albumForm.controls.albumTitle\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group\">\n                            <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" formControlName=\"albumDesc\" id=\"albumDesc\" [(ngModel)]=\"albumDesc\">\n                            </textarea>\n                            <app-control-messages [control]=\"albumForm.controls.albumDesc\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group row justify-content-center align-items-center no-margin\">\n                            <button id=\"loginBtn\" type=\"button\" class=\"btn btn-primary\" (click)=\"cancelAlbum()\" >\n                                <i class=\"fa fa-times no-margin\" aria-hidden=\"true\"></i>\n                                <span>Cancel</span>\n                            </button>\n                            <div *ngIf=\"isAddAlbum ; then addBtn\"></div>\n                            <ng-template #addBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"createAlbumInfo($event)\">\n                                    <span>Create</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                            <div *ngIf=\"isUpdateAlbum ; then updateBtn\"></div>\n                            <ng-template #updateBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"updateAlbumInfo($event)\">\n                                    <span>Edit</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                        </div>\n                        <div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n                            <div class=\"server-msg text-center\">{{serverMessage}}</div>\n                        </div>\n                    </form>\n                </ng-template>\n                <progress value=\"0\" max=\"100\" id=\"progressBar\" [value]=\"uploadProgress\" [hidden]=\"!isProgress\"></progress>\n            </div>\n        </div>\n    </ng-template>\n    <div class=\"inline-block semi-transparent-bg colw100\">\n        <div *ngIf=\"isAudioAlbum ; then audioAlbum\"></div>\n        <ng-template #audioAlbum >\n            <div class=\"album-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n                </div>\n                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n            </div>\n            <div class=\"album-icons\">\n                <app-audio-album-icon class=\"pull-left\" *ngFor=\"let item of audioAlbumList | albumSearch : albumText\" [item]=\"item\" (click)=\"searchAlbum.value=''; albumText = '';\" (onEditAudioAlbum)=\"editAudioAlbum($event)\" \n                (onShowAudioList)=\"showAudioList($event)\"></app-audio-album-icon>\n            </div>\n        </ng-template>\n        <div *ngIf=\"isAlbumAudio ; then albumAudio\"></div>\n        <ng-template #albumAudio >\n            <div class=\"audio-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <!--<input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"videoText\" #searchVideo/>-->\n                    <div class=\"cursor-pointer blue-fonts\" (click)=\"goToMyAlbum($event)\">{{albumTitle}}</div>\n                </div>\n                <!--<div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>-->\n            </div>\n            <div class=\"audio-uploader\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"audioUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"audioGroup\">\n                            <input type=\"file\" accept=\"audio/*\" class=\"audio-input\" name=\"uploadfile\" #audioInput (change)=\"fileChangeEvent($event, false)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"audioInput.value = ''; audioInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Add New Audios.</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The audio will be uploaded to this album.</span>\n                </div>\n            </div>\n            <div class=\"album-icons\">\n                <app-audio-icon  class=\"pull-left\" *ngFor=\"let item of audioList | audioSearch : audioText;  let indx = index\" [item]=\"item\" (click)=\"playAudio(item, indx)\"></app-audio-icon>\n            </div>\n        </ng-template>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -3252,7 +3260,7 @@ var MusicPlayerComponent = (function () {
         this.musicSource = this.audioAlbumList[0].audiosList;
         //}
         this.createMusicList(this.musicSource);
-        this.playAudio(this.audioAlbumList[0].audiosList[0]);
+        this.playAudio(this.audioAlbumList[0].audiosList[0], -1);
     };
     MusicPlayerComponent.prototype.afterAbumAudioInfo = function (result) {
         this.audioList = result[0].audiosList;
@@ -3279,24 +3287,49 @@ var MusicPlayerComponent = (function () {
         //}
         this.createMusicList(this.musicSource);
         //this.fetchAlbumAudioInfo();
-        this.playAudio(this.audioList[0]);
+        this.playAudio(this.audioList[0], -1);
     };
     MusicPlayerComponent.prototype.goToMyAlbum = function (event) {
         this.isAudioAlbum = true;
         this.isAlbumAudio = false;
         this.fetchAudioAlbumInfo();
     };
-    MusicPlayerComponent.prototype.playAudio = function (data) {
+    MusicPlayerComponent.prototype.pauseAudio = function () {
+        var _this = this;
+        var playPromise = this.audioPlayer.nativeElement.play();
+        if (playPromise !== undefined) {
+            playPromise.then(function (_) {
+                // Automatic playback started!
+                // Show playing UI.
+                // We can now safely pause video...
+                var isPlaying = _this.audioPlayer.nativeElement.currentTime > 0 && !_this.audioPlayer.nativeElement.paused && !_this.audioPlayer.nativeElement.ended
+                    && _this.audioPlayer.nativeElement.readyState > 2;
+                if (isPlaying) {
+                    //this.audioPlayer.nativeElement.pause();
+                    _this.audioPlayer.nativeElement.pause();
+                }
+            })
+                .catch(function (error) {
+                // Auto-play was prevented
+                // Show paused UI.
+            });
+        }
+    };
+    MusicPlayerComponent.prototype.playAudio = function (data, indx) {
         console.log(data);
         this.posterPath = data.poster;
-        var isPlaying = this.audioPlayer.nativeElement.currentTime > 0 && !this.audioPlayer.nativeElement.paused && !this.audioPlayer.nativeElement.ended
-            && this.audioPlayer.nativeElement.readyState > 2;
-        if (isPlaying) {
-            this.audioPlayer.nativeElement.pause();
-        }
+        this.pauseAudio();
         this.mp3AudioPath = data.actualAudio;
         try {
             this.musicListRef.instance.actualAudio = this.mp3AudioPath;
+            this.musicListRef.instance.itemCount = indx;
+            if (indx === -1) {
+                this.musicListRef.instance.itemCount = 0;
+            }
+            if (indx !== -1) {
+                //this.smoothItemScroll(this.mp3AudioPath);
+                this.musicListRef.instance.smoothItemScroll();
+            }
             this.audioPlayer.nativeElement.load();
             this.audioPlayer.nativeElement.play();
         }
@@ -3305,6 +3338,10 @@ var MusicPlayerComponent = (function () {
         }
         //this.audioPlayer.nativeElement.play();
     };
+    /*private smoothItemScroll(itemName){
+        let element = document.getElementById(itemName);
+        element.scrollIntoView({behavior:"smooth"});
+    }*/
     MusicPlayerComponent.prototype.createMusicList = function (musicSource) {
         var _this = this;
         if (this.musicListRef) {
@@ -3336,11 +3373,7 @@ var MusicPlayerComponent = (function () {
         //this.audioPlayer.nativeElement.play();	
     };
     MusicPlayerComponent.prototype.playMusic = function (data) {
-        var isPlaying = this.audioPlayer.nativeElement.currentTime > 0 && !this.audioPlayer.nativeElement.paused && !this.audioPlayer.nativeElement.ended
-            && this.audioPlayer.nativeElement.readyState > 2;
-        if (isPlaying) {
-            this.audioPlayer.nativeElement.pause();
-        }
+        this.pauseAudio();
         this.mp3AudioPath = data.actualAudio;
         try {
             this.audioPlayer.nativeElement.load();
@@ -3351,7 +3384,7 @@ var MusicPlayerComponent = (function () {
         }
     };
     MusicPlayerComponent.prototype.pauseMusic = function (data) {
-        this.audioPlayer.nativeElement.pause();
+        this.pauseAudio();
     };
     MusicPlayerComponent.prototype.resumeMusic = function (data) {
         this.audioPlayer.nativeElement.play();
