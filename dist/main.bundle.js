@@ -2999,8 +2999,11 @@ var MusicListComponent = (function () {
         this.smoothItemScroll();
     };
     MusicListComponent.prototype.smoothItemScroll = function () {
+        var body = document.getElementsByTagName('body')[0];
+        body.style.position = "fixed";
         var element = document.getElementById(this.actualAudio);
         element.scrollIntoView({ behavior: "smooth" });
+        body.style.position = "relative";
     };
     return MusicListComponent;
 }());

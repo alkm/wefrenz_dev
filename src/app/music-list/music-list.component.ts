@@ -123,7 +123,10 @@ export class MusicListComponent implements OnInit {
   	}
 
   	private smoothItemScroll(){
+  		const body = document.getElementsByTagName('body')[0];
+    	body.style.position = "fixed";
   		let element = document.getElementById(this.actualAudio);
 		element.scrollIntoView({behavior:"smooth"});
+		body.style.position = "relative";
   	}
 }
