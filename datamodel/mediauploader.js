@@ -218,12 +218,12 @@ module.exports = function(app) {
 						}, function (error, files) {
 							if (!error){
 								console.log('Frames: ' + files);
-								posterImg = files[1];
+								posterImg = files[files.length-1];
 								posterImg = 'video/poster/'+posterImg.split('/poster/')[1]; //Setting the virtual path
 							}
 						});
 
-						if(videoExt !== '.mp4'){
+						//if(videoExt !== '.mp4'){
 							video.save(saveVideoPathMP4, function (error, file) {
 								if (!error){
 									console.log('Video file: ' + file);
@@ -232,13 +232,13 @@ module.exports = function(app) {
 									
 								}	
 							});
-						}else{
+						/*}else{
 							saveVideoPathMP4 = actualVideoPath;
 							saveVideoPathMP4 = 'video/original/'+saveVideoPathMP4.split('/mp4/')[1];//Setting virtual path
 							emtr.emit('onVideoReady', 'mp4');
 							console.log('The format is mp4, so keeping it as original');
 							
-						}
+						}*/
 
 						/*if(videoExt !== '.webm'){
 							video.save(saveVideoPathWEBM, function (error, file) {

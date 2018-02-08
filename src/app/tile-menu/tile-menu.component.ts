@@ -32,5 +32,9 @@ export class TileMenuComponent implements OnInit {
   	private navigateToEntertainment(event){
   		this.router.navigate(['entertainment', this.userId]);
   	}
+
+    private navigateToStories(event){
+      this.router.navigate(['stories', this.userId]);
+    }
   
 }

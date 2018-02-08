@@ -1,8 +1,9 @@
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, ElementRef, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ValidationService } from 'app/services/validators/validation.service';
 import { AppSettingsService } from 'app/services/settings/app-settings.service';
 import { VideoService } from 'app/services/data/video.service';
+import { VideoListComponent } from '../video-list/video-list.component';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { VideoService } from 'app/services/data/video.service';
 export class VideoPlayerComponent implements OnInit {
 
 	@ViewChild('videoPlayer') videoPlayer: ElementRef;
+	@ViewChild('videoList', {read: ViewContainerRef}) videoList: ViewContainerRef;
 
 	private files: any;
 	private userId: string = '';
@@ -23,7 +25,7 @@ export class VideoPlayerComponent implements OnInit {
 	private isProgress: boolean = false;
 	private albumForm : any;
 	private videoAlbumList: any;
-	private videoList: any;
+	private videosList: any;
 	private albumTitle = '';
 	private albumDesc = '';
 	private isCreateAlbum: boolean = false;
@@ -33,11 +35,16 @@ export class VideoPlayerComponent implements OnInit {
 	private isAlbumVideo: boolean = false;
 	private albumInfo : any;
 	private videoInfo: any;
+	private loadCount: number = 0;
 	private mp4VideoPath = 'https://media.w3.org/2010/05/sintel/trailer.mp4';
 	private webmVideoPath = 'https://media.w3.org/2010/05/sintel/trailer.webm';
 	private posterPath = 'https://media.w3.org/2010/05/sintel/poster.png';
+	private videoListRef: any;
+	private videoSource: string[] = [];
+	private videoListComponent: any;
 
-  	constructor(private formBuilder: FormBuilder, private videoService: VideoService) { 
+  	constructor(private formBuilder: FormBuilder, private videoService: VideoService, private componentFactoryResolver: ComponentFactoryResolver) { 
+  		this.loadCount = 0;
   		let loginData = JSON.parse(localStorage.getItem('loginData'));
 	    this.userId = loginData.username;
 
@@ -59,8 +66,30 @@ export class VideoPlayerComponent implements OnInit {
 
   	ngOnInit() {
   	}
+
+  	ngAfterViewInit(){
+  		this.videoPlayer.nativeElement.addEventListener("ended", onPlayNextVideo);
+    	this.videoPlayer.nativeElement.addEventListener("pause", onPauseVideo);
+    	this.videoPlayer.nativeElement.addEventListener("play", onPlayVideo);
+    	let self = this;
+    	function onPlayNextVideo(){
+  			self.triggerDocumentEvent('playNextVideo', {'event': 'playNextVideo', 'eventObj': ''});
+  		}
+	  	function onPauseVideo(){
+	  		self.triggerDocumentEvent('onPauseVideo', {'event': 'onPauseVideo', 'eventObj': ''});
+	  	}
+  		function onPlayVideo(){
+  			self.triggerDocumentEvent('onPlayVideo', {'event': 'onPauseVideo', 'eventObj': ''});
+  		}
+  	}
+
+
 	private fileChangeEvent(event, directUpload){
 		let self = this;
+		if(self.loadCount > 0){
+			alert('Please wait while we are processing your previous video.');
+			return;
+		}
 		let userId = this.userId;
 		let file: any;
 		if (event.target.files && event.target.files[0]) {
@@ -68,6 +97,7 @@ export class VideoPlayerComponent implements OnInit {
 			uploadVideo();
 		}
 		function uploadVideo() {
+			self.loadCount++;
 			let formData = new FormData();
 			formData.append('uploadfile', file);
 			formData.append('userid', userId);
@@ -96,6 +126,9 @@ export class VideoPlayerComponent implements OnInit {
 			};
 
 			xhr.onerror = function(e) {
+				if(self.loadCount> 0){
+					self.loadCount--;
+				}
 				alert('An error occurred while submitting the form. Maybe your file is too big');
 			};
 			xhr.onload = function() {
@@ -108,6 +141,9 @@ export class VideoPlayerComponent implements OnInit {
 					self.fetchVideoAlbumInfo();
 				}else{
 					self.fetchAlbumVideoInfo();	
+				}
+				if(self.loadCount> 0){
+					self.loadCount--;
 				}
 				
 			};
@@ -204,9 +240,13 @@ export class VideoPlayerComponent implements OnInit {
 
 	private afterVideoAbumInfo(result){
 		this.videoAlbumList = result;
+		this.videoSource = [];
+		this.videoSource = this.videoAlbumList[0].videosList;
+		this.createVideoList(this.videoSource);
+		this.playVideo(this.videoAlbumList[0].videosList[0], -1); 	
 	}
 	private afterAbumVideoInfo(result){
-		this.videoList = result[0].videosList;
+		this.videosList = result[0].videosList;
 	}
 
 	//Need to activate/deactivate edit btn later based on changes in title field
@@ -224,7 +264,7 @@ export class VideoPlayerComponent implements OnInit {
   		this.videoInfo = event.data;
   		this.isVideoAlbum = false;
   		this.isAlbumVideo = true;
-  		this.videoList = this.videoInfo.videosList;
+  		this.videosList = this.videoInfo.videosList;
   		this.albumTitle = this.videoInfo.title;
 
   	}
@@ -235,14 +275,84 @@ export class VideoPlayerComponent implements OnInit {
   		this.fetchVideoAlbumInfo();
   	}
 
-  	private playVideo(data){
+  	private playVideo(data, indx){
   		console.log(data);
   		this.videoPlayer.nativeElement.pause();
   		this.posterPath = data.poster;
   		this.mp4VideoPath = data.mp4Video;
   		//this.webmVideoPath = data.webmVideo;
-  		this.videoPlayer.nativeElement.load();
+  		try{
+			this.videoListRef.instance.mp4Video = this.mp4VideoPath;
+			this.videoListRef.instance.itemCount = indx;
+			if(indx === -1){
+				this.videoListRef.instance.itemCount = 0;
+			}
+			
+			if(indx !== -1){
+				//this.smoothItemScroll(this.mp3AudioPath);
+				this.videoListRef.instance.smoothItemScroll();
+			}
+  			this.videoPlayer.nativeElement.load();
+  			this.videoPlayer.nativeElement.play();		
+		}catch(err){
+			console.log(err);
+		}
+  	}
+
+  	private playVideeo(data){
+		this.videoPlayer.nativeElement.pause();
+  		this.posterPath = data.poster;
+  		this.mp4VideoPath = data.mp4Video;
+		try{
+			this.videoPlayer.nativeElement.load();
+			this.videoPlayer.nativeElement.play();			
+		}catch(err){
+			console.log(err);
+		}
+  	}
+
+  	private createVideoList(videoSource){
+    	if(this.videoListRef){
+    		this.videoListRef.instance.playVideo.unsubscribe((data) => this.playVideeo(data));
+    		this.videoListRef.instance.pauseVideo.unsubscribe((data) => this.pauseVideo(data));
+    		this.videoListRef.instance.resumeVideo.unsubscribe((data) => this.resumeVideo(data));
+    		//this.videoPlayer.nativeElement.removeEventListener("ended", this.playNextItem());
+    		this.videoListRef.instance.replayVideo.unsubscribe((data) => this.replayVideo(data));
+    		this.videoListRef.instance.removeEventListeners();
+    		this.videoListRef.instance.videoSource = [];
+    		this.videoListRef.instance.mp4Video = '';
+      		this.videoListRef.destroy();
+    	}
+    	this.videoListComponent = this.componentFactoryResolver.resolveComponentFactory(VideoListComponent);
+    	this.videoListRef = this.videoList.createComponent(this.videoListComponent);
+    	this.videoListRef.instance.videoSource = videoSource;
+    	this.videoListRef.instance.mp4Video = videoSource[0].mp4Video;
+    	this.videoListRef.instance.playVideo.subscribe((data) => this.playVideeo(data));
+    	this.videoListRef.instance.pauseVideo.subscribe((data) => this.pauseVideo(data));
+    	this.videoListRef.instance.resumeVideo.subscribe((data) => this.resumeVideo(data));
+    	this.videoListRef.instance.replayVideo.subscribe((data) => this.replayVideo(data));
+    	//this.videoPlayer.nativeElement.addEventListener("ended", this.playNextItem());
+
+  	}
+  	private playNextItem(){
+  		alert('video ended');
+  	}
+
+  	private replayVideo(data){
+  		this.videoPlayer.nativeElement.currentTime = 0;
+  		//this.videoPlayer.nativeElement.play();	
+  	}
+
+  	private pauseVideo(data){
+		this.videoPlayer.nativeElement.pause();
+  	}
+  	private resumeVideo(data){
   		this.videoPlayer.nativeElement.play();
   	}
+
+	private triggerDocumentEvent(eventType, evtObj) {
+		var evt = new CustomEvent(eventType, {'detail': evtObj});
+	  	document.dispatchEvent(evt);
+	}
 
 }

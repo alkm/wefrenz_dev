@@ -1,0 +1,43 @@
+<app-private-nav></app-private-nav>
+<div class="container top-margin bottom-margin">
+	<div class="row">
+		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+			<div class="opaque-bg no-padding">
+				<app-profile-area></app-profile-area>
+				<div class="left-nav">
+					<div class="nav-item" (click)="switchVideo($event)" [ngClass]="(isHighLightStories ? 'highlight-nav' : '')">
+						<i class="fa fa-book blue-fonts" aria-hidden="true"></i>
+						<span class="blue-fonts">Stories</span>
+					</div>
+					<div class="nav-item" [ngClass]="(isHighLightMusic ? 'highlight-nav' : '')" (click)="switchMusic($event)">
+						<i class="fa fa-pencil blue-fonts" aria-hidden="true"></i>
+						<span class="blue-fonts">Blog</span>
+					</div>
+					<div class="nav-item">
+						<i class="fa fa-plane blue-fonts" aria-hidden="true"></i>
+						<span class="blue-fonts">Travel</span>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 no-padding">
+			<div class="opaque-bg video-content">
+				<ng-template [ngIf]="isStories">
+					<app-story-box></app-story-box>
+				</ng-template>	
+				<ng-template [ngIf]="isBlog">
+					<app-music-player></app-music-player>
+				</ng-template>	
+				<ng-template [ngIf]="isActivity">
+					<app-photos></app-photos>
+				</ng-template>	
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 info-panel">
+			<div class="opaque-bg">
+				<app-info-panel></app-info-panel>
+			</div>
+		</div>
+	</div>
+</div>

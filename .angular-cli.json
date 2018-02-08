@@ -22,13 +22,15 @@
         "styles.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
-        "../libs/css/easyrtc.css"
+        "../libs/css/easyrtc.css",
+        "../libs/color-picker/color-picker.min.css"
       ],
       "scripts": [
         "../libs/socket.io.js",
          "../libs/easyrtc.js",
          "../libs/av.js",
-         "../libs/spectrum.js"
+         "../libs/spectrum.js",
+         "../libs/color-picker/color-picker.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

@@ -15,6 +15,7 @@
             type='video/ogg'>-->
       <p>Your browser does not support the HTML5 Video element.</p>
     </video>
+    <div #videoList></div>
       <!-- Video Controls -->
     <!--<div id="video-controls">
         <div><input type="range" min="1" max="100" step="1" value="15" class="colw100 no-outline" id="seek-bar"></div>
@@ -108,6 +109,13 @@
                 </div>
                 <div class="pull-left"><i class="fa fa-search cursor-pointer" aria-hidden="true"></i></div>
             </div>
+            <div *ngIf="loadCount > 0 ; then videoLoader"></div>
+            <ng-template #videoLoader>
+                <div class="red-fonts inline-block lineheight-25">
+                    <div class="pull-left">Processing your video, don't refresh.</div>
+                    <div class="pull-left"><i class="fa fa-cog fa-spin fa-2x"></i></div>
+                </div>
+            </ng-template>
             <div class="album-icons">
                 <app-video-album-icon class="pull-left" *ngFor="let item of videoAlbumList | albumSearch : albumText" [item]="item" (click)="searchAlbum.value=''; albumText = '';" (onEditVideoAlbum)="editVideoAlbum($event)" 
                 (onShowVideoList)="showVideoList($event)"></app-video-album-icon>
@@ -118,7 +126,10 @@
             <div class="video-search-box pull-left colw100">
                 <div class="pull-left">
                     <!--<input class="search-input blue-fonts" type="text" placeholder="Search"  autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" [(ngModel)]="videoText" #searchVideo/>-->
-                    <div class="cursor-pointer blue-fonts" (click)="goToMyAlbum($event)">{{albumTitle}}</div>
+                    <div class="cursor-pointer blue-fonts" (click)="goToMyAlbum($event)">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        <span>{{albumTitle}}</span>
+                    </div>
                 </div>
                 <!--<div class="pull-left"><i class="fa fa-search cursor-pointer" aria-hidden="true"></i></div>-->
             </div>
@@ -138,9 +149,16 @@
                     <i class="fa fa-info-circle" aria-hidden="true"></i>
                     <span>The video will be uploaded to this album.</span>
                 </div>
+                <div *ngIf="loadCount > 0 ; then videoLoader"></div>
+                <ng-template #videoLoader>
+                    <div class="red-fonts inline-block lineheight-25">
+                        <div class="pull-left">Processing your video, don't refresh.</div>
+                        <div class="pull-left"><i class="fa fa-cog fa-spin fa-2x"></i></div>
+                    </div>
+                </ng-template>
             </div>
             <div class="album-icons">
-                <app-video-icon (click)="playVideo(item)" class="pull-left" *ngFor="let item of videoList | videoSearch : videoText" [item]="item"></app-video-icon>
+                <app-video-icon (click)="playVideo(item)" class="pull-left" *ngFor="let item of videosList | videoSearch : videoText" [item]="item"></app-video-icon>
             </div>
         </ng-template>
     </div>

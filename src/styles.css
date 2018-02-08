@@ -336,6 +336,9 @@ i.fa-3x{
 #avModal .title{
 	height: 0px !important;
 }
+.lineheight-25{
+	line-height: 25px;
+}
 .no-outline{
 	outline: none;
 }
@@ -355,8 +358,17 @@ i.fa-3x{
 .red-highlight:hover *{
 	color: red !important;
 }
+.vid-icon{
+	border: 1px solid #fff;
+}
+.red-highlight:hover .vid-icon{
+	border: 1px solid #f00;
+}
 .item-highlight *{
 	color: #2b90d9 !important;
+}
+.item-highlight .vid-icon{
+	border: 1px solid #2b90d9;
 }
 .player-controls .control-item{
 	width: 20px;
@@ -381,7 +393,56 @@ i.fa-3x{
 .player-controls .control-item .fa-play{
 	padding: 4px 7px;
 }
+.hide-controls{
+	position: absolute;
+    top: 3px;
+    right: 160px;
+    color: #2b90d9;
+    font-size: 15px;
+}
+.hide-controls:hover, .show-controls:hover{
+	color: red;
+}
+.show-controls{
+	position: absolute;
+    top: 3px;
+    right: 10px;
+    color: #2b90d9;
+    font-size: 15px;
+}
 
+.left-nav{
+	padding: 5px;
+}
+.left-nav .nav-item{
+	padding: 2px;
+}
+.left-nav .nav-item:hover{
+	background: #2b90d9;
+	cursor: pointer;
+	opacity: 0.5;
+}
+.left-nav .nav-item:hover i, .left-nav .nav-item:hover span{
+	color: #fff !important;
+	
+}
+
+.highlight-nav{
+	background: #2b90d9;
+}
+.highlight-nav:hover{
+	opacity: 1 !important;
+	cursor: default !important;
+}
+.highlight-nav i, .highlight-nav span{
+	color: #fff !important;
+}
+.auto-overflow{
+	overflow: auto;
+}
+.contain-bg{
+	background-size: contain;
+}
 
 @media only screen and (max-width: 768px) {
 	.navbar-toggler{

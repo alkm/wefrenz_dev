@@ -1,3 +1,77 @@
-<p>
-  video-list works!
-</p>
+<ng-container *ngIf="!isShow">
+	<div class="show-controls hand-cursor" title="show playlist" (click)="showControls($event)">
+		<i class="fa fa-eye "></i>
+	</div>
+</ng-container>
+<ng-container *ngIf="isShow">
+	<div class="hide-controls hand-cursor" title="hide playlist" (click)="hideControls($event)">
+		<i class="fa fa-eye-slash "></i>
+	</div>
+	<div class="player-controls" 
+		style="position: absolute;
+	    right: 10px;
+	    top: 10px;
+	    width: 150px;">
+	    <div class="pull-left control-item" (click)="replayVideeo($event)">
+	        <i class="fa fa-repeat"></i>
+	    </div>
+		<div class="pull-left control-item" (click)="playPreviousItem($event)">
+			<i class="fa fa-step-backward"></i>
+		</div>
+	    <div *ngIf="isPlaying ; then pauseBtn"></div>
+	    <ng-template #pauseBtn>
+	        <div class="pull-left control-item" (click)="pauseVideeo($event)">
+	            <i class="fa fa-stop"></i>
+	        </div>
+	    </ng-template>
+	    <div *ngIf="isPause; then playBtn"></div>
+	    <ng-template #playBtn>
+		   <div class="pull-left control-item" (click)="resumeVideeo($event)">
+	            <i class="fa fa-play"></i>
+	        </div>
+	    </ng-template>
+		<div class="pull-left control-item" (click)="playNextItem($event)"><i class="fa fa-step-forward"></i></div>
+	</div>
+	<div #videoPlayList classs="music-play-list" 
+		style="background-color: rgba(43, 144, 217, 0);
+	    	display: inline-block;
+	    	box-sizing: border-box;
+	    	width: 150px;
+	    	text-overflow: ellipsis;
+	    	overflow-y: auto;
+	    	text-align: left;
+	    	border-bottom: none;
+	    	position: absolute;
+	    	border-bottom: 1px solid #fff;
+	    	top: 40px;
+	    	right: 15px;">
+		<div class="video-list"  *ngFor="let item of videoSource; let indx = index">
+			<div class="row no-margin pull-left inline-block hand-cursor red-highlight item-row music-item" (click)="videoListItemClick($event, item, indx)" [attr.id]="item.mp4Video" [class.item-highlight]="item.mp4Video === mp4Video"
+				style="border: 1px solid #fff; border-bottom: none;">
+				<div class="row no-margin white-fonts music-name pull-right">
+	                <span style="width: 12px; margin-left: 2px; margin-right: 4px;">{{indx+1}}&nbsp;<span>-</span></span>
+					<span style="white-space: nowrap;
+	    				text-overflow: ellipsis;
+	    				overflow: hidden;
+	    				display: block;
+	    				padding: 0px 4px;
+	    				width: 106px;
+	                    margin-left: 3px;
+	    				max-height: 267px;">
+	    				{{item.mp4Video}}
+		    		</span>
+	                <span >
+	                	<div class="vid-icon" [ngStyle]="{'background': 'url(' + item.poster+ ')', 
+				'cursor':' '+ mouseCursor +'', 
+				'background-repeat': 'no-repeat',
+				'background-size': ' '+ bgSize +' ',
+				'width':' '+ iw +'px', 
+				'height':' '+ ih +'px',
+				'margin':' '+ mr +'px '+ ml +'px'}"></div>
+	                </span>
+
+		    	</div> 
+			</div>
+		</div>
+	</div>
+</ng-container>

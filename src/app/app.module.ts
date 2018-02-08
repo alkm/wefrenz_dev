@@ -56,7 +56,11 @@ import { PhotosIconComponent } from './photos-icon/photos-icon.component';
 import { PhotosAlbumIconComponent } from './photos-album-icon/photos-album-icon.component';
 import { PhotosSearchPipe } from './pipes/photos-search.pipe';
 import { PhotosCarouselComponent } from './photos-carousel/photos-carousel.component';
+import {ColorPickerModule} from 'angular4-color-picker';
 import { MusicListComponent } from './music-list/music-list.component';
+import { VideoListComponent } from './video-list/video-list.component';
+import { StoriesComponent } from './stories/stories.component';
+import { StoryBoxComponent } from './story-box/story-box.component';
 
 
 
@@ -104,7 +108,10 @@ import { MusicListComponent } from './music-list/music-list.component';
     PhotosAlbumIconComponent,
     PhotosSearchPipe,
     PhotosCarouselComponent,
-    MusicListComponent
+    MusicListComponent,
+    VideoListComponent,
+    StoriesComponent,
+    StoryBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -115,27 +122,32 @@ import { MusicListComponent } from './music-list/music-list.component';
     HttpModule,
     ImageCropperModule,
     CarouselModule,
+    ColorPickerModule,
     RouterModule.forRoot([
-      {
-        path: 'public',
-        component: PublicComponent
-      },
-      {
-        path: 'home',
-        component: HomeComponent
-      },
-      {
-        path: 'profile/:id',
-        component: ProfileComponent
-      },
-      {
-        path: 'entertainment/:id',
-        component: EntertainmentComponent
-      }
+        {
+            path: 'public',
+            component: PublicComponent
+        },
+        {
+            path: 'home',
+            component: HomeComponent
+        },
+        {
+            path: 'profile/:id',
+            component: ProfileComponent
+        },
+        {
+            path: 'entertainment/:id',
+            component: EntertainmentComponent
+        },
+        {
+            path: 'stories/:id',
+            component: StoriesComponent
+        }
     ], { useHash: true })
   ],
   providers: [RouteinfoService, ModalService],
-  entryComponents: [AppComponent, LoginComponent, SignupComponent, PhotosCarouselComponent, MusicListComponent],
+  entryComponents: [AppComponent, LoginComponent, SignupComponent, PhotosCarouselComponent, MusicListComponent, VideoListComponent],
   bootstrap: [AppComponent]
 })
 

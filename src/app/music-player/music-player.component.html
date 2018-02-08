@@ -108,7 +108,10 @@
             <div class="audio-search-box pull-left colw100">
                 <div class="pull-left">
                     <!--<input class="search-input blue-fonts" type="text" placeholder="Search"  autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" [(ngModel)]="videoText" #searchVideo/>-->
-                    <div class="cursor-pointer blue-fonts" (click)="goToMyAlbum($event)">{{albumTitle}}</div>
+                    <div class="cursor-pointer blue-fonts" (click)="goToMyAlbum($event)">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    <span>{{albumTitle}}</span>
+                    </div>
                 </div>
                 <!--<div class="pull-left"><i class="fa fa-search cursor-pointer" aria-hidden="true"></i></div>-->
             </div>

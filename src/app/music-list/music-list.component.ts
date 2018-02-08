@@ -21,6 +21,7 @@ export class MusicListComponent implements OnInit {
 	private isPause: boolean = false;
 	private itemCount: number = 0;
 	private musicListClick: boolean = false;
+  private isShow: boolean = true;
 	@ViewChild('musicPlayList') musicPlayList: ElementRef;
 	@Input('musicSource') musicSource;
 	@Input('actualAudio') actualAudio;
@@ -126,7 +127,14 @@ export class MusicListComponent implements OnInit {
   		const body = document.getElementsByTagName('body')[0];
     	body.style.position = "fixed";
   		let element = document.getElementById(this.actualAudio);
-		element.scrollIntoView({behavior:"smooth"});
-		body.style.position = "relative";
+		  element.scrollIntoView({behavior:"smooth"});
+		  body.style.position = "relative";
   	}
+
+    private hideControls(event){
+      this.isShow = false;
+    }
+    private showControls(event){
+      this.isShow = true;
+    }
 }

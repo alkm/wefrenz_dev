@@ -1,0 +1,15 @@
+.story-feed{
+	padding: 3px 3px 0px 51px;
+}
+.story-box{
+	height: 100px;
+	padding: 3px ;
+	border: 1px solid #2b90d9;
+}
+.profile-pic{
+	margin: 0px 2px;
+	width: 45px;
+	height: 45px;
+	position: absolute;
+	left: 2px
+}
