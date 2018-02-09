@@ -172,7 +172,7 @@ button{
    cursor: pointer;
 }
 .cursor-pointer:hover{
-	color: #fff !important;
+	color: #fff;
 }
 .opaque-bg{
 	background-color: rgba(255, 255, 255, 0.5);

@@ -1,5 +1,5 @@
 .story-feed{
-	padding: 3px 3px 0px 51px;
+	padding: 6px 6px 0px 57px;
 }
 .story-box{
 	height: 100px;
@@ -7,9 +7,74 @@
 	border: 1px solid #2b90d9;
 }
 .profile-pic{
-	margin: 0px 2px;
-	width: 45px;
-	height: 45px;
-	position: absolute;
-	left: 2px
+    margin: 0px 2px;
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    left: 5px;
+}
+.control-bar{
+	margin: 6px 0px 1px 0px;
+	font-size: 9px;
+}
+.color-picker-icon{
+	border: 1px solid #2b90d9;
+}
+.color-picker-icon input{
+    border: 2px solid #d2d2d2;
+    outline: none;
+    height: 15px;
+    width: 15px;
+    color: transparent;
+}
+.color-picker-icon:hover{
+	color: transparent !important;
+}
+.font-items{
+	margin: 10px -8px;
+    font-size: 11px;
+    max-height: 100px;
+    overflow-y: auto;
+}
+.font-family-btn{
+    border: 1px solid #2b90d9;
+    font-size: 7px;
+    width: 17px;
+    height: 17px;
+    margin: 0px 5px;
+}
+.font-size-btn{
+    border: 1px solid #2b90d9;
+    font-size:11px;
+    width: 32px;
+    height: 17px;
+}
+.font-family-btn i{
+	margin-left: 1px;
+}
+.font-family-btn:hover, .font-size-btn:hover, .font-bold-btn:hover, .font-ul-btn:hover, .font-italic-btn:hover{
+	border: 1px solid red;
+}
+.font-bold-btn:hover span, .font-ul-btn:hover span, .font-italic-btn:hover span{
+	color: red;
+}
+.font-family-btn:hover i, .font-size-btn:hover span{
+	color: red !important;
+}
+.font-bold-btn, .font-ul-btn, .font-italic-btn{
+	border: 1px solid #2b90d9;
+    font-size: 11px;
+    width: 17px;
+    height: 17px;
+    margin: 0px 0px 0px 5px;
+    font-weight: bold;
+}
+.color-picker .arrow-right{
+	top: 5px !important;
+}
+.high-light{
+    border: 1px solid red;
+}
+.high-light *{
+    color: red;
 }

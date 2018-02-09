@@ -1,7 +1,58 @@
 <div class="inline-block colw100 story-feed">
 	<div class="profile-pic no-padding pull-left contain-bg" [ngStyle]="{ 'background-image': 'url(' + profilePic + ')'}">
 	</div>
-	<div name="story" id="storyBox" class="story-box colw100 inline-block no-outline auto-overflow pull-left" contenteditable="true" spellcheck="true" role="textbox" aria-multiline="true" data-placeholder-default="What’s happening?" aria-autocomplete="list" aria-expanded="false">
+	<div name="story" id="storyBox" class="story-box colw100 inline-block no-outline auto-overflow pull-left" contenteditable="true" spellcheck="true" role="textbox" aria-multiline="true" data-placeholder-default="What’s happening?" aria-autocomplete="list" aria-expanded="false" [style.color]="color" [style.font-family]="fontFamily" [style.font-size]="fontSize" [style.font-weight]="fontWeight" [style.text-decoration]="txtDeco" [style.font-style]="fontStyle"  >
 	</div>
-	<input [colorPicker]="color" (colorPickerChange)="color=$event" [style.background]="color" [value]="color"/>
+	<div class="control-bar inline-block">
+		<div class="pull-left color-picker-icon">
+			<input [colorPicker]="color" (colorPickerChange)="color=$event; colorPickerChange($event);" [style.background]="color" class="cursor-pointer"/>
+		</div>
+		<div class="pull-left font-family-btn" (click)="clickedInsideFontFamily($event)">
+			<i class="fa fa-font fa-2x blue-fonts cursor-pointer" aria-hidden="true" (click)="toggleFontFamily($event)"></i>
+			<div *ngIf="isShowFontFamily; then fontFamilies"></div>
+			<ng-template #fontFamilies>
+				<div class="list-items font-items pull-left">
+					<div class="arrow-up white-bg"></div>
+					<div class="cursor-pointer list-item" (click)="applyFontFamily($event, 'Arial')">Arial</div>
+					<div class="cursor-pointer list-item" (click)="applyFontFamily($event, 'Times New Roman')">Times New Roman</div>
+					<div class="cursor-pointer list-item" (click)="applyFontFamily($event, 'Courier New')">Courier New</div>
+				</div>
+			</ng-template>
+		</div>
+		<div class="pull-left font-size-btn" (click)="clickedInsideFontSize($event)">
+			<div class="blue-fonts cursor-pointer text-center" (click)="toggleFontSize($event)"><span>{{fontSize}}</span></div>
+			<div *ngIf="isShowFontSize; then fontSizes"></div>
+			<ng-template #fontSizes>
+				<div class="list-items font-items pull-left">
+					<div class="arrow-up white-bg"></div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 9)">9</div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 10)">10</div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 11)">11</div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 12)">12</div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 13)">13</div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 14)">14</div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 15)">15</div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 16)">16</div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 17)">17</div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 18)">18</div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 19)">19</div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 20)">20</div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 21)">21</div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 22)">22</div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 23)">23</div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 24)">24</div>
+					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 25)">25</div>
+				</div>
+			</ng-template>
+		</div>
+		<div class="pull-left font-bold-btn blue-fonts cursor-pointer text-center" [class.high-light]="isBoldBtnHighLight" (click)="applyBold($event)">
+			<span>B</span>
+		</div>
+		<div class="pull-left font-ul-btn blue-fonts cursor-pointer text-center" [class.high-light]="isULBtnHighLight" (click)="applyUnderline($event)">
+			<span>U</span>
+		</div>
+		<div class="pull-left font-italic-btn blue-fonts cursor-pointer text-center" [class.high-light]="isIBtnHighLight"  (click)="applyItalic($event)">
+			<span>I</span>
+		</div>
+	</div>
 </div>

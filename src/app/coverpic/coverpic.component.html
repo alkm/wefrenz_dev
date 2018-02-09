@@ -28,7 +28,7 @@
 		</i>
 		<div *ngIf="isEditCoverPic; then editCoverPicItems"></div>
 		<ng-template #editCoverPicItems>
-			<div class="list-items edit-cover-pic-items">
+			<div class="list-items font-items">
 				<div class="arrow-up white-bg"></div>
 				<div class="cursor-pointer list-item" (click)="moveClick($event)">Move</div>
 				<div class="cursor-pointer list-item" (click)="changeClick(); fileInput.value = ''; fileInput.click()"><span>Change</span></div>
