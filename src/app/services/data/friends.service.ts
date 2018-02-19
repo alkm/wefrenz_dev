@@ -48,4 +48,11 @@ export class FriendsService {
 		return this.http.post(AppSettingsService.API_ENDPOINT("local")+"/api/confirmFriendReq", postObj, options)
 			.map((res:Response) => res.json());
 	}
+
+	public getAllConfirmedFriends(postObj){
+		let headers = new Headers({ 'Accept': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.post(AppSettingsService.API_ENDPOINT("local")+"/api/getAllConfirmedFriends", postObj, options)
+			.map((res:Response) => res.json());
+	}
 }

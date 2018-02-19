@@ -123,22 +123,20 @@ export class PhotosComponent implements OnInit {
         }else{
           self.fetchAlbumPhotosInfo(); 
         }
-        
       };
 
       xhr.onreadystatechange = function()
-        {
-            if (xhr.readyState == 4 && xhr.status == 200)
-            {
-                callback(xhr.responseText); // Another callback here
-            }
-        }; 
-
-        function callback(responseText){
-          if(JSON.parse(responseText).status === 'sessionExpired'){
-            alert('Session Expired, Please Login Again');
-          }
+      {
+        if (xhr.readyState == 4 && xhr.status == 200){
+            callback(xhr.responseText); // Another callback here
         }
+      }; 
+
+      function callback(responseText){
+        if(JSON.parse(responseText).status === 'sessionExpired'){
+          alert('Session Expired, Please Login Again');
+        }
+      }
 
       xhr.send(formData);
       return false;
@@ -162,15 +160,14 @@ export class PhotosComponent implements OnInit {
   }
 
   private afterAlbumCreated(result) {
-      if(result.status === 'failure'){
+    if(result.status === 'failure'){
         alert(result.message);
-      }else{
-        this.cancelAlbum(null);
-        //alert(result.message);
-        this.fetchPhotosAlbumInfo();
-
-      }
+    }else{
+      this.cancelAlbum(null);
+      //alert(result.message);
+      this.fetchPhotosAlbumInfo();
     }
+  }
 
    private updateAlbumInfo(event){
       if (this.albumForm.dirty && this.albumForm.valid) {
@@ -184,14 +181,14 @@ export class PhotosComponent implements OnInit {
   }
 
   private afterAlbumUpdated(result) {
-      if(result.status === 'failure'){
-          alert(result.message);
-        }else{
-          this.cancelAlbum(null);
-          //alert(result.message);
-          this.fetchPhotosAlbumInfo();
-        }
-    }
+    if(result.status === 'failure'){
+        alert(result.message);
+      }else{
+        this.cancelAlbum(null);
+        //alert(result.message);
+        this.fetchPhotosAlbumInfo();
+      }
+  }
 
   private createPhotosAlbum(event){
     this.isCreateAlbum = true;

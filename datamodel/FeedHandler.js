@@ -1,39 +1,52 @@
-var feedInfo = require('./datamodel/FeedInfo');
+var feedInfo = require('./model/feedInfo');
 module.exports = function(app) {
 	// api ---------------------------------------------------------------------
 	app.post('/api/savePost/', function(req, res) {
 		// Getting all the online friends
 		feedInfo.create({
-			userid : req.body.userid,
-			email : req.body.email,
+			userid : req.body.username,
 			fullname : req.body.fullname,
-			profilepicpath : req.body.profilepicpath,
-			post : req.body.msg,
+			profilepic : req.body.profilepic,
+			post : req.body.post,
 			type : req.body.type,
 			isReady : req.body.isReady,
 			isNotified : req.body.isNotified,
 			coolArr : [],
 			commentArr : [],
-			path : req.body.path,
+			filePath : req.body.filePath,
 			poster : req.body.poster,
 			colorInfo : req.body.colorInfo,
 			fontFamily : req.body.fontFamily,
 			fontSize : req.body.fontSize,
 			fontStyle : req.body.fontStyle,
-			fontDecoration : req.body.fontDecoration,
+			textDecoration : req.body.fontDecoration,
 			fontWeight : req.body.fontWeight,
 			addWatcherArr : req.body.addWatcherArr,
 			done: false
-		}, function(err, infos) {
+		}, function(err, info) {
 			if (err){
-				res.send(err);
+				res.json({"status": "failure", "message": "This post could not be saved.", "err": err});
 			}else{
-				res.send("1");
+				res.json({"status": "success", "message": "This post saved.", "info": info});
 			}
 		});
 	});
 	
 	app.post('/api/getAllFriendsFeedDetails/', function(req, res) {	
+		// Getting all the confirmed friends feed details
+		//req.body.reqidarr = req.body.reqidarr.push(req.mySession.userid);
+		feedInfo.find({ $and: [{userid: {$in : req.body.reqidarr}}, {isReady : true  } ] }, function(error, infos){
+		//feedInfo.find({userid : {$in : req.body.reqidarr}}, function(error, infos){
+			if(error){
+				console.log("Error"+error);
+			}else{
+				console.log("feed Infos"+infos);
+				res.send(infos);
+			}
+		});
+	});
+
+	app.post('/api/refreshFeed/', function(req, res) {	
 		// Getting all the confirmed friends feed details
 		//req.body.reqidarr = req.body.reqidarr.push(req.mySession.userid);
 		feedInfo.find({ $and: [{userid: {$in : req.body.reqidarr}}, {isReady : true  } ] }, function(error, infos){

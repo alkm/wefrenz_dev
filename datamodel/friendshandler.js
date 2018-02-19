@@ -181,7 +181,7 @@ module.exports = function(app) {
 	
 	app.post('/api/getAllConfirmedFriends/', function(req, res) {	
 		// Getting all the confirmed friends
-		friendRelationInfo.find({requeststatus : "confirmed", $or: [ { userid: req.body.profileid }, { friendid: req.body.profileid }]}, function(error, infos){
+		friendRelationInfo.find({requeststatus : "confirmed", $or: [ { userid: req.body.userid }, { friendid: req.body.userid }]}, function(error, infos){
 			if(error){
 				console.log("Error"+error);
 			}else{

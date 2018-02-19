@@ -1213,7 +1213,8 @@ var ChatComponent = (function () {
         var self = this;
         var chatObj = { 'userid': this.userId, 'easyrtcid': easyrtcId };
         //require(['socket-io'], function(io) {
-        this.socket = __WEBPACK_IMPORTED_MODULE_2__libs_socket_io__('https://localhost:3000/');
+        this.socket = __WEBPACK_IMPORTED_MODULE_2__libs_socket_io__('https://10.20.17.36:3000/');
+        //this.socket = io('https://192.168.1.3:3000/');
         //this.socket = io('https://wefrenz.com:3000/');
         //this.socket = io("'"+ AppSettingsService.API_ENDPOINT("local") +"'");
         //this.socket = io('https://10.20.17.49:3000');
@@ -3699,7 +3700,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/photos/photos.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"photos-container\">\n    <div style=\"width: 100%; height: 314px\">\n        <div #photosCarousel></div>\n\t</div>\n      <!-- Video Controls -->\n    <!--<div id=\"video-controls\">\n        <div><input type=\"range\" min=\"1\" max=\"100\" step=\"1\" value=\"15\" class=\"colw100 no-outline\" id=\"seek-bar\"></div>\n        <div>\n            <i id=\"play-pause\" class=\"fa fa-play-circle fa-2x blue-fonts\"></i>    \n            <button type=\"button\" id=\"mute\">Mute</button>\n            <input type=\"range\" id=\"volumeBar\" min=\"0\" max=\"1\" step=\"0.1\" value=\"1\">\n            <button type=\"button\" id=\"full-screen\">Full-Screen</button>\n        </div>\n    </div>-->\n</div>\n<div class=\"photos-content\">\n    <div class=\"title semi-transparent-bg\">\n        <div class=\"line-height-sixteen\">\n            <i class=\"fa fa-music blue-fonts fa-2x\" aria-hidden=\"true\"></i>\n            <span class=\"blue-fonts medium-fonts\">Photos</span>\n        </div>\n    </div>\n    <div *ngIf=\"isPhotosAlbum ; then albumPhotosUploader\"></div>\n    <ng-template #albumPhotosUploader>\n        <div class=\"inline-block semi-transparent-bg colw100\">\n            <div class=\"pull-left\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"photosUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"photosGroup\">\n                            <input type=\"file\" accept=\"image/*\" class=\"file-input\" name=\"uploadfile\" #fileInput (change)=\"fileChangeEvent($event, true)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"cancelAlbum(null); fileInput.value = ''; fileInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Upload New Photo</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The music will be uploaded to your untitled album.</span>\n                </div>\n                <div class=\"new-album\">\n                    <span class=\"blue-fonts\" (click)=\"createPhotosAlbum($event)\">\n                        <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>\n                        <span>Create New Album</span>\n                    </span>\n                </div>\n                <div *ngIf=\"isCreateAlbum ; then createAlbum\"></div>\n                <ng-template #createAlbum >\n                    <form [formGroup]=\"albumForm\">\n                        <div class=\"form-group\">\n                            <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" aria-describedby=\"emailHelp\" placeholder=\"title\" formControlName=\"albumTitle\" id=\"albumTitle\" [(ngModel)]=\"albumTitle\">\n                            <app-control-messages [control]=\"albumForm.controls.albumTitle\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group\">\n                            <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" formControlName=\"albumDesc\" id=\"albumDesc\" [(ngModel)]=\"albumDesc\">\n                            </textarea>\n                            <app-control-messages [control]=\"albumForm.controls.albumDesc\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group row justify-content-center align-items-center no-margin\">\n                            <button id=\"loginBtn\" type=\"button\" class=\"btn btn-primary\" (click)=\"cancelAlbum()\" >\n                                <i class=\"fa fa-times no-margin\" aria-hidden=\"true\"></i>\n                                <span>Cancel</span>\n                            </button>\n                            <div *ngIf=\"isAddAlbum ; then addBtn\"></div>\n                            <ng-template #addBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"createAlbumInfo($event)\">\n                                    <span>Create</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                            <div *ngIf=\"isUpdateAlbum ; then updateBtn\"></div>\n                            <ng-template #updateBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"updateAlbumInfo($event)\">\n                                    <span>Edit</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                        </div>\n                        <div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n                            <div class=\"server-msg text-center\">{{serverMessage}}</div>\n                        </div>\n                    </form>\n                </ng-template>\n                <progress value=\"0\" max=\"100\" id=\"progressBar\" [value]=\"uploadProgress\" [hidden]=\"!isProgress\"></progress>\n            </div>\n        </div>\n    </ng-template>\n    <div class=\"inline-block semi-transparent-bg colw100\">\n        <div *ngIf=\"isPhotosAlbum ; then photosAlbum\"></div>\n        <ng-template #photosAlbum >\n            <div class=\"album-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n                </div>\n                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n            </div>\n            <div class=\"album-icons\">\n                <app-photos-album-icon class=\"pull-left\" *ngFor=\"let item of photosAlbumList | albumSearch : albumText\" [item]=\"item\" (click)=\"searchAlbum.value=''; albumText = '';\" (onEditPhotosAlbum)=\"editPhotosAlbum($event)\" \n                (onShowPhotosList)=\"showPhotosList($event)\"></app-photos-album-icon>\n            </div>\n        </ng-template>\n        <div *ngIf=\"isAlbumPhotos ; then albumPhotos\"></div>\n        <ng-template #albumPhotos >\n            <div class=\"photos-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <!--<input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"videoText\" #searchVideo/>-->\n                    <div class=\"cursor-pointer blue-fonts\" (click)=\"goToMyAlbum($event)\">{{albumTitle}}</div>\n                </div>\n                <!--<div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>-->\n            </div>\n            <div class=\"photos-uploader\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"photosUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"photosGroup\">\n                            <input type=\"file\" accept=\"image/*\" class=\"photos-input\" name=\"uploadfile\" #photosInput (change)=\"fileChangeEvent($event, false)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"photosInput.value = ''; photosInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Add New Photos.</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The photo will be uploaded to this album.</span>\n                </div>\n            </div>\n            <div class=\"album-icons\">\n                <app-photos-icon (click)=\"playAudio(item)\" class=\"pull-left\" *ngFor=\"let item of photosList | photosSearch : photosText\" [item]=\"item\"></app-photos-icon>\n            </div>\n        </ng-template>\n    </div>\n</div>"
+module.exports = "<div class=\"photos-container\">\n    <div style=\"width: 100%; height: 314px\">\n        <div #photosCarousel></div>\n\t</div>\n      <!-- Video Controls -->\n    <!--<div id=\"video-controls\">\n        <div><input type=\"range\" min=\"1\" max=\"100\" step=\"1\" value=\"15\" class=\"colw100 no-outline\" id=\"seek-bar\"></div>\n        <div>\n            <i id=\"play-pause\" class=\"fa fa-play-circle fa-2x blue-fonts\"></i>    \n            <button type=\"button\" id=\"mute\">Mute</button>\n            <input type=\"range\" id=\"volumeBar\" min=\"0\" max=\"1\" step=\"0.1\" value=\"1\">\n            <button type=\"button\" id=\"full-screen\">Full-Screen</button>\n        </div>\n    </div>-->\n</div>\n<div class=\"photos-content\">\n    <div class=\"title semi-transparent-bg\">\n        <div class=\"line-height-sixteen\">\n            <i class=\"fa fa-music blue-fonts fa-2x\" aria-hidden=\"true\"></i>\n            <span class=\"blue-fonts medium-fonts\">Photos</span>\n        </div>\n    </div>\n    <div *ngIf=\"isPhotosAlbum ; then albumPhotosUploader\"></div>\n    <ng-template #albumPhotosUploader>\n        <div class=\"inline-block semi-transparent-bg colw100\">\n            <div class=\"pull-left\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"photosUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"photosGroup\">\n                            <input type=\"file\" accept=\"image/*\" class=\"file-input\" name=\"uploadfile\" #fileInput (change)=\"imageFileChangeEvent($event, true)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"cancelAlbum(null); fileInput.value = ''; fileInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Upload New Photo</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The music will be uploaded to your untitled album.</span>\n                </div>\n                <div class=\"new-album\">\n                    <span class=\"blue-fonts\" (click)=\"createPhotosAlbum($event)\">\n                        <i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i>\n                        <span>Create New Album</span>\n                    </span>\n                </div>\n                <div *ngIf=\"isCreateAlbum ; then createAlbum\"></div>\n                <ng-template #createAlbum >\n                    <form [formGroup]=\"albumForm\">\n                        <div class=\"form-group\">\n                            <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" aria-describedby=\"emailHelp\" placeholder=\"title\" formControlName=\"albumTitle\" id=\"albumTitle\" [(ngModel)]=\"albumTitle\">\n                            <app-control-messages [control]=\"albumForm.controls.albumTitle\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group\">\n                            <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" formControlName=\"albumDesc\" id=\"albumDesc\" [(ngModel)]=\"albumDesc\">\n                            </textarea>\n                            <app-control-messages [control]=\"albumForm.controls.albumDesc\"></app-control-messages>\n                        </div>\n                        <div class=\"form-group row justify-content-center align-items-center no-margin\">\n                            <button id=\"loginBtn\" type=\"button\" class=\"btn btn-primary\" (click)=\"cancelAlbum()\" >\n                                <i class=\"fa fa-times no-margin\" aria-hidden=\"true\"></i>\n                                <span>Cancel</span>\n                            </button>\n                            <div *ngIf=\"isAddAlbum ; then addBtn\"></div>\n                            <ng-template #addBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"createAlbumInfo($event)\">\n                                    <span>Create</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                            <div *ngIf=\"isUpdateAlbum ; then updateBtn\"></div>\n                            <ng-template #updateBtn >\n                                <button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!albumForm.valid\" (click)=\"updateAlbumInfo($event)\">\n                                    <span>Edit</span>\n                                    <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n                                </button>\n                            </ng-template>\n                        </div>\n                        <div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n                            <div class=\"server-msg text-center\">{{serverMessage}}</div>\n                        </div>\n                    </form>\n                </ng-template>\n                <progress value=\"0\" max=\"100\" id=\"progressBar\" [value]=\"uploadProgress\" [hidden]=\"!isProgress\"></progress>\n            </div>\n        </div>\n    </ng-template>\n    <div class=\"inline-block semi-transparent-bg colw100\">\n        <div *ngIf=\"isPhotosAlbum ; then photosAlbum\"></div>\n        <ng-template #photosAlbum >\n            <div class=\"album-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n                </div>\n                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n            </div>\n            <div class=\"album-icons\">\n                <app-photos-album-icon class=\"pull-left\" *ngFor=\"let item of photosAlbumList | albumSearch : albumText\" [item]=\"item\" (click)=\"searchAlbum.value=''; albumText = '';\" (onEditPhotosAlbum)=\"editPhotosAlbum($event)\" \n                (onShowPhotosList)=\"showPhotosList($event)\"></app-photos-album-icon>\n            </div>\n        </ng-template>\n        <div *ngIf=\"isAlbumPhotos ; then albumPhotos\"></div>\n        <ng-template #albumPhotos >\n            <div class=\"photos-search-box pull-left colw100\">\n                <div class=\"pull-left\">\n                    <!--<input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"videoText\" #searchVideo/>-->\n                    <div class=\"cursor-pointer blue-fonts\" (click)=\"goToMyAlbum($event)\">{{albumTitle}}</div>\n                </div>\n                <!--<div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>-->\n            </div>\n            <div class=\"photos-uploader\">\n                <div class=\"file-input-container\">\n                    <form [formGroup]=\"photosUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n                        <div class=\"form-group\" [formGroup]=\"photosGroup\">\n                            <input type=\"file\" accept=\"image/*\" class=\"photos-input\" name=\"uploadfile\" #photosInput (change)=\"fileChangeEvent($event, false)\"/>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"uplod-new\" (click)= \"photosInput.value = ''; photosInput.click();\" >\n                    <i class=\"fa fa-upload blue-fonts\" aria-hidden=\"true\"></i>\n                    <span class=\"blue-fonts\">Add New Photos.</span>\n                </div>\n                <div class=\"title-div red-fonts\">\n                    <i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\n                    <span>The photo will be uploaded to this album.</span>\n                </div>\n            </div>\n            <div class=\"album-icons\">\n                <app-photos-icon (click)=\"playAudio(item)\" class=\"pull-left\" *ngFor=\"let item of photosList | photosSearch : photosText\" [item]=\"item\"></app-photos-icon>\n            </div>\n        </ng-template>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -5233,6 +5234,57 @@ var _a;
 
 /***/ }),
 
+/***/ "../../../../../src/app/services/data/feed.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FeedService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var FeedService = (function () {
+    function FeedService(http) {
+        this.http = http;
+    }
+    FeedService.prototype.savePost = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/savePost", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    FeedService.prototype.refreshFeed = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/refreshFeed", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    return FeedService;
+}());
+FeedService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+], FeedService);
+
+var _a;
+//# sourceMappingURL=feed.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/services/data/friends.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5294,6 +5346,12 @@ var FriendsService = (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Accept': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/confirmFriendReq", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    FriendsService.prototype.getAllConfirmedFriends = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Accept': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/getAllConfirmedFriends", postObj, options)
             .map(function (res) { return res.json(); });
     };
     return FriendsService;
@@ -6090,7 +6148,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".story-feed{\n\tpadding: 6px 6px 0px 57px;\n}\n.story-box{\n\theight: 100px;\n\tpadding: 3px ;\n\tborder: 1px solid #2b90d9;\n}\n.profile-pic{\n    margin: 0px 2px;\n    width: 45px;\n    height: 45px;\n    position: absolute;\n    left: 5px;\n}\n.control-bar{\n\tmargin: 6px 0px 1px 0px;\n\tfont-size: 9px;\n}\n.color-picker-icon{\n\tborder: 1px solid #2b90d9;\n}\n.color-picker-icon input{\n    border: 2px solid #d2d2d2;\n    outline: none;\n    height: 15px;\n    width: 15px;\n    color: transparent;\n}\n.color-picker-icon:hover{\n\tcolor: transparent !important;\n}\n.font-items{\n\tmargin: 10px -8px;\n    font-size: 11px;\n    max-height: 100px;\n    overflow-y: auto;\n}\n.font-family-btn{\n    border: 1px solid #2b90d9;\n    font-size: 7px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 5px;\n}\n.font-size-btn{\n    border: 1px solid #2b90d9;\n    font-size:11px;\n    width: 32px;\n    height: 17px;\n}\n.font-family-btn i{\n\tmargin-left: 1px;\n}\n.font-family-btn:hover, .font-size-btn:hover, .font-bold-btn:hover, .font-ul-btn:hover, .font-italic-btn:hover{\n\tborder: 1px solid red;\n}\n.font-bold-btn:hover span, .font-ul-btn:hover span, .font-italic-btn:hover span{\n\tcolor: red;\n}\n.font-family-btn:hover i, .font-size-btn:hover span{\n\tcolor: red !important;\n}\n.font-bold-btn, .font-ul-btn, .font-italic-btn{\n\tborder: 1px solid #2b90d9;\n    font-size: 11px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 0px 0px 5px;\n    font-weight: bold;\n}\n.color-picker .arrow-right{\n\ttop: 5px !important;\n}\n.high-light{\n    border: 1px solid red;\n}\n.high-light *{\n    color: red;\n}", ""]);
+exports.push([module.i, ".story-feed{\n\tpadding: 6px 6px 0px 57px;\n}\n.story-box{\n\theight: 100px;\n\tpadding: 3px ;\n\tborder: 1px solid #2b90d9;\n}\n.profile-pic{\n    margin: 0px 2px;\n    width: 45px;\n    height: 45px;\n    position: absolute;\n    left: 5px;\n}\n.control-bar{\n\tmargin: 6px 0px 1px 0px;\n\tfont-size: 9px;\n}\n.color-picker-icon{\n\tborder: 1px solid #2b90d9;\n}\n.color-picker-icon input{\n    border: 2px solid #d2d2d2;\n    outline: none;\n    height: 15px;\n    width: 15px;\n    color: transparent;\n}\n.color-picker-icon:hover{\n\tcolor: transparent !important;\n}\n.font-items{\n\tmargin: 10px -8px;\n    font-size: 11px;\n    max-height: 100px;\n    overflow-y: auto;\n}\n.font-family-btn{\n    border: 1px solid #2b90d9;\n    font-size: 7px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 5px;\n}\n.up-img-btn, .up-mus-btn, .up-vid-btn{\n    border: 1px solid #2b90d9;\n    font-size: 11px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 0px 0px 5px;\n}\n.font-size-btn{\n    border: 1px solid #2b90d9;\n    font-size:11px;\n    width: 32px;\n    height: 17px;\n}\n.font-family-btn i{\n\tmargin-left: 1px;\n}\n.font-family-btn:hover, .font-size-btn:hover, .font-bold-btn:hover,\n.font-ul-btn:hover, .font-italic-btn:hover, .smiley-btn:hover,\n.up-img-btn:hover, .up-mus-btn:hover, .up-vid-btn:hover{\n\tborder: 1px solid red;\n}\n.font-bold-btn:hover span, .font-ul-btn:hover span, .font-italic-btn:hover span, .smiley-btn:hover i,\n.up-img-btn:hover i, .up-mus-btn:hover i, .up-vid-btn:hover i{\n\tcolor: red;\n}\n.font-family-btn:hover i, .font-size-btn:hover span{\n\tcolor: red !important;\n}\n.font-bold-btn, .font-ul-btn, .font-italic-btn, .smiley-btn{\n\tborder: 1px solid #2b90d9;\n    font-size: 11px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 0px 0px 5px;\n    font-weight: bold;\n}\n.color-picker .arrow-right{\n\ttop: 5px !important;\n}\n.high-light{\n    border: 1px solid red;\n}\n.high-light *{\n    color: red;\n}\n.emo-list .list-item{\n    width: 25px !important;\n    margin: 2px 0px;\n}\n.emo-list{\n    width: 102px !important;\n}\n#postBtn{\n    width: 50px;\n    height: 17px;\n    border-radius: 0px;\n    padding: 0px !important;\n    line-height: 12px;\n    font-size: 12px !important;\n    background-color: #fff !important;\n    border: 1px solid #2b90d9 !important;\n    color: #2b90d9 !important;\n    background: #d9e1e8 !important;\n}\n#postBtn:hover *{\n    color: red;\n}\n#postBtn:hover{\n    border: 1px solid red !important;\n}\n.file-input-container{\n    display: none;\n}\n.modal{\n    width: 500px !important;\n    height: 500px !important;  \n}", ""]);
 
 // exports
 
@@ -6103,7 +6161,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/story-box/story-box.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"inline-block colw100 story-feed\">\n\t<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + profilePic + ')'}\">\n\t</div>\n\t<div name=\"story\" id=\"storyBox\" class=\"story-box colw100 inline-block no-outline auto-overflow pull-left\" contenteditable=\"true\" spellcheck=\"true\" role=\"textbox\" aria-multiline=\"true\" data-placeholder-default=\"What’s happening?\" aria-autocomplete=\"list\" aria-expanded=\"false\" [style.color]=\"color\" [style.font-family]=\"fontFamily\" [style.font-size]=\"fontSize\" [style.font-weight]=\"fontWeight\" [style.text-decoration]=\"txtDeco\" [style.font-style]=\"fontStyle\"  >\n\t</div>\n\t<div class=\"control-bar inline-block\">\n\t\t<div class=\"pull-left color-picker-icon\">\n\t\t\t<input [colorPicker]=\"color\" (colorPickerChange)=\"color=$event; colorPickerChange($event);\" [style.background]=\"color\" class=\"cursor-pointer\"/>\n\t\t</div>\n\t\t<div class=\"pull-left font-family-btn\" (click)=\"clickedInsideFontFamily($event)\">\n\t\t\t<i class=\"fa fa-font fa-2x blue-fonts cursor-pointer\" aria-hidden=\"true\" (click)=\"toggleFontFamily($event)\"></i>\n\t\t\t<div *ngIf=\"isShowFontFamily; then fontFamilies\"></div>\n\t\t\t<ng-template #fontFamilies>\n\t\t\t\t<div class=\"list-items font-items pull-left\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Arial')\">Arial</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Times New Roman')\">Times New Roman</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Courier New')\">Courier New</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left font-size-btn\" (click)=\"clickedInsideFontSize($event)\">\n\t\t\t<div class=\"blue-fonts cursor-pointer text-center\" (click)=\"toggleFontSize($event)\"><span>{{fontSize}}</span></div>\n\t\t\t<div *ngIf=\"isShowFontSize; then fontSizes\"></div>\n\t\t\t<ng-template #fontSizes>\n\t\t\t\t<div class=\"list-items font-items pull-left\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 9)\">9</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 10)\">10</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 11)\">11</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 12)\">12</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 13)\">13</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 14)\">14</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 15)\">15</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 16)\">16</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 17)\">17</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 18)\">18</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 19)\">19</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 20)\">20</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 21)\">21</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 22)\">22</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 23)\">23</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 24)\">24</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 25)\">25</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left font-bold-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isBoldBtnHighLight\" (click)=\"applyBold($event)\">\n\t\t\t<span>B</span>\n\t\t</div>\n\t\t<div class=\"pull-left font-ul-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isULBtnHighLight\" (click)=\"applyUnderline($event)\">\n\t\t\t<span>U</span>\n\t\t</div>\n\t\t<div class=\"pull-left font-italic-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isIBtnHighLight\"  (click)=\"applyItalic($event)\">\n\t\t\t<span>I</span>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<div class=\"inline-block colw100 story-feed\">\n\t<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + profilePic + ')'}\">\n\t</div>\n\t<div name=\"story\" #storyBox class=\"story-box colw100 inline-block no-outline auto-overflow pull-left\" contenteditable=\"true\" spellcheck=\"true\" role=\"textbox\" aria-multiline=\"true\" data-placeholder-default=\"What’s happening?\" aria-autocomplete=\"list\" aria-expanded=\"false\" [style.color]=\"color\" [style.font-family]=\"fontFamily\" [style.font-size]=\"fontSize\" [style.font-weight]=\"fontWeight\" [style.text-decoration]=\"txtDeco\" [style.font-style]=\"fontStyle\"  [innerHTML]=\"storyContent\" \n\t(keyup)=\"onStoryContentChange($event)\" (keydown)=\"onStoryContentChanged($event.keyCode)\">\n\t</div>\n\t<div class=\"control-bar inline-block\">\n\t\t<div class=\"pull-left color-picker-icon\">\n\t\t\t<input [colorPicker]=\"color\" (colorPickerChange)=\"color=$event; colorPickerChange($event);\" [style.background]=\"color\" class=\"cursor-pointer\"/>\n\t\t</div>\n\t\t<div class=\"pull-left font-family-btn\" (click)=\"clickedInside($event)\">\n\t\t\t<i class=\"fa fa-font fa-2x blue-fonts cursor-pointer\" aria-hidden=\"true\" (click)=\"toggleFontFamily($event)\"></i>\n\t\t\t<div *ngIf=\"isShowFontFamily; then fontFamilies\"></div>\n\t\t\t<ng-template #fontFamilies>\n\t\t\t\t<div class=\"list-items font-items pull-left\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Arial')\">Arial</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Times New Roman')\">Times New Roman</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Courier New')\">Courier New</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left font-size-btn\" (click)=\"clickedInside($event)\">\n\t\t\t<div class=\"blue-fonts cursor-pointer text-center\" (click)=\"toggleFontSize($event)\"><span>{{fontSize}}</span></div>\n\t\t\t<div *ngIf=\"isShowFontSize; then fontSizes\"></div>\n\t\t\t<ng-template #fontSizes>\n\t\t\t\t<div class=\"list-items font-items pull-left\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 9)\">9</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 10)\">10</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 11)\">11</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 12)\">12</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 13)\">13</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 14)\">14</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 15)\">15</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 16)\">16</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 17)\">17</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 18)\">18</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 19)\">19</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 20)\">20</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 21)\">21</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 22)\">22</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 23)\">23</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 24)\">24</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 25)\">25</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left font-bold-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isBoldBtnHighLight\" (click)=\"applyBold($event)\">\n\t\t\t<span>B</span>\n\t\t</div>\n\t\t<div class=\"pull-left font-ul-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isULBtnHighLight\" (click)=\"applyUnderline($event)\">\n\t\t\t<span>U</span>\n\t\t</div>\n\t\t<div class=\"pull-left font-italic-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isIBtnHighLight\"  (click)=\"applyItalic($event)\">\n\t\t\t<span>I</span>\n\t\t</div>\n\t\t<div class=\"pull-left smiley-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isEmotionsHighLight\"  (click)=\"showEmotions($event)\" (click)=\"clickedInside($event)\">\n\t\t\t<div>\n\t\t\t\t<i class=\"fa fa-smile-o\"></i>\n\t\t\t</div>\n\t\t\t<div *ngIf=\"isEmotionsHighLight; then emotions\"></div>\n\t\t\t<ng-template #emotions>\n\t\t\t\t<div class=\"list-items font-items pull-left emo-list\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion0-smile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion1-sadsmile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':D')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion2-bigsmile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '8=)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion3-cool.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':o')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion4-surprised.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ';)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion5-wink.gif\"/></span>\n\t\t\t\t\t</div>\n\n\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ';(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion6-crying.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '(:|')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion7-sweating.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':|')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion8-speechless.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':*')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion9-kiss.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, 'emotion10-tongueout')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion10-tongueout.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':$')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion11-blush.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':^)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion12-wondering.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '|-)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion13-sleepy.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '|(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion14-dull.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left up-img-btn blue-fonts cursor-pointer text-center\" (click)= \"imageInput.value = ''; imageInput.click();\">\n\t\t\t<i class=\"fa fa-picture-o\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left up-mus-btn blue-fonts cursor-pointer text-center\" (click)= \"audioInput.value = ''; audioInput.click();\">\n\t\t\t<i class=\"fa fa-music\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left up-vid-btn blue-fonts cursor-pointer text-center\" (click)= \"videoInput.value = ''; videoInput.click();\">\n\t\t\t<i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left post-btn blue-fonts cursor-pointer text-center\">\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"postStory($event)\">\n\t\t\t\t<span>Post</span>\n\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t</button>\n\t\t</div>\n\t</div>\n    <div class=\"file-input-container\">\n        <form [formGroup]=\"imageUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"imageGroup\">\n                <input type=\"file\" accept=\"image/*\" class=\"file-input\" name=\"uploadimage\" #imageInput (change)=\"imageFileChangeEvent($event, true)\"/>\n            </div>\n        </form>\n        <form [formGroup]=\"musicUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"musicGroup\">\n                <input type=\"file\" accept=\"audio/*\" class=\"file-input\" name=\"uploadmusic\" #musicInput (change)=\"fileChangeEvent($event, true)\"/>\n            </div>\n        </form>\n        <form [formGroup]=\"videoUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"videoGroup\">\n                <input type=\"file\" accept=\"video/*\" class=\"file-input\" name=\"uploadvideo\" #videoInput (change)=\"fileChangeEvent($event, true)\"/>\n            </div>\n        </form>\n    </div>\n</div>\n\n<app-modal [modalTitle]=\"'Cover Pic Preview'\" [blocking]='false' [modalId]='modalId' #previewPicModal>\n\t<div class=\"preview-cover-pic\"><img *ngIf=\"encodedImage\" [src]=\"encodedImage\"/></div>\n  \t<div>\t\t\t\n\t\t<button id=\"okBtn\" type=\"button\" class=\"btn btn-primary text-center small-btn ok-btn\" (click)=\"ok()\">\n\t\t\t<span class=\"pull-left\">Ok</span>\n\t\t\t<i class=\"fa fa-floppy-o\" aria-hidden=\"true\"></i>\n\t\t</button>\n\t</div>\n</app-modal>"
 
 /***/ }),
 
@@ -6113,6 +6171,11 @@ module.exports = "<div class=\"inline-block colw100 story-feed\">\n\t<div class=
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StoryBoxComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_utility_utility_service__ = __webpack_require__("../../../../../src/app/services/utility/utility.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modal_modal_service__ = __webpack_require__("../../../../../src/app/modal/modal.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_data_feed_service__ = __webpack_require__("../../../../../src/app/services/data/feed.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services_data_friends_service__ = __webpack_require__("../../../../../src/app/services/data/friends.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6123,8 +6186,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
+
 var StoryBoxComponent = (function () {
-    function StoryBoxComponent() {
+    function StoryBoxComponent(formBuilder, modalService, feedService, friendsService) {
+        this.formBuilder = formBuilder;
+        this.modalService = modalService;
+        this.feedService = feedService;
+        this.friendsService = friendsService;
         this.profilePicWidth = 50;
         this.loginData = undefined;
         this.profilePic = '';
@@ -6136,23 +6208,50 @@ var StoryBoxComponent = (function () {
         this.isBoldBtnHighLight = false;
         this.isULBtnHighLight = false;
         this.isIBtnHighLight = false;
+        this.isEmotionsHighLight = false;
         this.fontWeight = 'normal';
         this.txtDeco = 'none';
         this.fontStyle = 'normal';
-    }
-    StoryBoxComponent.prototype.ngOnInit = function () {
+        this.storyContent = '';
+        this.modalId = 'storyModal';
+        this.userId = '';
+        this.fullName = '';
+        this.email = '';
+        this.friendIdArr = [];
+        var loginData = JSON.parse(localStorage.getItem('loginData'));
+        this.userId = loginData.username;
+        this.email = loginData.username;
+        this.fullName = loginData.fullname;
         this.loginData = JSON.parse(localStorage.getItem('loginData'));
         this.profilePic = this.loginData.profilepic.imageBuffer;
+        this.imageUploadForm = this.formBuilder.group({
+            'file': ['']
+        });
+        this.imageGroup = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormGroup */]({
+            file: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]()
+        });
+        this.musicUploadForm = this.formBuilder.group({
+            'file': ['']
+        });
+        this.musicGroup = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormGroup */]({
+            file: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]()
+        });
+        this.videoUploadForm = this.formBuilder.group({
+            'file': ['']
+        });
+        this.videoGroup = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* FormGroup */]({
+            file: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]()
+        });
+        this.getAllConfirmedFriends();
+    }
+    StoryBoxComponent.prototype.ngOnInit = function () {
     };
     StoryBoxComponent.prototype.clickedOutside = function ($event) {
         this.isShowFontFamily = false;
         this.isShowFontSize = false;
+        this.isEmotionsHighLight = false;
     };
-    StoryBoxComponent.prototype.clickedInsideFontFamily = function ($event) {
-        $event.preventDefault();
-        $event.stopPropagation(); // <- that will stop propagation on lower layers
-    };
-    StoryBoxComponent.prototype.clickedInsideFontSize = function ($event) {
+    StoryBoxComponent.prototype.clickedInside = function ($event) {
         $event.preventDefault();
         $event.stopPropagation(); // <- that will stop propagation on lower layers
     };
@@ -6161,6 +6260,7 @@ var StoryBoxComponent = (function () {
     };
     StoryBoxComponent.prototype.toggleFontFamily = function (event) {
         this.isShowFontSize = false;
+        this.isEmotionsHighLight = false;
         if (!this.isShowFontFamily) {
             this.isShowFontFamily = true;
         }
@@ -6174,6 +6274,7 @@ var StoryBoxComponent = (function () {
     };
     StoryBoxComponent.prototype.toggleFontSize = function (event) {
         this.isShowFontFamily = false;
+        this.isEmotionsHighLight = false;
         if (!this.isShowFontSize) {
             this.isShowFontSize = true;
         }
@@ -6215,8 +6316,217 @@ var StoryBoxComponent = (function () {
             this.isIBtnHighLight = true;
         }
     };
+    StoryBoxComponent.prototype.showEmotions = function (event) {
+        this.isShowFontFamily = false;
+        this.isShowFontSize = false;
+        if (this.isEmotionsHighLight) {
+            this.isEmotionsHighLight = false;
+        }
+        else {
+            this.isEmotionsHighLight = true;
+        }
+    };
+    StoryBoxComponent.prototype.onStoryContentChange = function (event) {
+        switch (event.keyCode) {
+            case 8:
+                break;
+            case 13:
+                this.syncEmotion('');
+                break;
+            case 16:
+                break;
+            case 18:
+                break;
+            case 32:
+                break;
+            case 37:
+                break;
+            case 38:
+                break;
+            case 39:
+                break;
+            case 40:
+                break;
+            default:
+        }
+    };
+    StoryBoxComponent.prototype.onStoryContentChanged = function (keyCode) {
+        /*if(keyCode === 32){
+            let storyContents = this.storyBox.nativeElement.innerHTML;
+            storyContents = UtilityService.setSmileys(storyContents);
+            console.log('change'+storyContents);
+            this.storyContent = storyContents;
+            this.setEndOfContenteditable(this.storyBox.nativeElement);
+        }*/
+    };
+    StoryBoxComponent.prototype.setEndOfContenteditable = function (contentEditableElement) {
+        var range, selection;
+        if (document.createRange) {
+            range = document.createRange(); //Create a range (a range is a like the selection but invisible)
+            range.selectNodeContents(contentEditableElement); //Select the entire contents of the element with the range
+            range.collapse(false); //collapse the range to the end point. false means collapse to end rather than the start
+            selection = window.getSelection(); //get the selection object (allows you to change selection)
+            selection.removeAllRanges(); //remove any selections already made
+            selection.addRange(range); //make the range you have just created the visible selection
+        }
+        /*else if(document.selection)//IE 8 and lower
+        {
+            range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
+            range.moveToElementText(contentEditableElement);//Select the entire contents of the element with the range
+            range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+            range.select();//Select the range (make it the visible selection
+        }*/
+    };
+    StoryBoxComponent.prototype.addEmotion = function (event, symbol) {
+        this.syncEmotion(symbol);
+    };
+    StoryBoxComponent.prototype.syncEmotion = function (symbol) {
+        var _this = this;
+        var storyContents = this.storyBox.nativeElement.innerHTML + symbol;
+        storyContents = __WEBPACK_IMPORTED_MODULE_2_app_services_utility_utility_service__["a" /* UtilityService */].setSmileys(storyContents);
+        console.log('change' + storyContents);
+        this.storyContent = storyContents;
+        setTimeout(function () {
+            _this.setEndOfContenteditable(_this.storyBox.nativeElement);
+        }, 0.0001);
+    };
+    StoryBoxComponent.prototype.openAppModal = function () {
+        var self = this;
+        self.modalService.open(self.modalId);
+    };
+    StoryBoxComponent.prototype.imageFileChangeEvent = function (event, directUpload) {
+        this.files = event.target.files[0];
+        //this.uploadCanvasPic();
+        var self = this;
+        if (event.target.files && event.target.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                //$('#preview').attr('src', e.target.result);
+                self.encodedImage = e.target.result;
+                self.openAppModal();
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+        /*
+        let self = this;
+        let userId = this.userId;
+        let file: any;
+        if (event.target.files && event.target.files[0]) {
+          file = event.target.files[0];
+          uploadPhoto();
+        }
+        function uploadPhoto() {
+            let formData = new FormData();
+            formData.append('uploadfile', file);
+            formData.append('userid', userId);
+            if(!directUpload){
+                formData.append('album', self.photosInfo.title);
+            }else{
+                formData.append('album', 'untitled');
+        }
+
+        let xhr = new XMLHttpRequest();
+        xhr.open('post', AppSettingsService.API_ENDPOINT("local")+'/api/uploadPhotos', true);
+        xhr.upload.onprogress = function(e) {
+            if (e.lengthComputable) {
+                let percentage = (e.loaded / e.total) * 100;
+                console.log(percentage);
+                if((percentage > 0) && (percentage < 100)){
+                    self.isProgress = true;
+                }else{
+                    self.isProgress = false;
+                }
+            self.uploadProgress = percentage;
+
+            //$('div.progress div').css('width', percentage.toFixed(0) + '%');
+            //$('div.progress div').html(percentage.toFixed(0) + '%');
+            }
+        };
+
+        xhr.onerror = function(e) {
+            alert('An error occurred while submitting the form. Maybe your file is too big');
+        };
+        xhr.onload = function() {
+            if(self.isPhotosAlbum){
+              self.fetchPhotosAlbumInfo();
+            }else{
+              self.fetchAlbumPhotosInfo();
+            }
+        };
+
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == 4 && xhr.status == 200)
+            {
+                callback(xhr.responseText); // Another callback here
+            }
+        };
+
+        function callback(responseText){
+            if(JSON.parse(responseText).status === 'sessionExpired'){
+                alert('Session Expired, Please Login Again');
+            }
+        }
+
+        xhr.send(formData);
+        return false;*/
+    };
+    StoryBoxComponent.prototype.postStory = function (event) {
+        var _this = this;
+        var postObj = { 'username': this.userId,
+            'email': this.email,
+            'fullname': this.fullName,
+            'profilepic': this.profilePic,
+            'post': this.storyContent,
+            'type': '',
+            'isReady': true,
+            'isNotified': false,
+            'coolArr': [],
+            'commentArr': [],
+            'filePath': '',
+            'colorInfo': this.color,
+            'fontFamily': this.fontFamily,
+            'fontSize': this.fontSize,
+            'fontStyle': this.fontStyle,
+            'textDecoration': this.txtDeco,
+            'fontWeight': this.fontWeight,
+            'addWatcherArr': []
+        };
+        this.feedService.savePost(postObj).subscribe(function (data) { return _this.afterPostSaved(data); });
+    };
+    StoryBoxComponent.prototype.afterPostSaved = function (result) {
+        if (result.status === 'failure') {
+            alert(result.message);
+        }
+        else {
+            alert(result.message);
+        }
+    };
+    StoryBoxComponent.prototype.getAllConfirmedFriends = function () {
+        var _this = this;
+        var postObj = { 'userid': this.userId };
+        this.friendsService.getAllConfirmedFriends(postObj).subscribe(function (data) { return _this.afterGetAllConfirmedFriends(data); });
+    };
+    StoryBoxComponent.prototype.afterGetAllConfirmedFriends = function (result) {
+        this.friendIdArr.push(this.userId);
+        for (var i in result) {
+            this.friendIdArr.push(result[i].userid);
+        }
+        this.refreshFeed();
+    };
+    StoryBoxComponent.prototype.refreshFeed = function () {
+        var _this = this;
+        var postObj = { 'reqidarr': this.friendIdArr };
+        this.feedService.refreshFeed(postObj).subscribe(function (data) { return _this.afterRefreshFeed(data); });
+    };
+    StoryBoxComponent.prototype.afterRefreshFeed = function (result) {
+        console.log('>>>>' + result);
+    };
     return StoryBoxComponent;
 }());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('storyBox'),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object)
+], StoryBoxComponent.prototype, "storyBox", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* HostListener */])('document:click', ['$event']),
     __metadata("design:type", Function),
@@ -6227,11 +6537,13 @@ StoryBoxComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-story-box',
         template: __webpack_require__("../../../../../src/app/story-box/story-box.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/story-box/story-box.component.css")]
+        styles: [__webpack_require__("../../../../../src/app/story-box/story-box.component.css")],
+        providers: [__WEBPACK_IMPORTED_MODULE_4_app_services_data_feed_service__["a" /* FeedService */], __WEBPACK_IMPORTED_MODULE_5_app_services_data_friends_service__["a" /* FriendsService */]]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__modal_modal_service__["a" /* ModalService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_data_feed_service__["a" /* FeedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_data_feed_service__["a" /* FeedService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5_app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _e || Object])
 ], StoryBoxComponent);
 
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=story-box.component.js.map
 
 /***/ }),

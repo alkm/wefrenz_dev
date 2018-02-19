@@ -1,13 +1,11 @@
 var mongoose = require('mongoose');
 module.exports = mongoose.model('feedinfo', {
 	userid : String,
-	email : String,
 	fullname : String,
-	profilepicpath : String,
+	profilepic : String,
 	post : String,
 	type : String,
-	path : String,
-	poster : String,
+	filePath : String,
 	isReady : Boolean,
 	isNotified : Boolean,
 	coolArr : Array,
@@ -16,7 +14,7 @@ module.exports = mongoose.model('feedinfo', {
 	fontFamily : String,
 	fontSize : String,
 	fontStyle : String,
-	fontDecoration : String,
+	txtDecoration : String,
 	fontWeight : String,
 	addWatcherArr : Array,
 	done : Boolean
