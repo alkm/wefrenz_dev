@@ -4,6 +4,8 @@ module.exports = mongoose.model('feedinfo', {
 	fullname : String,
 	profilepic : String,
 	post : String,
+	title: String,
+	description: String,
 	type : String,
 	filePath : String,
 	isReady : Boolean,

@@ -9,6 +9,8 @@ module.exports = function(app) {
 			profilepic : req.body.profilepic,
 			post : req.body.post,
 			type : req.body.type,
+			title : req.body.title,
+			description : req.body.description,
 			isReady : req.body.isReady,
 			isNotified : req.body.isNotified,
 			coolArr : [],

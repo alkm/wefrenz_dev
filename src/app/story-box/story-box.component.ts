@@ -46,6 +46,7 @@ export class StoryBoxComponent implements OnInit {
   	private email: string = '';
   	private friendIdArr: Array<string> = [];
   	private feedItem: any;
+  	private postFeedForm: any;
 
 
 	constructor(private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private friendsService: FriendsService) {
@@ -78,7 +79,6 @@ export class StoryBoxComponent implements OnInit {
     	this.videoGroup = new FormGroup({
         	file: new FormControl()
       	});
-
       	this.getAllConfirmedFriends();
 	}
 
@@ -332,6 +332,8 @@ export class StoryBoxComponent implements OnInit {
 	        'profilepic': this.profilePic,
 	        'post' : this.storyContent,
 			'type' : '',
+			'title' : '',
+			'description' : '',
 			'isReady' : true,
 			'isNotified' : false,
 			'coolArr' : [],

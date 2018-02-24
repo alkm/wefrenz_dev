@@ -470,6 +470,33 @@ i.fa-3x{
 	}
 }
 
+#storyModal .modal { 
+    height: 400px !important;
+}
+#postTitle{
+	width: 300px;
+}
+#postDesc{
+	width: 300px;
+	height: 150px !important;
+	margin-top: 10px;
+}
+/*
+.modal{
+	width: 90% !important;
+    margin: auto;
+    left: 0px !important;
+    height: 90% !important;
+}
+.modal .right-align{
+	position: fixed !important;
+    right: 5.5% !important;
+}
+.modal .title{
+	width: 100% !important;
+	position: fixed !important;
+}*/
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #2b90d9;
 }
