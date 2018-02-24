@@ -245,6 +245,7 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__video_list_video_list_component__ = __webpack_require__("../../../../../src/app/video-list/video-list.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__stories_stories_component__ = __webpack_require__("../../../../../src/app/stories/stories.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__story_box_story_box_component__ = __webpack_require__("../../../../../src/app/story-box/story-box.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__feeditem_feeditem_component__ = __webpack_require__("../../../../../src/app/feeditem/feeditem.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -290,6 +291,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 ;
+
 
 
 
@@ -361,7 +363,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_52__music_list_music_list_component__["a" /* MusicListComponent */],
             __WEBPACK_IMPORTED_MODULE_53__video_list_video_list_component__["a" /* VideoListComponent */],
             __WEBPACK_IMPORTED_MODULE_54__stories_stories_component__["a" /* StoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_55__story_box_story_box_component__["a" /* StoryBoxComponent */]
+            __WEBPACK_IMPORTED_MODULE_55__story_box_story_box_component__["a" /* StoryBoxComponent */],
+            __WEBPACK_IMPORTED_MODULE_56__feeditem_feeditem_component__["a" /* FeeditemComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -1213,12 +1216,11 @@ var ChatComponent = (function () {
         var self = this;
         var chatObj = { 'userid': this.userId, 'easyrtcid': easyrtcId };
         //require(['socket-io'], function(io) {
-        this.socket = __WEBPACK_IMPORTED_MODULE_2__libs_socket_io__('https://10.20.17.36:3000/');
         //this.socket = io('https://192.168.1.3:3000/');
         //this.socket = io('https://wefrenz.com:3000/');
         //this.socket = io("'"+ AppSettingsService.API_ENDPOINT("local") +"'");
         //this.socket = io('https://10.20.17.49:3000');
-        //socket = io('https://de8a3aa6.ngrok.io/');
+        this.socket = __WEBPACK_IMPORTED_MODULE_2__libs_socket_io__('https://localhost:3000/');
         //this.socket = io('https://192.168.225.177:3000/');
         this.socket.emit('ON_SOCKET_INIT', chatObj);
         /*socket.on("UPDATE_CHAT_LIST", function(data){
@@ -1973,6 +1975,130 @@ EntertainmentComponent = __decorate([
 
 var _a, _b, _c, _d;
 //# sourceMappingURL=entertainment.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/feeditem/feeditem.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".profile-pic{\n    margin: -3px 2px;\n    width: 45px;\n    height: 45px;\n    position: absolute;\n    left: 5px;\n    border-radius: 50%;  \t\n}\n.feed-controls .fa-thumbs-up, .feed-controls .fa-heart, .feed-controls .fa-comment{\n    margin: 0px 3px 0px 0px;\n}\n .feed-controls .fa-heart, .feed-controls .fa-comment{\n \tmargin: 0px 3px;\n }\n .feed-edit-items .arrow-up{\n \tmargin-left: 75px !important;\n }\n .feed-edit-items{\n    position: absolute !important;\n    right: 1px !important;\n    margin-top: 23px;\n }\n .edit-feed:hover{\n \tcolor: red;\n }\n\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/feeditem/feeditem.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + item.profilepic + ')'}\">\n</div>\n<div class=\"full-name blue-fonts bold-fonts pull-left\">{{item.fullname}}</div>\n<div class=\"pull-left blue-fonts time-ago\"><span>&nbsp;</span>{{feedMoment}}</div>\n<div class=\"pull-right edit-feed hand-cursor\">\n\t<i aria-hidden=\"true\" class=\"fa fa-pencil-square-o blue-fonts\" id=\"editItem\" (click)=\"editFeedItem($event);clickedInside($event);\"></i>\n</div>\n<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.post\" [ngStyle]=\"{\n\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t'color':' '+ item.colorInfo +''}\" >\n</div>\n<div class=\"colw100 feed-controls\">\n\t<div class=\"pull-left blue-fonts\"><i class=\"fa fa-thumbs-up\"></i><span>Like</span></div>\n\t<div class=\"pull-left red-fonts\"><i class=\"fa fa-heart\"></i><span>Love</span></div>\n\t<div class=\"pull-left\"><i class=\"fa fa-comment\"></i><span>Comment</span></div>\n</div>\n<div *ngIf=\"isEditFeedItem; then editFeedItemControls\"></div>\n<ng-template #editFeedItemControls>\n\t<div class=\"list-items feed-edit-items font-items pull-right\">\n\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t<div *ngIf=\"isMyFeed; then editThisFeedItem else reportThisFeedItem\"></div>\n\t\t<ng-template #editThisFeedItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"moveClick($event)\">Edit</div>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"deleteFeedItem();\"><span>Delete</span></div>\n\t\t</ng-template>\n\t\t<ng-template #reportThisFeedItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"moveClick($event)\">Report</div>\n\t\t</ng-template>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"selectClick($event)\">Hide</div>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"defaultClick($event)\">Tag</div>\n\t</div>\n</ng-template>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/feeditem/feeditem.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FeeditemComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_data_feed_service__ = __webpack_require__("../../../../../src/app/services/data/feed.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_timeago_js__ = __webpack_require__("../../../../timeago.js/dist/timeago.min.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_timeago_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_timeago_js__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+//import * as moment from 'moment';
+
+
+var FeeditemComponent = (function () {
+    function FeeditemComponent(feedService) {
+        this.feedService = feedService;
+        this.refreshFeed = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.isEditFeedItem = false;
+        this.isMyFeed = false;
+    }
+    FeeditemComponent.prototype.ngOnInit = function () {
+        if (this.item.userid === this.userId) {
+            this.isMyFeed = true;
+        }
+        var timeagoInstance = __WEBPACK_IMPORTED_MODULE_2_timeago_js___default()();
+        this.feedMoment = timeagoInstance.format(this.item.created);
+        //this.feedMoment = moment(this.item.created);
+    };
+    FeeditemComponent.prototype.clickedOutside = function ($event) {
+        this.isEditFeedItem = false;
+    };
+    FeeditemComponent.prototype.editFeedItem = function (event) {
+    };
+    FeeditemComponent.prototype.clickedInside = function ($event) {
+        if (this.isEditFeedItem) {
+            this.isEditFeedItem = false;
+        }
+        else {
+            this.isEditFeedItem = true;
+        }
+        $event.preventDefault();
+        $event.stopPropagation(); // <- that will stop propagation on lower layers
+    };
+    FeeditemComponent.prototype.deleteFeedItem = function () {
+        var _this = this;
+        var postObj = { 'id': this.item._id };
+        this.feedService.deleteFeedItem(postObj).subscribe(function (data) { return _this.afterFeedItemDeleted(data); });
+    };
+    FeeditemComponent.prototype.afterFeedItemDeleted = function (result) {
+        if (result.status === 'failure') {
+            alert(result.message);
+        }
+        else {
+            this.refreshFeed.emit('refresh');
+        }
+    };
+    return FeeditemComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('item'),
+    __metadata("design:type", Object)
+], FeeditemComponent.prototype, "item", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('userId'),
+    __metadata("design:type", Object)
+], FeeditemComponent.prototype, "userId", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
+], FeeditemComponent.prototype, "refreshFeed", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* HostListener */])('document:click', ['$event']),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], FeeditemComponent.prototype, "clickedOutside", null);
+FeeditemComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-feeditem',
+        template: __webpack_require__("../../../../../src/app/feeditem/feeditem.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/feeditem/feeditem.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_app_services_data_feed_service__["a" /* FeedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_services_data_feed_service__["a" /* FeedService */]) === "function" && _b || Object])
+], FeeditemComponent);
+
+var _a, _b;
+//# sourceMappingURL=feeditem.component.js.map
 
 /***/ }),
 
@@ -5273,6 +5399,12 @@ var FeedService = (function () {
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/refreshFeed", postObj, options)
             .map(function (res) { return res.json(); });
     };
+    FeedService.prototype.deleteFeedItem = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/deleteFeedItem", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
     return FeedService;
 }());
 FeedService = __decorate([
@@ -6031,7 +6163,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".feed-content{\n\toverflow-y: auto;\n}", ""]);
 
 // exports
 
@@ -6044,7 +6176,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/stories/stories.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container top-margin bottom-margin\">\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\t\t\t<div class=\"opaque-bg no-padding\">\n\t\t\t\t<app-profile-area></app-profile-area>\n\t\t\t\t<div class=\"left-nav\">\n\t\t\t\t\t<div class=\"nav-item\" (click)=\"switchVideo($event)\" [ngClass]=\"(isHighLightStories ? 'highlight-nav' : '')\">\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Stories</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\" [ngClass]=\"(isHighLightMusic ? 'highlight-nav' : '')\" (click)=\"switchMusic($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-pencil blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Blog</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-plane blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Travel</span>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 no-padding\">\n\t\t\t<div class=\"opaque-bg video-content\">\n\t\t\t\t<ng-template [ngIf]=\"isStories\">\n\t\t\t\t\t<app-story-box></app-story-box>\n\t\t\t\t</ng-template>\t\n\t\t\t\t<ng-template [ngIf]=\"isBlog\">\n\t\t\t\t\t<app-music-player></app-music-player>\n\t\t\t\t</ng-template>\t\n\t\t\t\t<ng-template [ngIf]=\"isActivity\">\n\t\t\t\t\t<app-photos></app-photos>\n\t\t\t\t</ng-template>\t\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3 info-panel\">\n\t\t\t<div class=\"opaque-bg\">\n\t\t\t\t<app-info-panel></app-info-panel>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container top-margin bottom-margin\">\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\t\t\t<div class=\"opaque-bg no-padding\">\n\t\t\t\t<app-profile-area></app-profile-area>\n\t\t\t\t<div class=\"left-nav\">\n\t\t\t\t\t<div class=\"nav-item\" (click)=\"switchVideo($event)\" [ngClass]=\"(isHighLightStories ? 'highlight-nav' : '')\">\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Stories</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\" [ngClass]=\"(isHighLightMusic ? 'highlight-nav' : '')\" (click)=\"switchMusic($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-pencil blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Blog</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-plane blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Travel</span>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 no-padding opaque-bg feed-content\" [ngStyle]=\"{ 'height': ' ' + screenHeight + 'px'}\">\n\t\t\t<div class=\"story-content\">\n\t\t\t\t<ng-template [ngIf]=\"isStories\">\n\t\t\t\t\t<app-story-box></app-story-box>\n\t\t\t\t</ng-template>\t\n\t\t\t\t<ng-template [ngIf]=\"isBlog\">\n\t\t\t\t\t<app-music-player></app-music-player>\n\t\t\t\t</ng-template>\t\n\t\t\t\t<ng-template [ngIf]=\"isActivity\">\n\t\t\t\t\t<app-photos></app-photos>\n\t\t\t\t</ng-template>\t\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3 info-panel\">\n\t\t\t<div class=\"opaque-bg\">\n\t\t\t\t<app-info-panel></app-info-panel>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -6080,6 +6212,7 @@ var StoriesComponent = (function () {
         this.isHighLightStories = true;
         this.isHighLightMusic = false;
         this.isHighLightPhotos = false;
+        this.screenHeight = window.screen.height - 175;
         route.params.subscribe(function (val) {
             var currentUser = localStorage.getItem('currentUser');
             var id = _this.route.snapshot.paramMap.get('id');
@@ -6148,7 +6281,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".story-feed{\n\tpadding: 6px 6px 0px 57px;\n}\n.story-box{\n\theight: 100px;\n\tpadding: 3px ;\n\tborder: 1px solid #2b90d9;\n}\n.profile-pic{\n    margin: 0px 2px;\n    width: 45px;\n    height: 45px;\n    position: absolute;\n    left: 5px;\n}\n.control-bar{\n\tmargin: 6px 0px 1px 0px;\n\tfont-size: 9px;\n}\n.color-picker-icon{\n\tborder: 1px solid #2b90d9;\n}\n.color-picker-icon input{\n    border: 2px solid #d2d2d2;\n    outline: none;\n    height: 15px;\n    width: 15px;\n    color: transparent;\n}\n.color-picker-icon:hover{\n\tcolor: transparent !important;\n}\n.font-items{\n\tmargin: 10px -8px;\n    font-size: 11px;\n    max-height: 100px;\n    overflow-y: auto;\n}\n.font-family-btn{\n    border: 1px solid #2b90d9;\n    font-size: 7px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 5px;\n}\n.up-img-btn, .up-mus-btn, .up-vid-btn{\n    border: 1px solid #2b90d9;\n    font-size: 11px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 0px 0px 5px;\n}\n.font-size-btn{\n    border: 1px solid #2b90d9;\n    font-size:11px;\n    width: 32px;\n    height: 17px;\n}\n.font-family-btn i{\n\tmargin-left: 1px;\n}\n.font-family-btn:hover, .font-size-btn:hover, .font-bold-btn:hover,\n.font-ul-btn:hover, .font-italic-btn:hover, .smiley-btn:hover,\n.up-img-btn:hover, .up-mus-btn:hover, .up-vid-btn:hover{\n\tborder: 1px solid red;\n}\n.font-bold-btn:hover span, .font-ul-btn:hover span, .font-italic-btn:hover span, .smiley-btn:hover i,\n.up-img-btn:hover i, .up-mus-btn:hover i, .up-vid-btn:hover i{\n\tcolor: red;\n}\n.font-family-btn:hover i, .font-size-btn:hover span{\n\tcolor: red !important;\n}\n.font-bold-btn, .font-ul-btn, .font-italic-btn, .smiley-btn{\n\tborder: 1px solid #2b90d9;\n    font-size: 11px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 0px 0px 5px;\n    font-weight: bold;\n}\n.color-picker .arrow-right{\n\ttop: 5px !important;\n}\n.high-light{\n    border: 1px solid red;\n}\n.high-light *{\n    color: red;\n}\n.emo-list .list-item{\n    width: 25px !important;\n    margin: 2px 0px;\n}\n.emo-list{\n    width: 102px !important;\n}\n#postBtn{\n    width: 50px;\n    height: 17px;\n    border-radius: 0px;\n    padding: 0px !important;\n    line-height: 12px;\n    font-size: 12px !important;\n    background-color: #fff !important;\n    border: 1px solid #2b90d9 !important;\n    color: #2b90d9 !important;\n    background: #d9e1e8 !important;\n}\n#postBtn:hover *{\n    color: red;\n}\n#postBtn:hover{\n    border: 1px solid red !important;\n}\n.file-input-container{\n    display: none;\n}\n.modal{\n    width: 500px !important;\n    height: 500px !important;  \n}", ""]);
+exports.push([module.i, ".story-feed{\n\tpadding: 6px 6px 0px 57px;\n}\n.story-box{\n\theight: 100px;\n\tpadding: 3px ;\n\tborder: 1px solid #2b90d9;\n}\n.profile-pic{\n    margin: 0px 2px;\n    width: 45px;\n    height: 45px;\n    position: absolute;\n    left: 5px;\n    border-radius: 50%;\n}\n.control-bar{\n\tmargin: 6px 0px 1px 0px;\n\tfont-size: 9px;\n}\n.color-picker-icon{\n\tborder: 1px solid #2b90d9;\n}\n.color-picker-icon input{\n    border: 2px solid #d2d2d2;\n    outline: none;\n    height: 15px;\n    width: 15px;\n    color: transparent;\n}\n.color-picker-icon:hover{\n\tcolor: transparent !important;\n}\n.font-items{\n\tmargin: 10px -8px;\n    font-size: 11px;\n    max-height: 100px;\n    overflow-y: auto;\n}\n.font-family-btn{\n    border: 1px solid #2b90d9;\n    font-size: 7px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 5px;\n}\n.up-img-btn, .up-mus-btn, .up-vid-btn{\n    border: 1px solid #2b90d9;\n    font-size: 11px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 0px 0px 5px;\n}\n.font-size-btn{\n    border: 1px solid #2b90d9;\n    font-size:11px;\n    width: 32px;\n    height: 17px;\n}\n.font-family-btn i{\n\tmargin-left: 1px;\n}\n.font-family-btn:hover, .font-size-btn:hover, .font-bold-btn:hover,\n.font-ul-btn:hover, .font-italic-btn:hover, .smiley-btn:hover,\n.up-img-btn:hover, .up-mus-btn:hover, .up-vid-btn:hover{\n\tborder: 1px solid red;\n}\n.font-bold-btn:hover span, .font-ul-btn:hover span, .font-italic-btn:hover span, .smiley-btn:hover i,\n.up-img-btn:hover i, .up-mus-btn:hover i, .up-vid-btn:hover i{\n\tcolor: red;\n}\n.font-family-btn:hover i, .font-size-btn:hover span{\n\tcolor: red !important;\n}\n.font-bold-btn, .font-ul-btn, .font-italic-btn, .smiley-btn{\n\tborder: 1px solid #2b90d9;\n    font-size: 11px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 0px 0px 5px;\n    font-weight: bold;\n}\n.color-picker .arrow-right{\n\ttop: 5px !important;\n}\n.high-light{\n    border: 1px solid red;\n}\n.high-light *{\n    color: red;\n}\n.emo-list .list-item{\n    width: 25px !important;\n    margin: 2px 0px;\n}\n.emo-list{\n    width: 102px !important;\n}\n#postBtn{\n    width: 50px;\n    height: 17px;\n    border-radius: 0px;\n    padding: 0px !important;\n    line-height: 12px;\n    font-size: 12px !important;\n    background-color: #fff !important;\n    border: 1px solid #2b90d9 !important;\n    color: #2b90d9 !important;\n    background: #d9e1e8 !important;\n}\n#postBtn:hover *{\n    color: red;\n}\n#postBtn:hover{\n    border: 1px solid red !important;\n}\n.file-input-container{\n    display: none;\n}\n.modal{\n    width: 500px !important;\n    height: 500px !important;  \n}\napp-feeditem{\n    float: left;\n    width: 100%;\n    min-height: 60px;\n    border: 1px solid #e6e6e6;\n    margin: 3px 0px;\n    border-radius: 3px;\n    padding: 3px;\n}", ""]);
 
 // exports
 
@@ -6161,7 +6294,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/story-box/story-box.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"inline-block colw100 story-feed\">\n\t<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + profilePic + ')'}\">\n\t</div>\n\t<div name=\"story\" #storyBox class=\"story-box colw100 inline-block no-outline auto-overflow pull-left\" contenteditable=\"true\" spellcheck=\"true\" role=\"textbox\" aria-multiline=\"true\" data-placeholder-default=\"What’s happening?\" aria-autocomplete=\"list\" aria-expanded=\"false\" [style.color]=\"color\" [style.font-family]=\"fontFamily\" [style.font-size]=\"fontSize\" [style.font-weight]=\"fontWeight\" [style.text-decoration]=\"txtDeco\" [style.font-style]=\"fontStyle\"  [innerHTML]=\"storyContent\" \n\t(keyup)=\"onStoryContentChange($event)\" (keydown)=\"onStoryContentChanged($event.keyCode)\">\n\t</div>\n\t<div class=\"control-bar inline-block\">\n\t\t<div class=\"pull-left color-picker-icon\">\n\t\t\t<input [colorPicker]=\"color\" (colorPickerChange)=\"color=$event; colorPickerChange($event);\" [style.background]=\"color\" class=\"cursor-pointer\"/>\n\t\t</div>\n\t\t<div class=\"pull-left font-family-btn\" (click)=\"clickedInside($event)\">\n\t\t\t<i class=\"fa fa-font fa-2x blue-fonts cursor-pointer\" aria-hidden=\"true\" (click)=\"toggleFontFamily($event)\"></i>\n\t\t\t<div *ngIf=\"isShowFontFamily; then fontFamilies\"></div>\n\t\t\t<ng-template #fontFamilies>\n\t\t\t\t<div class=\"list-items font-items pull-left\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Arial')\">Arial</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Times New Roman')\">Times New Roman</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Courier New')\">Courier New</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left font-size-btn\" (click)=\"clickedInside($event)\">\n\t\t\t<div class=\"blue-fonts cursor-pointer text-center\" (click)=\"toggleFontSize($event)\"><span>{{fontSize}}</span></div>\n\t\t\t<div *ngIf=\"isShowFontSize; then fontSizes\"></div>\n\t\t\t<ng-template #fontSizes>\n\t\t\t\t<div class=\"list-items font-items pull-left\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 9)\">9</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 10)\">10</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 11)\">11</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 12)\">12</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 13)\">13</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 14)\">14</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 15)\">15</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 16)\">16</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 17)\">17</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 18)\">18</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 19)\">19</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 20)\">20</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 21)\">21</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 22)\">22</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 23)\">23</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 24)\">24</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 25)\">25</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left font-bold-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isBoldBtnHighLight\" (click)=\"applyBold($event)\">\n\t\t\t<span>B</span>\n\t\t</div>\n\t\t<div class=\"pull-left font-ul-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isULBtnHighLight\" (click)=\"applyUnderline($event)\">\n\t\t\t<span>U</span>\n\t\t</div>\n\t\t<div class=\"pull-left font-italic-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isIBtnHighLight\"  (click)=\"applyItalic($event)\">\n\t\t\t<span>I</span>\n\t\t</div>\n\t\t<div class=\"pull-left smiley-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isEmotionsHighLight\"  (click)=\"showEmotions($event)\" (click)=\"clickedInside($event)\">\n\t\t\t<div>\n\t\t\t\t<i class=\"fa fa-smile-o\"></i>\n\t\t\t</div>\n\t\t\t<div *ngIf=\"isEmotionsHighLight; then emotions\"></div>\n\t\t\t<ng-template #emotions>\n\t\t\t\t<div class=\"list-items font-items pull-left emo-list\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion0-smile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion1-sadsmile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':D')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion2-bigsmile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '8=)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion3-cool.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':o')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion4-surprised.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ';)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion5-wink.gif\"/></span>\n\t\t\t\t\t</div>\n\n\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ';(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion6-crying.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '(:|')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion7-sweating.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':|')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion8-speechless.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':*')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion9-kiss.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, 'emotion10-tongueout')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion10-tongueout.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':$')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion11-blush.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':^)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion12-wondering.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '|-)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion13-sleepy.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '|(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion14-dull.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left up-img-btn blue-fonts cursor-pointer text-center\" (click)= \"imageInput.value = ''; imageInput.click();\">\n\t\t\t<i class=\"fa fa-picture-o\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left up-mus-btn blue-fonts cursor-pointer text-center\" (click)= \"audioInput.value = ''; audioInput.click();\">\n\t\t\t<i class=\"fa fa-music\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left up-vid-btn blue-fonts cursor-pointer text-center\" (click)= \"videoInput.value = ''; videoInput.click();\">\n\t\t\t<i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left post-btn blue-fonts cursor-pointer text-center\">\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"postStory($event)\">\n\t\t\t\t<span>Post</span>\n\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t</button>\n\t\t</div>\n\t</div>\n    <div class=\"file-input-container\">\n        <form [formGroup]=\"imageUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"imageGroup\">\n                <input type=\"file\" accept=\"image/*\" class=\"file-input\" name=\"uploadimage\" #imageInput (change)=\"imageFileChangeEvent($event, true)\"/>\n            </div>\n        </form>\n        <form [formGroup]=\"musicUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"musicGroup\">\n                <input type=\"file\" accept=\"audio/*\" class=\"file-input\" name=\"uploadmusic\" #musicInput (change)=\"fileChangeEvent($event, true)\"/>\n            </div>\n        </form>\n        <form [formGroup]=\"videoUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"videoGroup\">\n                <input type=\"file\" accept=\"video/*\" class=\"file-input\" name=\"uploadvideo\" #videoInput (change)=\"fileChangeEvent($event, true)\"/>\n            </div>\n        </form>\n    </div>\n</div>\n\n<app-modal [modalTitle]=\"'Cover Pic Preview'\" [blocking]='false' [modalId]='modalId' #previewPicModal>\n\t<div class=\"preview-cover-pic\"><img *ngIf=\"encodedImage\" [src]=\"encodedImage\"/></div>\n  \t<div>\t\t\t\n\t\t<button id=\"okBtn\" type=\"button\" class=\"btn btn-primary text-center small-btn ok-btn\" (click)=\"ok()\">\n\t\t\t<span class=\"pull-left\">Ok</span>\n\t\t\t<i class=\"fa fa-floppy-o\" aria-hidden=\"true\"></i>\n\t\t</button>\n\t</div>\n</app-modal>"
+module.exports = "<div class=\"inline-block colw100 story-feed\">\n\t<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + profilePic + ')'}\">\n\t</div>\n\t<div name=\"story\" #storyBox class=\"story-box colw100 inline-block no-outline auto-overflow pull-left\" contenteditable=\"true\" spellcheck=\"true\" role=\"textbox\" aria-multiline=\"true\" data-placeholder-default=\"What’s happening?\" aria-autocomplete=\"list\" aria-expanded=\"false\" [style.color]=\"color\" [style.font-family]=\"fontFamily\" [style.font-size]=\"fontSize\" [style.font-weight]=\"fontWeight\" [style.text-decoration]=\"txtDeco\" [style.font-style]=\"fontStyle\"  [innerHTML]=\"storyContent\" \n\t(keyup)=\"onStoryContentChange($event)\" (keydown)=\"onStoryContentChanged($event.keyCode)\">\n\t</div>\n\t<div class=\"control-bar inline-block\">\n\t\t<div class=\"pull-left color-picker-icon\">\n\t\t\t<input [colorPicker]=\"color\" (colorPickerChange)=\"color=$event; colorPickerChange($event);\" [style.background]=\"color\" class=\"cursor-pointer\"/>\n\t\t</div>\n\t\t<div class=\"pull-left font-family-btn\" (click)=\"toggleFontFamily($event); clickedInside($event);\">\n\t\t\t<div>\n\t\t\t\t<i class=\"fa fa-font fa-2x blue-fonts cursor-pointer\"></i>\n\t\t\t</div>\n\t\t\t<div *ngIf=\"isShowFontFamily; then fontFamilies\"></div>\n\t\t\t<ng-template #fontFamilies>\n\t\t\t\t<div class=\"list-items font-items pull-left\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Arial')\">Arial</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Times New Roman')\">Times New Roman</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Courier New')\">Courier New</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left font-size-btn\" (click)=\"clickedInside($event)\">\n\t\t\t<div class=\"blue-fonts cursor-pointer text-center\" (click)=\"toggleFontSize($event)\"><span>{{fontSize}}</span></div>\n\t\t\t<div *ngIf=\"isShowFontSize; then fontSizes\"></div>\n\t\t\t<ng-template #fontSizes>\n\t\t\t\t<div class=\"list-items font-items pull-left\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 9)\">9</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 10)\">10</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 11)\">11</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 12)\">12</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 13)\">13</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 14)\">14</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 15)\">15</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 16)\">16</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 17)\">17</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 18)\">18</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 19)\">19</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 20)\">20</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 21)\">21</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 22)\">22</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 23)\">23</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 24)\">24</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 25)\">25</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left font-bold-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isBoldBtnHighLight\" (click)=\"applyBold($event)\">\n\t\t\t<span>B</span>\n\t\t</div>\n\t\t<div class=\"pull-left font-ul-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isULBtnHighLight\" (click)=\"applyUnderline($event)\">\n\t\t\t<span>U</span>\n\t\t</div>\n\t\t<div class=\"pull-left font-italic-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isIBtnHighLight\"  (click)=\"applyItalic($event)\">\n\t\t\t<span>I</span>\n\t\t</div>\n\t\t<div class=\"pull-left smiley-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isEmotionsHighLight\"  (click)=\"showEmotions($event);clickedInside($event);\">\n\t\t\t<div>\n\t\t\t\t<i class=\"fa fa-smile-o\"></i>\n\t\t\t</div>\n\t\t\t<div *ngIf=\"isEmotionsHighLight; then emotions\"></div>\n\t\t\t<ng-template #emotions>\n\t\t\t\t<div class=\"list-items font-items pull-left emo-list\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion0-smile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion1-sadsmile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':D')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion2-bigsmile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '8=)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion3-cool.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':o')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion4-surprised.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ';)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion5-wink.gif\"/></span>\n\t\t\t\t\t</div>\n\n\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ';(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion6-crying.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '(:|')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion7-sweating.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':|')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion8-speechless.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':*')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion9-kiss.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, 'emotion10-tongueout')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion10-tongueout.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':$')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion11-blush.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':^)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion12-wondering.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '|-)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion13-sleepy.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '|(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion14-dull.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left up-img-btn blue-fonts cursor-pointer text-center\" (click)= \"imageInput.value = ''; imageInput.click();\">\n\t\t\t<i class=\"fa fa-picture-o\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left up-mus-btn blue-fonts cursor-pointer text-center\" (click)= \"audioInput.value = ''; audioInput.click();\">\n\t\t\t<i class=\"fa fa-music\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left up-vid-btn blue-fonts cursor-pointer text-center\" (click)= \"videoInput.value = ''; videoInput.click();\">\n\t\t\t<i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left post-btn blue-fonts cursor-pointer text-center\">\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"postStory($event)\" [disabled]=\"(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)\">\n\t\t\t\t<span>Post</span>\n\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t</button>\n\t\t</div>\n\t</div>\n    <div class=\"file-input-container\">\n        <form [formGroup]=\"imageUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"imageGroup\">\n                <input type=\"file\" accept=\"image/*\" class=\"file-input\" name=\"uploadimage\" #imageInput (change)=\"imageFileChangeEvent($event, true)\"/>\n            </div>\n        </form>\n        <form [formGroup]=\"musicUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"musicGroup\">\n                <input type=\"file\" accept=\"audio/*\" class=\"file-input\" name=\"uploadmusic\" #musicInput (change)=\"fileChangeEvent($event, true)\"/>\n            </div>\n        </form>\n        <form [formGroup]=\"videoUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"videoGroup\">\n                <input type=\"file\" accept=\"video/*\" class=\"file-input\" name=\"uploadvideo\" #videoInput (change)=\"fileChangeEvent($event, true)\"/>\n            </div>\n        </form>\n    </div>\n</div>\n<div class=\"inline-block colw100 story-feed\">\n\t<app-feeditem *ngFor=\"let item of feedItem\" [item]=\"item\" [userId]=\"userId\" (refreshFeed)=\"refreshFeedItem($event)\"></app-feeditem>\n</div>\n\n\n<app-modal [modalTitle]=\"'Cover Pic Preview'\" [blocking]='false' [modalId]='modalId' #previewPicModal>\n\t<div class=\"preview-cover-pic\"><img *ngIf=\"encodedImage\" [src]=\"encodedImage\"/></div>\n  \t<div>\t\t\t\n\t\t<button id=\"okBtn\" type=\"button\" class=\"btn btn-primary text-center small-btn ok-btn\" (click)=\"ok()\">\n\t\t\t<span class=\"pull-left\">Ok</span>\n\t\t\t<i class=\"fa fa-floppy-o\" aria-hidden=\"true\"></i>\n\t\t</button>\n\t</div>\n</app-modal>"
 
 /***/ }),
 
@@ -6212,6 +6345,7 @@ var StoryBoxComponent = (function () {
         this.fontWeight = 'normal';
         this.txtDeco = 'none';
         this.fontStyle = 'normal';
+        this.isSmileyAdded = false;
         this.storyContent = '';
         this.modalId = 'storyModal';
         this.userId = '';
@@ -6327,6 +6461,9 @@ var StoryBoxComponent = (function () {
         }
     };
     StoryBoxComponent.prototype.onStoryContentChange = function (event) {
+        if (this.storyBox.nativeElement.innerText.trim().length === 0) {
+            this.isSmileyAdded = false;
+        }
         switch (event.keyCode) {
             case 8:
                 break;
@@ -6351,6 +6488,7 @@ var StoryBoxComponent = (function () {
         }
     };
     StoryBoxComponent.prototype.onStoryContentChanged = function (keyCode) {
+        //this.storyContentText = 
         /*if(keyCode === 32){
             let storyContents = this.storyBox.nativeElement.innerHTML;
             storyContents = UtilityService.setSmileys(storyContents);
@@ -6382,6 +6520,7 @@ var StoryBoxComponent = (function () {
     };
     StoryBoxComponent.prototype.syncEmotion = function (symbol) {
         var _this = this;
+        this.isSmileyAdded = true;
         var storyContents = this.storyBox.nativeElement.innerHTML + symbol;
         storyContents = __WEBPACK_IMPORTED_MODULE_2_app_services_utility_utility_service__["a" /* UtilityService */].setSmileys(storyContents);
         console.log('change' + storyContents);
@@ -6472,6 +6611,7 @@ var StoryBoxComponent = (function () {
     };
     StoryBoxComponent.prototype.postStory = function (event) {
         var _this = this;
+        this.syncEmotion('');
         var postObj = { 'username': this.userId,
             'email': this.email,
             'fullname': this.fullName,
@@ -6494,11 +6634,13 @@ var StoryBoxComponent = (function () {
         this.feedService.savePost(postObj).subscribe(function (data) { return _this.afterPostSaved(data); });
     };
     StoryBoxComponent.prototype.afterPostSaved = function (result) {
+        this.isSmileyAdded = false;
+        this.storyContent = '';
         if (result.status === 'failure') {
             alert(result.message);
         }
         else {
-            alert(result.message);
+            this.refreshFeed();
         }
     };
     StoryBoxComponent.prototype.getAllConfirmedFriends = function () {
@@ -6509,7 +6651,12 @@ var StoryBoxComponent = (function () {
     StoryBoxComponent.prototype.afterGetAllConfirmedFriends = function (result) {
         this.friendIdArr.push(this.userId);
         for (var i in result) {
-            this.friendIdArr.push(result[i].userid);
+            if (this.userId !== result[i].friendid) {
+                this.friendIdArr.push(result[i].friendid);
+            }
+            if (this.userId !== result[i].userid) {
+                this.friendIdArr.push(result[i].userid);
+            }
         }
         this.refreshFeed();
     };
@@ -6518,8 +6665,12 @@ var StoryBoxComponent = (function () {
         var postObj = { 'reqidarr': this.friendIdArr };
         this.feedService.refreshFeed(postObj).subscribe(function (data) { return _this.afterRefreshFeed(data); });
     };
+    StoryBoxComponent.prototype.refreshFeedItem = function (event) {
+        this.refreshFeed();
+    };
     StoryBoxComponent.prototype.afterRefreshFeed = function (result) {
         console.log('>>>>' + result);
+        this.feedItem = result;
     };
     return StoryBoxComponent;
 }());

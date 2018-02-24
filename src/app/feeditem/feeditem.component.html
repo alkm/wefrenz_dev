@@ -1,0 +1,33 @@
+<div class="profile-pic no-padding pull-left contain-bg" [ngStyle]="{ 'background-image': 'url(' + item.profilepic + ')'}">
+</div>
+<div class="full-name blue-fonts bold-fonts pull-left">{{item.fullname}}</div>
+<div class="pull-left blue-fonts time-ago"><span>&nbsp;</span>{{feedMoment}}</div>
+<div class="pull-right edit-feed hand-cursor">
+	<i aria-hidden="true" class="fa fa-pencil-square-o blue-fonts" id="editItem" (click)="editFeedItem($event);clickedInside($event);"></i>
+</div>
+<div class="feed-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="item.post" [ngStyle]="{
+			'font-weight':' '+ item.fontWeight +'', 
+			'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',
+			'color':' '+ item.colorInfo +''}" >
+</div>
+<div class="colw100 feed-controls">
+	<div class="pull-left blue-fonts"><i class="fa fa-thumbs-up"></i><span>Like</span></div>
+	<div class="pull-left red-fonts"><i class="fa fa-heart"></i><span>Love</span></div>
+	<div class="pull-left"><i class="fa fa-comment"></i><span>Comment</span></div>
+</div>
+<div *ngIf="isEditFeedItem; then editFeedItemControls"></div>
+<ng-template #editFeedItemControls>
+	<div class="list-items feed-edit-items font-items pull-right">
+		<div class="arrow-up white-bg"></div>
+		<div *ngIf="isMyFeed; then editThisFeedItem else reportThisFeedItem"></div>
+		<ng-template #editThisFeedItem>
+			<div class="cursor-pointer list-item" (click)="moveClick($event)">Edit</div>
+			<div class="cursor-pointer list-item" (click)="deleteFeedItem();"><span>Delete</span></div>
+		</ng-template>
+		<ng-template #reportThisFeedItem>
+			<div class="cursor-pointer list-item" (click)="moveClick($event)">Report</div>
+		</ng-template>
+		<div class="cursor-pointer list-item" (click)="selectClick($event)">Hide</div>
+		<div class="cursor-pointer list-item" (click)="defaultClick($event)">Tag</div>
+	</div>
+</ng-template>

@@ -49,13 +49,25 @@ module.exports = function(app) {
 	app.post('/api/refreshFeed/', function(req, res) {	
 		// Getting all the confirmed friends feed details
 		//req.body.reqidarr = req.body.reqidarr.push(req.mySession.userid);
-		feedInfo.find({ $and: [{userid: {$in : req.body.reqidarr}}, {isReady : true  } ] }, function(error, infos){
-		//feedInfo.find({userid : {$in : req.body.reqidarr}}, function(error, infos){
-			if(error){
-				console.log("Error"+error);
+
+		
+		feedInfo.find({ $and: [{userid: {$in : req.body.reqidarr}}, {isReady : true  } ] }).sort('-created').exec(function(err, infos) {
+			if(err){
+				console.log("Error"+infos);
 			}else{
 				console.log("feed Infos"+infos);
 				res.send(infos);
+			} 
+		});
+	});
+	app.post('/api/deleteFeedItem/', function(req, res) {	
+		//Delete the feed item
+		feedInfo.remove({ _id: req.body.id }, function(err) {
+			if(err){
+				console.log("Error"+err);
+				res.json({"status": "failure", "message": "Feed item can't be deleted now, please try again later."});
+			}else{
+				res.json({"status": "success", "message": "Feed item deleted successfully"});
 			}
 		});
 	});

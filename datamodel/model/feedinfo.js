@@ -14,8 +14,8 @@ module.exports = mongoose.model('feedinfo', {
 	fontFamily : String,
 	fontSize : String,
 	fontStyle : String,
-	txtDecoration : String,
+	textDecoration : String,
 	fontWeight : String,
 	addWatcherArr : Array,
-	done : Boolean
+	created: {type: Date, default: Date.now}
 });

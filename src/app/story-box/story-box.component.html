@@ -8,8 +8,10 @@
 		<div class="pull-left color-picker-icon">
 			<input [colorPicker]="color" (colorPickerChange)="color=$event; colorPickerChange($event);" [style.background]="color" class="cursor-pointer"/>
 		</div>
-		<div class="pull-left font-family-btn" (click)="clickedInside($event)">
-			<i class="fa fa-font fa-2x blue-fonts cursor-pointer" aria-hidden="true" (click)="toggleFontFamily($event)"></i>
+		<div class="pull-left font-family-btn" (click)="toggleFontFamily($event); clickedInside($event);">
+			<div>
+				<i class="fa fa-font fa-2x blue-fonts cursor-pointer"></i>
+			</div>
 			<div *ngIf="isShowFontFamily; then fontFamilies"></div>
 			<ng-template #fontFamilies>
 				<div class="list-items font-items pull-left">
@@ -55,7 +57,7 @@
 		<div class="pull-left font-italic-btn blue-fonts cursor-pointer text-center" [class.high-light]="isIBtnHighLight"  (click)="applyItalic($event)">
 			<span>I</span>
 		</div>
-		<div class="pull-left smiley-btn blue-fonts cursor-pointer text-center" [class.high-light]="isEmotionsHighLight"  (click)="showEmotions($event)" (click)="clickedInside($event)">
+		<div class="pull-left smiley-btn blue-fonts cursor-pointer text-center" [class.high-light]="isEmotionsHighLight"  (click)="showEmotions($event);clickedInside($event);">
 			<div>
 				<i class="fa fa-smile-o"></i>
 			</div>
@@ -123,7 +125,7 @@
 			<i class="fa fa-file-video-o" aria-hidden="true"></i>
 		</div>
 		<div class="pull-left post-btn blue-fonts cursor-pointer text-center">
-			<button class="btn btn-primary" id="postBtn" type="button" (click)="postStory($event)">
+			<button class="btn btn-primary" id="postBtn" type="button" (click)="postStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
 				<span>Post</span>
 				<i class="fa fa-share-square-o" aria-hidden="true"></i>
 			</button>
@@ -147,6 +149,10 @@
         </form>
     </div>
 </div>
+<div class="inline-block colw100 story-feed">
+	<app-feeditem *ngFor="let item of feedItem" [item]="item" [userId]="userId" (refreshFeed)="refreshFeedItem($event)"></app-feeditem>
+</div>
+
 
 <app-modal [modalTitle]="'Cover Pic Preview'" [blocking]='false' [modalId]='modalId' #previewPicModal>
 	<div class="preview-cover-pic"><img *ngIf="encodedImage" [src]="encodedImage"/></div>

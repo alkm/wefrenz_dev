@@ -61,6 +61,7 @@ import { MusicListComponent } from './music-list/music-list.component';
 import { VideoListComponent } from './video-list/video-list.component';
 import { StoriesComponent } from './stories/stories.component';
 import { StoryBoxComponent } from './story-box/story-box.component';
+import { FeeditemComponent } from './feeditem/feeditem.component';
 
 
 
@@ -111,7 +112,8 @@ import { StoryBoxComponent } from './story-box/story-box.component';
     MusicListComponent,
     VideoListComponent,
     StoriesComponent,
-    StoryBoxComponent
+    StoryBoxComponent,
+    FeeditemComponent
   ],
   imports: [
     BrowserModule,

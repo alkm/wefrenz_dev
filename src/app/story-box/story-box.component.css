@@ -12,6 +12,7 @@
     height: 45px;
     position: absolute;
     left: 5px;
+    border-radius: 50%;
 }
 .control-bar{
 	margin: 6px 0px 1px 0px;
@@ -119,4 +120,13 @@
 .modal{
     width: 500px !important;
     height: 500px !important;  
+}
+app-feeditem{
+    float: left;
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid #e6e6e6;
+    margin: 3px 0px;
+    border-radius: 3px;
+    padding: 3px;
 }

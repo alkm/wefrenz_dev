@@ -30,6 +30,7 @@ export class StoryBoxComponent implements OnInit {
 	private fontWeight: string = 'normal';
 	private txtDeco: string = 'none';
 	private fontStyle = 'normal'
+	private isSmileyAdded: boolean = false;
 	private storyContent:string = '';
 	private imageUploadForm: any;
   	private imageGroup: any;
@@ -44,6 +45,7 @@ export class StoryBoxComponent implements OnInit {
   	private fullName: string = '';
   	private email: string = '';
   	private friendIdArr: Array<string> = [];
+  	private feedItem: any;
 
 
 	constructor(private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private friendsService: FriendsService) {
@@ -164,6 +166,9 @@ export class StoryBoxComponent implements OnInit {
 	}
 
 	private onStoryContentChange(event){
+		if(this.storyBox.nativeElement.innerText.trim().length === 0){
+			this.isSmileyAdded = false;
+		}
 		switch(event.keyCode) {
 			case 8:
 		        break;
@@ -190,6 +195,8 @@ export class StoryBoxComponent implements OnInit {
 	}
 
 	private onStoryContentChanged(keyCode){
+		//this.storyContentText = 
+
 		/*if(keyCode === 32){
 			let storyContents = this.storyBox.nativeElement.innerHTML;
 			storyContents = UtilityService.setSmileys(storyContents);
@@ -224,6 +231,7 @@ export class StoryBoxComponent implements OnInit {
 	}
 
 	private syncEmotion(symbol){
+		this.isSmileyAdded = true;
 		let storyContents = this.storyBox.nativeElement.innerHTML + symbol;
 		storyContents = UtilityService.setSmileys(storyContents);
 		console.log('change'+storyContents);
@@ -317,6 +325,7 @@ export class StoryBoxComponent implements OnInit {
     }
 
     private postStory(event){
+    	this.syncEmotion('');
     	let postObj = {'username': this.userId,
 	        'email': this.email,
 	        'fullname': this.fullName,
@@ -341,10 +350,12 @@ export class StoryBoxComponent implements OnInit {
     }
 
     private afterPostSaved(result) {
+    	this.isSmileyAdded = false;
+    	this.storyContent = '';
     	if(result.status === 'failure'){
         	alert(result.message);
       	}else{
-        	alert(result.message);
+        	this.refreshFeed();
       	}
   	}
 
@@ -356,7 +367,12 @@ export class StoryBoxComponent implements OnInit {
     private afterGetAllConfirmedFriends(result) {
     	this.friendIdArr.push(this.userId);
     	for(let i in result){
-    		this.friendIdArr.push(result[i].userid);
+    		if(this.userId !== result[i].friendid){
+    			this.friendIdArr.push(result[i].friendid);
+    		}
+    		if(this.userId !== result[i].userid){
+    			this.friendIdArr.push(result[i].userid);
+    		}
     	}
 
     	this.refreshFeed();
@@ -367,7 +383,12 @@ export class StoryBoxComponent implements OnInit {
   		this.feedService.refreshFeed(postObj).subscribe(data => this.afterRefreshFeed(data));
   	}
 
+  	private refreshFeedItem(event){
+  		this.refreshFeed();
+  	}
+
   	private afterRefreshFeed(result) {
   		console.log('>>>>'+result);
+  		this.feedItem = result;
   	}
 }

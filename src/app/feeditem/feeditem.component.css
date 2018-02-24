@@ -1,0 +1,26 @@
+.profile-pic{
+    margin: -3px 2px;
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    left: 5px;
+    border-radius: 50%;  	
+}
+.feed-controls .fa-thumbs-up, .feed-controls .fa-heart, .feed-controls .fa-comment{
+    margin: 0px 3px 0px 0px;
+}
+ .feed-controls .fa-heart, .feed-controls .fa-comment{
+ 	margin: 0px 3px;
+ }
+ .feed-edit-items .arrow-up{
+ 	margin-left: 75px !important;
+ }
+ .feed-edit-items{
+    position: absolute !important;
+    right: 1px !important;
+    margin-top: 23px;
+ }
+ .edit-feed:hover{
+ 	color: red;
+ }
+

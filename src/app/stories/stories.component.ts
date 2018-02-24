@@ -17,9 +17,11 @@ export class StoriesComponent implements OnInit {
     private isHighLightStories: boolean = true;
     private isHighLightMusic: boolean = false;
     private isHighLightPhotos: boolean = false;
+    private screenHeight: number;
 
 
 	constructor(private route: ActivatedRoute, private router: Router) { 
+		this.screenHeight = window.screen.height - 175;
   		route.params.subscribe(val => {
 			let currentUser = localStorage.getItem('currentUser');
 			let id = this.route.snapshot.paramMap.get('id');
