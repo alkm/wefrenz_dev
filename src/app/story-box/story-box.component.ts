@@ -14,6 +14,7 @@ import { FriendsService } from 'app/services/data/friends.service';
 export class StoryBoxComponent implements OnInit {
 
 	@ViewChild('storyBox') storyBox: ElementRef;
+	@ViewChild('postedPicModal') postedPicModal;
 
 	private profilePicWidth: number = 50;
 	private loginData = undefined;
@@ -21,12 +22,14 @@ export class StoryBoxComponent implements OnInit {
 	private color: string = "#000"
 	private isShowFontFamily: boolean = false;
 	private isShowFontSize: boolean = false;
-	private fontFamily:string = 'Arial';
+	private fontFamily:string = 'Open Sans, sans-serif';
 	private fontSize: string = 11+'px';
 	private isBoldBtnHighLight: boolean = false;
 	private isULBtnHighLight: boolean = false;
 	private isIBtnHighLight: boolean = false;
 	private isEmotionsHighLight: boolean = false;
+	private postTitle: string = '';
+	private postDesc: string = '';
 	private fontWeight: string = 'normal';
 	private txtDeco: string = 'none';
 	private fontStyle = 'normal'
@@ -324,36 +327,50 @@ export class StoryBoxComponent implements OnInit {
 		return false;*/
     }
 
+
+
     private postStory(event){
     	this.syncEmotion('');
+    	this.postItem('text', this.storyContent, '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
+
+    }
+
+    private postImage(event){
+    	this.postItem('image', '', this.encodedImage, this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+    	this.postedPicModal.close();
+
+    }
+
+    private postItem(type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight){
     	let postObj = {'username': this.userId,
 	        'email': this.email,
 	        'fullname': this.fullName,
 	        'profilepic': this.profilePic,
-	        'post' : this.storyContent,
-			'type' : '',
-			'title' : '',
-			'description' : '',
+	        'post' : storyContent,
+			'type' : type,
+			'title' : title,
+			'description' : desc,
 			'isReady' : true,
 			'isNotified' : false,
 			'coolArr' : [],
 			'commentArr' : [],
-			'filePath' : '',
-			'colorInfo' : this.color,
-			'fontFamily' : this.fontFamily,
-			'fontSize' : this.fontSize,
-			'fontStyle': this.fontStyle,
-			'textDecoration' : this.txtDeco,
-			'fontWeight' : this.fontWeight,
+			'filePath' : filePath,
+			'colorInfo' : color,
+			'fontFamily' : fontFamily,
+			'fontSize' : fontSize,
+			'fontStyle': fontStyle,
+			'textDecoration' : txtDeco,
+			'fontWeight' : fontWeight,
 			'addWatcherArr' : []
      	};
           this.feedService.savePost(postObj).subscribe(data => this.afterPostSaved(data));
-
     }
 
     private afterPostSaved(result) {
     	this.isSmileyAdded = false;
     	this.storyContent = '';
+    	this.postTitle = '';
+    	this.postDesc = '';
     	if(result.status === 'failure'){
         	alert(result.message);
       	}else{

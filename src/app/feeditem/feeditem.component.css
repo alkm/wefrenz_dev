@@ -23,4 +23,10 @@
  .edit-feed:hover{
  	color: red;
  }
+ .posted-pic{
+    display: inline-block;
+    background-size: cover !important;
+    height: 400px;
+    width: 100%;
+ }
 

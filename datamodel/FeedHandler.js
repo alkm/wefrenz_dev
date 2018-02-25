@@ -21,7 +21,7 @@ module.exports = function(app) {
 			fontFamily : req.body.fontFamily,
 			fontSize : req.body.fontSize,
 			fontStyle : req.body.fontStyle,
-			textDecoration : req.body.fontDecoration,
+			textDecoration : req.body.textDecoration,
 			fontWeight : req.body.fontWeight,
 			addWatcherArr : req.body.addWatcherArr,
 			done: false

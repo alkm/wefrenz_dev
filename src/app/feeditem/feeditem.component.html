@@ -5,11 +5,28 @@
 <div class="pull-right edit-feed hand-cursor">
 	<i aria-hidden="true" class="fa fa-pencil-square-o blue-fonts" id="editItem" (click)="editFeedItem($event);clickedInside($event);"></i>
 </div>
-<div class="feed-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="item.post" [ngStyle]="{
-			'font-weight':' '+ item.fontWeight +'', 
-			'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',
-			'color':' '+ item.colorInfo +''}" >
-</div>
+<div *ngIf="item.type === 'text'; then textFeed else imageFeed"></div>
+<ng-template #textFeed>
+	<div class="feed-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="item.post" [ngStyle]="{
+				'font-weight':' '+ item.fontWeight +'', 
+				'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',
+				'color':' '+ item.colorInfo +''}" >
+	</div>
+</ng-template>
+<ng-template #imageFeed>
+	<div class="posted-pic pull-left" [ngStyle]="{'background': 'url(' + item.filePath+ ')'}"></div>
+	<div class="feed-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="item.title" [ngStyle]="{
+				'font-weight':'bold', 
+				'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',
+				'color':' '+ item.colorInfo +''}" >
+	</div>
+	<div class="feed-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="item.description" [ngStyle]="{
+				'font-weight':' '+ item.fontWeight +'', 
+				'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',
+				'color':' '+ item.colorInfo +''}" >
+	</div>
+</ng-template>
+
 <div class="colw100 feed-controls">
 	<div class="pull-left blue-fonts"><i class="fa fa-thumbs-up"></i><span>Like</span></div>
 	<div class="pull-left red-fonts"><i class="fa fa-heart"></i><span>Love</span></div>
