@@ -48,6 +48,23 @@ var audioStorage = multer.diskStorage({
   	}
 });
 
+//Feed Music Upload storage settings
+
+var uploadFeedMusic = multer({ storage: storage });
+var uploadedFeedMusicPath = '';
+var feedMusicExt = '';
+var feedMusicStorage = multer.diskStorage({
+  	destination: function (req, file, cb) {
+    	cb(null, 'media/audios/feedaudios/original/')
+  	},
+  	filename: function (req, file, cb) {
+  		feedMusicExt = path.extname(file.originalname);
+  		uploadedFeedMusicPath = 'music_'+Date.now()+feedMusicExt;
+
+    	cb(null, uploadedFeedMusicPath); //Appending extension
+  	}
+});
+
 var uploadPhoto = multer({ storage: storage });
 
 var uploadedPhotoPath = '';
@@ -68,6 +85,7 @@ var photoStorage = multer.diskStorage({
 var recentVideoFile = {};
 var videoUpload = multer({ storage: videoStorage });
 var audioUpload = multer({ storage: audioStorage });
+var feedMusicUpload = multer({ storage: feedMusicStorage });
 var photoUpload = multer({ storage: photoStorage });
 
 var userInfo = require('./model/userinfo');
@@ -341,17 +359,7 @@ module.exports = function(app) {
 		console.log('file uploaded');
 		var userId = req.body.userid;
 		var albumTitle = req.body.album;
-		/*try{
-			if(ssn === undefined){
-				res.json({"status": "sessionExpired", "message": "Please Login"});
-				return;
-			}
-		}catch(err){
-			res.json({"status": "sessionExpired", "message": "Please Login"});
-			return;
-		}*/
 		var albumDesc = '';
-		
 		processAudio(userId, albumTitle, albumDesc);
 		function processAudio(userId, albumTitle, albumDesc){
 			var actualAudioPath = 'media/audios/myaudios/original/'+uploadedAudioPath;
@@ -361,83 +369,7 @@ module.exports = function(app) {
 			var posterImg = '';
 			//No need of conversion
 			updateAudioList(userId, albumTitle, albumDesc, actualAudioPath, posterImg);
-			/*try {
-				if (fs.existsSync(actualVideoPath)) {
-					var process = new ffmpeg(actualVideoPath);
-					process.then(function (video) {
-						var posterPath = 'media/videos/myvideos/poster/';
-						//video.setVideoAspectRatio('16:9')
-						video.fnExtractFrameToJPG(posterPath, {
-							frame_rate : 1,
-							number : 1,
-							file_name : 'poster_'+Date.now()
-						}, function (error, files) {
-							if (!error){
-								console.log('Frames: ' + files);
-								posterImg = files[1];
-								posterImg = 'video/poster/'+posterImg.split('/poster/')[1]; //Setting the virtual path
-							}
-						});
-
-						if(videoExt !== '.mp4'){
-							video.save(saveVideoPathMP4, function (error, file) {
-								if (!error){
-									console.log('Video file: ' + file);
-									saveVideoPathMP4 = 'video/mp4/'+saveVideoPathMP4.split('/mp4/')[1];//Setting virtual path
-									emtr.emit('onVideoReady', 'mp4');
-									
-								}	
-							});
-						}else{
-							saveVideoPathMP4 = actualVideoPath;
-							saveVideoPathMP4 = 'video/original/'+saveVideoPathMP4.split('/mp4/')[1];//Setting virtual path
-							emtr.emit('onVideoReady', 'mp4');
-							console.log('The format is mp4, so keeping it as original');
-							
-						}
-
-						if(videoExt !== '.webm'){
-							video.save(saveVideoPathWEBM, function (error, file) {
-								if (!error){
-									console.log('Video file: ' + file);
-									saveVideoPathWEBM = 'video/webm/'+saveVideoPathWEBM.split('/webm/')[1];//Setting virtual path
-									emtr.emit('onVideoReady', 'webm');
-								}
-							});
-						}else{
-							saveVideoPathWEBM = actualVideoPath;
-							saveVideoPathWEBM = 'video/original/'+saveVideoPathWEBM.split('/webm/')[1];//Setting virtual path
-							emtr.emit('onVideoReady', 'webm');
-							console.log('The format is webm, so keeping it as original');
-						}
-
-						//ogg format is not supporting right now.
-						//video.save(saveVideoPathOGG, function (error, file) {
-						//	if (!error)
-						//		console.log('Video file: ' + file);
-						//});
-
-					}, function (err) {
-						console.log('Error: ' + err);
-					});
-				}
-			} catch (e) {
-				console.log(e.code);
-				console.log(e.msg);
-			}*/
-
 			emtr.on('onAudioReady', function (data) {
-				/*console.log('Here are the arguments' + data);
-				if(data === 'mp4'){
-					videoReadyArr.push('mp4');
-				}
-				if(data === 'webm'){
-					videoReadyArr.push('webm');
-				}
-				if(videoReadyArr.length === 2){
-					videoReadyArr = [];
-					updateVideoList(userId, albumTitle, albumDesc, saveVideoPathWEBM, saveVideoPathMP4, posterImg);
-				}*/
 
 			});
 		}
@@ -489,6 +421,75 @@ module.exports = function(app) {
 				}
 			});
 		}
+
+	});
+
+	app.post('/api/uploadMusicFeed', feedMusicUpload.single('uploadfile'), (req, res) => {
+		console.log('file uploaded');
+		var userId = req.body.userid;
+		//processAudio(userId, albumTitle, albumDesc);
+		//function processAudio(userId){
+			var actualAudioPath = 'media/audios/myaudios/original/'+uploadedFeedMusicPath;
+			var savedMusicPath = '/music/'+uploadedFeedMusicPath;
+			res.json({"status": "success", "musicPath": savedMusicPath});
+			//var saveAudioPathMP3 = 'media/videos/myvideos/mp4/video_'+Date.now()+'.mp3';
+			/*var emtr = new events.EventEmitter();
+			var audioReadyArr = [];
+			var posterImg = '';
+			//No need of conversion
+			updateAudioList(userId);
+			emtr.on('onAudioReady', function (data) {
+
+			});
+		}*/
+
+		/*function updateAudioList(userId){
+			var audioObj = {}
+			audioObj.actualAudio = 'music/original/'+uploadedFeedMusicPath;
+			//audioObj.mp3Audio = actualAudioPath;
+			audioObj.poster = posterImg;
+			
+
+			audioInfo.findOne({userid: userId, title: albumTitle}, function(err, info){
+				var operation = '';
+				var audiosList = [];
+				if(err){
+					res.send(err);
+				}else{
+					if(info === null){
+						operation = 'create';
+						audiosList.push(audioObj);
+						audioInfo.create({
+							userid : userId,
+							title: albumTitle,
+							description: albumDesc,
+							audiosList : audiosList,
+							albumCover : '',
+							sharedWith: []
+						}, function(err, info) {
+							if (err){
+								res.send(err);
+							}else{
+								res.json({"status": "success", "message": "Album created successfully", "info": info});
+							}
+						});	
+
+					}else{
+						operation = 'update';
+						audiosList = info.audiosList;
+						audiosList.push(audioObj);
+						audioInfo.update({userid: userId, title: albumTitle}, {$set: {audiosList: audiosList}}, function(err, info){
+							if(err){
+								console.log("Error"+err);
+								res.json({"status": "failure", "message": "Failed to update video now, please try again later."});
+							}else{
+								res.json({"status": "success", "message": "Audio updated successfully.", "info": info});
+							}
+						});
+					}
+				}
+			});
+		}*/
 
 	});
 

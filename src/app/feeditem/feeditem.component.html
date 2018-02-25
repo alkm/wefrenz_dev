@@ -5,7 +5,9 @@
 <div class="pull-right edit-feed hand-cursor">
 	<i aria-hidden="true" class="fa fa-pencil-square-o blue-fonts" id="editItem" (click)="editFeedItem($event);clickedInside($event);"></i>
 </div>
-<div *ngIf="item.type === 'text'; then textFeed else imageFeed"></div>
+<div *ngIf="item.type === 'text'; then textFeed"></div>
+<div *ngIf="item.type === 'image'; then imageFeed"></div>
+<div *ngIf="item.type === 'music'; then musicFeed"></div>
 <ng-template #textFeed>
 	<div class="feed-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="item.post" [ngStyle]="{
 				'font-weight':' '+ item.fontWeight +'', 
@@ -15,6 +17,22 @@
 </ng-template>
 <ng-template #imageFeed>
 	<div class="posted-pic pull-left" [ngStyle]="{'background': 'url(' + item.filePath+ ')'}"></div>
+	<div class="feed-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="item.title" [ngStyle]="{
+				'font-weight':'bold', 
+				'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',
+				'color':' '+ item.colorInfo +''}" >
+	</div>
+	<div class="feed-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="item.description" [ngStyle]="{
+				'font-weight':' '+ item.fontWeight +'', 
+				'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',
+				'color':' '+ item.colorInfo +''}" >
+	</div>
+</ng-template>
+<ng-template #musicFeed>
+	<audio #musicPlayer  preload="none" controls class="feed-music-player">
+        <source src="{{item.filePath}}" type="audio/mp3">
+        <p>Your browser does not support the HTML5 Audio element.</p>
+    </audio>
 	<div class="feed-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="item.title" [ngStyle]="{
 				'font-weight':'bold', 
 				'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',

@@ -4,6 +4,7 @@ import { UtilityService } from 'app/services/utility/utility.service';
 import { ModalService } from '../modal/modal.service';
 import { FeedService } from 'app/services/data/feed.service';
 import { FriendsService } from 'app/services/data/friends.service';
+import { AppSettingsService } from 'app/services/settings/app-settings.service';
 
 @Component({
   selector: 'app-story-box',
@@ -15,6 +16,8 @@ export class StoryBoxComponent implements OnInit {
 
 	@ViewChild('storyBox') storyBox: ElementRef;
 	@ViewChild('postedPicModal') postedPicModal;
+	@ViewChild('musicInput') musicInput;
+	@ViewChild('musicPlayer') musicPlayer: ElementRef;
 
 	private profilePicWidth: number = 50;
 	private loginData = undefined;
@@ -50,6 +53,10 @@ export class StoryBoxComponent implements OnInit {
   	private friendIdArr: Array<string> = [];
   	private feedItem: any;
   	private postFeedForm: any;
+  	private fileType: string = '';
+  	private postedMusicPath: string = ''
+  	private uploadProgress: number = 0;
+  	private isProgress: boolean = false;
 
 
 	constructor(private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private friendsService: FriendsService) {
@@ -248,21 +255,90 @@ export class StoryBoxComponent implements OnInit {
   		var self = this;
   		self.modalService.open(self.modalId);
   	}
-	private imageFileChangeEvent(event, directUpload){
-		this.files = event.target.files[0];
-        //this.uploadCanvasPic();
-  		var self = this;
-      	if (event.target.files && event.target.files[0]) {
-        	let reader = new FileReader();
-	        reader.onload = function (e : any) {
-	            //$('#preview').attr('src', e.target.result);
-	            self.encodedImage = e.target.result;
-	            self.openAppModal();
-	            
-	        }
+	private fileChangeEvent(event, type){
+		this.fileType = type;
+		//if(this.fileType === 'image'){
+			this.files = event.target.files[0];
+	        //this.uploadCanvasPic();
+	  		var self = this;
+	      	if (event.target.files && event.target.files[0]) {
+	        	let reader = new FileReader();
+		        reader.onload = function (e : any) {
+		            //$('#preview').attr('src', e.target.result);
+		            if(type === 'image'){
+		            	self.encodedImage = e.target.result;
+		            }else{
+		            	self.postedMusicPath = e.target.result;
+		            	self.musicPlayer.nativeElement.load();
+		            	uploadMusic();
+		            }
+		            
+		            self.openAppModal();
+		            
+		        }
 
-	    	reader.readAsDataURL(event.target.files[0]);
+		    	reader.readAsDataURL(event.target.files[0]);
+			}
+
+		function uploadMusic() {
+			let formData = new FormData();
+			formData.append('uploadfile', self.files);
+			formData.append('userid', self.userId);
+
+			let xhr = new XMLHttpRequest();
+			xhr.open('post', AppSettingsService.API_ENDPOINT("local")+'/api/uploadMusicFeed', true);
+			xhr.upload.onprogress = function(e) {
+				if (e.lengthComputable) {
+					let percentage = (e.loaded / e.total) * 100;
+					console.log(percentage);
+					if((percentage > 0) && (percentage < 100)){
+						self.isProgress = true;
+					}else{
+						self.isProgress = false; 
+					}
+					self.uploadProgress = percentage;
+
+					//$('div.progress div').css('width', percentage.toFixed(0) + '%');
+					//$('div.progress div').html(percentage.toFixed(0) + '%');
+				}
+			};
+
+			xhr.onerror = function(e) {
+				alert('An error occurred while submitting the form. Maybe your file is too big');
+			};
+			xhr.onload = function() {
+				self.postedMusicPath = JSON.parse(xhr.responseText).musicPath;
+				/*let file = xhr.responseText;
+				$('div.progress div').css('width','0%');
+				$('div.progress').hide();
+				showMsg("alert alert-success", "File uploaded successfully!");
+				$('#myFile').val('');*/
+				/*if(self.isAudioAlbum){
+					self.fetchAudioAlbumInfo();
+				}else{
+					self.fetchAlbumAudioInfo();	
+				}*/
+				
+			};
+
+			xhr.onreadystatechange = function()
+		    {
+		        if (xhr.readyState == 4 && xhr.status == 200)
+		        {
+		            callback(xhr.responseText); // Another callback here
+		        }
+		    }; 
+
+		    function callback(responseText){
+		    	if(JSON.parse(responseText).status === 'sessionExpired'){
+		    		alert('Session Expired, Please Login Again');
+		    	}
+		    }
+
+			xhr.send(formData);
+			return false;
 		}
+		//}
 	    /*
 	    let self = this;
 	    let userId = this.userId;
@@ -327,6 +403,8 @@ export class StoryBoxComponent implements OnInit {
 		return false;*/
     }
 
+     
+
 
 
     private postStory(event){
@@ -339,6 +417,10 @@ export class StoryBoxComponent implements OnInit {
     	this.postItem('image', '', this.encodedImage, this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
     	this.postedPicModal.close();
 
+    }
+    private postMusic(event){
+    	this.postItem('music', '', this.postedMusicPath, this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+    	this.postedPicModal.close();
     }
 
     private postItem(type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight){

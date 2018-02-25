@@ -118,7 +118,7 @@
 		<div class="pull-left up-img-btn blue-fonts cursor-pointer text-center" (click)= "imageInput.value = ''; imageInput.click();">
 			<i class="fa fa-picture-o" aria-hidden="true"></i>
 		</div>
-		<div class="pull-left up-mus-btn blue-fonts cursor-pointer text-center" (click)= "audioInput.value = ''; audioInput.click();">
+		<div class="pull-left up-mus-btn blue-fonts cursor-pointer text-center" (click)= "musicInput.value = ''; musicInput.click();">
 			<i class="fa fa-music" aria-hidden="true"></i>
 		</div>
 		<div class="pull-left up-vid-btn blue-fonts cursor-pointer text-center" (click)= "videoInput.value = ''; videoInput.click();">
@@ -134,17 +134,17 @@
     <div class="file-input-container">
         <form [formGroup]="imageUploadForm" action="/upload" method="post" enctype="multipart/form-data">
             <div class="form-group" [formGroup]="imageGroup">
-                <input type="file" accept="image/*" class="file-input" name="uploadimage" #imageInput (change)="imageFileChangeEvent($event, true)"/>
+                <input type="file" accept="image/*" class="file-input" name="uploadimage" #imageInput (change)="fileChangeEvent($event, 'image')"/>
             </div>
         </form>
         <form [formGroup]="musicUploadForm" action="/upload" method="post" enctype="multipart/form-data">
             <div class="form-group" [formGroup]="musicGroup">
-                <input type="file" accept="audio/*" class="file-input" name="uploadmusic" #musicInput (change)="fileChangeEvent($event, true)"/>
+                <input type="file" accept="audio/*" class="file-input" name="uploadmusic" #musicInput (change)="fileChangeEvent($event, 'music')"/>
             </div>
         </form>
         <form [formGroup]="videoUploadForm" action="/upload" method="post" enctype="multipart/form-data">
             <div class="form-group" [formGroup]="videoGroup">
-                <input type="file" accept="video/*" class="file-input" name="uploadvideo" #videoInput (change)="fileChangeEvent($event, true)"/>
+                <input type="file" accept="video/*" class="file-input" name="uploadvideo" #videoInput (change)="fileChangeEvent($event, 'video')"/>
             </div>
         </form>
     </div>
@@ -157,7 +157,7 @@
 <app-modal [modalTitle]="'Post Preview'" [blocking]='false' [modalId]='modalId' #postedPicModal id="storyModal">
 	<div class="post-desc-content">
 		<div class="colw100 inline-block">
-			<div *ngIf="encodedImage then previewPic"></div>
+			<div *ngIf="fileType === 'image' then previewPic else previewMusic"></div>
 			<ng-template #previewPic>
 				<div class="preview-posted-pic pull-left" [ngStyle]="{'background': 'url(' + encodedImage+ ')'}"></div>
 				<div class="pull-right">
@@ -169,13 +169,37 @@
 		                </textarea>
 		            </div>
 		        </div>
+		        <div class="colw100 inline-block">			
+					<button id="okBtn" type="button" class="btn btn-primary text-center small-btn ok-btn" (click)="postImage($event)">
+						<span class="pull-left">Post</span>
+						<i class="fa fa-share-square-o" aria-hidden="true"></i>
+					</button>
+				</div>
 			</ng-template>
-		</div>
-	  	<div class="colw100 inline-block">			
-			<button id="okBtn" type="button" class="btn btn-primary text-center small-btn ok-btn" (click)="postImage($event)">
-				<span class="pull-left">Post</span>
-				<i class="fa fa-share-square-o" aria-hidden="true"></i>
-			</button>
+			<ng-template #previewMusic>
+				<div class="preview-posted-music pull-left">
+					<audio #musicPlayer  preload="none" controls id="previewMusicPlayer">
+				        <source src="{{postedMusicPath}}" type="audio/mp3">
+				        <p>Your browser does not support the HTML5 Audio element.</p>
+				    </audio>
+				    <progress value="0" max="100" id="progressBar" [value]="uploadProgress" [hidden]="!isProgress"></progress>  
+				</div>
+				<div class="pull-right">
+		            <div>
+		                <input type="text" class="form-control no-bg no-brder-radius blue-fonts blue-border" placeholder="title" id="postTitle" [(ngModel)]="postTitle">
+		            </div>
+		            <div class="form-group">
+		                <textarea class="form-control no-resize no-bg no-brder-radius blue-fonts blue-border" rows="5" cols="30" placeholder="Add Description..." id="postDesc" [(ngModel)]="postDesc">
+		                </textarea>
+		            </div>
+		        </div>
+		        <div class="colw100 inline-block">			
+					<button id="okBtn" type="button" class="btn btn-primary text-center small-btn ok-btn" (click)="postMusic($event)">
+						<span class="pull-left">Post</span>
+						<i class="fa fa-share-square-o" aria-hidden="true"></i>
+					</button>
+				</div>
+			</ng-template>
 		</div>
 	</div>
 </app-modal>

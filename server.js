@@ -72,6 +72,7 @@ mongoose.connect(database.url, { useMongoClient: true }, function(err){
 	app.use('/emotion/', express.static(__dirname + '/dist/assets/images/smileys/'));
 	app.use('/video/', express.static(__dirname + '/media/videos/myvideos/'));
 	app.use('/audio/', express.static(__dirname + '/media/audios/myaudios/'));
+	app.use('/music/', express.static(__dirname + '/media/audios/feedaudios/original/'));
 	app.use('/photo/', express.static(__dirname + '/media/photos/myphotos/'));
 
 	var httpsOptions = {

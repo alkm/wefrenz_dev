@@ -121,6 +121,10 @@
     width: 500px !important;
     height: 500px !important;  
 }
+#previewMusicPlayer{
+    height: 189px;
+    background: #000;
+}
 app-feeditem{
     float: left;
     width: 100%;
