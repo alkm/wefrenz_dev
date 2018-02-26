@@ -31,6 +31,8 @@ export class StoryBoxComponent implements OnInit {
 	private isULBtnHighLight: boolean = false;
 	private isIBtnHighLight: boolean = false;
 	private isEmotionsHighLight: boolean = false;
+	private isAddPost : boolean = true;
+	private isPostImage : boolean = true;
 	private postTitle: string = '';
 	private postDesc: string = '';
 	private fontWeight: string = 'normal';
@@ -57,6 +59,7 @@ export class StoryBoxComponent implements OnInit {
   	private postedMusicPath: string = ''
   	private uploadProgress: number = 0;
   	private isProgress: boolean = false;
+  	private postId: string = '';
 
 
 	constructor(private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private friendsService: FriendsService) {
@@ -252,15 +255,43 @@ export class StoryBoxComponent implements OnInit {
 	}
 
 	private openAppModal(){
-  		var self = this;
+  		let self = this;
   		self.modalService.open(self.modalId);
+  	}
+  	private editCurrentFeedItem(event){
+  		let self = this;
+  		self.postId = event.item._id;
+  		self.fileType = event.item.type;
+  		self.postTitle = event.item.title;
+  		self.postDesc = event.item.description;
+
+  		if(self.fileType === 'text'){
+  			self.isAddPost = false;
+  			self.color = event.item.colorInfo;
+  			self.fontFamily = event.item.fontFamily;
+  			self.fontSize = event.item.fontSize;
+  			self.fontStyle = event.item.fontStyle;
+  			self.txtDeco = event.item.textDecoration;
+  			self.fontWeight = event.item.fontWeight;
+  			self.storyContent = event.item.post;
+        }
+  		else if(self.fileType === 'image'){
+  			self.isPostImage = false;
+        	self.encodedImage = event.item.filePath;
+        	self.openAppModal();
+        }else{
+        	self.postedMusicPath = event.item.filePath;
+        	self.musicPlayer.nativeElement.load();
+        	self.openAppModal();
+        }
+  		
   	}
 	private fileChangeEvent(event, type){
 		this.fileType = type;
 		//if(this.fileType === 'image'){
 			this.files = event.target.files[0];
 	        //this.uploadCanvasPic();
-	  		var self = this;
+	  		let self = this;
 	      	if (event.target.files && event.target.files[0]) {
 	        	let reader = new FileReader();
 		        reader.onload = function (e : any) {
@@ -409,22 +440,35 @@ export class StoryBoxComponent implements OnInit {
 
     private postStory(event){
     	this.syncEmotion('');
-    	this.postItem('text', this.storyContent, '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
+    	this.postItem(undefined, 'text', this.storyContent, '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
+
+    }
+    private updateStory(event){
+    	this.syncEmotion('');
+    	this.postItem(this.postId, 'text', this.storyContent, '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
 
     }
 
+
     private postImage(event){
-    	this.postItem('image', '', this.encodedImage, this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+    	this.postItem(undefined, 'image', '', this.encodedImage, this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+    	this.postedPicModal.close();
+
+    }
+    
+    private updateImage(event){
+    	this.postItem(this.postId, 'image', '', this.encodedImage, this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
     	this.postedPicModal.close();
 
     }
     private postMusic(event){
-    	this.postItem('music', '', this.postedMusicPath, this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+    	this.postItem(undefined, 'music', '', this.postedMusicPath, this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
     	this.postedPicModal.close();
     }
 
-    private postItem(type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight){
-    	let postObj = {'username': this.userId,
+    private postItem(postId, type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight){
+    	let postObj = {'id': postId,
+    		'username': this.userId,
 	        'email': this.email,
 	        'fullname': this.fullName,
 	        'profilepic': this.profilePic,
@@ -453,6 +497,8 @@ export class StoryBoxComponent implements OnInit {
     	this.storyContent = '';
     	this.postTitle = '';
     	this.postDesc = '';
+    	this.isAddPost = true;
+    	this.isPostImage = true;
     	if(result.status === 'failure'){
         	alert(result.message);
       	}else{

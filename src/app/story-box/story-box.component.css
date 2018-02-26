@@ -97,10 +97,10 @@
     width: 102px !important;
 }
 #postBtn{
-    width: 50px;
+    width: auto;
     height: 17px;
     border-radius: 0px;
-    padding: 0px !important;
+    padding: 0px 3px !important;
     line-height: 12px;
     font-size: 12px !important;
     background-color: #fff !important;

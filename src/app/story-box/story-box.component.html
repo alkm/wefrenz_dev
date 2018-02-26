@@ -125,10 +125,19 @@
 			<i class="fa fa-file-video-o" aria-hidden="true"></i>
 		</div>
 		<div class="pull-left post-btn blue-fonts cursor-pointer text-center">
-			<button class="btn btn-primary" id="postBtn" type="button" (click)="postStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
-				<span>Post</span>
-				<i class="fa fa-share-square-o" aria-hidden="true"></i>
-			</button>
+			<div *ngIf="isAddPost; then addPost else updatePost"></div>
+			<ng-template #addPost>
+				<button class="btn btn-primary" id="postBtn" type="button" (click)="postStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
+					<span>Post</span>
+					<i class="fa fa-share-square-o" aria-hidden="true"></i>
+				</button>
+			</ng-template>
+			<ng-template #updatePost>
+				<button class="btn btn-primary" id="postBtn" type="button" (click)="updateStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
+					<span>Update</span>
+					<i class="fa fa-share-square-o" aria-hidden="true"></i>
+				</button>
+			</ng-template>
 		</div>
 	</div>
     <div class="file-input-container">
@@ -150,14 +159,16 @@
     </div>
 </div>
 <div class="inline-block colw100 story-feed">
-	<app-feeditem *ngFor="let item of feedItem" [item]="item" [userId]="userId" (refreshFeed)="refreshFeedItem($event)"></app-feeditem>
+	<app-feeditem *ngFor="let item of feedItem" [item]="item" [userId]="userId" (refreshFeed)="refreshFeedItem($event)" 
+	(editCurrentFeedItem)= "editCurrentFeedItem($event)"></app-feeditem>
 </div>
 
 
 <app-modal [modalTitle]="'Post Preview'" [blocking]='false' [modalId]='modalId' #postedPicModal id="storyModal">
 	<div class="post-desc-content">
 		<div class="colw100 inline-block">
-			<div *ngIf="fileType === 'image' then previewPic else previewMusic"></div>
+			<div *ngIf="fileType === 'image' then previewPic"></div>
+			<div *ngIf="fileType === 'music' then previewMusic"></div>
 			<ng-template #previewPic>
 				<div class="preview-posted-pic pull-left" [ngStyle]="{'background': 'url(' + encodedImage+ ')'}"></div>
 				<div class="pull-right">
@@ -169,12 +180,23 @@
 		                </textarea>
 		            </div>
 		        </div>
-		        <div class="colw100 inline-block">			
-					<button id="okBtn" type="button" class="btn btn-primary text-center small-btn ok-btn" (click)="postImage($event)">
-						<span class="pull-left">Post</span>
-						<i class="fa fa-share-square-o" aria-hidden="true"></i>
-					</button>
-				</div>
+		        <div *ngIf="isPostImage; then addImagePost else updateImagePost"></div>
+		        <ng-template #addImagePost>
+			        <div class="colw100 inline-block">			
+						<button id="okBtn" type="button" class="btn btn-primary text-center small-btn ok-btn" (click)="postImage($event)" [disabled]="isProgress">
+							<span class="pull-left">Post</span>
+							<i class="fa fa-share-square-o" aria-hidden="true"></i>
+						</button>
+					</div>
+				</ng-template>
+				<ng-template #updateImagePost>
+			        <div class="colw100 inline-block">			
+						<button id="okBtn" type="button" class="btn btn-primary text-center small-btn ok-btn" (click)="updateImage($event)" [disabled]="isProgress">
+							<span class="pull-left">Update</span>
+							<i class="fa fa-share-square-o" aria-hidden="true"></i>
+						</button>
+					</div>
+				</ng-template>
 			</ng-template>
 			<ng-template #previewMusic>
 				<div class="preview-posted-music pull-left">
@@ -194,7 +216,7 @@
 		            </div>
 		        </div>
 		        <div class="colw100 inline-block">			
-					<button id="okBtn" type="button" class="btn btn-primary text-center small-btn ok-btn" (click)="postMusic($event)">
+					<button id="okBtn" type="button" class="btn btn-primary text-center small-btn ok-btn" (click)="postMusic($event)" [disabled]="isProgress">
 						<span class="pull-left">Post</span>
 						<i class="fa fa-share-square-o" aria-hidden="true"></i>
 					</button>

@@ -19,6 +19,7 @@
     position: absolute !important;
     right: 1px !important;
     margin-top: 23px;
+    z-index: 1000;
  }
  .edit-feed:hover{
  	color: red;

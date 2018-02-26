@@ -13,6 +13,7 @@ export class FeeditemComponent implements OnInit {
 	@Input('item') item;
 	@Input('userId') userId;
 	@Output() refreshFeed: EventEmitter<any> = new EventEmitter();
+  @Output() editCurrentFeedItem: EventEmitter<any> = new EventEmitter();
 	private isEditFeedItem: boolean = false;
 	private isMyFeed: boolean = false;
 	//private feedMoment: moment.Moment;
@@ -31,7 +32,7 @@ export class FeeditemComponent implements OnInit {
   		this.isEditFeedItem = false;
 	}
   	private editFeedItem(event){
-
+      this.editCurrentFeedItem.emit({item: this.item});
   	}
 
   	private clickedInside($event: Event){

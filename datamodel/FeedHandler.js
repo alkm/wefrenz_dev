@@ -2,36 +2,69 @@ var feedInfo = require('./model/feedInfo');
 module.exports = function(app) {
 	// api ---------------------------------------------------------------------
 	app.post('/api/savePost/', function(req, res) {
-		// Getting all the online friends
-		feedInfo.create({
-			userid : req.body.username,
-			fullname : req.body.fullname,
-			profilepic : req.body.profilepic,
-			post : req.body.post,
-			type : req.body.type,
-			title : req.body.title,
-			description : req.body.description,
-			isReady : req.body.isReady,
-			isNotified : req.body.isNotified,
-			coolArr : [],
-			commentArr : [],
-			filePath : req.body.filePath,
-			poster : req.body.poster,
-			colorInfo : req.body.colorInfo,
-			fontFamily : req.body.fontFamily,
-			fontSize : req.body.fontSize,
-			fontStyle : req.body.fontStyle,
-			textDecoration : req.body.textDecoration,
-			fontWeight : req.body.fontWeight,
-			addWatcherArr : req.body.addWatcherArr,
-			done: false
-		}, function(err, info) {
-			if (err){
-				res.json({"status": "failure", "message": "This post could not be saved.", "err": err});
-			}else{
-				res.json({"status": "success", "message": "This post saved.", "info": info});
-			}
-		});
+		if(req.body.id === undefined){
+			feedInfo.create({
+				userid : req.body.username,
+				fullname : req.body.fullname,
+				profilepic : req.body.profilepic,
+				post : req.body.post,
+				type : req.body.type,
+				title : req.body.title,
+				description : req.body.description,
+				isReady : req.body.isReady,
+				isNotified : req.body.isNotified,
+				coolArr : [],
+				commentArr : [],
+				filePath : req.body.filePath,
+				poster : req.body.poster,
+				colorInfo : req.body.colorInfo,
+				fontFamily : req.body.fontFamily,
+				fontSize : req.body.fontSize,
+				fontStyle : req.body.fontStyle,
+				textDecoration : req.body.textDecoration,
+				fontWeight : req.body.fontWeight,
+				addWatcherArr : req.body.addWatcherArr,
+				done: false
+			}, function(err, info) {
+				if (err){
+					res.json({"status": "failure", "message": "This post could not be saved.", "err": err});
+				}else{
+					res.json({"status": "success", "message": "This post saved.", "info": info});
+				}
+			});
+		}else{
+			feedInfo.update({_id: req.body.id}, {$set: {
+				userid : req.body.username,
+				fullname : req.body.fullname,
+				profilepic : req.body.profilepic,
+				post : req.body.post,
+				type : req.body.type,
+				title : req.body.title,
+				description : req.body.description,
+				isReady : req.body.isReady,
+				isNotified : req.body.isNotified,
+				coolArr : [],
+				commentArr : [],
+				filePath : req.body.filePath,
+				poster : req.body.poster,
+				colorInfo : req.body.colorInfo,
+				fontFamily : req.body.fontFamily,
+				fontSize : req.body.fontSize,
+				fontStyle : req.body.fontStyle,
+				textDecoration : req.body.textDecoration,
+				fontWeight : req.body.fontWeight,
+				addWatcherArr : req.body.addWatcherArr,
+				done: false}
+			}, function(err, info){
+				if (err){
+					res.json({"status": "failure", "message": "This post could not be saved.", "err": err});
+				}else{
+					res.json({"status": "success", "message": "This post saved.", "info": info});
+				}
+			});
+
+		}
+
 	});
 	
 	app.post('/api/getAllFriendsFeedDetails/', function(req, res) {	
