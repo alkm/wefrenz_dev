@@ -1,4 +1,4 @@
-var feedInfo = require('./model/feedInfo');
+var feedInfo = require('./model/feedinfo');
 module.exports = function(app) {
 	// api ---------------------------------------------------------------------
 	app.post('/api/savePost/', function(req, res) {

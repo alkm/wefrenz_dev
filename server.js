@@ -42,7 +42,8 @@ app.use(clientSessions({
 
 // configuration ===============================================================
 //mongoose.connect(database.url); 	// connect to mongoDB database on modulus.io
-mongoose.connect(database.url, { useMongoClient: true }, function(err){
+//mongoose.connect(database.url, { useMongoClient: true }, function(err){
+mongoose.connect(database.url, function(err){	
 	mongoose.Promise = global.Promise;
 	if(err){
 		console.log(err);

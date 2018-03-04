@@ -1220,7 +1220,7 @@ var ChatComponent = (function () {
         //this.socket = io('https://wefrenz.com:3000/');
         //this.socket = io("'"+ AppSettingsService.API_ENDPOINT("local") +"'");
         //this.socket = io('https://10.20.17.49:3000');
-        this.socket = __WEBPACK_IMPORTED_MODULE_2__libs_socket_io__('https://localhost:3000/');
+        this.socket = __WEBPACK_IMPORTED_MODULE_2__libs_socket_io__('https://10.20.17.40:3000/');
         //this.socket = io('https://192.168.225.177:3000/');
         this.socket.emit('ON_SOCKET_INIT', chatObj);
         /*socket.on("UPDATE_CHAT_LIST", function(data){
