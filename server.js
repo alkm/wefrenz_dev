@@ -55,8 +55,8 @@ mongoose.connect(database.url, function(err){
 	//app.listen(3000)
 	//var httpsOptions = {};
 
-	//var https = require('https');
-	var http = require('http');
+	var https = require('https');
+	//var http = require('http');
 	var fs = require('fs');
 	var port = 3000;
 
@@ -84,8 +84,8 @@ mongoose.connect(database.url, function(err){
 	  	console.log('server running at ' + port)
 
 	});*/
-	//var server = https.createServer(httpsOptions, app).listen(port);
-	var server = http.createServer(app).listen(port);
+	var server = https.createServer(httpsOptions, app).listen(port);
+	//var server = http.createServer(app).listen(port);
 	var io = require("socket.io").listen(server);
 	var socketServer = io.listen(server, {"log level":1});
 	// Start EasyRTC server
