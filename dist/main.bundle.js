@@ -1217,10 +1217,10 @@ var ChatComponent = (function () {
         var chatObj = { 'userid': this.userId, 'easyrtcid': easyrtcId };
         //require(['socket-io'], function(io) {
         //this.socket = io('https://192.168.1.3:3000/');
-        //this.socket = io('https://wefrenz.com:3000/');
+        this.socket = __WEBPACK_IMPORTED_MODULE_2__libs_socket_io__('https://www.wefrenz.com/');
         //this.socket = io("'"+ AppSettingsService.API_ENDPOINT("local") +"'");
         //this.socket = io('https://10.20.17.49:3000');
-        this.socket = __WEBPACK_IMPORTED_MODULE_2__libs_socket_io__('https://10.20.17.40:3000/');
+        //this.socket = io('https://13.127.194.58:3000/');
         //this.socket = io('https://192.168.225.177:3000/');
         this.socket.emit('ON_SOCKET_INIT', chatObj);
         /*socket.on("UPDATE_CHAT_LIST", function(data){
