@@ -135,6 +135,9 @@ var AppComponent = (function () {
         this.router = router;
         this.route = route;
         this.isLoggedIn = false;
+        if (window.location.href === 'http://www.wefrenz.com') {
+            window.location.href = 'https://wefrenz.com';
+        }
         //router.navigate(['public']);
         if (localStorage.getItem('currentUser')) {
             if (localStorage.getItem('currentRoute')) {
@@ -5053,9 +5056,6 @@ var PublicComponent = (function () {
     function PublicComponent(componentFactoryResolver, router) {
         this.componentFactoryResolver = componentFactoryResolver;
         this.router = router;
-        if (window.location.href === 'http://www.wefrenz.com/#/public') {
-            window.location.href = 'https://wefrenz.com';
-        }
         if (localStorage.getItem('currentUser')) {
             if (localStorage.getItem('currentRoute')) {
                 var routePath = localStorage.getItem('currentRoute');
