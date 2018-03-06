@@ -5053,7 +5053,7 @@ var PublicComponent = (function () {
     function PublicComponent(componentFactoryResolver, router) {
         this.componentFactoryResolver = componentFactoryResolver;
         this.router = router;
-        if (window.location.href === 'www.wefrenz.com') {
+        if (window.location.href === 'http://www.wefrenz.com/#/public') {
             window.location.href = 'https://wefrenz.com';
         }
         if (localStorage.getItem('currentUser')) {
