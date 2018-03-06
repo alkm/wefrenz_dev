@@ -318,7 +318,7 @@ i.fa-3x{
     margin: 2px;
 }
 .profile-pic{
-	background-size: cover;
+	background-size: cover !important;
 }
 
 .profile-pic-medium{
