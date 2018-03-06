@@ -93,8 +93,10 @@ export class StoryBoxComponent implements OnInit {
         	file: new FormControl()
       	});
       	this.getAllConfirmedFriends();
+      	setTimeout(()=>{    //<<<---    using ()=> syntax
+		      this.refreshFeed();
+		 }, 3);
 	}
-
 	ngOnInit() {
 
 	}
