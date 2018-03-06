@@ -6334,7 +6334,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var StoryBoxComponent = (function () {
     function StoryBoxComponent(formBuilder, modalService, feedService, friendsService) {
-        var _this = this;
         this.formBuilder = formBuilder;
         this.modalService = modalService;
         this.feedService = feedService;
@@ -6395,9 +6394,6 @@ var StoryBoxComponent = (function () {
             file: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]()
         });
         this.getAllConfirmedFriends();
-        setTimeout(function () {
-            _this.refreshFeed();
-        }, 3);
     }
     StoryBoxComponent.prototype.ngOnInit = function () {
     };
@@ -6783,6 +6779,7 @@ var StoryBoxComponent = (function () {
         this.friendsService.getAllConfirmedFriends(postObj).subscribe(function (data) { return _this.afterGetAllConfirmedFriends(data); });
     };
     StoryBoxComponent.prototype.afterGetAllConfirmedFriends = function (result) {
+        var _this = this;
         this.friendIdArr.push(this.userId);
         for (var i in result) {
             if (this.userId !== result[i].friendid) {
@@ -6792,7 +6789,10 @@ var StoryBoxComponent = (function () {
                 this.friendIdArr.push(result[i].userid);
             }
         }
-        this.refreshFeed();
+        setTimeout(function () {
+            _this.refreshFeed();
+        }, 3000);
+        //this.refreshFeed();
     };
     StoryBoxComponent.prototype.refreshFeed = function () {
         var _this = this;

@@ -93,9 +93,6 @@ export class StoryBoxComponent implements OnInit {
         	file: new FormControl()
       	});
       	this.getAllConfirmedFriends();
-      	setTimeout(()=>{    //<<<---    using ()=> syntax
-		      this.refreshFeed();
-		 }, 3);
 	}
 	ngOnInit() {
 
@@ -523,8 +520,10 @@ export class StoryBoxComponent implements OnInit {
     			this.friendIdArr.push(result[i].userid);
     		}
     	}
-
-    	this.refreshFeed();
+    	setTimeout(()=>{    //<<<---    using ()=> syntax
+		      this.refreshFeed();
+		}, 3000);
+    	//this.refreshFeed();
   	}
 
   	private refreshFeed(){
