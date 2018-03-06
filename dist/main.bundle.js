@@ -6395,6 +6395,14 @@ var StoryBoxComponent = (function () {
         });
         this.getAllConfirmedFriends();
     }
+    StoryBoxComponent.prototype.routerOnActivate = function () {
+        /* this.timer = setInterval(()=>{
+                       ...
+                   }, 10000);*/
+    };
+    StoryBoxComponent.prototype.routerOnDeactivate = function () {
+        clearInterval(this.timer);
+    };
     StoryBoxComponent.prototype.ngOnInit = function () {
     };
     StoryBoxComponent.prototype.clickedOutside = function ($event) {
@@ -6790,7 +6798,7 @@ var StoryBoxComponent = (function () {
             }
         }
         this.refreshFeed();
-        setInterval(function () {
+        this.timer = setInterval(function () {
             _this.refreshFeed();
         }, 3000);
     };

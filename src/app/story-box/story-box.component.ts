@@ -60,6 +60,7 @@ export class StoryBoxComponent implements OnInit {
   	private uploadProgress: number = 0;
   	private isProgress: boolean = false;
   	private postId: string = '';
+  	private timer: any;
 
 
 	constructor(private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private friendsService: FriendsService) {
@@ -93,6 +94,15 @@ export class StoryBoxComponent implements OnInit {
         	file: new FormControl()
       	});
       	this.getAllConfirmedFriends();
+	}
+	routerOnActivate() {
+	 /* this.timer = setInterval(()=>{
+	                ...
+	            }, 10000);*/
+	}
+
+	routerOnDeactivate() {
+	  clearInterval(this.timer);
 	}
 	ngOnInit() {
 
@@ -522,7 +532,7 @@ export class StoryBoxComponent implements OnInit {
     	}
 
     	this.refreshFeed();
-    	setInterval(()=>{    //<<<---    using ()=> syntax
+    	this.timer = setInterval(()=>{    //<<<---    using ()=> syntax
 		      this.refreshFeed();
 		}, 3000);
   	}
