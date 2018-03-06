@@ -99,10 +99,6 @@ export class StoryBoxComponent implements OnInit {
 	    	if(event instanceof NavigationStart) {
 	    		clearInterval(this.timer);
 	    	}
-	    	// NavigationEnd
-	    	// NavigationCancel
-	    	// NavigationError
-	    	// RoutesRecognized
 	  	});
 	}
 	  
