@@ -317,6 +317,9 @@ i.fa-3x{
     background-repeat: no-repeat;
     margin: 2px;
 }
+.profile-pic{
+	background-size: cover;
+}
 
 .profile-pic-medium{
 	height: 35px;

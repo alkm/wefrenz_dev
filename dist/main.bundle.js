@@ -6402,10 +6402,6 @@ var StoryBoxComponent = (function () {
             if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationStart */]) {
                 clearInterval(_this.timer);
             }
-            // NavigationEnd
-            // NavigationCancel
-            // NavigationError
-            // RoutesRecognized
         });
     }
     StoryBoxComponent.prototype.ngOnInit = function () {
