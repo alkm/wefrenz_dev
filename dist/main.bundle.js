@@ -135,8 +135,12 @@ var AppComponent = (function () {
         this.router = router;
         this.route = route;
         this.isLoggedIn = false;
-        if (window.location.href === 'http://www.wefrenz.com/') {
-            window.location.href = 'https://wefrenz.com/';
+        var loc = window.location.href;
+        var subStr = 'http://www.wefrenz.com/';
+        var newLoc = '';
+        if (loc.indexOf(subStr) > -1) {
+            newLoc = loc.replace(subStr, "https://wefrenz.com/");
+            window.location.href = newLoc;
             return;
         }
         //router.navigate(['public']);
