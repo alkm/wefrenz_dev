@@ -6789,10 +6789,10 @@ var StoryBoxComponent = (function () {
                 this.friendIdArr.push(result[i].userid);
             }
         }
-        setTimeout(function () {
+        this.refreshFeed();
+        setInterval(function () {
             _this.refreshFeed();
         }, 3000);
-        //this.refreshFeed();
     };
     StoryBoxComponent.prototype.refreshFeed = function () {
         var _this = this;

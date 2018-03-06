@@ -520,10 +520,11 @@ export class StoryBoxComponent implements OnInit {
     			this.friendIdArr.push(result[i].userid);
     		}
     	}
-    	setTimeout(()=>{    //<<<---    using ()=> syntax
+
+    	this.refreshFeed();
+    	setInterval(()=>{    //<<<---    using ()=> syntax
 		      this.refreshFeed();
 		}, 3000);
-    	//this.refreshFeed();
   	}
 
   	private refreshFeed(){
