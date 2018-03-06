@@ -14,6 +14,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 	constructor(private router : Router, private route: ActivatedRoute) {
       if(window.location.href === 'http://www.wefrenz.com/'){
         window.location.href = 'https://wefrenz.com/';
+        return;
       }
     	//router.navigate(['public']);
     	if (localStorage.getItem('currentUser')) {
