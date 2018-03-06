@@ -1,4 +1,5 @@
 import { Component, HostListener, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { Router, NavigationStart, NavigationEnd, NavigationError, NavigationCancel, RoutesRecognized } from "@angular/router";
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UtilityService } from 'app/services/utility/utility.service';
 import { ModalService } from '../modal/modal.service';
@@ -63,7 +64,7 @@ export class StoryBoxComponent implements OnInit {
   	private timer: any;
 
 
-	constructor(private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private friendsService: FriendsService) {
+	constructor(private router: Router, private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private friendsService: FriendsService) {
 		let loginData = JSON.parse(localStorage.getItem('loginData'));
       	this.userId = loginData.username;
       	this.email = loginData.username;
@@ -94,16 +95,17 @@ export class StoryBoxComponent implements OnInit {
         	file: new FormControl()
       	});
       	this.getAllConfirmedFriends();
+      	router.events.forEach((event) => {
+	    	if(event instanceof NavigationStart) {
+	    		clearInterval(this.timer);
+	    	}
+	    	// NavigationEnd
+	    	// NavigationCancel
+	    	// NavigationError
+	    	// RoutesRecognized
+	  	});
 	}
-	routerOnActivate() {
-	 /* this.timer = setInterval(()=>{
-	                ...
-	            }, 10000);*/
-	}
-
-	routerOnDeactivate() {
-	  clearInterval(this.timer);
-	}
+	  
 	ngOnInit() {
 
 	}
