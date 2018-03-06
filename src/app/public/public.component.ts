@@ -23,9 +23,6 @@ export class PublicComponent implements OnInit {
 
 
 	constructor(private componentFactoryResolver: ComponentFactoryResolver, private router: Router){
-		if(window.location.href === 'http://www.wefrenz.com/#/public'){
-			window.location.href = 'https://wefrenz.com';
-		}
 		if (localStorage.getItem('currentUser')) {
 			
 			if(localStorage.getItem('currentRoute')){
