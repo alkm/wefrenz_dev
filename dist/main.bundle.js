@@ -135,8 +135,8 @@ var AppComponent = (function () {
         this.router = router;
         this.route = route;
         this.isLoggedIn = false;
-        if (window.location.href === 'http://www.wefrenz.com') {
-            window.location.href = 'https://wefrenz.com';
+        if (window.location.href === 'http://www.wefrenz.com/') {
+            window.location.href = 'https://wefrenz.com/';
         }
         //router.navigate(['public']);
         if (localStorage.getItem('currentUser')) {
