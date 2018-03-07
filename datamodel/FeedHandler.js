@@ -75,7 +75,6 @@ module.exports = function(app) {
 			if(error){
 				console.log("Error"+error);
 			}else{
-				console.log("feed Infos"+infos);
 				res.send(infos);
 			}
 		});
@@ -90,7 +89,6 @@ module.exports = function(app) {
 			if(err){
 				console.log("Error"+infos);
 			}else{
-				console.log("feed Infos"+infos);
 				res.send(infos);
 			} 
 		});
@@ -113,7 +111,6 @@ module.exports = function(app) {
 			if(error){
 				console.log("Error"+error);
 			}else{
-				console.log("These are my feeds"+infos);
 				res.send(infos);
 			}
 		});
@@ -154,7 +151,6 @@ module.exports = function(app) {
 			if(error){
 				console.log("Error"+error);
 			}else{
-				console.log("These are my feeds"+infos);
 				res.send(infos);
 			}
 		});
@@ -162,7 +158,6 @@ module.exports = function(app) {
 }
 
 global.nodeEventer.subscribe('ON_VIDEO_PUBLISH', function(data){
-	console.log("info.videoPath"+data.info.videoPath);
 	feedInfo.update({path: data.info.videoPath}, {$set: {isReady: true}}, function(error, infos){
 		if(error){
 			console.log("Error"+error);
