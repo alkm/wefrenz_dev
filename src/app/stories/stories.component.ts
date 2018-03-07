@@ -18,6 +18,7 @@ export class StoriesComponent implements OnInit {
     private isHighLightMusic: boolean = false;
     private isHighLightPhotos: boolean = false;
     private screenHeight: number;
+    private overFlowY: string = 'visible';
 
 
 	constructor(private route: ActivatedRoute, private router: Router) { 
