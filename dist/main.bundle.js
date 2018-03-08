@@ -136,10 +136,16 @@ var AppComponent = (function () {
         this.route = route;
         this.isLoggedIn = false;
         var loc = window.location.href;
-        var subStr = 'http://www.wefrenz.com/';
+        var subStr1 = 'http://www.wefrenz.com/';
+        var subStr2 = 'http://wefrenz.com/';
         var newLoc = '';
-        if (loc.indexOf(subStr) > -1) {
-            newLoc = loc.replace(subStr, "https://wefrenz.com/");
+        if (loc.indexOf(subStr1) > -1) {
+            newLoc = loc.replace(subStr1, "https://wefrenz.com/");
+            window.location.href = newLoc;
+            return;
+        }
+        if (loc.indexOf(subStr2) > -1) {
+            newLoc = loc.replace(subStr2, "https://wefrenz.com/");
             window.location.href = newLoc;
             return;
         }

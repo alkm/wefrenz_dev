@@ -44,4 +44,6 @@ testem.log
 Thumbs.db
 
 server.js
+/config
+/src
 
