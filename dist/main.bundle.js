@@ -139,17 +139,16 @@ var AppComponent = (function () {
         var subStr1 = 'http://www.wefrenz.com/';
         var subStr2 = 'http://wefrenz.com/';
         var newLoc = '';
-        /*if(loc.indexOf(subStr1) > -1) {
-          newLoc = loc.replace(subStr1, "https://wefrenz.com/");
-          window.location.href = newLoc;
-          return;
+        if (loc.indexOf(subStr1) > -1) {
+            newLoc = loc.replace(subStr1, "https://wefrenz.com/");
+            window.location.href = newLoc;
+            return;
         }
-        
-        if(loc.indexOf(subStr2) > -1) {
-          newLoc = loc.replace(subStr2, "https://wefrenz.com/");
-          window.location.href = newLoc;
-          return;
-        }*/
+        if (loc.indexOf(subStr2) > -1) {
+            newLoc = loc.replace(subStr2, "https://wefrenz.com/");
+            window.location.href = newLoc;
+            return;
+        }
         //router.navigate(['public']);
         if (localStorage.getItem('currentUser')) {
             if (localStorage.getItem('currentRoute')) {
