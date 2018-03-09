@@ -17,7 +17,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       let subStr2 = 'http://wefrenz.com/';
       let newLoc = '';
 
-      if(loc.indexOf(subStr1) > -1) {
+      /*if(loc.indexOf(subStr1) > -1) {
         newLoc = loc.replace(subStr1, "https://wefrenz.com/");
         window.location.href = newLoc;
         return;
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         newLoc = loc.replace(subStr2, "https://wefrenz.com/");
         window.location.href = newLoc;
         return;
-      }
+      }*/
     	//router.navigate(['public']);
     	if (localStorage.getItem('currentUser')) {
     		if(localStorage.getItem('currentRoute')){
