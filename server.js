@@ -55,8 +55,8 @@ mongoose.connect(database.url, function(err){
 	//app.listen(3000)
 	//var httpsOptions = {};
 
-	var https = require('https');
-	//var http = require('http');
+	//var https = require('https');
+	var http = require('http');
 	var fs = require('fs');
 	var port = 3000;
 
@@ -76,10 +76,10 @@ mongoose.connect(database.url, function(err){
 	app.use('/music/', express.static(__dirname + '/media/audios/feedaudios/original/'));
 	app.use('/photo/', express.static(__dirname + '/media/photos/myphotos/'));
 
-	var httpsOptions = {
+	/*var httpsOptions = {
 	  key: fs.readFileSync('./private.key'),
 	  cert: fs.readFileSync('./certificate.crt')
-	}
+	}*/
 	/*const server = https.createServer(httpsOptions, app).listen(port, () => {
 	  	console.log('server running at ' + port)
 
