@@ -62,6 +62,7 @@ export class StoryBoxComponent implements OnInit {
   	private isProgress: boolean = false;
   	private postId: string = '';
   	private timer: any;
+  	private action: string = '';
 
 
 	constructor(private router: Router, private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private friendsService: FriendsService) {
@@ -547,5 +548,11 @@ export class StoryBoxComponent implements OnInit {
   	private afterRefreshFeed(result) {
   		console.log('>>>>'+result);
   		this.feedItem = result;
+  	}
+
+  	private checkIn(event){
+
+  		this.action = "checkin";
+  		this.openAppModal();
   	}
 }

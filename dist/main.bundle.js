@@ -202,70 +202,73 @@ var _a, _b;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular_font_awesome_angular_font_awesome__ = __webpack_require__("../../../../angular-font-awesome/angular-font-awesome.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_app_services_shareobject_routeinfo_service__ = __webpack_require__("../../../../../src/app/services/shareobject/routeinfo.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_app_modal_modal_service__ = __webpack_require__("../../../../../src/app/modal/modal.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__public_public_component__ = __webpack_require__("../../../../../src/app/public/public.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__signup_signup_component__ = __webpack_require__("../../../../../src/app/signup/signup.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__control_messages_control_messages_component__ = __webpack_require__("../../../../../src/app/control-messages/control-messages.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__public_nav_public_nav_component__ = __webpack_require__("../../../../../src/app/public-nav/public-nav.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__private_nav_private_nav_component__ = __webpack_require__("../../../../../src/app/private-nav/private-nav.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__profile_area_profile_area_component__ = __webpack_require__("../../../../../src/app/profile-area/profile-area.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__tile_menu_tile_menu_component__ = __webpack_require__("../../../../../src/app/tile-menu/tile-menu.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__info_panel_info_panel_component__ = __webpack_require__("../../../../../src/app/info-panel/info-panel.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__search_result_list_item_search_result_list_item_component__ = __webpack_require__("../../../../../src/app/search-result-list-item/search-result-list-item.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__profile_profile_component__ = __webpack_require__("../../../../../src/app/profile/profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__coverpic_coverpic_component__ = __webpack_require__("../../../../../src/app/coverpic/coverpic.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__modal_modal_component__ = __webpack_require__("../../../../../src/app/modal/modal.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_ngx_image_cropper__ = __webpack_require__("../../../../ngx-image-cropper/ngx-image-cropper/ngx-image-cropper.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_angular4_carousel__ = __webpack_require__("../../../../angular4-carousel/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__image_cropper_image_cropper_component__ = __webpack_require__("../../../../../src/app/image-cropper/image-cropper.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__capture_pic_capture_pic_component__ = __webpack_require__("../../../../../src/app/capture-pic/capture-pic.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__friend_request_pending_list_friend_request_pending_list_component__ = __webpack_require__("../../../../../src/app/friend-request-pending-list/friend-request-pending-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__chat_chat_component__ = __webpack_require__("../../../../../src/app/chat/chat.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__chat_item_chat_item_component__ = __webpack_require__("../../../../../src/app/chat-item/chat-item.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__chat_window_chat_window_component__ = __webpack_require__("../../../../../src/app/chat-window/chat-window.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pipes_chat_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/chat-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__video_video_component__ = __webpack_require__("../../../../../src/app/video/video.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__avchat_avchat_component__ = __webpack_require__("../../../../../src/app/avchat/avchat.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__entertainment_entertainment_component__ = __webpack_require__("../../../../../src/app/entertainment/entertainment.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__video_player_video_player_component__ = __webpack_require__("../../../../../src/app/video-player/video-player.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__ad_ad_component__ = __webpack_require__("../../../../../src/app/ad/ad.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__video_album_icon_video_album_icon_component__ = __webpack_require__("../../../../../src/app/video-album-icon/video-album-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pipes_album_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/album-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__video_icon_video_icon_component__ = __webpack_require__("../../../../../src/app/video-icon/video-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pipes_video_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/video-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__music_player_music_player_component__ = __webpack_require__("../../../../../src/app/music-player/music-player.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__audio_icon_audio_icon_component__ = __webpack_require__("../../../../../src/app/audio-icon/audio-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__audio_album_icon_audio_album_icon_component__ = __webpack_require__("../../../../../src/app/audio-album-icon/audio-album-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__pipes_audio_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/audio-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__photos_photos_component__ = __webpack_require__("../../../../../src/app/photos/photos.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__photos_icon_photos_icon_component__ = __webpack_require__("../../../../../src/app/photos-icon/photos-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__photos_album_icon_photos_album_icon_component__ = __webpack_require__("../../../../../src/app/photos-album-icon/photos-album-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pipes_photos_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/photos-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__photos_carousel_photos_carousel_component__ = __webpack_require__("../../../../../src/app/photos-carousel/photos-carousel.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51_angular4_color_picker__ = __webpack_require__("../../../../angular4-color-picker/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51_angular4_color_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_51_angular4_color_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__music_list_music_list_component__ = __webpack_require__("../../../../../src/app/music-list/music-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__video_list_video_list_component__ = __webpack_require__("../../../../../src/app/video-list/video-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__stories_stories_component__ = __webpack_require__("../../../../../src/app/stories/stories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__story_box_story_box_component__ = __webpack_require__("../../../../../src/app/story-box/story-box.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__feeditem_feeditem_component__ = __webpack_require__("../../../../../src/app/feeditem/feeditem.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__agm_core__ = __webpack_require__("../../../../@agm/core/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular_font_awesome_angular_font_awesome__ = __webpack_require__("../../../../angular-font-awesome/angular-font-awesome.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_app_services_shareobject_routeinfo_service__ = __webpack_require__("../../../../../src/app/services/shareobject/routeinfo.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_app_modal_modal_service__ = __webpack_require__("../../../../../src/app/modal/modal.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__public_public_component__ = __webpack_require__("../../../../../src/app/public/public.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__signup_signup_component__ = __webpack_require__("../../../../../src/app/signup/signup.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__control_messages_control_messages_component__ = __webpack_require__("../../../../../src/app/control-messages/control-messages.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__public_nav_public_nav_component__ = __webpack_require__("../../../../../src/app/public-nav/public-nav.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__private_nav_private_nav_component__ = __webpack_require__("../../../../../src/app/private-nav/private-nav.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__profile_area_profile_area_component__ = __webpack_require__("../../../../../src/app/profile-area/profile-area.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__tile_menu_tile_menu_component__ = __webpack_require__("../../../../../src/app/tile-menu/tile-menu.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__info_panel_info_panel_component__ = __webpack_require__("../../../../../src/app/info-panel/info-panel.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__search_result_list_item_search_result_list_item_component__ = __webpack_require__("../../../../../src/app/search-result-list-item/search-result-list-item.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__profile_profile_component__ = __webpack_require__("../../../../../src/app/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__coverpic_coverpic_component__ = __webpack_require__("../../../../../src/app/coverpic/coverpic.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__modal_modal_component__ = __webpack_require__("../../../../../src/app/modal/modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_ngx_image_cropper__ = __webpack_require__("../../../../ngx-image-cropper/ngx-image-cropper/ngx-image-cropper.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_angular4_carousel__ = __webpack_require__("../../../../angular4-carousel/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__image_cropper_image_cropper_component__ = __webpack_require__("../../../../../src/app/image-cropper/image-cropper.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__capture_pic_capture_pic_component__ = __webpack_require__("../../../../../src/app/capture-pic/capture-pic.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__friend_request_pending_list_friend_request_pending_list_component__ = __webpack_require__("../../../../../src/app/friend-request-pending-list/friend-request-pending-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__chat_chat_component__ = __webpack_require__("../../../../../src/app/chat/chat.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__chat_item_chat_item_component__ = __webpack_require__("../../../../../src/app/chat-item/chat-item.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__chat_window_chat_window_component__ = __webpack_require__("../../../../../src/app/chat-window/chat-window.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pipes_chat_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/chat-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__video_video_component__ = __webpack_require__("../../../../../src/app/video/video.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__avchat_avchat_component__ = __webpack_require__("../../../../../src/app/avchat/avchat.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__entertainment_entertainment_component__ = __webpack_require__("../../../../../src/app/entertainment/entertainment.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__video_player_video_player_component__ = __webpack_require__("../../../../../src/app/video-player/video-player.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__ad_ad_component__ = __webpack_require__("../../../../../src/app/ad/ad.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__video_album_icon_video_album_icon_component__ = __webpack_require__("../../../../../src/app/video-album-icon/video-album-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pipes_album_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/album-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__video_icon_video_icon_component__ = __webpack_require__("../../../../../src/app/video-icon/video-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pipes_video_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/video-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__music_player_music_player_component__ = __webpack_require__("../../../../../src/app/music-player/music-player.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__audio_icon_audio_icon_component__ = __webpack_require__("../../../../../src/app/audio-icon/audio-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__audio_album_icon_audio_album_icon_component__ = __webpack_require__("../../../../../src/app/audio-album-icon/audio-album-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__pipes_audio_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/audio-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__photos_photos_component__ = __webpack_require__("../../../../../src/app/photos/photos.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__photos_icon_photos_icon_component__ = __webpack_require__("../../../../../src/app/photos-icon/photos-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__photos_album_icon_photos_album_icon_component__ = __webpack_require__("../../../../../src/app/photos-album-icon/photos-album-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pipes_photos_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/photos-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__photos_carousel_photos_carousel_component__ = __webpack_require__("../../../../../src/app/photos-carousel/photos-carousel.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52_angular4_color_picker__ = __webpack_require__("../../../../angular4-color-picker/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52_angular4_color_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_52_angular4_color_picker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__music_list_music_list_component__ = __webpack_require__("../../../../../src/app/music-list/music-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__video_list_video_list_component__ = __webpack_require__("../../../../../src/app/video-list/video-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__stories_stories_component__ = __webpack_require__("../../../../../src/app/stories/stories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__story_box_story_box_component__ = __webpack_require__("../../../../../src/app/story-box/story-box.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__feeditem_feeditem_component__ = __webpack_require__("../../../../../src/app/feeditem/feeditem.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__checkin_checkin_component__ = __webpack_require__("../../../../../src/app/checkin/checkin.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -325,97 +328,103 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AppModule = (function () {
     function AppModule() {
     }
     return AppModule;
 }());
 AppModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["M" /* NgModule */])({
+    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["M" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_10__public_public_component__["a" /* PublicComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__login_login_component__["a" /* LoginComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__signup_signup_component__["a" /* SignupComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__control_messages_control_messages_component__["a" /* ControlMessagesComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__home_home_component__["a" /* HomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__public_nav_public_nav_component__["a" /* PublicNavComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__private_nav_private_nav_component__["a" /* PrivateNavComponent */],
-            __WEBPACK_IMPORTED_MODULE_17__profile_area_profile_area_component__["a" /* ProfileAreaComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__tile_menu_tile_menu_component__["a" /* TileMenuComponent */],
+            __WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__public_public_component__["a" /* PublicComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__login_login_component__["a" /* LoginComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__signup_signup_component__["a" /* SignupComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__control_messages_control_messages_component__["a" /* ControlMessagesComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__home_home_component__["a" /* HomeComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__public_nav_public_nav_component__["a" /* PublicNavComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__private_nav_private_nav_component__["a" /* PrivateNavComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__profile_area_profile_area_component__["a" /* ProfileAreaComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__tile_menu_tile_menu_component__["a" /* TileMenuComponent */],
             //ChatPanelComponent,
-            __WEBPACK_IMPORTED_MODULE_19__info_panel_info_panel_component__["a" /* InfoPanelComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__search_result_list_item_search_result_list_item_component__["a" /* SearchResultListItemComponent */],
-            __WEBPACK_IMPORTED_MODULE_21__profile_profile_component__["a" /* ProfileComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__coverpic_coverpic_component__["a" /* CoverpicComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__modal_modal_component__["a" /* ModalComponent */],
-            __WEBPACK_IMPORTED_MODULE_26__image_cropper_image_cropper_component__["a" /* ImageCropperComponent */],
-            __WEBPACK_IMPORTED_MODULE_27__capture_pic_capture_pic_component__["a" /* CapturePicComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__friend_request_pending_list_friend_request_pending_list_component__["a" /* FriendRequestPendingListComponent */],
-            __WEBPACK_IMPORTED_MODULE_29__chat_chat_component__["a" /* ChatComponent */],
-            __WEBPACK_IMPORTED_MODULE_30__chat_item_chat_item_component__["a" /* ChatItemComponent */],
-            __WEBPACK_IMPORTED_MODULE_32__pipes_chat_search_pipe__["a" /* ChatSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_31__chat_window_chat_window_component__["a" /* ChatWindowComponent */],
-            __WEBPACK_IMPORTED_MODULE_33__video_video_component__["a" /* VideoComponent */],
-            __WEBPACK_IMPORTED_MODULE_34__avchat_avchat_component__["a" /* AvchatComponent */],
-            __WEBPACK_IMPORTED_MODULE_35__entertainment_entertainment_component__["a" /* EntertainmentComponent */],
-            __WEBPACK_IMPORTED_MODULE_36__video_player_video_player_component__["a" /* VideoPlayerComponent */],
-            __WEBPACK_IMPORTED_MODULE_37__ad_ad_component__["a" /* AdComponent */],
-            __WEBPACK_IMPORTED_MODULE_38__video_album_icon_video_album_icon_component__["a" /* VideoAlbumIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_39__pipes_album_search_pipe__["a" /* AlbumSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_40__video_icon_video_icon_component__["a" /* VideoIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_41__pipes_video_search_pipe__["a" /* VideoSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_42__music_player_music_player_component__["a" /* MusicPlayerComponent */],
-            __WEBPACK_IMPORTED_MODULE_43__audio_icon_audio_icon_component__["a" /* AudioIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_44__audio_album_icon_audio_album_icon_component__["a" /* AudioAlbumIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_45__pipes_audio_search_pipe__["a" /* AudioSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_46__photos_photos_component__["a" /* PhotosComponent */],
-            __WEBPACK_IMPORTED_MODULE_47__photos_icon_photos_icon_component__["a" /* PhotosIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_48__photos_album_icon_photos_album_icon_component__["a" /* PhotosAlbumIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_49__pipes_photos_search_pipe__["a" /* PhotosSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_50__photos_carousel_photos_carousel_component__["a" /* PhotosCarouselComponent */],
-            __WEBPACK_IMPORTED_MODULE_52__music_list_music_list_component__["a" /* MusicListComponent */],
-            __WEBPACK_IMPORTED_MODULE_53__video_list_video_list_component__["a" /* VideoListComponent */],
-            __WEBPACK_IMPORTED_MODULE_54__stories_stories_component__["a" /* StoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_55__story_box_story_box_component__["a" /* StoryBoxComponent */],
-            __WEBPACK_IMPORTED_MODULE_56__feeditem_feeditem_component__["a" /* FeeditemComponent */]
+            __WEBPACK_IMPORTED_MODULE_20__info_panel_info_panel_component__["a" /* InfoPanelComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__search_result_list_item_search_result_list_item_component__["a" /* SearchResultListItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__profile_profile_component__["a" /* ProfileComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__coverpic_coverpic_component__["a" /* CoverpicComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__modal_modal_component__["a" /* ModalComponent */],
+            __WEBPACK_IMPORTED_MODULE_27__image_cropper_image_cropper_component__["a" /* ImageCropperComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__capture_pic_capture_pic_component__["a" /* CapturePicComponent */],
+            __WEBPACK_IMPORTED_MODULE_29__friend_request_pending_list_friend_request_pending_list_component__["a" /* FriendRequestPendingListComponent */],
+            __WEBPACK_IMPORTED_MODULE_30__chat_chat_component__["a" /* ChatComponent */],
+            __WEBPACK_IMPORTED_MODULE_31__chat_item_chat_item_component__["a" /* ChatItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_33__pipes_chat_search_pipe__["a" /* ChatSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_32__chat_window_chat_window_component__["a" /* ChatWindowComponent */],
+            __WEBPACK_IMPORTED_MODULE_34__video_video_component__["a" /* VideoComponent */],
+            __WEBPACK_IMPORTED_MODULE_35__avchat_avchat_component__["a" /* AvchatComponent */],
+            __WEBPACK_IMPORTED_MODULE_36__entertainment_entertainment_component__["a" /* EntertainmentComponent */],
+            __WEBPACK_IMPORTED_MODULE_37__video_player_video_player_component__["a" /* VideoPlayerComponent */],
+            __WEBPACK_IMPORTED_MODULE_38__ad_ad_component__["a" /* AdComponent */],
+            __WEBPACK_IMPORTED_MODULE_39__video_album_icon_video_album_icon_component__["a" /* VideoAlbumIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_40__pipes_album_search_pipe__["a" /* AlbumSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_41__video_icon_video_icon_component__["a" /* VideoIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_42__pipes_video_search_pipe__["a" /* VideoSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_43__music_player_music_player_component__["a" /* MusicPlayerComponent */],
+            __WEBPACK_IMPORTED_MODULE_44__audio_icon_audio_icon_component__["a" /* AudioIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_45__audio_album_icon_audio_album_icon_component__["a" /* AudioAlbumIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_46__pipes_audio_search_pipe__["a" /* AudioSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_47__photos_photos_component__["a" /* PhotosComponent */],
+            __WEBPACK_IMPORTED_MODULE_48__photos_icon_photos_icon_component__["a" /* PhotosIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_49__photos_album_icon_photos_album_icon_component__["a" /* PhotosAlbumIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_50__pipes_photos_search_pipe__["a" /* PhotosSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_51__photos_carousel_photos_carousel_component__["a" /* PhotosCarouselComponent */],
+            __WEBPACK_IMPORTED_MODULE_53__music_list_music_list_component__["a" /* MusicListComponent */],
+            __WEBPACK_IMPORTED_MODULE_54__video_list_video_list_component__["a" /* VideoListComponent */],
+            __WEBPACK_IMPORTED_MODULE_55__stories_stories_component__["a" /* StoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_56__story_box_story_box_component__["a" /* StoryBoxComponent */],
+            __WEBPACK_IMPORTED_MODULE_57__feeditem_feeditem_component__["a" /* FeeditemComponent */],
+            __WEBPACK_IMPORTED_MODULE_58__checkin_checkin_component__["a" /* CheckinComponent */]
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */].forRoot(),
-            __WEBPACK_IMPORTED_MODULE_3_angular_font_awesome_angular_font_awesome__["a" /* AngularFontAwesomeModule */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["d" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["g" /* ReactiveFormsModule */],
-            __WEBPACK_IMPORTED_MODULE_5__angular_http__["c" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_24_ngx_image_cropper__["a" /* ImageCropperModule */],
-            __WEBPACK_IMPORTED_MODULE_25_angular4_carousel__["b" /* CarouselModule */],
-            __WEBPACK_IMPORTED_MODULE_51_angular4_color_picker__["ColorPickerModule"],
-            __WEBPACK_IMPORTED_MODULE_6__angular_router__["d" /* RouterModule */].forRoot([
+            __WEBPACK_IMPORTED_MODULE_0__agm_core__["a" /* AgmCoreModule */].forRoot({
+                apiKey: "AIzaSyAyu8WfrIIx0RTy0DQ3pP78FuCdtDl7l9Y",
+                libraries: ["places"]
+            }),
+            __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
+            __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_4_angular_font_awesome_angular_font_awesome__["a" /* AngularFontAwesomeModule */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_forms__["d" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_forms__["g" /* ReactiveFormsModule */],
+            __WEBPACK_IMPORTED_MODULE_6__angular_http__["c" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_25_ngx_image_cropper__["a" /* ImageCropperModule */],
+            __WEBPACK_IMPORTED_MODULE_26_angular4_carousel__["b" /* CarouselModule */],
+            __WEBPACK_IMPORTED_MODULE_52_angular4_color_picker__["ColorPickerModule"],
+            __WEBPACK_IMPORTED_MODULE_7__angular_router__["d" /* RouterModule */].forRoot([
                 {
                     path: 'public',
-                    component: __WEBPACK_IMPORTED_MODULE_10__public_public_component__["a" /* PublicComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_11__public_public_component__["a" /* PublicComponent */]
                 },
                 {
                     path: 'home',
-                    component: __WEBPACK_IMPORTED_MODULE_14__home_home_component__["a" /* HomeComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_15__home_home_component__["a" /* HomeComponent */]
                 },
                 {
                     path: 'profile/:id',
-                    component: __WEBPACK_IMPORTED_MODULE_21__profile_profile_component__["a" /* ProfileComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_22__profile_profile_component__["a" /* ProfileComponent */]
                 },
                 {
                     path: 'entertainment/:id',
-                    component: __WEBPACK_IMPORTED_MODULE_35__entertainment_entertainment_component__["a" /* EntertainmentComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_36__entertainment_entertainment_component__["a" /* EntertainmentComponent */]
                 },
                 {
                     path: 'stories/:id',
-                    component: __WEBPACK_IMPORTED_MODULE_54__stories_stories_component__["a" /* StoriesComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_55__stories_stories_component__["a" /* StoriesComponent */]
                 }
             ], { useHash: true })
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_7_app_services_shareobject_routeinfo_service__["a" /* RouteinfoService */], __WEBPACK_IMPORTED_MODULE_8_app_modal_modal_service__["a" /* ModalService */]],
-        entryComponents: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_11__login_login_component__["a" /* LoginComponent */], __WEBPACK_IMPORTED_MODULE_12__signup_signup_component__["a" /* SignupComponent */], __WEBPACK_IMPORTED_MODULE_50__photos_carousel_photos_carousel_component__["a" /* PhotosCarouselComponent */], __WEBPACK_IMPORTED_MODULE_52__music_list_music_list_component__["a" /* MusicListComponent */], __WEBPACK_IMPORTED_MODULE_53__video_list_video_list_component__["a" /* VideoListComponent */]],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_8_app_services_shareobject_routeinfo_service__["a" /* RouteinfoService */], __WEBPACK_IMPORTED_MODULE_9_app_modal_modal_service__["a" /* ModalService */]],
+        entryComponents: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_12__login_login_component__["a" /* LoginComponent */], __WEBPACK_IMPORTED_MODULE_13__signup_signup_component__["a" /* SignupComponent */], __WEBPACK_IMPORTED_MODULE_51__photos_carousel_photos_carousel_component__["a" /* PhotosCarouselComponent */], __WEBPACK_IMPORTED_MODULE_53__music_list_music_list_component__["a" /* MusicListComponent */], __WEBPACK_IMPORTED_MODULE_54__video_list_video_list_component__["a" /* VideoListComponent */]],
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
@@ -1231,9 +1240,9 @@ var ChatComponent = (function () {
         var chatObj = { 'userid': this.userId, 'easyrtcid': easyrtcId };
         //require(['socket-io'], function(io) {
         //this.socket = io('https://192.168.1.3:3000/');
-        this.socket = __WEBPACK_IMPORTED_MODULE_2__libs_socket_io__('https://wefrenz.com/');
+        //this.socket = io('https://wefrenz.com/');
         //this.socket = io("'"+ AppSettingsService.API_ENDPOINT("local") +"'");
-        //this.socket = io('https://localhost:3000');
+        this.socket = __WEBPACK_IMPORTED_MODULE_2__libs_socket_io__('https://localhost:3000');
         //this.socket = io('https://13.127.194.58:3000/');
         //this.socket = io('https://192.168.225.177:3000/');
         this.socket.emit('ON_SOCKET_INIT', chatObj);
@@ -1315,6 +1324,117 @@ ChatComponent = __decorate([
 
 var _a, _b, _c, _d, _e;
 //# sourceMappingURL=chat.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/checkin/checkin.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "    agm-map {\n      height: 300px;\n    }", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/checkin/checkin.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <agm-map [latitude]=\"latitude\" [longitude]=\"longitude\" [scrollwheel]=\"false\" [zoom]=\"zoom\">\n    <agm-marker [latitude]=\"latitude\" [longitude]=\"longitude\"></agm-marker>\n  </agm-map>\n    <div class=\"form-group\">\n    <input placeholder=\"search for location\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"off\" type=\"text\" class=\"form-control\" #search [formControl]=\"searchControl\">\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/checkin/checkin.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CheckinComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__agm_core__ = __webpack_require__("../../../../@agm/core/index.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CheckinComponent = (function () {
+    function CheckinComponent(mapsAPILoader, ngZone) {
+        this.mapsAPILoader = mapsAPILoader;
+        this.ngZone = ngZone;
+    }
+    CheckinComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        //set google maps defaults
+        this.zoom = 4;
+        this.latitude = 39.8282;
+        this.longitude = -98.5795;
+        //create search FormControl
+        this.searchControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]();
+        //set current position
+        this.setCurrentPosition();
+        //load Places Autocomplete
+        this.mapsAPILoader.load().then(function () {
+            var autocomplete = new google.maps.places.Autocomplete(_this.searchElementRef.nativeElement, {
+                types: ["address"]
+            });
+            autocomplete.addListener("place_changed", function () {
+                _this.ngZone.run(function () {
+                    //get the place result
+                    var place = autocomplete.getPlace();
+                    //verify result
+                    if (place.geometry === undefined || place.geometry === null) {
+                        return;
+                    }
+                    //set latitude, longitude and zoom
+                    _this.latitude = place.geometry.location.lat();
+                    _this.longitude = place.geometry.location.lng();
+                    _this.zoom = 12;
+                });
+            });
+        });
+    };
+    CheckinComponent.prototype.setCurrentPosition = function () {
+        var _this = this;
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                _this.latitude = position.coords.latitude;
+                _this.longitude = position.coords.longitude;
+                _this.zoom = 12;
+            });
+        }
+    };
+    return CheckinComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])("search"),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object)
+], CheckinComponent.prototype, "searchElementRef", void 0);
+CheckinComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-checkin',
+        template: __webpack_require__("../../../../../src/app/checkin/checkin.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/checkin/checkin.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__agm_core__["b" /* MapsAPILoader */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__agm_core__["b" /* MapsAPILoader */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */]) === "function" && _c || Object])
+], CheckinComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=checkin.component.js.map
 
 /***/ }),
 
@@ -6302,7 +6422,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".story-feed{\n\tpadding: 6px 6px 0px 57px;\n}\n.story-box{\n\theight: 100px;\n\tpadding: 3px ;\n\tborder: 1px solid #2b90d9;\n}\n.profile-pic{\n    margin: 0px 2px;\n    width: 45px;\n    height: 45px;\n    position: absolute;\n    left: 5px;\n    border-radius: 50%;\n}\n.control-bar{\n\tmargin: 6px 0px 1px 0px;\n\tfont-size: 9px;\n}\n.color-picker-icon{\n\tborder: 1px solid #2b90d9;\n}\n.color-picker-icon input{\n    border: 2px solid #d2d2d2;\n    outline: none;\n    height: 15px;\n    width: 15px;\n    color: transparent;\n}\n.color-picker-icon:hover{\n\tcolor: transparent !important;\n}\n.font-items{\n\tmargin: 10px -8px;\n    font-size: 11px;\n    max-height: 100px;\n    overflow-y: auto;\n}\n.font-family-btn{\n    border: 1px solid #2b90d9;\n    font-size: 7px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 5px;\n}\n.up-img-btn, .up-mus-btn, .up-vid-btn{\n    border: 1px solid #2b90d9;\n    font-size: 11px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 0px 0px 5px;\n}\n.font-size-btn{\n    border: 1px solid #2b90d9;\n    font-size:11px;\n    width: 32px;\n    height: 17px;\n}\n.font-family-btn i{\n\tmargin-left: 1px;\n}\n.font-family-btn:hover, .font-size-btn:hover, .font-bold-btn:hover,\n.font-ul-btn:hover, .font-italic-btn:hover, .smiley-btn:hover,\n.up-img-btn:hover, .up-mus-btn:hover, .up-vid-btn:hover{\n\tborder: 1px solid red;\n}\n.font-bold-btn:hover span, .font-ul-btn:hover span, .font-italic-btn:hover span, .smiley-btn:hover i,\n.up-img-btn:hover i, .up-mus-btn:hover i, .up-vid-btn:hover i{\n\tcolor: red;\n}\n.font-family-btn:hover i, .font-size-btn:hover span{\n\tcolor: red !important;\n}\n.font-bold-btn, .font-ul-btn, .font-italic-btn, .smiley-btn{\n\tborder: 1px solid #2b90d9;\n    font-size: 11px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 0px 0px 5px;\n    font-weight: bold;\n}\n.color-picker .arrow-right{\n\ttop: 5px !important;\n}\n.high-light{\n    border: 1px solid red;\n}\n.high-light *{\n    color: red;\n}\n.emo-list .list-item{\n    width: 25px !important;\n    margin: 2px 0px;\n}\n.emo-list{\n    width: 102px !important;\n}\n#postBtn{\n    width: auto;\n    height: 17px;\n    border-radius: 0px;\n    padding: 0px 3px !important;\n    line-height: 12px;\n    font-size: 12px !important;\n    background-color: #fff !important;\n    border: 1px solid #2b90d9 !important;\n    color: #2b90d9 !important;\n    background: #d9e1e8 !important;\n}\n#postBtn:hover *{\n    color: red;\n}\n#postBtn:hover{\n    border: 1px solid red !important;\n}\n.file-input-container{\n    display: none;\n}\n.modal{\n    width: 500px !important;\n    height: 500px !important;  \n}\n#previewMusicPlayer{\n    height: 189px;\n    background: #000;\n}\napp-feeditem{\n    float: left;\n    width: 100%;\n    min-height: 60px;\n    border: 1px solid #e6e6e6;\n    margin: 3px 0px;\n    border-radius: 3px;\n    padding: 3px;\n}\n.preview-posted-pic{\n    width: 300px;\n    height: 300px;\n    background-size: cover !important;\n}\n.post-desc-content{\n    margin-top: 5px;\n}", ""]);
+exports.push([module.i, ".story-feed{\n\tpadding: 6px 6px 0px 57px;\n}\n.story-box{\n\theight: 100px;\n\tpadding: 3px ;\n\tborder: 1px solid #2b90d9;\n}\n.profile-pic{\n    margin: 0px 2px;\n    width: 45px;\n    height: 45px;\n    position: absolute;\n    left: 5px;\n    border-radius: 50%;\n}\n.control-bar{\n\tmargin: 6px 0px 1px 0px;\n\tfont-size: 9px;\n}\n.color-picker-icon{\n\tborder: 1px solid #2b90d9;\n}\n.color-picker-icon input{\n    border: 2px solid #d2d2d2;\n    outline: none;\n    height: 15px;\n    width: 15px;\n    color: transparent;\n}\n.color-picker-icon:hover{\n\tcolor: transparent !important;\n}\n.font-items{\n\tmargin: 10px -8px;\n    font-size: 11px;\n    max-height: 100px;\n    overflow-y: auto;\n}\n.font-family-btn{\n    border: 1px solid #2b90d9;\n    font-size: 7px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 5px;\n}\n.up-img-btn, .up-mus-btn, .up-vid-btn{\n    border: 1px solid #2b90d9;\n    font-size: 11px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 0px 0px 5px;\n}\n.font-size-btn{\n    border: 1px solid #2b90d9;\n    font-size:11px;\n    width: 32px;\n    height: 17px;\n}\n.font-family-btn i{\n\tmargin-left: 1px;\n}\n.font-family-btn:hover, .font-size-btn:hover, .font-bold-btn:hover,\n.font-ul-btn:hover, .font-italic-btn:hover, .smiley-btn:hover,\n.up-img-btn:hover, .up-mus-btn:hover, .up-vid-btn:hover{\n\tborder: 1px solid red;\n}\n.font-bold-btn:hover span, .font-ul-btn:hover span, .font-italic-btn:hover span, .smiley-btn:hover i,\n.up-img-btn:hover i, .up-mus-btn:hover i, .up-vid-btn:hover i{\n\tcolor: red;\n}\n.font-family-btn:hover i, .font-size-btn:hover span{\n\tcolor: red !important;\n}\n.font-bold-btn, .font-ul-btn, .font-italic-btn, .smiley-btn{\n\tborder: 1px solid #2b90d9;\n    font-size: 11px;\n    width: 17px;\n    height: 17px;\n    margin: 0px 0px 0px 5px;\n    font-weight: bold;\n}\n.color-picker .arrow-right{\n\ttop: 5px !important;\n}\n.high-light{\n    border: 1px solid red;\n}\n.high-light *{\n    color: red;\n}\n.emo-list .list-item{\n    width: 25px !important;\n    margin: 2px 0px;\n}\n.emo-list{\n    width: 102px !important;\n}\n#postBtn{\n    width: auto;\n    height: 17px;\n    border-radius: 0px;\n    padding: 0px 3px !important;\n    line-height: 12px;\n    font-size: 12px !important;\n    background-color: #fff !important;\n    border: 1px solid #2b90d9 !important;\n    color: #2b90d9 !important;\n    background: #d9e1e8 !important;\n}\n#postBtn:hover *{\n    color: red;\n}\n#postBtn:hover{\n    border: 1px solid red !important;\n}\n.file-input-container{\n    display: none;\n}\n.modal{\n    width: 500px !important;\n    height: 500px !important;  \n}\n#previewMusicPlayer{\n    height: 189px;\n    background: #000;\n}\napp-feeditem{\n    float: left;\n    width: 100%;\n    min-height: 60px;\n    border: 1px solid #e6e6e6;\n    margin: 3px 0px;\n    border-radius: 3px;\n    padding: 3px;\n}\n.preview-posted-pic{\n    width: 300px;\n    height: 300px;\n    background-size: cover !important;\n}\n.post-desc-content{\n    margin-top: 5px;\n}\n.action-bar{\n    margin-left: -5px;\n}", ""]);
 
 // exports
 
@@ -6315,7 +6435,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/story-box/story-box.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"inline-block colw100 story-feed\">\n\t<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + profilePic + ')'}\">\n\t</div>\n\t<div name=\"story\" #storyBox class=\"story-box colw100 inline-block no-outline auto-overflow pull-left\" contenteditable=\"true\" spellcheck=\"true\" role=\"textbox\" aria-multiline=\"true\" data-placeholder-default=\"What’s happening?\" aria-autocomplete=\"list\" aria-expanded=\"false\" [style.color]=\"color\" [style.font-family]=\"fontFamily\" [style.font-size]=\"fontSize\" [style.font-weight]=\"fontWeight\" [style.text-decoration]=\"txtDeco\" [style.font-style]=\"fontStyle\"  [innerHTML]=\"storyContent\" \n\t(keyup)=\"onStoryContentChange($event)\" (keydown)=\"onStoryContentChanged($event.keyCode)\">\n\t</div>\n\t<div class=\"control-bar inline-block\">\n\t\t<div class=\"pull-left color-picker-icon\">\n\t\t\t<input [colorPicker]=\"color\" (colorPickerChange)=\"color=$event; colorPickerChange($event);\" [style.background]=\"color\" class=\"cursor-pointer\"/>\n\t\t</div>\n\t\t<div class=\"pull-left font-family-btn\" (click)=\"toggleFontFamily($event); clickedInside($event);\">\n\t\t\t<div>\n\t\t\t\t<i class=\"fa fa-font fa-2x blue-fonts cursor-pointer\"></i>\n\t\t\t</div>\n\t\t\t<div *ngIf=\"isShowFontFamily; then fontFamilies\"></div>\n\t\t\t<ng-template #fontFamilies>\n\t\t\t\t<div class=\"list-items font-items pull-left\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Arial')\">Arial</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Times New Roman')\">Times New Roman</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Courier New')\">Courier New</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left font-size-btn\" (click)=\"clickedInside($event)\">\n\t\t\t<div class=\"blue-fonts cursor-pointer text-center\" (click)=\"toggleFontSize($event)\"><span>{{fontSize}}</span></div>\n\t\t\t<div *ngIf=\"isShowFontSize; then fontSizes\"></div>\n\t\t\t<ng-template #fontSizes>\n\t\t\t\t<div class=\"list-items font-items pull-left\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 9)\">9</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 10)\">10</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 11)\">11</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 12)\">12</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 13)\">13</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 14)\">14</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 15)\">15</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 16)\">16</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 17)\">17</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 18)\">18</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 19)\">19</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 20)\">20</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 21)\">21</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 22)\">22</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 23)\">23</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 24)\">24</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 25)\">25</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left font-bold-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isBoldBtnHighLight\" (click)=\"applyBold($event)\">\n\t\t\t<span>B</span>\n\t\t</div>\n\t\t<div class=\"pull-left font-ul-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isULBtnHighLight\" (click)=\"applyUnderline($event)\">\n\t\t\t<span>U</span>\n\t\t</div>\n\t\t<div class=\"pull-left font-italic-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isIBtnHighLight\"  (click)=\"applyItalic($event)\">\n\t\t\t<span>I</span>\n\t\t</div>\n\t\t<div class=\"pull-left smiley-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isEmotionsHighLight\"  (click)=\"showEmotions($event);clickedInside($event);\">\n\t\t\t<div>\n\t\t\t\t<i class=\"fa fa-smile-o\"></i>\n\t\t\t</div>\n\t\t\t<div *ngIf=\"isEmotionsHighLight; then emotions\"></div>\n\t\t\t<ng-template #emotions>\n\t\t\t\t<div class=\"list-items font-items pull-left emo-list\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion0-smile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion1-sadsmile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':D')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion2-bigsmile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '8=)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion3-cool.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':o')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion4-surprised.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ';)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion5-wink.gif\"/></span>\n\t\t\t\t\t</div>\n\n\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ';(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion6-crying.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '(:|')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion7-sweating.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':|')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion8-speechless.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':*')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion9-kiss.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, 'emotion10-tongueout')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion10-tongueout.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':$')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion11-blush.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':^)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion12-wondering.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '|-)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion13-sleepy.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '|(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion14-dull.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left up-img-btn blue-fonts cursor-pointer text-center\" (click)= \"imageInput.value = ''; imageInput.click();\">\n\t\t\t<i class=\"fa fa-picture-o\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left up-mus-btn blue-fonts cursor-pointer text-center\" (click)= \"musicInput.value = ''; musicInput.click();\">\n\t\t\t<i class=\"fa fa-music\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left up-vid-btn blue-fonts cursor-pointer text-center\" (click)= \"videoInput.value = ''; videoInput.click();\">\n\t\t\t<i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left post-btn blue-fonts cursor-pointer text-center\">\n\t\t\t<div *ngIf=\"isAddPost; then addPost else updatePost\"></div>\n\t\t\t<ng-template #addPost>\n\t\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"postStory($event)\" [disabled]=\"(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)\">\n\t\t\t\t\t<span>Post</span>\n\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t\t</button>\n\t\t\t</ng-template>\n\t\t\t<ng-template #updatePost>\n\t\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"updateStory($event)\" [disabled]=\"(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)\">\n\t\t\t\t\t<span>Update</span>\n\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t\t</button>\n\t\t\t</ng-template>\n\t\t</div>\n\t</div>\n    <div class=\"file-input-container\">\n        <form [formGroup]=\"imageUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"imageGroup\">\n                <input type=\"file\" accept=\"image/*\" class=\"file-input\" name=\"uploadimage\" #imageInput (change)=\"fileChangeEvent($event, 'image')\"/>\n            </div>\n        </form>\n        <form [formGroup]=\"musicUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"musicGroup\">\n                <input type=\"file\" accept=\"audio/*\" class=\"file-input\" name=\"uploadmusic\" #musicInput (change)=\"fileChangeEvent($event, 'music')\"/>\n            </div>\n        </form>\n        <form [formGroup]=\"videoUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"videoGroup\">\n                <input type=\"file\" accept=\"video/*\" class=\"file-input\" name=\"uploadvideo\" #videoInput (change)=\"fileChangeEvent($event, 'video')\"/>\n            </div>\n        </form>\n    </div>\n</div>\n<div class=\"inline-block colw100 story-feed\">\n\t<app-feeditem *ngFor=\"let item of feedItem\" [item]=\"item\" [userId]=\"userId\" (refreshFeed)=\"refreshFeedItem($event)\" \n\t(editCurrentFeedItem)= \"editCurrentFeedItem($event)\"></app-feeditem>\n</div>\n\n\n<app-modal [modalTitle]=\"'Post Preview'\" [blocking]='false' [modalId]='modalId' #postedPicModal id=\"storyModal\">\n\t<div class=\"post-desc-content\">\n\t\t<div class=\"colw100 inline-block\">\n\t\t\t<div *ngIf=\"fileType === 'image' then previewPic\"></div>\n\t\t\t<div *ngIf=\"fileType === 'music' then previewMusic\"></div>\n\t\t\t<ng-template #previewPic>\n\t\t\t\t<div class=\"preview-posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + encodedImage+ ')'}\"></div>\n\t\t\t\t<div class=\"pull-right\">\n\t\t            <div>\n\t\t                <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" placeholder=\"title\" id=\"postTitle\" [(ngModel)]=\"postTitle\">\n\t\t            </div>\n\t\t            <div class=\"form-group\">\n\t\t                <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" id=\"postDesc\" [(ngModel)]=\"postDesc\">\n\t\t                </textarea>\n\t\t            </div>\n\t\t        </div>\n\t\t        <div *ngIf=\"isPostImage; then addImagePost else updateImagePost\"></div>\n\t\t        <ng-template #addImagePost>\n\t\t\t        <div class=\"colw100 inline-block\">\t\t\t\n\t\t\t\t\t\t<button id=\"okBtn\" type=\"button\" class=\"btn btn-primary text-center small-btn ok-btn\" (click)=\"postImage($event)\" [disabled]=\"isProgress\">\n\t\t\t\t\t\t\t<span class=\"pull-left\">Post</span>\n\t\t\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t</button>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t\t<ng-template #updateImagePost>\n\t\t\t        <div class=\"colw100 inline-block\">\t\t\t\n\t\t\t\t\t\t<button id=\"okBtn\" type=\"button\" class=\"btn btn-primary text-center small-btn ok-btn\" (click)=\"updateImage($event)\" [disabled]=\"isProgress\">\n\t\t\t\t\t\t\t<span class=\"pull-left\">Update</span>\n\t\t\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t</button>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t</ng-template>\n\t\t\t<ng-template #previewMusic>\n\t\t\t\t<div class=\"preview-posted-music pull-left\">\n\t\t\t\t\t<audio #musicPlayer  preload=\"none\" controls id=\"previewMusicPlayer\">\n\t\t\t\t        <source src=\"{{postedMusicPath}}\" type=\"audio/mp3\">\n\t\t\t\t        <p>Your browser does not support the HTML5 Audio element.</p>\n\t\t\t\t    </audio>\n\t\t\t\t    <progress value=\"0\" max=\"100\" id=\"progressBar\" [value]=\"uploadProgress\" [hidden]=\"!isProgress\"></progress>  \n\t\t\t\t</div>\n\t\t\t\t<div class=\"pull-right\">\n\t\t            <div>\n\t\t                <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" placeholder=\"title\" id=\"postTitle\" [(ngModel)]=\"postTitle\">\n\t\t            </div>\n\t\t            <div class=\"form-group\">\n\t\t                <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" id=\"postDesc\" [(ngModel)]=\"postDesc\">\n\t\t                </textarea>\n\t\t            </div>\n\t\t        </div>\n\t\t        <div class=\"colw100 inline-block\">\t\t\t\n\t\t\t\t\t<button id=\"okBtn\" type=\"button\" class=\"btn btn-primary text-center small-btn ok-btn\" (click)=\"postMusic($event)\" [disabled]=\"isProgress\">\n\t\t\t\t\t\t<span class=\"pull-left\">Post</span>\n\t\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t</div>\n</app-modal>"
+module.exports = "<div class=\"inline-block colw100 story-feed\">\n\t<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + profilePic + ')'}\">\n\t</div>\n\t<div name=\"story\" #storyBox class=\"story-box colw100 inline-block no-outline auto-overflow pull-left\" contenteditable=\"true\" spellcheck=\"true\" role=\"textbox\" aria-multiline=\"true\" data-placeholder-default=\"What’s happening?\" aria-autocomplete=\"list\" aria-expanded=\"false\" [style.color]=\"color\" [style.font-family]=\"fontFamily\" [style.font-size]=\"fontSize\" [style.font-weight]=\"fontWeight\" [style.text-decoration]=\"txtDeco\" [style.font-style]=\"fontStyle\"  [innerHTML]=\"storyContent\" \n\t(keyup)=\"onStoryContentChange($event)\" (keydown)=\"onStoryContentChanged($event.keyCode)\">\n\t</div>\n\t<div class=\"control-bar inline-block\">\n\t\t<div class=\"pull-left color-picker-icon\">\n\t\t\t<input [colorPicker]=\"color\" (colorPickerChange)=\"color=$event; colorPickerChange($event);\" [style.background]=\"color\" class=\"cursor-pointer\"/>\n\t\t</div>\n\t\t<div class=\"pull-left font-family-btn\" (click)=\"toggleFontFamily($event); clickedInside($event);\">\n\t\t\t<div>\n\t\t\t\t<i class=\"fa fa-font fa-2x blue-fonts cursor-pointer\"></i>\n\t\t\t</div>\n\t\t\t<div *ngIf=\"isShowFontFamily; then fontFamilies\"></div>\n\t\t\t<ng-template #fontFamilies>\n\t\t\t\t<div class=\"list-items font-items pull-left\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Arial')\">Arial</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Times New Roman')\">Times New Roman</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Courier New')\">Courier New</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left font-size-btn\" (click)=\"clickedInside($event)\">\n\t\t\t<div class=\"blue-fonts cursor-pointer text-center\" (click)=\"toggleFontSize($event)\"><span>{{fontSize}}</span></div>\n\t\t\t<div *ngIf=\"isShowFontSize; then fontSizes\"></div>\n\t\t\t<ng-template #fontSizes>\n\t\t\t\t<div class=\"list-items font-items pull-left\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 9)\">9</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 10)\">10</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 11)\">11</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 12)\">12</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 13)\">13</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 14)\">14</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 15)\">15</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 16)\">16</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 17)\">17</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 18)\">18</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 19)\">19</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 20)\">20</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 21)\">21</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 22)\">22</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 23)\">23</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 24)\">24</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 25)\">25</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left font-bold-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isBoldBtnHighLight\" (click)=\"applyBold($event)\">\n\t\t\t<span>B</span>\n\t\t</div>\n\t\t<div class=\"pull-left font-ul-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isULBtnHighLight\" (click)=\"applyUnderline($event)\">\n\t\t\t<span>U</span>\n\t\t</div>\n\t\t<div class=\"pull-left font-italic-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isIBtnHighLight\"  (click)=\"applyItalic($event)\">\n\t\t\t<span>I</span>\n\t\t</div>\n\t\t<div class=\"pull-left smiley-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isEmotionsHighLight\"  (click)=\"showEmotions($event);clickedInside($event);\">\n\t\t\t<div>\n\t\t\t\t<i class=\"fa fa-smile-o\"></i>\n\t\t\t</div>\n\t\t\t<div *ngIf=\"isEmotionsHighLight; then emotions\"></div>\n\t\t\t<ng-template #emotions>\n\t\t\t\t<div class=\"list-items font-items pull-left emo-list\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion0-smile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion1-sadsmile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':D')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion2-bigsmile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '8=)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion3-cool.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':o')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion4-surprised.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ';)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion5-wink.gif\"/></span>\n\t\t\t\t\t</div>\n\n\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ';(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion6-crying.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '(:|')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion7-sweating.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':|')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion8-speechless.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':*')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion9-kiss.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, 'emotion10-tongueout')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion10-tongueout.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':$')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion11-blush.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':^)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion12-wondering.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '|-)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion13-sleepy.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '|(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion14-dull.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left up-img-btn blue-fonts cursor-pointer text-center\" (click)= \"imageInput.value = ''; imageInput.click();\">\n\t\t\t<i class=\"fa fa-picture-o\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left up-mus-btn blue-fonts cursor-pointer text-center\" (click)= \"musicInput.value = ''; musicInput.click();\">\n\t\t\t<i class=\"fa fa-music\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left up-vid-btn blue-fonts cursor-pointer text-center\" (click)= \"videoInput.value = ''; videoInput.click();\">\n\t\t\t<i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left post-btn blue-fonts cursor-pointer text-center\">\n\t\t\t<div *ngIf=\"isAddPost; then addPost else updatePost\"></div>\n\t\t\t<ng-template #addPost>\n\t\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"postStory($event)\" [disabled]=\"(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)\">\n\t\t\t\t\t<span>Post</span>\n\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t\t</button>\n\t\t\t</ng-template>\n\t\t\t<ng-template #updatePost>\n\t\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"updateStory($event)\" [disabled]=\"(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)\">\n\t\t\t\t\t<span>Update</span>\n\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t\t</button>\n\t\t\t</ng-template>\n\t\t</div>\n\t</div>\n\t<div class=\"action-bar\">\n\t\t<div class=\"pull-left\">\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"checkIn($event)\">\n\t\t\t\t<span>Check In</span>\n\t\t\t\t<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>\n\t\t\t</button>\n\t\t</div>\n\t\t<div class=\"pull-left\">\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"updateStory($event)\">\n\t\t\t\t<span>Go Live</span>\n\t\t\t\t<i class=\"fa fa-video-camera\" aria-hidden=\"true\"></i>\n\t\t\t</button>\n\t\t</div>\n\t\t<div class=\"pull-left\">\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"updateStory($event)\">\n\t\t\t\t<span>Activity</span>\n\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t</button>\n\t\t</div>\n\t\t<div class=\"pull-left\">\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"updateStory($event)\">\n\t\t\t\t<span>Event</span>\n\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t</button>\n\t\t</div>\n\t</div>\n    <div class=\"file-input-container\">\n        <form [formGroup]=\"imageUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"imageGroup\">\n                <input type=\"file\" accept=\"image/*\" class=\"file-input\" name=\"uploadimage\" #imageInput (change)=\"fileChangeEvent($event, 'image')\"/>\n            </div>\n        </form>\n        <form [formGroup]=\"musicUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"musicGroup\">\n                <input type=\"file\" accept=\"audio/*\" class=\"file-input\" name=\"uploadmusic\" #musicInput (change)=\"fileChangeEvent($event, 'music')\"/>\n            </div>\n        </form>\n        <form [formGroup]=\"videoUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"videoGroup\">\n                <input type=\"file\" accept=\"video/*\" class=\"file-input\" name=\"uploadvideo\" #videoInput (change)=\"fileChangeEvent($event, 'video')\"/>\n            </div>\n        </form>\n    </div>\n</div>\n<div class=\"inline-block colw100 story-feed\">\n\t<app-feeditem *ngFor=\"let item of feedItem\" [item]=\"item\" [userId]=\"userId\" (refreshFeed)=\"refreshFeedItem($event)\" \n\t(editCurrentFeedItem)= \"editCurrentFeedItem($event)\"></app-feeditem>\n</div>\n\n\n<app-modal [modalTitle]=\"'Post Preview'\" [blocking]='false' [modalId]='modalId' #postedPicModal id=\"storyModal\">\n\t<div class=\"post-desc-content\">\n\t\t<div class=\"colw100 inline-block\">\n\t\t\t<div *ngIf=\"fileType === 'image' then previewPic\"></div>\n\t\t\t<div *ngIf=\"fileType === 'music' then previewMusic\"></div>\n\t\t\t<div *ngIf=\"action === 'checkin' then previewCheckIn\"></div>\n\t\t\t<ng-template #previewPic>\n\t\t\t\t<div class=\"preview-posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + encodedImage+ ')'}\"></div>\n\t\t\t\t<div class=\"pull-right\">\n\t\t            <div>\n\t\t                <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" placeholder=\"title\" id=\"postTitle\" [(ngModel)]=\"postTitle\">\n\t\t            </div>\n\t\t            <div class=\"form-group\">\n\t\t                <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" id=\"postDesc\" [(ngModel)]=\"postDesc\">\n\t\t                </textarea>\n\t\t            </div>\n\t\t        </div>\n\t\t        <div *ngIf=\"isPostImage; then addImagePost else updateImagePost\"></div>\n\t\t        <ng-template #addImagePost>\n\t\t\t        <div class=\"colw100 inline-block\">\t\t\t\n\t\t\t\t\t\t<button id=\"okBtn\" type=\"button\" class=\"btn btn-primary text-center small-btn ok-btn\" (click)=\"postImage($event)\" [disabled]=\"isProgress\">\n\t\t\t\t\t\t\t<span class=\"pull-left\">Post</span>\n\t\t\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t</button>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t\t<ng-template #updateImagePost>\n\t\t\t        <div class=\"colw100 inline-block\">\t\t\t\n\t\t\t\t\t\t<button id=\"okBtn\" type=\"button\" class=\"btn btn-primary text-center small-btn ok-btn\" (click)=\"updateImage($event)\" [disabled]=\"isProgress\">\n\t\t\t\t\t\t\t<span class=\"pull-left\">Update</span>\n\t\t\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t</button>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t</ng-template>\n\t\t\t<ng-template #previewMusic>\n\t\t\t\t<div class=\"preview-posted-music pull-left\">\n\t\t\t\t\t<audio #musicPlayer  preload=\"none\" controls id=\"previewMusicPlayer\">\n\t\t\t\t        <source src=\"{{postedMusicPath}}\" type=\"audio/mp3\">\n\t\t\t\t        <p>Your browser does not support the HTML5 Audio element.</p>\n\t\t\t\t    </audio>\n\t\t\t\t    <progress value=\"0\" max=\"100\" id=\"progressBar\" [value]=\"uploadProgress\" [hidden]=\"!isProgress\"></progress>  \n\t\t\t\t</div>\n\t\t\t\t<div class=\"pull-right\">\n\t\t            <div>\n\t\t                <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" placeholder=\"title\" id=\"postTitle\" [(ngModel)]=\"postTitle\">\n\t\t            </div>\n\t\t            <div class=\"form-group\">\n\t\t                <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" id=\"postDesc\" [(ngModel)]=\"postDesc\">\n\t\t                </textarea>\n\t\t            </div>\n\t\t        </div>\n\t\t        <div class=\"colw100 inline-block\">\t\t\t\n\t\t\t\t\t<button id=\"okBtn\" type=\"button\" class=\"btn btn-primary text-center small-btn ok-btn\" (click)=\"postMusic($event)\" [disabled]=\"isProgress\">\n\t\t\t\t\t\t<span class=\"pull-left\">Post</span>\n\t\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t\t<ng-template #previewCheckIn>\n\t\t\t\t<app-checkin></app-checkin>\n\t\t\t</ng-template>\n\t\t</div>\n\t</div>\n</app-modal>"
 
 /***/ }),
 
@@ -6388,6 +6508,7 @@ var StoryBoxComponent = (function () {
         this.uploadProgress = 0;
         this.isProgress = false;
         this.postId = '';
+        this.action = '';
         var loginData = JSON.parse(localStorage.getItem('loginData'));
         this.userId = loginData.username;
         this.email = loginData.username;
@@ -6829,6 +6950,10 @@ var StoryBoxComponent = (function () {
     StoryBoxComponent.prototype.afterRefreshFeed = function (result) {
         console.log('>>>>' + result);
         this.feedItem = result;
+    };
+    StoryBoxComponent.prototype.checkIn = function (event) {
+        this.action = "checkin";
+        this.openAppModal();
     };
     return StoryBoxComponent;
 }());
