@@ -142,3 +142,6 @@ app-feeditem{
 .post-desc-content{
     margin-top: 5px;
 }
+.action-bar{
+    margin-left: -5px;
+}

@@ -1,3 +1,4 @@
+import { AgmCoreModule } from '@agm/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -62,6 +63,7 @@ import { VideoListComponent } from './video-list/video-list.component';
 import { StoriesComponent } from './stories/stories.component';
 import { StoryBoxComponent } from './story-box/story-box.component';
 import { FeeditemComponent } from './feeditem/feeditem.component';
+import { CheckinComponent } from './checkin/checkin.component';
 
 
 
@@ -113,9 +115,14 @@ import { FeeditemComponent } from './feeditem/feeditem.component';
     VideoListComponent,
     StoriesComponent,
     StoryBoxComponent,
-    FeeditemComponent
+    FeeditemComponent,
+    CheckinComponent
   ],
   imports: [
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyAyu8WfrIIx0RTy0DQ3pP78FuCdtDl7l9Y",
+      libraries: ["places"]
+    }),
     BrowserModule,
     NgbModule.forRoot(),
     AngularFontAwesomeModule,

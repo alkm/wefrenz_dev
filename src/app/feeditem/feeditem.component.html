@@ -24,6 +24,7 @@
 <div *ngIf="item.type === 'text'; then textFeed"></div>
 <div *ngIf="item.type === 'image'; then imageFeed"></div>
 <div *ngIf="item.type === 'music'; then musicFeed"></div>
+<div *ngIf="item.type === 'checkin'; then checkinFeed"></div>
 <ng-template #textFeed>
 	<div class="feed-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="item.post" [ngStyle]="{
 				'font-weight':' '+ item.fontWeight +'', 
@@ -32,6 +33,19 @@
 	</div>
 </ng-template>
 <ng-template #imageFeed>
+	<div class="posted-pic pull-left" [ngStyle]="{'background': 'url(' + item.filePath+ ')'}"></div>
+	<div class="feed-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="item.title" [ngStyle]="{
+				'font-weight':'bold', 
+				'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',
+				'color':' '+ item.colorInfo +''}" >
+	</div>
+	<div class="feed-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="item.description" [ngStyle]="{
+				'font-weight':' '+ item.fontWeight +'', 
+				'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',
+				'color':' '+ item.colorInfo +''}" >
+	</div>
+</ng-template>
+<ng-template #checkinFeed>
 	<div class="posted-pic pull-left" [ngStyle]="{'background': 'url(' + item.filePath+ ')'}"></div>
 	<div class="feed-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="item.title" [ngStyle]="{
 				'font-weight':'bold', 

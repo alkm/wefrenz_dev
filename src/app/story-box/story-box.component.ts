@@ -473,6 +473,11 @@ export class StoryBoxComponent implements OnInit {
     	this.postedPicModal.close();
     }
 
+    private onCheckIn(event){
+    	this.postItem(undefined, 'checkin', '', event.data.mapData, event.data.postCheckIn, event.data.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+    	this.postedPicModal.close();
+    }
+
     private postItem(postId, type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight){
     	let postObj = {'id': postId,
     		'username': this.userId,
@@ -531,7 +536,7 @@ export class StoryBoxComponent implements OnInit {
 
     	this.refreshFeed();
     	this.timer = setInterval(()=>{    //<<<---    using ()=> syntax
-		      this.refreshFeed();
+		      //this.refreshFeed();
 		}, 3000);
   	}
 
@@ -547,5 +552,11 @@ export class StoryBoxComponent implements OnInit {
   	private afterRefreshFeed(result) {
   		console.log('>>>>'+result);
   		this.feedItem = result;
+  	}
+
+  	private checkIn(event){
+
+  		this.fileType = "checkin";
+  		this.openAppModal();
   	}
 }

@@ -140,6 +140,32 @@
 			</ng-template>
 		</div>
 	</div>
+	<div class="action-bar">
+		<div class="pull-left">
+			<button class="btn btn-primary" id="postBtn" type="button" (click)="checkIn($event)">
+				<span>Check In</span>
+				<i class="fa fa-map-marker" aria-hidden="true"></i>
+			</button>
+		</div>
+		<div class="pull-left">
+			<button class="btn btn-primary" id="postBtn" type="button" (click)="updateStory($event)">
+				<span>Go Live</span>
+				<i class="fa fa-video-camera" aria-hidden="true"></i>
+			</button>
+		</div>
+		<div class="pull-left">
+			<button class="btn btn-primary" id="postBtn" type="button" (click)="updateStory($event)">
+				<span>Activity</span>
+				<i class="fa fa-share-square-o" aria-hidden="true"></i>
+			</button>
+		</div>
+		<div class="pull-left">
+			<button class="btn btn-primary" id="postBtn" type="button" (click)="updateStory($event)">
+				<span>Event</span>
+				<i class="fa fa-share-square-o" aria-hidden="true"></i>
+			</button>
+		</div>
+	</div>
     <div class="file-input-container">
         <form [formGroup]="imageUploadForm" action="/upload" method="post" enctype="multipart/form-data">
             <div class="form-group" [formGroup]="imageGroup">
@@ -169,6 +195,7 @@
 		<div class="colw100 inline-block">
 			<div *ngIf="fileType === 'image' then previewPic"></div>
 			<div *ngIf="fileType === 'music' then previewMusic"></div>
+			<div *ngIf="fileType === 'checkin' then previewCheckIn"></div>
 			<ng-template #previewPic>
 				<div class="preview-posted-pic pull-left" [ngStyle]="{'background': 'url(' + encodedImage+ ')'}"></div>
 				<div class="pull-right">
@@ -221,6 +248,9 @@
 						<i class="fa fa-share-square-o" aria-hidden="true"></i>
 					</button>
 				</div>
+			</ng-template>
+			<ng-template #previewCheckIn>
+				<app-checkin (checkInItem)="onCheckIn($event)"></app-checkin>
 			</ng-template>
 		</div>
 	</div>
