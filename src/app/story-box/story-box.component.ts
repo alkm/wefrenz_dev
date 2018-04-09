@@ -536,7 +536,7 @@ export class StoryBoxComponent implements OnInit {
 
     	this.refreshFeed();
     	this.timer = setInterval(()=>{    //<<<---    using ()=> syntax
-		      //this.refreshFeed();
+		     this.refreshFeed();
 		}, 3000);
   	}
 

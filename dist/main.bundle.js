@@ -2130,7 +2130,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".profile-pic{\n    margin: -3px 2px;\n    width: 45px;\n    height: 45px;\n    position: absolute;\n    left: 5px;\n    border-radius: 50%;  \t\n}\n.feed-controls .fa-thumbs-up, .feed-controls .fa-heart, .feed-controls .fa-comment{\n    margin: 0px 3px 0px 0px;\n}\n .feed-controls .fa-heart, .feed-controls .fa-comment{\n \tmargin: 0px 3px;\n }\n .feed-edit-items .arrow-up{\n \tmargin-left: 75px !important;\n }\n .feed-edit-items{\n    position: absolute !important;\n    right: 1px !important;\n    margin-top: 23px;\n    z-index: 1000;\n }\n .edit-feed:hover{\n \tcolor: red;\n }\n .posted-pic, .feed-music-player{\n    display: inline-block;\n    background-size: cover !important;\n    height: 400px;\n    width: 100%;\n    margin: 5px 0px;\n    background: #000;\n }\n .feed-music-player{\n\n }\n\n", ""]);
+exports.push([module.i, ".profile-pic{\n    margin: -3px 2px;\n    width: 45px;\n    height: 45px;\n    position: absolute;\n    left: 5px;\n    border-radius: 50%;  \t\n}\n.feed-controls .fa-thumbs-up, .feed-controls .fa-heart, .feed-controls .fa-comment{\n    margin: 0px 3px 0px 0px;\n}\n .feed-controls .fa-heart, .feed-controls .fa-comment{\n \tmargin: 0px 3px;\n }\n .feed-edit-items .arrow-up{\n \tmargin-left: 75px !important;\n }\n .feed-edit-items{\n    position: absolute !important;\n    right: 1px !important;\n    margin-top: 23px;\n    z-index: 1000;\n }\n .edit-feed:hover{\n \tcolor: red;\n }\n .posted-pic, .feed-music-player{\n    display: inline-block;\n    background-size: cover !important;\n    min-height: 300px;\n    width: 100%;\n    margin: 5px 0px;\n    background: #000;\n }\n .feed-music-player{\n\n }\n\n", ""]);
 
 // exports
 
@@ -6937,6 +6937,7 @@ var StoryBoxComponent = (function () {
         this.friendsService.getAllConfirmedFriends(postObj).subscribe(function (data) { return _this.afterGetAllConfirmedFriends(data); });
     };
     StoryBoxComponent.prototype.afterGetAllConfirmedFriends = function (result) {
+        var _this = this;
         this.friendIdArr.push(this.userId);
         for (var i in result) {
             if (this.userId !== result[i].friendid) {
@@ -6948,7 +6949,7 @@ var StoryBoxComponent = (function () {
         }
         this.refreshFeed();
         this.timer = setInterval(function () {
-            //this.refreshFeed();
+            _this.refreshFeed();
         }, 3000);
     };
     StoryBoxComponent.prototype.refreshFeed = function () {
