@@ -22,7 +22,7 @@
 	<i aria-hidden="true" class="fa fa-pencil-square-o blue-fonts" id="editItem" (click)="clickedInside($event);"></i>
 </div>
 <div *ngIf="item.type === 'text'; then textFeed"></div>
-<div *ngIf="item.type === 'image'; then imageFeed"></div>
+<div *ngIf="item.type === 'image' || 'checkin'; then imageFeed"></div>
 <div *ngIf="item.type === 'music'; then musicFeed"></div>
 <ng-template #textFeed>
 	<div class="feed-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="item.post" [ngStyle]="{

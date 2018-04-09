@@ -524,3 +524,14 @@ html {
 ::-webkit-scrollbar-thumb {
     background: #FF0000;
 }
+#mapItem{
+	display: block;
+	width: 100%;
+}
+.map-content{
+	padding-right: 5px !important;
+}
+.loc-content{
+	padding-left: 5px !important;
+}
+.pac-container{position:absolute!important;z-index:10000}

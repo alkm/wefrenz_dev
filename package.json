@@ -36,6 +36,7 @@
     "express-session": "^1.15.6",
     "ffmpeg": "0.0.4",
     "font-awesome": "^4.7.0",
+    "html2canvas": "^1.0.0-alpha.12",
     "immutable": "^3.8.2",
     "ionic-angular": "^3.7.1",
     "json": "^9.0.6",

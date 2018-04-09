@@ -474,6 +474,11 @@ export class StoryBoxComponent implements OnInit {
     	this.postedPicModal.close();
     }
 
+    private onCheckIn(event){
+    	this.postItem(undefined, 'checkin', '', event.data.mapData, event.data.postCheckIn, event.data.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+    	this.postedPicModal.close();
+    }
+
     private postItem(postId, type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight){
     	let postObj = {'id': postId,
     		'username': this.userId,

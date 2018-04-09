@@ -250,7 +250,7 @@
 				</div>
 			</ng-template>
 			<ng-template #previewCheckIn>
-				<app-checkin></app-checkin>
+				<app-checkin (checkInItem)="onCheckIn($event)"></app-checkin>
 			</ng-template>
 		</div>
 	</div>

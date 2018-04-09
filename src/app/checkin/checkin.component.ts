@@ -1,7 +1,8 @@
-import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
+import * as html2canvas from 'html2canvas';
 
 
 @Component({
@@ -9,18 +10,23 @@ import { MapsAPILoader } from '@agm/core';
   templateUrl: './checkin.component.html',
   styleUrls: ['./checkin.component.css']
 })
+
 export class CheckinComponent implements OnInit {
-	public latitude: number;
-  	public longitude: number;
-  	public searchControl: FormControl;
-  	public zoom: number;
+  public latitude: number;
+  public longitude: number;
+  public searchControl: FormControl;
+  public zoom: number;
+  private mapData: any;
+  private postCheckIn: string;
+  private postDesc: string;
 
-  	@ViewChild("search")
-  	public searchElementRef: ElementRef;
+  @Output() checkInItem: EventEmitter<any> = new EventEmitter();
+  @ViewChild("search")
+  public searchElementRef: ElementRef;
 
-  	constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
+  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
 
-  	 ngOnInit() {
+  ngOnInit() {
     //set google maps defaults
     this.zoom = 4;
     this.latitude = 39.8282;
@@ -64,5 +70,11 @@ export class CheckinComponent implements OnInit {
         this.zoom = 12;
       });
     }
+  }
+
+  private checkIn(){
+    this.mapData = 'https://maps.googleapis.com/maps/api/staticmap?center='+this.latitude+','+this.longitude+'&markers=color:red%7Clabel:C%7C'+this.latitude+','+this.longitude+'&zoom='+this.zoom+'&size=600x400';
+    let data = {'postCheckIn': this.postCheckIn, 'postDesc': this.postDesc, 'mapData': this.mapData};
+    this.checkInItem.emit({data: data});
   }
 }
