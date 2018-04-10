@@ -73,7 +73,7 @@ export class CheckinComponent implements OnInit {
   }
 
   private checkIn(){
-    this.mapData = 'https://maps.googleapis.com/maps/api/staticmap?center='+this.latitude+','+this.longitude+'&markers=color:red%7Clabel:C%7C'+this.latitude+','+this.longitude+'&zoom='+this.zoom+'&size=600x400';
+    this.mapData = 'https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyBX8D9sScClyBnRCEEi2YebEtiZclND9Fg&center='+this.latitude+','+this.longitude+'&markers=color:red%7Clabel:C%7C'+this.latitude+','+this.longitude+'&zoom='+this.zoom+'&size=600x400';
     let data = {'postCheckIn': this.postCheckIn, 'postDesc': this.postDesc, 'mapData': this.mapData};
     this.checkInItem.emit({data: data});
   }
