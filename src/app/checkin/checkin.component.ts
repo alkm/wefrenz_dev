@@ -24,7 +24,9 @@ export class CheckinComponent implements OnInit {
   @ViewChild("search")
   public searchElementRef: ElementRef;
 
-  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { }
+  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { 
+
+  }
 
   ngOnInit() {
     //set google maps defaults
@@ -71,6 +73,7 @@ export class CheckinComponent implements OnInit {
       });
     }
   }
+
 
   private checkIn(){
     this.mapData = 'https://maps.googleapis.com/maps/api/staticmap?center='+this.latitude+','+this.longitude+'&markers=color:red%7Clabel:C%7C'+this.latitude+','+this.longitude+'&zoom='+this.zoom+'&size=600x400&key=AIzaSyD92tk4K4diBMwwDA0l8qxsBnSWgJQIl2A';

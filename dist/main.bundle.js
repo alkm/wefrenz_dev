@@ -1420,7 +1420,7 @@ var CheckinComponent = (function () {
         }
     };
     CheckinComponent.prototype.checkIn = function () {
-        this.mapData = 'https://maps.googleapis.com/maps/api/staticmap?center=' + this.latitude + ',' + this.longitude + '&markers=color:red%7Clabel:C%7C' + this.latitude + ',' + this.longitude + '&zoom=' + this.zoom + '&size=600x400';
+        this.mapData = 'https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyBEyCSypTKbViGbjxCp_RTM7tT1FHvlNhw&center=' + this.latitude + ',' + this.longitude + '&markers=color:red%7Clabel:C%7C' + this.latitude + ',' + this.longitude + '&zoom=' + this.zoom + '&size=600x400';
         var data = { 'postCheckIn': this.postCheckIn, 'postDesc': this.postDesc, 'mapData': this.mapData };
         this.checkInItem.emit({ data: data });
     };

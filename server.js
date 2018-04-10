@@ -55,7 +55,7 @@ mongoose.connect(database.url, function(err){
 	//app.listen(3000)
 	//var httpsOptions = {};
 
-	//var https = require('https');
+	var https = require('https');
 	var http = require('http');
 	var fs = require('fs');
 	var port = 3000;
