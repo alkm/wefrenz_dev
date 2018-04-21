@@ -145,3 +145,6 @@ app-feeditem{
 .action-bar{
     margin-left: -5px;
 }
+.fa-map-marker{
+    font-size: 14px;
+}

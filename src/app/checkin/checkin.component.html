@@ -9,7 +9,7 @@
 	    	<input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl" [(ngModel)]="postCheckIn">
 	  	</div>
 	  	<div class="form-group">
-			<textarea class="form-control no-resize no-bg no-brder-radius blue-fonts blue-border" rows="5" cols="30" placeholder="Add Description..." id="postDesc" [(ngModel)]="postDesc">
+			<textarea #desc class="form-control no-resize no-bg no-brder-radius blue-fonts blue-border" rows="5" cols="30" placeholder="Add Description..." id="postDesc" [(ngModel)]="postDesc">
 			</textarea>
 		</div>
 	  	<div class="colw100 inline-block">			

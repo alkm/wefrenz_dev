@@ -124,6 +124,9 @@
 		<div class="pull-left up-vid-btn blue-fonts cursor-pointer text-center" (click)= "videoInput.value = ''; videoInput.click();">
 			<i class="fa fa-file-video-o" aria-hidden="true"></i>
 		</div>
+		<div class="checkin-btn pull-left up-vid-btn blue-fonts cursor-pointer text-center" (click)="checkIn($event)">
+				<i class="fa fa-map-marker" aria-hidden="true"></i>
+		</div>
 		<div class="pull-left post-btn blue-fonts cursor-pointer text-center">
 			<div *ngIf="isAddPost; then addPost else updatePost"></div>
 			<ng-template #addPost>
@@ -140,7 +143,7 @@
 			</ng-template>
 		</div>
 	</div>
-	<div class="action-bar">
+	<!--<div class="action-bar">
 		<div class="pull-left">
 			<button class="btn btn-primary" id="postBtn" type="button" (click)="checkIn($event)">
 				<span>Check In</span>
@@ -165,7 +168,7 @@
 				<i class="fa fa-share-square-o" aria-hidden="true"></i>
 			</button>
 		</div>
-	</div>
+	</div> -->
     <div class="file-input-container">
         <form [formGroup]="imageUploadForm" action="/upload" method="post" enctype="multipart/form-data">
             <div class="form-group" [formGroup]="imageGroup">
