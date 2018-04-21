@@ -6,12 +6,13 @@ import { ModalService } from '../modal/modal.service';
 import { FeedService } from 'app/services/data/feed.service';
 import { FriendsService } from 'app/services/data/friends.service';
 import { AppSettingsService } from 'app/services/settings/app-settings.service';
+import { CheckinComponent } from '../checkin/checkin.component';
 
 @Component({
   selector: 'app-story-box',
   templateUrl: './story-box.component.html',
   styleUrls: ['./story-box.component.css'],
-  providers: [FeedService, FriendsService]
+  providers: [FeedService, FriendsService, CheckinComponent]
 })
 export class StoryBoxComponent implements OnInit {
 
@@ -64,7 +65,7 @@ export class StoryBoxComponent implements OnInit {
   	private timer: any;
 
 
-	constructor(private router: Router, private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private friendsService: FriendsService) {
+	constructor(private checkinComponent: CheckinComponent, private router: Router, private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private friendsService: FriendsService) {
 		let loginData = JSON.parse(localStorage.getItem('loginData'));
       	this.userId = loginData.username;
       	this.email = loginData.username;
@@ -261,9 +262,12 @@ export class StoryBoxComponent implements OnInit {
 		 },0.0001);
 	}
 
-	private openAppModal(){
+	private openAppModal(modalType = null){
   		let self = this;
   		self.modalService.open(self.modalId);
+  		if(modalType === 'checkin'){
+  			self.checkinComponent.resetCheckin();
+  		}
   	}
   	private editCurrentFeedItem(event){
   		let self = this;
@@ -556,7 +560,11 @@ export class StoryBoxComponent implements OnInit {
 
   	private checkIn(event){
 
-  		this.fileType = "checkin";
-  		this.openAppModal();
+  		this.fileType = 'checkin';
+  		this.openAppModal('checkin');
+  	}
+
+  	private onModalClosed(event){
+    	alert('modal closed');
   	}
 }
