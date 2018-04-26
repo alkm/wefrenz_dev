@@ -76,7 +76,28 @@
 </ng-template>
 
 <div class="colw100 feed-controls">
-	<div class="pull-left blue-fonts"><i class="fa fa-thumbs-up"></i><span>Like</span></div>
+	<div class="pull-left blue-fonts inline-block cursor-pointer" (click)="coolClick($event)"> 
+		<div *ngIf="alreadyLiked === true; then thumbsDown else thumbsUp"></div>
+		<ng-template #thumbsUp>
+			<span>
+				<i class="fa fa-thumbs-up"></i>
+			</span>
+		</ng-template>
+		<ng-template #thumbsDown>
+			<span>
+				<i class="fa fa-thumbs-down"></i>
+			</span>
+		</ng-template>
+		<div *ngIf="likeCount > 0; then  likeItemsCount else likeItemCount">
+  		</div>
+  		<ng-template #likeItemsCount>
+  			<span>{{likeCount}}</span>
+  			<span>Like</span>
+		</ng-template>
+  		<ng-template #likeItemCount>
+  			<span>Like</span>
+		</ng-template>
+	</div>	
 	<div class="pull-left red-fonts"><i class="fa fa-heart"></i><span>Love</span></div>
 	<div class="pull-left"><i class="fa fa-comment"></i><span>Comment</span></div>
 </div>

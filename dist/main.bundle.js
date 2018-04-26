@@ -119,6 +119,7 @@ module.exports = "<!--<app-public></app-public>-->\n<router-outlet></router-outl
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_app_app_service__ = __webpack_require__("../../../../../src/app/services/app/app.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -130,11 +131,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var AppComponent = (function () {
     function AppComponent(router, route) {
         this.router = router;
         this.route = route;
         this.isLoggedIn = false;
+        var lat = __WEBPACK_IMPORTED_MODULE_2_app_services_app_app_service__["a" /* AppService */].getGeoCode();
         var loc = window.location.href;
         var subStr1 = 'http://www.wefrenz.com/';
         var subStr2 = 'http://wefrenz.com/';
@@ -1240,9 +1243,9 @@ var ChatComponent = (function () {
         var chatObj = { 'userid': this.userId, 'easyrtcid': easyrtcId };
         //require(['socket-io'], function(io) {
         //this.socket = io('https://192.168.1.3:3000/');
-        //this.socket = io('https://wefrenz.com/');
+        this.socket = __WEBPACK_IMPORTED_MODULE_2__libs_socket_io__('https://wefrenz.com/');
         //this.socket = io("'"+ AppSettingsService.API_ENDPOINT("local") +"'");
-        this.socket = __WEBPACK_IMPORTED_MODULE_2__libs_socket_io__('https://localhost:3000');
+        //this.socket = io('https://localhost:3000');
         //this.socket = io('https://13.127.194.58:3000/');
         //this.socket = io('https://192.168.225.177:3000/');
         this.socket.emit('ON_SOCKET_INIT', chatObj);
@@ -1377,7 +1380,7 @@ var CheckinComponent = (function () {
         this.mapsAPILoader = mapsAPILoader;
         this.ngZone = ngZone;
         this.checkInItem = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
-        this.setCurrentPosition();
+        //this.setCurrentPosition();
     }
     CheckinComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1386,7 +1389,7 @@ var CheckinComponent = (function () {
         // this.latitude = 39.8282;
         // this.longitude = -98.5795;
         //set current position
-        // this.setCurrentPosition();
+        this.setCurrentPosition();
         //create search FormControl
         this.searchControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]();
         //load Places Autocomplete
@@ -1411,51 +1414,11 @@ var CheckinComponent = (function () {
         });
     };
     CheckinComponent.prototype.setCurrentPosition = function () {
-        /* if ("geolocation" in navigator) {
-           navigator.geolocation.getCurrentPosition((position) => {
-             this.latitude = position.coords.latitude;
-             this.longitude = position.coords.longitude;
-             this.zoom = 12;
-           });
-         }*/
-        if (navigator) {
-            /*debugger;
-            navigator.geolocation.getCurrentPosition( pos => {
-                this.latitude = +pos.coords.longitude;
-                this.longitude = +pos.coords.latitude;
-              });*/
-            /*  j(pos => {
-                  this.latitude = +pos.coords.longitude;
-                  this.longitude = +pos.coords.latitude;
-              }, e => {
-                  //Your error handling here
-                  alert('can not retrieve your location');
-                  this.latitude = 39.8282;
-                  this.longitude = -98.5795;
-              }, {
-                  enableHighAccuracy: false
-              });*/
-        }
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showLocation, errorHandler, { enableHighAccuracy: false, maximumAge: 60000, timeout: 27000 });
-        }
-        else {
-            alert('Votre navigateur ne prend malheureusement pas en charge la géolocalisation.');
-        }
-        function showLocation(position) {
-            this.latitude = +position.coords.longitude;
-            this.longitude = +position.coords.latitude;
-            // document.write('Latitude : '+ position.coords.latitude +' - Longitude : '+ position.coords.latitude);
-        }
-        // Fonction de gestion des erreurs
-        function errorHandler(error) {
-            this.latitude = 39.8282;
-            this.longitude = -98.5795;
-            // On log l'erreur sans l'afficher, permet simplement de débugger.
-            console.log('Geolocation error : code ' + error.code + ' - ' + error.message);
-            // Affichage d'un message d'erreur plus "user friendly" pour l'utilisateur.
-            // alert('Une erreur est survenue durant la géolocalisation. Veuillez réessayer plus tard ou contacter le support.');
-        }
+        var _this = this;
+        navigator.geolocation.getCurrentPosition(function (position) {
+            _this.latitude = position.coords.latitude;
+            _this.longitude = position.coords.longitude;
+        });
     };
     CheckinComponent.prototype.checkIn = function () {
         this.mapData = 'https://maps.googleapis.com/maps/api/staticmap?center=' + this.latitude + ',' + this.longitude + '&markers=color:red%7Clabel:C%7C' + this.latitude + ',' + this.longitude + '&zoom=' + this.zoom + '&size=600x400&key=AIzaSyD92tk4K4diBMwwDA0l8qxsBnSWgJQIl2A';
@@ -1463,6 +1426,8 @@ var CheckinComponent = (function () {
         this.checkInItem.emit({ data: data });
         this.postCheckIn = '';
         this.postDesc = '';
+        this.latitude = null;
+        this.longitude = null;
         this.setCurrentPosition();
     };
     CheckinComponent.prototype.resetCheckin = function () {
@@ -2187,7 +2152,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/feeditem/feeditem.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"isEditFeedItem; then editFeedItemControls\"></div>\n<ng-template #editFeedItemControls>\n\t<div class=\"list-items feed-edit-items font-items pull-right\">\n\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t<div *ngIf=\"isMyFeed; then editThisFeedItem else reportThisFeedItem\"></div>\n\t\t<ng-template #editThisFeedItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"editFeedItem($event)\">Edit</div>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"deleteFeedItem();\"><span>Delete</span></div>\n\t\t</ng-template>\n\t\t<ng-template #reportThisFeedItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"moveClick($event)\">Report</div>\n\t\t</ng-template>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"selectClick($event)\">Hide</div>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"defaultClick($event)\">Tag</div>\n\t</div>\n</ng-template>\n<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + item.profilepic + ')'}\">\n</div>\n<div class=\"full-name blue-fonts bold-fonts pull-left\">{{item.fullname}}</div>\n<div class=\"pull-left blue-fonts time-ago\"><span>&nbsp;</span>{{feedMoment}}</div>\n<div class=\"pull-right edit-feed hand-cursor\">\n\t<i aria-hidden=\"true\" class=\"fa fa-pencil-square-o blue-fonts\" id=\"editItem\" (click)=\"clickedInside($event);\"></i>\n</div>\n<div *ngIf=\"item.type === 'text'; then textFeed\"></div>\n<div *ngIf=\"item.type === 'image'; then imageFeed\"></div>\n<div *ngIf=\"item.type === 'music'; then musicFeed\"></div>\n<div *ngIf=\"item.type === 'checkin'; then checkinFeed\"></div>\n<ng-template #textFeed>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.post\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #imageFeed>\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + item.filePath+ ')'}\"></div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #checkinFeed>\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + item.filePath+ ')'}\"></div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #musicFeed>\n\t<audio #musicPlayer  preload=\"none\" controls class=\"feed-music-player\">\n        <source src=\"{{item.filePath}}\" type=\"audio/mp3\">\n        <p>Your browser does not support the HTML5 Audio element.</p>\n    </audio>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n\n<div class=\"colw100 feed-controls\">\n\t<div class=\"pull-left blue-fonts\"><i class=\"fa fa-thumbs-up\"></i><span>Like</span></div>\n\t<div class=\"pull-left red-fonts\"><i class=\"fa fa-heart\"></i><span>Love</span></div>\n\t<div class=\"pull-left\"><i class=\"fa fa-comment\"></i><span>Comment</span></div>\n</div>\n"
+module.exports = "<div *ngIf=\"isEditFeedItem; then editFeedItemControls\"></div>\n<ng-template #editFeedItemControls>\n\t<div class=\"list-items feed-edit-items font-items pull-right\">\n\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t<div *ngIf=\"isMyFeed; then editThisFeedItem else reportThisFeedItem\"></div>\n\t\t<ng-template #editThisFeedItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"editFeedItem($event)\">Edit</div>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"deleteFeedItem();\"><span>Delete</span></div>\n\t\t</ng-template>\n\t\t<ng-template #reportThisFeedItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"moveClick($event)\">Report</div>\n\t\t</ng-template>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"selectClick($event)\">Hide</div>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"defaultClick($event)\">Tag</div>\n\t</div>\n</ng-template>\n<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + item.profilepic + ')'}\">\n</div>\n<div class=\"full-name blue-fonts bold-fonts pull-left\">{{item.fullname}}</div>\n<div class=\"pull-left blue-fonts time-ago\"><span>&nbsp;</span>{{feedMoment}}</div>\n<div class=\"pull-right edit-feed hand-cursor\">\n\t<i aria-hidden=\"true\" class=\"fa fa-pencil-square-o blue-fonts\" id=\"editItem\" (click)=\"clickedInside($event);\"></i>\n</div>\n<div *ngIf=\"item.type === 'text'; then textFeed\"></div>\n<div *ngIf=\"item.type === 'image'; then imageFeed\"></div>\n<div *ngIf=\"item.type === 'music'; then musicFeed\"></div>\n<div *ngIf=\"item.type === 'checkin'; then checkinFeed\"></div>\n<ng-template #textFeed>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.post\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #imageFeed>\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + item.filePath+ ')'}\"></div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #checkinFeed>\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + item.filePath+ ')'}\"></div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #musicFeed>\n\t<audio #musicPlayer  preload=\"none\" controls class=\"feed-music-player\">\n        <source src=\"{{item.filePath}}\" type=\"audio/mp3\">\n        <p>Your browser does not support the HTML5 Audio element.</p>\n    </audio>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n\n<div class=\"colw100 feed-controls\">\n\t<div class=\"pull-left blue-fonts inline-block cursor-pointer\" (click)=\"coolClick($event)\"> \n\t\t<div *ngIf=\"alreadyLiked === true; then thumbsDown else thumbsUp\"></div>\n\t\t<ng-template #thumbsUp>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-thumbs-up\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<ng-template #thumbsDown>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-thumbs-down\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<div *ngIf=\"likeCount > 0; then  likeItemsCount else likeItemCount\">\n  \t\t</div>\n  \t\t<ng-template #likeItemsCount>\n  \t\t\t<span>{{likeCount}}</span>\n  \t\t\t<span>Like</span>\n\t\t</ng-template>\n  \t\t<ng-template #likeItemCount>\n  \t\t\t<span>Like</span>\n\t\t</ng-template>\n\t</div>\t\n\t<div class=\"pull-left red-fonts\"><i class=\"fa fa-heart\"></i><span>Love</span></div>\n\t<div class=\"pull-left\"><i class=\"fa fa-comment\"></i><span>Comment</span></div>\n</div>\n"
 
 /***/ }),
 
@@ -2220,14 +2185,24 @@ var FeeditemComponent = (function () {
         this.editCurrentFeedItem = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.isEditFeedItem = false;
         this.isMyFeed = false;
+        this.likeCount = 0;
+        this.alreadyLiked = false;
     }
     FeeditemComponent.prototype.ngOnInit = function () {
         if (this.item.userid === this.userId) {
             this.isMyFeed = true;
         }
+        var i = this.item.coolArr.indexOf(this.userId);
+        if (i === -1) {
+            this.alreadyLiked = false;
+        }
+        else {
+            this.alreadyLiked = true;
+        }
         var timeagoInstance = __WEBPACK_IMPORTED_MODULE_2_timeago_js___default()();
         this.feedMoment = timeagoInstance.format(this.item.created);
         //this.feedMoment = moment(this.item.created);
+        this.likeCount = this.item.coolArr.length;
     };
     FeeditemComponent.prototype.clickedOutside = function ($event) {
         this.isEditFeedItem = false;
@@ -2256,6 +2231,31 @@ var FeeditemComponent = (function () {
         }
         else {
             this.refreshFeed.emit('refresh');
+        }
+    };
+    FeeditemComponent.prototype.coolClick = function ($event) {
+        var _this = this;
+        var id = this.userId;
+        var likeArr = this.item.coolArr;
+        var i = likeArr.indexOf(id);
+        if (i === -1) {
+            likeArr.push(id);
+            this.alreadyLiked = true;
+        }
+        else {
+            likeArr.splice(i, 1);
+            this.alreadyLiked = false;
+        }
+        this.likeCount = likeArr.length;
+        var postObj = { 'id': this.item._id, 'likearr': likeArr };
+        this.feedService.updateLikeFeedChannel(postObj).subscribe(function (data) { return _this.afterUpdateLikeFeedChannel(data); });
+    };
+    FeeditemComponent.prototype.afterUpdateLikeFeedChannel = function (result) {
+        if (result.status === 'failure') {
+            alert(result.message);
+        }
+        else {
+            alert(result.message);
         }
     };
     return FeeditemComponent;
@@ -5401,6 +5401,31 @@ var _a;
 
 /***/ }),
 
+/***/ "../../../../../src/app/services/app/app.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppService; });
+var AppService = (function () {
+    function AppService() {
+    }
+    AppService.getGeoCode = function () {
+        var latitude;
+        var longitude;
+        navigator.geolocation.getCurrentPosition(function (position) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+            debugger;
+            return { 'location': { 'latitude': latitude, 'longitude': longitude } };
+        });
+    };
+    return AppService;
+}());
+
+//# sourceMappingURL=app.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/services/data/audio.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5597,6 +5622,12 @@ var FeedService = (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/deleteFeedItem", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    FeedService.prototype.updateLikeFeedChannel = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/updateCoolFeedChannel", postObj, options)
             .map(function (res) { return res.json(); });
     };
     return FeedService;
@@ -7012,7 +7043,6 @@ var StoryBoxComponent = (function () {
         this.refreshFeed();
     };
     StoryBoxComponent.prototype.afterRefreshFeed = function (result) {
-        console.log('>>>>' + result);
         this.feedItem = result;
     };
     StoryBoxComponent.prototype.checkIn = function (event) {
