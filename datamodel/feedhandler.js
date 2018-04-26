@@ -107,7 +107,7 @@ module.exports = function(app) {
 	
 	app.post('/api/pullFeedChannel/', function(req, res) {	
 		// Getting all the confirmed friends 
-		feedInfo.find({_id : req.body.feedid}, function(error, infos){
+		feedInfo.find({_id : req.body.id}, function(error, infos){
 			if(error){
 				console.log("Error"+error);
 			}else{
@@ -117,7 +117,8 @@ module.exports = function(app) {
 	});
 	
 	app.post('/api/updateCoolFeedChannel/', function(req, res) {	
-		feedInfo.update({_id: req.body.feedid}, {$set: {coolArr: req.body.coolarr}}, function(error, infos){
+		console.log(req.body.id, req.body.likearr);
+		feedInfo.update({_id: req.body.id}, {$set: {coolArr: req.body.likearr}}, function(error, infos){
 			if(error){
 				console.log("Error"+error);
 			}else{

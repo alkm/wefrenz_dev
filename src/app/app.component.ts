@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
+import {AppService} from 'app/services/app/app.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   private isLoggedIn = false;
 
 	constructor(private router : Router, private route: ActivatedRoute) {
+      let lat = AppService.getGeoCode();
       let loc = window.location.href;
       let subStr1 = 'http://www.wefrenz.com/';
       let subStr2 = 'http://wefrenz.com/';

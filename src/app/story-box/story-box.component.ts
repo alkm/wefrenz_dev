@@ -554,7 +554,6 @@ export class StoryBoxComponent implements OnInit {
   	}
 
   	private afterRefreshFeed(result) {
-  		console.log('>>>>'+result);
   		this.feedItem = result;
   	}
 
