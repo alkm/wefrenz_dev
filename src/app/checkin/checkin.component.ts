@@ -12,6 +12,8 @@ import * as html2canvas from 'html2canvas';
 })
 
 export class CheckinComponent implements OnInit {
+ // public latitude: number = 12.955157999999999;
+ // public longitude: number = 77.6597592;
   public latitude: number;
   public longitude: number;
   public searchControl: FormControl;
@@ -25,7 +27,7 @@ export class CheckinComponent implements OnInit {
   public searchElementRef: ElementRef;
 
   constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) { 
-    this.setCurrentPosition();
+    //this.setCurrentPosition();
   }
 
   ngOnInit() {
@@ -34,7 +36,7 @@ export class CheckinComponent implements OnInit {
    // this.latitude = 39.8282;
    // this.longitude = -98.5795;
      //set current position
-   // this.setCurrentPosition();
+    this.setCurrentPosition();
 
     //create search FormControl
     this.searchControl = new FormControl();
@@ -65,62 +67,11 @@ export class CheckinComponent implements OnInit {
     });
   }
 
-  private setCurrentPosition() {
-   /* if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 12;
-      });
-    }*/
-        if (navigator)
-    {
-      /*debugger;
-      navigator.geolocation.getCurrentPosition( pos => {
-          this.latitude = +pos.coords.longitude;
-          this.longitude = +pos.coords.latitude;
-        });*/
-
-    /*  j(pos => {
-          this.latitude = +pos.coords.longitude;
-          this.longitude = +pos.coords.latitude;
-      }, e => {
-          //Your error handling here
-          alert('can not retrieve your location');
-          this.latitude = 39.8282;
-          this.longitude = -98.5795;
-      }, {
-          enableHighAccuracy: false
-      });*/
-    }
-
-    if(navigator.geolocation)
-    {
-        navigator.geolocation.getCurrentPosition(showLocation, errorHandler, {enableHighAccuracy:false, maximumAge:60000, timeout:27000});
-    }
-    else
-    {
-        alert('Votre navigateur ne prend malheureusement pas en charge la géolocalisation.');
-    }
-
-    function showLocation(position)
-    {
-         this.latitude = +position.coords.longitude;
-          this.longitude = +position.coords.latitude;
-       // document.write('Latitude : '+ position.coords.latitude +' - Longitude : '+ position.coords.latitude);
-    }
-
-    // Fonction de gestion des erreurs
-    function errorHandler(error)
-    {
-      this.latitude = 39.8282;
-          this.longitude = -98.5795;
-        // On log l'erreur sans l'afficher, permet simplement de débugger.
-        console.log('Geolocation error : code '+ error.code +' - '+ error.message); 
-
-        // Affichage d'un message d'erreur plus "user friendly" pour l'utilisateur.
-       // alert('Une erreur est survenue durant la géolocalisation. Veuillez réessayer plus tard ou contacter le support.');
-    }
+  private setCurrentPosition(){
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.latitude = position.coords.latitude;
+      this.longitude = position.coords.longitude;
+    });
   }
 
 
@@ -130,6 +81,8 @@ export class CheckinComponent implements OnInit {
     this.checkInItem.emit({data: data});
     this.postCheckIn = '';
     this.postDesc = '';
+    this.latitude = null;
+    this.longitude = null;
     this.setCurrentPosition();
   }
 

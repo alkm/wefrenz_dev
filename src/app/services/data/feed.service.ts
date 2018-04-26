@@ -30,4 +30,11 @@ export class FeedService {
 		.map((res:Response) => res.json());
 	}
 
+	public updateLikeFeedChannel(postObj){
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.post(AppSettingsService.API_ENDPOINT("local")+"/api/updateCoolFeedChannel", postObj, options)
+		.map((res:Response) => res.json());	
+	}
+
 }
