@@ -187,7 +187,7 @@
         </form>
     </div>
 </div>
-<div class="inline-block colw100 story-feed">
+<div class="inline-block colw100 story-feed" #storyFeed>
 	<app-feeditem *ngFor="let item of feedItem" [item]="item" [userId]="userId" (refreshFeed)="refreshFeedItem($event)" 
 	(editCurrentFeedItem)= "editCurrentFeedItem($event)"></app-feeditem>
 </div>

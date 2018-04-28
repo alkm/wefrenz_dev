@@ -16,8 +16,10 @@ export class FeeditemComponent implements OnInit {
   @Output() editCurrentFeedItem: EventEmitter<any> = new EventEmitter();
 	private isEditFeedItem: boolean = false;
 	private isMyFeed: boolean = false;
-  private likeCount = 0;
+  private likeCount: number = 0;
+  private loveCount: number = 0;
   private alreadyLiked = false;
+  private alreadyLoved = false;
 	//private feedMoment: moment.Moment;
 	private feedMoment: any;
   	constructor(private feedService: FeedService) { }
@@ -27,20 +29,32 @@ export class FeeditemComponent implements OnInit {
   			this.isMyFeed = true;
   		}
 
-      let i = this.item.coolArr.indexOf(this.userId);
+      this.feedActionCheck();
+  		let timeagoInstance = timeago();
+		  this.feedMoment = timeagoInstance.format(this.item.created);
+  		//this.feedMoment = moment(this.item.created);
+      this.likeCount = this.item.likeArr.length;
+      this.loveCount = this.item.loveArr.length;
+  	}
+  	@HostListener('document:click', ['$event']) clickedOutside($event){
+  		this.isEditFeedItem = false;
+	 }
+
+    private feedActionCheck(){
+      let i = this.item.likeArr.indexOf(this.userId);
       if(i === -1){
         this.alreadyLiked = false
       }else{
         this.alreadyLiked = true;
       }
-  		let timeagoInstance = timeago();
-		  this.feedMoment = timeagoInstance.format(this.item.created);
-  		//this.feedMoment = moment(this.item.created);
-      this.likeCount = this.item.coolArr.length;
-  	}
-  	@HostListener('document:click', ['$event']) clickedOutside($event){
-  		this.isEditFeedItem = false;
-	}
+
+      let j = this.item.loveArr.indexOf(this.userId);
+      if(j === -1){
+        this.alreadyLoved = false
+      }else{
+        this.alreadyLoved = true;
+      }
+    }
   	private editFeedItem(event){
       this.editCurrentFeedItem.emit({item: this.item});
   	}
@@ -67,9 +81,9 @@ export class FeeditemComponent implements OnInit {
     	}
   	}
 
-    private coolClick($event){
+    private likeClick($event){
       let id = this.userId;
-      let likeArr = this.item.coolArr;
+      let likeArr = this.item.likeArr;
       let i = likeArr.indexOf(id);
       if(i === -1){
         likeArr.push(id);
@@ -83,7 +97,31 @@ export class FeeditemComponent implements OnInit {
       this.feedService.updateLikeFeedChannel(postObj).subscribe(data => this.afterUpdateLikeFeedChannel(data));
     }
 
+    private loveClick($event){
+      let id = this.userId;
+      let loveArr = this.item.loveArr;
+      let i = loveArr.indexOf(id);
+      if(i === -1){
+        loveArr.push(id);
+        this.alreadyLoved = true;
+      }else{
+        loveArr.splice(i, 1);
+        this.alreadyLoved = false;
+      }
+      this.loveCount = loveArr.length;
+      let postObj = {'id': this.item._id, 'lovearr': loveArr};
+      this.feedService.updateLoveFeedChannel(postObj).subscribe(data => this.afterUpdateLoveFeedChannel(data));
+    }
+
     private afterUpdateLikeFeedChannel(result) {
+      if(result.status === 'failure'){
+          alert(result.message);
+        }else{
+          alert(result.message);
+      }
+    }
+
+    private afterUpdateLoveFeedChannel(result) {
       if(result.status === 'failure'){
           alert(result.message);
         }else{

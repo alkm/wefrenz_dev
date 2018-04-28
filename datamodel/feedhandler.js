@@ -13,7 +13,8 @@ module.exports = function(app) {
 				description : req.body.description,
 				isReady : req.body.isReady,
 				isNotified : req.body.isNotified,
-				coolArr : [],
+				likeArr : [],
+				loveArr : [],
 				commentArr : [],
 				filePath : req.body.filePath,
 				poster : req.body.poster,
@@ -43,7 +44,8 @@ module.exports = function(app) {
 				description : req.body.description,
 				isReady : req.body.isReady,
 				isNotified : req.body.isNotified,
-				coolArr : [],
+				likeArr : [],
+				loveArr : [],
 				commentArr : [],
 				filePath : req.body.filePath,
 				poster : req.body.poster,
@@ -118,7 +120,17 @@ module.exports = function(app) {
 	
 	app.post('/api/updateCoolFeedChannel/', function(req, res) {	
 		console.log(req.body.id, req.body.likearr);
-		feedInfo.update({_id: req.body.id}, {$set: {coolArr: req.body.likearr}}, function(error, infos){
+		feedInfo.update({_id: req.body.id}, {$set: {likeArr: req.body.likearr}}, function(error, infos){
+			if(error){
+				console.log("Error"+error);
+			}else{
+				res.send("updated");
+			}
+		});
+	});
+	app.post('/api/updateLoveFeedChannel/', function(req, res) {	
+		console.log(req.body.id, req.body.lovearr);
+		feedInfo.update({_id: req.body.id}, {$set: {loveArr: req.body.lovearr}}, function(error, infos){
 			if(error){
 				console.log("Error"+error);
 			}else{

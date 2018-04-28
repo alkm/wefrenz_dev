@@ -17,6 +17,7 @@ import { CheckinComponent } from '../checkin/checkin.component';
 export class StoryBoxComponent implements OnInit {
 
 	@ViewChild('storyBox') storyBox: ElementRef;
+	@ViewChild('storyFeed') storyFeed: ElementRef;
 	@ViewChild('postedPicModal') postedPicModal;
 	@ViewChild('musicInput') musicInput;
 	@ViewChild('musicPlayer') musicPlayer: ElementRef;
@@ -63,6 +64,7 @@ export class StoryBoxComponent implements OnInit {
   	private isProgress: boolean = false;
   	private postId: string = '';
   	private timer: any;
+  	private feedLength: number = 0;
 
 
 	constructor(private checkinComponent: CheckinComponent, private router: Router, private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private friendsService: FriendsService) {
@@ -541,7 +543,7 @@ export class StoryBoxComponent implements OnInit {
     	this.refreshFeed();
     	this.timer = setInterval(()=>{    //<<<---    using ()=> syntax
 		     this.refreshFeed();
-		}, 3000);
+		}, 60000);
   	}
 
   	private refreshFeed(){
@@ -554,7 +556,9 @@ export class StoryBoxComponent implements OnInit {
   	}
 
   	private afterRefreshFeed(result) {
+  		//let scrollTop = this.storyBox.nativeElement.scrollTop();
   		this.feedItem = result;
+  		this.feedLength = result.length;
   	}
 
   	private checkIn(event){
