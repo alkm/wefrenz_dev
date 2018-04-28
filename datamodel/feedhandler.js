@@ -118,7 +118,7 @@ module.exports = function(app) {
 		});
 	});
 	
-	app.post('/api/updateCoolFeedChannel/', function(req, res) {	
+	app.post('/api/updateLikeFeedChannel/', function(req, res) {	
 		console.log(req.body.id, req.body.likearr);
 		feedInfo.update({_id: req.body.id}, {$set: {likeArr: req.body.likearr}}, function(error, infos){
 			if(error){
