@@ -5453,7 +5453,6 @@ var AppService = (function () {
         navigator.geolocation.getCurrentPosition(function (position) {
             latitude = position.coords.latitude;
             longitude = position.coords.longitude;
-            debugger;
             return { 'location': { 'latitude': latitude, 'longitude': longitude } };
         });
     };
