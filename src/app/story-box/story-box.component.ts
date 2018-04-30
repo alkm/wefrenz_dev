@@ -1,4 +1,4 @@
-import { Component, HostListener, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { Component, HostListener, ElementRef, Input, ViewChild, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationError, NavigationCancel, RoutesRecognized } from "@angular/router";
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UtilityService } from 'app/services/utility/utility.service';
@@ -16,6 +16,7 @@ import { CheckinComponent } from '../checkin/checkin.component';
 })
 export class StoryBoxComponent implements OnInit {
 
+	@Input('action') action;
 	@ViewChild('storyBox') storyBox: ElementRef;
 	@ViewChild('storyFeed') storyFeed: ElementRef;
 	@ViewChild('postedPicModal') postedPicModal;
@@ -42,6 +43,7 @@ export class StoryBoxComponent implements OnInit {
 	private txtDeco: string = 'none';
 	private fontStyle = 'normal'
 	private isSmileyAdded: boolean = false;
+	private isShowTextStyling: boolean = false;
 	private storyContent:string = '';
 	private imageUploadForm: any;
   	private imageGroup: any;
@@ -65,6 +67,7 @@ export class StoryBoxComponent implements OnInit {
   	private postId: string = '';
   	private timer: any;
   	private feedLength: number = 0;
+  	private isComment: boolean = false;
 
 
 	constructor(private checkinComponent: CheckinComponent, private router: Router, private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private friendsService: FriendsService) {
@@ -97,7 +100,6 @@ export class StoryBoxComponent implements OnInit {
     	this.videoGroup = new FormGroup({
         	file: new FormControl()
       	});
-      	this.getAllConfirmedFriends();
       	router.events.forEach((event) => {
 	    	if(event instanceof NavigationStart) {
 	    		clearInterval(this.timer);
@@ -106,12 +108,19 @@ export class StoryBoxComponent implements OnInit {
 	}
 	  
 	ngOnInit() {
-
+		if(this.action){
+	  		if(this.action === 'comment'){
+	  			this.isComment = true;
+	  		}else{
+	  			this.getAllConfirmedFriends();
+	  		}
+	  	}
 	}
 	@HostListener('document:click', ['$event']) clickedOutside($event){
 		this.isShowFontFamily = false;
 		this.isShowFontSize = false;
 		this.isEmotionsHighLight = false;
+		this.isShowTextStyling = false;
 	}
 	private clickedInside($event: Event){
 	    $event.preventDefault();
@@ -127,6 +136,15 @@ export class StoryBoxComponent implements OnInit {
 			this.isShowFontFamily = true;
 		}else{
 			this.isShowFontFamily = false;
+		}
+	}
+
+	private toggleTextStyling(event){
+		this.isEmotionsHighLight = false;
+		if(this.isShowTextStyling){
+			this.isShowTextStyling = false;
+		}else{
+			this.isShowTextStyling = true;
 		}
 	}
 
@@ -181,6 +199,7 @@ export class StoryBoxComponent implements OnInit {
 	private showEmotions(event){
 		this.isShowFontFamily = false;
 		this.isShowFontSize = false;
+		this.isShowTextStyling = false;
 		if(this.isEmotionsHighLight){
 			this.isEmotionsHighLight = false;
 		}else{

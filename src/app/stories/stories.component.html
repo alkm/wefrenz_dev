@@ -25,7 +25,7 @@
 		[ngStyle]="{ 'max-height': ' ' + screenHeight + 'px'}">
 			<div class="story-content">
 				<ng-template [ngIf]="isStories">
-					<app-story-box></app-story-box>
+					<app-story-box [action]="action"></app-story-box>
 				</ng-template>	
 				<ng-template [ngIf]="isBlog">
 					<app-music-player></app-music-player>
