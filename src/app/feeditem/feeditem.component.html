@@ -120,5 +120,11 @@
   			<span>Love</span>
 		</ng-template>
 	</div>
-	<div class="pull-left"><i class="fa fa-comment"></i><span>Comment</span></div>
+	<div class="pull-left cursor-pointer blue-fonts" (click)="commentClick($event)"><i class="fa fa-comment"></i><span>Comment</span>
+	</div>
+</div>
+<div class="pull-left colw100 inline-block">
+	<ng-template [ngIf]="addComment">
+		<app-story-box [action]="action"></app-story-box>
+	</ng-template>	
 </div>

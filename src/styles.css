@@ -484,6 +484,102 @@ i.fa-3x{
 	height: 150px !important;
 	margin-top: 10px;
 }
+.color-picker-icon{
+	border: 1px solid #2b90d9;
+}
+.color-picker-icon input{
+    border: 2px solid #d2d2d2;
+    outline: none;
+    height: 15px;
+    width: 15px;
+    color: transparent;
+}
+.color-picker-icon:hover{
+	color: transparent !important;
+}
+.font-items{
+	margin: 24px -8px;
+    font-size: 11px;
+    max-height: 100px;
+    overflow-y: auto;
+}
+.font-family-btn, .text-style-btn{
+    border: 1px solid #2b90d9;
+    font-size: 13px;
+    width: 17px;
+    height: 17px;
+    margin: 0px 5px;
+}
+.text-style-btn:hover{
+	border: 1px solid red;
+}
+.text-style-btn:hover i{
+	color: red;
+}
+.up-img-btn, .up-mus-btn, .up-vid-btn{
+    border: 1px solid #2b90d9;
+    font-size: 11px;
+    width: 17px;
+    height: 17px;
+    margin: 0px 0px 0px 5px;
+}
+.font-size-btn{
+    border: 1px solid #2b90d9;
+    font-size:11px;
+    width: 32px;
+    height: 17px;
+}
+.font-family-btn i{
+	margin: 1px 2px;
+    position: absolute;
+}
+.text-style-btn{
+	margin-right: 0px !important;
+}
+.text-style-btn .fa-edit{
+    font-size: 12px;
+    top: -1px;
+    position: relative;
+    right: -2px;
+}
+.font-family-btn, .font-size-btn{margin-top: 5px;}
+.font-family-btn:hover, .font-size-btn:hover, .font-bold-btn:hover,
+.font-ul-btn:hover, .font-italic-btn:hover, .smiley-btn:hover,
+.up-img-btn:hover, .up-mus-btn:hover, .up-vid-btn:hover{
+	border: 1px solid red;
+}
+.font-bold-btn:hover span, .font-ul-btn:hover span, .font-italic-btn:hover span, .smiley-btn:hover i,
+.up-img-btn:hover i, .up-mus-btn:hover i, .up-vid-btn:hover i{
+	color: red;
+}
+.font-family-btn:hover i, .font-size-btn:hover span{
+	color: red !important;
+}
+.font-bold-btn, .font-ul-btn, .font-italic-btn, .smiley-btn{
+	border: 1px solid #2b90d9;
+    font-size: 11px;
+    width: 17px;
+    height: 17px;
+    margin: 0px 0px 0px 5px;
+    font-weight: bold;
+}
+.color-picker .arrow-right{
+	top: 5px !important;
+}
+.high-light{
+    border: 1px solid red;
+}
+.high-light *{
+    color: red;
+}
+.emo-list .list-item{
+    width: 25px !important;
+    margin: 2px 0px;
+}
+.emo-list{
+    width: 102px !important;
+    margin: 8px -8px;
+}
 /*
 .modal{
 	width: 90% !important;

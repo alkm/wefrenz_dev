@@ -18,8 +18,10 @@ export class FeeditemComponent implements OnInit {
 	private isMyFeed: boolean = false;
   private likeCount: number = 0;
   private loveCount: number = 0;
-  private alreadyLiked = false;
-  private alreadyLoved = false;
+  private alreadyLiked: boolean = false;
+  private alreadyLoved: boolean = false;
+  private addComment: boolean = false;
+  private action:string = 'comment';
 	//private feedMoment: moment.Moment;
 	private feedMoment: any;
   	constructor(private feedService: FeedService) { }
@@ -111,6 +113,15 @@ export class FeeditemComponent implements OnInit {
       this.loveCount = loveArr.length;
       let postObj = {'id': this.item._id, 'lovearr': loveArr};
       this.feedService.updateLoveFeedChannel(postObj).subscribe(data => this.afterUpdateLoveFeedChannel(data));
+    }
+
+    private commentClick($event){
+      if(this.addComment){
+        this.addComment = false;  
+      }else{
+        this.addComment = true;
+      }
+      
     }
 
     private afterUpdateLikeFeedChannel(result) {

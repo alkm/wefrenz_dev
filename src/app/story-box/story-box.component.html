@@ -1,6 +1,9 @@
-<div class="inline-block colw100 story-feed">
-	<div class="profile-pic no-padding pull-left contain-bg" [ngStyle]="{ 'background-image': 'url(' + profilePic + ')'}">
-	</div>
+<div class="inline-block colw100 story-feed" [ngClass]="{'comment-box': isComment === true}">
+	<div *ngIf="!isComment; then profilePicBox"></div>
+	<ng-template #profilePicBox>
+		<div class="profile-pic no-padding pull-left contain-bg" [ngStyle]="{ 'background-image': 'url(' + profilePic + ')'}">
+		</div>
+	</ng-template>
 	<div name="story" #storyBox class="story-box colw100 inline-block no-outline auto-overflow pull-left" contenteditable="true" spellcheck="true" role="textbox" aria-multiline="true" data-placeholder-default="What’s happening?" aria-autocomplete="list" aria-expanded="false" [style.color]="color" [style.font-family]="fontFamily" [style.font-size]="fontSize" [style.font-weight]="fontWeight" [style.text-decoration]="txtDeco" [style.font-style]="fontStyle"  [innerHTML]="storyContent" 
 	(keyup)="onStoryContentChange($event)" (keydown)="onStoryContentChanged($event.keyCode)">
 	</div>
@@ -8,55 +11,64 @@
 		<div class="pull-left color-picker-icon">
 			<input [colorPicker]="color" (colorPickerChange)="color=$event; colorPickerChange($event);" [style.background]="color" class="cursor-pointer"/>
 		</div>
-		<div class="pull-left font-family-btn" (click)="toggleFontFamily($event); clickedInside($event);">
-			<div>
-				<i class="fa fa-font fa-2x blue-fonts cursor-pointer"></i>
+		<div class="pull-left text-style-btn blue-fonts cursor-pointer" (click)="toggleTextStyling($event); clickedInside($event);">
+			<i class="fa fa-edit"></i>
+		</div>
+		<div *ngIf="isShowTextStyling; then textStyling"></div>
+		<ng-template #textStyling>
+			<div class="list-items pull-left text-styles">
+				<div class="arrow-up white-bg"></div>
+				<div class="pull-left font-bold-btn blue-fonts cursor-pointer text-center" [class.high-light]="isBoldBtnHighLight" (click)="applyBold($event); clickedInside($event);">
+					<span>B</span>
+				</div>
+				<div class="pull-left font-ul-btn blue-fonts cursor-pointer text-center" [class.high-light]="isULBtnHighLight" (click)="applyUnderline($event); clickedInside($event);">
+					<span>U</span>
+				</div>
+				<div class="pull-left font-italic-btn blue-fonts cursor-pointer text-center" [class.high-light]="isIBtnHighLight"  (click)="applyItalic($event);clickedInside($event);">
+					<span>I</span>
+				</div>
+				<div class="pull-left font-family-btn" (click)="toggleFontFamily($event); clickedInside($event);">
+					<div>
+						<i class="fa fa-font blue-fonts cursor-pointer"></i>
+					</div>
+					<div *ngIf="isShowFontFamily; then fontFamilies"></div>
+					<ng-template #fontFamilies>
+						<div class="list-items font-items pull-left">
+							<div class="arrow-up white-bg"></div>
+							<div class="cursor-pointer list-item" (click)="applyFontFamily($event, 'Arial')">Arial</div>
+							<div class="cursor-pointer list-item" (click)="applyFontFamily($event, 'Times New Roman')">Times New Roman</div>
+							<div class="cursor-pointer list-item" (click)="applyFontFamily($event, 'Courier New')">Courier New</div>
+						</div>
+					</ng-template>
+				</div>
+				<div class="pull-left font-size-btn" (click)="clickedInside($event)">
+					<div class="blue-fonts cursor-pointer text-center" (click)="toggleFontSize($event)"><span>{{fontSize}}</span></div>
+					<div *ngIf="isShowFontSize; then fontSizes"></div>
+					<ng-template #fontSizes>
+						<div class="list-items font-sizes pull-left">
+							<div class="arrow-up white-bg"></div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 9)">9</div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 10)">10</div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 11)">11</div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 12)">12</div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 13)">13</div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 14)">14</div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 15)">15</div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 16)">16</div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 17)">17</div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 18)">18</div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 19)">19</div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 20)">20</div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 21)">21</div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 22)">22</div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 23)">23</div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 24)">24</div>
+							<div class="cursor-pointer list-item" (click)="applyFontSize($event, 25)">25</div>
+						</div>
+					</ng-template>
+				</div>
 			</div>
-			<div *ngIf="isShowFontFamily; then fontFamilies"></div>
-			<ng-template #fontFamilies>
-				<div class="list-items font-items pull-left">
-					<div class="arrow-up white-bg"></div>
-					<div class="cursor-pointer list-item" (click)="applyFontFamily($event, 'Arial')">Arial</div>
-					<div class="cursor-pointer list-item" (click)="applyFontFamily($event, 'Times New Roman')">Times New Roman</div>
-					<div class="cursor-pointer list-item" (click)="applyFontFamily($event, 'Courier New')">Courier New</div>
-				</div>
-			</ng-template>
-		</div>
-		<div class="pull-left font-size-btn" (click)="clickedInside($event)">
-			<div class="blue-fonts cursor-pointer text-center" (click)="toggleFontSize($event)"><span>{{fontSize}}</span></div>
-			<div *ngIf="isShowFontSize; then fontSizes"></div>
-			<ng-template #fontSizes>
-				<div class="list-items font-items pull-left">
-					<div class="arrow-up white-bg"></div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 9)">9</div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 10)">10</div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 11)">11</div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 12)">12</div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 13)">13</div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 14)">14</div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 15)">15</div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 16)">16</div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 17)">17</div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 18)">18</div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 19)">19</div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 20)">20</div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 21)">21</div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 22)">22</div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 23)">23</div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 24)">24</div>
-					<div class="cursor-pointer list-item" (click)="applyFontSize($event, 25)">25</div>
-				</div>
-			</ng-template>
-		</div>
-		<div class="pull-left font-bold-btn blue-fonts cursor-pointer text-center" [class.high-light]="isBoldBtnHighLight" (click)="applyBold($event)">
-			<span>B</span>
-		</div>
-		<div class="pull-left font-ul-btn blue-fonts cursor-pointer text-center" [class.high-light]="isULBtnHighLight" (click)="applyUnderline($event)">
-			<span>U</span>
-		</div>
-		<div class="pull-left font-italic-btn blue-fonts cursor-pointer text-center" [class.high-light]="isIBtnHighLight"  (click)="applyItalic($event)">
-			<span>I</span>
-		</div>
+		</ng-template>
 		<div class="pull-left smiley-btn blue-fonts cursor-pointer text-center" [class.high-light]="isEmotionsHighLight"  (click)="showEmotions($event);clickedInside($event);">
 			<div>
 				<i class="fa fa-smile-o"></i>
@@ -127,21 +139,41 @@
 		<div class="checkin-btn pull-left up-vid-btn blue-fonts cursor-pointer text-center" (click)="checkIn($event)">
 				<i class="fa fa-map-marker" aria-hidden="true"></i>
 		</div>
-		<div class="pull-left post-btn blue-fonts cursor-pointer text-center">
-			<div *ngIf="isAddPost; then addPost else updatePost"></div>
-			<ng-template #addPost>
-				<button class="btn btn-primary" id="postBtn" type="button" (click)="postStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
-					<span>Post</span>
-					<i class="fa fa-share-square-o" aria-hidden="true"></i>
-				</button>
-			</ng-template>
-			<ng-template #updatePost>
-				<button class="btn btn-primary" id="postBtn" type="button" (click)="updateStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
-					<span>Update</span>
-					<i class="fa fa-share-square-o" aria-hidden="true"></i>
-				</button>
-			</ng-template>
-		</div>
+		<div *ngIf="!isComment; then postBtn  else addBtn"></div>
+		<ng-template #postBtn>
+			<div class="pull-left post-btn blue-fonts cursor-pointer text-center">
+				<div *ngIf="isAddPost; then addPost else updatePost"></div>
+				<ng-template #addPost>
+					<button class="btn btn-primary" id="postBtn" type="button" (click)="postStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
+						<span>Post</span>
+						<i class="fa fa-share-square-o" aria-hidden="true"></i>
+					</button>
+				</ng-template>
+				<ng-template #updatePost>
+					<button class="btn btn-primary" id="postBtn" type="button" (click)="updateStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
+						<span>Update</span>
+						<i class="fa fa-share-square-o" aria-hidden="true"></i>
+					</button>
+				</ng-template>
+			</div>
+		</ng-template>
+		<ng-template #addBtn>
+			<div class="pull-left post-btn blue-fonts cursor-pointer text-center">
+				<div *ngIf="isAddComment; then addComment else updateComment"></div>
+				<ng-template #addComment>
+					<button class="btn btn-primary" id="postBtn" type="button" (click)="postStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
+						<span>Add</span>
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</button>
+				</ng-template>
+				<ng-template #updateComment>
+					<button class="btn btn-primary" id="postBtn" type="button" (click)="updateStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
+						<span>Add</span>
+						<i class="fa fa-edit" aria-hidden="true"></i>
+					</button>
+				</ng-template>
+			</div>
+		</ng-template>
 	</div>
 	<!--<div class="action-bar">
 		<div class="pull-left">
@@ -187,10 +219,14 @@
         </form>
     </div>
 </div>
-<div class="inline-block colw100 story-feed" #storyFeed>
-	<app-feeditem *ngFor="let item of feedItem" [item]="item" [userId]="userId" (refreshFeed)="refreshFeedItem($event)" 
-	(editCurrentFeedItem)= "editCurrentFeedItem($event)"></app-feeditem>
-</div>
+
+<div *ngIf="!isComment then storyFeedItem"></div>
+<ng-template #storyFeedItem>
+	<div class="inline-block colw100 story-feed" #storyFeed>
+		<app-feeditem *ngFor="let item of feedItem" [item]="item" [userId]="userId" (refreshFeed)="refreshFeedItem($event)" 
+		(editCurrentFeedItem)= "editCurrentFeedItem($event)"></app-feeditem>
+	</div>
+</ng-template>
 
 
 <app-modal [modalTitle]="'Post Preview'" [blocking]='false' [modalId]='modalId' #postedPicModal id="storyModal">
