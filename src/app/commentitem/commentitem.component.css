@@ -1,0 +1,6 @@
+.comment-controls .fa-thumbs-up, .comment-controls .fa-heart, .comment-controls .fa-comment{
+    margin: 0px 3px 0px 0px;
+}
+ .comment-controls .fa-heart, .comment-controls .fa-comment{
+ 	margin: 0px 3px;
+ }

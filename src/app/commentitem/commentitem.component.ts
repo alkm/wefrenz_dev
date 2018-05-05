@@ -1,61 +1,60 @@
 import { Component, OnInit, Input, HostListener, EventEmitter, Output } from '@angular/core';
 //import * as moment from 'moment';
-import { FeedService } from 'app/services/data/feed.service';
 import { CommentService } from 'app/services/data/comment.service';
 import timeago from 'timeago.js';
 
 @Component({
-  selector: 'app-feeditem',
-  templateUrl: './feeditem.component.html',
-  styleUrls: ['./feeditem.component.css'],
+  selector: 'app-commentitem',
+  templateUrl: './commentitem.component.html',
+  styleUrls: ['./commentitem.component.css'],
   providers: [CommentService]
 })
-export class FeeditemComponent implements OnInit {
+export class CommentitemComponent implements OnInit {
 
-	@Input('item') item;
-	@Input('userId') userId;
+	@Input('commentItem') commentItem;
 	@Output() refreshFeed: EventEmitter<any> = new EventEmitter();
-  @Output() editCurrentFeedItem: EventEmitter<any> = new EventEmitter();
-	private isEditFeedItem: boolean = false;
-	private isMyFeed: boolean = false;
-  private likeCount: number = 0;
-  private loveCount: number = 0;
-  private alreadyLiked: boolean = false;
-  private alreadyLoved: boolean = false;
-  private addComment: boolean = false;
-  private action:string = 'comment';
-  private isCommentsAdded: boolean = false;
+  	@Output() editCurrentFeedItem: EventEmitter<any> = new EventEmitter();
+  	private isEditFeedItem: boolean = false;
+  	private isMyComment: boolean = false;
+  	private likeCount: number = 0;
+  	private loveCount: number = 0;
+  	private alreadyLiked: boolean = false;
+  	private alreadyLoved: boolean = false;
+  	private addComment: boolean = false;
+  	private action:string = 'comment';
+  	private isCommentsAdded: boolean = false;
+  	private userId: string = '';
 	//private feedMoment: moment.Moment;
-  private feedItemCommentArr = [];
-	private feedMoment: any;
-  	constructor(private feedService: FeedService, private commentService: CommentService) { }
+  	private feedItemCommentArr = [];
+	private commentMoment: any;
+  	constructor(private commentService: CommentService) { }
 
   	ngOnInit() {
-  		if(this.item.userid === this.userId){
-  			this.isMyFeed = true;
+  		if(this.commentItem.commentfrom === this.commentItem.commentto){
+  			this.isMyComment = true;
   		}
 
-      this.feedActionCheck();
+      	this.feedActionCheck();
   		let timeagoInstance = timeago();
-		  this.feedMoment = timeagoInstance.format(this.item.created);
-  		//this.feedMoment = moment(this.item.created);
-      this.likeCount = this.item.likeArr.length;
-      this.loveCount = this.item.loveArr.length;
-      this.fetchCommentsForCurrentFeedItem();
+		this.commentMoment = timeagoInstance.format(this.commentItem.created);
+  		//this.feedMoment = moment(this.commentItem.created);
+      	this.likeCount = this.commentItem.likeArr.length;
+      	this.loveCount = this.commentItem.loveArr.length;
+      	//this.fetchCommentsForCurrentCommentItem();
   	}
   	@HostListener('document:click', ['$event']) clickedOutside($event){
   		this.isEditFeedItem = false;
 	 }
 
     private feedActionCheck(){
-      let i = this.item.likeArr.indexOf(this.userId);
+      let i = this.commentItem.likeArr.indexOf(this.userId);
       if(i === -1){
         this.alreadyLiked = false
       }else{
         this.alreadyLiked = true;
       }
 
-      let j = this.item.loveArr.indexOf(this.userId);
+      let j = this.commentItem.loveArr.indexOf(this.userId);
       if(j === -1){
         this.alreadyLoved = false
       }else{
@@ -63,7 +62,7 @@ export class FeeditemComponent implements OnInit {
       }
     }
   	private editFeedItem(event){
-      this.editCurrentFeedItem.emit({item: this.item});
+      this.editCurrentFeedItem.emit({commentItem: this.commentItem});
   	}
 
   	private clickedInside($event: Event){
@@ -76,8 +75,8 @@ export class FeeditemComponent implements OnInit {
 	    $event.stopPropagation();  // <- that will stop propagation on lower layers
   	}
   	private deleteFeedItem(){
-  		 let postObj = {'id': this.item._id};
-  		 this.feedService.deleteFeedItem(postObj).subscribe(data => this.afterFeedItemDeleted(data));
+  		 let postObj = {'id': this.commentItem._id};
+  		 //this.feedService.deleteFeedItem(postObj).subscribe(data => this.afterFeedItemDeleted(data));
   	}
 
   	private afterFeedItemDeleted(result) {
@@ -89,8 +88,8 @@ export class FeeditemComponent implements OnInit {
   	}
 
     private likeClick($event){
-      let id = this.userId;
-      let likeArr = this.item.likeArr;
+      let id = this.commentItem.userId;
+      let likeArr = this.commentItem.likeArr;
       let i = likeArr.indexOf(id);
       if(i === -1){
         likeArr.push(id);
@@ -100,13 +99,13 @@ export class FeeditemComponent implements OnInit {
         this.alreadyLiked = false;
       }
       this.likeCount = likeArr.length;
-      let postObj = {'id': this.item._id, 'likearr': likeArr};
-      this.feedService.updateLikeFeedChannel(postObj).subscribe(data => this.afterUpdateLikeFeedChannel(data));
+      let postObj = {'id': this.commentItem._id, 'likearr': likeArr};
+      //this.feedService.updateLikeFeedChannel(postObj).subscribe(data => this.afterUpdateLikeFeedChannel(data));
     }
 
     private loveClick($event){
       let id = this.userId;
-      let loveArr = this.item.loveArr;
+      let loveArr = this.commentItem.loveArr;
       let i = loveArr.indexOf(id);
       if(i === -1){
         loveArr.push(id);
@@ -116,8 +115,8 @@ export class FeeditemComponent implements OnInit {
         this.alreadyLoved = false;
       }
       this.loveCount = loveArr.length;
-      let postObj = {'id': this.item._id, 'lovearr': loveArr};
-      this.feedService.updateLoveFeedChannel(postObj).subscribe(data => this.afterUpdateLoveFeedChannel(data));
+      let postObj = {'id': this.commentItem._id, 'lovearr': loveArr};
+      //this.feedService.updateLoveFeedChannel(postObj).subscribe(data => this.afterUpdateLoveFeedChannel(data));
     }
 
     private commentClick($event){
@@ -145,9 +144,9 @@ export class FeeditemComponent implements OnInit {
       }
     }
 
-    private fetchCommentsForCurrentFeedItem(){
-      let postObj = {'feeditemid': this.item._id};
-      this.commentService.fetchCommentsForCurrentFeedItem(postObj).subscribe(data => this.afterFetchedCommentsForCurrentFeedItem(data));
+    private fetchCommentsForCurrentCommentItem(){
+      let postObj = {'feeditemid': this.commentItem._id};
+    //  this.commentService.fetchCommentsForCurrentCommentItem(postObj).subscribe(data => this.afterFetchedCommentsForCurrentFeedItem(data));
     }
 
     private afterFetchedCommentsForCurrentFeedItem(result) {

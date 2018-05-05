@@ -2,6 +2,7 @@ var feedInfo = require('./model/feedinfo');
 module.exports = function(app) {
 	// api ---------------------------------------------------------------------
 	app.post('/api/savePost/', function(req, res) {
+		var dateNow = new Date();
 		if(req.body.id === undefined){
 			feedInfo.create({
 				userid : req.body.username,
@@ -13,7 +14,8 @@ module.exports = function(app) {
 				description : req.body.description,
 				isReady : req.body.isReady,
 				isNotified : req.body.isNotified,
-				coolArr : [],
+				likeArr : [],
+				loveArr : [],
 				commentArr : [],
 				filePath : req.body.filePath,
 				poster : req.body.poster,
@@ -24,7 +26,7 @@ module.exports = function(app) {
 				textDecoration : req.body.textDecoration,
 				fontWeight : req.body.fontWeight,
 				addWatcherArr : req.body.addWatcherArr,
-				done: false
+				created: dateNow
 			}, function(err, info) {
 				if (err){
 					res.json({"status": "failure", "message": "This post could not be saved.", "err": err});
@@ -43,8 +45,6 @@ module.exports = function(app) {
 				description : req.body.description,
 				isReady : req.body.isReady,
 				isNotified : req.body.isNotified,
-				coolArr : [],
-				commentArr : [],
 				filePath : req.body.filePath,
 				poster : req.body.poster,
 				colorInfo : req.body.colorInfo,
@@ -54,7 +54,7 @@ module.exports = function(app) {
 				textDecoration : req.body.textDecoration,
 				fontWeight : req.body.fontWeight,
 				addWatcherArr : req.body.addWatcherArr,
-				done: false}
+				created: dateNow}
 			}, function(err, info){
 				if (err){
 					res.json({"status": "failure", "message": "This post could not be saved.", "err": err});
@@ -116,9 +116,19 @@ module.exports = function(app) {
 		});
 	});
 	
-	app.post('/api/updateCoolFeedChannel/', function(req, res) {	
+	app.post('/api/updateLikeFeedChannel/', function(req, res) {	
 		console.log(req.body.id, req.body.likearr);
-		feedInfo.update({_id: req.body.id}, {$set: {coolArr: req.body.likearr}}, function(error, infos){
+		feedInfo.update({_id: req.body.id}, {$set: {likeArr: req.body.likearr}}, function(error, infos){
+			if(error){
+				console.log("Error"+error);
+			}else{
+				res.send("updated");
+			}
+		});
+	});
+	app.post('/api/updateLoveFeedChannel/', function(req, res) {	
+		console.log(req.body.id, req.body.lovearr);
+		feedInfo.update({_id: req.body.id}, {$set: {loveArr: req.body.lovearr}}, function(error, infos){
 			if(error){
 				console.log("Error"+error);
 			}else{

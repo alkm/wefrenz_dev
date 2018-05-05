@@ -265,6 +265,8 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__story_box_story_box_component__ = __webpack_require__("../../../../../src/app/story-box/story-box.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__feeditem_feeditem_component__ = __webpack_require__("../../../../../src/app/feeditem/feeditem.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__checkin_checkin_component__ = __webpack_require__("../../../../../src/app/checkin/checkin.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__comment_box_comment_box_component__ = __webpack_require__("../../../../../src/app/comment-box/comment-box.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__commentitem_commentitem_component__ = __webpack_require__("../../../../../src/app/commentitem/commentitem.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -311,6 +313,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 ;
+
+
 
 
 
@@ -386,7 +390,9 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_55__stories_stories_component__["a" /* StoriesComponent */],
             __WEBPACK_IMPORTED_MODULE_56__story_box_story_box_component__["a" /* StoryBoxComponent */],
             __WEBPACK_IMPORTED_MODULE_57__feeditem_feeditem_component__["a" /* FeeditemComponent */],
-            __WEBPACK_IMPORTED_MODULE_58__checkin_checkin_component__["a" /* CheckinComponent */]
+            __WEBPACK_IMPORTED_MODULE_58__checkin_checkin_component__["a" /* CheckinComponent */],
+            __WEBPACK_IMPORTED_MODULE_59__comment_box_comment_box_component__["a" /* CommentBoxComponent */],
+            __WEBPACK_IMPORTED_MODULE_60__commentitem_commentitem_component__["a" /* CommentitemComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__agm_core__["a" /* AgmCoreModule */].forRoot({
@@ -1457,6 +1463,294 @@ var _a, _b, _c, _d;
 
 /***/ }),
 
+/***/ "../../../../../src/app/comment-box/comment-box.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".comment-box{\n\theight: 60px;\n\tpadding: 3px;\n\tborder: 1px solid #2b90d9;\t\n\twidth: 280px;\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/comment-box/comment-box.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div name=\"story\" #commentBox class=\"comment-box colw100 inline-block no-outline auto-overflow pull-left\" contenteditable=\"true\" spellcheck=\"true\" role=\"textbox\" aria-multiline=\"true\" data-placeholder-default=\"Add Comment\" aria-autocomplete=\"list\" aria-expanded=\"false\" [style.color]=\"color\" [style.font-family]=\"fontFamily\" [style.font-size]=\"fontSize\" [style.font-weight]=\"fontWeight\" [style.text-decoration]=\"txtDeco\" [style.font-style]=\"fontStyle\"  [innerHTML]=\"storyContent\" \n\t(keyup)=\"onStoryContentChange($event)\" (keydown)=\"onStoryContentChanged($event.keyCode)\"></div>\n<div class=\"control-bar inline-block\">\n\t<div class=\"pull-left color-picker-icon\">\n\t\t<input [colorPicker]=\"color\" (colorPickerChange)=\"color=$event; colorPickerChange($event);\" [style.background]=\"color\" class=\"cursor-pointer\"/>\n\t</div>\n\t<div class=\"pull-left font-family-btn\" (click)=\"toggleFontFamily($event); clickedInside($event);\">\n\t\t<div>\n\t\t\t<i class=\"fa fa-font fa-2x blue-fonts cursor-pointer\"></i>\n\t\t</div>\n\t\t<div *ngIf=\"isShowFontFamily; then fontFamilies\"></div>\n\t\t<ng-template #fontFamilies>\n\t\t\t<div class=\"list-items font-items pull-left\">\n\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Arial')\">Arial</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Times New Roman')\">Times New Roman</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Courier New')\">Courier New</div>\n\t\t\t</div>\n\t\t</ng-template>\n\t</div>\n\t<div class=\"pull-left font-size-btn\" (click)=\"clickedInside($event)\">\n\t\t<div class=\"blue-fonts cursor-pointer text-center\" (click)=\"toggleFontSize($event)\"><span>{{fontSize}}</span></div>\n\t\t<div *ngIf=\"isShowFontSize; then fontSizes\"></div>\n\t\t<ng-template #fontSizes>\n\t\t\t<div class=\"list-items font-items pull-left\">\n\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 9)\">9</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 10)\">10</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 11)\">11</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 12)\">12</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 13)\">13</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 14)\">14</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 15)\">15</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 16)\">16</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 17)\">17</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 18)\">18</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 19)\">19</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 20)\">20</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 21)\">21</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 22)\">22</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 23)\">23</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 24)\">24</div>\n\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 25)\">25</div>\n\t\t\t</div>\n\t\t</ng-template>\n\t</div>\n\t<div class=\"pull-left font-bold-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isBoldBtnHighLight\" (click)=\"applyBold($event)\">\n\t\t<span>B</span>\n\t</div>\n\t<div class=\"pull-left font-ul-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isULBtnHighLight\" (click)=\"applyUnderline($event)\">\n\t\t<span>U</span>\n\t</div>\n\t<div class=\"pull-left font-italic-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isIBtnHighLight\"  (click)=\"applyItalic($event)\">\n\t\t<span>I</span>\n\t</div>\n\t<div class=\"pull-left smiley-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isEmotionsHighLight\"  (click)=\"showEmotions($event);clickedInside($event);\">\n\t\t<div>\n\t\t\t<i class=\"fa fa-smile-o\"></i>\n\t\t</div>\n\t\t<div *ngIf=\"isEmotionsHighLight; then emotions\"></div>\n\t\t<ng-template #emotions>\n\t\t\t<div class=\"list-items font-items pull-left emo-list\">\n\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':)')\">\n\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion0-smile.gif\"/></span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':(')\">\n\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion1-sadsmile.gif\"/></span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':D')\">\n\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion2-bigsmile.gif\"/></span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '8=)')\">\n\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion3-cool.gif\"/></span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':o')\">\n\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion4-surprised.gif\"/></span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ';)')\">\n\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion5-wink.gif\"/></span>\n\t\t\t\t</div>\n\n\n\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ';(')\">\n\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion6-crying.gif\"/></span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '(:|')\">\n\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion7-sweating.gif\"/></span>\n\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':|')\">\n\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion8-speechless.gif\"/></span>\n\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':*')\">\n\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion9-kiss.gif\"/></span>\n\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, 'emotion10-tongueout')\">\n\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion10-tongueout.gif\"/></span>\n\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':$')\">\n\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion11-blush.gif\"/></span>\n\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':^)')\">\n\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion12-wondering.gif\"/></span>\n\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '|-)')\">\n\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion13-sleepy.gif\"/></span>\n\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '|(')\">\n\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion14-dull.gif\"/></span>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</ng-template>\n\t</div>\n\t<div class=\"pull-left up-img-btn blue-fonts cursor-pointer text-center\" (click)= \"imageInput.value = ''; imageInput.click();\">\n\t\t<i class=\"fa fa-picture-o\" aria-hidden=\"true\"></i>\n\t</div>\n\t<div class=\"pull-left up-mus-btn blue-fonts cursor-pointer text-center\" (click)= \"musicInput.value = ''; musicInput.click();\">\n\t\t<i class=\"fa fa-music\" aria-hidden=\"true\"></i>\n\t</div>\n\t<div class=\"pull-left up-vid-btn blue-fonts cursor-pointer text-center\" (click)= \"videoInput.value = ''; videoInput.click();\">\n\t\t<i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i>\n\t</div>\n\t<div class=\"checkin-btn pull-left up-vid-btn blue-fonts cursor-pointer text-center\" (click)=\"checkIn($event)\">\n\t\t\t<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>\n\t</div>\n\t<div class=\"pull-left post-btn blue-fonts cursor-pointer text-center\">\n\t\t<div *ngIf=\"isAddPost; then addPost else updatePost\"></div>\n\t\t<ng-template #addPost>\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"postStory($event)\" [disabled]=\"(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)\">\n\t\t\t\t<span>Post</span>\n\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t</button>\n\t\t</ng-template>\n\t\t<ng-template #updatePost>\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"updateStory($event)\" [disabled]=\"(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)\">\n\t\t\t\t<span>Update</span>\n\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t</button>\n\t\t</ng-template>\n\t</div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/comment-box/comment-box.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommentBoxComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var CommentBoxComponent = (function () {
+    function CommentBoxComponent() {
+    }
+    CommentBoxComponent.prototype.ngOnInit = function () {
+    };
+    return CommentBoxComponent;
+}());
+CommentBoxComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-comment-box',
+        template: __webpack_require__("../../../../../src/app/comment-box/comment-box.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/comment-box/comment-box.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], CommentBoxComponent);
+
+//# sourceMappingURL=comment-box.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/commentitem/commentitem.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".comment-controls .fa-thumbs-up, .comment-controls .fa-heart, .comment-controls .fa-comment{\n    margin: 0px 3px 0px 0px;\n}\n .comment-controls .fa-heart, .comment-controls .fa-comment{\n \tmargin: 0px 3px;\n }", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/commentitem/commentitem.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"isEditCommentItem; then editCommentItemControls\"></div>\n<ng-template #editCommentItemControls>\n\t<div class=\"list-items feed-edit-items font-items pull-right\">\n\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t<div *ngIf=\"isMyComment; then editThisCommentItem else reportThisCommentItem\"></div>\n\t\t<ng-template #editThisCommentItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"editCommentItem($event)\">Edit</div>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"deleteCommentItem();\"><span>Delete</span></div>\n\t\t</ng-template>\n\t\t<ng-template #reportThisCommentItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"moveClick($event)\">Report</div>\n\t\t</ng-template>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"selectClick($event)\">Hide</div>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"defaultClick($event)\">Tag</div>\n\t</div>\n</ng-template>\n<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + commentItem.profilepic + ')'}\">\n</div>\n<div class=\"full-name blue-fonts bold-fonts pull-left\">{{commentItem.fullname}}</div>\n<div class=\"pull-left blue-fonts time-ago\"><span>&nbsp;commented&nbsp;</span>{{commentMoment}}</div>\n<div class=\"pull-right edit-feed hand-cursor\">\n\t<i aria-hidden=\"true\" class=\"fa fa-pencil-square-o blue-fonts\" id=\"editItem\" (click)=\"clickedInside($event);\"></i>\n</div>\n<div *ngIf=\"commentItem.commenttype === 'text'; then textComment\"></div>\n<div *ngIf=\"commentItem.commenttype === 'image'; then imageComment\"></div>\n<div *ngIf=\"commentItem.commenttype === 'music'; then musicComment\"></div>\n<div *ngIf=\"commentItem.commenttype === 'checkin'; then checkinComment\"></div>\n<ng-template #textComment>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.commenttext\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ commentItem.fontWeight +'', \n\t\t\t\t'font-size':' '+ commentItem.fontSize +'', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #imageComment>\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + commentItem.filePath+ ')'}\"></div>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ commentItem.fontWeight +'', \n\t\t\t\t'font-size':' '+ commentItem.fontSize +'', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #checkinComment>\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + commentItem.filePath+ ')'}\"></div>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ commentItem.fontWeight +'', \n\t\t\t\t'font-size':' '+ commentItem.fontSize +'', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #musicComment>\n\t<audio #musicPlayer  preload=\"none\" controls class=\"comment-music-player\">\n        <source src=\"{{commentItem.filePath}}\" type=\"audio/mp3\">\n        <p>Your browser does not support the HTML5 Audio element.</p>\n    </audio>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ commentItem.fontWeight +'', \n\t\t\t\t'font-size':' '+ commentItem.fontSize +'', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n</ng-template>\n\n<div class=\"colw100 comment-controls\">\n\t<div class=\"pull-left blue-fonts inline-block cursor-pointer\" (click)=\"likeClick($event)\"> \n\t\t<div *ngIf=\"alreadyLiked === true; then thumbsDown else thumbsUp\"></div>\n\t\t<ng-template #thumbsUp>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-thumbs-up\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<ng-template #thumbsDown>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-thumbs-down\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<div *ngIf=\"likeCount > 0; then  likeItemsCount else likeItemCount\">\n  \t\t</div>\n  \t\t<ng-template #likeItemsCount>\n  \t\t\t<span>{{likeCount}}</span>\n  \t\t\t<span>Like</span>\n\t\t</ng-template>\n  \t\t<ng-template #likeItemCount>\n  \t\t\t<span>Like</span>\n\t\t</ng-template>\n\t</div>\t\n\t<div class=\"pull-left blue-fonts cursor-pointer\" (click)=\"loveClick($event)\">\n\t\t<div *ngIf=\"alreadyLoved === true; then lovedSymbol else loveSymbol\"></div>\n\t\t<ng-template #lovedSymbol>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-heart red-fonts\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<ng-template #loveSymbol>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-heart blue-fonts\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<div *ngIf=\"loveCount > 0; then  loveItemsCount else loveItemCount\">\n  \t\t</div>\n  \t\t<ng-template #loveItemsCount>\n  \t\t\t<span>{{loveCount}}</span>\n  \t\t\t<span>Love</span>\n\t\t</ng-template>\n  \t\t<ng-template #loveItemCount>\n  \t\t\t<span>Love</span>\n\t\t</ng-template>\n\t</div>\n\t<div class=\"pull-left cursor-pointer blue-fonts\" (click)=\"commentClick($event)\"><i class=\"fa fa-comment\"></i><span>Reply</span>\n\t</div>\n</div>\n<div class=\"pull-left colw100 inline-block\">\n\t<ng-template [ngIf]=\"addComment\">\n\t\t<app-story-box [action]=\"action\" [replyCommentItem]=\"item\"></app-story-box>\n\t</ng-template>\t\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/commentitem/commentitem.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommentitemComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_data_comment_service__ = __webpack_require__("../../../../../src/app/services/data/comment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_timeago_js__ = __webpack_require__("../../../../timeago.js/dist/timeago.min.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_timeago_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_timeago_js__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+//import * as moment from 'moment';
+
+
+var CommentitemComponent = (function () {
+    function CommentitemComponent(commentService) {
+        this.commentService = commentService;
+        this.refreshFeed = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.editCurrentFeedItem = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.isEditFeedItem = false;
+        this.isMyComment = false;
+        this.likeCount = 0;
+        this.loveCount = 0;
+        this.alreadyLiked = false;
+        this.alreadyLoved = false;
+        this.addComment = false;
+        this.action = 'comment';
+        this.isCommentsAdded = false;
+        this.userId = '';
+        //private feedMoment: moment.Moment;
+        this.feedItemCommentArr = [];
+    }
+    CommentitemComponent.prototype.ngOnInit = function () {
+        if (this.commentItem.commentfrom === this.commentItem.commentto) {
+            this.isMyComment = true;
+        }
+        this.feedActionCheck();
+        var timeagoInstance = __WEBPACK_IMPORTED_MODULE_2_timeago_js___default()();
+        this.commentMoment = timeagoInstance.format(this.commentItem.created);
+        //this.feedMoment = moment(this.commentItem.created);
+        this.likeCount = this.commentItem.likeArr.length;
+        this.loveCount = this.commentItem.loveArr.length;
+        //this.fetchCommentsForCurrentCommentItem();
+    };
+    CommentitemComponent.prototype.clickedOutside = function ($event) {
+        this.isEditFeedItem = false;
+    };
+    CommentitemComponent.prototype.feedActionCheck = function () {
+        var i = this.commentItem.likeArr.indexOf(this.userId);
+        if (i === -1) {
+            this.alreadyLiked = false;
+        }
+        else {
+            this.alreadyLiked = true;
+        }
+        var j = this.commentItem.loveArr.indexOf(this.userId);
+        if (j === -1) {
+            this.alreadyLoved = false;
+        }
+        else {
+            this.alreadyLoved = true;
+        }
+    };
+    CommentitemComponent.prototype.editFeedItem = function (event) {
+        this.editCurrentFeedItem.emit({ commentItem: this.commentItem });
+    };
+    CommentitemComponent.prototype.clickedInside = function ($event) {
+        if (this.isEditFeedItem) {
+            this.isEditFeedItem = false;
+        }
+        else {
+            this.isEditFeedItem = true;
+        }
+        $event.preventDefault();
+        $event.stopPropagation(); // <- that will stop propagation on lower layers
+    };
+    CommentitemComponent.prototype.deleteFeedItem = function () {
+        var postObj = { 'id': this.commentItem._id };
+        //this.feedService.deleteFeedItem(postObj).subscribe(data => this.afterFeedItemDeleted(data));
+    };
+    CommentitemComponent.prototype.afterFeedItemDeleted = function (result) {
+        if (result.status === 'failure') {
+            alert(result.message);
+        }
+        else {
+            this.refreshFeed.emit('refresh');
+        }
+    };
+    CommentitemComponent.prototype.likeClick = function ($event) {
+        var id = this.commentItem.userId;
+        var likeArr = this.commentItem.likeArr;
+        var i = likeArr.indexOf(id);
+        if (i === -1) {
+            likeArr.push(id);
+            this.alreadyLiked = true;
+        }
+        else {
+            likeArr.splice(i, 1);
+            this.alreadyLiked = false;
+        }
+        this.likeCount = likeArr.length;
+        var postObj = { 'id': this.commentItem._id, 'likearr': likeArr };
+        //this.feedService.updateLikeFeedChannel(postObj).subscribe(data => this.afterUpdateLikeFeedChannel(data));
+    };
+    CommentitemComponent.prototype.loveClick = function ($event) {
+        var id = this.userId;
+        var loveArr = this.commentItem.loveArr;
+        var i = loveArr.indexOf(id);
+        if (i === -1) {
+            loveArr.push(id);
+            this.alreadyLoved = true;
+        }
+        else {
+            loveArr.splice(i, 1);
+            this.alreadyLoved = false;
+        }
+        this.loveCount = loveArr.length;
+        var postObj = { 'id': this.commentItem._id, 'lovearr': loveArr };
+        //this.feedService.updateLoveFeedChannel(postObj).subscribe(data => this.afterUpdateLoveFeedChannel(data));
+    };
+    CommentitemComponent.prototype.commentClick = function ($event) {
+        if (this.addComment) {
+            this.addComment = false;
+        }
+        else {
+            this.addComment = true;
+        }
+    };
+    CommentitemComponent.prototype.afterUpdateLikeFeedChannel = function (result) {
+        if (result.status === 'failure') {
+            alert(result.message);
+        }
+        else {
+            alert(result.message);
+        }
+    };
+    CommentitemComponent.prototype.afterUpdateLoveFeedChannel = function (result) {
+        if (result.status === 'failure') {
+            alert(result.message);
+        }
+        else {
+            alert(result.message);
+        }
+    };
+    CommentitemComponent.prototype.fetchCommentsForCurrentCommentItem = function () {
+        var postObj = { 'feeditemid': this.commentItem._id };
+        //  this.commentService.fetchCommentsForCurrentCommentItem(postObj).subscribe(data => this.afterFetchedCommentsForCurrentFeedItem(data));
+    };
+    CommentitemComponent.prototype.afterFetchedCommentsForCurrentFeedItem = function (result) {
+        if (result.status === 'failure') {
+            alert(result.message);
+        }
+        else {
+            if (result.length > 0) {
+                this.isCommentsAdded = true;
+                this.feedItemCommentArr = result;
+            }
+        }
+    };
+    return CommentitemComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('commentItem'),
+    __metadata("design:type", Object)
+], CommentitemComponent.prototype, "commentItem", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
+], CommentitemComponent.prototype, "refreshFeed", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
+], CommentitemComponent.prototype, "editCurrentFeedItem", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* HostListener */])('document:click', ['$event']),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], CommentitemComponent.prototype, "clickedOutside", null);
+CommentitemComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-commentitem',
+        template: __webpack_require__("../../../../../src/app/commentitem/commentitem.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/commentitem/commentitem.component.css")],
+        providers: [__WEBPACK_IMPORTED_MODULE_1_app_services_data_comment_service__["a" /* CommentService */]]
+    }),
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_app_services_data_comment_service__["a" /* CommentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_services_data_comment_service__["a" /* CommentService */]) === "function" && _c || Object])
+], CommentitemComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=commentitem.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/control-messages/control-messages.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2139,8 +2433,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".profile-pic{\r\n    margin: -3px 2px;\r\n    width: 45px;\r\n    height: 45px;\r\n    position: absolute;\r\n    left: 5px;\r\n    border-radius: 50%;  \t\r\n}\r\n.feed-controls .fa-thumbs-up, .feed-controls .fa-heart, .feed-controls .fa-comment{\r\n    margin: 0px 3px 0px 0px;\r\n}\r\n .feed-controls .fa-heart, .feed-controls .fa-comment{\r\n \tmargin: 0px 3px;\r\n }\r\n .feed-edit-items .arrow-up{\r\n \tmargin-left: 75px !important;\r\n }\r\n .feed-edit-items{\r\n    position: absolute !important;\r\n    right: 1px !important;\r\n    margin-top: 23px;\r\n    z-index: 1000;\r\n }\r\n .edit-feed:hover{\r\n \tcolor: red;\r\n }\r\n .posted-pic, .feed-music-player{\r\n    display: inline-block;\r\n    background-size: cover !important;\r\n    min-height: 300px;\r\n    width: 100%;\r\n    margin: 5px 0px;\r\n    background: #000;\r\n }\r\n .feed-music-player{\r\n\r\n }\r\n\r\n", ""]);
-
+exports.push([module.i, ".profile-pic{\n    margin: -3px 2px;\n    width: 45px;\n    height: 45px;\n    position: absolute;\n    left: 5px;\n    border-radius: 50%;  \t\n}\n.feed-controls .fa-thumbs-up, .feed-controls .fa-heart, .feed-controls .fa-comment{\n    margin: 0px 3px 0px 0px;\n}\n .feed-controls .fa-heart, .feed-controls .fa-comment{\n \tmargin: 0px 3px;\n }\n .feed-edit-items .arrow-up{\n \tmargin-left: 75px !important;\n }\n .feed-edit-items{\n    position: absolute !important;\n    right: 1px !important;\n    margin-top: 23px;\n    z-index: 1000;\n }\n .edit-feed:hover{\n \tcolor: red;\n }\n .posted-pic, .feed-music-player{\n    display: inline-block;\n    background-size: cover !important;\n    min-height: 300px;\n    width: 100%;\n    margin: 5px 0px;\n    background: #000;\n }\n .feed-music-player{\n\n }\n .feed-controls .pull-left{\n    margin-right: 10px;\n }\n.comment-box{\n    width: 100%;\n    display: inline-block;\n}\n.comment-box-items{\n    display: inline-table;\n    border: 1px solid #2b90d9;\n    width: 280px;\n    border-radius: 3px;\n    padding: 3px;\n}\n", ""]);
 // exports
 
 
@@ -2152,7 +2445,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/feeditem/feeditem.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"isEditFeedItem; then editFeedItemControls\"></div>\r\n<ng-template #editFeedItemControls>\r\n\t<div class=\"list-items feed-edit-items font-items pull-right\">\r\n\t\t<div class=\"arrow-up white-bg\"></div>\r\n\t\t<div *ngIf=\"isMyFeed; then editThisFeedItem else reportThisFeedItem\"></div>\r\n\t\t<ng-template #editThisFeedItem>\r\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"editFeedItem($event)\">Edit</div>\r\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"deleteFeedItem();\"><span>Delete</span></div>\r\n\t\t</ng-template>\r\n\t\t<ng-template #reportThisFeedItem>\r\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"moveClick($event)\">Report</div>\r\n\t\t</ng-template>\r\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"selectClick($event)\">Hide</div>\r\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"defaultClick($event)\">Tag</div>\r\n\t</div>\r\n</ng-template>\r\n<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + item.profilepic + ')'}\">\r\n</div>\r\n<div class=\"full-name blue-fonts bold-fonts pull-left\">{{item.fullname}}</div>\r\n<div class=\"pull-left blue-fonts time-ago\"><span>&nbsp;</span>{{feedMoment}}</div>\r\n<div class=\"pull-right edit-feed hand-cursor\">\r\n\t<i aria-hidden=\"true\" class=\"fa fa-pencil-square-o blue-fonts\" id=\"editItem\" (click)=\"clickedInside($event);\"></i>\r\n</div>\r\n<div *ngIf=\"item.type === 'text'; then textFeed\"></div>\r\n<div *ngIf=\"item.type === 'image'; then imageFeed\"></div>\r\n<div *ngIf=\"item.type === 'music'; then musicFeed\"></div>\r\n<div *ngIf=\"item.type === 'checkin'; then checkinFeed\"></div>\r\n<ng-template #textFeed>\r\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.post\" [ngStyle]=\"{\r\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \r\n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\r\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\r\n\t</div>\r\n</ng-template>\r\n<ng-template #imageFeed>\r\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + item.filePath+ ')'}\"></div>\r\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\r\n\t\t\t\t'font-weight':'bold', \r\n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\r\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\r\n\t</div>\r\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\r\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \r\n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\r\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\r\n\t</div>\r\n</ng-template>\r\n<ng-template #checkinFeed>\r\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + item.filePath+ ')'}\"></div>\r\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\r\n\t\t\t\t'font-weight':'bold', \r\n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\r\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\r\n\t</div>\r\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\r\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \r\n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\r\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\r\n\t</div>\r\n</ng-template>\r\n<ng-template #musicFeed>\r\n\t<audio #musicPlayer  preload=\"none\" controls class=\"feed-music-player\">\r\n        <source src=\"{{item.filePath}}\" type=\"audio/mp3\">\r\n        <p>Your browser does not support the HTML5 Audio element.</p>\r\n    </audio>\r\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\r\n\t\t\t\t'font-weight':'bold', \r\n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\r\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\r\n\t</div>\r\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\r\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \r\n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\r\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\r\n\t</div>\r\n</ng-template>\r\n\r\n<div class=\"colw100 feed-controls\">\r\n\t<div class=\"pull-left blue-fonts inline-block cursor-pointer\" (click)=\"coolClick($event)\"> \r\n\t\t<div *ngIf=\"alreadyLiked === true; then thumbsDown else thumbsUp\"></div>\r\n\t\t<ng-template #thumbsUp>\r\n\t\t\t<span>\r\n\t\t\t\t<i class=\"fa fa-thumbs-up\"></i>\r\n\t\t\t</span>\r\n\t\t</ng-template>\r\n\t\t<ng-template #thumbsDown>\r\n\t\t\t<span>\r\n\t\t\t\t<i class=\"fa fa-thumbs-down\"></i>\r\n\t\t\t</span>\r\n\t\t</ng-template>\r\n\t\t<div *ngIf=\"likeCount > 0; then  likeItemsCount else likeItemCount\">\r\n  \t\t</div>\r\n  \t\t<ng-template #likeItemsCount>\r\n  \t\t\t<span>{{likeCount}}</span>\r\n  \t\t\t<span>Like</span>\r\n\t\t</ng-template>\r\n  \t\t<ng-template #likeItemCount>\r\n  \t\t\t<span>Like</span>\r\n\t\t</ng-template>\r\n\t</div>\t\r\n\t<div class=\"pull-left red-fonts\"><i class=\"fa fa-heart\"></i><span>Love</span></div>\r\n\t<div class=\"pull-left\"><i class=\"fa fa-comment\"></i><span>Comment</span></div>\r\n</div>\r\n"
+module.exports = "<div *ngIf=\"isEditFeedItem; then editFeedItemControls\"></div>\n<ng-template #editFeedItemControls>\n\t<div class=\"list-items feed-edit-items font-items pull-right\">\n\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t<div *ngIf=\"isMyFeed; then editThisFeedItem else reportThisFeedItem\"></div>\n\t\t<ng-template #editThisFeedItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"editFeedItem($event)\">Edit</div>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"deleteFeedItem();\"><span>Delete</span></div>\n\t\t</ng-template>\n\t\t<ng-template #reportThisFeedItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"moveClick($event)\">Report</div>\n\t\t</ng-template>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"selectClick($event)\">Hide</div>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"defaultClick($event)\">Tag</div>\n\t</div>\n</ng-template>\n<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + item.profilepic + ')'}\">\n</div>\n<div class=\"full-name blue-fonts bold-fonts pull-left\">{{item.fullname}}</div>\n<div class=\"pull-left blue-fonts time-ago\"><span>&nbsp;posted&nbsp;</span>{{feedMoment}}</div>\n<div class=\"pull-right edit-feed hand-cursor\">\n\t<i aria-hidden=\"true\" class=\"fa fa-pencil-square-o blue-fonts\" id=\"editItem\" (click)=\"clickedInside($event);\"></i>\n</div>\n<div *ngIf=\"item.type === 'text'; then textFeed\"></div>\n<div *ngIf=\"item.type === 'image'; then imageFeed\"></div>\n<div *ngIf=\"item.type === 'music'; then musicFeed\"></div>\n<div *ngIf=\"item.type === 'checkin'; then checkinFeed\"></div>\n<ng-template #textFeed>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.post\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #imageFeed>\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + item.filePath+ ')'}\"></div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #checkinFeed>\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + item.filePath+ ')'}\"></div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #musicFeed>\n\t<audio #musicPlayer  preload=\"none\" controls class=\"feed-music-player\">\n        <source src=\"{{item.filePath}}\" type=\"audio/mp3\">\n        <p>Your browser does not support the HTML5 Audio element.</p>\n    </audio>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n\n<div class=\"colw100 feed-controls\">\n\t<div class=\"pull-left blue-fonts inline-block cursor-pointer\" (click)=\"likeClick($event)\"> \n\t\t<div *ngIf=\"alreadyLiked === true; then thumbsDown else thumbsUp\"></div>\n\t\t<ng-template #thumbsUp>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-thumbs-up\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<ng-template #thumbsDown>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-thumbs-down\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<div *ngIf=\"likeCount > 0; then  likeItemsCount else likeItemCount\">\n  \t\t</div>\n  \t\t<ng-template #likeItemsCount>\n  \t\t\t<span>{{likeCount}}</span>\n  \t\t\t<span>Like</span>\n\t\t</ng-template>\n  \t\t<ng-template #likeItemCount>\n  \t\t\t<span>Like</span>\n\t\t</ng-template>\n\t</div>\t\n\t<div class=\"pull-left blue-fonts cursor-pointer\" (click)=\"loveClick($event)\">\n\t\t<div *ngIf=\"alreadyLoved === true; then lovedSymbol else loveSymbol\"></div>\n\t\t<ng-template #lovedSymbol>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-heart red-fonts\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<ng-template #loveSymbol>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-heart blue-fonts\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<div *ngIf=\"loveCount > 0; then  loveItemsCount else loveItemCount\">\n  \t\t</div>\n  \t\t<ng-template #loveItemsCount>\n  \t\t\t<span>{{loveCount}}</span>\n  \t\t\t<span>Love</span>\n\t\t</ng-template>\n  \t\t<ng-template #loveItemCount>\n  \t\t\t<span>Love</span>\n\t\t</ng-template>\n\t</div>\n\t<div class=\"pull-left cursor-pointer blue-fonts\" (click)=\"commentClick($event)\"><i class=\"fa fa-comment\"></i><span>Comment</span>\n\t</div>\n\t<ng-template [ngIf]=\"isCommentsAdded\">\n\t\t<div class=\"comment-box\">\n\t\t\t<div class=\"comment-box-items\">\n\t\t\t\t<!--<div class=\"inline-block colw100\" *ngFor=\"let commentItem of feedItemCommentArr\">\n\t\t\t\t\t{{commentItem.commenttext}}\n\t\t\t\t</div>-->\n\t\t\t\t<app-commentitem *ngFor=\"let commentItem of feedItemCommentArr\" [commentItem]=\"commentItem\">\n\t\t\t\t</app-commentitem>\n\t\t\t</div>\n\t\t</div>\n\t</ng-template>\n</div>\n<div class=\"pull-left colw100 inline-block\">\n\t<ng-template [ngIf]=\"addComment\">\n\t\t<app-story-box [action]=\"action\" [feedCommentItem]=\"item\"></app-story-box>\n\t</ng-template>\t\n</div>\n\n\n"
 
 /***/ }),
 
@@ -2163,8 +2456,9 @@ module.exports = "<div *ngIf=\"isEditFeedItem; then editFeedItemControls\"></div
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FeeditemComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_data_feed_service__ = __webpack_require__("../../../../../src/app/services/data/feed.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_timeago_js__ = __webpack_require__("../../../../timeago.js/dist/timeago.min.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_timeago_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_timeago_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_data_comment_service__ = __webpack_require__("../../../../../src/app/services/data/comment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_timeago_js__ = __webpack_require__("../../../../timeago.js/dist/timeago.min.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_timeago_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_timeago_js__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2178,34 +2472,55 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //import * as moment from 'moment';
 
 
+
 var FeeditemComponent = (function () {
-    function FeeditemComponent(feedService) {
+    function FeeditemComponent(feedService, commentService) {
         this.feedService = feedService;
+        this.commentService = commentService;
         this.refreshFeed = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.editCurrentFeedItem = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.isEditFeedItem = false;
         this.isMyFeed = false;
         this.likeCount = 0;
+        this.loveCount = 0;
         this.alreadyLiked = false;
+        this.alreadyLoved = false;
+        this.addComment = false;
+        this.action = 'comment';
+        this.isCommentsAdded = false;
+        //private feedMoment: moment.Moment;
+        this.feedItemCommentArr = [];
     }
     FeeditemComponent.prototype.ngOnInit = function () {
         if (this.item.userid === this.userId) {
             this.isMyFeed = true;
         }
-        var i = this.item.coolArr.indexOf(this.userId);
+        this.feedActionCheck();
+        var timeagoInstance = __WEBPACK_IMPORTED_MODULE_3_timeago_js___default()();
+        this.feedMoment = timeagoInstance.format(this.item.created);
+        //this.feedMoment = moment(this.item.created);
+        this.likeCount = this.item.likeArr.length;
+        this.loveCount = this.item.loveArr.length;
+        this.fetchCommentsForCurrentFeedItem();
+    };
+    FeeditemComponent.prototype.clickedOutside = function ($event) {
+        this.isEditFeedItem = false;
+    };
+    FeeditemComponent.prototype.feedActionCheck = function () {
+        var i = this.item.likeArr.indexOf(this.userId);
         if (i === -1) {
             this.alreadyLiked = false;
         }
         else {
             this.alreadyLiked = true;
         }
-        var timeagoInstance = __WEBPACK_IMPORTED_MODULE_2_timeago_js___default()();
-        this.feedMoment = timeagoInstance.format(this.item.created);
-        //this.feedMoment = moment(this.item.created);
-        this.likeCount = this.item.coolArr.length;
-    };
-    FeeditemComponent.prototype.clickedOutside = function ($event) {
-        this.isEditFeedItem = false;
+        var j = this.item.loveArr.indexOf(this.userId);
+        if (j === -1) {
+            this.alreadyLoved = false;
+        }
+        else {
+            this.alreadyLoved = true;
+        }
     };
     FeeditemComponent.prototype.editFeedItem = function (event) {
         this.editCurrentFeedItem.emit({ item: this.item });
@@ -2233,10 +2548,10 @@ var FeeditemComponent = (function () {
             this.refreshFeed.emit('refresh');
         }
     };
-    FeeditemComponent.prototype.coolClick = function ($event) {
+    FeeditemComponent.prototype.likeClick = function ($event) {
         var _this = this;
         var id = this.userId;
-        var likeArr = this.item.coolArr;
+        var likeArr = this.item.likeArr;
         var i = likeArr.indexOf(id);
         if (i === -1) {
             likeArr.push(id);
@@ -2250,12 +2565,61 @@ var FeeditemComponent = (function () {
         var postObj = { 'id': this.item._id, 'likearr': likeArr };
         this.feedService.updateLikeFeedChannel(postObj).subscribe(function (data) { return _this.afterUpdateLikeFeedChannel(data); });
     };
+    FeeditemComponent.prototype.loveClick = function ($event) {
+        var _this = this;
+        var id = this.userId;
+        var loveArr = this.item.loveArr;
+        var i = loveArr.indexOf(id);
+        if (i === -1) {
+            loveArr.push(id);
+            this.alreadyLoved = true;
+        }
+        else {
+            loveArr.splice(i, 1);
+            this.alreadyLoved = false;
+        }
+        this.loveCount = loveArr.length;
+        var postObj = { 'id': this.item._id, 'lovearr': loveArr };
+        this.feedService.updateLoveFeedChannel(postObj).subscribe(function (data) { return _this.afterUpdateLoveFeedChannel(data); });
+    };
+    FeeditemComponent.prototype.commentClick = function ($event) {
+        if (this.addComment) {
+            this.addComment = false;
+        }
+        else {
+            this.addComment = true;
+        }
+    };
     FeeditemComponent.prototype.afterUpdateLikeFeedChannel = function (result) {
         if (result.status === 'failure') {
             alert(result.message);
         }
         else {
             alert(result.message);
+        }
+    };
+    FeeditemComponent.prototype.afterUpdateLoveFeedChannel = function (result) {
+        if (result.status === 'failure') {
+            alert(result.message);
+        }
+        else {
+            alert(result.message);
+        }
+    };
+    FeeditemComponent.prototype.fetchCommentsForCurrentFeedItem = function () {
+        var _this = this;
+        var postObj = { 'feeditemid': this.item._id };
+        this.commentService.fetchCommentsForCurrentFeedItem(postObj).subscribe(function (data) { return _this.afterFetchedCommentsForCurrentFeedItem(data); });
+    };
+    FeeditemComponent.prototype.afterFetchedCommentsForCurrentFeedItem = function (result) {
+        if (result.status === 'failure') {
+            alert(result.message);
+        }
+        else {
+            if (result.length > 0) {
+                this.isCommentsAdded = true;
+                this.feedItemCommentArr = result;
+            }
         }
     };
     return FeeditemComponent;
@@ -2286,12 +2650,13 @@ FeeditemComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-feeditem',
         template: __webpack_require__("../../../../../src/app/feeditem/feeditem.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/feeditem/feeditem.component.css")]
+        styles: [__webpack_require__("../../../../../src/app/feeditem/feeditem.component.css")],
+        providers: [__WEBPACK_IMPORTED_MODULE_2_app_services_data_comment_service__["a" /* CommentService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_app_services_data_feed_service__["a" /* FeedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_services_data_feed_service__["a" /* FeedService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_app_services_data_feed_service__["a" /* FeedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_services_data_feed_service__["a" /* FeedService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_data_comment_service__["a" /* CommentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_data_comment_service__["a" /* CommentService */]) === "function" && _d || Object])
 ], FeeditemComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=feeditem.component.js.map
 
 /***/ }),
@@ -5415,7 +5780,6 @@ var AppService = (function () {
         navigator.geolocation.getCurrentPosition(function (position) {
             latitude = position.coords.latitude;
             longitude = position.coords.longitude;
-            debugger;
             return { 'location': { 'latitude': latitude, 'longitude': longitude } };
         });
     };
@@ -5534,6 +5898,57 @@ var _a;
 
 /***/ }),
 
+/***/ "../../../../../src/app/services/data/comment.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommentService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var CommentService = (function () {
+    function CommentService(http) {
+        this.http = http;
+    }
+    CommentService.prototype.saveComment = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Accept': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/saveComment", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    CommentService.prototype.fetchCommentsForCurrentFeedItem = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Accept': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchCommentsForCurrentFeedItem", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    return CommentService;
+}());
+CommentService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+], CommentService);
+
+var _a;
+//# sourceMappingURL=comment.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/services/data/configuration.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5627,7 +6042,13 @@ var FeedService = (function () {
     FeedService.prototype.updateLikeFeedChannel = function (postObj) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/updateCoolFeedChannel", postObj, options)
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/updateLikeFeedChannel", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    FeedService.prototype.updateLoveFeedChannel = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/updateLoveFeedChannel", postObj, options)
             .map(function (res) { return res.json(); });
     };
     return FeedService;
@@ -6401,7 +6822,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/stories/stories.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-private-nav></app-private-nav>\r\n<div class=\"container top-margin bottom-margin\">\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\r\n\t\t\t<div class=\"opaque-bg no-padding\">\r\n\t\t\t\t<app-profile-area></app-profile-area>\r\n\t\t\t\t<div class=\"left-nav\">\r\n\t\t\t\t\t<div class=\"nav-item\" (click)=\"switchVideo($event)\" [ngClass]=\"(isHighLightStories ? 'highlight-nav' : '')\">\r\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\r\n\t\t\t\t\t\t<span class=\"blue-fonts\">Stories</span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"nav-item\" [ngClass]=\"(isHighLightMusic ? 'highlight-nav' : '')\" (click)=\"switchMusic($event)\">\r\n\t\t\t\t\t\t<i class=\"fa fa-pencil blue-fonts\" aria-hidden=\"true\"></i>\r\n\t\t\t\t\t\t<span class=\"blue-fonts\">Blog</span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"nav-item\">\r\n\t\t\t\t\t\t<i class=\"fa fa-plane blue-fonts\" aria-hidden=\"true\"></i>\r\n\t\t\t\t\t\t<span class=\"blue-fonts\">Travel</span>\r\n\t\t\t\t\t</div>\r\n\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div #feedContent class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 no-padding opaque-bg feed-content\" \r\n\t\t[ngStyle]=\"{ 'max-height': ' ' + screenHeight + 'px'}\">\r\n\t\t\t<div class=\"story-content\">\r\n\t\t\t\t<ng-template [ngIf]=\"isStories\">\r\n\t\t\t\t\t<app-story-box></app-story-box>\r\n\t\t\t\t</ng-template>\t\r\n\t\t\t\t<ng-template [ngIf]=\"isBlog\">\r\n\t\t\t\t\t<app-music-player></app-music-player>\r\n\t\t\t\t</ng-template>\t\r\n\t\t\t\t<ng-template [ngIf]=\"isActivity\">\r\n\t\t\t\t\t<app-photos></app-photos>\r\n\t\t\t\t</ng-template>\t\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3 info-panel\">\r\n\t\t\t<div class=\"opaque-bg\">\r\n\t\t\t\t<app-info-panel></app-info-panel>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>"
+module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container top-margin bottom-margin\">\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\t\t\t<div class=\"opaque-bg no-padding\">\n\t\t\t\t<app-profile-area></app-profile-area>\n\t\t\t\t<div class=\"left-nav\">\n\t\t\t\t\t<div class=\"nav-item\" (click)=\"switchVideo($event)\" [ngClass]=\"(isHighLightStories ? 'highlight-nav' : '')\">\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Stories</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\" [ngClass]=\"(isHighLightMusic ? 'highlight-nav' : '')\" (click)=\"switchMusic($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-pencil blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Blog</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-plane blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Travel</span>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div #feedContent class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6 no-padding opaque-bg feed-content\" \n\t\t[ngStyle]=\"{ 'max-height': ' ' + screenHeight + 'px'}\">\n\t\t\t<div class=\"story-content\">\n\t\t\t\t<ng-template [ngIf]=\"isStories\">\n\t\t\t\t\t<app-story-box [action]=\"action\"></app-story-box>\n\t\t\t\t</ng-template>\t\n\t\t\t\t<ng-template [ngIf]=\"isBlog\">\n\t\t\t\t\t<app-music-player></app-music-player>\n\t\t\t\t</ng-template>\t\n\t\t\t\t<ng-template [ngIf]=\"isActivity\">\n\t\t\t\t\t<app-photos></app-photos>\n\t\t\t\t</ng-template>\t\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3 info-panel\">\n\t\t\t<div class=\"opaque-bg\">\n\t\t\t\t<app-info-panel></app-info-panel>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 
@@ -6438,6 +6859,7 @@ var StoriesComponent = (function () {
         this.isHighLightMusic = false;
         this.isHighLightPhotos = false;
         this.overFlowY = 'visible';
+        this.action = 'post';
         this.screenHeight = window.screen.height - 175;
         route.params.subscribe(function (val) {
             var currentUser = localStorage.getItem('currentUser');
@@ -6507,7 +6929,8 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".story-feed{\r\n\tpadding: 6px 6px 0px 57px;\r\n}\r\n.story-box{\r\n\theight: 100px;\r\n\tpadding: 3px ;\r\n\tborder: 1px solid #2b90d9;\r\n}\r\n.profile-pic{\r\n    margin: 0px 2px;\r\n    width: 45px;\r\n    height: 45px;\r\n    position: absolute;\r\n    left: 5px;\r\n    border-radius: 50%;\r\n}\r\n.control-bar{\r\n\tmargin: 6px 0px 1px 0px;\r\n\tfont-size: 9px;\r\n}\r\n.color-picker-icon{\r\n\tborder: 1px solid #2b90d9;\r\n}\r\n.color-picker-icon input{\r\n    border: 2px solid #d2d2d2;\r\n    outline: none;\r\n    height: 15px;\r\n    width: 15px;\r\n    color: transparent;\r\n}\r\n.color-picker-icon:hover{\r\n\tcolor: transparent !important;\r\n}\r\n.font-items{\r\n\tmargin: 10px -8px;\r\n    font-size: 11px;\r\n    max-height: 100px;\r\n    overflow-y: auto;\r\n}\r\n.font-family-btn{\r\n    border: 1px solid #2b90d9;\r\n    font-size: 7px;\r\n    width: 17px;\r\n    height: 17px;\r\n    margin: 0px 5px;\r\n}\r\n.up-img-btn, .up-mus-btn, .up-vid-btn{\r\n    border: 1px solid #2b90d9;\r\n    font-size: 11px;\r\n    width: 17px;\r\n    height: 17px;\r\n    margin: 0px 0px 0px 5px;\r\n}\r\n.font-size-btn{\r\n    border: 1px solid #2b90d9;\r\n    font-size:11px;\r\n    width: 32px;\r\n    height: 17px;\r\n}\r\n.font-family-btn i{\r\n\tmargin-left: 1px;\r\n}\r\n.font-family-btn:hover, .font-size-btn:hover, .font-bold-btn:hover,\r\n.font-ul-btn:hover, .font-italic-btn:hover, .smiley-btn:hover,\r\n.up-img-btn:hover, .up-mus-btn:hover, .up-vid-btn:hover{\r\n\tborder: 1px solid red;\r\n}\r\n.font-bold-btn:hover span, .font-ul-btn:hover span, .font-italic-btn:hover span, .smiley-btn:hover i,\r\n.up-img-btn:hover i, .up-mus-btn:hover i, .up-vid-btn:hover i{\r\n\tcolor: red;\r\n}\r\n.font-family-btn:hover i, .font-size-btn:hover span{\r\n\tcolor: red !important;\r\n}\r\n.font-bold-btn, .font-ul-btn, .font-italic-btn, .smiley-btn{\r\n\tborder: 1px solid #2b90d9;\r\n    font-size: 11px;\r\n    width: 17px;\r\n    height: 17px;\r\n    margin: 0px 0px 0px 5px;\r\n    font-weight: bold;\r\n}\r\n.color-picker .arrow-right{\r\n\ttop: 5px !important;\r\n}\r\n.high-light{\r\n    border: 1px solid red;\r\n}\r\n.high-light *{\r\n    color: red;\r\n}\r\n.emo-list .list-item{\r\n    width: 25px !important;\r\n    margin: 2px 0px;\r\n}\r\n.emo-list{\r\n    width: 102px !important;\r\n}\r\n#postBtn{\r\n    width: auto;\r\n    height: 17px;\r\n    border-radius: 0px;\r\n    padding: 0px 3px !important;\r\n    line-height: 12px;\r\n    font-size: 12px !important;\r\n    background-color: #fff !important;\r\n    border: 1px solid #2b90d9 !important;\r\n    color: #2b90d9 !important;\r\n    background: #d9e1e8 !important;\r\n}\r\n#postBtn:hover *{\r\n    color: red;\r\n}\r\n#postBtn:hover{\r\n    border: 1px solid red !important;\r\n}\r\n.file-input-container{\r\n    display: none;\r\n}\r\n.modal{\r\n    width: 500px !important;\r\n    height: 500px !important;  \r\n}\r\n#previewMusicPlayer{\r\n    height: 189px;\r\n    background: #000;\r\n}\r\napp-feeditem{\r\n    float: left;\r\n    width: 100%;\r\n    min-height: 60px;\r\n    border: 1px solid #e6e6e6;\r\n    margin: 3px 0px;\r\n    border-radius: 3px;\r\n    padding: 3px;\r\n}\r\n.preview-posted-pic{\r\n    width: 300px;\r\n    height: 300px;\r\n    background-size: cover !important;\r\n}\r\n.post-desc-content{\r\n    margin-top: 5px;\r\n}\r\n.action-bar{\r\n    margin-left: -5px;\r\n}\r\n.fa-map-marker{\r\n    font-size: 14px;\r\n}", ""]);
+
+exports.push([module.i, ".story-feed{\n\tpadding: 6px 6px 0px 57px;\n}\n.story-box{\n\theight: 100px;\n\tpadding: 3px ;\n\tborder: 1px solid #2b90d9;\n}\n.profile-pic{\n    margin: 0px 2px;\n    width: 45px;\n    height: 45px;\n    position: absolute;\n    left: 5px;\n    border-radius: 50%;\n}\n.control-bar{\n\tmargin: 6px 0px 1px 0px;\n\tfont-size: 9px;\n}\n#postBtn{\n    width: auto;\n    height: 17px;\n    border-radius: 0px;\n    padding: 0px 3px !important;\n    line-height: 12px;\n    font-size: 12px !important;\n    background-color: #fff !important;\n    border: 1px solid #2b90d9 !important;\n    color: #2b90d9 !important;\n    background: #d9e1e8 !important;\n}\n#postBtn:hover *{\n    color: red;\n}\n#postBtn:hover{\n    border: 1px solid red !important;\n}\n.file-input-container{\n    display: none;\n}\n.modal{\n    width: 500px !important;\n    height: 500px !important;  \n}\n#previewMusicPlayer{\n    height: 189px;\n    background: #000;\n}\napp-feeditem{\n    float: left;\n    width: 100%;\n    min-height: 60px;\n    border: 1px solid #e6e6e6;\n    margin: 3px 0px;\n    border-radius: 3px;\n    padding: 3px;\n}\n.preview-posted-pic{\n    width: 300px;\n    height: 300px;\n    background-size: cover !important;\n}\n.post-desc-content{\n    margin-top: 5px;\n}\n.action-bar{\n    margin-left: -5px;\n}\n.fa-map-marker{\n    font-size: 14px;\n}\n.text-styles{\n    margin: 25px 15px;\n    position: absolute;\n    width: 73px;\n}\n.comment-box{\n    height: 60px;\n    padding-left: 0px;\n    padding-right: 0px;\n}\n.comment-box .story-box{\n    height: 60px;\n    width: 260px;\n}\n.comment-box .control-bar{\n    width: 100%;\n}\n.font-sizes{\n    height: 100px;\n    overflow: auto;\n}", ""]);
 
 // exports
 
@@ -6520,7 +6943,8 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/story-box/story-box.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"inline-block colw100 story-feed\">\r\n\t<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + profilePic + ')'}\">\r\n\t</div>\r\n\t<div name=\"story\" #storyBox class=\"story-box colw100 inline-block no-outline auto-overflow pull-left\" contenteditable=\"true\" spellcheck=\"true\" role=\"textbox\" aria-multiline=\"true\" data-placeholder-default=\"What’s happening?\" aria-autocomplete=\"list\" aria-expanded=\"false\" [style.color]=\"color\" [style.font-family]=\"fontFamily\" [style.font-size]=\"fontSize\" [style.font-weight]=\"fontWeight\" [style.text-decoration]=\"txtDeco\" [style.font-style]=\"fontStyle\"  [innerHTML]=\"storyContent\" \r\n\t(keyup)=\"onStoryContentChange($event)\" (keydown)=\"onStoryContentChanged($event.keyCode)\">\r\n\t</div>\r\n\t<div class=\"control-bar inline-block\">\r\n\t\t<div class=\"pull-left color-picker-icon\">\r\n\t\t\t<input [colorPicker]=\"color\" (colorPickerChange)=\"color=$event; colorPickerChange($event);\" [style.background]=\"color\" class=\"cursor-pointer\"/>\r\n\t\t</div>\r\n\t\t<div class=\"pull-left font-family-btn\" (click)=\"toggleFontFamily($event); clickedInside($event);\">\r\n\t\t\t<div>\r\n\t\t\t\t<i class=\"fa fa-font fa-2x blue-fonts cursor-pointer\"></i>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"isShowFontFamily; then fontFamilies\"></div>\r\n\t\t\t<ng-template #fontFamilies>\r\n\t\t\t\t<div class=\"list-items font-items pull-left\">\r\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Arial')\">Arial</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Times New Roman')\">Times New Roman</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Courier New')\">Courier New</div>\r\n\t\t\t\t</div>\r\n\t\t\t</ng-template>\r\n\t\t</div>\r\n\t\t<div class=\"pull-left font-size-btn\" (click)=\"clickedInside($event)\">\r\n\t\t\t<div class=\"blue-fonts cursor-pointer text-center\" (click)=\"toggleFontSize($event)\"><span>{{fontSize}}</span></div>\r\n\t\t\t<div *ngIf=\"isShowFontSize; then fontSizes\"></div>\r\n\t\t\t<ng-template #fontSizes>\r\n\t\t\t\t<div class=\"list-items font-items pull-left\">\r\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 9)\">9</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 10)\">10</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 11)\">11</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 12)\">12</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 13)\">13</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 14)\">14</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 15)\">15</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 16)\">16</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 17)\">17</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 18)\">18</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 19)\">19</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 20)\">20</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 21)\">21</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 22)\">22</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 23)\">23</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 24)\">24</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 25)\">25</div>\r\n\t\t\t\t</div>\r\n\t\t\t</ng-template>\r\n\t\t</div>\r\n\t\t<div class=\"pull-left font-bold-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isBoldBtnHighLight\" (click)=\"applyBold($event)\">\r\n\t\t\t<span>B</span>\r\n\t\t</div>\r\n\t\t<div class=\"pull-left font-ul-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isULBtnHighLight\" (click)=\"applyUnderline($event)\">\r\n\t\t\t<span>U</span>\r\n\t\t</div>\r\n\t\t<div class=\"pull-left font-italic-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isIBtnHighLight\"  (click)=\"applyItalic($event)\">\r\n\t\t\t<span>I</span>\r\n\t\t</div>\r\n\t\t<div class=\"pull-left smiley-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isEmotionsHighLight\"  (click)=\"showEmotions($event);clickedInside($event);\">\r\n\t\t\t<div>\r\n\t\t\t\t<i class=\"fa fa-smile-o\"></i>\r\n\t\t\t</div>\r\n\t\t\t<div *ngIf=\"isEmotionsHighLight; then emotions\"></div>\r\n\t\t\t<ng-template #emotions>\r\n\t\t\t\t<div class=\"list-items font-items pull-left emo-list\">\r\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':)')\">\r\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion0-smile.gif\"/></span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':(')\">\r\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion1-sadsmile.gif\"/></span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':D')\">\r\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion2-bigsmile.gif\"/></span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '8=)')\">\r\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion3-cool.gif\"/></span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':o')\">\r\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion4-surprised.gif\"/></span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ';)')\">\r\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion5-wink.gif\"/></span>\r\n\t\t\t\t\t</div>\r\n\r\n\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ';(')\">\r\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion6-crying.gif\"/></span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '(:|')\">\r\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion7-sweating.gif\"/></span>\r\n\t\t\t\t\t</div>\t\t\t\t\t\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':|')\">\r\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion8-speechless.gif\"/></span>\r\n\t\t\t\t\t</div>\t\t\t\t\t\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':*')\">\r\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion9-kiss.gif\"/></span>\r\n\t\t\t\t\t</div>\t\t\t\t\t\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, 'emotion10-tongueout')\">\r\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion10-tongueout.gif\"/></span>\r\n\t\t\t\t\t</div>\t\t\t\t\t\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':$')\">\r\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion11-blush.gif\"/></span>\r\n\t\t\t\t\t</div>\t\t\t\t\t\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':^)')\">\r\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion12-wondering.gif\"/></span>\r\n\t\t\t\t\t</div>\t\t\t\t\t\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '|-)')\">\r\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion13-sleepy.gif\"/></span>\r\n\t\t\t\t\t</div>\t\t\t\t\t\r\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '|(')\">\r\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion14-dull.gif\"/></span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</ng-template>\r\n\t\t</div>\r\n\t\t<div class=\"pull-left up-img-btn blue-fonts cursor-pointer text-center\" (click)= \"imageInput.value = ''; imageInput.click();\">\r\n\t\t\t<i class=\"fa fa-picture-o\" aria-hidden=\"true\"></i>\r\n\t\t</div>\r\n\t\t<div class=\"pull-left up-mus-btn blue-fonts cursor-pointer text-center\" (click)= \"musicInput.value = ''; musicInput.click();\">\r\n\t\t\t<i class=\"fa fa-music\" aria-hidden=\"true\"></i>\r\n\t\t</div>\r\n\t\t<div class=\"pull-left up-vid-btn blue-fonts cursor-pointer text-center\" (click)= \"videoInput.value = ''; videoInput.click();\">\r\n\t\t\t<i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i>\r\n\t\t</div>\r\n\t\t<div class=\"checkin-btn pull-left up-vid-btn blue-fonts cursor-pointer text-center\" (click)=\"checkIn($event)\">\r\n\t\t\t\t<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>\r\n\t\t</div>\r\n\t\t<div class=\"pull-left post-btn blue-fonts cursor-pointer text-center\">\r\n\t\t\t<div *ngIf=\"isAddPost; then addPost else updatePost\"></div>\r\n\t\t\t<ng-template #addPost>\r\n\t\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"postStory($event)\" [disabled]=\"(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)\">\r\n\t\t\t\t\t<span>Post</span>\r\n\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\r\n\t\t\t\t</button>\r\n\t\t\t</ng-template>\r\n\t\t\t<ng-template #updatePost>\r\n\t\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"updateStory($event)\" [disabled]=\"(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)\">\r\n\t\t\t\t\t<span>Update</span>\r\n\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\r\n\t\t\t\t</button>\r\n\t\t\t</ng-template>\r\n\t\t</div>\r\n\t</div>\r\n\t<!--<div class=\"action-bar\">\r\n\t\t<div class=\"pull-left\">\r\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"checkIn($event)\">\r\n\t\t\t\t<span>Check In</span>\r\n\t\t\t\t<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>\r\n\t\t\t</button>\r\n\t\t</div>\r\n\t\t<div class=\"pull-left\">\r\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"updateStory($event)\">\r\n\t\t\t\t<span>Go Live</span>\r\n\t\t\t\t<i class=\"fa fa-video-camera\" aria-hidden=\"true\"></i>\r\n\t\t\t</button>\r\n\t\t</div>\r\n\t\t<div class=\"pull-left\">\r\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"updateStory($event)\">\r\n\t\t\t\t<span>Activity</span>\r\n\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\r\n\t\t\t</button>\r\n\t\t</div>\r\n\t\t<div class=\"pull-left\">\r\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"updateStory($event)\">\r\n\t\t\t\t<span>Event</span>\r\n\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\r\n\t\t\t</button>\r\n\t\t</div>\r\n\t</div> -->\r\n    <div class=\"file-input-container\">\r\n        <form [formGroup]=\"imageUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\r\n            <div class=\"form-group\" [formGroup]=\"imageGroup\">\r\n                <input type=\"file\" accept=\"image/*\" class=\"file-input\" name=\"uploadimage\" #imageInput (change)=\"fileChangeEvent($event, 'image')\"/>\r\n            </div>\r\n        </form>\r\n        <form [formGroup]=\"musicUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\r\n            <div class=\"form-group\" [formGroup]=\"musicGroup\">\r\n                <input type=\"file\" accept=\"audio/*\" class=\"file-input\" name=\"uploadmusic\" #musicInput (change)=\"fileChangeEvent($event, 'music')\"/>\r\n            </div>\r\n        </form>\r\n        <form [formGroup]=\"videoUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\r\n            <div class=\"form-group\" [formGroup]=\"videoGroup\">\r\n                <input type=\"file\" accept=\"video/*\" class=\"file-input\" name=\"uploadvideo\" #videoInput (change)=\"fileChangeEvent($event, 'video')\"/>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n<div class=\"inline-block colw100 story-feed\">\r\n\t<app-feeditem *ngFor=\"let item of feedItem\" [item]=\"item\" [userId]=\"userId\" (refreshFeed)=\"refreshFeedItem($event)\" \r\n\t(editCurrentFeedItem)= \"editCurrentFeedItem($event)\"></app-feeditem>\r\n</div>\r\n\r\n\r\n<app-modal [modalTitle]=\"'Post Preview'\" [blocking]='false' [modalId]='modalId' #postedPicModal id=\"storyModal\">\r\n\t<div class=\"post-desc-content\">\r\n\t\t<div class=\"colw100 inline-block\">\r\n\t\t\t<div *ngIf=\"fileType === 'image' then previewPic\"></div>\r\n\t\t\t<div *ngIf=\"fileType === 'music' then previewMusic\"></div>\r\n\t\t\t<div *ngIf=\"fileType === 'checkin' then previewCheckIn\"></div>\r\n\t\t\t<ng-template #previewPic>\r\n\t\t\t\t<div class=\"preview-posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + encodedImage+ ')'}\"></div>\r\n\t\t\t\t<div class=\"pull-right\">\r\n\t\t            <div>\r\n\t\t                <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" placeholder=\"title\" id=\"postTitle\" [(ngModel)]=\"postTitle\">\r\n\t\t            </div>\r\n\t\t            <div class=\"form-group\">\r\n\t\t                <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" id=\"postDesc\" [(ngModel)]=\"postDesc\">\r\n\t\t                </textarea>\r\n\t\t            </div>\r\n\t\t        </div>\r\n\t\t        <div *ngIf=\"isPostImage; then addImagePost else updateImagePost\"></div>\r\n\t\t        <ng-template #addImagePost>\r\n\t\t\t        <div class=\"colw100 inline-block\">\t\t\t\r\n\t\t\t\t\t\t<button id=\"okBtn\" type=\"button\" class=\"btn btn-primary text-center small-btn ok-btn\" (click)=\"postImage($event)\" [disabled]=\"isProgress\">\r\n\t\t\t\t\t\t\t<span class=\"pull-left\">Post</span>\r\n\t\t\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\r\n\t\t\t\t\t\t</button>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</ng-template>\r\n\t\t\t\t<ng-template #updateImagePost>\r\n\t\t\t        <div class=\"colw100 inline-block\">\t\t\t\r\n\t\t\t\t\t\t<button id=\"okBtn\" type=\"button\" class=\"btn btn-primary text-center small-btn ok-btn\" (click)=\"updateImage($event)\" [disabled]=\"isProgress\">\r\n\t\t\t\t\t\t\t<span class=\"pull-left\">Update</span>\r\n\t\t\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\r\n\t\t\t\t\t\t</button>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</ng-template>\r\n\t\t\t</ng-template>\r\n\t\t\t<ng-template #previewMusic>\r\n\t\t\t\t<div class=\"preview-posted-music pull-left\">\r\n\t\t\t\t\t<audio #musicPlayer  preload=\"none\" controls id=\"previewMusicPlayer\">\r\n\t\t\t\t        <source src=\"{{postedMusicPath}}\" type=\"audio/mp3\">\r\n\t\t\t\t        <p>Your browser does not support the HTML5 Audio element.</p>\r\n\t\t\t\t    </audio>\r\n\t\t\t\t    <progress value=\"0\" max=\"100\" id=\"progressBar\" [value]=\"uploadProgress\" [hidden]=\"!isProgress\"></progress>  \r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"pull-right\">\r\n\t\t            <div>\r\n\t\t                <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" placeholder=\"title\" id=\"postTitle\" [(ngModel)]=\"postTitle\">\r\n\t\t            </div>\r\n\t\t            <div class=\"form-group\">\r\n\t\t                <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" id=\"postDesc\" [(ngModel)]=\"postDesc\">\r\n\t\t                </textarea>\r\n\t\t            </div>\r\n\t\t        </div>\r\n\t\t        <div class=\"colw100 inline-block\">\t\t\t\r\n\t\t\t\t\t<button id=\"okBtn\" type=\"button\" class=\"btn btn-primary text-center small-btn ok-btn\" (click)=\"postMusic($event)\" [disabled]=\"isProgress\">\r\n\t\t\t\t\t\t<span class=\"pull-left\">Post</span>\r\n\t\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\r\n\t\t\t\t\t</button>\r\n\t\t\t\t</div>\r\n\t\t\t</ng-template>\r\n\t\t\t<ng-template #previewCheckIn>\r\n\t\t\t\t<app-checkin (checkInItem)=\"onCheckIn($event)\"></app-checkin>\r\n\t\t\t</ng-template>\r\n\t\t</div>\r\n\t</div>\r\n</app-modal>"
+
+module.exports = "<div class=\"inline-block colw100 story-feed\" [ngClass]=\"{'comment-box': isComment === true}\">\n\t<div *ngIf=\"!isComment; then profilePicBox\"></div>\n\t<ng-template #profilePicBox>\n\t\t<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + profilePic + ')'}\">\n\t\t</div>\n\t</ng-template>\n\t<div name=\"story\" #storyBox class=\"story-box colw100 inline-block no-outline auto-overflow pull-left\" contenteditable=\"true\" spellcheck=\"true\" role=\"textbox\" aria-multiline=\"true\" data-placeholder-default=\"What’s happening?\" aria-autocomplete=\"list\" aria-expanded=\"false\" [style.color]=\"color\" [style.font-family]=\"fontFamily\" [style.font-size]=\"fontSize\" [style.font-weight]=\"fontWeight\" [style.text-decoration]=\"txtDeco\" [style.font-style]=\"fontStyle\"  [innerHTML]=\"storyContent\" \n\t(keyup)=\"onStoryContentChange($event)\" (keydown)=\"onStoryContentChanged($event.keyCode)\">\n\t</div>\n\t<div class=\"control-bar inline-block\">\n\t\t<div class=\"pull-left color-picker-icon\">\n\t\t\t<input [colorPicker]=\"color\" (colorPickerChange)=\"color=$event; colorPickerChange($event);\" [style.background]=\"color\" class=\"cursor-pointer\"/>\n\t\t</div>\n\t\t<div class=\"pull-left text-style-btn blue-fonts cursor-pointer\" (click)=\"toggleTextStyling($event); clickedInside($event);\">\n\t\t\t<i class=\"fa fa-edit\"></i>\n\t\t</div>\n\t\t<div *ngIf=\"isShowTextStyling; then textStyling\"></div>\n\t\t<ng-template #textStyling>\n\t\t\t<div class=\"list-items pull-left text-styles\">\n\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t<div class=\"pull-left font-bold-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isBoldBtnHighLight\" (click)=\"applyBold($event); clickedInside($event);\">\n\t\t\t\t\t<span>B</span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"pull-left font-ul-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isULBtnHighLight\" (click)=\"applyUnderline($event); clickedInside($event);\">\n\t\t\t\t\t<span>U</span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"pull-left font-italic-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isIBtnHighLight\"  (click)=\"applyItalic($event);clickedInside($event);\">\n\t\t\t\t\t<span>I</span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"pull-left font-family-btn\" (click)=\"toggleFontFamily($event); clickedInside($event);\">\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<i class=\"fa fa-font blue-fonts cursor-pointer\"></i>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div *ngIf=\"isShowFontFamily; then fontFamilies\"></div>\n\t\t\t\t\t<ng-template #fontFamilies>\n\t\t\t\t\t\t<div class=\"list-items font-items pull-left\">\n\t\t\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Arial')\">Arial</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Times New Roman')\">Times New Roman</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontFamily($event, 'Courier New')\">Courier New</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ng-template>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"pull-left font-size-btn\" (click)=\"clickedInside($event)\">\n\t\t\t\t\t<div class=\"blue-fonts cursor-pointer text-center\" (click)=\"toggleFontSize($event)\"><span>{{fontSize}}</span></div>\n\t\t\t\t\t<div *ngIf=\"isShowFontSize; then fontSizes\"></div>\n\t\t\t\t\t<ng-template #fontSizes>\n\t\t\t\t\t\t<div class=\"list-items font-sizes pull-left\">\n\t\t\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 9)\">9</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 10)\">10</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 11)\">11</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 12)\">12</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 13)\">13</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 14)\">14</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 15)\">15</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 16)\">16</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 17)\">17</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 18)\">18</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 19)\">19</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 20)\">20</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 21)\">21</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 22)\">22</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 23)\">23</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 24)\">24</div>\n\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"applyFontSize($event, 25)\">25</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ng-template>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</ng-template>\n\t\t<div class=\"pull-left smiley-btn blue-fonts cursor-pointer text-center\" [class.high-light]=\"isEmotionsHighLight\"  (click)=\"showEmotions($event);clickedInside($event);\">\n\t\t\t<div>\n\t\t\t\t<i class=\"fa fa-smile-o\"></i>\n\t\t\t</div>\n\t\t\t<div *ngIf=\"isEmotionsHighLight; then emotions\"></div>\n\t\t\t<ng-template #emotions>\n\t\t\t\t<div class=\"list-items font-items pull-left emo-list\">\n\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion0-smile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion1-sadsmile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':D')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion2-bigsmile.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '8=)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion3-cool.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':o')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion4-surprised.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ';)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion5-wink.gif\"/></span>\n\t\t\t\t\t</div>\n\n\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ';(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion6-crying.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '(:|')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion7-sweating.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':|')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion8-speechless.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':*')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion9-kiss.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, 'emotion10-tongueout')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion10-tongueout.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':$')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion11-blush.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, ':^)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion12-wondering.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '|-)')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion13-sleepy.gif\"/></span>\n\t\t\t\t\t</div>\t\t\t\t\t\n\t\t\t\t\t<div class=\"cursor-pointer list-item pull-left\" (click)=\"addEmotion($event, '|(')\">\n\t\t\t\t\t\t<span><img src=\"assets/images/smileys/socialutility-emotion14-dull.gif\"/></span>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t</div>\n\t\t<div class=\"pull-left up-img-btn blue-fonts cursor-pointer text-center\" (click)= \"imageInput.value = ''; imageInput.click();\">\n\t\t\t<i class=\"fa fa-picture-o\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left up-mus-btn blue-fonts cursor-pointer text-center\" (click)= \"musicInput.value = ''; musicInput.click();\">\n\t\t\t<i class=\"fa fa-music\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div class=\"pull-left up-vid-btn blue-fonts cursor-pointer text-center\" (click)= \"videoInput.value = ''; videoInput.click();\">\n\t\t\t<i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i>\n\t\t</div>\n\t\t<div  *ngIf=\"!isComment; then checkIn\"></div>\n\t\t<ng-template #checkIn>\n\t\t\t<div class=\"checkin-btn pull-left up-vid-btn blue-fonts cursor-pointer text-center\" (click)=\"checkIn($event)\">\n\t\t\t\t\t<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>\n\t\t\t</div>\n\t\t</ng-template>\n\t\t<div *ngIf=\"!isComment; then postBtn  else addBtn\"></div>\n\t\t<ng-template #postBtn>\n\t\t\t<div class=\"pull-left post-btn blue-fonts cursor-pointer text-center\">\n\t\t\t\t<div *ngIf=\"isAddPost; then addPost else updatePost\"></div>\n\t\t\t\t<ng-template #addPost>\n\t\t\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"postStory($event)\" [disabled]=\"(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)\">\n\t\t\t\t\t\t<span>Post</span>\n\t\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t\t\t</button>\n\t\t\t\t</ng-template>\n\t\t\t\t<ng-template #updatePost>\n\t\t\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"updateStory($event)\" [disabled]=\"(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)\">\n\t\t\t\t\t\t<span>Update</span>\n\t\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t\t\t</button>\n\t\t\t\t</ng-template>\n\t\t\t</div>\n\t\t</ng-template>\n\t\t<ng-template #addBtn>\n\t\t\t<div class=\"pull-left post-btn blue-fonts cursor-pointer text-center\">\n\t\t\t\t<div *ngIf=\"isAddComment; then addComment else updateComment\"></div>\n\t\t\t\t<ng-template #addComment>\n\t\t\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"postStory($event)\" [disabled]=\"(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)\">\n\t\t\t\t\t\t<span>Add</span>\n\t\t\t\t\t\t<i class=\"fa fa-plus\" aria-hidden=\"true\"></i>\n\t\t\t\t\t</button>\n\t\t\t\t</ng-template>\n\t\t\t\t<ng-template #updateComment>\n\t\t\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"updateStory($event)\" [disabled]=\"(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)\">\n\t\t\t\t\t\t<span>Update</span>\n\t\t\t\t\t\t<i class=\"fa fa-edit\" aria-hidden=\"true\"></i>\n\t\t\t\t\t</button>\n\t\t\t\t</ng-template>\n\t\t\t</div>\n\t\t</ng-template>\n\t</div>\n\t<!--<div class=\"action-bar\">\n\t\t<div class=\"pull-left\">\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"checkIn($event)\">\n\t\t\t\t<span>Check In</span>\n\t\t\t\t<i class=\"fa fa-map-marker\" aria-hidden=\"true\"></i>\n\t\t\t</button>\n\t\t</div>\n\t\t<div class=\"pull-left\">\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"updateStory($event)\">\n\t\t\t\t<span>Go Live</span>\n\t\t\t\t<i class=\"fa fa-video-camera\" aria-hidden=\"true\"></i>\n\t\t\t</button>\n\t\t</div>\n\t\t<div class=\"pull-left\">\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"updateStory($event)\">\n\t\t\t\t<span>Activity</span>\n\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t</button>\n\t\t</div>\n\t\t<div class=\"pull-left\">\n\t\t\t<button class=\"btn btn-primary\" id=\"postBtn\" type=\"button\" (click)=\"updateStory($event)\">\n\t\t\t\t<span>Event</span>\n\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t</button>\n\t\t</div>\n\t</div> -->\n    <div class=\"file-input-container\">\n        <form [formGroup]=\"imageUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"imageGroup\">\n                <input type=\"file\" accept=\"image/*\" class=\"file-input\" name=\"uploadimage\" #imageInput (change)=\"fileChangeEvent($event, 'image')\"/>\n            </div>\n        </form>\n        <form [formGroup]=\"musicUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"musicGroup\">\n                <input type=\"file\" accept=\"audio/*\" class=\"file-input\" name=\"uploadmusic\" #musicInput (change)=\"fileChangeEvent($event, 'music')\"/>\n            </div>\n        </form>\n        <form [formGroup]=\"videoUploadForm\" action=\"/upload\" method=\"post\" enctype=\"multipart/form-data\">\n            <div class=\"form-group\" [formGroup]=\"videoGroup\">\n                <input type=\"file\" accept=\"video/*\" class=\"file-input\" name=\"uploadvideo\" #videoInput (change)=\"fileChangeEvent($event, 'video')\"/>\n            </div>\n        </form>\n    </div>\n</div>\n\n<div *ngIf=\"!isComment then storyFeedItem\"></div>\n<ng-template #storyFeedItem>\n\t<div class=\"inline-block colw100 story-feed\" #storyFeed>\n\t\t<app-feeditem *ngFor=\"let item of feedItem\" [item]=\"item\" [userId]=\"userId\" (refreshFeed)=\"refreshFeedItem($event)\" \n\t\t(editCurrentFeedItem)= \"editCurrentFeedItem($event)\"></app-feeditem>\n\t</div>\n</ng-template>\n\n\n<app-modal [modalTitle]=\"'Post Preview'\" [blocking]='false' [modalId]='modalId' #postedPicModal id=\"storyModal\">\n\t<div class=\"post-desc-content\">\n\t\t<div class=\"colw100 inline-block\">\n\t\t\t<div *ngIf=\"fileType === 'image' then previewPic\"></div>\n\t\t\t<div *ngIf=\"fileType === 'music' then previewMusic\"></div>\n\t\t\t<div *ngIf=\"fileType === 'checkin' then previewCheckIn\"></div>\n\t\t\t<ng-template #previewPic>\n\t\t\t\t<div class=\"preview-posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + encodedImage+ ')'}\"></div>\n\t\t\t\t<div class=\"pull-right\">\n\t\t            <div>\n\t\t                <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" placeholder=\"title\" id=\"postTitle\" [(ngModel)]=\"postTitle\">\n\t\t            </div>\n\t\t            <div class=\"form-group\">\n\t\t                <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" id=\"postDesc\" [(ngModel)]=\"postDesc\">\n\t\t                </textarea>\n\t\t            </div>\n\t\t        </div>\n\t\t        <div *ngIf=\"isPostImage; then addImagePost else updateImagePost\"></div>\n\t\t        <ng-template #addImagePost>\n\t\t\t        <div class=\"colw100 inline-block\">\t\t\t\n\t\t\t\t\t\t<button id=\"okBtn\" type=\"button\" class=\"btn btn-primary text-center small-btn ok-btn\" (click)=\"postImage($event)\" [disabled]=\"isProgress\">\n\t\t\t\t\t\t\t<span class=\"pull-left\">Post</span>\n\t\t\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t</button>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t\t<ng-template #updateImagePost>\n\t\t\t        <div class=\"colw100 inline-block\">\t\t\t\n\t\t\t\t\t\t<button id=\"okBtn\" type=\"button\" class=\"btn btn-primary text-center small-btn ok-btn\" (click)=\"updateImage($event)\" [disabled]=\"isProgress\">\n\t\t\t\t\t\t\t<span class=\"pull-left\">Update</span>\n\t\t\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t</button>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t</ng-template>\n\t\t\t<ng-template #previewMusic>\n\t\t\t\t<div class=\"preview-posted-music pull-left\">\n\t\t\t\t\t<audio #musicPlayer  preload=\"none\" controls id=\"previewMusicPlayer\">\n\t\t\t\t        <source src=\"{{postedMusicPath}}\" type=\"audio/mp3\">\n\t\t\t\t        <p>Your browser does not support the HTML5 Audio element.</p>\n\t\t\t\t    </audio>\n\t\t\t\t    <progress value=\"0\" max=\"100\" id=\"progressBar\" [value]=\"uploadProgress\" [hidden]=\"!isProgress\"></progress>  \n\t\t\t\t</div>\n\t\t\t\t<div class=\"pull-right\">\n\t\t            <div>\n\t\t                <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" placeholder=\"title\" id=\"postTitle\" [(ngModel)]=\"postTitle\">\n\t\t            </div>\n\t\t            <div class=\"form-group\">\n\t\t                <textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" id=\"postDesc\" [(ngModel)]=\"postDesc\">\n\t\t                </textarea>\n\t\t            </div>\n\t\t        </div>\n\t\t        <div class=\"colw100 inline-block\">\t\t\t\n\t\t\t\t\t<button id=\"okBtn\" type=\"button\" class=\"btn btn-primary text-center small-btn ok-btn\" (click)=\"postMusic($event)\" [disabled]=\"isProgress\">\n\t\t\t\t\t\t<span class=\"pull-left\">Post</span>\n\t\t\t\t\t\t<i class=\"fa fa-share-square-o\" aria-hidden=\"true\"></i>\n\t\t\t\t\t</button>\n\t\t\t\t</div>\n\t\t\t</ng-template>\n\t\t\t<ng-template #previewCheckIn>\n\t\t\t\t<app-checkin (checkInItem)=\"onCheckIn($event)\"></app-checkin>\n\t\t\t</ng-template>\n\t\t</div>\n\t</div>\n</app-modal>"
 
 /***/ }),
 
@@ -6535,9 +6959,10 @@ module.exports = "<div class=\"inline-block colw100 story-feed\">\r\n\t<div clas
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_utility_utility_service__ = __webpack_require__("../../../../../src/app/services/utility/utility.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__ = __webpack_require__("../../../../../src/app/modal/modal.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services_data_feed_service__ = __webpack_require__("../../../../../src/app/services/data/feed.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_services_data_friends_service__ = __webpack_require__("../../../../../src/app/services/data/friends.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__checkin_checkin_component__ = __webpack_require__("../../../../../src/app/checkin/checkin.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_services_data_comment_service__ = __webpack_require__("../../../../../src/app/services/data/comment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__ = __webpack_require__("../../../../../src/app/services/data/friends.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__checkin_checkin_component__ = __webpack_require__("../../../../../src/app/checkin/checkin.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6556,14 +6981,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var StoryBoxComponent = (function () {
-    function StoryBoxComponent(checkinComponent, router, formBuilder, modalService, feedService, friendsService) {
+    function StoryBoxComponent(checkinComponent, router, formBuilder, modalService, feedService, commentService, friendsService) {
         var _this = this;
         this.checkinComponent = checkinComponent;
         this.router = router;
         this.formBuilder = formBuilder;
         this.modalService = modalService;
         this.feedService = feedService;
+        this.commentService = commentService;
         this.friendsService = friendsService;
         this.profilePicWidth = 50;
         this.loginData = undefined;
@@ -6585,6 +7012,7 @@ var StoryBoxComponent = (function () {
         this.txtDeco = 'none';
         this.fontStyle = 'normal';
         this.isSmileyAdded = false;
+        this.isShowTextStyling = false;
         this.storyContent = '';
         this.modalId = 'storyModal';
         this.userId = '';
@@ -6596,6 +7024,9 @@ var StoryBoxComponent = (function () {
         this.uploadProgress = 0;
         this.isProgress = false;
         this.postId = '';
+        this.feedLength = 0;
+        this.isComment = false;
+        this.isAddComment = true;
         var loginData = JSON.parse(localStorage.getItem('loginData'));
         this.userId = loginData.username;
         this.email = loginData.username;
@@ -6620,7 +7051,6 @@ var StoryBoxComponent = (function () {
         this.videoGroup = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormGroup */]({
             file: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]()
         });
-        this.getAllConfirmedFriends();
         router.events.forEach(function (event) {
             if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationStart */]) {
                 clearInterval(_this.timer);
@@ -6628,11 +7058,20 @@ var StoryBoxComponent = (function () {
         });
     }
     StoryBoxComponent.prototype.ngOnInit = function () {
+        if (this.action) {
+            if (this.action === 'comment') {
+                this.isComment = true;
+            }
+            else {
+                this.getAllConfirmedFriends();
+            }
+        }
     };
     StoryBoxComponent.prototype.clickedOutside = function ($event) {
         this.isShowFontFamily = false;
         this.isShowFontSize = false;
         this.isEmotionsHighLight = false;
+        this.isShowTextStyling = false;
     };
     StoryBoxComponent.prototype.clickedInside = function ($event) {
         $event.preventDefault();
@@ -6649,6 +7088,15 @@ var StoryBoxComponent = (function () {
         }
         else {
             this.isShowFontFamily = false;
+        }
+    };
+    StoryBoxComponent.prototype.toggleTextStyling = function (event) {
+        this.isEmotionsHighLight = false;
+        if (this.isShowTextStyling) {
+            this.isShowTextStyling = false;
+        }
+        else {
+            this.isShowTextStyling = true;
         }
     };
     StoryBoxComponent.prototype.applyFontFamily = function (event, fontFamily) {
@@ -6702,6 +7150,7 @@ var StoryBoxComponent = (function () {
     StoryBoxComponent.prototype.showEmotions = function (event) {
         this.isShowFontFamily = false;
         this.isShowFontSize = false;
+        this.isShowTextStyling = false;
         if (this.isEmotionsHighLight) {
             this.isEmotionsHighLight = false;
         }
@@ -6840,7 +7289,7 @@ var StoryBoxComponent = (function () {
             formData.append('uploadfile', self.files);
             formData.append('userid', self.userId);
             var xhr = new XMLHttpRequest();
-            xhr.open('post', __WEBPACK_IMPORTED_MODULE_7_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + '/api/uploadMusicFeed', true);
+            xhr.open('post', __WEBPACK_IMPORTED_MODULE_8_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + '/api/uploadMusicFeed', true);
             xhr.upload.onprogress = function (e) {
                 if (e.lengthComputable) {
                     var percentage = (e.loaded / e.total) * 100;
@@ -6951,29 +7400,37 @@ var StoryBoxComponent = (function () {
     };
     StoryBoxComponent.prototype.postStory = function (event) {
         this.syncEmotion('');
-        this.postItem(undefined, 'text', this.storyContent, '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
+        /*if(this.isComment){
+            alert(this.feedCommentItem._id);
+        }*/
+        if (this.isComment) {
+            this.saveComment(undefined, 'text', this.storyContent, '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
+        }
+        else {
+            this.postItem(undefined, 'text', this.storyContent, '', '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
+        }
     };
     StoryBoxComponent.prototype.updateStory = function (event) {
         this.syncEmotion('');
-        this.postItem(this.postId, 'text', this.storyContent, '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
+        this.postItem(this.postId, 'text', this.storyContent, '', '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
     };
     StoryBoxComponent.prototype.postImage = function (event) {
-        this.postItem(undefined, 'image', '', this.encodedImage, this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+        this.postItem(undefined, 'image', '', this.encodedImage, '', this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
         this.postedPicModal.close();
     };
     StoryBoxComponent.prototype.updateImage = function (event) {
-        this.postItem(this.postId, 'image', '', this.encodedImage, this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+        this.postItem(this.postId, 'image', '', this.encodedImage, this.postTitle, '', this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
         this.postedPicModal.close();
     };
     StoryBoxComponent.prototype.postMusic = function (event) {
-        this.postItem(undefined, 'music', '', this.postedMusicPath, this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+        this.postItem(undefined, 'music', '', this.postedMusicPath, this.postTitle, '', this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
         this.postedPicModal.close();
     };
     StoryBoxComponent.prototype.onCheckIn = function (event) {
-        this.postItem(undefined, 'checkin', '', event.data.mapData, event.data.postCheckIn, event.data.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+        this.postItem(undefined, 'checkin', '', '', event.data.mapData, event.data.postCheckIn, event.data.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
         this.postedPicModal.close();
     };
-    StoryBoxComponent.prototype.postItem = function (postId, type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight) {
+    StoryBoxComponent.prototype.postItem = function (postId, type, storyContent, filePath, poster, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight) {
         var _this = this;
         var postObj = { 'id': postId,
             'username': this.userId,
@@ -6989,6 +7446,7 @@ var StoryBoxComponent = (function () {
             'coolArr': [],
             'commentArr': [],
             'filePath': filePath,
+            'poster': poster,
             'colorInfo': color,
             'fontFamily': fontFamily,
             'fontSize': fontSize,
@@ -6998,6 +7456,32 @@ var StoryBoxComponent = (function () {
             'addWatcherArr': []
         };
         this.feedService.savePost(postObj).subscribe(function (data) { return _this.afterPostSaved(data); });
+    };
+    StoryBoxComponent.prototype.saveComment = function (commentId, type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight) {
+        var _this = this;
+        var postObj = { 'id': commentId,
+            'feeditemid': this.feedCommentItem._id,
+            'commenttext': storyContent,
+            'commentfrom': this.userId,
+            'commentto': this.feedCommentItem.userid,
+            'fullname': this.fullName,
+            'profilepic': this.profilePic,
+            'commenttype': type,
+            'filepath': filePath,
+            'isReady': true,
+            'isNotified': false,
+            'coolArr': [],
+            'commentArr': [],
+            'filePath': filePath,
+            'colorInfo': color,
+            'fontFamily': fontFamily,
+            'fontSize': fontSize,
+            'fontStyle': fontStyle,
+            'textDecoration': txtDeco,
+            'fontWeight': fontWeight,
+            'addWatcherArr': []
+        };
+        this.commentService.saveComment(postObj).subscribe(function (data) { return _this.afterPostSaved(data); });
     };
     StoryBoxComponent.prototype.afterPostSaved = function (result) {
         this.isSmileyAdded = false;
@@ -7032,7 +7516,7 @@ var StoryBoxComponent = (function () {
         this.refreshFeed();
         this.timer = setInterval(function () {
             _this.refreshFeed();
-        }, 3000);
+        }, 60000);
     };
     StoryBoxComponent.prototype.refreshFeed = function () {
         var _this = this;
@@ -7043,7 +7527,9 @@ var StoryBoxComponent = (function () {
         this.refreshFeed();
     };
     StoryBoxComponent.prototype.afterRefreshFeed = function (result) {
+        //let scrollTop = this.storyBox.nativeElement.scrollTop();
         this.feedItem = result;
+        this.feedLength = result.length;
     };
     StoryBoxComponent.prototype.checkIn = function (event) {
         this.fileType = 'checkin';
@@ -7055,9 +7541,25 @@ var StoryBoxComponent = (function () {
     return StoryBoxComponent;
 }());
 __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('action'),
+    __metadata("design:type", Object)
+], StoryBoxComponent.prototype, "action", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('feedCommentItem'),
+    __metadata("design:type", Object)
+], StoryBoxComponent.prototype, "feedCommentItem", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('replyCommentItem'),
+    __metadata("design:type", Object)
+], StoryBoxComponent.prototype, "replyCommentItem", void 0);
+__decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('storyBox'),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object)
 ], StoryBoxComponent.prototype, "storyBox", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('storyFeed'),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _b || Object)
+], StoryBoxComponent.prototype, "storyFeed", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('postedPicModal'),
     __metadata("design:type", Object)
@@ -7068,7 +7570,7 @@ __decorate([
 ], StoryBoxComponent.prototype, "musicInput", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('musicPlayer'),
-    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _b || Object)
+    __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _c || Object)
 ], StoryBoxComponent.prototype, "musicPlayer", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* HostListener */])('document:click', ['$event']),
@@ -7081,12 +7583,12 @@ StoryBoxComponent = __decorate([
         selector: 'app-story-box',
         template: __webpack_require__("../../../../../src/app/story-box/story-box.component.html"),
         styles: [__webpack_require__("../../../../../src/app/story-box/story-box.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_5_app_services_data_feed_service__["a" /* FeedService */], __WEBPACK_IMPORTED_MODULE_6_app_services_data_friends_service__["a" /* FriendsService */], __WEBPACK_IMPORTED_MODULE_8__checkin_checkin_component__["a" /* CheckinComponent */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_5_app_services_data_feed_service__["a" /* FeedService */], __WEBPACK_IMPORTED_MODULE_6_app_services_data_comment_service__["a" /* CommentService */], __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__["a" /* FriendsService */], __WEBPACK_IMPORTED_MODULE_9__checkin_checkin_component__["a" /* CheckinComponent */]]
     }),
-    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_8__checkin_checkin_component__["a" /* CheckinComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__checkin_checkin_component__["a" /* CheckinComponent */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__["a" /* ModalService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5_app_services_data_feed_service__["a" /* FeedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_services_data_feed_service__["a" /* FeedService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_6_app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _h || Object])
+    __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_9__checkin_checkin_component__["a" /* CheckinComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__checkin_checkin_component__["a" /* CheckinComponent */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__["a" /* ModalService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_5_app_services_data_feed_service__["a" /* FeedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_services_data_feed_service__["a" /* FeedService */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_6_app_services_data_comment_service__["a" /* CommentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_app_services_data_comment_service__["a" /* CommentService */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _k || Object])
 ], StoryBoxComponent);
 
-var _a, _b, _c, _d, _e, _f, _g, _h;
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 //# sourceMappingURL=story-box.component.js.map
 
 /***/ }),

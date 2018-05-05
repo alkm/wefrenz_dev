@@ -19,6 +19,7 @@ export class StoriesComponent implements OnInit {
     private isHighLightPhotos: boolean = false;
     private screenHeight: number;
     private overFlowY: string = 'visible';
+    private action: string = 'post';
 
 
 	constructor(private route: ActivatedRoute, private router: Router) { 
