@@ -1,3 +1,8 @@
 .feed-content{
 	overflow-y: auto;
 }
+@media only screen and (max-width: 768px) {
+	.profile-pic[_ngcontent-c5] {display:none;}
+	.feed-content[_ngcontent-c2] {margin: 3%;}
+	.story-feed[_ngcontent-c5] {padding: 6px 6px;}
+}
