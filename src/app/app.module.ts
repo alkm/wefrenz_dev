@@ -65,6 +65,7 @@ import { StoryBoxComponent } from './story-box/story-box.component';
 import { FeeditemComponent } from './feeditem/feeditem.component';
 import { CheckinComponent } from './checkin/checkin.component';
 import { CommentBoxComponent } from './comment-box/comment-box.component';
+import { CommentitemComponent } from './commentitem/commentitem.component';
 
 
 
@@ -118,7 +119,8 @@ import { CommentBoxComponent } from './comment-box/comment-box.component';
     StoryBoxComponent,
     FeeditemComponent,
     CheckinComponent,
-    CommentBoxComponent
+    CommentBoxComponent,
+    CommentitemComponent
   ],
   imports: [
     AgmCoreModule.forRoot({

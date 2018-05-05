@@ -87,3 +87,7 @@ app-feeditem{
 .comment-box .control-bar{
     width: 100%;
 }
+.font-sizes{
+    height: 100px;
+    overflow: auto;
+}

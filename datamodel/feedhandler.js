@@ -2,6 +2,7 @@ var feedInfo = require('./model/feedinfo');
 module.exports = function(app) {
 	// api ---------------------------------------------------------------------
 	app.post('/api/savePost/', function(req, res) {
+		var dateNow = new Date();
 		if(req.body.id === undefined){
 			feedInfo.create({
 				userid : req.body.username,
@@ -25,7 +26,7 @@ module.exports = function(app) {
 				textDecoration : req.body.textDecoration,
 				fontWeight : req.body.fontWeight,
 				addWatcherArr : req.body.addWatcherArr,
-				done: false
+				created: dateNow
 			}, function(err, info) {
 				if (err){
 					res.json({"status": "failure", "message": "This post could not be saved.", "err": err});
@@ -44,9 +45,6 @@ module.exports = function(app) {
 				description : req.body.description,
 				isReady : req.body.isReady,
 				isNotified : req.body.isNotified,
-				likeArr : [],
-				loveArr : [],
-				commentArr : [],
 				filePath : req.body.filePath,
 				poster : req.body.poster,
 				colorInfo : req.body.colorInfo,
@@ -56,7 +54,7 @@ module.exports = function(app) {
 				textDecoration : req.body.textDecoration,
 				fontWeight : req.body.fontWeight,
 				addWatcherArr : req.body.addWatcherArr,
-				done: false}
+				created: dateNow}
 			}, function(err, info){
 				if (err){
 					res.json({"status": "failure", "message": "This post could not be saved.", "err": err});
