@@ -1,0 +1,130 @@
+<div *ngIf="isEditCommentItem; then editCommentItemControls"></div>
+<ng-template #editCommentItemControls>
+	<div class="list-items feed-edit-items font-items pull-right">
+		<div class="arrow-up white-bg"></div>
+		<div *ngIf="isMyComment; then editThisCommentItem else reportThisCommentItem"></div>
+		<ng-template #editThisCommentItem>
+			<div class="cursor-pointer list-item" (click)="editCommentItem($event)">Edit</div>
+			<div class="cursor-pointer list-item" (click)="deleteCommentItem();"><span>Delete</span></div>
+		</ng-template>
+		<ng-template #reportThisCommentItem>
+			<div class="cursor-pointer list-item" (click)="moveClick($event)">Report</div>
+		</ng-template>
+		<div class="cursor-pointer list-item" (click)="selectClick($event)">Hide</div>
+		<div class="cursor-pointer list-item" (click)="defaultClick($event)">Tag</div>
+	</div>
+</ng-template>
+<div class="profile-pic no-padding pull-left contain-bg" [ngStyle]="{ 'background-image': 'url(' + commentItem.profilepic + ')'}">
+</div>
+<div class="full-name blue-fonts bold-fonts pull-left">{{commentItem.fullname}}</div>
+<div class="pull-left blue-fonts time-ago"><span>&nbsp;commented&nbsp;</span>{{commentMoment}}</div>
+<div class="pull-right edit-feed hand-cursor">
+	<i aria-hidden="true" class="fa fa-pencil-square-o blue-fonts" id="editItem" (click)="clickedInside($event);"></i>
+</div>
+<div *ngIf="commentItem.commenttype === 'text'; then textComment"></div>
+<div *ngIf="commentItem.commenttype === 'image'; then imageComment"></div>
+<div *ngIf="commentItem.commenttype === 'music'; then musicComment"></div>
+<div *ngIf="commentItem.commenttype === 'checkin'; then checkinComment"></div>
+<ng-template #textComment>
+	<div class="feed-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="commentItem.commenttext" [ngStyle]="{
+				'font-weight':' '+ commentItem.fontWeight +'', 
+				'font-size':' '+ commentItem.fontSize +'', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',
+				'color':' '+ commentItem.colorInfo +''}" >
+	</div>
+</ng-template>
+<ng-template #imageComment>
+	<div class="posted-pic pull-left" [ngStyle]="{'background': 'url(' + commentItem.filePath+ ')'}"></div>
+	<div class="comment-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="commentItem.title" [ngStyle]="{
+				'font-weight':'bold', 
+				'font-size':'12px', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',
+				'color':' '+ commentItem.colorInfo +''}" >
+	</div>
+	<div class="comment-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="commentItem.description" [ngStyle]="{
+				'font-weight':' '+ commentItem.fontWeight +'', 
+				'font-size':' '+ commentItem.fontSize +'', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',
+				'color':' '+ commentItem.colorInfo +''}" >
+	</div>
+</ng-template>
+<ng-template #checkinComment>
+	<div class="posted-pic pull-left" [ngStyle]="{'background': 'url(' + commentItem.filePath+ ')'}"></div>
+	<div class="comment-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="item.title" [ngStyle]="{
+				'font-weight':'bold', 
+				'font-size':'12px', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',
+				'color':' '+ commentItem.colorInfo +''}" >
+	</div>
+	<div class="comment-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="commentItem.description" [ngStyle]="{
+				'font-weight':' '+ commentItem.fontWeight +'', 
+				'font-size':' '+ commentItem.fontSize +'', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',
+				'color':' '+ commentItem.colorInfo +''}" >
+	</div>
+</ng-template>
+<ng-template #musicComment>
+	<audio #musicPlayer  preload="none" controls class="comment-music-player">
+        <source src="{{commentItem.filePath}}" type="audio/mp3">
+        <p>Your browser does not support the HTML5 Audio element.</p>
+    </audio>
+	<div class="comment-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="commentItem.title" [ngStyle]="{
+				'font-weight':'bold', 
+				'font-size':'12px', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',
+				'color':' '+ commentItem.colorInfo +''}" >
+	</div>
+	<div class="comment-item colw100 inline-block no-outline auto-overflow pull-left" [innerHTML]="commentItem.description" [ngStyle]="{
+				'font-weight':' '+ commentItem.fontWeight +'', 
+				'font-size':' '+ commentItem.fontSize +'', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',
+				'color':' '+ commentItem.colorInfo +''}" >
+	</div>
+</ng-template>
+
+<div class="colw100 comment-controls">
+	<div class="pull-left blue-fonts inline-block cursor-pointer" (click)="likeClick($event)"> 
+		<div *ngIf="alreadyLiked === true; then thumbsDown else thumbsUp"></div>
+		<ng-template #thumbsUp>
+			<span>
+				<i class="fa fa-thumbs-up"></i>
+			</span>
+		</ng-template>
+		<ng-template #thumbsDown>
+			<span>
+				<i class="fa fa-thumbs-down"></i>
+			</span>
+		</ng-template>
+		<div *ngIf="likeCount > 0; then  likeItemsCount else likeItemCount">
+  		</div>
+  		<ng-template #likeItemsCount>
+  			<span>{{likeCount}}</span>
+  			<span>Like</span>
+		</ng-template>
+  		<ng-template #likeItemCount>
+  			<span>Like</span>
+		</ng-template>
+	</div>	
+	<div class="pull-left blue-fonts cursor-pointer" (click)="loveClick($event)">
+		<div *ngIf="alreadyLoved === true; then lovedSymbol else loveSymbol"></div>
+		<ng-template #lovedSymbol>
+			<span>
+				<i class="fa fa-heart red-fonts"></i>
+			</span>
+		</ng-template>
+		<ng-template #loveSymbol>
+			<span>
+				<i class="fa fa-heart blue-fonts"></i>
+			</span>
+		</ng-template>
+		<div *ngIf="loveCount > 0; then  loveItemsCount else loveItemCount">
+  		</div>
+  		<ng-template #loveItemsCount>
+  			<span>{{loveCount}}</span>
+  			<span>Love</span>
+		</ng-template>
+  		<ng-template #loveItemCount>
+  			<span>Love</span>
+		</ng-template>
+	</div>
+	<div class="pull-left cursor-pointer blue-fonts" (click)="commentClick($event)"><i class="fa fa-comment"></i><span>Reply</span>
+	</div>
+</div>
+<div class="pull-left colw100 inline-block">
+	<ng-template [ngIf]="addComment">
+		<app-story-box [action]="action" [replyCommentItem]="item"></app-story-box>
+	</ng-template>	
+</div>

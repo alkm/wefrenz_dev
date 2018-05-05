@@ -136,9 +136,12 @@
 		<div class="pull-left up-vid-btn blue-fonts cursor-pointer text-center" (click)= "videoInput.value = ''; videoInput.click();">
 			<i class="fa fa-file-video-o" aria-hidden="true"></i>
 		</div>
-		<div class="checkin-btn pull-left up-vid-btn blue-fonts cursor-pointer text-center" (click)="checkIn($event)">
-				<i class="fa fa-map-marker" aria-hidden="true"></i>
-		</div>
+		<div  *ngIf="!isComment; then checkIn"></div>
+		<ng-template #checkIn>
+			<div class="checkin-btn pull-left up-vid-btn blue-fonts cursor-pointer text-center" (click)="checkIn($event)">
+					<i class="fa fa-map-marker" aria-hidden="true"></i>
+			</div>
+		</ng-template>
 		<div *ngIf="!isComment; then postBtn  else addBtn"></div>
 		<ng-template #postBtn>
 			<div class="pull-left post-btn blue-fonts cursor-pointer text-center">
@@ -168,7 +171,7 @@
 				</ng-template>
 				<ng-template #updateComment>
 					<button class="btn btn-primary" id="postBtn" type="button" (click)="updateStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
-						<span>Add</span>
+						<span>Update</span>
 						<i class="fa fa-edit" aria-hidden="true"></i>
 					</button>
 				</ng-template>

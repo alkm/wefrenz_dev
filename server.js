@@ -140,6 +140,7 @@ app.use(function(req, res, next) {
 	require('./datamodel/audiohandler.js')(app);
 	require('./datamodel/photoshandler.js')(app);
 	require('./datamodel/feedhandler.js')(app);
+	require('./datamodel/commenthandler.js')(app);
 	var easyRTCHandler = require('./datamodel/shared/easyrtchandler');
 	//Handling the chat on socket
 	io.sockets.on('connection', function(socket){//Similar to document.ready when the socket initialized

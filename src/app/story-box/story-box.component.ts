@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { UtilityService } from 'app/services/utility/utility.service';
 import { ModalService } from '../modal/modal.service';
 import { FeedService } from 'app/services/data/feed.service';
+import { CommentService } from 'app/services/data/comment.service';
 import { FriendsService } from 'app/services/data/friends.service';
 import { AppSettingsService } from 'app/services/settings/app-settings.service';
 import { CheckinComponent } from '../checkin/checkin.component';
@@ -12,11 +13,13 @@ import { CheckinComponent } from '../checkin/checkin.component';
   selector: 'app-story-box',
   templateUrl: './story-box.component.html',
   styleUrls: ['./story-box.component.css'],
-  providers: [FeedService, FriendsService, CheckinComponent]
+  providers: [FeedService, CommentService, FriendsService, CheckinComponent]
 })
 export class StoryBoxComponent implements OnInit {
 
 	@Input('action') action;
+	@Input('feedCommentItem') feedCommentItem;
+	@Input('replyCommentItem') replyCommentItem;
 	@ViewChild('storyBox') storyBox: ElementRef;
 	@ViewChild('storyFeed') storyFeed: ElementRef;
 	@ViewChild('postedPicModal') postedPicModal;
@@ -26,7 +29,7 @@ export class StoryBoxComponent implements OnInit {
 	private profilePicWidth: number = 50;
 	private loginData = undefined;
 	private profilePic: string = '';
-	private color: string = "#000"
+	private color: string = "#000";
 	private isShowFontFamily: boolean = false;
 	private isShowFontSize: boolean = false;
 	private fontFamily:string = 'Open Sans, sans-serif';
@@ -68,9 +71,10 @@ export class StoryBoxComponent implements OnInit {
   	private timer: any;
   	private feedLength: number = 0;
   	private isComment: boolean = false;
+  	private isAddComment: boolean = true;
 
 
-	constructor(private checkinComponent: CheckinComponent, private router: Router, private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private friendsService: FriendsService) {
+	constructor(private checkinComponent: CheckinComponent, private router: Router, private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private commentService: CommentService, private friendsService: FriendsService) {
 		let loginData = JSON.parse(localStorage.getItem('loginData'));
       	this.userId = loginData.username;
       	this.email = loginData.username;
@@ -466,44 +470,47 @@ export class StoryBoxComponent implements OnInit {
 		return false;*/
     }
 
-     
-
-
 
     private postStory(event){
     	this.syncEmotion('');
-    	this.postItem(undefined, 'text', this.storyContent, '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
-
+    	/*if(this.isComment){
+    		alert(this.feedCommentItem._id);
+    	}*/
+    	if(this.isComment){
+    		this.saveComment(undefined, 'text', this.storyContent, '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
+    	}else{
+    		this.postItem(undefined, 'text', this.storyContent, '', '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
+    	}
     }
     private updateStory(event){
     	this.syncEmotion('');
-    	this.postItem(this.postId, 'text', this.storyContent, '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
+    	this.postItem(this.postId, 'text', this.storyContent, '', '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
 
     }
 
 
     private postImage(event){
-    	this.postItem(undefined, 'image', '', this.encodedImage, this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+    	this.postItem(undefined, 'image', '', this.encodedImage, '', this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
     	this.postedPicModal.close();
 
     }
     
     private updateImage(event){
-    	this.postItem(this.postId, 'image', '', this.encodedImage, this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+    	this.postItem(this.postId, 'image', '', this.encodedImage, this.postTitle, '', this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
     	this.postedPicModal.close();
 
     }
     private postMusic(event){
-    	this.postItem(undefined, 'music', '', this.postedMusicPath, this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+    	this.postItem(undefined, 'music', '', this.postedMusicPath, this.postTitle, '', this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
     	this.postedPicModal.close();
     }
 
     private onCheckIn(event){
-    	this.postItem(undefined, 'checkin', '', event.data.mapData, event.data.postCheckIn, event.data.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+    	this.postItem(undefined, 'checkin', '', '', event.data.mapData, event.data.postCheckIn, event.data.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
     	this.postedPicModal.close();
     }
 
-    private postItem(postId, type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight){
+    private postItem(postId, type, storyContent, filePath, poster, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight){
     	let postObj = {'id': postId,
     		'username': this.userId,
 	        'email': this.email,
@@ -518,6 +525,7 @@ export class StoryBoxComponent implements OnInit {
 			'coolArr' : [],
 			'commentArr' : [],
 			'filePath' : filePath,
+			'poster' : poster,
 			'colorInfo' : color,
 			'fontFamily' : fontFamily,
 			'fontSize' : fontSize,
@@ -527,6 +535,32 @@ export class StoryBoxComponent implements OnInit {
 			'addWatcherArr' : []
      	};
           this.feedService.savePost(postObj).subscribe(data => this.afterPostSaved(data));
+    }
+
+    private saveComment(commentId, type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight){
+    	let postObj = {'id': commentId,
+    		'feeditemid': this.feedCommentItem._id,
+    		'commenttext':  storyContent,
+    		'commentfrom': this.userId,
+    		'commentto' : this.feedCommentItem.userid,
+	        'fullname': this.fullName,
+	        'profilepic': this.profilePic,
+			'commenttype' : type,
+			'filepath' : filePath,
+			'isReady' : true,
+			'isNotified' : false,
+			'coolArr' : [],
+			'commentArr' : [],
+			'filePath' : filePath,
+			'colorInfo' : color,
+			'fontFamily' : fontFamily,
+			'fontSize' : fontSize,
+			'fontStyle': fontStyle,
+			'textDecoration' : txtDeco,
+			'fontWeight' : fontWeight,
+			'addWatcherArr' : []
+     	};
+          this.commentService.saveComment(postObj).subscribe(data => this.afterPostSaved(data));
     }
 
     private afterPostSaved(result) {

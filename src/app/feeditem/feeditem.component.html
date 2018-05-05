@@ -17,7 +17,7 @@
 <div class="profile-pic no-padding pull-left contain-bg" [ngStyle]="{ 'background-image': 'url(' + item.profilepic + ')'}">
 </div>
 <div class="full-name blue-fonts bold-fonts pull-left">{{item.fullname}}</div>
-<div class="pull-left blue-fonts time-ago"><span>&nbsp;</span>{{feedMoment}}</div>
+<div class="pull-left blue-fonts time-ago"><span>&nbsp;posted&nbsp;</span>{{feedMoment}}</div>
 <div class="pull-right edit-feed hand-cursor">
 	<i aria-hidden="true" class="fa fa-pencil-square-o blue-fonts" id="editItem" (click)="clickedInside($event);"></i>
 </div>
@@ -122,9 +122,22 @@
 	</div>
 	<div class="pull-left cursor-pointer blue-fonts" (click)="commentClick($event)"><i class="fa fa-comment"></i><span>Comment</span>
 	</div>
+	<ng-template [ngIf]="isCommentsAdded">
+		<div class="comment-box">
+			<div class="comment-box-items">
+				<!--<div class="inline-block colw100" *ngFor="let commentItem of feedItemCommentArr">
+					{{commentItem.commenttext}}
+				</div>-->
+				<app-commentitem *ngFor="let commentItem of feedItemCommentArr" [commentItem]="commentItem">
+				</app-commentitem>
+			</div>
+		</div>
+	</ng-template>
 </div>
 <div class="pull-left colw100 inline-block">
 	<ng-template [ngIf]="addComment">
-		<app-story-box [action]="action"></app-story-box>
+		<app-story-box [action]="action" [feedCommentItem]="item"></app-story-box>
 	</ng-template>	
 </div>
+
+
