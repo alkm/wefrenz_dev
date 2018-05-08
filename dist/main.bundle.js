@@ -7612,6 +7612,7 @@ var StoryBoxComponent = (function () {
     StoryBoxComponent.prototype.onFeedScrollEnd = function () {
         this.skip = this.skip + this.limit;
         if (this.skip < this.total) {
+            this.isEndResult = false;
             this.refreshFeed();
         }
         else {
