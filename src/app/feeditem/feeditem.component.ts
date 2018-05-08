@@ -23,12 +23,20 @@ export class FeeditemComponent implements OnInit {
   private alreadyLiked: boolean = false;
   private alreadyLoved: boolean = false;
   private addComment: boolean = false;
-  private action:string = 'comment';
+  private action: string = 'comment';
   private isCommentsAdded: boolean = false;
 	//private feedMoment: moment.Moment;
   private feedItemCommentArr = [];
 	private feedMoment: any;
-  	constructor(private feedService: FeedService, private commentService: CommentService) { }
+
+  private skip: number = 0;
+  private limit: number = 3;
+  private total: number = 0;
+  private isLoading: boolean = false;
+  private isViewMore: boolean = false;
+
+
+  constructor(private feedService: FeedService, private commentService: CommentService) { }
 
   	ngOnInit() {
   		if(this.item.userid === this.userId){
@@ -46,6 +54,12 @@ export class FeeditemComponent implements OnInit {
   	@HostListener('document:click', ['$event']) clickedOutside($event){
   		this.isEditFeedItem = false;
 	 }
+    private resetCommentParam(){
+      this.skip = 0;
+      this.limit = 3;
+      this.total = 0;
+      this.feedItemCommentArr = [];
+    }
 
     private feedActionCheck(){
       let i = this.item.likeArr.indexOf(this.userId);
@@ -146,7 +160,7 @@ export class FeeditemComponent implements OnInit {
     }
 
     private fetchCommentsForCurrentFeedItem(commentId){
-      let postObj = {'feeditemid': commentId};
+      let postObj = {'feeditemid': commentId, 'skip': this.skip, 'limit': this.limit};
       this.commentService.fetchCommentsForCurrentFeedItem(postObj).subscribe(data => this.afterFetchedCommentsForCurrentFeedItem(data));
     }
 
@@ -154,15 +168,35 @@ export class FeeditemComponent implements OnInit {
       if(result.status === 'failure'){
           alert(result.message);
         }else{
-          if(result.length > 0){
+          let data = result.infos;
+          this.total = result.total;
+          if(this.total > 0){
             this.isCommentsAdded = true;
-            this.feedItemCommentArr = result;
+          }
+          for(let i in data){
+            this.feedItemCommentArr.push(data[i]);
+          }
+          if(this.feedItemCommentArr.length < this.total){
+            this.isViewMore = true;
+          }else{
+            this.isViewMore = false;
           }
       }
     }
 
     private refreshCommentItem(event){
+      this.resetCommentParam();
       this.fetchCommentsForCurrentFeedItem(event.data);
       this.addComment = false;
+    }
+
+    private viewMore(event){
+        this.skip = this.skip + this.limit;
+        if(this.skip < this.total){
+            this.fetchCommentsForCurrentFeedItem(this.item._id);
+            this.isViewMore = true;
+        }else{
+          this.isViewMore = false;
+        }
     }
 }

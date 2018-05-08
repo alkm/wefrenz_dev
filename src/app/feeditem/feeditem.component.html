@@ -130,6 +130,12 @@
 				</div>-->
 				<app-commentitem *ngFor="let commentItem of feedItemCommentArr" [commentItem]="commentItem">
 				</app-commentitem>
+
+				<ng-template [ngIf]="isViewMore">
+					<div class="colw100 inline-block">
+						<div class="view-more text-center hand-cursor blue-fonts" (click)="viewMore($event)">View More</div>
+					</div>
+				</ng-template>
 			</div>
 		</div>
 	</ng-template>
