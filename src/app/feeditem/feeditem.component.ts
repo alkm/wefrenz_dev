@@ -41,7 +41,7 @@ export class FeeditemComponent implements OnInit {
   		//this.feedMoment = moment(this.item.created);
       this.likeCount = this.item.likeArr.length;
       this.loveCount = this.item.loveArr.length;
-      this.fetchCommentsForCurrentFeedItem();
+      this.fetchCommentsForCurrentFeedItem(this.item._id);
   	}
   	@HostListener('document:click', ['$event']) clickedOutside($event){
   		this.isEditFeedItem = false;
@@ -145,8 +145,8 @@ export class FeeditemComponent implements OnInit {
       }
     }
 
-    private fetchCommentsForCurrentFeedItem(){
-      let postObj = {'feeditemid': this.item._id};
+    private fetchCommentsForCurrentFeedItem(commentId){
+      let postObj = {'feeditemid': commentId};
       this.commentService.fetchCommentsForCurrentFeedItem(postObj).subscribe(data => this.afterFetchedCommentsForCurrentFeedItem(data));
     }
 
@@ -159,5 +159,10 @@ export class FeeditemComponent implements OnInit {
             this.feedItemCommentArr = result;
           }
       }
+    }
+
+    private refreshCommentItem(event){
+      this.fetchCommentsForCurrentFeedItem(event.data);
+      this.addComment = false;
     }
 }

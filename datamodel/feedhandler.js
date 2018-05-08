@@ -85,13 +85,30 @@ module.exports = function(app) {
 		//req.body.reqidarr = req.body.reqidarr.push(req.mySession.userid);
 
 		
-		feedInfo.find({ $and: [{userid: {$in : req.body.reqidarr}}, {isReady : true  } ] }).sort('-created').exec(function(err, infos) {
+		/*feedInfo.find({ $and: [{userid: {$in : req.body.reqidarr}}, {isReady : true  } ] }).skip(0).limit(1).sort('-created').exec(function(err, infos) {
 			if(err){
 				console.log("Error"+infos);
 			}else{
-				res.send(infos);
+				res.send({"infos": infos, "total": infos.count()});
 			} 
-		});
+		});*/
+
+		var reqidarr = req.body.reqidarr;
+		var skip = req.body.skip;
+		var limit = req.body.limit;
+        feedInfo.find({$and: [{userid: {$in : reqidarr}}, {isReady : true  } ] })
+        .skip(skip)
+        .limit(limit)
+        .sort('-created')
+        .exec(function(err, infos) {
+            feedInfo.count({$and: [{userid: {$in : reqidarr}}, {isReady : true  } ] }).exec(function(err, count) {
+                if (err) return next(err)
+                res.send({
+                    "infos": infos,
+                    "total": count
+                })
+            })
+        })
 	});
 	app.post('/api/deleteFeedItem/', function(req, res) {	
 		//Delete the feed item

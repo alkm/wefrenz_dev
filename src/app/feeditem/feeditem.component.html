@@ -136,7 +136,7 @@
 </div>
 <div class="pull-left colw100 inline-block">
 	<ng-template [ngIf]="addComment">
-		<app-story-box [action]="action" [feedCommentItem]="item"></app-story-box>
+		<app-story-box [action]="action" [feedCommentItem]="item" (refreshCommentItem)="refreshCommentItem($event)"></app-story-box>
 	</ng-template>	
 </div>
 

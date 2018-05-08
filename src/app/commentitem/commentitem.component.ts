@@ -159,4 +159,9 @@ export class CommentitemComponent implements OnInit {
           }
       }
     }
+
+    private refreshCommentItem(event){
+      console.log(event);
+    	debugger;
+    }
 }

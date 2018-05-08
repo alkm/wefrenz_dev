@@ -232,6 +232,18 @@ i.fa-3x{
 	color: #2b90d9;
 }
 
+.fa-spinner{
+	font-size: 24px;
+}
+
+.spinner{
+	width: 24px;
+	margin: auto;
+}
+.spinner-bg{
+	background: rgba(255, 255, 255, 0.5);
+}
+
 .arrow-up {
   width: 0; 
   height: 0; 
