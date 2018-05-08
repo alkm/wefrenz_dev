@@ -233,8 +233,13 @@
 			<div class="spinner-bg">
 				<div class="spinner">
 					<i class="fa fa-2x fa-spin fa-spinner blue-fonts"></i>
+					<span class="blue-fonts">&nbsp;Loading...</span>
 				</div>
 			</div>
+		</ng-template>
+		<div *ngIf="isEndResult then endResult"></div>
+		<ng-template #endResult>
+			<div class="end-result blue-fonts text-center">--- End Of Result ---</div>
 		</ng-template>
 	</div>
 </ng-template>
