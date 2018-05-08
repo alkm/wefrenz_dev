@@ -591,6 +591,7 @@ export class StoryBoxComponent implements OnInit {
   		this.skip = 0;
   		this.limit = 10;
   		this.total = 0;
+  		this.isEndResult = false;
   		this.feedItem = [];
   	}
   	private afterCommentSaved(result) {
@@ -659,7 +660,6 @@ export class StoryBoxComponent implements OnInit {
     	alert('modal closed');
   	}
   	public onFeedScrollEnd(){
-  		this.isEndResult = false;
   		this.skip = this.skip + this.limit;
         if(this.skip < this.total){
           	this.refreshFeed();
