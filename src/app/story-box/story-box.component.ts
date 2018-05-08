@@ -542,7 +542,8 @@ export class StoryBoxComponent implements OnInit {
 			'fontWeight' : fontWeight,
 			'addWatcherArr' : []
      	};
-          this.feedService.savePost(postObj).subscribe(data => this.afterPostSaved(data));
+     		this.isEndResult = false;
+          	this.feedService.savePost(postObj).subscribe(data => this.afterPostSaved(data));
     }
 
     private saveComment(commentId, type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight){
@@ -590,7 +591,6 @@ export class StoryBoxComponent implements OnInit {
   		this.skip = 0;
   		this.limit = 10;
   		this.total = 0;
-  		this.isEndResult = false;
   		this.feedItem = [];
   	}
   	private afterCommentSaved(result) {
@@ -662,7 +662,6 @@ export class StoryBoxComponent implements OnInit {
 
   		this.skip = this.skip + this.limit;
         if(this.skip < this.total){
-        	this.isEndResult = false;
           	this.refreshFeed();
         }else{
         	this.isEndResult = true;
