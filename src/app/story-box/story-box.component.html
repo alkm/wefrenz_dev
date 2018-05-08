@@ -237,7 +237,7 @@
 				</div>
 			</div>
 		</ng-template>
-		<div *ngIf="isEndResult then endResult"></div>
+		<div *ngIf="!isLoading then endResult"></div>
 		<ng-template #endResult>
 			<div class="end-result blue-fonts text-center">--- End Of Result ---</div>
 		</ng-template>
