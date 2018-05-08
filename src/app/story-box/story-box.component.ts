@@ -1,4 +1,4 @@
-import { Component, HostListener, ElementRef, Input, ViewChild, OnInit } from '@angular/core';
+import { Component, HostListener, ElementRef, Input, ViewChild, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationError, NavigationCancel, RoutesRecognized } from "@angular/router";
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UtilityService } from 'app/services/utility/utility.service';
@@ -15,6 +15,7 @@ import { CheckinComponent } from '../checkin/checkin.component';
   styleUrls: ['./story-box.component.css'],
   providers: [FeedService, CommentService, FriendsService, CheckinComponent]
 })
+
 export class StoryBoxComponent implements OnInit {
 
 	@Input('action') action;
@@ -25,6 +26,8 @@ export class StoryBoxComponent implements OnInit {
 	@ViewChild('postedPicModal') postedPicModal;
 	@ViewChild('musicInput') musicInput;
 	@ViewChild('musicPlayer') musicPlayer: ElementRef;
+
+	@Output() refreshCommentItem: EventEmitter<any> = new EventEmitter();
 
 	private profilePicWidth: number = 50;
 	private loginData = undefined;
@@ -61,7 +64,7 @@ export class StoryBoxComponent implements OnInit {
   	private fullName: string = '';
   	private email: string = '';
   	private friendIdArr: Array<string> = [];
-  	private feedItem: any;
+  	private feedItem: any = [];
   	private postFeedForm: any;
   	private fileType: string = '';
   	private postedMusicPath: string = ''
@@ -72,6 +75,10 @@ export class StoryBoxComponent implements OnInit {
   	private feedLength: number = 0;
   	private isComment: boolean = false;
   	private isAddComment: boolean = true;
+  	private skip:number = 0;
+  	private limit: number = 10;
+  	private total: number = 0;
+  	private isLoading: boolean = false;
 
 
 	constructor(private checkinComponent: CheckinComponent, private router: Router, private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private commentService: CommentService, private friendsService: FriendsService) {
@@ -560,7 +567,7 @@ export class StoryBoxComponent implements OnInit {
 			'fontWeight' : fontWeight,
 			'addWatcherArr' : []
      	};
-          this.commentService.saveComment(postObj).subscribe(data => this.afterPostSaved(data));
+          this.commentService.saveComment(postObj).subscribe(data => this.afterCommentSaved(data));
     }
 
     private afterPostSaved(result) {
@@ -573,7 +580,28 @@ export class StoryBoxComponent implements OnInit {
     	if(result.status === 'failure'){
         	alert(result.message);
       	}else{
+      		this.resetFeedParam();
+      		debugger;
         	this.refreshFeed();
+      	}
+  	}
+  	private resetFeedParam(){
+  		this.skip = 0;
+  		this.limit = 10;
+  		this.total = 0;
+  		this.feedItem = [];
+  	}
+  	private afterCommentSaved(result) {
+    	/*this.isSmileyAdded = false;
+    	this.storyContent = '';
+    	this.postTitle = '';
+    	this.postDesc = '';
+    	this.isAddPost = true;
+    	this.isPostImage = true;*/
+    	if(result.status === 'failure'){
+        	alert(result.message);
+      	}else{
+        	this.refreshCommentItem.emit({data: this.feedCommentItem._id});
       	}
   	}
 
@@ -600,7 +628,8 @@ export class StoryBoxComponent implements OnInit {
   	}
 
   	private refreshFeed(){
-  		let postObj = {'reqidarr': this.friendIdArr};
+  		this.isLoading = true;
+  		let postObj = {'reqidarr': this.friendIdArr, 'skip': this.skip, 'limit': this.limit};
   		this.feedService.refreshFeed(postObj).subscribe(data => this.afterRefreshFeed(data));
   	}
 
@@ -610,8 +639,12 @@ export class StoryBoxComponent implements OnInit {
 
   	private afterRefreshFeed(result) {
   		//let scrollTop = this.storyBox.nativeElement.scrollTop();
-  		this.feedItem = result;
-  		this.feedLength = result.length;
+  		let data = result.infos;
+  		this.total = result.total;
+  		for(let i in data){
+  			this.feedItem.push(data[i]);
+  		}
+  		this.isLoading = false;
   	}
 
   	private checkIn(event){
@@ -622,5 +655,11 @@ export class StoryBoxComponent implements OnInit {
 
   	private onModalClosed(event){
     	alert('modal closed');
+  	}
+  	public onFeedScrollEnd(){
+  		this.skip = this.skip + this.limit;
+        if(this.skip < this.total){
+          this.refreshFeed();
+        }
   	}
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, HostListener, ViewChild, ElementRef} from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { StoryBoxComponent } from '../story-box/story-box.component';
 
 @Component({
   selector: 'app-stories',
@@ -7,8 +8,11 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./stories.component.css']
 })
 export class StoriesComponent implements OnInit {
+	@ViewChild('scrollMe') private myScrollContainer: ElementRef;
+	@ViewChild('storyBoxComponent') private storyBoxComponent: StoryBoxComponent;
 	@Output() onAppLoggedIn: EventEmitter<any> = new EventEmitter();
 	@Output() onAppLoggedOut: EventEmitter<any> = new EventEmitter();
+	@Output() feedScrollEnd: EventEmitter<any> = new EventEmitter();
 
 	private isMyProfile: boolean = false;
 	private userId: string = '';
@@ -64,5 +68,14 @@ export class StoriesComponent implements OnInit {
     	let evt = new CustomEvent(eventType, evtObj);
     	window.dispatchEvent(evt);
     }
+    @HostListener('scroll', ['$event'])
+	private onScroll(event: any) {
+		let element = this.myScrollContainer.nativeElement
+	    let atBottom = element.scrollHeight - element.scrollTop === element.clientHeight
+	    if (atBottom) {
+	        //this.feedScrollEnd.emit('scroll end');
+	        this.storyBoxComponent.onFeedScrollEnd();
+	    } 
+	}
 
 }
