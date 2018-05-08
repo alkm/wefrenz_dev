@@ -7498,6 +7498,7 @@ var StoryBoxComponent = (function () {
             'fontWeight': fontWeight,
             'addWatcherArr': []
         };
+        this.isEndResult = false;
         this.feedService.savePost(postObj).subscribe(function (data) { return _this.afterPostSaved(data); });
     };
     StoryBoxComponent.prototype.saveComment = function (commentId, type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight) {

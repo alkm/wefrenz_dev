@@ -542,7 +542,8 @@ export class StoryBoxComponent implements OnInit {
 			'fontWeight' : fontWeight,
 			'addWatcherArr' : []
      	};
-          this.feedService.savePost(postObj).subscribe(data => this.afterPostSaved(data));
+     		this.isEndResult = false;
+          	this.feedService.savePost(postObj).subscribe(data => this.afterPostSaved(data));
     }
 
     private saveComment(commentId, type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight){
@@ -658,9 +659,10 @@ export class StoryBoxComponent implements OnInit {
     	alert('modal closed');
   	}
   	public onFeedScrollEnd(){
+
   		this.skip = this.skip + this.limit;
         if(this.skip < this.total){
-          this.refreshFeed();
+          	this.refreshFeed();
         }else{
         	this.isEndResult = true;
         }
