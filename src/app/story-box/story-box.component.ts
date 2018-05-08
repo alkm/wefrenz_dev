@@ -590,6 +590,7 @@ export class StoryBoxComponent implements OnInit {
   		this.skip = 0;
   		this.limit = 10;
   		this.total = 0;
+  		this.isEndResult = false;
   		this.feedItem = [];
   	}
   	private afterCommentSaved(result) {
