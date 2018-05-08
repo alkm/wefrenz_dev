@@ -43,9 +43,16 @@
     display: inline-block;
 }
 .comment-box-items{
-    display: inline-table;
     border: 1px solid #2b90d9;
     width: 280px;
     border-radius: 3px;
     padding: 3px;
+    max-height: 200px;
+    overflow: auto;
+    display: block;
+}
+.view-more{
+    width: 60px;
+    padding: 3px 0px;
+    margin: auto;
 }

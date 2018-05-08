@@ -79,7 +79,6 @@ export class StoryBoxComponent implements OnInit {
   	private limit: number = 10;
   	private total: number = 0;
   	private isLoading: boolean = false;
-  	private isEndResult: boolean = false;
 
 
 	constructor(private checkinComponent: CheckinComponent, private router: Router, private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private commentService: CommentService, private friendsService: FriendsService) {
@@ -542,7 +541,6 @@ export class StoryBoxComponent implements OnInit {
 			'fontWeight' : fontWeight,
 			'addWatcherArr' : []
      	};
-     		this.isEndResult = false;
           	this.feedService.savePost(postObj).subscribe(data => this.afterPostSaved(data));
     }
 
@@ -591,7 +589,6 @@ export class StoryBoxComponent implements OnInit {
   		this.skip = 0;
   		this.limit = 10;
   		this.total = 0;
-  		this.isEndResult = false;
   		this.feedItem = [];
   	}
   	private afterCommentSaved(result) {
@@ -663,8 +660,6 @@ export class StoryBoxComponent implements OnInit {
   		this.skip = this.skip + this.limit;
         if(this.skip < this.total){
           	this.refreshFeed();
-        }else{
-        	this.isEndResult = true;
         }
   	}
 }

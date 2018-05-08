@@ -70,15 +70,22 @@ module.exports = function(app) {
 
 	
 	app.post('/api/fetchCommentsForCurrentFeedItem/', function(req, res) {	
-		// Getting all the confirmed friends 
-		console.log('req.body.feeditemid>>>>'+req.body.feeditemid);
-		commentInfo.find({commentid : req.body.feeditemid}, function(error, infos){
-			if(error){
-				console.log("Error"+error);
-			}else{
-				res.send(infos);
-			}
-		});
+		var feedItemId = req.body.feeditemid;
+		var skip = req.body.skip;
+		var limit = req.body.limit;
+        commentInfo.find({commentid : feedItemId})
+        .skip(skip)
+        .limit(limit)
+        .sort('-created')
+        .exec(function(err, infos) {
+            commentInfo.count({commentid : feedItemId}).exec(function(err, count) {
+                if (err) return next(err)
+                res.send({
+                    "infos": infos,
+                    "total": count
+                })
+            })
+        })
 	});
 }
 	
