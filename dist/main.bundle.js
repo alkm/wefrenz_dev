@@ -7547,6 +7547,7 @@ var StoryBoxComponent = (function () {
         this.skip = 0;
         this.limit = 10;
         this.total = 0;
+        this.isEndResult = false;
         this.feedItem = [];
     };
     StoryBoxComponent.prototype.afterCommentSaved = function (result) {
@@ -7610,7 +7611,6 @@ var StoryBoxComponent = (function () {
         alert('modal closed');
     };
     StoryBoxComponent.prototype.onFeedScrollEnd = function () {
-        this.isEndResult = false;
         this.skip = this.skip + this.limit;
         if (this.skip < this.total) {
             this.refreshFeed();
