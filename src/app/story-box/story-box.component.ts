@@ -659,7 +659,7 @@ export class StoryBoxComponent implements OnInit {
     	alert('modal closed');
   	}
   	public onFeedScrollEnd(){
-
+  		this.isEndResult = false;
   		this.skip = this.skip + this.limit;
         if(this.skip < this.total){
           	this.refreshFeed();
