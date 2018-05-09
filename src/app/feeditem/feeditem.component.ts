@@ -160,6 +160,7 @@ export class FeeditemComponent implements OnInit {
     }
 
     private fetchCommentsForCurrentFeedItem(commentId){
+      this.isLoading = true;
       let postObj = {'feeditemid': commentId, 'skip': this.skip, 'limit': this.limit};
       this.commentService.fetchCommentsForCurrentFeedItem(postObj).subscribe(data => this.afterFetchedCommentsForCurrentFeedItem(data));
     }
@@ -182,6 +183,7 @@ export class FeeditemComponent implements OnInit {
             this.isViewMore = false;
           }
       }
+      this.isLoading = false;
     }
 
     private refreshCommentItem(event){
