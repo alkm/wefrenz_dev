@@ -12,9 +12,10 @@ import timeago from 'timeago.js';
 export class CommentitemComponent implements OnInit {
 
 	@Input('commentItem') commentItem;
+  @Input('userId') userId;
 	@Output() refreshFeed: EventEmitter<any> = new EventEmitter();
   	@Output() editCurrentFeedItem: EventEmitter<any> = new EventEmitter();
-  	private isEditFeedItem: boolean = false;
+  	private isEditCommentItem: boolean = false;
   	private isMyComment: boolean = false;
   	private likeCount: number = 0;
   	private loveCount: number = 0;
@@ -23,10 +24,11 @@ export class CommentitemComponent implements OnInit {
   	private addComment: boolean = false;
   	private action:string = 'comment';
   	private isCommentsAdded: boolean = false;
-  	private userId: string = '';
+  	//private userId: string = '';
 	//private feedMoment: moment.Moment;
   	private feedItemCommentArr = [];
-	private commentMoment: any;
+    private commentMoment: any;
+
   	constructor(private commentService: CommentService) { }
 
   	ngOnInit() {
@@ -34,8 +36,8 @@ export class CommentitemComponent implements OnInit {
   			this.isMyComment = true;
   		}
 
-      	this.feedActionCheck();
-  		let timeagoInstance = timeago();
+    this.commentActionCheck();
+  	let timeagoInstance = timeago();
 		this.commentMoment = timeagoInstance.format(this.commentItem.created);
   		//this.feedMoment = moment(this.commentItem.created);
       	this.likeCount = this.commentItem.likeArr.length;
@@ -43,10 +45,10 @@ export class CommentitemComponent implements OnInit {
       	//this.fetchCommentsForCurrentCommentItem();
   	}
   	@HostListener('document:click', ['$event']) clickedOutside($event){
-  		this.isEditFeedItem = false;
+  		this.isEditCommentItem = false;
 	 }
 
-    private feedActionCheck(){
+    private commentActionCheck(){
       let i = this.commentItem.likeArr.indexOf(this.userId);
       if(i === -1){
         this.alreadyLiked = false
@@ -66,20 +68,20 @@ export class CommentitemComponent implements OnInit {
   	}
 
   	private clickedInside($event: Event){
-  		if(this.isEditFeedItem){
-  			this.isEditFeedItem = false;
+  		if(this.isEditCommentItem){
+  			this.isEditCommentItem = false;
   		}else{
-  			this.isEditFeedItem = true;
+  			this.isEditCommentItem = true;
   		}
 	    $event.preventDefault();
 	    $event.stopPropagation();  // <- that will stop propagation on lower layers
   	}
-  	private deleteFeedItem(){
-  		 let postObj = {'id': this.commentItem._id};
-  		 //this.feedService.deleteFeedItem(postObj).subscribe(data => this.afterFeedItemDeleted(data));
+  	private deleteCommentItem(){
+  		let postObj = {'id': this.commentItem._id};
+  		this.commentService.deleteCommentItem(postObj).subscribe(data => this.afterCommentItemDeleted(data));
   	}
 
-  	private afterFeedItemDeleted(result) {
+  	private afterCommentItemDeleted(result) {
     	if(result.status === 'failure'){
       		alert(result.message);
       	}else{
@@ -88,7 +90,7 @@ export class CommentitemComponent implements OnInit {
   	}
 
     private likeClick($event){
-      let id = this.commentItem.userId;
+      let id = this.userId;
       let likeArr = this.commentItem.likeArr;
       let i = likeArr.indexOf(id);
       if(i === -1){
@@ -100,7 +102,7 @@ export class CommentitemComponent implements OnInit {
       }
       this.likeCount = likeArr.length;
       let postObj = {'id': this.commentItem._id, 'likearr': likeArr};
-      //this.feedService.updateLikeFeedChannel(postObj).subscribe(data => this.afterUpdateLikeFeedChannel(data));
+      this.commentService.updateLikeCommentChannel(postObj).subscribe(data => this.afterUpdateLikeCommentChannel(data));
     }
 
     private loveClick($event){
@@ -116,7 +118,7 @@ export class CommentitemComponent implements OnInit {
       }
       this.loveCount = loveArr.length;
       let postObj = {'id': this.commentItem._id, 'lovearr': loveArr};
-      //this.feedService.updateLoveFeedChannel(postObj).subscribe(data => this.afterUpdateLoveFeedChannel(data));
+      this.commentService.updateLoveCommentChannel(postObj).subscribe(data => this.afterUpdateLoveCommentChannel(data));
     }
 
     private commentClick($event){
@@ -128,7 +130,7 @@ export class CommentitemComponent implements OnInit {
       
     }
 
-    private afterUpdateLikeFeedChannel(result) {
+    private afterUpdateLikeCommentChannel(result) {
       if(result.status === 'failure'){
           alert(result.message);
         }else{
@@ -136,7 +138,7 @@ export class CommentitemComponent implements OnInit {
       }
     }
 
-    private afterUpdateLoveFeedChannel(result) {
+    private afterUpdateLoveCommentChannel(result) {
       if(result.status === 'failure'){
           alert(result.message);
         }else{
@@ -162,6 +164,5 @@ export class CommentitemComponent implements OnInit {
 
     private refreshCommentItem(event){
       console.log(event);
-    	debugger;
     }
 }

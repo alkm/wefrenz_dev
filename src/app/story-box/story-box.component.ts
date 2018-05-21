@@ -624,7 +624,7 @@ export class StoryBoxComponent implements OnInit {
     	this.refreshFeed();
     	this.timer = setInterval(()=>{    //<<<---    using ()=> syntax
 		     this.refreshFeed();
-		}, 60000);
+		}, 100000);
   	}
 
   	private refreshFeed(){
@@ -639,6 +639,7 @@ export class StoryBoxComponent implements OnInit {
 
   	private afterRefreshFeed(result) {
   		//let scrollTop = this.storyBox.nativeElement.scrollTop();
+  		this.feedItem = [];
   		let data = result.infos;
   		this.total = result.total;
   		for(let i in data){

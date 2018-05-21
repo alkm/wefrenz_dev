@@ -128,7 +128,7 @@
 				<!--<div class="inline-block colw100" *ngFor="let commentItem of feedItemCommentArr">
 					{{commentItem.commenttext}}
 				</div>-->
-				<app-commentitem *ngFor="let commentItem of feedItemCommentArr" [commentItem]="commentItem">
+				<app-commentitem *ngFor="let commentItem of feedItemCommentArr" [commentItem]="commentItem" [userId]="userId"  (refreshFeed)="refreshFeedItem($event)">
 				</app-commentitem>
 
 				<ng-template [ngIf]="isViewMore">

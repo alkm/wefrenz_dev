@@ -98,9 +98,14 @@ export class FeeditemComponent implements OnInit {
     	if(result.status === 'failure'){
       		alert(result.message);
       	}else{
+          debugger;
       		this.refreshFeed.emit('refresh');
     	}
   	}
+
+    private refreshFeedItem($event){
+      this.refreshFeed.emit('refresh');
+    }
 
     private likeClick($event){
       let id = this.userId;

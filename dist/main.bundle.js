@@ -1532,7 +1532,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".comment-controls .fa-thumbs-up, .comment-controls .fa-heart, .comment-controls .fa-comment{\n    margin: 0px 3px 0px 0px;\n}\n .comment-controls .fa-heart, .comment-controls .fa-comment{\n \tmargin: 0px 3px;\n }", ""]);
+exports.push([module.i, ".comment-controls .fa-thumbs-up, .comment-controls .fa-heart, .comment-controls .fa-comment{\n    margin: 0px 3px 0px 0px;\n}\n .comment-controls .fa-heart, .comment-controls .fa-comment{\n \tmargin: 0px 3px;\n }\n .comment-edit-items{\n \tposition: absolute;\n \tleft: 245px;\n \tmargin-top: 15px;\n }\n .comment-profile-pic{\n \theight: 26px;\n \twidth: 26px;\n \tborder-radius: 50%;\n }\n.full-name{\n\tpadding-left: 3px;\n}", ""]);
 
 // exports
 
@@ -1545,7 +1545,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/commentitem/commentitem.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"isEditCommentItem; then editCommentItemControls\"></div>\n<ng-template #editCommentItemControls>\n\t<div class=\"list-items feed-edit-items font-items pull-right\">\n\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t<div *ngIf=\"isMyComment; then editThisCommentItem else reportThisCommentItem\"></div>\n\t\t<ng-template #editThisCommentItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"editCommentItem($event)\">Edit</div>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"deleteCommentItem();\"><span>Delete</span></div>\n\t\t</ng-template>\n\t\t<ng-template #reportThisCommentItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"moveClick($event)\">Report</div>\n\t\t</ng-template>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"selectClick($event)\">Hide</div>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"defaultClick($event)\">Tag</div>\n\t</div>\n</ng-template>\n<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + commentItem.profilepic + ')'}\">\n</div>\n<div class=\"full-name blue-fonts bold-fonts pull-left\">{{commentItem.fullname}}</div>\n<div class=\"pull-left blue-fonts time-ago\"><span>&nbsp;commented&nbsp;</span>{{commentMoment}}</div>\n<div class=\"pull-right edit-feed hand-cursor\">\n\t<i aria-hidden=\"true\" class=\"fa fa-pencil-square-o blue-fonts\" id=\"editItem\" (click)=\"clickedInside($event);\"></i>\n</div>\n<div *ngIf=\"commentItem.commenttype === 'text'; then textComment\"></div>\n<div *ngIf=\"commentItem.commenttype === 'image'; then imageComment\"></div>\n<div *ngIf=\"commentItem.commenttype === 'music'; then musicComment\"></div>\n<div *ngIf=\"commentItem.commenttype === 'checkin'; then checkinComment\"></div>\n<ng-template #textComment>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.commenttext\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ commentItem.fontWeight +'', \n\t\t\t\t'font-size':' '+ commentItem.fontSize +'', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #imageComment>\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + commentItem.filePath+ ')'}\"></div>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ commentItem.fontWeight +'', \n\t\t\t\t'font-size':' '+ commentItem.fontSize +'', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #checkinComment>\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + commentItem.filePath+ ')'}\"></div>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ commentItem.fontWeight +'', \n\t\t\t\t'font-size':' '+ commentItem.fontSize +'', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #musicComment>\n\t<audio #musicPlayer  preload=\"none\" controls class=\"comment-music-player\">\n        <source src=\"{{commentItem.filePath}}\" type=\"audio/mp3\">\n        <p>Your browser does not support the HTML5 Audio element.</p>\n    </audio>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ commentItem.fontWeight +'', \n\t\t\t\t'font-size':' '+ commentItem.fontSize +'', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n</ng-template>\n\n<div class=\"colw100 comment-controls\">\n\t<div class=\"pull-left blue-fonts inline-block cursor-pointer\" (click)=\"likeClick($event)\"> \n\t\t<div *ngIf=\"alreadyLiked === true; then thumbsDown else thumbsUp\"></div>\n\t\t<ng-template #thumbsUp>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-thumbs-up\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<ng-template #thumbsDown>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-thumbs-down\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<div *ngIf=\"likeCount > 0; then  likeItemsCount else likeItemCount\">\n  \t\t</div>\n  \t\t<ng-template #likeItemsCount>\n  \t\t\t<span>{{likeCount}}</span>\n  \t\t\t<span>Like</span>\n\t\t</ng-template>\n  \t\t<ng-template #likeItemCount>\n  \t\t\t<span>Like</span>\n\t\t</ng-template>\n\t</div>\t\n\t<div class=\"pull-left blue-fonts cursor-pointer\" (click)=\"loveClick($event)\">\n\t\t<div *ngIf=\"alreadyLoved === true; then lovedSymbol else loveSymbol\"></div>\n\t\t<ng-template #lovedSymbol>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-heart red-fonts\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<ng-template #loveSymbol>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-heart blue-fonts\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<div *ngIf=\"loveCount > 0; then  loveItemsCount else loveItemCount\">\n  \t\t</div>\n  \t\t<ng-template #loveItemsCount>\n  \t\t\t<span>{{loveCount}}</span>\n  \t\t\t<span>Love</span>\n\t\t</ng-template>\n  \t\t<ng-template #loveItemCount>\n  \t\t\t<span>Love</span>\n\t\t</ng-template>\n\t</div>\n\t<div class=\"pull-left cursor-pointer blue-fonts\" (click)=\"commentClick($event)\"><i class=\"fa fa-comment\"></i><span>Reply</span>\n\t</div>\n</div>\n<div class=\"pull-left colw100 inline-block\">\n\t<ng-template [ngIf]=\"addComment\">\n\t\t<app-story-box [action]=\"action\" [replyCommentItem]=\"item\"></app-story-box>\n\t</ng-template>\t\n</div>\n"
+module.exports = "<div *ngIf=\"isEditCommentItem; then editCommentItemControls\"></div>\n<ng-template #editCommentItemControls>\n\t<div class=\"list-items comment-edit-items font-items pull-right\">\n\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t<div *ngIf=\"isMyComment; then editThisCommentItem else reportThisCommentItem\"></div>\n\t\t<ng-template #editThisCommentItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"editCommentItem($event)\">Edit</div>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"deleteCommentItem();\"><span>Delete</span></div>\n\t\t</ng-template>\n\t\t<ng-template #reportThisCommentItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"moveClick($event)\">Report</div>\n\t\t</ng-template>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"selectClick($event)\">Hide</div>\n\t\t<!--<div class=\"cursor-pointer list-item\" (click)=\"defaultClick($event)\">Tag</div>-->\n\t</div>\n</ng-template>\n<div class=\"comment-profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + commentItem.profilepic + ')'}\">\n</div>\n<div class=\"full-name blue-fonts bold-fonts pull-left med-line-height\">{{commentItem.fullname}}</div>\n<div class=\"pull-left blue-fonts time-ago med-line-height\"><span>&nbsp;commented&nbsp;</span>{{commentMoment}}</div>\n<div class=\"pull-right edit-feed hand-cursor\">\n\t<i aria-hidden=\"true\" class=\"fa fa-pencil-square-o blue-fonts\" id=\"editItem\" (click)=\"clickedInside($event);\"></i>\n</div>\n<div *ngIf=\"commentItem.commenttype === 'text'; then textComment\"></div>\n<div *ngIf=\"commentItem.commenttype === 'image'; then imageComment\"></div>\n<div *ngIf=\"commentItem.commenttype === 'music'; then musicComment\"></div>\n<div *ngIf=\"commentItem.commenttype === 'checkin'; then checkinComment\"></div>\n<ng-template #textComment>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.commenttext\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ commentItem.fontWeight +'', \n\t\t\t\t'font-size':' '+ commentItem.fontSize +'', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #imageComment>\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + commentItem.filePath+ ')'}\"></div>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ commentItem.fontWeight +'', \n\t\t\t\t'font-size':' '+ commentItem.fontSize +'', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #checkinComment>\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + commentItem.filePath+ ')'}\"></div>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ commentItem.fontWeight +'', \n\t\t\t\t'font-size':' '+ commentItem.fontSize +'', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #musicComment>\n\t<audio #musicPlayer  preload=\"none\" controls class=\"comment-music-player\">\n        <source src=\"{{commentItem.filePath}}\" type=\"audio/mp3\">\n        <p>Your browser does not support the HTML5 Audio element.</p>\n    </audio>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n\t<div class=\"comment-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"commentItem.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ commentItem.fontWeight +'', \n\t\t\t\t'font-size':' '+ commentItem.fontSize +'', 'font-family':' '+ commentItem.fontFamily +'', 'font-style': ' '+ commentItem.fontStyle +' ', 'text-decoration': ' '+ commentItem.textDecoration +' ',\n\t\t\t\t'color':' '+ commentItem.colorInfo +''}\" >\n\t</div>\n</ng-template>\n\n<div class=\"colw100 comment-controls\">\n\t<div class=\"pull-left blue-fonts inline-block cursor-pointer\" (click)=\"likeClick($event)\"> \n\t\t<div *ngIf=\"alreadyLiked === true; then thumbsDown else thumbsUp\"></div>\n\t\t<ng-template #thumbsUp>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-thumbs-up\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<ng-template #thumbsDown>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-thumbs-down\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<div *ngIf=\"likeCount > 0; then  likeItemsCount else likeItemCount\">\n  \t\t</div>\n  \t\t<ng-template #likeItemsCount>\n  \t\t\t<span>{{likeCount}}</span>\n  \t\t\t<span>Like</span>\n\t\t</ng-template>\n  \t\t<ng-template #likeItemCount>\n  \t\t\t<span>Like</span>\n\t\t</ng-template>\n\t</div>\t\n\t<div class=\"pull-left blue-fonts cursor-pointer\" (click)=\"loveClick($event)\">\n\t\t<div *ngIf=\"alreadyLoved === true; then lovedSymbol else loveSymbol\"></div>\n\t\t<ng-template #lovedSymbol>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-heart red-fonts\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<ng-template #loveSymbol>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-heart blue-fonts\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<div *ngIf=\"loveCount > 0; then  loveItemsCount else loveItemCount\">\n  \t\t</div>\n  \t\t<ng-template #loveItemsCount>\n  \t\t\t<span>{{loveCount}}</span>\n  \t\t\t<span>Love</span>\n\t\t</ng-template>\n  \t\t<ng-template #loveItemCount>\n  \t\t\t<span>Love</span>\n\t\t</ng-template>\n\t</div>\n\t<div class=\"pull-left cursor-pointer blue-fonts\" (click)=\"commentClick($event)\"><i class=\"fa fa-comment\"></i><span>Reply</span>\n\t</div>\n</div>\n<div class=\"pull-left colw100 inline-block\">\n\t<ng-template [ngIf]=\"addComment\">\n\t\t<app-story-box [action]=\"action\" [replyCommentItem]=\"item\"></app-story-box>\n\t</ng-template>\t\n</div>\n"
 
 /***/ }),
 
@@ -1576,7 +1576,7 @@ var CommentitemComponent = (function () {
         this.commentService = commentService;
         this.refreshFeed = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.editCurrentFeedItem = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
-        this.isEditFeedItem = false;
+        this.isEditCommentItem = false;
         this.isMyComment = false;
         this.likeCount = 0;
         this.loveCount = 0;
@@ -1585,7 +1585,7 @@ var CommentitemComponent = (function () {
         this.addComment = false;
         this.action = 'comment';
         this.isCommentsAdded = false;
-        this.userId = '';
+        //private userId: string = '';
         //private feedMoment: moment.Moment;
         this.feedItemCommentArr = [];
     }
@@ -1593,7 +1593,7 @@ var CommentitemComponent = (function () {
         if (this.commentItem.commentfrom === this.commentItem.commentto) {
             this.isMyComment = true;
         }
-        this.feedActionCheck();
+        this.commentActionCheck();
         var timeagoInstance = __WEBPACK_IMPORTED_MODULE_2_timeago_js___default()();
         this.commentMoment = timeagoInstance.format(this.commentItem.created);
         //this.feedMoment = moment(this.commentItem.created);
@@ -1602,9 +1602,9 @@ var CommentitemComponent = (function () {
         //this.fetchCommentsForCurrentCommentItem();
     };
     CommentitemComponent.prototype.clickedOutside = function ($event) {
-        this.isEditFeedItem = false;
+        this.isEditCommentItem = false;
     };
-    CommentitemComponent.prototype.feedActionCheck = function () {
+    CommentitemComponent.prototype.commentActionCheck = function () {
         var i = this.commentItem.likeArr.indexOf(this.userId);
         if (i === -1) {
             this.alreadyLiked = false;
@@ -1624,20 +1624,21 @@ var CommentitemComponent = (function () {
         this.editCurrentFeedItem.emit({ commentItem: this.commentItem });
     };
     CommentitemComponent.prototype.clickedInside = function ($event) {
-        if (this.isEditFeedItem) {
-            this.isEditFeedItem = false;
+        if (this.isEditCommentItem) {
+            this.isEditCommentItem = false;
         }
         else {
-            this.isEditFeedItem = true;
+            this.isEditCommentItem = true;
         }
         $event.preventDefault();
         $event.stopPropagation(); // <- that will stop propagation on lower layers
     };
-    CommentitemComponent.prototype.deleteFeedItem = function () {
+    CommentitemComponent.prototype.deleteCommentItem = function () {
+        var _this = this;
         var postObj = { 'id': this.commentItem._id };
-        //this.feedService.deleteFeedItem(postObj).subscribe(data => this.afterFeedItemDeleted(data));
+        this.commentService.deleteCommentItem(postObj).subscribe(function (data) { return _this.afterCommentItemDeleted(data); });
     };
-    CommentitemComponent.prototype.afterFeedItemDeleted = function (result) {
+    CommentitemComponent.prototype.afterCommentItemDeleted = function (result) {
         if (result.status === 'failure') {
             alert(result.message);
         }
@@ -1646,7 +1647,8 @@ var CommentitemComponent = (function () {
         }
     };
     CommentitemComponent.prototype.likeClick = function ($event) {
-        var id = this.commentItem.userId;
+        var _this = this;
+        var id = this.userId;
         var likeArr = this.commentItem.likeArr;
         var i = likeArr.indexOf(id);
         if (i === -1) {
@@ -1659,9 +1661,10 @@ var CommentitemComponent = (function () {
         }
         this.likeCount = likeArr.length;
         var postObj = { 'id': this.commentItem._id, 'likearr': likeArr };
-        //this.feedService.updateLikeFeedChannel(postObj).subscribe(data => this.afterUpdateLikeFeedChannel(data));
+        this.commentService.updateLikeCommentChannel(postObj).subscribe(function (data) { return _this.afterUpdateLikeCommentChannel(data); });
     };
     CommentitemComponent.prototype.loveClick = function ($event) {
+        var _this = this;
         var id = this.userId;
         var loveArr = this.commentItem.loveArr;
         var i = loveArr.indexOf(id);
@@ -1675,7 +1678,7 @@ var CommentitemComponent = (function () {
         }
         this.loveCount = loveArr.length;
         var postObj = { 'id': this.commentItem._id, 'lovearr': loveArr };
-        //this.feedService.updateLoveFeedChannel(postObj).subscribe(data => this.afterUpdateLoveFeedChannel(data));
+        this.commentService.updateLoveCommentChannel(postObj).subscribe(function (data) { return _this.afterUpdateLoveCommentChannel(data); });
     };
     CommentitemComponent.prototype.commentClick = function ($event) {
         if (this.addComment) {
@@ -1685,7 +1688,7 @@ var CommentitemComponent = (function () {
             this.addComment = true;
         }
     };
-    CommentitemComponent.prototype.afterUpdateLikeFeedChannel = function (result) {
+    CommentitemComponent.prototype.afterUpdateLikeCommentChannel = function (result) {
         if (result.status === 'failure') {
             alert(result.message);
         }
@@ -1693,7 +1696,7 @@ var CommentitemComponent = (function () {
             alert(result.message);
         }
     };
-    CommentitemComponent.prototype.afterUpdateLoveFeedChannel = function (result) {
+    CommentitemComponent.prototype.afterUpdateLoveCommentChannel = function (result) {
         if (result.status === 'failure') {
             alert(result.message);
         }
@@ -1718,7 +1721,6 @@ var CommentitemComponent = (function () {
     };
     CommentitemComponent.prototype.refreshCommentItem = function (event) {
         console.log(event);
-        debugger;
     };
     return CommentitemComponent;
 }());
@@ -1726,6 +1728,10 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('commentItem'),
     __metadata("design:type", Object)
 ], CommentitemComponent.prototype, "commentItem", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('userId'),
+    __metadata("design:type", Object)
+], CommentitemComponent.prototype, "userId", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
@@ -2437,7 +2443,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".profile-pic{\n    margin: -3px 2px;\n    width: 45px;\n    height: 45px;\n    position: absolute;\n    left: 5px;\n    border-radius: 50%;  \t\n}\n.feed-controls .fa-thumbs-up, .feed-controls .fa-heart, .feed-controls .fa-comment{\n    margin: 0px 3px 0px 0px;\n}\n .feed-controls .fa-heart, .feed-controls .fa-comment{\n \tmargin: 0px 3px;\n }\n .feed-edit-items .arrow-up{\n \tmargin-left: 75px !important;\n }\n .feed-edit-items{\n    position: absolute !important;\n    right: 1px !important;\n    margin-top: 23px;\n    z-index: 1000;\n }\n .edit-feed:hover{\n \tcolor: red;\n }\n .posted-pic, .feed-music-player{\n    display: inline-block;\n    background-size: cover !important;\n    min-height: 300px;\n    width: 100%;\n    margin: 5px 0px;\n    background: #000;\n }\n .feed-music-player{\n\n }\n .feed-controls .pull-left{\n    margin-right: 10px;\n }\n.comment-box{\n    width: 100%;\n    display: inline-block;\n}\n.comment-box-items{\n    border: 1px solid #2b90d9;\n    width: 280px;\n    border-radius: 3px;\n    padding: 3px;\n    max-height: 220px;\n    overflow: auto;\n    display: block;\n}\n.view-more{\n    width: 60px;\n    padding: 3px 0px;\n    margin: auto;\n}\n", ""]);
+exports.push([module.i, ".profile-pic{\n    margin: -3px 2px;\n    width: 45px;\n    height: 45px;\n    position: absolute;\n    left: 5px;\n    border-radius: 50%;  \t\n}\n.feed-controls .fa-thumbs-up, .feed-controls .fa-heart, .feed-controls .fa-comment{\n    margin: 0px 3px 0px 0px;\n}\n .feed-controls .fa-heart, .feed-controls .fa-comment{\n \tmargin: 0px 3px;\n }\n .feed-edit-items .arrow-up{\n \tmargin-left: 75px !important;\n }\n .feed-edit-items{\n    position: absolute !important;\n    right: 18px !important;\n    margin-top: 16px;\n    z-index: 1000;\n }\n .edit-feed:hover{\n \tcolor: red;\n }\n .posted-pic, .feed-music-player{\n    display: inline-block;\n    background-size: cover !important;\n    min-height: 300px;\n    width: 100%;\n    margin: 5px 0px;\n    background: #000;\n }\n .feed-music-player{\n\n }\n .feed-controls .pull-left{\n    margin-right: 10px;\n }\n.comment-box{\n    width: 100%;\n    display: inline-block;\n}\n.comment-box-items{\n    border: 1px solid #2b90d9;\n    width: 280px;\n    border-radius: 3px;\n    padding: 3px;\n    max-height: 220px;\n    overflow: auto;\n    display: block;\n}\n.view-more{\n    width: 60px;\n    padding: 3px 0px;\n    margin: auto;\n}\n app-commentitem{\n    display: inline-block;\n    width: 100%;\n }\n", ""]);
 
 // exports
 
@@ -2450,7 +2456,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/feeditem/feeditem.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"isEditFeedItem; then editFeedItemControls\"></div>\n<ng-template #editFeedItemControls>\n\t<div class=\"list-items feed-edit-items font-items pull-right\">\n\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t<div *ngIf=\"isMyFeed; then editThisFeedItem else reportThisFeedItem\"></div>\n\t\t<ng-template #editThisFeedItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"editFeedItem($event)\">Edit</div>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"deleteFeedItem();\"><span>Delete</span></div>\n\t\t</ng-template>\n\t\t<ng-template #reportThisFeedItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"moveClick($event)\">Report</div>\n\t\t</ng-template>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"selectClick($event)\">Hide</div>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"defaultClick($event)\">Tag</div>\n\t</div>\n</ng-template>\n<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + item.profilepic + ')'}\">\n</div>\n<div class=\"full-name blue-fonts bold-fonts pull-left\">{{item.fullname}}</div>\n<div class=\"pull-left blue-fonts time-ago\"><span>&nbsp;posted&nbsp;</span>{{feedMoment}}</div>\n<div class=\"pull-right edit-feed hand-cursor\">\n\t<i aria-hidden=\"true\" class=\"fa fa-pencil-square-o blue-fonts\" id=\"editItem\" (click)=\"clickedInside($event);\"></i>\n</div>\n<div *ngIf=\"item.type === 'text'; then textFeed\"></div>\n<div *ngIf=\"item.type === 'image'; then imageFeed\"></div>\n<div *ngIf=\"item.type === 'music'; then musicFeed\"></div>\n<div *ngIf=\"item.type === 'checkin'; then checkinFeed\"></div>\n<ng-template #textFeed>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.post\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #imageFeed>\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + item.filePath+ ')'}\"></div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #checkinFeed>\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + item.filePath+ ')'}\"></div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #musicFeed>\n\t<audio #musicPlayer  preload=\"none\" controls class=\"feed-music-player\">\n        <source src=\"{{item.filePath}}\" type=\"audio/mp3\">\n        <p>Your browser does not support the HTML5 Audio element.</p>\n    </audio>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n\n<div class=\"colw100 feed-controls\">\n\t<div class=\"pull-left blue-fonts inline-block cursor-pointer\" (click)=\"likeClick($event)\"> \n\t\t<div *ngIf=\"alreadyLiked === true; then thumbsDown else thumbsUp\"></div>\n\t\t<ng-template #thumbsUp>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-thumbs-up\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<ng-template #thumbsDown>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-thumbs-down\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<div *ngIf=\"likeCount > 0; then  likeItemsCount else likeItemCount\">\n  \t\t</div>\n  \t\t<ng-template #likeItemsCount>\n  \t\t\t<span>{{likeCount}}</span>\n  \t\t\t<span>Like</span>\n\t\t</ng-template>\n  \t\t<ng-template #likeItemCount>\n  \t\t\t<span>Like</span>\n\t\t</ng-template>\n\t</div>\t\n\t<div class=\"pull-left blue-fonts cursor-pointer\" (click)=\"loveClick($event)\">\n\t\t<div *ngIf=\"alreadyLoved === true; then lovedSymbol else loveSymbol\"></div>\n\t\t<ng-template #lovedSymbol>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-heart red-fonts\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<ng-template #loveSymbol>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-heart blue-fonts\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<div *ngIf=\"loveCount > 0; then  loveItemsCount else loveItemCount\">\n  \t\t</div>\n  \t\t<ng-template #loveItemsCount>\n  \t\t\t<span>{{loveCount}}</span>\n  \t\t\t<span>Love</span>\n\t\t</ng-template>\n  \t\t<ng-template #loveItemCount>\n  \t\t\t<span>Love</span>\n\t\t</ng-template>\n\t</div>\n\t<div class=\"pull-left cursor-pointer blue-fonts\" (click)=\"commentClick($event)\"><i class=\"fa fa-comment\"></i><span>Comment</span>\n\t</div>\n\t<ng-template [ngIf]=\"isCommentsAdded\">\n\t\t<div class=\"comment-box\">\n\t\t\t<div class=\"comment-box-items\">\n\t\t\t\t<!--<div class=\"inline-block colw100\" *ngFor=\"let commentItem of feedItemCommentArr\">\n\t\t\t\t\t{{commentItem.commenttext}}\n\t\t\t\t</div>-->\n\t\t\t\t<app-commentitem *ngFor=\"let commentItem of feedItemCommentArr\" [commentItem]=\"commentItem\">\n\t\t\t\t</app-commentitem>\n\n\t\t\t\t<ng-template [ngIf]=\"isViewMore\">\n\t\t\t\t\t<div class=\"colw100 inline-block\">\n\t\t\t\t\t\t<div class=\"view-more text-center hand-cursor blue-fonts\" (click)=\"viewMore($event)\">View More</div>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t\t<div *ngIf=\"isLoading then loading\"></div>\n\t\t\t\t<ng-template #loading>\n\t\t\t\t\t<div class=\"spinner-bg\">\n\t\t\t\t\t\t<div class=\"spinner\">\n\t\t\t\t\t\t\t<i class=\"fa fa-2x fa-spin fa-spinner blue-fonts\"></i>\n\t\t\t\t\t\t\t<span class=\"blue-fonts\">&nbsp;Loading...</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t\t<div *ngIf=\"!isViewMore then endResult\"></div>\n\t\t\t\t<ng-template #endResult>\n\t\t\t\t\t<div class=\"end-result blue-fonts text-center colw100 inline-block\">--- End Of Result ---</div>\n\t\t\t\t</ng-template>\n\t\t\t</div>\n\t\t</div>\n\t</ng-template>\n</div>\n<div class=\"pull-left colw100 inline-block\">\n\t<ng-template [ngIf]=\"addComment\">\n\t\t<app-story-box [action]=\"action\" [feedCommentItem]=\"item\" (refreshCommentItem)=\"refreshCommentItem($event)\"></app-story-box>\n\t</ng-template>\t\n</div>\n\n\n"
+module.exports = "<div *ngIf=\"isEditFeedItem; then editFeedItemControls\"></div>\n<ng-template #editFeedItemControls>\n\t<div class=\"list-items feed-edit-items font-items pull-right\">\n\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t<div *ngIf=\"isMyFeed; then editThisFeedItem else reportThisFeedItem\"></div>\n\t\t<ng-template #editThisFeedItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"editFeedItem($event)\">Edit</div>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"deleteFeedItem();\"><span>Delete</span></div>\n\t\t</ng-template>\n\t\t<ng-template #reportThisFeedItem>\n\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"moveClick($event)\">Report</div>\n\t\t</ng-template>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"selectClick($event)\">Hide</div>\n\t\t<div class=\"cursor-pointer list-item\" (click)=\"defaultClick($event)\">Tag</div>\n\t</div>\n</ng-template>\n<div class=\"profile-pic no-padding pull-left contain-bg\" [ngStyle]=\"{ 'background-image': 'url(' + item.profilepic + ')'}\">\n</div>\n<div class=\"full-name blue-fonts bold-fonts pull-left\">{{item.fullname}}</div>\n<div class=\"pull-left blue-fonts time-ago\"><span>&nbsp;posted&nbsp;</span>{{feedMoment}}</div>\n<div class=\"pull-right edit-feed hand-cursor\">\n\t<i aria-hidden=\"true\" class=\"fa fa-pencil-square-o blue-fonts\" id=\"editItem\" (click)=\"clickedInside($event);\"></i>\n</div>\n<div *ngIf=\"item.type === 'text'; then textFeed\"></div>\n<div *ngIf=\"item.type === 'image'; then imageFeed\"></div>\n<div *ngIf=\"item.type === 'music'; then musicFeed\"></div>\n<div *ngIf=\"item.type === 'checkin'; then checkinFeed\"></div>\n<ng-template #textFeed>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.post\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #imageFeed>\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + item.filePath+ ')'}\"></div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #checkinFeed>\n\t<div class=\"posted-pic pull-left\" [ngStyle]=\"{'background': 'url(' + item.filePath+ ')'}\"></div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n<ng-template #musicFeed>\n\t<audio #musicPlayer  preload=\"none\" controls class=\"feed-music-player\">\n        <source src=\"{{item.filePath}}\" type=\"audio/mp3\">\n        <p>Your browser does not support the HTML5 Audio element.</p>\n    </audio>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.title\" [ngStyle]=\"{\n\t\t\t\t'font-weight':'bold', \n\t\t\t\t'font-size':'12px', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n\t<div class=\"feed-item colw100 inline-block no-outline auto-overflow pull-left\" [innerHTML]=\"item.description\" [ngStyle]=\"{\n\t\t\t\t'font-weight':' '+ item.fontWeight +'', \n\t\t\t\t'font-size':' '+ item.fontSize +'', 'font-family':' '+ item.fontFamily +'', 'font-style': ' '+ item.fontStyle +' ', 'text-decoration': ' '+ item.textDecoration +' ',\n\t\t\t\t'color':' '+ item.colorInfo +''}\" >\n\t</div>\n</ng-template>\n\n<div class=\"colw100 feed-controls\">\n\t<div class=\"pull-left blue-fonts inline-block cursor-pointer\" (click)=\"likeClick($event)\"> \n\t\t<div *ngIf=\"alreadyLiked === true; then thumbsDown else thumbsUp\"></div>\n\t\t<ng-template #thumbsUp>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-thumbs-up\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<ng-template #thumbsDown>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-thumbs-down\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<div *ngIf=\"likeCount > 0; then  likeItemsCount else likeItemCount\">\n  \t\t</div>\n  \t\t<ng-template #likeItemsCount>\n  \t\t\t<span>{{likeCount}}</span>\n  \t\t\t<span>Like</span>\n\t\t</ng-template>\n  \t\t<ng-template #likeItemCount>\n  \t\t\t<span>Like</span>\n\t\t</ng-template>\n\t</div>\t\n\t<div class=\"pull-left blue-fonts cursor-pointer\" (click)=\"loveClick($event)\">\n\t\t<div *ngIf=\"alreadyLoved === true; then lovedSymbol else loveSymbol\"></div>\n\t\t<ng-template #lovedSymbol>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-heart red-fonts\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<ng-template #loveSymbol>\n\t\t\t<span>\n\t\t\t\t<i class=\"fa fa-heart blue-fonts\"></i>\n\t\t\t</span>\n\t\t</ng-template>\n\t\t<div *ngIf=\"loveCount > 0; then  loveItemsCount else loveItemCount\">\n  \t\t</div>\n  \t\t<ng-template #loveItemsCount>\n  \t\t\t<span>{{loveCount}}</span>\n  \t\t\t<span>Love</span>\n\t\t</ng-template>\n  \t\t<ng-template #loveItemCount>\n  \t\t\t<span>Love</span>\n\t\t</ng-template>\n\t</div>\n\t<div class=\"pull-left cursor-pointer blue-fonts\" (click)=\"commentClick($event)\"><i class=\"fa fa-comment\"></i><span>Comment</span>\n\t</div>\n\t<ng-template [ngIf]=\"isCommentsAdded\">\n\t\t<div class=\"comment-box\">\n\t\t\t<div class=\"comment-box-items\">\n\t\t\t\t<!--<div class=\"inline-block colw100\" *ngFor=\"let commentItem of feedItemCommentArr\">\n\t\t\t\t\t{{commentItem.commenttext}}\n\t\t\t\t</div>-->\n\t\t\t\t<app-commentitem *ngFor=\"let commentItem of feedItemCommentArr\" [commentItem]=\"commentItem\" [userId]=\"userId\"  (refreshFeed)=\"refreshFeedItem($event)\">\n\t\t\t\t</app-commentitem>\n\n\t\t\t\t<ng-template [ngIf]=\"isViewMore\">\n\t\t\t\t\t<div class=\"colw100 inline-block\">\n\t\t\t\t\t\t<div class=\"view-more text-center hand-cursor blue-fonts\" (click)=\"viewMore($event)\">View More</div>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t\t<div *ngIf=\"isLoading then loading\"></div>\n\t\t\t\t<ng-template #loading>\n\t\t\t\t\t<div class=\"spinner-bg\">\n\t\t\t\t\t\t<div class=\"spinner\">\n\t\t\t\t\t\t\t<i class=\"fa fa-2x fa-spin fa-spinner blue-fonts\"></i>\n\t\t\t\t\t\t\t<span class=\"blue-fonts\">&nbsp;Loading...</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t\t<div *ngIf=\"!isViewMore then endResult\"></div>\n\t\t\t\t<ng-template #endResult>\n\t\t\t\t\t<div class=\"end-result blue-fonts text-center colw100 inline-block\">--- End Of Result ---</div>\n\t\t\t\t</ng-template>\n\t\t\t</div>\n\t\t</div>\n\t</ng-template>\n</div>\n<div class=\"pull-left colw100 inline-block\">\n\t<ng-template [ngIf]=\"addComment\">\n\t\t<app-story-box [action]=\"action\" [feedCommentItem]=\"item\" (refreshCommentItem)=\"refreshCommentItem($event)\"></app-story-box>\n\t</ng-template>\t\n</div>\n\n\n"
 
 /***/ }),
 
@@ -2561,8 +2567,12 @@ var FeeditemComponent = (function () {
             alert(result.message);
         }
         else {
+            debugger;
             this.refreshFeed.emit('refresh');
         }
+    };
+    FeeditemComponent.prototype.refreshFeedItem = function ($event) {
+        this.refreshFeed.emit('refresh');
     };
     FeeditemComponent.prototype.likeClick = function ($event) {
         var _this = this;
@@ -5980,6 +5990,24 @@ var CommentService = (function () {
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchCommentsForCurrentFeedItem", postObj, options)
             .map(function (res) { return res.json(); });
     };
+    CommentService.prototype.deleteCommentItem = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/deleteCommentItem", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    CommentService.prototype.updateLikeCommentChannel = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/updateLikeCommentChannel", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    CommentService.prototype.updateLoveCommentChannel = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/updateLoveCommentChannel", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
     return CommentService;
 }());
 CommentService = __decorate([
@@ -7614,7 +7642,7 @@ var StoryBoxComponent = (function () {
         this.refreshFeed();
         this.timer = setInterval(function () {
             _this.refreshFeed();
-        }, 60000);
+        }, 100000);
     };
     StoryBoxComponent.prototype.refreshFeed = function () {
         var _this = this;
@@ -7627,6 +7655,7 @@ var StoryBoxComponent = (function () {
     };
     StoryBoxComponent.prototype.afterRefreshFeed = function (result) {
         //let scrollTop = this.storyBox.nativeElement.scrollTop();
+        this.feedItem = [];
         var data = result.infos;
         this.total = result.total;
         for (var i in data) {
