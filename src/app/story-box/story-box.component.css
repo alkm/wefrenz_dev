@@ -18,7 +18,7 @@
 	margin: 6px 0px 1px 0px;
 	font-size: 9px;
 }
-#postBtn{
+.post-btn{
     width: auto;
     height: 17px;
     border-radius: 0px;
@@ -30,10 +30,10 @@
     color: #2b90d9 !important;
     background: #d9e1e8 !important;
 }
-#postBtn:hover *{
+.post-btn:hover *{
     color: red;
 }
-#postBtn:hover{
+.post-btn:hover{
     border: 1px solid red !important;
 }
 .file-input-container{

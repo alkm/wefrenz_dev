@@ -20,6 +20,7 @@ export class StoryBoxComponent implements OnInit {
 
 	@Input('action') action;
 	@Input('feedCommentItem') feedCommentItem;
+	@Input('operation') operation;
 	@Input('replyCommentItem') replyCommentItem;
 	@ViewChild('storyBox') storyBox: ElementRef;
 	@ViewChild('storyFeed') storyFeed: ElementRef;
@@ -81,7 +82,7 @@ export class StoryBoxComponent implements OnInit {
   	private isLoading: boolean = false;
 
 
-	constructor(private checkinComponent: CheckinComponent, private router: Router, private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private commentService: CommentService, private friendsService: FriendsService) {
+	constructor(private checkinComponent: CheckinComponent, private router: Router, private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private commentService: CommentService, private friendsService: FriendsService, private cdr: ChangeDetectionRef) {
 		let loginData = JSON.parse(localStorage.getItem('loginData'));
       	this.userId = loginData.username;
       	this.email = loginData.username;
@@ -119,11 +120,21 @@ export class StoryBoxComponent implements OnInit {
 	}
 	  
 	ngOnInit() {
+		this.cdr.detectionChanges();
 		if(this.action){
 	  		if(this.action === 'comment'){
 	  			this.isComment = true;
 	  		}else{
 	  			this.getAllConfirmedFriends();
+	  		}
+	  	}
+
+	  	if(this.operation){
+	  		if(this.operation === 'add'){
+	  			this.isAddComment = true;
+	  		}else{
+	  			this.isAddComment = false;
+	  			this.storyContent = this.replyCommentItem.commenttext;
 	  		}
 	  	}
 	}
@@ -268,7 +279,12 @@ export class StoryBoxComponent implements OnInit {
 	        range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
 	        selection = window.getSelection();//get the selection object (allows you to change selection)
 	        selection.removeAllRanges();//remove any selections already made
-	        selection.addRange(range);//make the range you have just created the visible selection
+	        try{
+	        	selection.addRange(range);//make the range you have just created the visible selection
+	        }catch(err){
+	        	console.log(err);
+	        }
+	        
 	    }
 	    /*else if(document.selection)//IE 8 and lower
 	    { 
@@ -490,8 +506,13 @@ export class StoryBoxComponent implements OnInit {
     	}
     }
     private updateStory(event){
-    	this.syncEmotion('');
+    	//this.syncEmotion('');
     	this.postItem(this.postId, 'text', this.storyContent, '', '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
+
+    }
+    private updateCommentItem(event){
+    	//this.syncEmotion('');
+    	this.updateComment(this.replyCommentItem._id, 'text', this.storyContent, '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
 
     }
 
@@ -546,10 +567,10 @@ export class StoryBoxComponent implements OnInit {
 
     private saveComment(commentId, type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight){
     	let postObj = {'id': commentId,
-    		'feeditemid': this.feedCommentItem._id,
+    		'feeditemid': this.feedCommentItem._id || undefined,
     		'commenttext':  storyContent,
     		'commentfrom': this.userId,
-    		'commentto' : this.feedCommentItem.userid,
+    		'commentto' : this.feedCommentItem.userid || undefined,
 	        'fullname': this.fullName,
 	        'profilepic': this.profilePic,
 			'commenttype' : type,
@@ -568,6 +589,29 @@ export class StoryBoxComponent implements OnInit {
 			'addWatcherArr' : []
      	};
           this.commentService.saveComment(postObj).subscribe(data => this.afterCommentSaved(data));
+    }
+
+    private updateComment(commentId, type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight){
+    	let postObj = {'id': commentId,
+    		'commenttext':  storyContent,
+	        'fullname': this.fullName,
+	        'profilepic': this.profilePic,
+			'commenttype' : type,
+			'filepath' : filePath,
+			'isReady' : true,
+			'isNotified' : false,
+			'coolArr' : [],
+			'commentArr' : [],
+			'filePath' : filePath,
+			'colorInfo' : color,
+			'fontFamily' : fontFamily,
+			'fontSize' : fontSize,
+			'fontStyle': fontStyle,
+			'textDecoration' : txtDeco,
+			'fontWeight' : fontWeight,
+			'addWatcherArr' : []
+     	};
+          this.commentService.updateComment(postObj).subscribe(data => this.afterCommentUpdated(data));
     }
 
     private afterPostSaved(result) {
@@ -602,6 +646,13 @@ export class StoryBoxComponent implements OnInit {
         	alert(result.message);
       	}else{
         	this.refreshCommentItem.emit({data: this.feedCommentItem._id});
+      	}
+  	}
+  	private afterCommentUpdated(result) {
+    	if(result.status === 'failure'){
+        	alert(result.message);
+      	}else{
+        	this.refreshCommentItem.emit({data: this.replyCommentItem.commentid});
       	}
   	}
 

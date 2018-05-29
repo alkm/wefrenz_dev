@@ -14,7 +14,8 @@ export class CommentitemComponent implements OnInit {
 	@Input('commentItem') commentItem;
   @Input('userId') userId;
 	@Output() refreshFeed: EventEmitter<any> = new EventEmitter();
-  	@Output() editCurrentFeedItem: EventEmitter<any> = new EventEmitter();
+    @Output() refreshUpdatedComment: EventEmitter<any> = new EventEmitter();
+  	@Output() editCurrentCommentItem: EventEmitter<any> = new EventEmitter();
   	private isEditCommentItem: boolean = false;
   	private isMyComment: boolean = false;
   	private likeCount: number = 0;
@@ -22,6 +23,8 @@ export class CommentitemComponent implements OnInit {
   	private alreadyLiked: boolean = false;
   	private alreadyLoved: boolean = false;
   	private addComment: boolean = false;
+    private operation: string = 'add';
+    private editComment: boolean = false;
   	private action:string = 'comment';
   	private isCommentsAdded: boolean = false;
   	//private userId: string = '';
@@ -32,7 +35,7 @@ export class CommentitemComponent implements OnInit {
   	constructor(private commentService: CommentService) { }
 
   	ngOnInit() {
-  		if(this.commentItem.commentfrom === this.commentItem.commentto){
+  		if(this.commentItem.commentfrom === this.userId){
   			this.isMyComment = true;
   		}
 
@@ -63,10 +66,6 @@ export class CommentitemComponent implements OnInit {
         this.alreadyLoved = true;
       }
     }
-  	private editFeedItem(event){
-      this.editCurrentFeedItem.emit({commentItem: this.commentItem});
-  	}
-
   	private clickedInside($event: Event){
   		if(this.isEditCommentItem){
   			this.isEditCommentItem = false;
@@ -76,6 +75,11 @@ export class CommentitemComponent implements OnInit {
 	    $event.preventDefault();
 	    $event.stopPropagation();  // <- that will stop propagation on lower layers
   	}
+    private editCommentItem(event){
+      this.editCurrentCommentItem.emit({commentItem: this.commentItem});
+      this.editComment = true;
+      this.operation = 'edit';
+    }
   	private deleteCommentItem(){
   		let postObj = {'id': this.commentItem._id};
   		this.commentService.deleteCommentItem(postObj).subscribe(data => this.afterCommentItemDeleted(data));
@@ -122,12 +126,14 @@ export class CommentitemComponent implements OnInit {
     }
 
     private commentClick($event){
-      if(this.addComment){
+      if(this.addComment || this.editComment){
         this.addComment = false;  
+        this.editComment = false; 
       }else{
         this.addComment = true;
+        this.editComment = true;
+        this.operation = 'add';
       }
-      
     }
 
     private afterUpdateLikeCommentChannel(result) {
@@ -150,6 +156,9 @@ export class CommentitemComponent implements OnInit {
       let postObj = {'feeditemid': this.commentItem._id};
     //  this.commentService.fetchCommentsForCurrentCommentItem(postObj).subscribe(data => this.afterFetchedCommentsForCurrentFeedItem(data));
     }
+    private refreshCommentItem(event){
+      this.refreshUpdatedComment.emit({item: event.data});
+    }
 
     private afterFetchedCommentsForCurrentFeedItem(result) {
       if(result.status === 'failure'){
@@ -160,9 +169,5 @@ export class CommentitemComponent implements OnInit {
             this.feedItemCommentArr = result;
           }
       }
-    }
-
-    private refreshCommentItem(event){
-      console.log(event);
     }
 }

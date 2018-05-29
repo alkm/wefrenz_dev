@@ -147,13 +147,13 @@
 			<div class="pull-left post-btn blue-fonts cursor-pointer text-center">
 				<div *ngIf="isAddPost; then addPost else updatePost"></div>
 				<ng-template #addPost>
-					<button class="btn btn-primary" id="postBtn" type="button" (click)="postStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
+					<button class="btn btn-primary" class="post-btn" type="button" (click)="postStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
 						<span>Post</span>
 						<i class="fa fa-share-square-o" aria-hidden="true"></i>
 					</button>
 				</ng-template>
 				<ng-template #updatePost>
-					<button class="btn btn-primary" id="postBtn" type="button" (click)="updateStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
+					<button class="btn btn-primary" class="post-btn" type="button" (click)="updateStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
 						<span>Update</span>
 						<i class="fa fa-share-square-o" aria-hidden="true"></i>
 					</button>
@@ -164,13 +164,14 @@
 			<div class="pull-left post-btn blue-fonts cursor-pointer text-center">
 				<div *ngIf="isAddComment; then addComment else updateComment"></div>
 				<ng-template #addComment>
-					<button class="btn btn-primary" id="postBtn" type="button" (click)="postStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
+					<button class="btn btn-primary" class="post-btn" type="button" (click)="postStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
 						<span>Add</span>
 						<i class="fa fa-plus" aria-hidden="true"></i>
 					</button>
 				</ng-template>
 				<ng-template #updateComment>
-					<button class="btn btn-primary" id="postBtn" type="button" (click)="updateStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
+					<button class="btn btn-primary" class="post-btn" type="button" (click)="updateCommentItem($event)" 
+						[disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
 						<span>Update</span>
 						<i class="fa fa-edit" aria-hidden="true"></i>
 					</button>

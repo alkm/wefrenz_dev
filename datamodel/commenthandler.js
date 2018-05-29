@@ -35,10 +35,7 @@ module.exports = function(app) {
 			});
 		}else{
 			commentInfo.update({_id: req.body.id}, {$set: {
-				commentid : req.body.feeditemid,
 				commenttext : req.body.commenttext,
-				commentfrom : req.body.commentfrom,
-				commentto : req.body.commentto,
 				fullname : req.body.fullname,
 				profilepic : req.body.profilepic,
 				commenttype : req.body.commenttype,

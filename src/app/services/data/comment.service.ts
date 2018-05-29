@@ -15,6 +15,12 @@ export class CommentService {
 		return this.http.post(AppSettingsService.API_ENDPOINT("local")+"/api/saveComment", postObj, options)
 			.map((res:Response) => res.json());
 	}
+	public updateComment(postObj) {
+		let headers = new Headers({ 'Accept': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.post(AppSettingsService.API_ENDPOINT("local")+"/api/saveComment", postObj, options)
+			.map((res:Response) => res.json());
+	}
 
 	public fetchCommentsForCurrentFeedItem(postObj) {
 		let headers = new Headers({ 'Accept': 'application/json' });
