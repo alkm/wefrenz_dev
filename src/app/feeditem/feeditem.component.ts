@@ -79,6 +79,33 @@ export class FeeditemComponent implements OnInit {
   	private editFeedItem(event){
       this.editCurrentFeedItem.emit({item: this.item});
   	}
+    private editCurrentCommentItem(event){
+      /*let self = this;
+      self.postId = event.commentItem._id;
+      self.commentType = event.commentItem.commenttype;
+      self.commentText = event.commentItem.commenttext;
+
+      if(self.commentType === 'text'){
+        self.isAddPost = false;
+        self.color = event.item.colorInfo;
+        self.fontFamily = event.item.fontFamily;
+        self.fontSize = event.item.fontSize;
+        self.fontStyle = event.item.fontStyle;
+        self.txtDeco = event.item.textDecoration;
+        self.fontWeight = event.item.fontWeight;
+        self.storyContent = event.item.post;
+        }
+      else if(self.fileType === 'image'){
+        self.isPostImage = false;
+          self.encodedImage = event.item.filePath;
+          self.openAppModal();
+        }else{
+          self.postedMusicPath = event.item.filePath;
+          self.musicPlayer.nativeElement.load();
+          self.openAppModal();
+        }*/
+      
+    }
 
   	private clickedInside($event: Event){
   		if(this.isEditFeedItem){
@@ -98,9 +125,14 @@ export class FeeditemComponent implements OnInit {
     	if(result.status === 'failure'){
       		alert(result.message);
       	}else{
+          debugger;
       		this.refreshFeed.emit('refresh');
     	}
   	}
+
+    private refreshFeedItem($event){
+      this.refreshFeed.emit('refresh');
+    }
 
     private likeClick($event){
       let id = this.userId;
@@ -188,7 +220,12 @@ export class FeeditemComponent implements OnInit {
 
     private refreshCommentItem(event){
       this.resetCommentParam();
-      this.fetchCommentsForCurrentFeedItem(event.data);
+      if(event.data !== undefined){
+        this.fetchCommentsForCurrentFeedItem(event.data);
+      }else{
+        this.fetchCommentsForCurrentFeedItem(event.item);
+      }
+     
       this.addComment = false;
     }
 

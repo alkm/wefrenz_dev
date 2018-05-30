@@ -17,8 +17,8 @@
  }
  .feed-edit-items{
     position: absolute !important;
-    right: 1px !important;
-    margin-top: 23px;
+    right: 18px !important;
+    margin-top: 16px;
     z-index: 1000;
  }
  .edit-feed:hover{
@@ -56,3 +56,7 @@
     padding: 3px 0px;
     margin: auto;
 }
+ app-commentitem{
+    display: inline-block;
+    width: 100%;
+ }

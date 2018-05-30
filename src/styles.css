@@ -315,6 +315,9 @@ i.fa-3x{
 .med-btn{
 	width: 100px;
 }
+.med-line-height{
+	line-height: 25px;
+}
 .large-btn{
 	width: 150px;
 }

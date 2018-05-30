@@ -4,3 +4,16 @@
  .comment-controls .fa-heart, .comment-controls .fa-comment{
  	margin: 0px 3px;
  }
+ .comment-edit-items{
+ 	position: absolute;
+ 	left: 245px;
+ 	margin-top: 15px;
+ }
+ .comment-profile-pic{
+ 	height: 26px;
+ 	width: 26px;
+ 	border-radius: 50%;
+ }
+.full-name{
+	padding-left: 3px;
+}
