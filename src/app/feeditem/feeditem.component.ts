@@ -220,7 +220,12 @@ export class FeeditemComponent implements OnInit {
 
     private refreshCommentItem(event){
       this.resetCommentParam();
-      this.fetchCommentsForCurrentFeedItem(event.data);
+      if(event.data !== undefined){
+        this.fetchCommentsForCurrentFeedItem(event.data);
+      }else{
+        this.fetchCommentsForCurrentFeedItem(event.item);
+      }
+     
       this.addComment = false;
     }
 

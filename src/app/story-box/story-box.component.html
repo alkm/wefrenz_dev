@@ -144,7 +144,7 @@
 		</ng-template>
 		<div *ngIf="!isComment; then postBtn  else addBtn"></div>
 		<ng-template #postBtn>
-			<div class="pull-left post-btn blue-fonts cursor-pointer text-center">
+			<div class="pull-left post-button blue-fonts cursor-pointer text-center">
 				<div *ngIf="isAddPost; then addPost else updatePost"></div>
 				<ng-template #addPost>
 					<button class="btn btn-primary" class="post-btn" type="button" (click)="postStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">
@@ -161,7 +161,7 @@
 			</div>
 		</ng-template>
 		<ng-template #addBtn>
-			<div class="pull-left post-btn blue-fonts cursor-pointer text-center">
+			<div class="pull-left post-button blue-fonts cursor-pointer text-center">
 				<div *ngIf="isAddComment; then addComment else updateComment"></div>
 				<ng-template #addComment>
 					<button class="btn btn-primary" class="post-btn" type="button" (click)="postStory($event)" [disabled]="(storyBox.innerText.trim().length === 0) && (!isSmileyAdded)">

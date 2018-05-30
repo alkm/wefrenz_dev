@@ -18,6 +18,9 @@
 	margin: 6px 0px 1px 0px;
 	font-size: 9px;
 }
+.post-button{
+    margin-left: 5px;
+}
 .post-btn{
     width: auto;
     height: 17px;

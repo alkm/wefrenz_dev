@@ -82,7 +82,7 @@ export class StoryBoxComponent implements OnInit {
   	private isLoading: boolean = false;
 
 
-	constructor(private checkinComponent: CheckinComponent, private router: Router, private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private commentService: CommentService, private friendsService: FriendsService, private cdr: ChangeDetectionRef) {
+	constructor(private checkinComponent: CheckinComponent, private router: Router, private formBuilder: FormBuilder, private modalService: ModalService, private feedService: FeedService, private commentService: CommentService, private friendsService: FriendsService) {
 		let loginData = JSON.parse(localStorage.getItem('loginData'));
       	this.userId = loginData.username;
       	this.email = loginData.username;
@@ -120,7 +120,6 @@ export class StoryBoxComponent implements OnInit {
 	}
 	  
 	ngOnInit() {
-		this.cdr.detectionChanges();
 		if(this.action){
 	  		if(this.action === 'comment'){
 	  			this.isComment = true;
@@ -506,12 +505,12 @@ export class StoryBoxComponent implements OnInit {
     	}
     }
     private updateStory(event){
-    	//this.syncEmotion('');
+    	this.syncEmotion('');
     	this.postItem(this.postId, 'text', this.storyContent, '', '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
 
     }
     private updateCommentItem(event){
-    	//this.syncEmotion('');
+    	this.syncEmotion('');
     	this.updateComment(this.replyCommentItem._id, 'text', this.storyContent, '', '', '', this.color, this.fontFamily, this.fontSize, this.fontStyle, this.txtDeco, this.fontWeight);
 
     }
