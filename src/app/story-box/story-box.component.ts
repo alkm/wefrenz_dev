@@ -624,7 +624,6 @@ export class StoryBoxComponent implements OnInit {
         	alert(result.message);
       	}else{
       		this.resetFeedParam();
-      		debugger;
         	this.refreshFeed();
       	}
   	}
@@ -673,7 +672,8 @@ export class StoryBoxComponent implements OnInit {
 
     	this.refreshFeed();
     	this.timer = setInterval(()=>{    //<<<---    using ()=> syntax
-		     this.refreshFeed();
+    		this.resetFeedParam();
+		    this.refreshFeed();
 		}, 100000);
   	}
 

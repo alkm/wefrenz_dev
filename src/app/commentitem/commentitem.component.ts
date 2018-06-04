@@ -11,33 +11,36 @@ import timeago from 'timeago.js';
 })
 export class CommentitemComponent implements OnInit {
 
-	@Input('commentItem') commentItem;
+  @Input('commentItem') commentItem;
   @Input('userId') userId;
 	@Output() refreshFeed: EventEmitter<any> = new EventEmitter();
-    @Output() refreshUpdatedComment: EventEmitter<any> = new EventEmitter();
-  	@Output() editCurrentCommentItem: EventEmitter<any> = new EventEmitter();
-  	private isEditCommentItem: boolean = false;
-  	private isMyComment: boolean = false;
-  	private likeCount: number = 0;
-  	private loveCount: number = 0;
-  	private alreadyLiked: boolean = false;
-  	private alreadyLoved: boolean = false;
-  	private addComment: boolean = false;
-    private operation: string = 'add';
-    private editComment: boolean = false;
-  	private action:string = 'comment';
-  	private isCommentsAdded: boolean = false;
-  	//private userId: string = '';
+  @Output() refreshUpdatedComment: EventEmitter<any> = new EventEmitter();
+  @Output() editCurrentCommentItem: EventEmitter<any> = new EventEmitter();
+
+  private isEditCommentItem: boolean = false;
+  private isMyComment: boolean = false;
+  private likeCount: number = 0;
+  private loveCount: number = 0;
+  private alreadyLiked: boolean = false;
+  private alreadyLoved: boolean = false;
+  private addComment: boolean = false;
+  private operation: string = 'add';
+  private editComment: boolean = false;
+  private action:string = 'comment';
+  private isCommentsAdded: boolean = false;
+  //private userId: string = '';
 	//private feedMoment: moment.Moment;
-  	private feedItemCommentArr = [];
-    private commentMoment: any;
+  private feedItemCommentArr = [];
+  private commentMoment: any;
+  private containerHeight: number = 0;
+  private scrollHeight : number = 0;
 
-  	constructor(private commentService: CommentService) { }
+  constructor(private commentService: CommentService) { }
 
-  	ngOnInit() {
-  		if(this.commentItem.commentfrom === this.userId){
-  			this.isMyComment = true;
-  		}
+  ngOnInit() {
+  	if(this.commentItem.commentfrom === this.userId){
+  		this.isMyComment = true;
+  	}
 
     this.commentActionCheck();
   	let timeagoInstance = timeago();
@@ -49,7 +52,7 @@ export class CommentitemComponent implements OnInit {
   	}
   	@HostListener('document:click', ['$event']) clickedOutside($event){
   		this.isEditCommentItem = false;
-	 }
+	}
 
     private commentActionCheck(){
       let i = this.commentItem.likeArr.indexOf(this.userId);

@@ -124,7 +124,7 @@
 	</div>
 	<ng-template [ngIf]="isCommentsAdded">
 		<div class="comment-box">
-			<div class="comment-box-items">
+			<div class="comment-box-items" #commentBoxItems>
 				<!--<div class="inline-block colw100" *ngFor="let commentItem of feedItemCommentArr">
 					{{commentItem.commenttext}}
 				</div>-->
@@ -146,7 +146,7 @@
 						</div>
 					</div>
 				</ng-template>
-				<div *ngIf="!isViewMore then endResult"></div>
+				<div *ngIf="(!isViewMore && (total > limit)) then endResult"></div>
 				<ng-template #endResult>
 					<div class="end-result blue-fonts text-center colw100 inline-block">--- End Of Result ---</div>
 				</ng-template>

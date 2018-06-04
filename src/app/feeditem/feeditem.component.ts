@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostListener, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, HostListener, EventEmitter, Output, ElementRef, ViewChild } from '@angular/core';
 //import * as moment from 'moment';
 import { FeedService } from 'app/services/data/feed.service';
 import { CommentService } from 'app/services/data/comment.service';
@@ -16,6 +16,9 @@ export class FeeditemComponent implements OnInit {
 	@Input('userId') userId;
 	@Output() refreshFeed: EventEmitter<any> = new EventEmitter();
   @Output() editCurrentFeedItem: EventEmitter<any> = new EventEmitter();
+  @ViewChild('commentBoxItems') commentBoxItems: ElementRef;
+  
+
 	private isEditFeedItem: boolean = false;
 	private isMyFeed: boolean = false;
   private likeCount: number = 0;
@@ -34,6 +37,8 @@ export class FeeditemComponent implements OnInit {
   private total: number = 0;
   private isLoading: boolean = false;
   private isViewMore: boolean = false;
+  private containerHeight: number = 0;
+  private scrollHeight : number = 0;
 
 
   constructor(private feedService: FeedService, private commentService: CommentService) { }
@@ -53,7 +58,15 @@ export class FeeditemComponent implements OnInit {
   	}
   	@HostListener('document:click', ['$event']) clickedOutside($event){
   		this.isEditFeedItem = false;
-	 }
+	  }
+
+    ngAfterViewInit() {
+      this.containerHeight = this.commentBoxItems.nativeElement.offsetHeight;
+      this.scrollHeight = this.commentBoxItems.nativeElement.scrollHeight;
+      console.log(this.containerHeight+">>><<<<"+this.scrollHeight);
+
+    }
+
     private resetCommentParam(){
       this.skip = 0;
       this.limit = 3;
@@ -211,11 +224,14 @@ export class FeeditemComponent implements OnInit {
           }
           if(this.feedItemCommentArr.length < this.total){
             this.isViewMore = true;
+           /* this.containerHeight = this.commentBoxItems.nativeElement.offsetHeight;
+            this.scrollHeight = this.commentBoxItems.nativeElement.scrollHeight;
+            console.log(this.containerHeight+">>><<<<"+this.scrollHeight);*/   
           }else{
             this.isViewMore = false;
           }
       }
-      this.isLoading = false;
+      this.isLoading = false; 
     }
 
     private refreshCommentItem(event){
@@ -225,7 +241,6 @@ export class FeeditemComponent implements OnInit {
       }else{
         this.fetchCommentsForCurrentFeedItem(event.item);
       }
-     
       this.addComment = false;
     }
 
