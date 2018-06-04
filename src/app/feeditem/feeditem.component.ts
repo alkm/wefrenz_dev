@@ -61,9 +61,6 @@ export class FeeditemComponent implements OnInit {
 	  }
 
     ngAfterViewInit() {
-      this.containerHeight = this.commentBoxItems.nativeElement.offsetHeight;
-      this.scrollHeight = this.commentBoxItems.nativeElement.scrollHeight;
-      console.log(this.containerHeight+">>><<<<"+this.scrollHeight);
 
     }
 
@@ -138,7 +135,6 @@ export class FeeditemComponent implements OnInit {
     	if(result.status === 'failure'){
       		alert(result.message);
       	}else{
-          debugger;
       		this.refreshFeed.emit('refresh');
     	}
   	}
