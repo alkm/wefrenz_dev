@@ -8314,7 +8314,8 @@ var Easyrtc = function() {
                     //
                     if (isSocketConnected(self.webSocket)) {
                         //self.showError(self.errCodes.SIGNAL_ERR, self.getConstantString("miscSignalError"));
-                        alert(self.errCodes.SIGNAL_ERR, self.getConstantString("miscSignalError"));
+                        //alert(self.errCodes.SIGNAL_ERR, self.getConstantString("miscSignalError"));
+                        alert("You are disconnected from server, please refresh the page to use the application.");
                     }
                     else {
                         /* socket server went down. this will generate a 'disconnect' event as well, so skip this event */
