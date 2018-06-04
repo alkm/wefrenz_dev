@@ -122,14 +122,14 @@
 	</div>
 	<div class="pull-left cursor-pointer blue-fonts" (click)="commentClick($event)"><i class="fa fa-comment"></i><span>Comment</span>
 	</div>
-	<ng-template [ngIf]="isCommentsAdded">
+	<ng-template [ngIf]="(isCommentsAdded && (feedItemCommentArr.length > 0))">
 		<div class="comment-box">
 			<div class="comment-box-items" #commentBoxItems>
 				<!--<div class="inline-block colw100" *ngFor="let commentItem of feedItemCommentArr">
 					{{commentItem.commenttext}}
 				</div>-->
 				<app-commentitem *ngFor="let commentItem of feedItemCommentArr" 
-				(refreshUpdatedComment)="refreshCommentItem($event)" [commentItem]="commentItem" [userId]="userId"  (refreshFeed)="refreshFeedItem($event)" (editCurrentCommentItem)= "editCurrentCommentItem($event)">
+				(refreshUpdatedComment)="refreshCommentItem($event)" [item]="item" [commentItem]="commentItem" [userId]="userId"  (refreshFeed)="refreshFeedItem($event)" (editCurrentCommentItem)= "editCurrentCommentItem($event)">
 				</app-commentitem>
 
 				<ng-template [ngIf]="isViewMore">

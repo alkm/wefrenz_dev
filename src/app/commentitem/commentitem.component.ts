@@ -11,6 +11,7 @@ import timeago from 'timeago.js';
 })
 export class CommentitemComponent implements OnInit {
 
+  @Input('item') item;
   @Input('commentItem') commentItem;
   @Input('userId') userId;
 	@Output() refreshFeed: EventEmitter<any> = new EventEmitter();
@@ -92,7 +93,8 @@ export class CommentitemComponent implements OnInit {
     	if(result.status === 'failure'){
       		alert(result.message);
       	}else{
-      		this.refreshFeed.emit('refresh');
+      		//this.refreshFeed.emit('refresh');
+          this.refreshUpdatedComment.emit({item: this.item._id});
     	}
   	}
 

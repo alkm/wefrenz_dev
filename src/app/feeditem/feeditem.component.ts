@@ -214,6 +214,8 @@ export class FeeditemComponent implements OnInit {
           this.total = result.total;
           if(this.total > 0){
             this.isCommentsAdded = true;
+          }else{
+            this.isCommentsAdded = false;
           }
           for(let i in data){
             this.feedItemCommentArr.push(data[i]);
