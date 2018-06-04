@@ -136,6 +136,11 @@ export class StoryBoxComponent implements OnInit {
 	  			this.storyContent = this.replyCommentItem.commenttext;
 	  		}
 	  	}
+
+	  	this.timer = setInterval(()=>{    //<<<---    using ()=> syntax
+    		this.resetFeedParam();
+		    this.refreshFeed();
+		}, 100000);
 	}
 	@HostListener('document:click', ['$event']) clickedOutside($event){
 		this.isShowFontFamily = false;
@@ -670,11 +675,22 @@ export class StoryBoxComponent implements OnInit {
     		}
     	}
 
-    	this.refreshFeed();
-    	this.timer = setInterval(()=>{    //<<<---    using ()=> syntax
-    		this.resetFeedParam();
-		    this.refreshFeed();
-		}, 100000);
+    	this.getFeed();
+  	}
+
+  	private getFeed(){
+  		this.isLoading = true;
+  		let postObj = {'reqidarr': this.friendIdArr, 'skip': this.skip, 'limit': this.limit};
+  		this.feedService.refreshFeed(postObj).subscribe(data => this.afterGetFeed(data));
+  	}
+
+  	private afterGetFeed(result) {
+  		let data = result.infos;
+  		this.total = result.total;
+  		for(let i in data){
+  			this.feedItem.push(data[i]);
+  		}
+  		this.isLoading = false;
   	}
 
   	private refreshFeed(){
@@ -710,7 +726,7 @@ export class StoryBoxComponent implements OnInit {
   	public onFeedScrollEnd(){
   		this.skip = this.skip + this.limit;
         if(this.skip < this.total){
-          	this.refreshFeed();
+          	this.getFeed();
         }
   	}
 }
