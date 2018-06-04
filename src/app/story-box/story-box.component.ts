@@ -337,6 +337,10 @@ export class StoryBoxComponent implements OnInit {
   			self.txtDeco = event.item.textDecoration;
   			self.fontWeight = event.item.fontWeight;
   			self.storyContent = event.item.post;
+  			const element = document.querySelector("#feedTop");
+			if(element){
+				element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			} 
         }
   		else if(self.fileType === 'image'){
   			self.isPostImage = false;
