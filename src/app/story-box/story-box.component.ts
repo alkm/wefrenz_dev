@@ -140,7 +140,7 @@ export class StoryBoxComponent implements OnInit {
 	  	this.timer = setInterval(()=>{    //<<<---    using ()=> syntax
     		this.resetFeedParam();
 		    this.refreshFeed();
-		}, 100000);
+		}, 120000);
 	}
 	@HostListener('document:click', ['$event']) clickedOutside($event){
 		this.isShowFontFamily = false;
@@ -640,7 +640,7 @@ export class StoryBoxComponent implements OnInit {
   		this.skip = 0;
   		this.limit = 10;
   		this.total = 0;
-  		this.feedItem = [];
+  		//this.feedItem = [];
   	}
   	private afterCommentSaved(result) {
     	/*this.isSmileyAdded = false;
