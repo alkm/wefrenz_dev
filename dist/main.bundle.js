@@ -47,7 +47,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/ad/ad.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"ad-panel\">\n<img src=\"https://scontent-sit4-1.xx.fbcdn.net/v/t45.1600-4/c0.9.284.149/p284x149/25512324_6079377712089_171355214991851520_n.png?oh=a729415b12af8e3cb887bc457fcf75bf&oe=5AFE185F\"/>\n<div class=\"text-center blue-fonts cursor-pointer\">Create your ad.</div>\n</div>\n"
+module.exports = "\n<div class=\"ad-panel\">\n<img src=\"assets/images/add.jpg\"/>\n<div class=\"text-center blue-fonts cursor-pointer\">Create your ad.</div>\n</div>\n"
 
 /***/ }),
 
@@ -7244,7 +7244,7 @@ var StoryBoxComponent = (function () {
         this.timer = setInterval(function () {
             _this.resetFeedParam();
             _this.refreshFeed();
-        }, 100000);
+        }, 120000);
     };
     StoryBoxComponent.prototype.clickedOutside = function ($event) {
         this.isShowFontFamily = false;
@@ -7717,7 +7717,7 @@ var StoryBoxComponent = (function () {
         this.skip = 0;
         this.limit = 10;
         this.total = 0;
-        this.feedItem = [];
+        //this.feedItem = [];
     };
     StoryBoxComponent.prototype.afterCommentSaved = function (result) {
         /*this.isSmileyAdded = false;
