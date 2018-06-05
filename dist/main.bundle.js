@@ -7787,6 +7787,7 @@ var StoryBoxComponent = (function () {
         this.feedService.refreshFeed(postObj).subscribe(function (data) { return _this.afterRefreshFeed(data); });
     };
     StoryBoxComponent.prototype.refreshFeedItem = function (event) {
+        this.resetFeedParam();
         this.refreshFeed();
     };
     StoryBoxComponent.prototype.afterRefreshFeed = function (result) {

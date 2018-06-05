@@ -704,6 +704,7 @@ export class StoryBoxComponent implements OnInit {
   	}
 
   	private refreshFeedItem(event){
+  		this.resetFeedParam();
   		this.refreshFeed();
   	}
 
