@@ -138,7 +138,7 @@
 		</div>
 		<div  *ngIf="!isComment; then checkIn"></div>
 		<ng-template #checkIn>
-			<div class="checkin-btn pull-left up-vid-btn blue-fonts cursor-pointer text-center" (click)="checkIn($event)">
+			<div class="checkin-btn pull-left up-vid-btn blue-fonts cursor-pointer text-center" (click)="doCheckIn($event)">
 					<i class="fa fa-map-marker" aria-hidden="true"></i>
 			</div>
 		</ng-template>
