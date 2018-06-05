@@ -47,8 +47,9 @@
     width: 280px;
     border-radius: 3px;
     padding: 3px;
-    max-height: 220px;
-    overflow: auto;
+    /*max-height: 220px;*/
+    overflow-y: auto;
+    overflow-x: hidden;
     display: block;
 }
 .view-more{
@@ -59,4 +60,7 @@
  app-commentitem{
     display: inline-block;
     width: 100%;
+ }
+ .feed-item{
+    word-wrap: break-word;
  }
