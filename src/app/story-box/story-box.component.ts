@@ -719,7 +719,7 @@ export class StoryBoxComponent implements OnInit {
   		this.isLoading = false;
   	}
 
-  	private checkIn(event){
+  	private doCheckIn(event){
 
   		this.fileType = 'checkin';
   		this.openAppModal('checkin');
