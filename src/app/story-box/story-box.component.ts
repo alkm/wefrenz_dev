@@ -542,7 +542,7 @@ export class StoryBoxComponent implements OnInit {
     }
 
     private onCheckIn(event){
-    	this.postItem(undefined, 'checkin', '', '', event.data.mapData, event.data.postCheckIn, event.data.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+    	this.postItem(undefined, 'checkin', '', event.data.mapData, '', event.data.postCheckIn, event.data.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
     	this.postedPicModal.close();
     }
 

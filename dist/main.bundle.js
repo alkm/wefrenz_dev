@@ -1532,7 +1532,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".comment-controls .fa-thumbs-up, .comment-controls .fa-heart, .comment-controls .fa-comment{\n    margin: 0px 3px 0px 0px;\n}\n .comment-controls .fa-heart, .comment-controls .fa-comment{\n \tmargin: 0px 3px;\n }\n .comment-edit-items{\n \tposition: absolute;\n \tleft: 245px;\n \tmargin-top: 15px;\n }\n .comment-profile-pic{\n \theight: 26px;\n \twidth: 26px;\n \tborder-radius: 50%;\n }\n.full-name{\n\tpadding-left: 3px;\n}", ""]);
+exports.push([module.i, ".comment-controls .fa-thumbs-up, .comment-controls .fa-heart, .comment-controls .fa-comment{\n    margin: 0px 3px 0px 0px;\n}\n .comment-controls .fa-heart, .comment-controls .fa-comment{\n \tmargin: 0px 3px;\n }\n .comment-edit-items{\n \tposition: absolute;\n \tleft: 245px;\n \tmargin-top: 15px;\n }\n .comment-profile-pic{\n \theight: 26px;\n \twidth: 26px;\n \tborder-radius: 50%;\n }\n.full-name{\n\tpadding-left: 3px;\n}\n .feed-item{\n    word-wrap: break-word;\n }", ""]);
 
 // exports
 
@@ -2462,7 +2462,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".profile-pic{\n    margin: -3px 2px;\n    width: 45px;\n    height: 45px;\n    position: absolute;\n    left: 5px;\n    border-radius: 50%;  \t\n}\n.feed-controls .fa-thumbs-up, .feed-controls .fa-heart, .feed-controls .fa-comment{\n    margin: 0px 3px 0px 0px;\n}\n .feed-controls .fa-heart, .feed-controls .fa-comment{\n \tmargin: 0px 3px;\n }\n .feed-edit-items .arrow-up{\n \tmargin-left: 75px !important;\n }\n .feed-edit-items{\n    position: absolute !important;\n    right: 18px !important;\n    margin-top: 16px;\n    z-index: 1000;\n }\n .edit-feed:hover{\n \tcolor: red;\n }\n .posted-pic, .feed-music-player{\n    display: inline-block;\n    background-size: cover !important;\n    min-height: 300px;\n    width: 100%;\n    margin: 5px 0px;\n    background: #000;\n }\n .feed-music-player{\n\n }\n .feed-controls .pull-left{\n    margin-right: 10px;\n }\n.comment-box{\n    width: 100%;\n    display: inline-block;\n}\n.comment-box-items{\n    border: 1px solid #2b90d9;\n    width: 280px;\n    border-radius: 3px;\n    padding: 3px;\n    max-height: 220px;\n    overflow: auto;\n    display: block;\n}\n.view-more{\n    width: 60px;\n    padding: 3px 0px;\n    margin: auto;\n}\n app-commentitem{\n    display: inline-block;\n    width: 100%;\n }\n", ""]);
+exports.push([module.i, ".profile-pic{\n    margin: -3px 2px;\n    width: 45px;\n    height: 45px;\n    position: absolute;\n    left: 5px;\n    border-radius: 50%;  \t\n}\n.feed-controls .fa-thumbs-up, .feed-controls .fa-heart, .feed-controls .fa-comment{\n    margin: 0px 3px 0px 0px;\n}\n .feed-controls .fa-heart, .feed-controls .fa-comment{\n \tmargin: 0px 3px;\n }\n .feed-edit-items .arrow-up{\n \tmargin-left: 75px !important;\n }\n .feed-edit-items{\n    position: absolute !important;\n    right: 18px !important;\n    margin-top: 16px;\n    z-index: 1000;\n }\n .edit-feed:hover{\n \tcolor: red;\n }\n .posted-pic, .feed-music-player{\n    display: inline-block;\n    background-size: cover !important;\n    min-height: 300px;\n    width: 100%;\n    margin: 5px 0px;\n    background: #000;\n }\n .feed-music-player{\n\n }\n .feed-controls .pull-left{\n    margin-right: 10px;\n }\n.comment-box{\n    width: 100%;\n    display: inline-block;\n}\n.comment-box-items{\n    border: 1px solid #2b90d9;\n    width: 280px;\n    border-radius: 3px;\n    padding: 3px;\n    /*max-height: 220px;*/\n    overflow-y: auto;\n    overflow-x: hidden;\n    display: block;\n}\n.view-more{\n    width: 60px;\n    padding: 3px 0px;\n    margin: auto;\n}\n app-commentitem{\n    display: inline-block;\n    width: 100%;\n }\n .feed-item{\n    word-wrap: break-word;\n }\n", ""]);
 
 // exports
 
@@ -7627,7 +7627,7 @@ var StoryBoxComponent = (function () {
         this.postedPicModal.close();
     };
     StoryBoxComponent.prototype.onCheckIn = function (event) {
-        this.postItem(undefined, 'checkin', '', '', event.data.mapData, event.data.postCheckIn, event.data.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
+        this.postItem(undefined, 'checkin', '', event.data.mapData, '', event.data.postCheckIn, event.data.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
         this.postedPicModal.close();
     };
     StoryBoxComponent.prototype.postItem = function (postId, type, storyContent, filePath, poster, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight) {

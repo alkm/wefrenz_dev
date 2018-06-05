@@ -17,3 +17,6 @@
 .full-name{
 	padding-left: 3px;
 }
+ .feed-item{
+    word-wrap: break-word;
+ }
