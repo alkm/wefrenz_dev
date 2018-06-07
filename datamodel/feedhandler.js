@@ -1,4 +1,5 @@
 var feedInfo = require('./model/feedinfo');
+var commentInfo = require('./model/commentinfo');
 module.exports = function(app) {
 	// api ---------------------------------------------------------------------
 	app.post('/api/savePost/', function(req, res) {
@@ -111,13 +112,22 @@ module.exports = function(app) {
         })
 	});
 	app.post('/api/deleteFeedItem/', function(req, res) {	
+		var itemId = req.body.id;
 		//Delete the feed item
-		feedInfo.remove({ _id: req.body.id }, function(err) {
+		feedInfo.remove({ _id: itemId }, function(err) {
 			if(err){
 				console.log("Error"+err);
 				res.json({"status": "failure", "message": "Feed item can't be deleted now, please try again later."});
 			}else{
-				res.json({"status": "success", "message": "Feed item deleted successfully"});
+				//res.json({"status": "success", "message": "Feed item deleted successfully"});
+				//Delete respective comments from other collection
+				commentInfo.remove({ commentid: itemId }, function(err) {
+					if(err){
+						res.json({"status": "failure", "message": "Respective comment item can't be deleted now, please try again later."});
+					}else{
+						res.json({"status": "success", "message": "Feed item & respective coomments deleted successfully"});
+					}
+				});
 			}
 		});
 	});
