@@ -1401,7 +1401,7 @@ var CheckinComponent = (function () {
         //load Places Autocomplete
         this.mapsAPILoader.load().then(function () {
             var autocomplete = new google.maps.places.Autocomplete(_this.searchElementRef.nativeElement, {
-                types: ["address"]
+                types: []
             });
             autocomplete.addListener("place_changed", function () {
                 _this.ngZone.run(function () {
