@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit {
   private isStatus = false;
 
   constructor(private formBuilder : FormBuilder, private registrationService : RegistrationService) {
-        this.signupForm = this.formBuilder.group({
+    this.signupForm = this.formBuilder.group({
       'fullName': ['', Validators.required],
       'email': ['', [Validators.required, ValidationService.emailValidator]],
       'password': ['', [Validators.required, Validators.minLength(8)]]

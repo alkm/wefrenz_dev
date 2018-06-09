@@ -1,0 +1,61 @@
+<div class="add-item-content">
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-left">
+		<div *ngIf="isItemImg;then itemImg else mockImg"></div>
+    	<ng-template #itemImg>
+	    	<div class="preview-profile-pic">
+	    		<!--<img id="previewProfilePic" src="{{encodedImage}}"/>-->
+			    <app-image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [resizeToWidth]="150" format="jpeg" 
+			    (imageCropped)="imageCropped($event)"></app-image-cropper>
+	    	</div>
+	    	<img class="cropped-item-img" *ngIf="croppedImage" [src]="croppedImage" (load)="computeCroppedImage()"/>
+		</ng-template>
+		<ng-template #mockImg>
+			<div class="mock-img">
+				<i class="fa fa-picture-o fa-5x"></i>
+			</div>
+		</ng-template>
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-left">
+		<form [formGroup]="addItemForm">
+			<div class="form-group">
+				<input type="radio" value="women" formControlName="for"> Women
+		        <input type="radio" value="men" formControlName="for"> Men
+		        <input type="radio" value="kids" formControlName="for"> Kids
+				<!--<app-control-messages [control]="addItemForm.controls.name"></app-control-messages>-->
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Name" formControlName="fullName">
+				<!--<app-control-messages [control]="addItemForm.controls.fullName"></app-control-messages>-->
+			</div>
+			<div class="form-group">
+				<input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email" formControlName="email" id="email">
+				<app-control-messages [control]="addItemForm.controls.email"></app-control-messages>
+				<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Price" formControlName="price">
+				<!--<app-control-messages [control]="addItemForm.controls.fullName"></app-control-messages>-->
+			</div>
+			<div class="form-group">
+				<div class="file-input-container">
+					<input type="file" class="file-input" name="uploadfile" #fileInput (change)="fileChangeEvent($event)"/>
+				</div>
+				<div class="upload-icon blue-fonts"><span>Upload Image&nbsp;</span><i class="fa fa-upload white-fonts hand-cursor" aria-hidden="true" 
+				(click)="fileInput.value = ''; fileInput.click()"></i></div>
+			</div>
+			<div class="form-group">
+				<textarea #desc class="form-control no-resize no-bg no-brder-radius blue-fonts blue-border" rows="5" cols="30" 		placeholder="Add Description..." id="postDesc" [(ngModel)]="itemDesc">
+				</textarea>
+			</div>
+			<div class="form-group row justify-content-center align-items-center no-margin">
+				<button type="button" class="btn btn-primary" [disabled]="!addItemForm.valid" (click)="addItem()">
+					<span>Add</span>
+					<i class="fa fa-sign-in" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div [ngClass]="{'error-message': isError, 'status-message': isStatus}">
+				<div class="server-msg text-center">{{serverMessage}}</div>
+			</div>
+		</form>
+	</div>
+</div>

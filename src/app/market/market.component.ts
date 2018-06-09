@@ -1,32 +1,31 @@
 import { Component, OnInit, EventEmitter, Output, HostListener, ViewChild, ElementRef} from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { StoryBoxComponent } from '../story-box/story-box.component';
+
+import { RouteinfoService } from 'app/services/shareobject/routeinfo.service';
+import { ModalService } from '../modal/modal.service';
 
 @Component({
-  selector: 'app-stories',
-  templateUrl: './stories.component.html',
-  styleUrls: ['./stories.component.css']
+  selector: 'app-market',
+  templateUrl: './market.component.html',
+  styleUrls: ['./market.component.css']
 })
-export class StoriesComponent implements OnInit {
+export class MarketComponent implements OnInit {
+
 	@ViewChild('scrollMe') private myScrollContainer: ElementRef;
-	@ViewChild('storyBoxComponent') private storyBoxComponent: StoryBoxComponent;
 	@Output() onAppLoggedIn: EventEmitter<any> = new EventEmitter();
 	@Output() onAppLoggedOut: EventEmitter<any> = new EventEmitter();
-	@Output() feedScrollEnd: EventEmitter<any> = new EventEmitter();
+	@Output() marketScrollEnd: EventEmitter<any> = new EventEmitter();
 
 	private isMyProfile: boolean = false;
 	private userId: string = '';
     private friendId: string = '';
-    private isStories: boolean = true;
-    /*private isHighLightStories: boolean = true;
-    private isHighLightMusic: boolean = false;
-    private isHighLightPhotos: boolean = false;*/
     private screenHeight: number;
     private overFlowY: string = 'visible';
-    private action: string = 'post';
+    private isMarketSortItems: boolean = false;
+    private sortSelection: string = "Relevance";
+    private modalId: string = 'marketModal';
 
-
-	constructor(private route: ActivatedRoute, private router: Router) { 
+	constructor(private route: ActivatedRoute, private router: Router, private modalService: ModalService) { 
 		this.screenHeight = window.screen.height - 175;
   		route.params.subscribe(val => {
 			let currentUser = localStorage.getItem('currentUser');
@@ -40,7 +39,7 @@ export class StoriesComponent implements OnInit {
 			}else{
 				this.triggerLoggedInCheck('onAppLoggedIn', {event: 'onAppLoggedIn', message: 'logged in'});
 				this.onAppLoggedIn.emit('logged In');
-				localStorage.setItem('currentRoute', 'stories/'+id);
+				localStorage.setItem('currentRoute', 'market/'+id);
 			}
 
 			
@@ -62,6 +61,12 @@ export class StoriesComponent implements OnInit {
   	}
 
 	ngOnInit() {
+		/*if(localStorage.getItem('loginData')) {
+			this.loginData = localStorage.getItem('loginData');
+		}else{
+			localStorage.setItem('loginData', this.loginData);
+		}*/
+		
 	}
 
 	private triggerLoggedInCheck(eventType: string, evtObj: any) {
@@ -74,8 +79,35 @@ export class StoriesComponent implements OnInit {
 	    let atBottom = element.scrollHeight - element.scrollTop === element.clientHeight
 	    if (atBottom) {
 	        //this.feedScrollEnd.emit('scroll end');
-	        this.storyBoxComponent.onFeedScrollEnd();
+	       // this.storyBoxComponent.onFeedScrollEnd();
 	    } 
 	}
 
+	@HostListener('document:click', ['$event']) clickedOutside($event){
+		this.isMarketSortItems = false;	
+	}
+
+	private clickedInside(event: any){
+		event.preventDefault();
+	    event.stopPropagation();  // <- that will stop propagation on lower layers
+		if(this.isMarketSortItems){
+			this.isMarketSortItems = false;	
+		}else{
+			this.isMarketSortItems = true;	
+		}
+	}
+
+	private sortItemClick(event: any){
+		this.sortSelection = event.target.innerText;
+		this.isMarketSortItems = false;
+	}
+
+	private addItemToMarket(event: any){
+		this.openAppModal();
+	}
+
+	private openAppModal(modalType = null){
+  		let self = this;
+  		self.modalService.open(self.modalId);
+  	}
 }

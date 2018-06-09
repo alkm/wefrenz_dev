@@ -66,6 +66,8 @@ import { FeeditemComponent } from './feeditem/feeditem.component';
 import { CheckinComponent } from './checkin/checkin.component';
 import { CommentBoxComponent } from './comment-box/comment-box.component';
 import { CommentitemComponent } from './commentitem/commentitem.component';
+import { MarketComponent } from './market/market.component';
+import { AddItemComponent } from './add-item/add-item.component';
 
 
 
@@ -120,7 +122,9 @@ import { CommentitemComponent } from './commentitem/commentitem.component';
     FeeditemComponent,
     CheckinComponent,
     CommentBoxComponent,
-    CommentitemComponent
+    CommentitemComponent,
+    MarketComponent,
+    AddItemComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -156,6 +160,10 @@ import { CommentitemComponent } from './commentitem/commentitem.component';
         {
             path: 'stories/:id',
             component: StoriesComponent
+        },
+        {
+            path: 'market/:id',
+            component: MarketComponent
         }
     ], { useHash: true })
   ],
