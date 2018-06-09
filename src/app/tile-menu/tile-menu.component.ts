@@ -36,5 +36,9 @@ export class TileMenuComponent implements OnInit {
     private navigateToStories(event){
       this.router.navigate(['stories', this.userId]);
     }
+
+    private navigateToMarket(event){
+      this.router.navigate(['market', this.userId]);
+    }
   
 }

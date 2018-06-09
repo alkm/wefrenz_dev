@@ -1,0 +1,76 @@
+.market-content{
+    padding: 5px !important;
+}
+.search-input{
+    line-height: 25px;
+    height: 25px;
+    display: block;
+    width: 154px;
+    border: none;
+    outline: none;
+    border: 1px solid #2b90d9;
+    border-radius: 2px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background: none;    
+}
+
+.fa-search{
+    float: right;
+    color: #2b90d9 !important;
+    font-size: 15px;
+    line-height: 23px;
+    background: #f5f8fa;
+    padding: 0px 3px;
+    border: 1px solid #2b90d9;
+    border-left: none;
+    border-radius: 2px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.market-controlbar{
+    border: 1px solid #2b90d9;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.market-controlbar > div{
+    padding: 0px 6px;
+    font-size: 12px;
+    border-right: 1px solid #2b90d9;
+    line-height: 17px;
+    color: #2b90d9;
+}
+
+.total-count, .sort-params{
+    padding: 4px 6px !important;
+}
+.market-sort-items{
+    position: absolute;
+    width: 117px !important;
+    margin-left: 135px;
+    margin-top: 36px !important;
+    padding: 0px !important;
+}
+.market-sort-items .arrow-up{
+    left: 40px;
+    margin-top: -11px;
+}
+.sort-params{
+    min-width: 117px;
+}
+.sort-params:hover, .grid-icon:hover, .list-icon:hover, .sort-toggle:hover, .add-item:hover{
+    background: #2b90d9;
+    color: #fff !important;
+    cursor: pointer;
+}
+.add-item{
+    color: #2b90d9;
+    padding: 0px 6px;
+    border: 1px solid #2b90d9;
+    color: #2b90d9;
+    height: 25px;
+    margin-left: 5px;
+    border-radius: 2px;
+    font-size: 14px
+}
