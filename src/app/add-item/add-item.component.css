@@ -17,9 +17,13 @@ input{
     width: 55px;
     display: block;
 }
-.cropped-preview-img{
+.cropped-item-img{
     display: none;
 }
 .file-input-container{
     display: none;
+}
+
+.add-item-content{
+    padding: 20px 0px;
 }

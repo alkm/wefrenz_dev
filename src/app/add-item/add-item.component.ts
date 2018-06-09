@@ -22,9 +22,10 @@ export class AddItemComponent implements OnInit {
 	constructor(private formBuilder : FormBuilder) { 
 		this.addItemForm = this.formBuilder.group({
 	      'for': ['', Validators.required],
-	      'fullName': ['', Validators.required],
+	      'name': ['', Validators.required],
 	      'price': ['', Validators.required],
-	      'email': ['', [Validators.required, ValidationService.emailValidator]]
+	      'email': ['', [Validators.required, ValidationService.emailValidator]],
+	      'itemDesc': ['', Validators.required]
 	    });
 	}
 
