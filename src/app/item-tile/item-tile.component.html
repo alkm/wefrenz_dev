@@ -4,6 +4,10 @@
 	<div class="blue-fonts text-center">At&nbsp;Rs&nbsp;{{item.price}}</div>
 	<div class="colw100">
 		<div class="pull-left"><i class="fa fa-envelope blue-fonts cursor-pointer" title="Email Seller"></i></div>
-		<div class="pull-right"><i class="fa fa-cart-plus blue-fonts cursor-pointer" title="Add to Cart"></i></div>
+		<div class="pull-right"><i class="fa fa-cart-plus blue-fonts cursor-pointer" title="Add to Cart" (click)="addItemToCart($event)"></i></div>
+		<div *ngIf="itemCount > 0 ;then itemCounted"></div>
+    	<ng-template #itemCounted>
+    		<div class="red-fonts pull-right">{{itemCount}}&nbsp;added&nbsp;<span><i class="fa fa-minus blue-fonts" (click)="removeItemFromCart($event)"></i></span></div>
+    	</ng-template>
 	</div>
 </div>

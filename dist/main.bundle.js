@@ -95,7 +95,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "input{\n\tborder-radius: 0px;\n    background: none;\n    border: 1px solid #2b90d9;\n}\n\n.mock-img{\n\tbackground: #fff;\n    height: 200px;\n    padding: 75px;\n}\n\n.mock-img i{\n\tfont-size: 50px;\n    vertical-align: middle;\n    margin: auto;\n    width: 55px;\n    display: block;\n}\n.cropped-item-img{\n    display: none;\n}\n.file-input-container{\n    display: none;\n}\n\n.add-item-content{\n    padding: 20px 0px;\n}\n.form-group{\n    margin: 10px 0px;\n}\n.fa-upload:hover{\n    color: #fff !important;\n}", ""]);
+exports.push([module.i, "input{\n\tborder-radius: 0px;\n    background: none;\n    border: 1px solid #2b90d9;\n}\n\n.mock-img{\n\tbackground: #fff;\n    height: 200px;\n    padding: 75px;\n}\n\n.mock-img i{\n\tfont-size: 50px;\n    vertical-align: middle;\n    margin: auto;\n    width: 55px;\n    display: block;\n}\n.cropped-item-img{\n    display: none;\n}\n.file-input-container{\n    display: none;\n}\n\n.add-item-content{\n    padding: 20px 0px;\n}\n.form-group{\n    margin: 10px 0px;\n}\n.fa-upload:hover{\n    color: #fff !important;\n}\n.link-btn:hover{\n    color: #fff !important;\n}", ""]);
 
 // exports
 
@@ -108,7 +108,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/add-item/add-item.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"add-item-content\">\n\t<div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-left\">\n\t\t<div *ngIf=\"isItemImg;then itemImg else mockImg\"></div>\n    \t<ng-template #itemImg>\n\t    \t<div class=\"preview-profile-pic\">\n\t    \t\t<!--<img id=\"previewProfilePic\" src=\"{{encodedImage}}\"/>-->\n\t\t\t    <app-image-cropper [imageChangedEvent]=\"imageChangedEvent\" [maintainAspectRatio]=\"true\" [resizeToWidth]=\"150\" format=\"jpeg\" \n\t\t\t    (imageCropped)=\"imageCropped($event)\"></app-image-cropper>\n\t    \t</div>\n\t    \t<img class=\"cropped-item-img\" *ngIf=\"croppedImage\" [src]=\"croppedImage\" (load)=\"computeCroppedImage()\"/>\n\t\t</ng-template>\n\t\t<ng-template #mockImg>\n\t\t\t<div class=\"mock-img\">\n\t\t\t\t<i class=\"fa fa-picture-o fa-5x\"></i>\n\t\t\t</div>\n\t\t</ng-template>\n\t</div>\n\t<div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-left\">\n\t\t<form [formGroup]=\"addItemForm\">\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"What are you selling?\" formControlName=\"itemName\" id=\"itemName\">\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.itemName\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<div class=\"colw100 blue-fonts\">Select Category.</div>\n\t\t\t\t<input type=\"radio\" formControlName=\"category\" [(ngModel)]=\"category.options\" value=\"Women\" checked \n\t\t\t\t(click)=\"category.options='Women'\">\n\t\t\t\t<span class=\"blue-fonts\">Women</span>\n\t\t\t\t<input type=\"radio\" formControlName=\"category\" [(ngModel)]=\"category.options\" value=\"Men\"\n\t\t\t\t(click)=\"category.options='Men'\">\n\t\t\t\t<span class=\"blue-fonts\">Men</span>\n\t\t\t\t<input type=\"radio\" formControlName=\"category\" [(ngModel)]=\"category.options\" value=\"Kids\"\n\t\t\t\t(click)=\"category.options='Kids'\">\n\t\t\t\t<span class=\"blue-fonts\">Kids</span>\n\t\t\t\t<!--<app-control-messages [control]=\"addItemForm.controls.for\"></app-control-messages>-->\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"Price in rupees.\" formControlName=\"price\" (keypress)=\"keyPressOnContact($event)\">\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.price\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"Location\" formControlName=\"location\">\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.location\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"Contact No\" formControlName=\"contactNo\" (keypress)=\"keyPressOnContact($event)\" minlength=10 maxlength=10>\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.contactNo\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<div class=\"file-input-container\">\n\t\t\t\t\t<input type=\"file\" class=\"file-input\" name=\"uploadfile\" #fileInput (change)=\"fileChangeEvent($event)\" formControlName=\"itemPic\"/>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"upload-icon blue-fonts\"><span>Upload Image.&nbsp;</span><i class=\"fa fa-upload blue-fonts hand-cursor\" aria-hidden=\"true\" \n\t\t\t\t(click)=\"fileInput.value = ''; fileInput.click()\"></i></div>\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.itemPic\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"email\" class=\"form-control\" aria-describedby=\"emailHelp\" placeholder=\"Email\" formControlName=\"email\" id=\"email\">\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.email\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<textarea #desc class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" \t\tplaceholder=\"Add Description...\" id=\"postDesc\" formControlName=\"itemDesc\" [(ngModel)]=\"itemDesc\">\n\t\t\t\t</textarea>\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.itemDesc\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group row justify-content-center align-items-center no-margin\">\n\t\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"addItem($event)\">\n\t\t\t\t\t<span>Add</span>\n\t\t\t\t\t<i class=\"fa fa-sign-in\" aria-hidden=\"true\"></i>\n\t\t\t\t</button>\n\t\t\t</div>\n\t\t\t<div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n\t\t\t\t<div class=\"server-msg text-center\">{{serverMessage}}</div>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>\n"
+module.exports = "<div class=\"add-item-content\">\n\t<div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-left\">\n\t\t<div *ngIf=\"isItemImg;then itemImg else mockImg\"></div>\n    \t<ng-template #itemImg>\n\t    \t<div class=\"preview-profile-pic\">\n\t    \t\t<!--<div *ngIf=\"isImageCropper;then imageCropper\"></div>\n\t    \t\t<ng-template #imageCropper>-->\n\t\t\t\t    <app-image-cropper [imageChangedEvent]=\"imageChangedEvent\" [maintainAspectRatio]=\"true\" [resizeToWidth]=\"150\" format=\"jpeg\" \n\t\t\t\t    (imageCropped)=\"imageCropped($event)\"></app-image-cropper>\n\t\t\t   <!-- </ng-template>-->\n\t    \t</div>\n\t    \t<div class=\"form-group row justify-content-center align-items-center\">\n\t\t\t\t<span class=\"blue-fonts link-btn cursor-pointer\" (click)=\"useOriginal($event)\">Use Original</span>\n\t\t\t</div>\n\t    \t<img class=\"cropped-item-img\" *ngIf=\"croppedImage\" [src]=\"croppedImage\" (load)=\"computeCroppedImage()\"/>\n\n\t\t</ng-template>\n\t\t<ng-template #mockImg>\n\t\t\t<div class=\"mock-img\">\n\t\t\t\t<i class=\"fa fa-picture-o fa-5x\"></i>\n\t\t\t</div>\n\t\t</ng-template>\n\t</div>\n\t<div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-left\">\n\t\t<form [formGroup]=\"addItemForm\">\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"What are you selling?\" formControlName=\"itemName\" id=\"itemName\">\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.itemName\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<div class=\"colw100 blue-fonts\">Select Category.</div>\n\t\t\t\t<input type=\"radio\" formControlName=\"category\" [(ngModel)]=\"category.options\" value=\"Women\" checked \n\t\t\t\t(click)=\"category.options='Women'\">\n\t\t\t\t<span class=\"blue-fonts\">Women</span>\n\t\t\t\t<input type=\"radio\" formControlName=\"category\" [(ngModel)]=\"category.options\" value=\"Men\"\n\t\t\t\t(click)=\"category.options='Men'\">\n\t\t\t\t<span class=\"blue-fonts\">Men</span>\n\t\t\t\t<input type=\"radio\" formControlName=\"category\" [(ngModel)]=\"category.options\" value=\"Kids\"\n\t\t\t\t(click)=\"category.options='Kids'\">\n\t\t\t\t<span class=\"blue-fonts\">Kids</span>\n\t\t\t\t<!--<app-control-messages [control]=\"addItemForm.controls.for\"></app-control-messages>-->\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"Price in rupees.\" formControlName=\"price\" (keypress)=\"keyPressOnContact($event)\">\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.price\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"Location\" formControlName=\"location\">\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.location\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"Contact No\" formControlName=\"contactNo\" (keypress)=\"keyPressOnContact($event)\" minlength=10 maxlength=10>\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.contactNo\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<div class=\"file-input-container\">\n\t\t\t\t\t<input type=\"file\" class=\"file-input\" name=\"uploadfile\" #fileInput (change)=\"fileChangeEvent($event)\" formControlName=\"itemPic\"/>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"upload-icon blue-fonts\"><span>Upload Image.&nbsp;</span><i class=\"fa fa-upload blue-fonts hand-cursor\" aria-hidden=\"true\" \n\t\t\t\t(click)=\"fileInput.value = ''; fileInput.click()\"></i></div>\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.itemPic\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"email\" class=\"form-control\" aria-describedby=\"emailHelp\" placeholder=\"Email\" formControlName=\"email\" id=\"email\">\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.email\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<textarea #desc class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" \t\tplaceholder=\"Add Description...\" id=\"postDesc\" formControlName=\"itemDesc\" [(ngModel)]=\"itemDesc\">\n\t\t\t\t</textarea>\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.itemDesc\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group row justify-content-center align-items-center no-margin\">\n\t\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"addItem($event)\">\n\t\t\t\t\t<span>Add</span>\n\t\t\t\t\t<i class=\"fa fa-sign-in\" aria-hidden=\"true\"></i>\n\t\t\t\t</button>\n\t\t\t</div>\n\t\t\t<div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n\t\t\t\t<div class=\"server-msg text-center\">{{serverMessage}}</div>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -140,6 +140,7 @@ var AddItemComponent = (function () {
         this.marketService = marketService;
         this.isItemImg = false;
         this.radioMode = true;
+        this.isImageCropper = true;
         this.category = { options: 'Women' };
         this.refreshMarket = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.addItemForm = this.formBuilder.group({
@@ -165,7 +166,7 @@ var AddItemComponent = (function () {
             'contactNo': this.addItemForm.controls.contactNo._value,
             'location': this.addItemForm.controls.location._value,
             'itemDesc': this.addItemForm.controls.itemDesc._value,
-            'imagebuffer': this.encodedImage,
+            'imagebuffer': this.imageToSave,
             'userid': this.userId };
         this.marketService.addItem(postObj).subscribe(function (data) { return _this.afterItemAdded(data); });
         /* }else{
@@ -187,8 +188,13 @@ var AddItemComponent = (function () {
             event.preventDefault();
         }
     };
+    AddItemComponent.prototype.useOriginal = function (event) {
+        this.isImageCropper = false;
+        this.imageToSave = this.encodedImage;
+    };
     AddItemComponent.prototype.imageCropped = function (image) {
         this.croppedImage = image;
+        this.imageToSave = this.croppedImage;
     };
     AddItemComponent.prototype.computeCroppedImage = function () {
         var elem = document.querySelector('#croppedImg');
@@ -3544,7 +3550,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".item-tile{\n\tpadding: 7px;\n\tmargin: 7px;\n\tbackground: #fff;\n\tbox-shadow: 0 1px 3px rgba(34, 34, 34, 0.25);\n\tposition: relative;\n\tdisplay: inline-table;\n}\n.item-pic{\n\twidth: 175px;\n    min-height: 200px;\n    background-size: cover !important;\n    background-position: center !important;\n    background-repeat: no-repeat !important;\n    cursor: zoom-in;\n}\n.item-tile:hover{\n\tbox-shadow: 0 3px 8px rgba(34, 34, 34, 0.4);\n\ttransition: box-shadow 0.3s; \n}\n.fa-envelope{\n\tfont-size: 18px;\n}\n.fa-cart-plus{\n\tfont-size: 20px;\n}", ""]);
+exports.push([module.i, ".item-tile{\n\tpadding: 7px;\n\tmargin: 7px;\n\tbackground: #fff;\n\tbox-shadow: 0 1px 3px rgba(34, 34, 34, 0.25);\n\tposition: relative;\n\tdisplay: inline-table;\n}\n.item-pic{\n\twidth: 175px;\n    min-height: 200px;\n    background-size: cover !important;\n    background-position: center !important;\n    background-repeat: no-repeat !important;\n    cursor: zoom-in;\n}\n.item-tile:hover{\n\tbox-shadow: 0 3px 8px rgba(34, 34, 34, 0.4);\n\ttransition: box-shadow 0.3s; \n}\n.fa-envelope{\n\tfont-size: 18px;\n}\n.fa-cart-plus{\n\tfont-size: 20px;\n}\n.fa-minus{\n\tborder: 1px solid #2b90d9;\n    padding: 2px;\n    font-size: 9px;\n    border-radius: 50%;\n    cursor: pointer;\n}", ""]);
 
 // exports
 
@@ -3557,7 +3563,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/item-tile/item-tile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"item-tile\">\n\t<div class=\"item-pic\" [ngStyle]=\"{'background': 'url(' + item.productImage+ ')'}\"></div>\n\t<div class=\"text-center\">{{item.itemName}}</div>\n\t<div class=\"blue-fonts text-center\">At&nbsp;Rs&nbsp;{{item.price}}</div>\n\t<div class=\"colw100\">\n\t\t<div class=\"pull-left\"><i class=\"fa fa-envelope blue-fonts cursor-pointer\" title=\"Email Seller\"></i></div>\n\t\t<div class=\"pull-right\"><i class=\"fa fa-cart-plus blue-fonts cursor-pointer\" title=\"Add to Cart\"></i></div>\n\t</div>\n</div>\n"
+module.exports = "<div class=\"item-tile\">\n\t<div class=\"item-pic\" [ngStyle]=\"{'background': 'url(' + item.productImage+ ')'}\"></div>\n\t<div class=\"text-center\">{{item.itemName}}</div>\n\t<div class=\"blue-fonts text-center\">At&nbsp;Rs&nbsp;{{item.price}}</div>\n\t<div class=\"colw100\">\n\t\t<div class=\"pull-left\"><i class=\"fa fa-envelope blue-fonts cursor-pointer\" title=\"Email Seller\"></i></div>\n\t\t<div class=\"pull-right\"><i class=\"fa fa-cart-plus blue-fonts cursor-pointer\" title=\"Add to Cart\" (click)=\"addItemToCart($event)\"></i></div>\n\t\t<div *ngIf=\"itemCount > 0 ;then itemCounted\"></div>\n    \t<ng-template #itemCounted>\n    \t\t<div class=\"red-fonts pull-right\">{{itemCount}}&nbsp;added&nbsp;<span><i class=\"fa fa-minus blue-fonts\" (click)=\"removeItemFromCart($event)\"></i></span></div>\n    \t</ng-template>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -3579,8 +3585,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var ItemTileComponent = (function () {
     function ItemTileComponent() {
+        this.onItemAddedToCart = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.itemCount = 0;
     }
     ItemTileComponent.prototype.ngOnInit = function () {
+    };
+    ItemTileComponent.prototype.addItemToCart = function (event) {
+        this.itemCount++;
+        var itemObj = { 'count': this.itemCount,
+            'item': this.item };
+        this.onItemAddedToCart.emit({ data: itemObj });
+    };
+    ItemTileComponent.prototype.removeItemFromCart = function (event) {
+        this.itemCount--;
+        var itemObj = { 'count': this.itemCount,
+            'item': this.item };
+        this.onItemAddedToCart.emit({ data: itemObj });
     };
     return ItemTileComponent;
 }());
@@ -3592,6 +3612,10 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('item'),
     __metadata("design:type", Object)
 ], ItemTileComponent.prototype, "item", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
+], ItemTileComponent.prototype, "onItemAddedToCart", void 0);
 ItemTileComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-item-tile',
@@ -3601,6 +3625,7 @@ ItemTileComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], ItemTileComponent);
 
+var _a;
 //# sourceMappingURL=item-tile.component.js.map
 
 /***/ }),
@@ -3753,7 +3778,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/market/market.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container top-margin bottom-margin\">\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\t\t\t<div class=\"opaque-bg no-padding\">\n\t\t\t\t<app-profile-area></app-profile-area>\n\t\t\t\t<div class=\"left-nav\">\n\t\t\t\t\t<div class=\"nav-item\" (click)=\"switchVideo($event)\" [ngClass]=\"(isHighLightStories ? 'highlight-nav' : '')\">\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Stories</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\" [ngClass]=\"(isHighLightMusic ? 'highlight-nav' : '')\" (click)=\"switchMusic($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-pencil blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Blog</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-plane blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Travel</span>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div #marketContent class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 no-padding opaque-bg market-content\">\n\t\t\t<div class=\"market-controlbar colw100\">\n\t\t\t\t<div class=\"total-count pull-left\">{{total}}&nbsp;Results</div>\n\t\t\t\t<div class=\"grid-icon pull-left\"><i class=\"fa fa-th-large fa-2x\"></i></div>\n\t\t\t\t<div class=\"list-icon pull-left\"><i class=\"fa fa-list-ul fa-2x\"></i></div>\n\t\t\t\t<div class=\"sort-params pull-left\" (click)=\"clickedInside($event);\">\n\t\t\t\t\t<span>Sort By:&nbsp;{{sortSelection}}</span>\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"isMarketSortItems; then marketSortItemControls\"></div>\n\t\t\t\t\t\t<ng-template #marketSortItemControls>\n\t\t\t\t\t\t\t<div class=\"list-items market-sort-items pull-right\">\n\t\t\t\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Price</div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Name</div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Popularity</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</ng-template>\n\t\t\t\t<div class=\"sort-toggle pull-left\"><i class=\"fa fa-random fa-2x\"></i></div>\n\t\t\t</div>\n\t\t\t<div class=\"market-searchbar colw100\">\n\t\t\t\t<div class=\"market-search-box pull-left\">\n\t                <div class=\"pull-left\">\n\t                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n\t                </div>\n\t                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n\t            </div>\n\t            <div class=\"pull-left add-item\" (click)=\"addItemToMarket($event)\">\n\t            \t<i class=\"fa fa-plus\"></i>\n\t            </div>\n\t\t\t</div>\n\t\t\t<div class=\"market-content\" [ngStyle]=\"{ 'max-height': ' ' + screenHeight + 'px'}\" (scroll)=\"onScroll($event)\" #scrollMe>\n\t\t\t\t<app-item-tile *ngFor=\"let item of marketItemArr\" [item]=\"item\" [userId]=\"userId\" [item]=\"item\"></app-item-tile>\n\t\t\t\t<div *ngIf=\"isLoading then loading\"></div>\n\t\t\t\t<ng-template #loading>\n\t\t\t\t\t<div class=\"spinner-bg\">\n\t\t\t\t\t\t<div class=\"spinner\">\n\t\t\t\t\t\t\t<i class=\"fa fa-2x fa-spin fa-spinner blue-fonts\"></i>\n\t\t\t\t\t\t\t<span class=\"blue-fonts\">&nbsp;Loading...</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t\t<div *ngIf=\"(!isLoading && (marketItemArr.length > limit)) then endResult\"></div>\n\t\t\t\t<ng-template #endResult>\n\t\t\t\t\t<div class=\"end-result blue-fonts text-center\">--- End Of Result ---</div>\n\t\t\t\t</ng-template>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n<app-modal [modalTitle]=\"'Add Product'\" [blocking]='false' [modalId]='modalId' #addProductModal>\n\t<div class=\"add-product-content\">\n\t\t<div class=\"colw100 inline-block\">\n\t\t\t<app-add-item [userId]=\"userId\" (refreshMarket)=\"refreshMarket($event)\"></app-add-item>\n\t\t</div>\n\t</div>\n</app-modal>"
+module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container top-margin bottom-margin\">\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\t\t\t<div class=\"opaque-bg no-padding\">\n\t\t\t\t<app-profile-area></app-profile-area>\n\t\t\t\t<div class=\"left-nav\">\n\t\t\t\t\t<div class=\"nav-item\" (click)=\"switchVideo($event)\" [ngClass]=\"(isHighLightStories ? 'highlight-nav' : '')\">\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Stories</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\" [ngClass]=\"(isHighLightMusic ? 'highlight-nav' : '')\" (click)=\"switchMusic($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-pencil blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Blog</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-plane blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Travel</span>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div #marketContent class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 no-padding opaque-bg market-content\">\n\t\t\t<div class=\"market-controlbar colw100\">\n\t\t\t\t<div class=\"total-count pull-left\">{{total}}&nbsp;Results</div>\n\t\t\t\t<div class=\"grid-icon pull-left\"><i class=\"fa fa-th-large fa-2x\"></i></div>\n\t\t\t\t<div class=\"list-icon pull-left\"><i class=\"fa fa-list-ul fa-2x\"></i></div>\n\t\t\t\t<div class=\"sort-params pull-left\" (click)=\"clickedInside($event);\">\n\t\t\t\t\t<span>Sort By:&nbsp;{{sortSelection}}</span>\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"isMarketSortItems; then marketSortItemControls\"></div>\n\t\t\t\t\t\t<ng-template #marketSortItemControls>\n\t\t\t\t\t\t\t<div class=\"list-items market-sort-items pull-right\">\n\t\t\t\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Price</div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Name</div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Popularity</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</ng-template>\n\t\t\t\t<div class=\"sort-toggle pull-left\"><i class=\"fa fa-random fa-2x\"></i></div>\n\t\t\t</div>\n\t\t\t<div class=\"market-searchbar colw100\">\n\t\t\t\t<div class=\"market-search-box pull-left\">\n\t                <div class=\"pull-left\">\n\t                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n\t                </div>\n\t                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n\t            </div>\n\t            <div class=\"pull-left add-item\" (click)=\"addItemToMarket($event)\">\n\t            \t<i class=\"fa fa-plus\"></i>\n\t            </div>\n\t           \t<div class=\"pull-right\"><i class=\"fa fa-cart-plus blue-fonts cursor-pointer fa-2x\" title=\"Proceed to Checkout\"></i></div>\n\t            <div *ngIf=\"totalCartItem > 0 ;then itemCounted\"></div>\n\t\t    \t<ng-template #itemCounted>\n\t\t    \t\t<div class=\"red-fonts pull-right\">{{totalCartItem}}&nbsp;added to cart&nbsp;</div>\n\t\t    \t</ng-template>\n\n\t\t\t</div>\n\t\t\t<div class=\"market-content\" [ngStyle]=\"{ 'max-height': ' ' + screenHeight + 'px'}\" (scroll)=\"onScroll($event)\" #scrollMe>\n\t\t\t\t<app-item-tile *ngFor=\"let item of marketItemArr\" [item]=\"item\" [userId]=\"userId\" [item]=\"item\" (onItemAddedToCart)=\"onItemAddedToCart($event)\"></app-item-tile>\n\t\t\t\t<div *ngIf=\"isLoading then loading\"></div>\n\t\t\t\t<ng-template #loading>\n\t\t\t\t\t<div class=\"spinner-bg\">\n\t\t\t\t\t\t<div class=\"spinner\">\n\t\t\t\t\t\t\t<i class=\"fa fa-2x fa-spin fa-spinner blue-fonts\"></i>\n\t\t\t\t\t\t\t<span class=\"blue-fonts\">&nbsp;Loading...</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t\t<div *ngIf=\"(!isLoading && (marketItemArr.length > limit)) then endResult\"></div>\n\t\t\t\t<ng-template #endResult>\n\t\t\t\t\t<div class=\"end-result blue-fonts text-center\">--- End Of Result ---</div>\n\t\t\t\t</ng-template>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n<app-modal [modalTitle]=\"'Add Product'\" [blocking]='false' [modalId]='modalId' #addProductModal>\n\t<div class=\"add-product-content\">\n\t\t<div class=\"colw100 inline-block\">\n\t\t\t<app-add-item [userId]=\"userId\" (refreshMarket)=\"refreshMarket($event)\"></app-add-item>\n\t\t</div>\n\t</div>\n</app-modal>"
 
 /***/ }),
 
@@ -3804,6 +3829,8 @@ var MarketComponent = (function () {
         this.relevance = '';
         this.isViewMore = false;
         this.isItemsAdded = false;
+        this.cartItemArr = [];
+        this.totalCartItem = 0;
         this.screenHeight = window.screen.height - 175;
         route.params.subscribe(function (val) {
             var currentUser = localStorage.getItem('currentUser');
@@ -3925,6 +3952,37 @@ var MarketComponent = (function () {
             }
         }
         this.isLoading = false;
+    };
+    MarketComponent.prototype.onItemAddedToCart = function (event) {
+        var itemObj = event.data;
+        var index = -1;
+        var len = this.cartItemArr.length;
+        if (len === 0) {
+            this.cartItemArr.push(itemObj);
+        }
+        else {
+            for (var i = 0; i < len; i++) {
+                if (itemObj.item._id === this.cartItemArr[i].item._id) {
+                    index = i;
+                }
+            }
+            if (index !== -1) {
+                if (itemObj.count === 0) {
+                    this.cartItemArr.splice(index, 1);
+                }
+                else {
+                    this.cartItemArr[index] = itemObj;
+                }
+            }
+            else {
+                this.cartItemArr.push(itemObj);
+            }
+        }
+        var countItem = 0;
+        for (var obj in this.cartItemArr) {
+            countItem += this.cartItemArr[obj].count;
+        }
+        this.totalCartItem = countItem;
     };
     return MarketComponent;
 }());

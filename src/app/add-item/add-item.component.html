@@ -3,11 +3,17 @@
 		<div *ngIf="isItemImg;then itemImg else mockImg"></div>
     	<ng-template #itemImg>
 	    	<div class="preview-profile-pic">
-	    		<!--<img id="previewProfilePic" src="{{encodedImage}}"/>-->
-			    <app-image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [resizeToWidth]="150" format="jpeg" 
-			    (imageCropped)="imageCropped($event)"></app-image-cropper>
+	    		<!--<div *ngIf="isImageCropper;then imageCropper"></div>
+	    		<ng-template #imageCropper>-->
+				    <app-image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [resizeToWidth]="150" format="jpeg" 
+				    (imageCropped)="imageCropped($event)"></app-image-cropper>
+			   <!-- </ng-template>-->
 	    	</div>
+	    	<div class="form-group row justify-content-center align-items-center">
+				<span class="blue-fonts link-btn cursor-pointer" (click)="useOriginal($event)">Use Original</span>
+			</div>
 	    	<img class="cropped-item-img" *ngIf="croppedImage" [src]="croppedImage" (load)="computeCroppedImage()"/>
+
 		</ng-template>
 		<ng-template #mockImg>
 			<div class="mock-img">
