@@ -95,7 +95,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "input{\n\tborder-radius: 0px;\n    background: none;\n    border: 1px solid #2b90d9;\n}\n\n.mock-img{\n\tbackground: #fff;\n    height: 200px;\n    padding: 75px;\n}\n\n.mock-img i{\n\tfont-size: 50px;\n    vertical-align: middle;\n    margin: auto;\n    width: 55px;\n    display: block;\n}\n.cropped-item-img{\n    display: none;\n}\n.file-input-container{\n    display: none;\n}\n\n.add-item-content{\n    padding: 20px 0px;\n}", ""]);
+exports.push([module.i, "input{\n\tborder-radius: 0px;\n    background: none;\n    border: 1px solid #2b90d9;\n}\n\n.mock-img{\n\tbackground: #fff;\n    height: 200px;\n    padding: 75px;\n}\n\n.mock-img i{\n\tfont-size: 50px;\n    vertical-align: middle;\n    margin: auto;\n    width: 55px;\n    display: block;\n}\n.cropped-item-img{\n    display: none;\n}\n.file-input-container{\n    display: none;\n}\n\n.add-item-content{\n    padding: 20px 0px;\n}\n.form-group{\n    margin: 10px 0px;\n}", ""]);
 
 // exports
 
@@ -108,7 +108,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/add-item/add-item.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"add-item-content\">\n\t<div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-left\">\n\t\t<div *ngIf=\"isItemImg;then itemImg else mockImg\"></div>\n    \t<ng-template #itemImg>\n\t    \t<div class=\"preview-profile-pic\">\n\t    \t\t<!--<img id=\"previewProfilePic\" src=\"{{encodedImage}}\"/>-->\n\t\t\t    <app-image-cropper [imageChangedEvent]=\"imageChangedEvent\" [maintainAspectRatio]=\"true\" [resizeToWidth]=\"150\" format=\"jpeg\" \n\t\t\t    (imageCropped)=\"imageCropped($event)\"></app-image-cropper>\n\t    \t</div>\n\t    \t<img class=\"cropped-item-img\" *ngIf=\"croppedImage\" [src]=\"croppedImage\" (load)=\"computeCroppedImage()\"/>\n\t\t</ng-template>\n\t\t<ng-template #mockImg>\n\t\t\t<div class=\"mock-img\">\n\t\t\t\t<i class=\"fa fa-picture-o fa-5x\"></i>\n\t\t\t</div>\n\t\t</ng-template>\n\t</div>\n\t<div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-left\">\n\t\t<form [formGroup]=\"addItemForm\">\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"radio\" value=\"women\" formControlName=\"for\"> Women\n\t\t        <input type=\"radio\" value=\"men\" formControlName=\"for\"> Men\n\t\t        <input type=\"radio\" value=\"kids\" formControlName=\"for\"> Kids\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.for\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"Name\" formControlName=\"name\">\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.name\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"email\" class=\"form-control\" aria-describedby=\"emailHelp\" placeholder=\"Email\" formControlName=\"email\" id=\"email\">\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.email\"></app-control-messages>\n\t\t\t\t<small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small>\n\t\t\t</div>\n\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<div class=\"file-input-container\">\n\t\t\t\t\t<input type=\"file\" class=\"file-input\" name=\"uploadfile\" #fileInput (change)=\"fileChangeEvent($event)\"/>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"upload-icon blue-fonts\"><span>Upload Image&nbsp;</span><i class=\"fa fa-upload white-fonts hand-cursor\" aria-hidden=\"true\" \n\t\t\t\t(click)=\"fileInput.value = ''; fileInput.click()\"></i></div>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<textarea #desc class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" \t\tplaceholder=\"Add Description...\" id=\"postDesc\" formControlName=\"itemDesc\" [(ngModel)]=\"itemDesc\">\n\t\t\t\t</textarea>\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.itemDesc\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group row justify-content-center align-items-center no-margin\">\n\t\t\t\t<button type=\"button\" class=\"btn btn-primary\" [disabled]=\"!addItemForm.valid\" (click)=\"addItem()\">\n\t\t\t\t\t<span>Add</span>\n\t\t\t\t\t<i class=\"fa fa-sign-in\" aria-hidden=\"true\"></i>\n\t\t\t\t</button>\n\t\t\t</div>\n\t\t\t<div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n\t\t\t\t<div class=\"server-msg text-center\">{{serverMessage}}</div>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>\n"
+module.exports = "<div class=\"add-item-content\">\n\t<div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-left\">\n\t\t<div *ngIf=\"isItemImg;then itemImg else mockImg\"></div>\n    \t<ng-template #itemImg>\n\t    \t<div class=\"preview-profile-pic\">\n\t    \t\t<!--<img id=\"previewProfilePic\" src=\"{{encodedImage}}\"/>-->\n\t\t\t    <app-image-cropper [imageChangedEvent]=\"imageChangedEvent\" [maintainAspectRatio]=\"true\" [resizeToWidth]=\"150\" format=\"jpeg\" \n\t\t\t    (imageCropped)=\"imageCropped($event)\"></app-image-cropper>\n\t    \t</div>\n\t    \t<img class=\"cropped-item-img\" *ngIf=\"croppedImage\" [src]=\"croppedImage\" (load)=\"computeCroppedImage()\"/>\n\t\t</ng-template>\n\t\t<ng-template #mockImg>\n\t\t\t<div class=\"mock-img\">\n\t\t\t\t<i class=\"fa fa-picture-o fa-5x\"></i>\n\t\t\t</div>\n\t\t</ng-template>\n\t</div>\n\t<div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-left\">\n\t\t<form [formGroup]=\"addItemForm\">\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"What are you selling?\" formControlName=\"itemName\" id=\"itemName\">\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.itemName\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<div class=\"colw100 blue-fonts\">Select Category.</div>\n\t\t\t\t<input type=\"radio\" formControlName=\"category\" [(ngModel)]=\"category.options\" value=\"Women\" checked \n\t\t\t\t(click)=\"category.options='Women'\">\n\t\t\t\t<span class=\"blue-fonts\">Women</span>\n\t\t\t\t<input type=\"radio\" formControlName=\"category\" [(ngModel)]=\"category.options\" value=\"Men\"\n\t\t\t\t(click)=\"category.options='Men'\">\n\t\t\t\t<span class=\"blue-fonts\">Men</span>\n\t\t\t\t<input type=\"radio\" formControlName=\"category\" [(ngModel)]=\"category.options\" value=\"Kids\"\n\t\t\t\t(click)=\"category.options='Kids'\">\n\t\t\t\t<span class=\"blue-fonts\">Kids</span>\n\t\t\t\t<!--<app-control-messages [control]=\"addItemForm.controls.for\"></app-control-messages>-->\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"Price in rupees.\" formControlName=\"price\" (keypress)=\"keyPressOnContact($event)\">\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.price\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"Location\" formControlName=\"location\">\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.location\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"Contact No\" formControlName=\"contactNo\" (keypress)=\"keyPressOnContact($event)\" minlength=10 maxlength=10>\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.contactNo\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<div class=\"file-input-container\">\n\t\t\t\t\t<input type=\"file\" class=\"file-input\" name=\"uploadfile\" #fileInput (change)=\"fileChangeEvent($event)\" formControlName=\"itemPic\"/>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"upload-icon blue-fonts\"><span>Upload Image.&nbsp;</span><i class=\"fa fa-upload blue-fonts hand-cursor\" aria-hidden=\"true\" \n\t\t\t\t(click)=\"fileInput.value = ''; fileInput.click()\"></i></div>\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.itemPic\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"email\" class=\"form-control\" aria-describedby=\"emailHelp\" placeholder=\"Email\" formControlName=\"email\" id=\"email\">\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.email\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<textarea #desc class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" \t\tplaceholder=\"Add Description...\" id=\"postDesc\" formControlName=\"itemDesc\" [(ngModel)]=\"itemDesc\">\n\t\t\t\t</textarea>\n\t\t\t\t<app-control-messages [control]=\"addItemForm.controls.itemDesc\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group row justify-content-center align-items-center no-margin\">\n\t\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"addItem($event)\">\n\t\t\t\t\t<span>Add</span>\n\t\t\t\t\t<i class=\"fa fa-sign-in\" aria-hidden=\"true\"></i>\n\t\t\t\t</button>\n\t\t\t</div>\n\t\t\t<div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n\t\t\t\t<div class=\"server-msg text-center\">{{serverMessage}}</div>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -119,7 +119,8 @@ module.exports = "<div class=\"add-item-content\">\n\t<div class=\"col-lg-6 col-
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddItemComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_validators_validation_service__ = __webpack_require__("../../../../../src/app/services/validators/validation.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_data_market_service__ = __webpack_require__("../../../../../src/app/services/data/market.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_validators_validation_service__ = __webpack_require__("../../../../../src/app/services/validators/validation.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -132,19 +133,59 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AddItemComponent = (function () {
-    function AddItemComponent(formBuilder) {
+    function AddItemComponent(formBuilder, marketService) {
         this.formBuilder = formBuilder;
+        this.marketService = marketService;
         this.isItemImg = false;
+        this.radioMode = true;
+        this.category = { options: 'Women' };
+        this.refreshMarket = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.addItemForm = this.formBuilder.group({
-            'for': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required],
-            'name': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required],
+            'category': [],
+            'itemName': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required],
+            'itemPic': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required],
             'price': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required],
-            'email': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2_app_services_validators_validation_service__["a" /* ValidationService */].emailValidator]],
+            'email': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_3_app_services_validators_validation_service__["a" /* ValidationService */].emailValidator]],
+            'contactNo': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required],
+            'location': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required],
             'itemDesc': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required]
         });
     }
     AddItemComponent.prototype.ngOnInit = function () {
+    };
+    AddItemComponent.prototype.addItem = function (event) {
+        var _this = this;
+        //if (this.addItemForm.dirty && this.addItemForm.valid) {
+        var postObj = { 'category': this.category.options,
+            'itemName': this.addItemForm.controls.itemName._value,
+            'price': this.addItemForm.controls.price._value,
+            'email': this.addItemForm.controls.email._value,
+            'contactNo': this.addItemForm.controls.contactNo._value,
+            'location': this.addItemForm.controls.location._value,
+            'itemDesc': this.addItemForm.controls.itemDesc._value,
+            'imagebuffer': this.encodedImage,
+            'userid': this.userId };
+        this.marketService.addItem(postObj).subscribe(function (data) { return _this.afterItemAdded(data); });
+        /* }else{
+             alert('Filed mark with * are required.');
+         }*/
+    };
+    AddItemComponent.prototype.afterItemAdded = function (result) {
+        //alert(result.message);
+        if (result.status === 'success') {
+            /*this.profilePic = result.info.profilepic.imageBuffer;
+            localStorage.setItem('loginData', JSON.stringify(result.info));*/
+            this.refreshMarket.emit('refreshMarket');
+        }
+    };
+    AddItemComponent.prototype.keyPressOnContact = function (event) {
+        var pattern = /[0-9\+\-\ ]/;
+        var inputChar = String.fromCharCode(event.charCode);
+        if (event.keyCode != 8 && !pattern.test(inputChar)) {
+            event.preventDefault();
+        }
     };
     AddItemComponent.prototype.imageCropped = function (image) {
         this.croppedImage = image;
@@ -171,18 +212,6 @@ var AddItemComponent = (function () {
           console.log('sent');
         });*/
     };
-    AddItemComponent.prototype.uploadEncodedItemPic = function (encodedImage) {
-        var postObj = { 'imagebuffer': encodedImage, 'userid': this.userId };
-        //   this.uploadService.uploadEncodedProfilePic(postObj).subscribe(data => this.afterItemPicUploaded(data));
-    };
-    AddItemComponent.prototype.afterItemPicUploaded = function (result) {
-        //alert(result.message);
-        if (result.status === 'success') {
-            /*this.profilePic = result.info.profilepic.imageBuffer;
-            localStorage.setItem('loginData', JSON.stringify(result.info));
-            this.previewPicModal.close();*/
-        }
-    };
     AddItemComponent.prototype.ok = function () {
         //this.uploadEncodedProfilePic(this.croppedImage);
     };
@@ -192,16 +221,21 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('userId'),
     __metadata("design:type", Object)
 ], AddItemComponent.prototype, "userId", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
+], AddItemComponent.prototype, "refreshMarket", void 0);
 AddItemComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-add-item',
         template: __webpack_require__("../../../../../src/app/add-item/add-item.component.html"),
-        styles: [__webpack_require__("../../../../../src/app/add-item/add-item.component.css")]
+        styles: [__webpack_require__("../../../../../src/app/add-item/add-item.component.css")],
+        providers: [__WEBPACK_IMPORTED_MODULE_2_app_services_data_market_service__["a" /* MarketService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_data_market_service__["a" /* MarketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_data_market_service__["a" /* MarketService */]) === "function" && _c || Object])
 ], AddItemComponent);
 
-var _a;
+var _a, _b, _c;
 //# sourceMappingURL=add-item.component.js.map
 
 /***/ }),
@@ -3647,7 +3681,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/market/market.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container top-margin bottom-margin\">\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\t\t\t<div class=\"opaque-bg no-padding\">\n\t\t\t\t<app-profile-area></app-profile-area>\n\t\t\t\t<div class=\"left-nav\">\n\t\t\t\t\t<div class=\"nav-item\" (click)=\"switchVideo($event)\" [ngClass]=\"(isHighLightStories ? 'highlight-nav' : '')\">\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Stories</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\" [ngClass]=\"(isHighLightMusic ? 'highlight-nav' : '')\" (click)=\"switchMusic($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-pencil blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Blog</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-plane blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Travel</span>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div #marketContent class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 no-padding opaque-bg market-content\" \n\t\t[ngStyle]=\"{ 'max-height': ' ' + screenHeight + 'px'}\" (scroll)=\"onScroll($event)\" \n\t\t(marketScrollEnd)=\"onMarketScrollEnd($event)\" #scrollMe>\n\t\t\t<div class=\"market-controlbar colw100\">\n\t\t\t\t<div class=\"total-count pull-left\">0 Results</div>\n\t\t\t\t<div class=\"grid-icon pull-left\"><i class=\"fa fa-th-large fa-2x\"></i></div>\n\t\t\t\t<div class=\"list-icon pull-left\"><i class=\"fa fa-list-ul fa-2x\"></i></div>\n\t\t\t\t<div class=\"sort-params pull-left\" (click)=\"clickedInside($event);\">\n\t\t\t\t\t<span>Sort By:&nbsp;{{sortSelection}}</span>\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"isMarketSortItems; then marketSortItemControls\"></div>\n\t\t\t\t\t\t<ng-template #marketSortItemControls>\n\t\t\t\t\t\t\t<div class=\"list-items market-sort-items pull-right\">\n\t\t\t\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Price</div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Name</div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Popularity</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</ng-template>\n\t\t\t\t<div class=\"sort-toggle pull-left\"><i class=\"fa fa-random fa-2x\"></i></div>\n\t\t\t</div>\n\t\t\t<div class=\"market-searchbar colw100\">\n\t\t\t\t<div class=\"market-search-box pull-left\">\n\t                <div class=\"pull-left\">\n\t                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n\t                </div>\n\t                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n\t            </div>\n\t            <div class=\"pull-left add-item\" (click)=\"addItemToMarket($event)\">\n\t            \t<i class=\"fa fa-plus\"></i>\n\t            </div>\n\t\t\t</div>\n\t\t\t<div class=\"market-content\">\n\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n<app-modal [modalTitle]=\"'Add Product'\" [blocking]='false' [modalId]='modalId' #addProductModal id=\"productModal\">\n\t<div class=\"add-product-content\">\n\t\t<div class=\"colw100 inline-block\">\n\t\t\t<app-add-item [userId]=\"userId\"></app-add-item>\n\t\t</div>\n\t</div>\n</app-modal>"
+module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container top-margin bottom-margin\">\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\t\t\t<div class=\"opaque-bg no-padding\">\n\t\t\t\t<app-profile-area></app-profile-area>\n\t\t\t\t<div class=\"left-nav\">\n\t\t\t\t\t<div class=\"nav-item\" (click)=\"switchVideo($event)\" [ngClass]=\"(isHighLightStories ? 'highlight-nav' : '')\">\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Stories</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\" [ngClass]=\"(isHighLightMusic ? 'highlight-nav' : '')\" (click)=\"switchMusic($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-pencil blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Blog</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-plane blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Travel</span>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div #marketContent class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 no-padding opaque-bg market-content\" \n\t\t[ngStyle]=\"{ 'max-height': ' ' + screenHeight + 'px'}\" (scroll)=\"onScroll($event)\" \n\t\t(marketScrollEnd)=\"onMarketScrollEnd($event)\" #scrollMe>\n\t\t\t<div class=\"market-controlbar colw100\">\n\t\t\t\t<div class=\"total-count pull-left\">0 Results</div>\n\t\t\t\t<div class=\"grid-icon pull-left\"><i class=\"fa fa-th-large fa-2x\"></i></div>\n\t\t\t\t<div class=\"list-icon pull-left\"><i class=\"fa fa-list-ul fa-2x\"></i></div>\n\t\t\t\t<div class=\"sort-params pull-left\" (click)=\"clickedInside($event);\">\n\t\t\t\t\t<span>Sort By:&nbsp;{{sortSelection}}</span>\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"isMarketSortItems; then marketSortItemControls\"></div>\n\t\t\t\t\t\t<ng-template #marketSortItemControls>\n\t\t\t\t\t\t\t<div class=\"list-items market-sort-items pull-right\">\n\t\t\t\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Price</div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Name</div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Popularity</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</ng-template>\n\t\t\t\t<div class=\"sort-toggle pull-left\"><i class=\"fa fa-random fa-2x\"></i></div>\n\t\t\t</div>\n\t\t\t<div class=\"market-searchbar colw100\">\n\t\t\t\t<div class=\"market-search-box pull-left\">\n\t                <div class=\"pull-left\">\n\t                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n\t                </div>\n\t                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n\t            </div>\n\t            <div class=\"pull-left add-item\" (click)=\"addItemToMarket($event)\">\n\t            \t<i class=\"fa fa-plus\"></i>\n\t            </div>\n\t\t\t</div>\n\t\t\t<div class=\"market-content\">\n\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n<app-modal [modalTitle]=\"'Add Product'\" [blocking]='false' [modalId]='modalId' #addProductModal>\n\t<div class=\"add-product-content\">\n\t\t<div class=\"colw100 inline-block\">\n\t\t\t<app-add-item [userId]=\"userId\" (refreshMarket)=\"refreshMarket($event)\"></app-add-item>\n\t\t</div>\n\t</div>\n</app-modal>"
 
 /***/ }),
 
@@ -3705,12 +3739,12 @@ var MarketComponent = (function () {
             if (currentUser === id) {
                 _this.isMyProfile = true;
                 localStorage.setItem("isMyProfile", 'true');
+                _this.userId = currentUser;
             }
             else {
                 _this.isMyProfile = false;
                 localStorage.setItem("isMyProfile", 'false');
                 var postObj = { 'userid': currentUser, 'friendid': id };
-                _this.userId = currentUser;
                 _this.friendId = id;
                 //this.friendsService.getFriendInfo(postObj).subscribe(data => this.afterFriendInfo(data));
             }
@@ -3762,12 +3796,19 @@ var MarketComponent = (function () {
         var self = this;
         self.modalService.open(self.modalId);
     };
+    MarketComponent.prototype.refreshMarket = function (event) {
+        this.addProductModal.close();
+    };
     return MarketComponent;
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('scrollMe'),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _a || Object)
 ], MarketComponent.prototype, "myScrollContainer", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('addProductModal'),
+    __metadata("design:type", Object)
+], MarketComponent.prototype, "addProductModal", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
     __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
@@ -3857,7 +3898,7 @@ var ModalComponent = (function () {
         this.isOpen = false;
     }
     ModalComponent.prototype.onMouseEnter = function (event) {
-        this.keyup(event);
+        //this.keyup(event);
     };
     ModalComponent.prototype.ngOnInit = function () {
         this.modalService.registerModal(this);
@@ -6590,6 +6631,51 @@ FriendsService = __decorate([
 
 var _a;
 //# sourceMappingURL=friends.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/data/market.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MarketService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var MarketService = (function () {
+    function MarketService(http) {
+        this.http = http;
+    }
+    MarketService.prototype.addItem = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/addItem", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    return MarketService;
+}());
+MarketService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+], MarketService);
+
+var _a;
+//# sourceMappingURL=market.service.js.map
 
 /***/ }),
 

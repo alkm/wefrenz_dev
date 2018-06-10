@@ -18,27 +18,45 @@
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-left">
 		<form [formGroup]="addItemForm">
 			<div class="form-group">
-				<input type="radio" value="women" formControlName="for"> Women
-		        <input type="radio" value="men" formControlName="for"> Men
-		        <input type="radio" value="kids" formControlName="for"> Kids
-				<app-control-messages [control]="addItemForm.controls.for"></app-control-messages>
+				<input type="text" class="form-control" placeholder="What are you selling?" formControlName="itemName" id="itemName">
+				<app-control-messages [control]="addItemForm.controls.itemName"></app-control-messages>
 			</div>
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Name" formControlName="name">
-				<app-control-messages [control]="addItemForm.controls.name"></app-control-messages>
+				<div class="colw100 blue-fonts">Select Category.</div>
+				<input type="radio" formControlName="category" [(ngModel)]="category.options" value="Women" checked 
+				(click)="category.options='Women'">
+				<span class="blue-fonts">Women</span>
+				<input type="radio" formControlName="category" [(ngModel)]="category.options" value="Men"
+				(click)="category.options='Men'">
+				<span class="blue-fonts">Men</span>
+				<input type="radio" formControlName="category" [(ngModel)]="category.options" value="Kids"
+				(click)="category.options='Kids'">
+				<span class="blue-fonts">Kids</span>
+				<!--<app-control-messages [control]="addItemForm.controls.for"></app-control-messages>-->
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Price in rupees." formControlName="price" (keypress)="keyPressOnContact($event)">
+				<app-control-messages [control]="addItemForm.controls.price"></app-control-messages>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Location" formControlName="location">
+				<app-control-messages [control]="addItemForm.controls.location"></app-control-messages>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Contact No" formControlName="contactNo" (keypress)="keyPressOnContact($event)" minlength=10 maxlength=10>
+				<app-control-messages [control]="addItemForm.controls.contactNo"></app-control-messages>
+			</div>
+			<div class="form-group">
+				<div class="file-input-container">
+					<input type="file" class="file-input" name="uploadfile" #fileInput (change)="fileChangeEvent($event)" formControlName="itemPic"/>
+				</div>
+				<div class="upload-icon blue-fonts"><span>Upload Image.&nbsp;</span><i class="fa fa-upload blue-fonts hand-cursor" aria-hidden="true" 
+				(click)="fileInput.value = ''; fileInput.click()"></i></div>
+				<app-control-messages [control]="addItemForm.controls.itemPic"></app-control-messages>
 			</div>
 			<div class="form-group">
 				<input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email" formControlName="email" id="email">
 				<app-control-messages [control]="addItemForm.controls.email"></app-control-messages>
-				<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-			</div>
-
-			<div class="form-group">
-				<div class="file-input-container">
-					<input type="file" class="file-input" name="uploadfile" #fileInput (change)="fileChangeEvent($event)"/>
-				</div>
-				<div class="upload-icon blue-fonts"><span>Upload Image&nbsp;</span><i class="fa fa-upload white-fonts hand-cursor" aria-hidden="true" 
-				(click)="fileInput.value = ''; fileInput.click()"></i></div>
 			</div>
 			<div class="form-group">
 				<textarea #desc class="form-control no-resize no-bg no-brder-radius blue-fonts blue-border" rows="5" cols="30" 		placeholder="Add Description..." id="postDesc" formControlName="itemDesc" [(ngModel)]="itemDesc">
@@ -46,7 +64,7 @@
 				<app-control-messages [control]="addItemForm.controls.itemDesc"></app-control-messages>
 			</div>
 			<div class="form-group row justify-content-center align-items-center no-margin">
-				<button type="button" class="btn btn-primary" [disabled]="!addItemForm.valid" (click)="addItem()">
+				<button type="button" class="btn btn-primary" (click)="addItem($event)">
 					<span>Add</span>
 					<i class="fa fa-sign-in" aria-hidden="true"></i>
 				</button>

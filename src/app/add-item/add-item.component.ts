@@ -1,12 +1,14 @@
 import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MarketService } from 'app/services/data/market.service';
 
 import { ValidationService } from 'app/services/validators/validation.service';
 
 @Component({
   selector: 'app-add-item',
   templateUrl: './add-item.component.html',
-  styleUrls: ['./add-item.component.css']
+  styleUrls: ['./add-item.component.css'],
+  providers: [MarketService]
 })
 export class AddItemComponent implements OnInit {
 
@@ -16,21 +18,61 @@ export class AddItemComponent implements OnInit {
 	private imageChangedEvent: any;
 	private files: any;
 	private encodedImage: any;
+	private radioMode:boolean = true;
+	private category = { options: 'Women' };
 
 	@Input('userId') userId;
+	@Output() refreshMarket: EventEmitter<any> = new EventEmitter();
 
-	constructor(private formBuilder : FormBuilder) { 
+	constructor(private formBuilder: FormBuilder, private marketService: MarketService) { 
 		this.addItemForm = this.formBuilder.group({
-	      'for': ['', Validators.required],
-	      'name': ['', Validators.required],
-	      'price': ['', Validators.required],
-	      'email': ['', [Validators.required, ValidationService.emailValidator]],
-	      'itemDesc': ['', Validators.required]
+			'category': [],
+	      	'itemName': ['', Validators.required],
+	      	'itemPic': ['', Validators.required],
+	      	'price': ['', Validators.required],
+	      	'email': ['', [Validators.required, ValidationService.emailValidator]],
+	      	'contactNo': ['', Validators.required],
+	      	'location': ['', Validators.required],
+	      	'itemDesc': ['', Validators.required]
 	    });
 	}
 
   	ngOnInit() {
   	
+  	}
+
+  	private addItem(event: any){
+  		//if (this.addItemForm.dirty && this.addItemForm.valid) {
+			let postObj = {'category':this.category.options, 
+							'itemName':this.addItemForm.controls.itemName._value, 
+							'price':this.addItemForm.controls.price._value,
+							'email':this.addItemForm.controls.email._value,
+							'contactNo':this.addItemForm.controls.contactNo._value, 
+							'location':this.addItemForm.controls.location._value,
+							'itemDesc':this.addItemForm.controls.itemDesc._value,
+							'imagebuffer': this.encodedImage, 
+							'userid': this.userId};
+	    	this.marketService.addItem(postObj).subscribe(data => this.afterItemAdded(data));
+	   /* }else{
+	    	alert('Filed mark with * are required.');
+	    }*/
+	}
+	private afterItemAdded(result){
+		//alert(result.message);
+		if(result.status === 'success'){
+			/*this.profilePic = result.info.profilepic.imageBuffer;
+			localStorage.setItem('loginData', JSON.stringify(result.info));*/
+			this.refreshMarket.emit('refreshMarket');
+
+		}
+	}
+  	private keyPressOnContact(event: any) {
+	    const pattern = /[0-9\+\-\ ]/;
+
+	    let inputChar = String.fromCharCode(event.charCode);
+	    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+	      event.preventDefault();
+	    }
   	}
 
   	private imageCropped(image: string) {
@@ -60,18 +102,7 @@ export class AddItemComponent implements OnInit {
 	    });*/
 	}
 
-	private uploadEncodedItemPic(encodedImage){
-		let postObj = {'imagebuffer': encodedImage, 'userid': this.userId};
-     //   this.uploadService.uploadEncodedProfilePic(postObj).subscribe(data => this.afterItemPicUploaded(data));
-	}
-	private afterItemPicUploaded(result){
-		//alert(result.message);
-		if(result.status === 'success'){
-			/*this.profilePic = result.info.profilepic.imageBuffer;
-			localStorage.setItem('loginData', JSON.stringify(result.info));
-			this.previewPicModal.close();*/
-		}
-	}
+
 	private ok(){
 		//this.uploadEncodedProfilePic(this.croppedImage);
 	}

@@ -14,7 +14,7 @@ export class ModalComponent implements OnInit {
   isOpen = false;
 
   @HostListener('keyup') onMouseEnter(event) {
-    this.keyup(event);
+    //this.keyup(event);
   }
 
   constructor(private modalService: ModalService) {

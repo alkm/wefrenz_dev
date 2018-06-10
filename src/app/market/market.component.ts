@@ -12,6 +12,7 @@ import { ModalService } from '../modal/modal.service';
 export class MarketComponent implements OnInit {
 
 	@ViewChild('scrollMe') private myScrollContainer: ElementRef;
+	@ViewChild('addProductModal') addProductModal;
 	@Output() onAppLoggedIn: EventEmitter<any> = new EventEmitter();
 	@Output() onAppLoggedOut: EventEmitter<any> = new EventEmitter();
 	@Output() marketScrollEnd: EventEmitter<any> = new EventEmitter();
@@ -46,11 +47,11 @@ export class MarketComponent implements OnInit {
 			if(currentUser === id){
 				this.isMyProfile = true;
 				localStorage.setItem("isMyProfile", 'true');
+				this.userId = currentUser;
 			}else{
 				this.isMyProfile = false;	
 				localStorage.setItem("isMyProfile", 'false');
 				let postObj = {'userid': currentUser, 'friendid': id};
-				this.userId = currentUser;
 				this.friendId = id;
 				//this.friendsService.getFriendInfo(postObj).subscribe(data => this.afterFriendInfo(data));
 			}
@@ -109,5 +110,9 @@ export class MarketComponent implements OnInit {
 	private openAppModal(modalType = null){
   		let self = this;
   		self.modalService.open(self.modalId);
+  	}
+
+  	private refreshMarket(event: any){
+  		this.addProductModal.close();
   	}
 }
