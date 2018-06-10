@@ -59,10 +59,10 @@
 		</div>
 	</div>
 </div>
-<app-modal [modalTitle]="'Add Product'" [blocking]='false' [modalId]='modalId' #addProductModal id="productModal">
+<app-modal [modalTitle]="'Add Product'" [blocking]='false' [modalId]='modalId' #addProductModal>
 	<div class="add-product-content">
 		<div class="colw100 inline-block">
-			<app-add-item [userId]="userId"></app-add-item>
+			<app-add-item [userId]="userId" (refreshMarket)="refreshMarket($event)"></app-add-item>
 		</div>
 	</div>
 </app-modal>
