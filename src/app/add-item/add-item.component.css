@@ -30,3 +30,6 @@ input{
 .form-group{
     margin: 10px 0px;
 }
+.fa-upload:hover{
+    color: #fff !important;
+}

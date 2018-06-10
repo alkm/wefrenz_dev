@@ -21,11 +21,9 @@
 				</div>
 			</div>
 		</div>
-		<div #marketContent class="col-xs-12 col-sm-9 col-md-9 col-lg-9 no-padding opaque-bg market-content" 
-		[ngStyle]="{ 'max-height': ' ' + screenHeight + 'px'}" (scroll)="onScroll($event)" 
-		(marketScrollEnd)="onMarketScrollEnd($event)" #scrollMe>
+		<div #marketContent class="col-xs-12 col-sm-9 col-md-9 col-lg-9 no-padding opaque-bg market-content">
 			<div class="market-controlbar colw100">
-				<div class="total-count pull-left">0 Results</div>
+				<div class="total-count pull-left">{{total}}&nbsp;Results</div>
 				<div class="grid-icon pull-left"><i class="fa fa-th-large fa-2x"></i></div>
 				<div class="list-icon pull-left"><i class="fa fa-list-ul fa-2x"></i></div>
 				<div class="sort-params pull-left" (click)="clickedInside($event);">
@@ -53,8 +51,21 @@
 	            	<i class="fa fa-plus"></i>
 	            </div>
 			</div>
-			<div class="market-content">
-
+			<div class="market-content" [ngStyle]="{ 'max-height': ' ' + screenHeight + 'px'}" (scroll)="onScroll($event)" #scrollMe>
+				<app-item-tile *ngFor="let item of marketItemArr" [item]="item" [userId]="userId" [item]="item"></app-item-tile>
+				<div *ngIf="isLoading then loading"></div>
+				<ng-template #loading>
+					<div class="spinner-bg">
+						<div class="spinner">
+							<i class="fa fa-2x fa-spin fa-spinner blue-fonts"></i>
+							<span class="blue-fonts">&nbsp;Loading...</span>
+						</div>
+					</div>
+				</ng-template>
+				<div *ngIf="(!isLoading && (marketItemArr.length > limit)) then endResult"></div>
+				<ng-template #endResult>
+					<div class="end-result blue-fonts text-center">--- End Of Result ---</div>
+				</ng-template>
 			</div>
 		</div>
 	</div>

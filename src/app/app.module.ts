@@ -68,6 +68,7 @@ import { CommentBoxComponent } from './comment-box/comment-box.component';
 import { CommentitemComponent } from './commentitem/commentitem.component';
 import { MarketComponent } from './market/market.component';
 import { AddItemComponent } from './add-item/add-item.component';
+import { ItemTileComponent } from './item-tile/item-tile.component';
 
 
 
@@ -124,7 +125,8 @@ import { AddItemComponent } from './add-item/add-item.component';
     CommentBoxComponent,
     CommentitemComponent,
     MarketComponent,
-    AddItemComponent
+    AddItemComponent,
+    ItemTileComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
