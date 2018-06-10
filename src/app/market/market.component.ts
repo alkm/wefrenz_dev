@@ -3,11 +3,13 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { RouteinfoService } from 'app/services/shareobject/routeinfo.service';
 import { ModalService } from '../modal/modal.service';
+import { MarketService } from 'app/services/data/market.service';
 
 @Component({
   selector: 'app-market',
   templateUrl: './market.component.html',
-  styleUrls: ['./market.component.css']
+  styleUrls: ['./market.component.css'],
+  providers: [MarketService]
 })
 export class MarketComponent implements OnInit {
 
@@ -25,8 +27,16 @@ export class MarketComponent implements OnInit {
     private isMarketSortItems: boolean = false;
     private sortSelection: string = "Relevance";
     private modalId: string = 'marketModal';
+    private skip: number = 0;
+  	private limit: number = 12;
+  	private total: number = 0;
+  	private isLoading: boolean = false;
+  	private marketItemArr = [];
+  	private relevance : string = '';
+  	private isViewMore: boolean = false;
+  	private isItemsAdded: boolean = false;
 
-	constructor(private route: ActivatedRoute, private router: Router, private modalService: ModalService) { 
+	constructor(private route: ActivatedRoute, private router: Router, private modalService: ModalService, private marketService: MarketService) { 
 		this.screenHeight = window.screen.height - 175;
   		route.params.subscribe(val => {
 			let currentUser = localStorage.getItem('currentUser');
@@ -67,7 +77,7 @@ export class MarketComponent implements OnInit {
 		}else{
 			localStorage.setItem('loginData', this.loginData);
 		}*/
-		
+		this.fetchMarketItems();
 	}
 
 	private triggerLoggedInCheck(eventType: string, evtObj: any) {
@@ -81,6 +91,10 @@ export class MarketComponent implements OnInit {
 	    if (atBottom) {
 	        //this.feedScrollEnd.emit('scroll end');
 	       // this.storyBoxComponent.onFeedScrollEnd();
+	        this.skip = this.skip + this.limit;
+	        if(this.skip < this.total){
+	          	this.fetchMarketItems();
+	        }
 	    } 
 	}
 
@@ -112,7 +126,45 @@ export class MarketComponent implements OnInit {
   		self.modalService.open(self.modalId);
   	}
 
+  	private resetParams(){
+  		this.skip = 0;
+  		this.limit = 12;
+  		this.total = 0;
+  		this.marketItemArr = [];
+  	}
+
   	private refreshMarket(event: any){
+  		this.resetParams();
+  		this.fetchMarketItems();
   		this.addProductModal.close();
   	}
+
+  	private fetchMarketItems(){
+      this.isLoading = true;
+      let postObj = {'relevance': this.relevance, 'skip': this.skip, 'limit': this.limit};
+      this.marketService.fetchMarketItems(postObj).subscribe(data => this.afterMarketItemsFetched(data));
+    }
+
+    private afterMarketItemsFetched(result) {
+      if(result.status === 'failure'){
+          alert(result.message);
+        }else{
+          let data = result.infos;
+          this.total = result.total;
+          if(this.total > 0){
+            this.isItemsAdded = true;
+          }else{
+            this.isItemsAdded = false;
+          }
+          for(let i in data){
+            this.marketItemArr.push(data[i]);
+          }
+          if(this.marketItemArr.length < this.total){
+            this.isViewMore = true;  
+          }else{
+            this.isViewMore = false;
+          }
+      }
+      this.isLoading = false; 
+    }
 }

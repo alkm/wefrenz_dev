@@ -1,0 +1,26 @@
+.item-tile{
+	padding: 7px;
+	margin: 7px;
+	background: #fff;
+	box-shadow: 0 1px 3px rgba(34, 34, 34, 0.25);
+	position: relative;
+	display: inline-table;
+}
+.item-pic{
+	width: 175px;
+    min-height: 200px;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    cursor: zoom-in;
+}
+.item-tile:hover{
+	box-shadow: 0 3px 8px rgba(34, 34, 34, 0.4);
+	transition: box-shadow 0.3s; 
+}
+.fa-envelope{
+	font-size: 18px;
+}
+.fa-cart-plus{
+	font-size: 20px;
+}

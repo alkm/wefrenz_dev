@@ -4,6 +4,7 @@ module.exports = mongoose.model('marketinfo', {
 	itemName : String,
 	category : String,
 	location : String,
+	price : Number,
 	contactNo : Number,
 	productImage : String,
 	productDesc : String,

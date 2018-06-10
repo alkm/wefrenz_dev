@@ -8,6 +8,7 @@ module.exports = function(app) {
 				userid: req.body.userid,
 				itemName: req.body.itemName,
 				category: req.body.category,
+				price: req.body.price,
 				location: req.body.location,
 				contactNo: req.body.contactNo,
 				productImage: req.body.imagebuffer,
@@ -22,6 +23,29 @@ module.exports = function(app) {
 			});
 		}
 
+	});
+
+    app.post('/api/fetchMarketItems/', function(req, res) {	
+		var relevance = req.body.relevance;
+		var sort = '-created';
+		if(relevance !== ''){
+			sort = relevance;
+		}
+		var skip = req.body.skip;
+		var limit = req.body.limit;
+        marketInfo.find()
+        .skip(skip)
+        .limit(limit)
+        .sort(sort)
+        .exec(function(err, infos) {
+            marketInfo.count().exec(function(err, count) {
+                if (err) return next(err)
+                res.send({
+                    "infos": infos,
+                    "total": count
+                })
+            })
+        })
 	});
 }
 	
