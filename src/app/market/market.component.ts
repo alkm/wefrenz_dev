@@ -35,6 +35,8 @@ export class MarketComponent implements OnInit {
   	private relevance : string = '';
   	private isViewMore: boolean = false;
   	private isItemsAdded: boolean = false;
+  	private cartItemArr = [];
+  	private totalCartItem = 0;
 
 	constructor(private route: ActivatedRoute, private router: Router, private modalService: ModalService, private marketService: MarketService) { 
 		this.screenHeight = window.screen.height - 175;
@@ -166,5 +168,37 @@ export class MarketComponent implements OnInit {
           }
       }
       this.isLoading = false; 
+    }
+
+    private onItemAddedToCart(event: any){
+    	let itemObj = event.data;
+    	let index = -1;
+    	let len = this.cartItemArr.length;
+    	if(len === 0){
+    		this.cartItemArr.push(itemObj);
+    	}else{
+    		for(let i = 0; i < len; i++){
+	    		if(itemObj.item._id === this.cartItemArr[i].item._id){
+	    			index = i;
+	    		}
+	    	}
+	    	if(index !== -1){
+	    		if(itemObj.count === 0){
+	    			this.cartItemArr.splice(index, 1);
+	    		}else{
+	    			this.cartItemArr[index] = itemObj;
+	    		}
+	    	}else{
+	    		this.cartItemArr.push(itemObj);
+	    	}
+
+    	}
+
+    	let countItem = 0;
+    	for(let obj in this.cartItemArr){
+    		countItem += this.cartItemArr[obj].count;
+    	}
+
+    	this.totalCartItem = countItem;
     }
 }

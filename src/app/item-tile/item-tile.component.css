@@ -24,3 +24,10 @@
 .fa-cart-plus{
 	font-size: 20px;
 }
+.fa-minus{
+	border: 1px solid #2b90d9;
+    padding: 2px;
+    font-size: 9px;
+    border-radius: 50%;
+    cursor: pointer;
+}

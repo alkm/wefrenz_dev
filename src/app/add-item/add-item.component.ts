@@ -19,7 +19,10 @@ export class AddItemComponent implements OnInit {
 	private files: any;
 	private encodedImage: any;
 	private radioMode:boolean = true;
+	private imageToSave:string;
+	private isImageCropper:boolean = true;
 	private category = { options: 'Women' };
+
 
 	@Input('userId') userId;
 	@Output() refreshMarket: EventEmitter<any> = new EventEmitter();
@@ -50,7 +53,7 @@ export class AddItemComponent implements OnInit {
 							'contactNo':this.addItemForm.controls.contactNo._value, 
 							'location':this.addItemForm.controls.location._value,
 							'itemDesc':this.addItemForm.controls.itemDesc._value,
-							'imagebuffer': this.encodedImage, 
+							'imagebuffer': this.imageToSave, 
 							'userid': this.userId};
 	    	this.marketService.addItem(postObj).subscribe(data => this.afterItemAdded(data));
 	   /* }else{
@@ -75,8 +78,15 @@ export class AddItemComponent implements OnInit {
 	    }
   	}
 
+  	private useOriginal(event: any){
+  		this.isImageCropper = false;
+  		this.imageToSave = this.encodedImage;
+
+  	}
+
   	private imageCropped(image: string) {
     	this.croppedImage = image;
+    	this.imageToSave = this.croppedImage;
   	}
   	private computeCroppedImage(){
   		let elem = <HTMLElement>document.querySelector('#croppedImg');
