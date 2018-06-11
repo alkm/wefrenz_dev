@@ -23,4 +23,18 @@ export class MarketService {
 		.map((res:Response) => res.json());
 	}
 
+	public doCheckOut(postObj) {
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.post(AppSettingsService.API_ENDPOINT("local")+"/api/doCheckOut", postObj, options)
+		.map((res:Response) => res.json());
+	}
+	
+	public fetchCheckOut(postObj) {
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.post(AppSettingsService.API_ENDPOINT("local")+"/api/fetchCheckOut", postObj, options)
+		.map((res:Response) => res.json());
+	}
+
 }

@@ -21,56 +21,56 @@ export class MarketComponent implements OnInit {
 
 	private isMyProfile: boolean = false;
 	private userId: string = '';
-    private friendId: string = '';
-    private screenHeight: number;
-    private overFlowY: string = 'visible';
-    private isMarketSortItems: boolean = false;
-    private sortSelection: string = "Relevance";
-    private modalId: string = 'marketModal';
-    private skip: number = 0;
-  	private limit: number = 12;
-  	private total: number = 0;
-  	private isLoading: boolean = false;
-  	private marketItemArr = [];
-  	private relevance : string = '';
-  	private isViewMore: boolean = false;
-  	private isItemsAdded: boolean = false;
-  	private cartItemArr = [];
-  	private totalCartItem = 0;
+  private friendId: string = '';
+  private screenHeight: number;
+  private overFlowY: string = 'visible';
+  private isMarketSortItems: boolean = false;
+  private sortSelection: string = "Relevance";
+  private modalId: string = 'marketModal';
+  private skip: number = 0;
+  private limit: number = 12;
+  private total: number = 0;
+  private isLoading: boolean = false;
+  private marketItemArr = [];
+  private relevance : string = '';
+  private isViewMore: boolean = false;
+  private isItemsAdded: boolean = false;
+  private cartItemArr = [];
+  private totalCartItem = 0;
 
 	constructor(private route: ActivatedRoute, private router: Router, private modalService: ModalService, private marketService: MarketService) { 
-		this.screenHeight = window.screen.height - 175;
-  		route.params.subscribe(val => {
-			let currentUser = localStorage.getItem('currentUser');
-			let id = this.route.snapshot.paramMap.get('id');
+		  this.screenHeight = window.screen.height - 175;
+    	route.params.subscribe(val => {
+  			let currentUser = localStorage.getItem('currentUser');
+  			let id = this.route.snapshot.paramMap.get('id');
 
-			if (!currentUser) {
-				this.triggerLoggedInCheck('onAppLoggedOut', {event: 'onAppLoggedOut', message: 'logged out'});
-				this.onAppLoggedOut.emit('logged Out');
-				this.router.navigate(['public']);	
-				return;
-			}else{
-				this.triggerLoggedInCheck('onAppLoggedIn', {event: 'onAppLoggedIn', message: 'logged in'});
-				this.onAppLoggedIn.emit('logged In');
-				localStorage.setItem('currentRoute', 'market/'+id);
-			}
+  			if (!currentUser) {
+  				this.triggerLoggedInCheck('onAppLoggedOut', {event: 'onAppLoggedOut', message: 'logged out'});
+  				this.onAppLoggedOut.emit('logged Out');
+  				this.router.navigate(['public']);	
+  				return;
+  			}else{
+  				this.triggerLoggedInCheck('onAppLoggedIn', {event: 'onAppLoggedIn', message: 'logged in'});
+  				this.onAppLoggedIn.emit('logged In');
+  				localStorage.setItem('currentRoute', 'market/'+id);
+  			}
 
-			
-			if(currentUser === id){
-				this.isMyProfile = true;
-				localStorage.setItem("isMyProfile", 'true');
-				this.userId = currentUser;
-			}else{
-				this.isMyProfile = false;	
-				localStorage.setItem("isMyProfile", 'false');
-				let postObj = {'userid': currentUser, 'friendid': id};
-				this.friendId = id;
-				//this.friendsService.getFriendInfo(postObj).subscribe(data => this.afterFriendInfo(data));
-			}
+  			
+  			if(currentUser === id){
+  				this.isMyProfile = true;
+  				localStorage.setItem("isMyProfile", 'true');
+  				this.userId = currentUser;
+  			}else{
+  				this.isMyProfile = false;	
+  				localStorage.setItem("isMyProfile", 'false');
+  				let postObj = {'userid': currentUser, 'friendid': id};
+  				this.friendId = id;
+  				//this.friendsService.getFriendInfo(postObj).subscribe(data => this.afterFriendInfo(data));
+  			}
 			
 			//this.routeSwitch.emit(this.isMyProfile);
 			//this.getProfileInfo(id);
-		});
+		  });
   	}
 
 	ngOnInit() {
@@ -80,6 +80,7 @@ export class MarketComponent implements OnInit {
 			localStorage.setItem('loginData', this.loginData);
 		}*/
 		this.fetchMarketItems();
+    this.fetchCheckOut();
 	}
 
 	private triggerLoggedInCheck(eventType: string, evtObj: any) {
@@ -193,12 +194,40 @@ export class MarketComponent implements OnInit {
 	    	}
 
     	}
+      this.calculateTotalCartItem();
 
-    	let countItem = 0;
-    	for(let obj in this.cartItemArr){
-    		countItem += this.cartItemArr[obj].count;
-    	}
+    }
+    private calculateTotalCartItem(){
+      let countItem = 0;
+      for(let obj in this.cartItemArr){
+        countItem += this.cartItemArr[obj].count;
+      }
+      this.totalCartItem = countItem;
+    }
 
-    	this.totalCartItem = countItem;
+    private fetchCheckOut(){
+      let postObj = {'username': this.userId};
+      this.marketService.fetchCheckOut(postObj).subscribe(data => this.afterFetchCheckOut(data)); 
+    }
+
+    private afterFetchCheckOut(result) {
+      if(result.status === 'failure'){
+          alert(result.message);
+        }else{
+          this.cartItemArr = result.info.checkOutItem;
+          this.calculateTotalCartItem();
+        }
+    }
+    private proceedToCheckOut(event: any){
+    	let postObj = {'username': this.userId, 'checkOutItem': this.cartItemArr};
+    	this.marketService.doCheckOut(postObj).subscribe(data => this.afterCheckOut(data));	
+    }
+
+    private afterCheckOut(result) {
+    	if(result.status === 'failure'){
+          alert(result.message);
+        }else{
+          this.router.navigate(['checkout', this.userId]);
+      	}
     }
 }

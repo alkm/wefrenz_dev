@@ -85,3 +85,14 @@ app-item-tile{
     min-height: 220px;
     display: inline-block;
 }
+.item-count{
+    position: absolute;
+    z-index: 10000;
+    /* height: 15px; */
+    background: red;
+    margin-top: -43px;
+    margin-left: -15px;
+    border: 1px solid white;
+    color: white;
+    padding: 0px 3px 0px 3px;
+}

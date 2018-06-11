@@ -1,0 +1,19 @@
+<div class="cart-tile colw100">
+	<div class="item-pic pull-left" [ngStyle]="{'background': 'url(' + obj.item.productImage+ ')'}"></div>
+	<div class="item-desc pull-left">
+		<div>{{obj.item.itemName}}</div>
+		<div class="blue-fonts">Rs&nbsp;{{itemPrice}}</div>
+		<div class="blue-fonts">For&nbsp;{{obj.item.category}}</div>
+		<div class="blue-fonts">Available in {{obj.item.location}}</div>
+		<div class="blue-fonts">
+			<span><i class="fa fa-minus blue-fonts" (click)="removeItemCount($event)"></i></span>
+			{{itemCount}}
+			<span><i class="fa fa-plus blue-fonts" (click)="addItemCount($event)"></i></span>
+		</div>
+	</div>
+	<div class="cart-items pull-right">
+		<div>You are buying&nbsp;{{itemCount}}&nbsp;{{obj.item.itemName}}</div>
+		<div class="blue-fonts">Total Items:&nbsp;{{itemCount}}</div>
+		<div class="blue-fonts">Total Price:&nbsp;{{totalPrice}}</div>
+	</div>
+</div>

@@ -69,9 +69,13 @@ import { CommentitemComponent } from './commentitem/commentitem.component';
 import { MarketComponent } from './market/market.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { ItemTileComponent } from './item-tile/item-tile.component';
+import { CartTileComponent } from './cart-tile/cart-tile.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
+import {enableProdMode} from '@angular/core';
 
+enableProdMode();
 
 @NgModule({
   declarations: [
@@ -126,7 +130,9 @@ import { ItemTileComponent } from './item-tile/item-tile.component';
     CommentitemComponent,
     MarketComponent,
     AddItemComponent,
-    ItemTileComponent
+    ItemTileComponent,
+    CartTileComponent,
+    CheckoutComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -166,6 +172,10 @@ import { ItemTileComponent } from './item-tile/item-tile.component';
         {
             path: 'market/:id',
             component: MarketComponent
+        },
+        {
+            path: 'checkout/:id',
+            component: CheckoutComponent
         }
     ], { useHash: true })
   ],
