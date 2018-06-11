@@ -1,0 +1,30 @@
+.item-pic{
+	width: 120px;
+    min-height: 150px;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    cursor: zoom-in;
+}
+.cart-tile{
+	padding: 7px;
+    margin: 7px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(34, 34, 34, 0.25);
+    position: relative;
+    display: inline-table;
+}
+
+.fa-minus, .fa-plus {
+	border: 1px solid #2b90d9;
+    padding: 1px 2px;
+    font-size: 9px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.fa-minus:hover, .fa-plus:hover{
+    color: #ff0000 !important;
+}
+.item-desc{
+	padding-left: 10px;
+}

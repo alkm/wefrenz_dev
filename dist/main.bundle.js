@@ -429,6 +429,8 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__market_market_component__ = __webpack_require__("../../../../../src/app/market/market.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__add_item_add_item_component__ = __webpack_require__("../../../../../src/app/add-item/add-item.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__item_tile_item_tile_component__ = __webpack_require__("../../../../../src/app/item-tile/item-tile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__cart_tile_cart_tile_component__ = __webpack_require__("../../../../../src/app/cart-tile/cart-tile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_65__checkout_checkout_component__ = __webpack_require__("../../../../../src/app/checkout/checkout.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -501,6 +503,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
+Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["_23" /* enableProdMode */])();
 var AppModule = (function () {
     function AppModule() {
     }
@@ -560,7 +566,9 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_60__commentitem_commentitem_component__["a" /* CommentitemComponent */],
             __WEBPACK_IMPORTED_MODULE_61__market_market_component__["a" /* MarketComponent */],
             __WEBPACK_IMPORTED_MODULE_62__add_item_add_item_component__["a" /* AddItemComponent */],
-            __WEBPACK_IMPORTED_MODULE_63__item_tile_item_tile_component__["a" /* ItemTileComponent */]
+            __WEBPACK_IMPORTED_MODULE_63__item_tile_item_tile_component__["a" /* ItemTileComponent */],
+            __WEBPACK_IMPORTED_MODULE_64__cart_tile_cart_tile_component__["a" /* CartTileComponent */],
+            __WEBPACK_IMPORTED_MODULE_65__checkout_checkout_component__["a" /* CheckoutComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__agm_core__["a" /* AgmCoreModule */].forRoot({
@@ -600,6 +608,10 @@ AppModule = __decorate([
                 {
                     path: 'market/:id',
                     component: __WEBPACK_IMPORTED_MODULE_61__market_market_component__["a" /* MarketComponent */]
+                },
+                {
+                    path: 'checkout/:id',
+                    component: __WEBPACK_IMPORTED_MODULE_65__checkout_checkout_component__["a" /* CheckoutComponent */]
                 }
             ], { useHash: true })
         ],
@@ -957,6 +969,104 @@ CapturePicComponent = __decorate([
 
 var _a, _b;
 //# sourceMappingURL=capture-pic.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/cart-tile/cart-tile.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".item-pic{\n\twidth: 120px;\n    min-height: 150px;\n    background-size: cover !important;\n    background-position: center !important;\n    background-repeat: no-repeat !important;\n    cursor: zoom-in;\n}\n.cart-tile{\n\tpadding: 7px;\n    margin: 7px;\n    background: #fff;\n    box-shadow: 0 1px 3px rgba(34, 34, 34, 0.25);\n    position: relative;\n    display: inline-table;\n}\n\n.fa-minus, .fa-plus {\n\tborder: 1px solid #2b90d9;\n    padding: 1px 2px;\n    font-size: 9px;\n    border-radius: 50%;\n    cursor: pointer;\n}\n.fa-minus:hover, .fa-plus:hover{\n    color: #ff0000 !important;\n}\n.item-desc{\n\tpadding-left: 10px;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/cart-tile/cart-tile.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"cart-tile colw100\">\n\t<div class=\"item-pic pull-left\" [ngStyle]=\"{'background': 'url(' + obj.item.productImage+ ')'}\"></div>\n\t<div class=\"item-desc pull-left\">\n\t\t<div>{{obj.item.itemName}}</div>\n\t\t<div class=\"blue-fonts\">Rs&nbsp;{{itemPrice}}</div>\n\t\t<div class=\"blue-fonts\">For&nbsp;{{obj.item.category}}</div>\n\t\t<div class=\"blue-fonts\">Available in {{obj.item.location}}</div>\n\t\t<div class=\"blue-fonts\">\n\t\t\t<span><i class=\"fa fa-minus blue-fonts\" (click)=\"removeItemCount($event)\"></i></span>\n\t\t\t{{itemCount}}\n\t\t\t<span><i class=\"fa fa-plus blue-fonts\" (click)=\"addItemCount($event)\"></i></span>\n\t\t</div>\n\t</div>\n\t<div class=\"cart-items pull-right\">\n\t\t<div>You are buying&nbsp;{{itemCount}}&nbsp;{{obj.item.itemName}}</div>\n\t\t<div class=\"blue-fonts\">Total Items:&nbsp;{{itemCount}}</div>\n\t\t<div class=\"blue-fonts\">Total Price:&nbsp;{{totalPrice}}</div>\n\t</div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/cart-tile/cart-tile.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CartTileComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var CartTileComponent = (function () {
+    function CartTileComponent() {
+        this.subtractFromTotal = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.addToTotal = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.itemCount = 0;
+        this.totalPrice = 0;
+        this.itemPrice = 0;
+    }
+    CartTileComponent.prototype.ngOnInit = function () {
+        this.itemPrice = this.obj.item.price;
+        this.itemCount = this.obj.count;
+        this.totalPrice = this.itemPrice * this.itemCount;
+    };
+    CartTileComponent.prototype.addItemCount = function (event) {
+        this.itemCount++;
+        this.totalPrice = this.itemPrice * this.itemCount;
+        this.addToTotal.emit({ data: this.itemPrice });
+    };
+    CartTileComponent.prototype.removeItemCount = function (event) {
+        if (this.itemCount > 0) {
+            this.itemCount--;
+            this.totalPrice = this.itemPrice * this.itemCount;
+            this.subtractFromTotal.emit({ data: this.itemPrice });
+        }
+    };
+    return CartTileComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('userId'),
+    __metadata("design:type", Object)
+], CartTileComponent.prototype, "userId", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('obj'),
+    __metadata("design:type", Object)
+], CartTileComponent.prototype, "obj", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
+], CartTileComponent.prototype, "subtractFromTotal", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
+], CartTileComponent.prototype, "addToTotal", void 0);
+CartTileComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-cart-tile',
+        template: __webpack_require__("../../../../../src/app/cart-tile/cart-tile.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/cart-tile/cart-tile.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], CartTileComponent);
+
+var _a, _b;
+//# sourceMappingURL=cart-tile.component.js.map
 
 /***/ }),
 
@@ -1632,6 +1742,154 @@ CheckinComponent = __decorate([
 
 var _a, _b, _c, _d;
 //# sourceMappingURL=checkin.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/checkout/checkout.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".checkout-content{\n\toverflow-y: auto;\n    overflow-x: hidden;\n    display: inline-block;\n    width: 100%;\n    box-sizing: border-box;\n    display: inline-block;\n    position: relative;\n    padding: 0px 15px 0px 0px;\n}\n.checkout-controlbar{\n\tborder: 1px solid #2b90d9;\n    display: inline-block;\n\n}\n.market-content{\n\tpadding: 6px;\n}\n.place-order{\n\tcursor: pointer;\n    padding: 1px 5px;\n    background: #2b90d9;\n    color: #fff;\n    border: 1px solid #d9e1e8;\n    line-height: 19px;\n    margin: 1px;\n}\n.place-order:hover{\n\tcolor: #d9e1e8;\n    border: 1px solid #d9e1e8;\n    opacity: 0.7;\n}\n.grand-total{\n\tline-height: 19px;\n    margin: 3px;\n    color: #ff0000;\n}\n.grand-total{\n    color: #ff0000;\n    margin: 3px;\n    line-height: 19px;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/checkout/checkout.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container top-margin bottom-margin\">\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\t\t\t<div class=\"opaque-bg no-padding\">\n\t\t\t\t<app-profile-area></app-profile-area>\n\t\t\t\t<div class=\"left-nav\">\n\t\t\t\t\t<div class=\"nav-item\" (click)=\"switchVideo($event)\" [ngClass]=\"(isHighLightStories ? 'highlight-nav' : '')\">\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Stories</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\" [ngClass]=\"(isHighLightMusic ? 'highlight-nav' : '')\" (click)=\"switchMusic($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-pencil blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Blog</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-plane blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Travel</span>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div #checkOutContent class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 opaque-bg market-content\">\n\t\t\t<div class=\"checkout-controlbar colw100\">\n\t\t\t\t<div class=\"place-order pull-right\">Place your order</div>\n\t\t\t\t<div class=\"grand-total pull-right\">Grand Total:&nbsp;Rs&nbsp;{{grandTotal}}</div>\n\t\t\t</div>\n\t\t\t<div class=\"checkout-content\" [ngStyle]=\"{ 'max-height': ' ' + screenHeight + 'px'}\" (scroll)=\"onScroll($event)\" #scrollMe>\n\t\t\t\t<app-cart-tile *ngFor=\"let obj of checkOutItemArr\" [obj]=\"obj\" [userId]=\"userId\" \n\t\t\t\t(addToTotal)=\"addToTotal($event)\"  \n\t\t\t\t(subtractFromTotal)=\"subtractFromTotal($event)\"></app-cart-tile>\n\t\t\t\t<!--<div *ngIf=\"isLoading then loading\"></div>\n\t\t\t\t<ng-template #loading>\n\t\t\t\t\t<div class=\"spinner-bg\">\n\t\t\t\t\t\t<div class=\"spinner\">\n\t\t\t\t\t\t\t<i class=\"fa fa-2x fa-spin fa-spinner blue-fonts\"></i>\n\t\t\t\t\t\t\t<span class=\"blue-fonts\">&nbsp;Loading...</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t\t<div *ngIf=\"(!isLoading && (marketItemArr.length > limit)) then endResult\"></div>\n\t\t\t\t<ng-template #endResult>\n\t\t\t\t\t<div class=\"end-result blue-fonts text-center\">--- End Of Result ---</div>\n\t\t\t\t</ng-template>\n\t\t\t\t-->\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n<!--\n<app-modal [modalTitle]=\"'Add Product'\" [blocking]='false' [modalId]='modalId' #addProductModal>\n\t<div class=\"add-product-content\">\n\t\t<div class=\"colw100 inline-block\">\n\t\t\t<app-add-item [userId]=\"userId\" (refreshMarket)=\"refreshMarket($event)\"></app-add-item>\n\t\t</div>\n\t</div>\n</app-modal>\n-->"
+
+/***/ }),
+
+/***/ "../../../../../src/app/checkout/checkout.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CheckoutComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_data_market_service__ = __webpack_require__("../../../../../src/app/services/data/market.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CheckoutComponent = (function () {
+    function CheckoutComponent(route, router, marketService) {
+        var _this = this;
+        this.route = route;
+        this.router = router;
+        this.marketService = marketService;
+        this.isMyProfile = false;
+        this.userId = '';
+        this.friendId = '';
+        this.checkOutItemArr = [];
+        this.grandTotal = 0;
+        this.onAppLoggedIn = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.onAppLoggedOut = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        this.screenHeight = window.screen.height - 175;
+        route.params.subscribe(function (val) {
+            var currentUser = localStorage.getItem('currentUser');
+            var id = _this.route.snapshot.paramMap.get('id');
+            if (!currentUser) {
+                _this.triggerLoggedInCheck('onAppLoggedOut', { event: 'onAppLoggedOut', message: 'logged out' });
+                _this.onAppLoggedOut.emit('logged Out');
+                _this.router.navigate(['public']);
+                return;
+            }
+            else {
+                _this.triggerLoggedInCheck('onAppLoggedIn', { event: 'onAppLoggedIn', message: 'logged in' });
+                _this.onAppLoggedIn.emit('logged In');
+                localStorage.setItem('currentRoute', 'checkout/' + id);
+            }
+            if (currentUser === id) {
+                _this.isMyProfile = true;
+                localStorage.setItem("isMyProfile", 'true');
+                _this.userId = currentUser;
+            }
+            else {
+                _this.isMyProfile = false;
+                localStorage.setItem("isMyProfile", 'false');
+                var postObj = { 'userid': currentUser, 'friendid': id };
+                _this.friendId = id;
+                //this.friendsService.getFriendInfo(postObj).subscribe(data => this.afterFriendInfo(data));
+            }
+            //this.routeSwitch.emit(this.isMyProfile);
+            //this.getProfileInfo(id);
+        });
+    }
+    CheckoutComponent.prototype.ngOnInit = function () {
+        this.fetchCheckOut();
+    };
+    CheckoutComponent.prototype.fetchCheckOut = function () {
+        var _this = this;
+        var postObj = { 'username': this.userId };
+        this.marketService.fetchCheckOut(postObj).subscribe(function (data) { return _this.afterFetchCheckOut(data); });
+    };
+    CheckoutComponent.prototype.afterFetchCheckOut = function (result) {
+        if (result.status === 'failure') {
+            alert(result.message);
+        }
+        else {
+            this.checkOutItemArr = result.info.checkOutItem;
+            this.calculateGrandTotal();
+        }
+    };
+    CheckoutComponent.prototype.triggerLoggedInCheck = function (eventType, evtObj) {
+        var evt = new CustomEvent(eventType, evtObj);
+        window.dispatchEvent(evt);
+    };
+    CheckoutComponent.prototype.calculateGrandTotal = function () {
+        for (var i in this.checkOutItemArr) {
+            this.grandTotal += (this.checkOutItemArr[i].count * this.checkOutItemArr[i].item.price);
+        }
+    };
+    CheckoutComponent.prototype.addToTotal = function (event) {
+        var amount = event.data;
+        this.grandTotal += amount;
+    };
+    CheckoutComponent.prototype.subtractFromTotal = function (event) {
+        var amount = event.data;
+        this.grandTotal -= amount;
+    };
+    return CheckoutComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
+], CheckoutComponent.prototype, "onAppLoggedIn", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _b || Object)
+], CheckoutComponent.prototype, "onAppLoggedOut", void 0);
+CheckoutComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-checkout',
+        template: __webpack_require__("../../../../../src/app/checkout/checkout.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/checkout/checkout.component.css")],
+        providers: [__WEBPACK_IMPORTED_MODULE_2_app_services_data_market_service__["a" /* MarketService */]]
+    }),
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_data_market_service__["a" /* MarketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_data_market_service__["a" /* MarketService */]) === "function" && _e || Object])
+], CheckoutComponent);
+
+var _a, _b, _c, _d, _e;
+//# sourceMappingURL=checkout.component.js.map
 
 /***/ }),
 
@@ -3550,7 +3808,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".item-tile{\n\tpadding: 7px;\n\tmargin: 7px;\n\tbackground: #fff;\n\tbox-shadow: 0 1px 3px rgba(34, 34, 34, 0.25);\n\tposition: relative;\n\tdisplay: inline-table;\n}\n.item-pic{\n\twidth: 175px;\n    min-height: 200px;\n    background-size: cover !important;\n    background-position: center !important;\n    background-repeat: no-repeat !important;\n    cursor: zoom-in;\n}\n.item-tile:hover{\n\tbox-shadow: 0 3px 8px rgba(34, 34, 34, 0.4);\n\ttransition: box-shadow 0.3s; \n}\n.fa-envelope{\n\tfont-size: 18px;\n}\n.fa-cart-plus{\n\tfont-size: 20px;\n}\n.fa-minus{\n\tborder: 1px solid #2b90d9;\n    padding: 2px;\n    font-size: 9px;\n    border-radius: 50%;\n    cursor: pointer;\n}", ""]);
+exports.push([module.i, ".item-tile{\n\tpadding: 7px;\n\tmargin: 7px;\n\tbackground: #fff;\n\tbox-shadow: 0 1px 3px rgba(34, 34, 34, 0.25);\n\tposition: relative;\n\tdisplay: inline-table;\n}\n.item-pic{\n\twidth: 175px;\n    min-height: 200px;\n    background-size: cover !important;\n    background-position: center !important;\n    background-repeat: no-repeat !important;\n    cursor: zoom-in;\n}\n.item-tile:hover{\n\tbox-shadow: 0 3px 8px rgba(34, 34, 34, 0.4);\n\ttransition: box-shadow 0.3s; \n}\n.fa-envelope{\n\tfont-size: 18px;\n}\n.fa-cart-plus{\n\tfont-size: 20px;\n}\n.fa-minus{\n\tborder: 1px solid #2b90d9;\n    padding: 1px 2px;\n    font-size: 9px;\n    border-radius: 50%;\n    cursor: pointer;\n}\n\n.fa-minus:hover{\n\tcolor: #ff0000 !important;\n}", ""]);
 
 // exports
 
@@ -3765,7 +4023,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".market-content{\n    padding: 5px !important;\n    overflow-y: auto;\n}\n.search-input{\n    line-height: 25px;\n    height: 25px;\n    display: block;\n    width: 154px;\n    border: none;\n    outline: none;\n    border: 1px solid #2b90d9;\n    border-radius: 2px;\n    border-top-right-radius: 0px;\n    border-bottom-right-radius: 0px;\n    background: none;    \n}\n\n.fa-search{\n    float: right;\n    color: #2b90d9 !important;\n    font-size: 15px;\n    line-height: 23px;\n    background: #f5f8fa;\n    padding: 0px 3px;\n    border: 1px solid #2b90d9;\n    border-left: none;\n    border-radius: 2px;\n    border-top-left-radius: 0px;\n    border-bottom-left-radius: 0px;\n}\n.market-controlbar{\n    border: 1px solid #2b90d9;\n    box-sizing: border-box;\n    display: inline-block;\n}\n\n.market-controlbar > div{\n    padding: 0px 6px;\n    font-size: 12px;\n    border-right: 1px solid #2b90d9;\n    line-height: 17px;\n    color: #2b90d9;\n}\n\n.total-count, .sort-params{\n    padding: 4px 6px !important;\n}\n.market-sort-items{\n    position: absolute;\n    width: 117px !important;\n    margin-left: 135px;\n    margin-top: 36px !important;\n    padding: 0px !important;\n    z-index: 1000;\n}\n.market-sort-items .arrow-up{\n    left: 40px;\n    margin-top: -11px;\n}\n.sort-params{\n    min-width: 117px;\n}\n.sort-params:hover, .grid-icon:hover, .list-icon:hover, .sort-toggle:hover, .add-item:hover{\n    background: #2b90d9;\n    color: #fff !important;\n    cursor: pointer;\n}\n.add-item{\n    color: #2b90d9;\n    padding: 0px 6px;\n    border: 1px solid #2b90d9;\n    color: #2b90d9;\n    height: 25px;\n    margin-left: 5px;\n    border-radius: 2px;\n    font-size: 14px\n}\n.market-searchbar{\n    display: inline-block;\n}\n\napp-item-tile{\n    width: 200px;\n    min-height: 220px;\n    display: inline-block;\n}", ""]);
+exports.push([module.i, ".market-content{\n    padding: 5px !important;\n    overflow-y: auto;\n}\n.search-input{\n    line-height: 25px;\n    height: 25px;\n    display: block;\n    width: 154px;\n    border: none;\n    outline: none;\n    border: 1px solid #2b90d9;\n    border-radius: 2px;\n    border-top-right-radius: 0px;\n    border-bottom-right-radius: 0px;\n    background: none;    \n}\n\n.fa-search{\n    float: right;\n    color: #2b90d9 !important;\n    font-size: 15px;\n    line-height: 23px;\n    background: #f5f8fa;\n    padding: 0px 3px;\n    border: 1px solid #2b90d9;\n    border-left: none;\n    border-radius: 2px;\n    border-top-left-radius: 0px;\n    border-bottom-left-radius: 0px;\n}\n.market-controlbar{\n    border: 1px solid #2b90d9;\n    box-sizing: border-box;\n    display: inline-block;\n}\n\n.market-controlbar > div{\n    padding: 0px 6px;\n    font-size: 12px;\n    border-right: 1px solid #2b90d9;\n    line-height: 17px;\n    color: #2b90d9;\n}\n\n.total-count, .sort-params{\n    padding: 4px 6px !important;\n}\n.market-sort-items{\n    position: absolute;\n    width: 117px !important;\n    margin-left: 135px;\n    margin-top: 36px !important;\n    padding: 0px !important;\n    z-index: 1000;\n}\n.market-sort-items .arrow-up{\n    left: 40px;\n    margin-top: -11px;\n}\n.sort-params{\n    min-width: 117px;\n}\n.sort-params:hover, .grid-icon:hover, .list-icon:hover, .sort-toggle:hover, .add-item:hover{\n    background: #2b90d9;\n    color: #fff !important;\n    cursor: pointer;\n}\n.add-item{\n    color: #2b90d9;\n    padding: 0px 6px;\n    border: 1px solid #2b90d9;\n    color: #2b90d9;\n    height: 25px;\n    margin-left: 5px;\n    border-radius: 2px;\n    font-size: 14px\n}\n.market-searchbar{\n    display: inline-block;\n}\n\napp-item-tile{\n    width: 200px;\n    min-height: 220px;\n    display: inline-block;\n}\n.item-count{\n    position: absolute;\n    z-index: 10000;\n    /* height: 15px; */\n    background: red;\n    margin-top: -43px;\n    margin-left: -15px;\n    border: 1px solid white;\n    color: white;\n    padding: 0px 3px 0px 3px;\n}\n", ""]);
 
 // exports
 
@@ -3778,7 +4036,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/market/market.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container top-margin bottom-margin\">\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\t\t\t<div class=\"opaque-bg no-padding\">\n\t\t\t\t<app-profile-area></app-profile-area>\n\t\t\t\t<div class=\"left-nav\">\n\t\t\t\t\t<div class=\"nav-item\" (click)=\"switchVideo($event)\" [ngClass]=\"(isHighLightStories ? 'highlight-nav' : '')\">\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Stories</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\" [ngClass]=\"(isHighLightMusic ? 'highlight-nav' : '')\" (click)=\"switchMusic($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-pencil blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Blog</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-plane blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Travel</span>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div #marketContent class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 no-padding opaque-bg market-content\">\n\t\t\t<div class=\"market-controlbar colw100\">\n\t\t\t\t<div class=\"total-count pull-left\">{{total}}&nbsp;Results</div>\n\t\t\t\t<div class=\"grid-icon pull-left\"><i class=\"fa fa-th-large fa-2x\"></i></div>\n\t\t\t\t<div class=\"list-icon pull-left\"><i class=\"fa fa-list-ul fa-2x\"></i></div>\n\t\t\t\t<div class=\"sort-params pull-left\" (click)=\"clickedInside($event);\">\n\t\t\t\t\t<span>Sort By:&nbsp;{{sortSelection}}</span>\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"isMarketSortItems; then marketSortItemControls\"></div>\n\t\t\t\t\t\t<ng-template #marketSortItemControls>\n\t\t\t\t\t\t\t<div class=\"list-items market-sort-items pull-right\">\n\t\t\t\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Price</div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Name</div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Popularity</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</ng-template>\n\t\t\t\t<div class=\"sort-toggle pull-left\"><i class=\"fa fa-random fa-2x\"></i></div>\n\t\t\t</div>\n\t\t\t<div class=\"market-searchbar colw100\">\n\t\t\t\t<div class=\"market-search-box pull-left\">\n\t                <div class=\"pull-left\">\n\t                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n\t                </div>\n\t                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n\t            </div>\n\t            <div class=\"pull-left add-item\" (click)=\"addItemToMarket($event)\">\n\t            \t<i class=\"fa fa-plus\"></i>\n\t            </div>\n\t           \t<div class=\"pull-right\"><i class=\"fa fa-cart-plus blue-fonts cursor-pointer fa-2x\" title=\"Proceed to Checkout\"></i></div>\n\t            <div *ngIf=\"totalCartItem > 0 ;then itemCounted\"></div>\n\t\t    \t<ng-template #itemCounted>\n\t\t    \t\t<div class=\"red-fonts pull-right\">{{totalCartItem}}&nbsp;added to cart&nbsp;</div>\n\t\t    \t</ng-template>\n\n\t\t\t</div>\n\t\t\t<div class=\"market-content\" [ngStyle]=\"{ 'max-height': ' ' + screenHeight + 'px'}\" (scroll)=\"onScroll($event)\" #scrollMe>\n\t\t\t\t<app-item-tile *ngFor=\"let item of marketItemArr\" [item]=\"item\" [userId]=\"userId\" [item]=\"item\" (onItemAddedToCart)=\"onItemAddedToCart($event)\"></app-item-tile>\n\t\t\t\t<div *ngIf=\"isLoading then loading\"></div>\n\t\t\t\t<ng-template #loading>\n\t\t\t\t\t<div class=\"spinner-bg\">\n\t\t\t\t\t\t<div class=\"spinner\">\n\t\t\t\t\t\t\t<i class=\"fa fa-2x fa-spin fa-spinner blue-fonts\"></i>\n\t\t\t\t\t\t\t<span class=\"blue-fonts\">&nbsp;Loading...</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t\t<div *ngIf=\"(!isLoading && (marketItemArr.length > limit)) then endResult\"></div>\n\t\t\t\t<ng-template #endResult>\n\t\t\t\t\t<div class=\"end-result blue-fonts text-center\">--- End Of Result ---</div>\n\t\t\t\t</ng-template>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n<app-modal [modalTitle]=\"'Add Product'\" [blocking]='false' [modalId]='modalId' #addProductModal>\n\t<div class=\"add-product-content\">\n\t\t<div class=\"colw100 inline-block\">\n\t\t\t<app-add-item [userId]=\"userId\" (refreshMarket)=\"refreshMarket($event)\"></app-add-item>\n\t\t</div>\n\t</div>\n</app-modal>"
+module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container top-margin bottom-margin\">\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\t\t\t<div class=\"opaque-bg no-padding\">\n\t\t\t\t<app-profile-area></app-profile-area>\n\t\t\t\t<div class=\"left-nav\">\n\t\t\t\t\t<div class=\"nav-item\" (click)=\"switchVideo($event)\" [ngClass]=\"(isHighLightStories ? 'highlight-nav' : '')\">\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Stories</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\" [ngClass]=\"(isHighLightMusic ? 'highlight-nav' : '')\" (click)=\"switchMusic($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-pencil blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Blog</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-plane blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Travel</span>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div #marketContent class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 no-padding opaque-bg market-content\">\n\t\t\t<div class=\"market-controlbar colw100\">\n\t\t\t\t<div class=\"total-count pull-left\">{{total}}&nbsp;Results</div>\n\t\t\t\t<div class=\"grid-icon pull-left\"><i class=\"fa fa-th-large fa-2x\"></i></div>\n\t\t\t\t<div class=\"list-icon pull-left\"><i class=\"fa fa-list-ul fa-2x\"></i></div>\n\t\t\t\t<div class=\"sort-params pull-left\" (click)=\"clickedInside($event);\">\n\t\t\t\t\t<span>Sort By:&nbsp;{{sortSelection}}</span>\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"isMarketSortItems; then marketSortItemControls\"></div>\n\t\t\t\t\t\t<ng-template #marketSortItemControls>\n\t\t\t\t\t\t\t<div class=\"list-items market-sort-items pull-right\">\n\t\t\t\t\t\t\t\t<div class=\"arrow-up white-bg\"></div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Price</div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Name</div>\n\t\t\t\t\t\t\t\t<div class=\"cursor-pointer list-item\" (click)=\"sortItemClick($event)\">Popularity</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</ng-template>\n\t\t\t\t<div class=\"sort-toggle pull-left\"><i class=\"fa fa-random fa-2x\"></i></div>\n\t\t\t</div>\n\t\t\t<div class=\"market-searchbar colw100\">\n\t\t\t\t<div class=\"market-search-box pull-left\">\n\t                <div class=\"pull-left\">\n\t                    <input class=\"search-input blue-fonts\" type=\"text\" placeholder=\"Search\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [(ngModel)]=\"albumText\" #searchAlbum/>\n\t                </div>\n\t                <div class=\"pull-left\"><i class=\"fa fa-search cursor-pointer\" aria-hidden=\"true\"></i></div>\n\t            </div>\n\t            <div class=\"pull-left add-item\" (click)=\"addItemToMarket($event)\">\n\t            \t<i class=\"fa fa-plus\"></i>\n\t            </div>\n\t           \t<div class=\"pull-right\">\n\t           \t\t<i class=\"fa fa-cart-plus blue-fonts cursor-pointer fa-2x\" (click)=\"proceedToCheckOut($event)\" title=\"Proceed to Checkout\"></i>\n\t           \t\t<ng-container *ngIf=\"totalCartItem > 0 \">\n\t\t              <div class=\"item-count cursor-pointer\" (click)='requestCountClick($event)'>{{totalCartItem}}</div>\n\t\t            </ng-container>\n\t           \t</div>\n\t            <div *ngIf=\"totalCartItem > 0 ;then itemCounted\"></div>\n\t\t    \t<ng-template #itemCounted>\n\t\t    \t\t<div class=\"red-fonts pull-right\">{{totalCartItem}}&nbsp;added to cart&nbsp;</div>\n\t\t    \t</ng-template>\n\n\t\t\t</div>\n\t\t\t<div class=\"market-content\" [ngStyle]=\"{ 'max-height': ' ' + screenHeight + 'px'}\" (scroll)=\"onScroll($event)\" #scrollMe>\n\t\t\t\t<app-item-tile *ngFor=\"let item of marketItemArr\" [item]=\"item\" [userId]=\"userId\" [item]=\"item\" (onItemAddedToCart)=\"onItemAddedToCart($event)\"></app-item-tile>\n\t\t\t\t<div *ngIf=\"isLoading then loading\"></div>\n\t\t\t\t<ng-template #loading>\n\t\t\t\t\t<div class=\"spinner-bg\">\n\t\t\t\t\t\t<div class=\"spinner\">\n\t\t\t\t\t\t\t<i class=\"fa fa-2x fa-spin fa-spinner blue-fonts\"></i>\n\t\t\t\t\t\t\t<span class=\"blue-fonts\">&nbsp;Loading...</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t\t<div *ngIf=\"(!isLoading && (marketItemArr.length > limit)) then endResult\"></div>\n\t\t\t\t<ng-template #endResult>\n\t\t\t\t\t<div class=\"end-result blue-fonts text-center\">--- End Of Result ---</div>\n\t\t\t\t</ng-template>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n<app-modal [modalTitle]=\"'Add Product'\" [blocking]='false' [modalId]='modalId' #addProductModal>\n\t<div class=\"add-product-content\">\n\t\t<div class=\"colw100 inline-block\">\n\t\t\t<app-add-item [userId]=\"userId\" (refreshMarket)=\"refreshMarket($event)\"></app-add-item>\n\t\t</div>\n\t</div>\n</app-modal>"
 
 /***/ }),
 
@@ -3869,6 +4127,7 @@ var MarketComponent = (function () {
             localStorage.setItem('loginData', this.loginData);
         }*/
         this.fetchMarketItems();
+        this.fetchCheckOut();
     };
     MarketComponent.prototype.triggerLoggedInCheck = function (eventType, evtObj) {
         var evt = new CustomEvent(eventType, evtObj);
@@ -3978,11 +4237,41 @@ var MarketComponent = (function () {
                 this.cartItemArr.push(itemObj);
             }
         }
+        this.calculateTotalCartItem();
+    };
+    MarketComponent.prototype.calculateTotalCartItem = function () {
         var countItem = 0;
         for (var obj in this.cartItemArr) {
             countItem += this.cartItemArr[obj].count;
         }
         this.totalCartItem = countItem;
+    };
+    MarketComponent.prototype.fetchCheckOut = function () {
+        var _this = this;
+        var postObj = { 'username': this.userId };
+        this.marketService.fetchCheckOut(postObj).subscribe(function (data) { return _this.afterFetchCheckOut(data); });
+    };
+    MarketComponent.prototype.afterFetchCheckOut = function (result) {
+        if (result.status === 'failure') {
+            alert(result.message);
+        }
+        else {
+            this.cartItemArr = result.info.checkOutItem;
+            this.calculateTotalCartItem();
+        }
+    };
+    MarketComponent.prototype.proceedToCheckOut = function (event) {
+        var _this = this;
+        var postObj = { 'username': this.userId, 'checkOutItem': this.cartItemArr };
+        this.marketService.doCheckOut(postObj).subscribe(function (data) { return _this.afterCheckOut(data); });
+    };
+    MarketComponent.prototype.afterCheckOut = function (result) {
+        if (result.status === 'failure') {
+            alert(result.message);
+        }
+        else {
+            this.router.navigate(['checkout', this.userId]);
+        }
     };
     return MarketComponent;
 }());
@@ -6857,6 +7146,18 @@ var MarketService = (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchMarketItems", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    MarketService.prototype.doCheckOut = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/doCheckOut", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    MarketService.prototype.fetchCheckOut = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchCheckOut", postObj, options)
             .map(function (res) { return res.json(); });
     };
     return MarketService;
