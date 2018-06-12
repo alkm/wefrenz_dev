@@ -74,6 +74,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 
 
 import {enableProdMode} from '@angular/core';
+import { AddressInfoComponent } from './address-info/address-info.component';
 
 enableProdMode();
 
@@ -132,7 +133,8 @@ enableProdMode();
     AddItemComponent,
     ItemTileComponent,
     CartTileComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    AddressInfoComponent
   ],
   imports: [
     AgmCoreModule.forRoot({

@@ -11,10 +11,8 @@ import { RegistrationService } from 'app/services/data/registration.service';
   providers: [RegistrationService]
 })
 export class SignupComponent implements OnInit {
-  @Output() 
-
-  private renderLogin = new EventEmitter();
-  private accountCreated = new EventEmitter();
+  @Output() private renderLogin = new EventEmitter();
+  @Output() private accountCreated = new EventEmitter();
   private signupForm : any;
   private serverMessage = '';
   private isError = false;
