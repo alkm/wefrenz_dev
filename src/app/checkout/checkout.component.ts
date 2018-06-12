@@ -1,7 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, NavigationEnd } from '@angular/router';
 
 import { MarketService } from 'app/services/data/market.service';
+import { ModalService } from '../modal/modal.service';
 
 @Component({
   selector: 'app-checkout',
@@ -13,15 +14,26 @@ export class CheckoutComponent implements OnInit {
 
 	private isMyProfile: boolean = false;
 	private userId: string = '';
-  	private friendId: string = '';
-  	private screenHeight: number;
-  	private checkOutItemArr = [];
-  	private grandTotal: number =  0;
+  private friendId: string = '';
+  private screenHeight: number;
+  private checkOutItemArr = [];
+  private grandTotal: number =  0;
+  private modalId: string = "addAddressModal";
 
-  	@Output() onAppLoggedIn: EventEmitter<any> = new EventEmitter();
+  @Output() onAppLoggedIn: EventEmitter<any> = new EventEmitter();
 	@Output() onAppLoggedOut: EventEmitter<any> = new EventEmitter();
 
-	constructor(private route: ActivatedRoute, private router: Router, private marketService: MarketService) { 
+	constructor(private route: ActivatedRoute, private router: Router, private marketService: MarketService, private modalService: ModalService) { 
+    router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.ngOnInit();
+      }
+      // Instance of should be: 
+      // NavigationEnd
+      // NavigationCancel
+      // NavigationError
+      // RoutesRecognized
+    });
 		this.screenHeight = window.screen.height - 175;
     	route.params.subscribe(val => {
   			let currentUser = localStorage.getItem('currentUser');
@@ -59,6 +71,15 @@ export class CheckoutComponent implements OnInit {
   	ngOnInit() {
   		this.fetchCheckOut();
   	}
+
+    private placeOrder(event){
+      this.openAppModal();
+    }
+
+    private openAppModal(modalType = null){
+      let self = this;
+      self.modalService.open(self.modalId);
+    }
 
   	private fetchCheckOut(){
       let postObj = {'username': this.userId};

@@ -23,7 +23,7 @@
 		</div>
 		<div #checkOutContent class="col-xs-12 col-sm-9 col-md-9 col-lg-9 opaque-bg market-content">
 			<div class="checkout-controlbar colw100">
-				<div class="place-order pull-right">Place your order</div>
+				<div class="place-order pull-right" (click)="placeOrder($event)">Place your order</div>
 				<div class="grand-total pull-right">Grand Total:&nbsp;Rs&nbsp;{{grandTotal}}</div>
 			</div>
 			<div class="checkout-content" [ngStyle]="{ 'max-height': ' ' + screenHeight + 'px'}" (scroll)="onScroll($event)" #scrollMe>
@@ -48,12 +48,10 @@
 		</div>
 	</div>
 </div>
-<!--
-<app-modal [modalTitle]="'Add Product'" [blocking]='false' [modalId]='modalId' #addProductModal>
-	<div class="add-product-content">
+<app-modal [modalTitle]="'Add Address'" [blocking]='false' [modalId]='modalId' #addAddressModal>
+	<div class="add-address-content">
 		<div class="colw100 inline-block">
-			<app-add-item [userId]="userId" (refreshMarket)="refreshMarket($event)"></app-add-item>
+			<app-address-info [userId]="userId"></app-address-info>
 		</div>
 	</div>
 </app-modal>
--->

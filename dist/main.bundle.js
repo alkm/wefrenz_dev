@@ -246,6 +246,91 @@ var _a, _b, _c;
 
 /***/ }),
 
+/***/ "../../../../../src/app/address-info/address-info.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "select {\n\t-webkit-appearance: none;\n  border-radius: 0px;\n  background: none;\n  width: 200px;\n  border: 1px solid #2b90d9;\n\n}\n\n.form-group input{\n\twidth: 200px;\n\tborder-radius: 0px;\n\tbackground: none;\n\tborder: 1px solid #2b90d9;\n}\n\n.address-info{\n\tpadding: 10px 0px !important;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/address-info/address-info.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"address-info colw100\">\n\t<div class=\"billing-info col-xs-12 col-sm-6 col-md-6 col-lg-6 pull-left\">\n\t\t<h6 class=\"blue-fonts\">Billing Address</h6>\n\t\t<form [formGroup]=\"billingForm\">\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<select [(ngModel)]=\"billingTitleOption\" class=\"form-control\" placeholder=\"Please Select\" formControlName=\"bilingTitle\">\n\t\t        \t<option *ngFor=\"let o of titleOptions\">\n\t\t          \t\t{{o.name}}\n\t\t        \t</option>\n\t\t      \t</select>\n\t\t      \t<app-control-messages [control]=\"billingForm.controls.bilingTitle\"></app-control-messages>\n\t\t    </div>\n\t\t    <div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"First Name\" formControlName=\"firstName\" id=\"firstName\">\n\t\t\t\t<app-control-messages [control]=\"billingForm.controls.firstName\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"Last Name\" formControlName=\"lastName\" id=\"lastName\">\n\t\t\t\t<app-control-messages [control]=\"billingForm.controls.lastName\"></app-control-messages>\n\t\t\t</div>\n\t    </form>\t\n\t</div>\n\t<div class=\"shipping-info col-xs-12 col-sm-6 col-md-6 col-lg-6 pull-left\">\n\t\t<h6 class=\"blue-fonts\">Shipping Address</h6>\n\t\t<form [formGroup]=\"shippingForm\">\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<select [(ngModel)]=\"billingTitleOption\" class=\"form-control\" placeholder=\"Please Select\" formControlName=\"shippingTitle\">\n\t\t        \t<option *ngFor=\"let o of titleOptions\">\n\t\t          \t\t{{o.name}}\n\t\t        \t</option>\n\t\t      \t</select>\n\t\t      \t<app-control-messages [control]=\"shippingForm.controls.shippingTitle\"></app-control-messages>\n\t\t    </div>\n\t\t    <div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"First Name\" formControlName=\"sfirstName\" id=\"firstName\">\n\t\t\t\t<app-control-messages [control]=\"shippingForm.controls.sfirstName\"></app-control-messages>\n\t\t\t</div>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"Last Name\" formControlName=\"slastName\" id=\"lastName\">\n\t\t\t\t<app-control-messages [control]=\"shippingForm.controls.slastName\"></app-control-messages>\n\t\t\t</div>\n\t    </form>\t\n\t</div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/address-info/address-info.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddressInfoComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var AddressInfoComponent = (function () {
+    function AddressInfoComponent(formBuilder) {
+        this.formBuilder = formBuilder;
+        this.titleOptions = [
+            { name: "Title", value: '' },
+            { name: "Mr", value: 'Mr' },
+            { name: "Mrs", value: 'Mrs' },
+            { name: "Miss", value: 'Miss' }
+        ];
+        this.billingForm = this.formBuilder.group({
+            'bilingTitle': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required],
+            'firstName': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required],
+            'lastName': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required]
+        });
+        this.shippingForm = this.formBuilder.group({
+            'shippingTitle': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required],
+            'sfirstName': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required],
+            'slastName': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required]
+        });
+    }
+    AddressInfoComponent.prototype.ngOnInit = function () {
+    };
+    return AddressInfoComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])('userId'),
+    __metadata("design:type", Object)
+], AddressInfoComponent.prototype, "userId", void 0);
+AddressInfoComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-address-info',
+        template: __webpack_require__("../../../../../src/app/address-info/address-info.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/address-info/address-info.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _a || Object])
+], AddressInfoComponent);
+
+var _a;
+//# sourceMappingURL=address-info.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/app.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -351,7 +436,7 @@ AppComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object])
 ], AppComponent);
 
 var _a, _b;
@@ -431,6 +516,7 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__item_tile_item_tile_component__ = __webpack_require__("../../../../../src/app/item-tile/item-tile.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__cart_tile_cart_tile_component__ = __webpack_require__("../../../../../src/app/cart-tile/cart-tile.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_65__checkout_checkout_component__ = __webpack_require__("../../../../../src/app/checkout/checkout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_66__address_info_address_info_component__ = __webpack_require__("../../../../../src/app/address-info/address-info.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -477,6 +563,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 ;
+
 
 
 
@@ -568,7 +655,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_62__add_item_add_item_component__["a" /* AddItemComponent */],
             __WEBPACK_IMPORTED_MODULE_63__item_tile_item_tile_component__["a" /* ItemTileComponent */],
             __WEBPACK_IMPORTED_MODULE_64__cart_tile_cart_tile_component__["a" /* CartTileComponent */],
-            __WEBPACK_IMPORTED_MODULE_65__checkout_checkout_component__["a" /* CheckoutComponent */]
+            __WEBPACK_IMPORTED_MODULE_65__checkout_checkout_component__["a" /* CheckoutComponent */],
+            __WEBPACK_IMPORTED_MODULE_66__address_info_address_info_component__["a" /* AddressInfoComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__agm_core__["a" /* AgmCoreModule */].forRoot({
@@ -584,7 +672,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_25_ngx_image_cropper__["a" /* ImageCropperModule */],
             __WEBPACK_IMPORTED_MODULE_26_angular4_carousel__["b" /* CarouselModule */],
             __WEBPACK_IMPORTED_MODULE_52_angular4_color_picker__["ColorPickerModule"],
-            __WEBPACK_IMPORTED_MODULE_7__angular_router__["d" /* RouterModule */].forRoot([
+            __WEBPACK_IMPORTED_MODULE_7__angular_router__["e" /* RouterModule */].forRoot([
                 {
                     path: 'public',
                     component: __WEBPACK_IMPORTED_MODULE_11__public_public_component__["a" /* PublicComponent */]
@@ -993,7 +1081,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/cart-tile/cart-tile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"cart-tile colw100\">\n\t<div class=\"item-pic pull-left\" [ngStyle]=\"{'background': 'url(' + obj.item.productImage+ ')'}\"></div>\n\t<div class=\"item-desc pull-left\">\n\t\t<div>{{obj.item.itemName}}</div>\n\t\t<div class=\"blue-fonts\">Rs&nbsp;{{itemPrice}}</div>\n\t\t<div class=\"blue-fonts\">For&nbsp;{{obj.item.category}}</div>\n\t\t<div class=\"blue-fonts\">Available in {{obj.item.location}}</div>\n\t\t<div class=\"blue-fonts\">\n\t\t\t<span><i class=\"fa fa-minus blue-fonts\" (click)=\"removeItemCount($event)\"></i></span>\n\t\t\t{{itemCount}}\n\t\t\t<span><i class=\"fa fa-plus blue-fonts\" (click)=\"addItemCount($event)\"></i></span>\n\t\t</div>\n\t</div>\n\t<div class=\"cart-items pull-right\">\n\t\t<div>You are buying&nbsp;{{itemCount}}&nbsp;{{obj.item.itemName}}</div>\n\t\t<div class=\"blue-fonts\">Total Items:&nbsp;{{itemCount}}</div>\n\t\t<div class=\"blue-fonts\">Total Price:&nbsp;{{totalPrice}}</div>\n\t</div>\n</div>\n"
+module.exports = "<div class=\"cart-tile colw100\">\n\t<div class=\"item-pic pull-left\" [ngStyle]=\"{'background': 'url(' + obj.item.productImage+ ')'}\"></div>\n\t<div class=\"item-desc pull-left\">\n\t\t<div>{{obj.item.itemName}}</div>\n\t\t<div class=\"blue-fonts\">Rs&nbsp;{{itemPrice}}</div>\n\t\t<div class=\"blue-fonts\">For&nbsp;{{obj.item.category}}</div>\n\t\t<div class=\"blue-fonts\">Available in {{obj.item.location}}</div>\n\t\t<div class=\"blue-fonts\">\n\t\t\t<span><i class=\"fa fa-minus blue-fonts\" (click)=\"removeItemCount($event)\"></i></span>\n\t\t\t{{itemCount}}\n\t\t\t<span><i class=\"fa fa-plus blue-fonts\" (click)=\"addItemCount($event)\"></i></span>\n\t\t</div>\n\t</div>\n\t<div class=\"cart-items pull-right\">\n\t\t<div class=\"tex-right\">You are buying&nbsp;{{itemCount}}&nbsp;{{obj.item.itemName}}</div>\n\t\t<div class=\"blue-fonts text-right\">Total Items:&nbsp;{{itemCount}}</div>\n\t\t<div class=\"blue-fonts text-right\">Total Price:&nbsp;{{totalPrice}}</div>\n\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -1610,7 +1698,7 @@ ChatComponent = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* FormsModule */]
         ]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_data_chat_service__["a" /* ChatService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_data_chat_service__["a" /* ChatService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* ChangeDetectorRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* ChangeDetectorRef */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__modal_modal_service__["a" /* ModalService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["d" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_data_chat_service__["a" /* ChatService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_data_chat_service__["a" /* ChatService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* ChangeDetectorRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* ChangeDetectorRef */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__modal_modal_service__["a" /* ModalService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["R" /* NgZone */]) === "function" && _e || Object])
 ], ChatComponent);
 
 var _a, _b, _c, _d, _e;
@@ -1766,7 +1854,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/checkout/checkout.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container top-margin bottom-margin\">\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\t\t\t<div class=\"opaque-bg no-padding\">\n\t\t\t\t<app-profile-area></app-profile-area>\n\t\t\t\t<div class=\"left-nav\">\n\t\t\t\t\t<div class=\"nav-item\" (click)=\"switchVideo($event)\" [ngClass]=\"(isHighLightStories ? 'highlight-nav' : '')\">\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Stories</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\" [ngClass]=\"(isHighLightMusic ? 'highlight-nav' : '')\" (click)=\"switchMusic($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-pencil blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Blog</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-plane blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Travel</span>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div #checkOutContent class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 opaque-bg market-content\">\n\t\t\t<div class=\"checkout-controlbar colw100\">\n\t\t\t\t<div class=\"place-order pull-right\">Place your order</div>\n\t\t\t\t<div class=\"grand-total pull-right\">Grand Total:&nbsp;Rs&nbsp;{{grandTotal}}</div>\n\t\t\t</div>\n\t\t\t<div class=\"checkout-content\" [ngStyle]=\"{ 'max-height': ' ' + screenHeight + 'px'}\" (scroll)=\"onScroll($event)\" #scrollMe>\n\t\t\t\t<app-cart-tile *ngFor=\"let obj of checkOutItemArr\" [obj]=\"obj\" [userId]=\"userId\" \n\t\t\t\t(addToTotal)=\"addToTotal($event)\"  \n\t\t\t\t(subtractFromTotal)=\"subtractFromTotal($event)\"></app-cart-tile>\n\t\t\t\t<!--<div *ngIf=\"isLoading then loading\"></div>\n\t\t\t\t<ng-template #loading>\n\t\t\t\t\t<div class=\"spinner-bg\">\n\t\t\t\t\t\t<div class=\"spinner\">\n\t\t\t\t\t\t\t<i class=\"fa fa-2x fa-spin fa-spinner blue-fonts\"></i>\n\t\t\t\t\t\t\t<span class=\"blue-fonts\">&nbsp;Loading...</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t\t<div *ngIf=\"(!isLoading && (marketItemArr.length > limit)) then endResult\"></div>\n\t\t\t\t<ng-template #endResult>\n\t\t\t\t\t<div class=\"end-result blue-fonts text-center\">--- End Of Result ---</div>\n\t\t\t\t</ng-template>\n\t\t\t\t-->\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n<!--\n<app-modal [modalTitle]=\"'Add Product'\" [blocking]='false' [modalId]='modalId' #addProductModal>\n\t<div class=\"add-product-content\">\n\t\t<div class=\"colw100 inline-block\">\n\t\t\t<app-add-item [userId]=\"userId\" (refreshMarket)=\"refreshMarket($event)\"></app-add-item>\n\t\t</div>\n\t</div>\n</app-modal>\n-->"
+module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container top-margin bottom-margin\">\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\t\t\t<div class=\"opaque-bg no-padding\">\n\t\t\t\t<app-profile-area></app-profile-area>\n\t\t\t\t<div class=\"left-nav\">\n\t\t\t\t\t<div class=\"nav-item\" (click)=\"switchVideo($event)\" [ngClass]=\"(isHighLightStories ? 'highlight-nav' : '')\">\n\t\t\t\t\t\t<i class=\"fa fa-book blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Stories</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\" [ngClass]=\"(isHighLightMusic ? 'highlight-nav' : '')\" (click)=\"switchMusic($event)\">\n\t\t\t\t\t\t<i class=\"fa fa-pencil blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Blog</span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"nav-item\">\n\t\t\t\t\t\t<i class=\"fa fa-plane blue-fonts\" aria-hidden=\"true\"></i>\n\t\t\t\t\t\t<span class=\"blue-fonts\">Travel</span>\n\t\t\t\t\t</div>\n\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div #checkOutContent class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 opaque-bg market-content\">\n\t\t\t<div class=\"checkout-controlbar colw100\">\n\t\t\t\t<div class=\"place-order pull-right\" (click)=\"placeOrder($event)\">Place your order</div>\n\t\t\t\t<div class=\"grand-total pull-right\">Grand Total:&nbsp;Rs&nbsp;{{grandTotal}}</div>\n\t\t\t</div>\n\t\t\t<div class=\"checkout-content\" [ngStyle]=\"{ 'max-height': ' ' + screenHeight + 'px'}\" (scroll)=\"onScroll($event)\" #scrollMe>\n\t\t\t\t<app-cart-tile *ngFor=\"let obj of checkOutItemArr\" [obj]=\"obj\" [userId]=\"userId\" \n\t\t\t\t(addToTotal)=\"addToTotal($event)\"  \n\t\t\t\t(subtractFromTotal)=\"subtractFromTotal($event)\"></app-cart-tile>\n\t\t\t\t<!--<div *ngIf=\"isLoading then loading\"></div>\n\t\t\t\t<ng-template #loading>\n\t\t\t\t\t<div class=\"spinner-bg\">\n\t\t\t\t\t\t<div class=\"spinner\">\n\t\t\t\t\t\t\t<i class=\"fa fa-2x fa-spin fa-spinner blue-fonts\"></i>\n\t\t\t\t\t\t\t<span class=\"blue-fonts\">&nbsp;Loading...</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</ng-template>\n\t\t\t\t<div *ngIf=\"(!isLoading && (marketItemArr.length > limit)) then endResult\"></div>\n\t\t\t\t<ng-template #endResult>\n\t\t\t\t\t<div class=\"end-result blue-fonts text-center\">--- End Of Result ---</div>\n\t\t\t\t</ng-template>\n\t\t\t\t-->\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n<app-modal [modalTitle]=\"'Add Address'\" [blocking]='false' [modalId]='modalId' #addAddressModal>\n\t<div class=\"add-address-content\">\n\t\t<div class=\"colw100 inline-block\">\n\t\t\t<app-address-info [userId]=\"userId\"></app-address-info>\n\t\t</div>\n\t</div>\n</app-modal>\n"
 
 /***/ }),
 
@@ -1778,6 +1866,7 @@ module.exports = "<app-private-nav></app-private-nav>\n<div class=\"container to
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_data_market_service__ = __webpack_require__("../../../../../src/app/services/data/market.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modal_modal_service__ = __webpack_require__("../../../../../src/app/modal/modal.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1790,19 +1879,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CheckoutComponent = (function () {
-    function CheckoutComponent(route, router, marketService) {
+    function CheckoutComponent(route, router, marketService, modalService) {
         var _this = this;
         this.route = route;
         this.router = router;
         this.marketService = marketService;
+        this.modalService = modalService;
         this.isMyProfile = false;
         this.userId = '';
         this.friendId = '';
         this.checkOutItemArr = [];
         this.grandTotal = 0;
+        this.modalId = "addAddressModal";
         this.onAppLoggedIn = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.onAppLoggedOut = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
+        router.events.subscribe(function (event) {
+            if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */]) {
+                _this.ngOnInit();
+            }
+            // Instance of should be: 
+            // NavigationEnd
+            // NavigationCancel
+            // NavigationError
+            // RoutesRecognized
+        });
         this.screenHeight = window.screen.height - 175;
         route.params.subscribe(function (val) {
             var currentUser = localStorage.getItem('currentUser');
@@ -1836,6 +1938,14 @@ var CheckoutComponent = (function () {
     }
     CheckoutComponent.prototype.ngOnInit = function () {
         this.fetchCheckOut();
+    };
+    CheckoutComponent.prototype.placeOrder = function (event) {
+        this.openAppModal();
+    };
+    CheckoutComponent.prototype.openAppModal = function (modalType) {
+        if (modalType === void 0) { modalType = null; }
+        var self = this;
+        self.modalService.open(self.modalId);
     };
     CheckoutComponent.prototype.fetchCheckOut = function () {
         var _this = this;
@@ -1885,10 +1995,10 @@ CheckoutComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/checkout/checkout.component.css")],
         providers: [__WEBPACK_IMPORTED_MODULE_2_app_services_data_market_service__["a" /* MarketService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_data_market_service__["a" /* MarketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_data_market_service__["a" /* MarketService */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_data_market_service__["a" /* MarketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_data_market_service__["a" /* MarketService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__modal_modal_service__["a" /* ModalService */]) === "function" && _f || Object])
 ], CheckoutComponent);
 
-var _a, _b, _c, _d, _e;
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=checkout.component.js.map
 
 /***/ }),
@@ -2876,7 +2986,7 @@ EntertainmentComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/entertainment/entertainment.component.html"),
         styles: [__webpack_require__("../../../../../src/app/entertainment/entertainment.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _d || Object])
 ], EntertainmentComponent);
 
 var _a, _b, _c, _d;
@@ -3392,7 +3502,7 @@ HomeComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/home/home.component.html"),
         styles: [__webpack_require__("../../../../../src/app/home/home.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_shareobject_routeinfo_service__["a" /* RouteinfoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_shareobject_routeinfo_service__["a" /* RouteinfoService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_shareobject_routeinfo_service__["a" /* RouteinfoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_shareobject_routeinfo_service__["a" /* RouteinfoService */]) === "function" && _c || Object])
 ], HomeComponent);
 
 var _a, _b, _c;
@@ -4338,7 +4448,7 @@ MarketComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/market/market.component.css")],
         providers: [__WEBPACK_IMPORTED_MODULE_3_app_services_data_market_service__["a" /* MarketService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_2__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__modal_modal_service__["a" /* ModalService */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_3_app_services_data_market_service__["a" /* MarketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_services_data_market_service__["a" /* MarketService */]) === "function" && _j || Object])
+    __metadata("design:paramtypes", [typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_2__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__modal_modal_service__["a" /* ModalService */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_3_app_services_data_market_service__["a" /* MarketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_services_data_market_service__["a" /* MarketService */]) === "function" && _j || Object])
 ], MarketComponent);
 
 var _a, _b, _c, _d, _e, _f, _g, _h, _j;
@@ -5884,7 +5994,7 @@ var PrivateNavComponent = (function () {
         this.onFriendConfirmedFromNotification = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.userId = localStorage.getItem('currentUser');
         var self = this;
-        this.router.events.filter(function (e) { return e instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationStart */]; }).pairwise().subscribe(function (e) {
+        this.router.events.filter(function (e) { return e instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* NavigationStart */]; }).pairwise().subscribe(function (e) {
             clearInterval(self.intervalId);
         });
     }
@@ -6030,7 +6140,7 @@ PrivateNavComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/private-nav/private-nav.component.css")],
         providers: [__WEBPACK_IMPORTED_MODULE_4_app_services_data_search_service__["a" /* SearchService */], __WEBPACK_IMPORTED_MODULE_3_app_services_data_friends_service__["a" /* FriendsService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_data_search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_data_search_service__["a" /* SearchService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_data_search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_data_search_service__["a" /* SearchService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _d || Object])
 ], PrivateNavComponent);
 
 var _a, _b, _c, _d;
@@ -6241,7 +6351,7 @@ ProfileAreaComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/profile-area/profile-area.component.css")],
         providers: [__WEBPACK_IMPORTED_MODULE_5__services_data_upload_service__["a" /* UploadService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__["a" /* ModalService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__services_data_upload_service__["a" /* UploadService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_data_upload_service__["a" /* UploadService */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__["a" /* ModalService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__services_data_upload_service__["a" /* UploadService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_data_upload_service__["a" /* UploadService */]) === "function" && _e || Object])
 ], ProfileAreaComponent);
 
 var _a, _b, _c, _d, _e;
@@ -6425,7 +6535,7 @@ ProfileComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/profile/profile.component.css")],
         providers: [__WEBPACK_IMPORTED_MODULE_3_app_services_data_profile_service__["a" /* ProfileService */], __WEBPACK_IMPORTED_MODULE_5_app_services_data_friends_service__["a" /* FriendsService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3_app_services_data_profile_service__["a" /* ProfileService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_services_data_profile_service__["a" /* ProfileService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5_app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _g || Object])
+    __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3_app_services_data_profile_service__["a" /* ProfileService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_services_data_profile_service__["a" /* ProfileService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5_app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _g || Object])
 ], ProfileComponent);
 
 var _a, _b, _c, _d, _e, _f, _g;
@@ -6639,7 +6749,7 @@ PublicComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/public/public.component.html"),
         styles: [__webpack_require__("../../../../../src/app/public/public.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _c || Object])
 ], PublicComponent);
 
 var _a, _b, _c;
@@ -6723,7 +6833,7 @@ SearchResultListItemComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/search-result-list-item/search-result-list-item.component.html"),
         styles: [__webpack_require__("../../../../../src/app/search-result-list-item/search-result-list-item.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _a || Object])
 ], SearchResultListItemComponent);
 
 var _a;
@@ -7838,6 +7948,10 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
     __metadata("design:type", Object)
 ], SignupComponent.prototype, "renderLogin", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Output */])(),
+    __metadata("design:type", Object)
+], SignupComponent.prototype, "accountCreated", void 0);
 SignupComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-signup',
@@ -7991,7 +8105,7 @@ StoriesComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/stories/stories.component.html"),
         styles: [__webpack_require__("../../../../../src/app/stories/stories.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _g || Object])
+    __metadata("design:paramtypes", [typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _g || Object])
 ], StoriesComponent);
 
 var _a, _b, _c, _d, _e, _f, _g;
@@ -8134,7 +8248,7 @@ var StoryBoxComponent = (function () {
             file: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]()
         });
         router.events.forEach(function (event) {
-            if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationStart */]) {
+            if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* NavigationStart */]) {
                 clearInterval(_this.timer);
             }
         });
@@ -8777,7 +8891,7 @@ StoryBoxComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/story-box/story-box.component.css")],
         providers: [__WEBPACK_IMPORTED_MODULE_5_app_services_data_feed_service__["a" /* FeedService */], __WEBPACK_IMPORTED_MODULE_6_app_services_data_comment_service__["a" /* CommentService */], __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__["a" /* FriendsService */], __WEBPACK_IMPORTED_MODULE_9__checkin_checkin_component__["a" /* CheckinComponent */]]
     }),
-    __metadata("design:paramtypes", [typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_9__checkin_checkin_component__["a" /* CheckinComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__checkin_checkin_component__["a" /* CheckinComponent */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__["a" /* ModalService */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_5_app_services_data_feed_service__["a" /* FeedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_services_data_feed_service__["a" /* FeedService */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_6_app_services_data_comment_service__["a" /* CommentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_app_services_data_comment_service__["a" /* CommentService */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _l || Object])
+    __metadata("design:paramtypes", [typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_9__checkin_checkin_component__["a" /* CheckinComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__checkin_checkin_component__["a" /* CheckinComponent */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__["a" /* ModalService */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_5_app_services_data_feed_service__["a" /* FeedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_services_data_feed_service__["a" /* FeedService */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_6_app_services_data_comment_service__["a" /* CommentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_app_services_data_comment_service__["a" /* CommentService */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _l || Object])
 ], StoryBoxComponent);
 
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
@@ -8862,7 +8976,7 @@ TileMenuComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/tile-menu/tile-menu.component.html"),
         styles: [__webpack_require__("../../../../../src/app/tile-menu/tile-menu.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _a || Object])
 ], TileMenuComponent);
 
 var _a;

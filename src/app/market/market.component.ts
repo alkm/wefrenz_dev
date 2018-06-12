@@ -130,9 +130,9 @@ export class MarketComponent implements OnInit {
 	}
 
 	private openAppModal(modalType = null){
-  		let self = this;
-  		self.modalService.open(self.modalId);
-  	}
+  	let self = this;
+  	self.modalService.open(self.modalId);
+  }
 
   	private resetParams(){
   		this.skip = 0;
