@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { RouteinfoService } from 'app/services/shareobject/routeinfo.service';
 import { ModalService } from '../modal/modal.service';
 import { MarketService } from 'app/services/data/market.service';
+import { ItemTileComponent } from '../item-tile/item-tile.component'; 
 
 @Component({
   selector: 'app-market',
@@ -14,6 +15,7 @@ import { MarketService } from 'app/services/data/market.service';
 export class MarketComponent implements OnInit {
 
 	@ViewChild('scrollMe') private myScrollContainer: ElementRef;
+  @ViewChild('itemTile') private itemTile: ItemTileComponent;
 	@ViewChild('addProductModal') addProductModal;
 	@Output() onAppLoggedIn: EventEmitter<any> = new EventEmitter();
 	@Output() onAppLoggedOut: EventEmitter<any> = new EventEmitter();
@@ -79,9 +81,12 @@ export class MarketComponent implements OnInit {
 		}else{
 			localStorage.setItem('loginData', this.loginData);
 		}*/
-		this.fetchMarketItems();
     this.fetchCheckOut();
 	}
+  ngAfterViewInit() {
+    // child is set
+   
+  }
 
 	private triggerLoggedInCheck(eventType: string, evtObj: any) {
     	let evt = new CustomEvent(eventType, evtObj);
@@ -168,7 +173,7 @@ export class MarketComponent implements OnInit {
             this.isViewMore = false;
           }
       }
-      this.isLoading = false; 
+      this.isLoading = false;
     }
 
     private onItemAddedToCart(event: any){
@@ -215,6 +220,8 @@ export class MarketComponent implements OnInit {
           alert(result.message);
         }else{
           this.cartItemArr = result.info.checkOutItem;
+          this.fetchMarketItems();
+          //this.itemTile.syncCheckOutItem(this.cartItemArr);
           this.calculateTotalCartItem();
         }
     }

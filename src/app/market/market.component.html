@@ -63,7 +63,8 @@
 
 			</div>
 			<div class="market-content" [ngStyle]="{ 'max-height': ' ' + screenHeight + 'px'}" (scroll)="onScroll($event)" #scrollMe>
-				<app-item-tile *ngFor="let item of marketItemArr" [item]="item" [userId]="userId" [item]="item" (onItemAddedToCart)="onItemAddedToCart($event)"></app-item-tile>
+				<app-item-tile #itemTile *ngFor="let item of marketItemArr" [item]="item" [userId]="userId" [item]="item" 
+				(onItemAddedToCart)="onItemAddedToCart($event)" [cartItemArr]="cartItemArr"></app-item-tile>
 				<div *ngIf="isLoading then loading"></div>
 				<ng-template #loading>
 					<div class="spinner-bg">
