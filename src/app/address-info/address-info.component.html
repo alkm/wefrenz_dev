@@ -1,44 +1,136 @@
-<div class="address-info colw100">
-	<div class="billing-info col-xs-12 col-sm-6 col-md-6 col-lg-6 pull-left">
-		<h6 class="blue-fonts">Billing Address</h6>
-		<form [formGroup]="billingForm">
-			<div class="form-group">
-				<select [(ngModel)]="billingTitleOption" class="form-control" placeholder="Please Select" formControlName="bilingTitle">
-		        	<option *ngFor="let o of titleOptions">
-		          		{{o.name}}
-		        	</option>
-		      	</select>
-		      	<app-control-messages [control]="billingForm.controls.bilingTitle"></app-control-messages>
-		    </div>
-		    <div class="form-group">
-				<input type="text" class="form-control" placeholder="First Name" formControlName="firstName" id="firstName">
-				<app-control-messages [control]="billingForm.controls.firstName"></app-control-messages>
-			</div>
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Last Name" formControlName="lastName" id="lastName">
-				<app-control-messages [control]="billingForm.controls.lastName"></app-control-messages>
-			</div>
-	    </form>	
+<div class="payment-info">
+	<div class="address-info colw100 inline-block">
+		<div class="billing-info col-xs-12 col-sm-6 col-md-6 col-lg-6 pull-left">
+			<h6 class="blue-fonts">Billing Address</h6>
+			<form [formGroup]="billingForm">
+				<div class="form-group">
+					<select [(ngModel)]="billingTitleOption" class="form-control" placeholder="Please Select" formControlName="bilingTitle">
+			        	<option *ngFor="let o of titleOptions">
+			          		{{o.name}}
+			        	</option>
+			      	</select>
+			      	<app-control-messages [control]="billingForm.controls.bilingTitle"></app-control-messages>
+			    </div>
+			    <div class="form-group">
+					<input type="text" class="form-control" placeholder="First Name" formControlName="firstName" id="firstName">
+					<app-control-messages [control]="billingForm.controls.firstName"></app-control-messages>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Last Name" formControlName="lastName" id="lastName">
+					<app-control-messages [control]="billingForm.controls.lastName"></app-control-messages>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="House No" formControlName="houseNo" id="houseNo">
+					<app-control-messages [control]="billingForm.controls.houseNo"></app-control-messages>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Street Name" formControlName="streetName" id="streetName">
+					<app-control-messages [control]="billingForm.controls.streetName"></app-control-messages>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Zip Code" formControlName="zipCode" id="zipCode">
+					<app-control-messages [control]="billingForm.controls.zipCode"></app-control-messages>
+				</div>
+				<div class="form-group">
+					<select [(ngModel)]="selectedCountry.id" (change)="onSelect($event.target.value)" class="form-control" formControlName="countryList" id="countryList" placeholder="Select Country">
+					  <option value="0">Select Country</option>
+					  <option *ngFor="let country of countries" value= {{country.id}}>{{country.name}}</option>
+					</select>
+					<app-control-messages [control]="billingForm.controls.countryList"></app-control-messages>
+				</div>
+				<div class="form-group">
+					<select class="form-control" formControlName="stateList" id="stateList" placeholder="Select State">
+					  <option *ngIf='selectedCountry.id == 0' value="0">Select State</option>
+					  <option *ngFor="let state of states " value= {{state.id}}>{{state.name}}</option>
+					</select>
+					<app-control-messages [control]="billingForm.controls.stateList"></app-control-messages>
+				</div>
+		    </form>	
+		</div>
+		<div class="shipping-info col-xs-12 col-sm-6 col-md-6 col-lg-6 pull-left">
+			<h6 class="blue-fonts">Shipping Address</h6>
+			<form [formGroup]="shippingForm">
+				<div class="form-group">
+					<select [(ngModel)]="billingTitleOption" class="form-control" placeholder="Please Select" formControlName="shippingTitle">
+			        	<option *ngFor="let o of titleOptions">
+			          		{{o.name}}
+			        	</option>
+			      	</select>
+			      	<app-control-messages [control]="shippingForm.controls.shippingTitle"></app-control-messages>
+			    </div>
+			    <div class="form-group">
+					<input type="text" class="form-control" placeholder="First Name" formControlName="sfirstName" id="sfirstName">
+					<app-control-messages [control]="shippingForm.controls.sfirstName"></app-control-messages>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Last Name" formControlName="slastName" id="slastName">
+					<app-control-messages [control]="shippingForm.controls.slastName"></app-control-messages>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="House No" formControlName="shouseNo" id="shouseNo">
+					<app-control-messages [control]="shippingForm.controls.shouseNo"></app-control-messages>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Street Name" formControlName="sstreetName" id="sstreetName">
+					<app-control-messages [control]="shippingForm.controls.sstreetName"></app-control-messages>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Zip Code" formControlName="szipCode" id="szipCode">
+					<app-control-messages [control]="shippingForm.controls.szipCode"></app-control-messages>
+				</div>
+				<div class="form-group">
+					<select [(ngModel)]="sselectedCountry.id" (change)="onSelect($event.target.value)" class="form-control" formControlName="scountryList" id="scountryList" placeholder="Select Country">
+					  <option value="0">Select Country</option>
+					  <option *ngFor="let scountry of scountries" value= {{scountry.id}}>{{scountry.name}}</option>
+					</select>
+					<app-control-messages [control]="shippingForm.controls.scountryList"></app-control-messages>
+				</div>
+				<div class="form-group">
+					<select class="form-control" formControlName="sstateList" id="sstateList" placeholder="Select State">
+					  <option *ngIf='sselectedCountry.id == 0' value="0">Select State</option>
+					  <option *ngFor="let sstate of sstates " value= {{sstate.id}}>{{sstate.name}}</option>
+					</select>
+					<app-control-messages [control]="shippingForm.controls.sstateList"></app-control-messages>
+				</div>
+		    </form>	
+		</div>
 	</div>
-	<div class="shipping-info col-xs-12 col-sm-6 col-md-6 col-lg-6 pull-left">
-		<h6 class="blue-fonts">Shipping Address</h6>
-		<form [formGroup]="shippingForm">
-			<div class="form-group">
-				<select [(ngModel)]="billingTitleOption" class="form-control" placeholder="Please Select" formControlName="shippingTitle">
-		        	<option *ngFor="let o of titleOptions">
-		          		{{o.name}}
-		        	</option>
-		      	</select>
-		      	<app-control-messages [control]="shippingForm.controls.shippingTitle"></app-control-messages>
-		    </div>
-		    <div class="form-group">
-				<input type="text" class="form-control" placeholder="First Name" formControlName="sfirstName" id="firstName">
-				<app-control-messages [control]="shippingForm.controls.sfirstName"></app-control-messages>
+
+	<div class="credit-card-info colw100">
+		<div class="credit-info col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+			<h6 class="blue-fonts">Credit card Details</h6>
+			<form [formGroup]="creditForm" id="creditForm">
+				<div class="form-group">
+					<select [(ngModel)]="billingTitleOption" class="form-control" placeholder="Please select card type" formControlName="cardTitle">
+			        	<option *ngFor="let i of cardOptions">
+			          		{{i.name}}
+			        	</option>
+			      	</select>
+			      	<app-control-messages [control]="creditForm.controls.cardTitle"></app-control-messages>
+			    </div>
+			    <div class="form-group">
+					<input type="text" class="form-control" placeholder="Name on card" formControlName="nameOnCard">
+					<app-control-messages [control]="creditForm.controls.nameOnCard"></app-control-messages>
+				</div>
+				<div class="form-group">
+					<input type="number" class="form-control" placeholder="Credit card number" formControlName="cardNumber">
+					<app-control-messages [control]="creditForm.controls.cardNumber"></app-control-messages>
+				</div>
+				<div class="form-group">
+					<input type="date" class="form-control" placeholder="Card end date" formControlName="cardEndDate">
+					<app-control-messages [control]="creditForm.controls.cardEndDate"></app-control-messages>
+				</div>
+				<div class="form-group">
+					<input type="number" class="form-control" placeholder="CVV" formControlName="cvv">
+					<app-control-messages [control]="creditForm.controls.cvv"></app-control-messages>
+				</div>
+				<div class="form-group row justify-content-center align-items-center no-margin">
+					<button type="button" class="btn btn-primary btn-large" [disabled]="!billingForm.valid || !shippingForm.valid || !creditForm.valid">
+						<span>Continue</span>
+						<i class="fa fa-arrow-right" aria-hidden="true"></i>
+					</button>
 			</div>
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Last Name" formControlName="slastName" id="lastName">
-				<app-control-messages [control]="shippingForm.controls.slastName"></app-control-messages>
-			</div>
-	    </form>	
+		    </form>	
+		</div>
 	</div>
 </div>

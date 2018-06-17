@@ -82,7 +82,7 @@
 		</div>
 	</div>
 </div>
-<app-modal [modalTitle]="'Add Product'" [blocking]='false' [modalId]='modalId' #addProductModal>
+<app-modal [modalTitle]="'Add Product'" [blocking]='false' [modalId]='modalId'>
 	<div class="add-product-content">
 		<div class="colw100 inline-block">
 			<app-add-item [userId]="userId" (refreshMarket)="refreshMarket($event)"></app-add-item>

@@ -18,7 +18,7 @@ export class ProfileAreaComponent implements OnInit {
 	@ViewChild('croppedPreviewImg') croppedPreviewImg: ElementRef;
 	@ViewChild('previewPicModal') previewPicModal;
 
-	private modalId = 'appModal';
+	private modalId = 'profileAreaModal';
 	private loginData = undefined;
 	private profilePic: string;
 	private profilePicWidth: string;

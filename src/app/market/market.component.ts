@@ -16,7 +16,7 @@ export class MarketComponent implements OnInit {
 
 	@ViewChild('scrollMe') private myScrollContainer: ElementRef;
   @ViewChild('itemTile') private itemTile: ItemTileComponent;
-	@ViewChild('addProductModal') addProductModal;
+	//@ViewChild('addProductModal') addProductModal;
 	@Output() onAppLoggedIn: EventEmitter<any> = new EventEmitter();
 	@Output() onAppLoggedOut: EventEmitter<any> = new EventEmitter();
 	@Output() marketScrollEnd: EventEmitter<any> = new EventEmitter();
@@ -142,9 +142,10 @@ export class MarketComponent implements OnInit {
   	}
 
   	private refreshMarket(event: any){
-  		this.resetParams();
-  		this.fetchMarketItems();
-  		this.addProductModal.close();
+      let self = this;
+  		self.resetParams();
+  		self.fetchMarketItems();
+      self.modalService.close(self.modalId);
   	}
 
   	private fetchMarketItems(){

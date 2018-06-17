@@ -19,13 +19,13 @@ export class CoverpicComponent implements OnInit, AfterViewInit {
 
 	@ViewChild('coverPic') coverPic: ElementRef;
 	@ViewChild('coverPicFileInput') coverPicFileInput: ElementRef;
-	@ViewChild('previewPicModal') previewPicModal;
+	@ViewChild('coverPicModal') coverPicModal;
 	@ViewChild('fileInput') fileInput;
 
 	@Input() sharedList: any;
 	@Output() onFriendConfirmed:EventEmitter<any> = new EventEmitter();
 
-	private modalId = 'appModal';
+	private modalId = 'coverPicModal';
     private encodedImage: any;
 	private canvasArea: any;
 	private context: CanvasRenderingContext2D;
@@ -240,7 +240,7 @@ export class CoverpicComponent implements OnInit, AfterViewInit {
   		this.isEditCoverPic = false;
   		this.isSaveCoverPic = true;
   		this.isUploadCoverPic = true;
-  		this.previewPicModal.close();
+  		this.coverPicModal.close();
   	}
 
 

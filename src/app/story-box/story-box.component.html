@@ -246,7 +246,7 @@
 </ng-template>
 
 
-<app-modal [modalTitle]="'Post Preview'" [blocking]='false' [modalId]='modalId' #postedPicModal id="storyModal">
+<app-modal [modalTitle]="'Post Preview'" [blocking]='false' [modalId]='modalId'>
 	<div class="post-desc-content">
 		<div class="colw100 inline-block">
 			<div *ngIf="fileType === 'image' then previewPic"></div>

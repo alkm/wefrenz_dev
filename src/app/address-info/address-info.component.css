@@ -1,5 +1,5 @@
 select {
-	-webkit-appearance: none;
+/*	-webkit-appearance: none;*/
   -webkit-border-radius: 0px;
   border-radius: 0px;
   background: none;
@@ -10,11 +10,15 @@ select {
 
 .form-group input{
 	width: 200px;
-	border-radius: 0px;
+	/*border-radius: 0px;*/
 	background: none;
 	border: 1px solid #2b90d9;
 }
 
 .address-info{
 	padding: 10px 0px !important;
+}
+#creditForm{
+	width: 200px;
+	margin: auto;
 }
