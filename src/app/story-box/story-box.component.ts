@@ -24,7 +24,7 @@ export class StoryBoxComponent implements OnInit {
 	@Input('replyCommentItem') replyCommentItem;
 	@ViewChild('storyBox') storyBox: ElementRef;
 	@ViewChild('storyFeed') storyFeed: ElementRef;
-	@ViewChild('postedPicModal') postedPicModal;
+	//@ViewChild('storyModal') storyModal;
 	@ViewChild('musicInput') musicInput;
 	@ViewChild('musicPlayer') musicPlayer: ElementRef;
 
@@ -527,23 +527,27 @@ export class StoryBoxComponent implements OnInit {
 
     private postImage(event){
     	this.postItem(undefined, 'image', '', this.encodedImage, '', this.postTitle, this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
-    	this.postedPicModal.close();
+    	//this.storyModal.close();
+    	this.modalService.close(this.modalId);
 
     }
     
     private updateImage(event){
     	this.postItem(this.postId, 'image', '', this.encodedImage, this.postTitle, '', this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
-    	this.postedPicModal.close();
+    	//this.storyModal.close();
+    	this.modalService.close(this.modalId);
 
     }
     private postMusic(event){
     	this.postItem(undefined, 'music', '', this.postedMusicPath, this.postTitle, '', this.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
-    	this.postedPicModal.close();
+    	//this.storyModal.close();
+    	this.modalService.close(this.modalId);
     }
 
     private onCheckIn(event){
     	this.postItem(undefined, 'checkin', '', event.data.mapData, '', event.data.postCheckIn, event.data.postDesc, '#000000', 'Open Sans, sans-serif', '11px', 'normal', 'none', 'normal');
-    	this.postedPicModal.close();
+    	//this.storyModal.close();
+    	this.modalService.close(this.modalId);
     }
 
     private postItem(postId, type, storyContent, filePath, poster, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight){
