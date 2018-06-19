@@ -32,14 +32,15 @@
 					<app-control-messages [control]="billingForm.controls.zipCode"></app-control-messages>
 				</div>
 				<div class="form-group">
-					<select [(ngModel)]="selectedCountry.id" (change)="onSelect($event.target.value)" class="form-control" formControlName="countryList" id="countryList" placeholder="Select Country">
+					<select [(ngModel)]="selectedCountry.id" (change)="onSelect($event.target.value); onChange($event, 'country')" class="form-control" formControlName="countryList" id="countryList" placeholder="Select Country">
 					  <option value="0">Select Country</option>
 					  <option *ngFor="let country of countries" value= {{country.id}}>{{country.name}}</option>
 					</select>
 					<app-control-messages [control]="billingForm.controls.countryList"></app-control-messages>
 				</div>
 				<div class="form-group">
-					<select class="form-control" formControlName="stateList" id="stateList" placeholder="Select State">
+					<select class="form-control" formControlName="stateList" id="stateList" placeholder="Select State" 
+					(change)="onChange($event, 'state')">
 					  <option *ngIf='selectedCountry.id == 0' value="0">Select State</option>
 					  <option *ngFor="let state of states " value= {{state.id}}>{{state.name}}</option>
 					</select>
@@ -51,57 +52,65 @@
 			<h6 class="blue-fonts">Shipping Address</h6>
 			<form [formGroup]="shippingForm">
 				<div class="form-group">
-					<select [(ngModel)]="billingTitleOption" class="form-control" placeholder="Please Select" formControlName="shippingTitle">
-			        	<option *ngFor="let o of titleOptions">
+					<select [(ngModel)]="shippingTitleOption" class="form-control" placeholder="Please Select" formControlName="shippingTitle" id="shippingTitleOpt">
+			        	<option *ngFor="let o of stitleOptions">
 			          		{{o.name}}
 			        	</option>
 			      	</select>
 			      	<app-control-messages [control]="shippingForm.controls.shippingTitle"></app-control-messages>
 			    </div>
 			    <div class="form-group">
-					<input type="text" class="form-control" placeholder="First Name" formControlName="sfirstName" id="sfirstName">
+					<input type="text" class="form-control" placeholder="First Name" formControlName="sfirstName" id="sfirstName" 
+					[(ngModel)]="bindFirstName">
 					<app-control-messages [control]="shippingForm.controls.sfirstName"></app-control-messages>
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Last Name" formControlName="slastName" id="slastName">
+					<input type="text" class="form-control" placeholder="Last Name" formControlName="slastName" id="slastName"
+					[(ngModel)]="bindLastName">
 					<app-control-messages [control]="shippingForm.controls.slastName"></app-control-messages>
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="House No" formControlName="shouseNo" id="shouseNo">
+					<input type="text" class="form-control" placeholder="House No" formControlName="shouseNo" id="shouseNo"
+					[(ngModel)]="bindHouseNo">
 					<app-control-messages [control]="shippingForm.controls.shouseNo"></app-control-messages>
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Street Name" formControlName="sstreetName" id="sstreetName">
+					<input type="text" class="form-control" placeholder="Street Name" formControlName="sstreetName" id="sstreetName" 
+					[(ngModel)]="bindStreetName">
 					<app-control-messages [control]="shippingForm.controls.sstreetName"></app-control-messages>
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Zip Code" formControlName="szipCode" id="szipCode">
+					<input type="text" class="form-control" placeholder="Zip Code" formControlName="szipCode" id="szipCode" [(ngModel)]="bindZipCode">
 					<app-control-messages [control]="shippingForm.controls.szipCode"></app-control-messages>
 				</div>
 				<div class="form-group">
-					<select [(ngModel)]="sselectedCountry.id" (change)="onSelect($event.target.value)" class="form-control" formControlName="scountryList" id="scountryList" placeholder="Select Country">
+					<select [(ngModel)]="sselectedCountry.id" (change)="onSelect($event.target.value);onChange($event, 'scountry')" 
+					class="form-control" formControlName="scountryList" id="scountryList" placeholder="Select Country">
 					  <option value="0">Select Country</option>
 					  <option *ngFor="let scountry of scountries" value= {{scountry.id}}>{{scountry.name}}</option>
 					</select>
 					<app-control-messages [control]="shippingForm.controls.scountryList"></app-control-messages>
 				</div>
 				<div class="form-group">
-					<select class="form-control" formControlName="sstateList" id="sstateList" placeholder="Select State">
+					<select class="form-control" formControlName="sstateList" id="sstateList" placeholder="Select State" (change)="onChange($event, 'sstate')">
 					  <option *ngIf='sselectedCountry.id == 0' value="0">Select State</option>
-					  <option *ngFor="let sstate of sstates " value= {{sstate.id}}>{{sstate.name}}</option>
+					  <option *ngFor="let sstate of sstates" value= {{sstate.id}}>{{sstate.name}}</option>
 					</select>
 					<app-control-messages [control]="shippingForm.controls.sstateList"></app-control-messages>
 				</div>
 		    </form>	
 		</div>
 	</div>
-
+	<div class="billing-shipping-check col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+		<input (change)="checkBoxChange($event)" value="angular" type="checkbox" [disabled]="!billingForm.valid"/>
+		<span>Billing info same as shipping info.</span>
+	</div>
 	<div class="credit-card-info colw100">
 		<div class="credit-info col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 			<h6 class="blue-fonts">Credit card Details</h6>
 			<form [formGroup]="creditForm" id="creditForm">
 				<div class="form-group">
-					<select [(ngModel)]="billingTitleOption" class="form-control" placeholder="Please select card type" formControlName="cardTitle">
+					<select [(ngModel)]="creditTitleOption" class="form-control" placeholder="Please select card type" formControlName="cardTitle">
 			        	<option *ngFor="let i of cardOptions">
 			          		{{i.name}}
 			        	</option>
@@ -125,7 +134,7 @@
 					<app-control-messages [control]="creditForm.controls.cvv"></app-control-messages>
 				</div>
 				<div class="form-group row justify-content-center align-items-center no-margin">
-					<button type="button" class="btn btn-primary btn-large" [disabled]="!billingForm.valid || !shippingForm.valid || !creditForm.valid">
+					<button type="button" class="btn btn-primary btn-large" (click)="saveCreditInfo($event)" [disabled]="!billingForm.valid || !shippingForm.valid || !creditForm.valid">
 						<span>Continue</span>
 						<i class="fa fa-arrow-right" aria-hidden="true"></i>
 					</button>

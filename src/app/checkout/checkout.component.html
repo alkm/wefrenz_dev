@@ -51,7 +51,7 @@
 <app-modal [modalTitle]="'Add Address'" [blocking]='false' [modalId]='modalId' #addAddressModal>
 	<div class="add-address-content">
 		<div class="colw100 inline-block">
-			<app-address-info [userId]="userId"></app-address-info>
+			<app-address-info [userId]="userId" (addressSaved)="addressSaved($event)"></app-address-info>
 		</div>
 	</div>
 </app-modal>

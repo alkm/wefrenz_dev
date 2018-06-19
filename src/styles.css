@@ -152,11 +152,10 @@ button{
     width: 75px;
     margin-left: 5px;
 }
+
 .btn-large{
 	width: 100px !important;
 }
-
-
 
 .form-control{
 	padding: 6px !important;

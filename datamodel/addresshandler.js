@@ -1,4 +1,4 @@
-var addressInfo = require('./model/addresinfo');
+var addressInfo = require('./model/addressinfo');
 
 module.exports = function(app) {
 
@@ -9,6 +9,7 @@ module.exports = function(app) {
 			userid : req.body.username,
 			billingInfo: req.body.billingInfo,
 			shippingInfo: req.body.shippingInfo,
+			creditInfo: req.body.creditInfo,
 			created: dateNow
 		}, function(err, info) {
 			if (err){
@@ -25,7 +26,7 @@ module.exports = function(app) {
 				res.send(err);
 			}else{
 				if(item === null){
-					res.json({"status": "no address", "message": "The address is not added."});
+					res.json({"status": "failure", "message": "The address is not added."});
 				}else{
 					res.json({"status": "success", "message": "Address is aleady there1", "info": item});
 				}
