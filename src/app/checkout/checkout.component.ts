@@ -3,12 +3,13 @@ import { Router, ActivatedRoute, ParamMap, NavigationEnd } from '@angular/router
 
 import { MarketService } from 'app/services/data/market.service';
 import { ModalService } from '../modal/modal.service';
+import { AddressService } from 'app/services/data/address.service';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css'],
-  providers: [MarketService]
+  providers: [MarketService, AddressService]
 })
 export class CheckoutComponent implements OnInit {
 
@@ -19,11 +20,12 @@ export class CheckoutComponent implements OnInit {
   private checkOutItemArr = [];
   private grandTotal: number =  0;
   private modalId: string = "addAddressModal";
+  private isAddressAdded: boolean = false;
 
   @Output() onAppLoggedIn: EventEmitter<any> = new EventEmitter();
 	@Output() onAppLoggedOut: EventEmitter<any> = new EventEmitter();
 
-	constructor(private route: ActivatedRoute, private router: Router, private marketService: MarketService, private modalService: ModalService) { 
+	constructor(private route: ActivatedRoute, private router: Router, private marketService: MarketService, private modalService: ModalService, private addressService : AddressService) { 
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.ngOnInit();
@@ -66,6 +68,7 @@ export class CheckoutComponent implements OnInit {
 			//this.routeSwitch.emit(this.isMyProfile);
 			//this.getProfileInfo(id);
 		});
+    this.getAddressInfo();
 	}
 
   	ngOnInit() {
@@ -73,7 +76,13 @@ export class CheckoutComponent implements OnInit {
   	}
 
     private placeOrder(event){
-      this.openAppModal();
+      if(this.isAddressAdded){
+        alert('proceed to checkout');
+      }else{
+        this.openAppModal();
+
+      }
+      
     }
 
     private openAppModal(modalType = null){
@@ -113,7 +122,25 @@ export class CheckoutComponent implements OnInit {
 
     private subtractFromTotal(event: any){
     	let amount = event.data;
-		this.grandTotal -= amount;
+		  this.grandTotal -= amount;
+    }
+
+    private addressSaved(event: any){
+      this.modalService.close(this.modalId);
+      this.isAddressAdded = true;
+    }
+
+    private getAddressInfo(){
+      let postObj = {'username': this.userId};
+      this.addressService.getAddressInfo(postObj).subscribe(data => this.afterGotAddressInfo(data));;
+    }
+
+    private afterGotAddressInfo(result){
+      if(result.status === 'failure'){
+          this.isAddressAdded = false;
+        }else{
+          this.isAddressAdded = true;
+      }
     }
 
 }

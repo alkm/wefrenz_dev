@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
         let postObj = {'fullname': this.signupForm.value.fullName,
                       'email': this.signupForm.value.email,
                       'password': this.signupForm.value.password};
-        this.registrationService.signUp(postObj).subscribe(data => this.afterSignUp(data));;
+        this.registrationService.signUp(postObj).subscribe(data => this.afterSignUp(data));
     }
   }
 

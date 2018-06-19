@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+
+import { AddressService } from 'app/services/data/address.service';
 import { DataService } from 'app/services/utility/data.service';
 import { Country } from 'app/services/utility/country.service';
 import { State } from 'app/services/utility/state.service';
@@ -10,12 +12,15 @@ import { ValidationService } from 'app/services/validators/validation.service';
   selector: 'app-address-info',
   templateUrl: './address-info.component.html',
   styleUrls: ['./address-info.component.css'],
-  providers: [DataService]
+  providers: [DataService, AddressService]
 })
 export class AddressInfoComponent implements OnInit {
 	@Input('userId') userId;
+	@Output() addressSaved: EventEmitter<any> = new EventEmitter();
+
 	private billingTitleOption: string;
 	private shippingTitleOption: string;
+	private creditTitleOption: string;
 	private billingForm : any;
 	private shippingForm: any;
 	private creditForm: any;
@@ -25,6 +30,16 @@ export class AddressInfoComponent implements OnInit {
   	private states: State[];
   	private scountries: Country[];
   	private sstates: State[];
+  	private countryChoosen: string = '';
+  	private stateChoosen: string = '';
+  	private sCountryChoosen: string = '';
+  	private sStateChoosen: string = '';
+  	private bindFirstName: string = '';
+  	private bindLastName: string = '';
+  	private bindHouseNo: string = '';
+  	private bindStreetName: string = '';
+  	private bindZipCode: string = '';
+
 	private titleOptions = [
 		{ name: "Title", value: '' },
     	{ name: "Mr", value: 'Mr' },
@@ -32,7 +47,15 @@ export class AddressInfoComponent implements OnInit {
     	{ name: "Miss", value: 'Miss' }
   	];
 
+  	private stitleOptions = [
+		{ name: "Title", value: '' },
+    	{ name: "Mr", value: 'Mr' },
+    	{ name: "Mrs", value: 'Mrs' },
+    	{ name: "Miss", value: 'Miss' }
+  	];
+
   	private cardOptions = [
+  		{ name: "Card Title", value: '' },
 		{ name: "visa", value: 'visa' },
     	{ name: "visa debit", value: 'visaDebit' },
     	{ name: "mastercard", value: 'mastercard' },
@@ -42,7 +65,7 @@ export class AddressInfoComponent implements OnInit {
 
 
 
-  	constructor(private formBuilder : FormBuilder, private dataService : DataService) {
+  	constructor(private formBuilder : FormBuilder, private dataService : DataService, private addressService : AddressService) {
   		this.countries = this.dataService.getCountries();
 	    this.billingForm = this.formBuilder.group({
 	      'bilingTitle': ['', Validators.required],
@@ -79,6 +102,97 @@ export class AddressInfoComponent implements OnInit {
     	this.states = this.dataService.getStates().filter((item)=> item.countryid == countryid);
     	this.sstates = this.dataService.getStates().filter((item)=> item.countryid == countryid);
   	}
+
+  	private onChange(event: any, item){
+  		let self = this;
+  		let selectElementText = event.target['options']
+      	[event.target['options'].selectedIndex].text;
+  		switch(item) {
+		    case 'country':
+		    	self.countryChoosen = selectElementText;
+		        break;
+		    case 'state':
+		    	self.stateChoosen = selectElementText;
+		        break;
+		    case 'scountry':
+		    	self.sCountryChoosen = selectElementText;
+		        break;
+		    case 'sstate':
+		    	self.sStateChoosen = selectElementText;
+		        break;
+		    default:
+		}
+  	}
+
+  	private saveCreditInfo(event: any){
+  		let billingInfo;
+  		let shippingInfo;
+  		let creditInfo;
+  		if (this.billingForm.dirty && this.billingForm.valid) {
+        	billingInfo = {'bilingTitle': this.billingForm.value.bilingTitle,
+		                      'firstName': this.billingForm.value.firstName,
+		                      'lastName': this.billingForm.value.lastName,
+		                      'houseNo': this.billingForm.value.houseNo,
+		                      'streetName': this.billingForm.value.streetName,
+		                      'zipCode': this.billingForm.value.zipCode,
+		                      'countryList': this.countryChoosen,
+		                      'stateList': this.stateChoosen};
+		}
+		if (this.shippingForm.dirty && this.shippingForm.valid) {
+        	shippingInfo = {'shippingTitle': this.shippingForm.value.shippingTitle,
+		                      'sfirstName': this.shippingForm.value.sfirstName,
+		                      'slastName': this.shippingForm.value.slastName,
+		                      'shouseNo': this.shippingForm.value.shouseNo,
+		                      'sstreetName': this.shippingForm.value.sstreetName,
+		                      'szipCode': this.shippingForm.value.szipCode,
+		                      'scountryList': this.sCountryChoosen,
+		                      'sstateList': this.sStateChoosen};
+		}
+		if (this.creditForm.dirty && this.creditForm.valid) {
+        	creditInfo = {'cardTitle': this.creditForm.value.cardTitle,
+		                      'nameOnCard': this.creditForm.value.nameOnCard,
+		                      'cardNumber': this.creditForm.value.cardNumber,
+		                      'cardEndDate': this.creditForm.value.cardEndDate,
+		                      'cvv': this.creditForm.value.cvv};
+		}
+
+		let postObj = {'username': this.userId,
+		          'billingInfo': billingInfo,
+		          'shippingInfo': shippingInfo,
+		          'creditInfo': creditInfo};
+
+		this.addressService.addAddressInfo(postObj).subscribe(data => this.afterAddressInfoAdded(data));
+        
+  	}
+
+  	private afterAddressInfoAdded(result) {
+        if(result.status === 'failure'){
+        }else{
+        	this.addressSaved.emit('addressSaved');
+        }
+    }
+
+    checkBoxChange(event:any){
+		let isChecked = event.currentTarget.checked;
+		if(isChecked){
+			this.shippingTitleOption = this.billingForm.value.bilingTitle;
+			this.bindFirstName = this.billingForm.value.firstName;
+			this.bindLastName = this.billingForm.value.lastName;
+			this.bindHouseNo = this.billingForm.value.houseNo;
+			this.bindStreetName = this.billingForm.value.streetName;
+			this.bindZipCode = this.billingForm.value.zipCode;
+
+		}else{
+			this.bindFirstName = '';
+			this.bindLastName = '';
+			this.bindHouseNo = '';
+			this.bindStreetName = '';
+			this.bindZipCode = '';
+			//this.shippingTitleOption = '';
+			let selectBox = document.getElementById("shippingTitleOpt") as HTMLSelectElement;
+			selectBox.selectedIndex = 0;
+		}
+	}
 
   	ngOnInit() {
 
