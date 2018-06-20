@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ModalComponent } from './modal.component';
+import { Globals } from '../globals/global';
 
 @Injectable()
 export class ModalService {
   private modals: Array<ModalComponent>;
 
-  constructor() {
+  constructor(private globals: Globals) {
     this.modals = [];
   }
 
@@ -14,12 +15,12 @@ export class ModalService {
 
     // Delete existing to replace the modal
     if (modal) {
-      this.modals.splice(this.modals.indexOf(modal));
-      alert('modal deleted'+newModal.modalId);
+     // this.modals.splice(this.modals.indexOf(modal));
+     this.globals.modals.splice(this.globals.modals.indexOf(modal), 1);
+     // alert('modal deleted'+newModal.modalId);
     }
 
-    this.modals.push(newModal);
-    localStorage.setItem('modalBucket', JSON.stringify(this.modals));
+    this.globals.modals.push(newModal);
   }
 
   open(modalId: string): void {
@@ -51,7 +52,7 @@ export class ModalService {
   }
 
   private findModal(modalId: string): ModalComponent {
-    let modals = JSON.parse(localStorage.getItem('modalBucket'));
+    let modals = this.globals.modals;
     if(modals !== null){
       for (let modal of modals) {
         if (modal.modalId === modalId) {

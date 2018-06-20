@@ -1,3 +1,4 @@
+
 import { AgmCoreModule } from '@agm/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -11,7 +12,7 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 import { RouteinfoService } from 'app/services/shareobject/routeinfo.service';
 import { ModalService } from 'app/modal/modal.service';
-
+import { Globals } from './globals/global';
 import { AppComponent } from './app.component';
 import { PublicComponent } from './public/public.component';
 import { LoginComponent } from './login/login.component';
@@ -75,6 +76,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 
 import {enableProdMode} from '@angular/core';
 import { AddressInfoComponent } from './address-info/address-info.component';
+
 
 enableProdMode();
 
@@ -181,7 +183,7 @@ enableProdMode();
         }
     ], { useHash: true })
   ],
-  providers: [RouteinfoService, ModalService],
+  providers: [RouteinfoService, ModalService, Globals],
   entryComponents: [AppComponent, LoginComponent, SignupComponent, PhotosCarouselComponent, MusicListComponent, VideoListComponent],
   bootstrap: [AppComponent]
 })

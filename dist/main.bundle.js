@@ -606,70 +606,72 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_app_services_shareobject_routeinfo_service__ = __webpack_require__("../../../../../src/app/services/shareobject/routeinfo.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_app_modal_modal_service__ = __webpack_require__("../../../../../src/app/modal/modal.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__public_public_component__ = __webpack_require__("../../../../../src/app/public/public.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__signup_signup_component__ = __webpack_require__("../../../../../src/app/signup/signup.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__control_messages_control_messages_component__ = __webpack_require__("../../../../../src/app/control-messages/control-messages.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__public_nav_public_nav_component__ = __webpack_require__("../../../../../src/app/public-nav/public-nav.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__private_nav_private_nav_component__ = __webpack_require__("../../../../../src/app/private-nav/private-nav.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__profile_area_profile_area_component__ = __webpack_require__("../../../../../src/app/profile-area/profile-area.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__tile_menu_tile_menu_component__ = __webpack_require__("../../../../../src/app/tile-menu/tile-menu.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__info_panel_info_panel_component__ = __webpack_require__("../../../../../src/app/info-panel/info-panel.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__search_result_list_item_search_result_list_item_component__ = __webpack_require__("../../../../../src/app/search-result-list-item/search-result-list-item.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__profile_profile_component__ = __webpack_require__("../../../../../src/app/profile/profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__coverpic_coverpic_component__ = __webpack_require__("../../../../../src/app/coverpic/coverpic.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__modal_modal_component__ = __webpack_require__("../../../../../src/app/modal/modal.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_ngx_image_cropper__ = __webpack_require__("../../../../ngx-image-cropper/ngx-image-cropper/ngx-image-cropper.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_angular4_carousel__ = __webpack_require__("../../../../angular4-carousel/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__image_cropper_image_cropper_component__ = __webpack_require__("../../../../../src/app/image-cropper/image-cropper.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__capture_pic_capture_pic_component__ = __webpack_require__("../../../../../src/app/capture-pic/capture-pic.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__friend_request_pending_list_friend_request_pending_list_component__ = __webpack_require__("../../../../../src/app/friend-request-pending-list/friend-request-pending-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__chat_chat_component__ = __webpack_require__("../../../../../src/app/chat/chat.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__chat_item_chat_item_component__ = __webpack_require__("../../../../../src/app/chat-item/chat-item.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__chat_window_chat_window_component__ = __webpack_require__("../../../../../src/app/chat-window/chat-window.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pipes_chat_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/chat-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__video_video_component__ = __webpack_require__("../../../../../src/app/video/video.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__avchat_avchat_component__ = __webpack_require__("../../../../../src/app/avchat/avchat.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__entertainment_entertainment_component__ = __webpack_require__("../../../../../src/app/entertainment/entertainment.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__video_player_video_player_component__ = __webpack_require__("../../../../../src/app/video-player/video-player.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__ad_ad_component__ = __webpack_require__("../../../../../src/app/ad/ad.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__video_album_icon_video_album_icon_component__ = __webpack_require__("../../../../../src/app/video-album-icon/video-album-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pipes_album_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/album-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__video_icon_video_icon_component__ = __webpack_require__("../../../../../src/app/video-icon/video-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pipes_video_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/video-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__music_player_music_player_component__ = __webpack_require__("../../../../../src/app/music-player/music-player.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__audio_icon_audio_icon_component__ = __webpack_require__("../../../../../src/app/audio-icon/audio-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__audio_album_icon_audio_album_icon_component__ = __webpack_require__("../../../../../src/app/audio-album-icon/audio-album-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__pipes_audio_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/audio-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__photos_photos_component__ = __webpack_require__("../../../../../src/app/photos/photos.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__photos_icon_photos_icon_component__ = __webpack_require__("../../../../../src/app/photos-icon/photos-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__photos_album_icon_photos_album_icon_component__ = __webpack_require__("../../../../../src/app/photos-album-icon/photos-album-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pipes_photos_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/photos-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__photos_carousel_photos_carousel_component__ = __webpack_require__("../../../../../src/app/photos-carousel/photos-carousel.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52_angular4_color_picker__ = __webpack_require__("../../../../angular4-color-picker/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52_angular4_color_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_52_angular4_color_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__music_list_music_list_component__ = __webpack_require__("../../../../../src/app/music-list/music-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__video_list_video_list_component__ = __webpack_require__("../../../../../src/app/video-list/video-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__stories_stories_component__ = __webpack_require__("../../../../../src/app/stories/stories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__story_box_story_box_component__ = __webpack_require__("../../../../../src/app/story-box/story-box.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__feeditem_feeditem_component__ = __webpack_require__("../../../../../src/app/feeditem/feeditem.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__checkin_checkin_component__ = __webpack_require__("../../../../../src/app/checkin/checkin.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__comment_box_comment_box_component__ = __webpack_require__("../../../../../src/app/comment-box/comment-box.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__commentitem_commentitem_component__ = __webpack_require__("../../../../../src/app/commentitem/commentitem.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__market_market_component__ = __webpack_require__("../../../../../src/app/market/market.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__add_item_add_item_component__ = __webpack_require__("../../../../../src/app/add-item/add-item.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__item_tile_item_tile_component__ = __webpack_require__("../../../../../src/app/item-tile/item-tile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__cart_tile_cart_tile_component__ = __webpack_require__("../../../../../src/app/cart-tile/cart-tile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_65__checkout_checkout_component__ = __webpack_require__("../../../../../src/app/checkout/checkout.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_66__address_info_address_info_component__ = __webpack_require__("../../../../../src/app/address-info/address-info.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__globals_global__ = __webpack_require__("../../../../../src/app/globals/global.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__public_public_component__ = __webpack_require__("../../../../../src/app/public/public.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__signup_signup_component__ = __webpack_require__("../../../../../src/app/signup/signup.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__control_messages_control_messages_component__ = __webpack_require__("../../../../../src/app/control-messages/control-messages.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__home_home_component__ = __webpack_require__("../../../../../src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__public_nav_public_nav_component__ = __webpack_require__("../../../../../src/app/public-nav/public-nav.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__private_nav_private_nav_component__ = __webpack_require__("../../../../../src/app/private-nav/private-nav.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__profile_area_profile_area_component__ = __webpack_require__("../../../../../src/app/profile-area/profile-area.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__tile_menu_tile_menu_component__ = __webpack_require__("../../../../../src/app/tile-menu/tile-menu.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__info_panel_info_panel_component__ = __webpack_require__("../../../../../src/app/info-panel/info-panel.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__search_result_list_item_search_result_list_item_component__ = __webpack_require__("../../../../../src/app/search-result-list-item/search-result-list-item.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__profile_profile_component__ = __webpack_require__("../../../../../src/app/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__coverpic_coverpic_component__ = __webpack_require__("../../../../../src/app/coverpic/coverpic.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__modal_modal_component__ = __webpack_require__("../../../../../src/app/modal/modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_ngx_image_cropper__ = __webpack_require__("../../../../ngx-image-cropper/ngx-image-cropper/ngx-image-cropper.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_angular4_carousel__ = __webpack_require__("../../../../angular4-carousel/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__image_cropper_image_cropper_component__ = __webpack_require__("../../../../../src/app/image-cropper/image-cropper.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__capture_pic_capture_pic_component__ = __webpack_require__("../../../../../src/app/capture-pic/capture-pic.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__friend_request_pending_list_friend_request_pending_list_component__ = __webpack_require__("../../../../../src/app/friend-request-pending-list/friend-request-pending-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__chat_chat_component__ = __webpack_require__("../../../../../src/app/chat/chat.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__chat_item_chat_item_component__ = __webpack_require__("../../../../../src/app/chat-item/chat-item.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__chat_window_chat_window_component__ = __webpack_require__("../../../../../src/app/chat-window/chat-window.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pipes_chat_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/chat-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__video_video_component__ = __webpack_require__("../../../../../src/app/video/video.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__avchat_avchat_component__ = __webpack_require__("../../../../../src/app/avchat/avchat.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__entertainment_entertainment_component__ = __webpack_require__("../../../../../src/app/entertainment/entertainment.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__video_player_video_player_component__ = __webpack_require__("../../../../../src/app/video-player/video-player.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__ad_ad_component__ = __webpack_require__("../../../../../src/app/ad/ad.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__video_album_icon_video_album_icon_component__ = __webpack_require__("../../../../../src/app/video-album-icon/video-album-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pipes_album_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/album-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__video_icon_video_icon_component__ = __webpack_require__("../../../../../src/app/video-icon/video-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__pipes_video_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/video-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__music_player_music_player_component__ = __webpack_require__("../../../../../src/app/music-player/music-player.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__audio_icon_audio_icon_component__ = __webpack_require__("../../../../../src/app/audio-icon/audio-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__audio_album_icon_audio_album_icon_component__ = __webpack_require__("../../../../../src/app/audio-album-icon/audio-album-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pipes_audio_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/audio-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__photos_photos_component__ = __webpack_require__("../../../../../src/app/photos/photos.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__photos_icon_photos_icon_component__ = __webpack_require__("../../../../../src/app/photos-icon/photos-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__photos_album_icon_photos_album_icon_component__ = __webpack_require__("../../../../../src/app/photos-album-icon/photos-album-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pipes_photos_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/photos-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__photos_carousel_photos_carousel_component__ = __webpack_require__("../../../../../src/app/photos-carousel/photos-carousel.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53_angular4_color_picker__ = __webpack_require__("../../../../angular4-color-picker/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53_angular4_color_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_53_angular4_color_picker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__music_list_music_list_component__ = __webpack_require__("../../../../../src/app/music-list/music-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__video_list_video_list_component__ = __webpack_require__("../../../../../src/app/video-list/video-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__stories_stories_component__ = __webpack_require__("../../../../../src/app/stories/stories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__story_box_story_box_component__ = __webpack_require__("../../../../../src/app/story-box/story-box.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__feeditem_feeditem_component__ = __webpack_require__("../../../../../src/app/feeditem/feeditem.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__checkin_checkin_component__ = __webpack_require__("../../../../../src/app/checkin/checkin.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__comment_box_comment_box_component__ = __webpack_require__("../../../../../src/app/comment-box/comment-box.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__commentitem_commentitem_component__ = __webpack_require__("../../../../../src/app/commentitem/commentitem.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__market_market_component__ = __webpack_require__("../../../../../src/app/market/market.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__add_item_add_item_component__ = __webpack_require__("../../../../../src/app/add-item/add-item.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__item_tile_item_tile_component__ = __webpack_require__("../../../../../src/app/item-tile/item-tile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_65__cart_tile_cart_tile_component__ = __webpack_require__("../../../../../src/app/cart-tile/cart-tile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_66__checkout_checkout_component__ = __webpack_require__("../../../../../src/app/checkout/checkout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_67__address_info_address_info_component__ = __webpack_require__("../../../../../src/app/address-info/address-info.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -749,61 +751,61 @@ var AppModule = (function () {
 AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["M" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__public_public_component__["a" /* PublicComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__login_login_component__["a" /* LoginComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__signup_signup_component__["a" /* SignupComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__control_messages_control_messages_component__["a" /* ControlMessagesComponent */],
-            __WEBPACK_IMPORTED_MODULE_15__home_home_component__["a" /* HomeComponent */],
-            __WEBPACK_IMPORTED_MODULE_16__public_nav_public_nav_component__["a" /* PublicNavComponent */],
-            __WEBPACK_IMPORTED_MODULE_17__private_nav_private_nav_component__["a" /* PrivateNavComponent */],
-            __WEBPACK_IMPORTED_MODULE_18__profile_area_profile_area_component__["a" /* ProfileAreaComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__tile_menu_tile_menu_component__["a" /* TileMenuComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__public_public_component__["a" /* PublicComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__login_login_component__["a" /* LoginComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__signup_signup_component__["a" /* SignupComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__control_messages_control_messages_component__["a" /* ControlMessagesComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__home_home_component__["a" /* HomeComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__public_nav_public_nav_component__["a" /* PublicNavComponent */],
+            __WEBPACK_IMPORTED_MODULE_18__private_nav_private_nav_component__["a" /* PrivateNavComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__profile_area_profile_area_component__["a" /* ProfileAreaComponent */],
+            __WEBPACK_IMPORTED_MODULE_20__tile_menu_tile_menu_component__["a" /* TileMenuComponent */],
             //ChatPanelComponent,
-            __WEBPACK_IMPORTED_MODULE_20__info_panel_info_panel_component__["a" /* InfoPanelComponent */],
-            __WEBPACK_IMPORTED_MODULE_21__search_result_list_item_search_result_list_item_component__["a" /* SearchResultListItemComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__profile_profile_component__["a" /* ProfileComponent */],
-            __WEBPACK_IMPORTED_MODULE_23__coverpic_coverpic_component__["a" /* CoverpicComponent */],
-            __WEBPACK_IMPORTED_MODULE_24__modal_modal_component__["a" /* ModalComponent */],
-            __WEBPACK_IMPORTED_MODULE_27__image_cropper_image_cropper_component__["a" /* ImageCropperComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__capture_pic_capture_pic_component__["a" /* CapturePicComponent */],
-            __WEBPACK_IMPORTED_MODULE_29__friend_request_pending_list_friend_request_pending_list_component__["a" /* FriendRequestPendingListComponent */],
-            __WEBPACK_IMPORTED_MODULE_30__chat_chat_component__["a" /* ChatComponent */],
-            __WEBPACK_IMPORTED_MODULE_31__chat_item_chat_item_component__["a" /* ChatItemComponent */],
-            __WEBPACK_IMPORTED_MODULE_33__pipes_chat_search_pipe__["a" /* ChatSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_32__chat_window_chat_window_component__["a" /* ChatWindowComponent */],
-            __WEBPACK_IMPORTED_MODULE_34__video_video_component__["a" /* VideoComponent */],
-            __WEBPACK_IMPORTED_MODULE_35__avchat_avchat_component__["a" /* AvchatComponent */],
-            __WEBPACK_IMPORTED_MODULE_36__entertainment_entertainment_component__["a" /* EntertainmentComponent */],
-            __WEBPACK_IMPORTED_MODULE_37__video_player_video_player_component__["a" /* VideoPlayerComponent */],
-            __WEBPACK_IMPORTED_MODULE_38__ad_ad_component__["a" /* AdComponent */],
-            __WEBPACK_IMPORTED_MODULE_39__video_album_icon_video_album_icon_component__["a" /* VideoAlbumIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_40__pipes_album_search_pipe__["a" /* AlbumSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_41__video_icon_video_icon_component__["a" /* VideoIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_42__pipes_video_search_pipe__["a" /* VideoSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_43__music_player_music_player_component__["a" /* MusicPlayerComponent */],
-            __WEBPACK_IMPORTED_MODULE_44__audio_icon_audio_icon_component__["a" /* AudioIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_45__audio_album_icon_audio_album_icon_component__["a" /* AudioAlbumIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_46__pipes_audio_search_pipe__["a" /* AudioSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_47__photos_photos_component__["a" /* PhotosComponent */],
-            __WEBPACK_IMPORTED_MODULE_48__photos_icon_photos_icon_component__["a" /* PhotosIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_49__photos_album_icon_photos_album_icon_component__["a" /* PhotosAlbumIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_50__pipes_photos_search_pipe__["a" /* PhotosSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_51__photos_carousel_photos_carousel_component__["a" /* PhotosCarouselComponent */],
-            __WEBPACK_IMPORTED_MODULE_53__music_list_music_list_component__["a" /* MusicListComponent */],
-            __WEBPACK_IMPORTED_MODULE_54__video_list_video_list_component__["a" /* VideoListComponent */],
-            __WEBPACK_IMPORTED_MODULE_55__stories_stories_component__["a" /* StoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_56__story_box_story_box_component__["a" /* StoryBoxComponent */],
-            __WEBPACK_IMPORTED_MODULE_57__feeditem_feeditem_component__["a" /* FeeditemComponent */],
-            __WEBPACK_IMPORTED_MODULE_58__checkin_checkin_component__["a" /* CheckinComponent */],
-            __WEBPACK_IMPORTED_MODULE_59__comment_box_comment_box_component__["a" /* CommentBoxComponent */],
-            __WEBPACK_IMPORTED_MODULE_60__commentitem_commentitem_component__["a" /* CommentitemComponent */],
-            __WEBPACK_IMPORTED_MODULE_61__market_market_component__["a" /* MarketComponent */],
-            __WEBPACK_IMPORTED_MODULE_62__add_item_add_item_component__["a" /* AddItemComponent */],
-            __WEBPACK_IMPORTED_MODULE_63__item_tile_item_tile_component__["a" /* ItemTileComponent */],
-            __WEBPACK_IMPORTED_MODULE_64__cart_tile_cart_tile_component__["a" /* CartTileComponent */],
-            __WEBPACK_IMPORTED_MODULE_65__checkout_checkout_component__["a" /* CheckoutComponent */],
-            __WEBPACK_IMPORTED_MODULE_66__address_info_address_info_component__["a" /* AddressInfoComponent */]
+            __WEBPACK_IMPORTED_MODULE_21__info_panel_info_panel_component__["a" /* InfoPanelComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__search_result_list_item_search_result_list_item_component__["a" /* SearchResultListItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_23__profile_profile_component__["a" /* ProfileComponent */],
+            __WEBPACK_IMPORTED_MODULE_24__coverpic_coverpic_component__["a" /* CoverpicComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__modal_modal_component__["a" /* ModalComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__image_cropper_image_cropper_component__["a" /* ImageCropperComponent */],
+            __WEBPACK_IMPORTED_MODULE_29__capture_pic_capture_pic_component__["a" /* CapturePicComponent */],
+            __WEBPACK_IMPORTED_MODULE_30__friend_request_pending_list_friend_request_pending_list_component__["a" /* FriendRequestPendingListComponent */],
+            __WEBPACK_IMPORTED_MODULE_31__chat_chat_component__["a" /* ChatComponent */],
+            __WEBPACK_IMPORTED_MODULE_32__chat_item_chat_item_component__["a" /* ChatItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_34__pipes_chat_search_pipe__["a" /* ChatSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_33__chat_window_chat_window_component__["a" /* ChatWindowComponent */],
+            __WEBPACK_IMPORTED_MODULE_35__video_video_component__["a" /* VideoComponent */],
+            __WEBPACK_IMPORTED_MODULE_36__avchat_avchat_component__["a" /* AvchatComponent */],
+            __WEBPACK_IMPORTED_MODULE_37__entertainment_entertainment_component__["a" /* EntertainmentComponent */],
+            __WEBPACK_IMPORTED_MODULE_38__video_player_video_player_component__["a" /* VideoPlayerComponent */],
+            __WEBPACK_IMPORTED_MODULE_39__ad_ad_component__["a" /* AdComponent */],
+            __WEBPACK_IMPORTED_MODULE_40__video_album_icon_video_album_icon_component__["a" /* VideoAlbumIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_41__pipes_album_search_pipe__["a" /* AlbumSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_42__video_icon_video_icon_component__["a" /* VideoIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_43__pipes_video_search_pipe__["a" /* VideoSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_44__music_player_music_player_component__["a" /* MusicPlayerComponent */],
+            __WEBPACK_IMPORTED_MODULE_45__audio_icon_audio_icon_component__["a" /* AudioIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_46__audio_album_icon_audio_album_icon_component__["a" /* AudioAlbumIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_47__pipes_audio_search_pipe__["a" /* AudioSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_48__photos_photos_component__["a" /* PhotosComponent */],
+            __WEBPACK_IMPORTED_MODULE_49__photos_icon_photos_icon_component__["a" /* PhotosIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_50__photos_album_icon_photos_album_icon_component__["a" /* PhotosAlbumIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_51__pipes_photos_search_pipe__["a" /* PhotosSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_52__photos_carousel_photos_carousel_component__["a" /* PhotosCarouselComponent */],
+            __WEBPACK_IMPORTED_MODULE_54__music_list_music_list_component__["a" /* MusicListComponent */],
+            __WEBPACK_IMPORTED_MODULE_55__video_list_video_list_component__["a" /* VideoListComponent */],
+            __WEBPACK_IMPORTED_MODULE_56__stories_stories_component__["a" /* StoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_57__story_box_story_box_component__["a" /* StoryBoxComponent */],
+            __WEBPACK_IMPORTED_MODULE_58__feeditem_feeditem_component__["a" /* FeeditemComponent */],
+            __WEBPACK_IMPORTED_MODULE_59__checkin_checkin_component__["a" /* CheckinComponent */],
+            __WEBPACK_IMPORTED_MODULE_60__comment_box_comment_box_component__["a" /* CommentBoxComponent */],
+            __WEBPACK_IMPORTED_MODULE_61__commentitem_commentitem_component__["a" /* CommentitemComponent */],
+            __WEBPACK_IMPORTED_MODULE_62__market_market_component__["a" /* MarketComponent */],
+            __WEBPACK_IMPORTED_MODULE_63__add_item_add_item_component__["a" /* AddItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_64__item_tile_item_tile_component__["a" /* ItemTileComponent */],
+            __WEBPACK_IMPORTED_MODULE_65__cart_tile_cart_tile_component__["a" /* CartTileComponent */],
+            __WEBPACK_IMPORTED_MODULE_66__checkout_checkout_component__["a" /* CheckoutComponent */],
+            __WEBPACK_IMPORTED_MODULE_67__address_info_address_info_component__["a" /* AddressInfoComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__agm_core__["a" /* AgmCoreModule */].forRoot({
@@ -816,43 +818,43 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_5__angular_forms__["d" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_5__angular_forms__["g" /* ReactiveFormsModule */],
             __WEBPACK_IMPORTED_MODULE_6__angular_http__["c" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_25_ngx_image_cropper__["a" /* ImageCropperModule */],
-            __WEBPACK_IMPORTED_MODULE_26_angular4_carousel__["b" /* CarouselModule */],
-            __WEBPACK_IMPORTED_MODULE_52_angular4_color_picker__["ColorPickerModule"],
+            __WEBPACK_IMPORTED_MODULE_26_ngx_image_cropper__["a" /* ImageCropperModule */],
+            __WEBPACK_IMPORTED_MODULE_27_angular4_carousel__["b" /* CarouselModule */],
+            __WEBPACK_IMPORTED_MODULE_53_angular4_color_picker__["ColorPickerModule"],
             __WEBPACK_IMPORTED_MODULE_7__angular_router__["e" /* RouterModule */].forRoot([
                 {
                     path: 'public',
-                    component: __WEBPACK_IMPORTED_MODULE_11__public_public_component__["a" /* PublicComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_12__public_public_component__["a" /* PublicComponent */]
                 },
                 {
                     path: 'home',
-                    component: __WEBPACK_IMPORTED_MODULE_15__home_home_component__["a" /* HomeComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_16__home_home_component__["a" /* HomeComponent */]
                 },
                 {
                     path: 'profile/:id',
-                    component: __WEBPACK_IMPORTED_MODULE_22__profile_profile_component__["a" /* ProfileComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_23__profile_profile_component__["a" /* ProfileComponent */]
                 },
                 {
                     path: 'entertainment/:id',
-                    component: __WEBPACK_IMPORTED_MODULE_36__entertainment_entertainment_component__["a" /* EntertainmentComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_37__entertainment_entertainment_component__["a" /* EntertainmentComponent */]
                 },
                 {
                     path: 'stories/:id',
-                    component: __WEBPACK_IMPORTED_MODULE_55__stories_stories_component__["a" /* StoriesComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_56__stories_stories_component__["a" /* StoriesComponent */]
                 },
                 {
                     path: 'market/:id',
-                    component: __WEBPACK_IMPORTED_MODULE_61__market_market_component__["a" /* MarketComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_62__market_market_component__["a" /* MarketComponent */]
                 },
                 {
                     path: 'checkout/:id',
-                    component: __WEBPACK_IMPORTED_MODULE_65__checkout_checkout_component__["a" /* CheckoutComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_66__checkout_checkout_component__["a" /* CheckoutComponent */]
                 }
             ], { useHash: true })
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_8_app_services_shareobject_routeinfo_service__["a" /* RouteinfoService */], __WEBPACK_IMPORTED_MODULE_9_app_modal_modal_service__["a" /* ModalService */]],
-        entryComponents: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_12__login_login_component__["a" /* LoginComponent */], __WEBPACK_IMPORTED_MODULE_13__signup_signup_component__["a" /* SignupComponent */], __WEBPACK_IMPORTED_MODULE_51__photos_carousel_photos_carousel_component__["a" /* PhotosCarouselComponent */], __WEBPACK_IMPORTED_MODULE_53__music_list_music_list_component__["a" /* MusicListComponent */], __WEBPACK_IMPORTED_MODULE_54__video_list_video_list_component__["a" /* VideoListComponent */]],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* AppComponent */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_8_app_services_shareobject_routeinfo_service__["a" /* RouteinfoService */], __WEBPACK_IMPORTED_MODULE_9_app_modal_modal_service__["a" /* ModalService */], __WEBPACK_IMPORTED_MODULE_10__globals_global__["a" /* Globals */]],
+        entryComponents: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_13__login_login_component__["a" /* LoginComponent */], __WEBPACK_IMPORTED_MODULE_14__signup_signup_component__["a" /* SignupComponent */], __WEBPACK_IMPORTED_MODULE_52__photos_carousel_photos_carousel_component__["a" /* PhotosCarouselComponent */], __WEBPACK_IMPORTED_MODULE_54__music_list_music_list_component__["a" /* MusicListComponent */], __WEBPACK_IMPORTED_MODULE_55__video_list_video_list_component__["a" /* VideoListComponent */]],
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
@@ -3584,6 +3586,33 @@ var _a, _b;
 
 /***/ }),
 
+/***/ "../../../../../src/app/globals/global.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Globals; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var Globals = (function () {
+    function Globals() {
+        this.modals = [];
+    }
+    return Globals;
+}());
+Globals = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])()
+], Globals);
+
+//# sourceMappingURL=global.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/home/home.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4739,6 +4768,7 @@ var _a, _b;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModalService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__globals_global__ = __webpack_require__("../../../../../src/app/globals/global.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4749,19 +4779,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var ModalService = (function () {
-    function ModalService() {
+    function ModalService(globals) {
+        this.globals = globals;
         this.modals = [];
     }
     ModalService.prototype.registerModal = function (newModal) {
         var modal = this.findModal(newModal.modalId);
         // Delete existing to replace the modal
         if (modal) {
-            this.modals.splice(this.modals.indexOf(modal));
-            alert('modal deleted' + newModal.modalId);
+            // this.modals.splice(this.modals.indexOf(modal));
+            this.globals.modals.splice(this.globals.modals.indexOf(modal), 1);
+            // alert('modal deleted'+newModal.modalId);
         }
-        this.modals.push(newModal);
-        localStorage.setItem('modalBucket', JSON.stringify(this.modals));
+        this.globals.modals.push(newModal);
     };
     ModalService.prototype.open = function (modalId) {
         var modal = this.findModal(modalId);
@@ -4787,7 +4819,7 @@ var ModalService = (function () {
         }
     };
     ModalService.prototype.findModal = function (modalId) {
-        var modals = JSON.parse(localStorage.getItem('modalBucket'));
+        var modals = this.globals.modals;
         if (modals !== null) {
             for (var _i = 0, modals_1 = modals; _i < modals_1.length; _i++) {
                 var modal = modals_1[_i];
@@ -4806,9 +4838,10 @@ var ModalService = (function () {
 }());
 ModalService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__globals_global__["a" /* Globals */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__globals_global__["a" /* Globals */]) === "function" && _a || Object])
 ], ModalService);
 
+var _a;
 //# sourceMappingURL=modal.service.js.map
 
 /***/ }),
