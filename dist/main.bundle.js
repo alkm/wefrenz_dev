@@ -2137,6 +2137,7 @@ var CheckoutComponent = (function () {
     };
     CheckoutComponent.prototype.addressSaved = function (event) {
         this.modalService.close(this.modalId);
+        this.isAddressAdded = true;
     };
     CheckoutComponent.prototype.getAddressInfo = function () {
         var _this = this;
@@ -4757,8 +4758,10 @@ var ModalService = (function () {
         // Delete existing to replace the modal
         if (modal) {
             this.modals.splice(this.modals.indexOf(modal));
+            alert('modal deleted' + newModal.modalId);
         }
         this.modals.push(newModal);
+        localStorage.setItem('modalBucket', JSON.stringify(this.modals));
     };
     ModalService.prototype.open = function (modalId) {
         var modal = this.findModal(modalId);
@@ -4784,13 +4787,16 @@ var ModalService = (function () {
         }
     };
     ModalService.prototype.findModal = function (modalId) {
-        for (var _i = 0, _a = this.modals; _i < _a.length; _i++) {
-            var modal = _a[_i];
-            if (modal.modalId === modalId) {
-                return modal;
+        var modals = JSON.parse(localStorage.getItem('modalBucket'));
+        if (modals !== null) {
+            for (var _i = 0, modals_1 = modals; _i < modals_1.length; _i++) {
+                var modal = modals_1[_i];
+                if (modal.modalId === modalId) {
+                    return modal;
+                }
             }
+            return null;
         }
-        return null;
     };
     ModalService.prototype.triggerWindowEvent = function (eventType, evtObj) {
         var evt = new CustomEvent(eventType, { 'detail': evtObj });
