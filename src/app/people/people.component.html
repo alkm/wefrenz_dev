@@ -1,0 +1,91 @@
+<app-private-nav></app-private-nav>
+<div class="container top-margin bottom-margin">
+	<div class="row">
+		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+			<div class="opaque-bg no-padding">
+				<app-profile-area></app-profile-area>
+				<div class="left-nav">
+					<div class="nav-item" (click)="switchVideo($event)" [ngClass]="(isHighLightStories ? 'highlight-nav' : '')">
+						<i class="fa fa-book blue-fonts" aria-hidden="true"></i>
+						<span class="blue-fonts">Stories</span>
+					</div>
+					<div class="nav-item" [ngClass]="(isHighLightMusic ? 'highlight-nav' : '')" (click)="switchMusic($event)">
+						<i class="fa fa-pencil blue-fonts" aria-hidden="true"></i>
+						<span class="blue-fonts">Blog</span>
+					</div>
+					<div class="nav-item">
+						<i class="fa fa-plane blue-fonts" aria-hidden="true"></i>
+						<span class="blue-fonts">Travel</span>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div #marketContent class="col-xs-12 col-sm-9 col-md-9 col-lg-9 no-padding opaque-bg market-content">
+			<div class="market-controlbar colw100">
+				<div class="total-count pull-left">{{total}}&nbsp;Results</div>
+				<div class="grid-icon pull-left"><i class="fa fa-th-large fa-2x"></i></div>
+				<div class="list-icon pull-left"><i class="fa fa-list-ul fa-2x"></i></div>
+				<div class="sort-params pull-left" (click)="clickedInside($event);">
+					<span>Sort By:&nbsp;{{sortSelection}}</span>
+				</div>
+				<div *ngIf="isMarketSortItems; then marketSortItemControls"></div>
+						<ng-template #marketSortItemControls>
+							<div class="list-items market-sort-items pull-right">
+								<div class="arrow-up white-bg"></div>
+								<div class="cursor-pointer list-item" (click)="sortItemClick($event)">Price</div>
+								<div class="cursor-pointer list-item" (click)="sortItemClick($event)">Name</div>
+								<div class="cursor-pointer list-item" (click)="sortItemClick($event)">Popularity</div>
+							</div>
+						</ng-template>
+				<div class="sort-toggle pull-left"><i class="fa fa-random fa-2x"></i></div>
+			</div>
+			<div class="market-searchbar colw100">
+				<div class="market-search-box pull-left">
+	                <div class="pull-left">
+	                    <input class="search-input blue-fonts" type="text" placeholder="Search"  autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" [(ngModel)]="albumText" #searchAlbum/>
+	                </div>
+	                <div class="pull-left"><i class="fa fa-search cursor-pointer" aria-hidden="true"></i></div>
+	            </div>
+	            <div class="pull-left add-item" (click)="addItemToMarket($event)">
+	            	<i class="fa fa-plus"></i>
+	            </div>
+	           	<div class="pull-right">
+	           		<i class="fa fa-cart-plus blue-fonts cursor-pointer fa-2x" (click)="proceedToCheckOut($event)" title="Proceed to Checkout"></i>
+	           		<ng-container *ngIf="totalCartItem > 0 ">
+		              <div class="item-count cursor-pointer" (click)='requestCountClick($event)'>{{totalCartItem}}</div>
+		            </ng-container>
+	           	</div>
+	            <div *ngIf="totalCartItem > 0 ;then itemCounted"></div>
+		    	<ng-template #itemCounted>
+		    		<div class="red-fonts pull-right">{{totalCartItem}}&nbsp;added to cart&nbsp;</div>
+		    	</ng-template>
+
+			</div>
+			<div class="market-content" [ngStyle]="{ 'max-height': ' ' + screenHeight + 'px'}" (scroll)="onScroll($event)" #scrollMe>
+				<app-item-tile #itemTile *ngFor="let item of marketItemArr" [item]="item" [userId]="userId" [item]="item" 
+				(onItemAddedToCart)="onItemAddedToCart($event)" [cartItemArr]="cartItemArr"></app-item-tile>
+				<div *ngIf="isLoading then loading"></div>
+				<ng-template #loading>
+					<div class="spinner-bg">
+						<div class="spinner">
+							<i class="fa fa-2x fa-spin fa-spinner blue-fonts"></i>
+							<span class="blue-fonts">&nbsp;Loading...</span>
+						</div>
+					</div>
+				</ng-template>
+				<div *ngIf="(!isLoading && (marketItemArr.length > limit)) then endResult"></div>
+				<ng-template #endResult>
+					<div class="end-result blue-fonts text-center">--- End Of Result ---</div>
+				</ng-template>
+			</div>
+		</div>
+	</div>
+</div>
+<app-modal [modalTitle]="'Add Product'" [blocking]='false' [modalId]='modalId'>
+	<div class="add-product-content">
+		<div class="colw100 inline-block">
+			<app-add-item [userId]="userId" (refreshMarket)="refreshMarket($event)"></app-add-item>
+		</div>
+	</div>
+</app-modal>

@@ -20,10 +20,8 @@ export class AddressInfoComponent implements OnInit {
 
 	private billingTitleOption: string;
 	private shippingTitleOption: string;
-	private creditTitleOption: string;
 	private billingForm : any;
 	private shippingForm: any;
-	private creditForm: any;
 	private selectedCountry:Country = new Country(0, 'India'); 
 	private sselectedCountry:Country = new Country(0, 'India'); 
   	private countries: Country[];
@@ -54,17 +52,6 @@ export class AddressInfoComponent implements OnInit {
     	{ name: "Miss", value: 'Miss' }
   	];
 
-  	private cardOptions = [
-  		{ name: "Card Title", value: '' },
-		{ name: "visa", value: 'visa' },
-    	{ name: "visa debit", value: 'visaDebit' },
-    	{ name: "mastercard", value: 'mastercard' },
-    	{ name: "mastercard debit", value: 'mastercardDebit' },
-    	{ name: "american express", value: 'americanExpress' }
-  	];
-
-
-
   	constructor(private formBuilder : FormBuilder, private dataService : DataService, private addressService : AddressService) {
   		this.countries = this.dataService.getCountries();
 	    this.billingForm = this.formBuilder.group({
@@ -87,14 +74,6 @@ export class AddressInfoComponent implements OnInit {
 	      	'szipCode': ['', Validators.required],
 	      	'scountryList': ['', Validators.required],
 	      	'sstateList': ['', Validators.required]
-	    });
-	    
-	    this.creditForm = this.formBuilder.group({
-	      	'cardTitle': ['', Validators.required],
-	      	'nameOnCard': ['', Validators.required],
-	      	'cardNumber': ['', Validators.required],
-	    	'cardEndDate': ['', Validators.required],
-	      	'cvv': ['', Validators.required]
 	    });
     }
 
@@ -124,10 +103,9 @@ export class AddressInfoComponent implements OnInit {
 		}
   	}
 
-  	private saveCreditInfo(event: any){
+  	private saveAddressInfo(event: any){
   		let billingInfo;
   		let shippingInfo;
-  		let creditInfo;
   		if (this.billingForm.dirty && this.billingForm.valid) {
         	billingInfo = {'bilingTitle': this.billingForm.value.bilingTitle,
 		                      'firstName': this.billingForm.value.firstName,
@@ -148,18 +126,10 @@ export class AddressInfoComponent implements OnInit {
 		                      'scountryList': this.sCountryChoosen,
 		                      'sstateList': this.sStateChoosen};
 		}
-		if (this.creditForm.dirty && this.creditForm.valid) {
-        	creditInfo = {'cardTitle': this.creditForm.value.cardTitle,
-		                      'nameOnCard': this.creditForm.value.nameOnCard,
-		                      'cardNumber': this.creditForm.value.cardNumber,
-		                      'cardEndDate': this.creditForm.value.cardEndDate,
-		                      'cvv': this.creditForm.value.cvv};
-		}
 
 		let postObj = {'username': this.userId,
 		          'billingInfo': billingInfo,
-		          'shippingInfo': shippingInfo,
-		          'creditInfo': creditInfo};
+		          'shippingInfo': shippingInfo};
 
 		this.addressService.addAddressInfo(postObj).subscribe(data => this.afterAddressInfoAdded(data));
         

@@ -8319,11 +8319,13 @@ var Easyrtc = function() {
                     }
                     else {
                         /* socket server went down. this will generate a 'disconnect' event as well, so skip this event */
-                        errorCallback(self.errCodes.CONNECT_ERR, self.getConstantString("noServer"));
+                        //errorCallback(self.errCodes.CONNECT_ERR, self.getConstantString("noServer"));
+                        console.log(self.errCodes.CONNECT_ERR, self.getConstantString("noServer"));
                     }
                 }
                 else {
-                    errorCallback(self.errCodes.CONNECT_ERR, self.getConstantString("noServer"));
+                    //errorCallback(self.errCodes.CONNECT_ERR, self.getConstantString("noServer"));
+                    console.log(self.errCodes.CONNECT_ERR, self.getConstantString("noServer"));
                 }
             }
             handleErrorEvent();

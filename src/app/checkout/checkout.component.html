@@ -48,10 +48,19 @@
 		</div>
 	</div>
 </div>
-<app-modal [modalTitle]="'Add Address'" [blocking]='false' [modalId]='modalId' #addAddressModal>
-	<div class="add-address-content">
-		<div class="colw100 inline-block">
-			<app-address-info [userId]="userId" (addressSaved)="addressSaved($event)"></app-address-info>
+<app-modal [modalTitle]="modalTitle" [blocking]='false' [modalId]='modalId' #addAddressModal>
+	<ng-container *ngIf="isAddressAdded">
+		<div class="add-payment-content">
+			<div class="colw100 inline-block">
+				<app-payment-info [userId]="userId"></app-payment-info>
+			</div>
 		</div>
-	</div>
+	</ng-container>
+	<ng-container *ngIf="!isAddressAdded">
+		<div class="add-address-content">
+			<div class="colw100 inline-block">
+				<app-address-info [userId]="userId" (addressSaved)="addressSaved($event)"></app-address-info>
+			</div>
+		</div>
+	</ng-container>
 </app-modal>
