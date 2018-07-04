@@ -100,46 +100,17 @@
 				</div>
 		    </form>	
 		</div>
-	</div>
-	<div class="billing-shipping-check col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-		<input (change)="checkBoxChange($event)" value="angular" type="checkbox" [disabled]="!billingForm.valid"/>
-		<span>Billing info same as shipping info.</span>
-	</div>
-	<div class="credit-card-info colw100">
-		<div class="credit-info col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-			<h6 class="blue-fonts">Credit card Details</h6>
-			<form [formGroup]="creditForm" id="creditForm">
-				<div class="form-group">
-					<select [(ngModel)]="creditTitleOption" class="form-control" placeholder="Please select card type" formControlName="cardTitle">
-			        	<option *ngFor="let i of cardOptions">
-			          		{{i.name}}
-			        	</option>
-			      	</select>
-			      	<app-control-messages [control]="creditForm.controls.cardTitle"></app-control-messages>
-			    </div>
-			    <div class="form-group">
-					<input type="text" class="form-control" placeholder="Name on card" formControlName="nameOnCard">
-					<app-control-messages [control]="creditForm.controls.nameOnCard"></app-control-messages>
-				</div>
-				<div class="form-group">
-					<input type="number" class="form-control" placeholder="Credit card number" formControlName="cardNumber">
-					<app-control-messages [control]="creditForm.controls.cardNumber"></app-control-messages>
-				</div>
-				<div class="form-group">
-					<input type="date" class="form-control" placeholder="Card end date" formControlName="cardEndDate">
-					<app-control-messages [control]="creditForm.controls.cardEndDate"></app-control-messages>
-				</div>
-				<div class="form-group">
-					<input type="number" class="form-control" placeholder="CVV" formControlName="cvv">
-					<app-control-messages [control]="creditForm.controls.cvv"></app-control-messages>
-				</div>
-				<div class="form-group row justify-content-center align-items-center no-margin">
-					<button type="button" class="btn btn-primary btn-large" (click)="saveCreditInfo($event)" [disabled]="!billingForm.valid || !shippingForm.valid || !creditForm.valid">
-						<span>Continue</span>
-						<i class="fa fa-arrow-right" aria-hidden="true"></i>
-					</button>
+		<div class="colw100 justify-content-center align-items-center no-margin">
+			<div class="billing-shipping-check text-center">
+				<input (change)="checkBoxChange($event)" value="angular" type="checkbox" [disabled]="!billingForm.valid"/>
+				<span>Billing info same as shipping info.</span>
 			</div>
-		    </form>	
+			<div class="text-center">
+				<button type="button" class="btn btn-primary btn-large" (click)="saveAddressInfo($event)" [disabled]="!billingForm.valid || !shippingForm.valid">
+					<span>Continue</span>
+					<i class="fa fa-arrow-right" aria-hidden="true"></i>
+				</button>
+			</div>
 		</div>
 	</div>
 </div>

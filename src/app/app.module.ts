@@ -11,7 +11,7 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 import { RouteinfoService } from 'app/services/shareobject/routeinfo.service';
 import { ModalService } from 'app/modal/modal.service';
-
+import { Globals } from './globals/global';
 import { AppComponent } from './app.component';
 import { PublicComponent } from './public/public.component';
 import { LoginComponent } from './login/login.component';
@@ -57,7 +57,7 @@ import { PhotosIconComponent } from './photos-icon/photos-icon.component';
 import { PhotosAlbumIconComponent } from './photos-album-icon/photos-album-icon.component';
 import { PhotosSearchPipe } from './pipes/photos-search.pipe';
 import { PhotosCarouselComponent } from './photos-carousel/photos-carousel.component';
-import {ColorPickerModule} from 'angular4-color-picker';
+import { ColorPickerModule } from 'angular4-color-picker';
 import { MusicListComponent } from './music-list/music-list.component';
 import { VideoListComponent } from './video-list/video-list.component';
 import { StoriesComponent } from './stories/stories.component';
@@ -73,8 +73,11 @@ import { CartTileComponent } from './cart-tile/cart-tile.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 
 
-import {enableProdMode} from '@angular/core';
+import { enableProdMode } from '@angular/core';
 import { AddressInfoComponent } from './address-info/address-info.component';
+import { PaymentInfoComponent } from './payment-info/payment-info.component';
+import { PeopleComponent } from './people/people.component';
+
 
 enableProdMode();
 
@@ -134,7 +137,9 @@ enableProdMode();
     ItemTileComponent,
     CartTileComponent,
     CheckoutComponent,
-    AddressInfoComponent
+    AddressInfoComponent,
+    PaymentInfoComponent,
+    PeopleComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -178,10 +183,14 @@ enableProdMode();
         {
             path: 'checkout/:id',
             component: CheckoutComponent
+        },
+        {
+            path: 'people/:id',
+            component: PeopleComponent
         }
     ], { useHash: true })
   ],
-  providers: [RouteinfoService, ModalService],
+  providers: [RouteinfoService, ModalService, Globals],
   entryComponents: [AppComponent, LoginComponent, SignupComponent, PhotosCarouselComponent, MusicListComponent, VideoListComponent],
   bootstrap: [AppComponent]
 })

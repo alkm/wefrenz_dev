@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ModalComponent } from './modal.component';
+import { Globals } from '../globals/global';
 
 @Injectable()
 export class ModalService {
   private modals: Array<ModalComponent>;
 
-  constructor() {
+  constructor(private globals: Globals) {
     this.modals = [];
   }
 
@@ -14,14 +15,16 @@ export class ModalService {
 
     // Delete existing to replace the modal
     if (modal) {
-      this.modals.splice(this.modals.indexOf(modal));
+     // this.modals.splice(this.modals.indexOf(modal));
+     this.globals.modals.splice(this.globals.modals.indexOf(modal), 1);
+     // alert('modal deleted'+newModal.modalId);
     }
 
-    this.modals.push(newModal);
+    this.globals.modals.push(newModal);
   }
 
   open(modalId: string): void {
-    const modal = this.findModal(modalId);
+    let modal = this.findModal(modalId);
 
     if (modal) {
       modal.isOpen = true;
@@ -29,7 +32,7 @@ export class ModalService {
   }
 
   close(modalId: string, checkBlocking = false): void {
-    const modal = this.findModal(modalId);
+    let modal = this.findModal(modalId);
 
     if (modal) {
       if (checkBlocking && modal.blocking) {
@@ -49,12 +52,15 @@ export class ModalService {
   }
 
   private findModal(modalId: string): ModalComponent {
-    for (const modal of this.modals) {
-      if (modal.modalId === modalId) {
-        return modal;
+    let modals = this.globals.modals;
+    if(modals !== null){
+      for (let modal of modals) {
+        if (modal.modalId === modalId) {
+          return modal;
+        }
       }
+      return null;
     }
-    return null;
   }
 
 
