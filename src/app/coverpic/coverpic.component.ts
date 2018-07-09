@@ -240,7 +240,8 @@ export class CoverpicComponent implements OnInit, AfterViewInit {
   		this.isEditCoverPic = false;
   		this.isSaveCoverPic = true;
   		this.isUploadCoverPic = true;
-  		this.coverPicModal.close();
+  		//this.coverPicModal.close();
+  		this.modalService.close(this.modalId);
   	}
 
 
