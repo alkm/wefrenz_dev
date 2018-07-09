@@ -1,0 +1,79 @@
+<div class="credit-card-info colw100">
+	<div class="credit-info col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+		<!--<h6 class="blue-fonts">Credit card Details</h6>
+		<form [formGroup]="creditForm" id="creditForm">
+			<div class="form-group">
+				<select [(ngModel)]="creditTitleOption" class="form-control" placeholder="Please select card type" formControlName="cardTitle">
+		        	<option *ngFor="let i of cardOptions">
+		          		{{i.name}}
+		        	</option>
+		      	</select>
+		      	<app-control-messages [control]="creditForm.controls.cardTitle"></app-control-messages>
+		    </div>
+		    <div class="form-group">
+				<input type="text" class="form-control" placeholder="Name on card" formControlName="nameOnCard">
+				<app-control-messages [control]="creditForm.controls.nameOnCard"></app-control-messages>
+			</div>
+			<div class="form-group">
+				<input type="number" class="form-control" placeholder="Credit card number" formControlName="cardNumber">
+				<app-control-messages [control]="creditForm.controls.cardNumber"></app-control-messages>
+			</div>
+			<div class="form-group">
+				<input type="date" class="form-control" placeholder="Card end date" formControlName="cardEndDate">
+				<app-control-messages [control]="creditForm.controls.cardEndDate"></app-control-messages>
+			</div>
+			<div class="form-group">
+				<input type="number" class="form-control" placeholder="CVV" formControlName="cvv">
+				<app-control-messages [control]="creditForm.controls.cvv"></app-control-messages>
+			</div>
+			<div class="form-group row justify-content-center align-items-center no-margin">
+				<button type="button" class="btn btn-primary btn-large" (click)="saveCreditInfo($event)" [disabled]="!creditForm.valid">
+					<span>Continue</span>
+					<i class="fa fa-arrow-right" aria-hidden="true"></i>
+				</button>
+		</div>
+	    </form>	-->
+	    <ng-container *ngIf="!isTokenReceived">
+			<!--<form action="" method="POST" id="payment-form" (submit)="getToken()">
+				<span class="payment-message">{{message}}</span>
+
+				<div class="form-group">
+					<label>
+					  <input [(ngModel)]="cardNumber" placeholder="Card Number" name="card-number" type="text" size="20" data-stripe="number" class="form-control">
+					</label>
+				</div>
+
+				<div class="form-group expiry-detail">
+					<label>
+					  <input [(ngModel)]="expiryMonth" placeholder="MM" name="expiry-month" type="text" size="2" data-stripe="exp_month" class="form-control">
+					</label>
+					<span> / </span>
+					<input [(ngModel)]="expiryYear" placeholder="YY" name="expiry-year" type="text" size="2" data-stripe="exp_year" class="form-control">
+				</div>
+
+				<div class="form-group">
+					<label>
+					  <input [(ngModel)]="cvc" placeholder="cvc" name="cvc" type="text" size="4" data-stripe="cvc" class="form-control" >
+					</label>
+				</div>
+				  	<input type="submit" value="Pay" class="btn btn-primary btn-large">
+			</form>-->
+			<h3 class="blue-fonts">Default Stripe Form</h3>
+
+<button (click)="openCheckout()">Purchase</button>
+		</ng-container>
+		<ng-container *ngIf="isTokenReceived">
+			<form action="/charge" method="POST">
+				<script
+				src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+				data-key="pk_test_QegjMgcmJb5xsH11E9grYUUp"
+				data-amount="1"
+				data-name="wefrenz"
+				data-description="2 widgets"
+				data-image="/assets/images/bg.jpg"
+				data-locale="auto">
+				</script>
+			</form>
+		</ng-container>
+	</div>
+</div>
