@@ -27,7 +27,7 @@
                 <div class="file-input-container">
                     <form [formGroup]="photosUploadForm" action="/upload" method="post" enctype="multipart/form-data">
                         <div class="form-group" [formGroup]="photosGroup">
-                            <input type="file" accept="image/*" class="file-input" name="uploadfile" #fileInput (change)="imageFileChangeEvent($event, true)"/>
+                            <input type="file" accept="image/*" class="file-input" name="uploadfile" #fileInput (change)="fileChangeEvent($event, true)"/>
                         </div>
                     </form>
                 </div>
@@ -127,7 +127,7 @@
                 </div>
             </div>
             <div class="album-icons">
-                <app-photos-icon (click)="playAudio(item)" class="pull-left" *ngFor="let item of photosList | photosSearch : photosText" [item]="item"></app-photos-icon>
+                <app-photos-icon (click)="showPicModal(item)" class="pull-left" *ngFor="let item of photosList | photosSearch : photosText" [item]="item"></app-photos-icon>
             </div>
         </ng-template>
     </div>
