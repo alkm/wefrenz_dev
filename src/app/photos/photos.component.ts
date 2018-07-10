@@ -266,4 +266,8 @@ export class PhotosComponent implements OnInit {
     window.dispatchEvent(evt);
   }
 
+  private showPicModal(item){
+    console.log(item);
+  }
+
 }
