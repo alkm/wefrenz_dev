@@ -215,15 +215,20 @@ export class PhotosComponent implements OnInit {
 
   private afterPhotosAbumInfo(result){
     let self = this;
-    this.photosAlbumList = result;
-    self.imageSource = [];
-    for(let i in this.photosAlbumList[0].photosList){
-      self.imageSource.push(this.photosAlbumList[0].photosList[i].actualPhoto)
+    if(result.length > 0){
+      this.photosAlbumList = result;
+      self.imageSource = [];
+      for(let i in this.photosAlbumList[0].photosList){
+        self.imageSource.push(this.photosAlbumList[0].photosList[i].actualPhoto)
+      }
+      this.createCarouselItems(self.imageSource);  
     }
-    this.createCarouselItems(self.imageSource);  
   }
   private afterAlbumPhotosInfo(result){
-    this.photosList = result[0].photosList;
+    if(result.length > 0){
+       this.photosList = result[0].photosList;
+    }
+   
   }
 
   //Need to activate/deactivate edit btn later based on changes in title field

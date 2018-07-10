@@ -5242,16 +5242,20 @@ var MusicPlayerComponent = (function () {
         this.audioService.fetchAlbumAudioInfo(postObj).subscribe(function (data) { return _this.afterAbumAudioInfo(data); });
     };
     MusicPlayerComponent.prototype.afterAudioAbumInfo = function (result) {
-        this.audioAlbumList = result;
-        this.musicSource = [];
-        //for(var i in this.audioAlbumList[0].audiosList){
-        this.musicSource = this.audioAlbumList[0].audiosList;
-        //}
-        this.createMusicList(this.musicSource);
-        this.playAudio(this.audioAlbumList[0].audiosList[0], -1);
+        if (result.length > 0) {
+            this.audioAlbumList = result;
+            this.musicSource = [];
+            //for(var i in this.audioAlbumList[0].audiosList){
+            this.musicSource = this.audioAlbumList[0].audiosList;
+            //}
+            this.createMusicList(this.musicSource);
+            this.playAudio(this.audioAlbumList[0].audiosList[0], -1);
+        }
     };
     MusicPlayerComponent.prototype.afterAbumAudioInfo = function (result) {
-        this.audioList = result[0].audiosList;
+        if (result.length) {
+            this.audioList = result[0].audiosList;
+        }
     };
     //Need to activate/deactivate edit btn later based on changes in title field
     MusicPlayerComponent.prototype.editAudioAlbum = function (event) {
@@ -6112,15 +6116,19 @@ var PhotosComponent = (function () {
     };
     PhotosComponent.prototype.afterPhotosAbumInfo = function (result) {
         var self = this;
-        this.photosAlbumList = result;
-        self.imageSource = [];
-        for (var i in this.photosAlbumList[0].photosList) {
-            self.imageSource.push(this.photosAlbumList[0].photosList[i].actualPhoto);
+        if (result.length > 0) {
+            this.photosAlbumList = result;
+            self.imageSource = [];
+            for (var i in this.photosAlbumList[0].photosList) {
+                self.imageSource.push(this.photosAlbumList[0].photosList[i].actualPhoto);
+            }
+            this.createCarouselItems(self.imageSource);
         }
-        this.createCarouselItems(self.imageSource);
     };
     PhotosComponent.prototype.afterAlbumPhotosInfo = function (result) {
-        this.photosList = result[0].photosList;
+        if (result.length > 0) {
+            this.photosList = result[0].photosList;
+        }
     };
     //Need to activate/deactivate edit btn later based on changes in title field
     PhotosComponent.prototype.editPhotosAlbum = function (event) {
