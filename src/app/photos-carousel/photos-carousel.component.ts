@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ICarouselConfig, AnimationConfig } from 'angular4-carousel';
+//import { ICarouselConfig, AnimationConfig } from 'angular4-carousel';
 import { CarouseldataService } from 'app/services/shareobject/carouseldata.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class PhotosCarouselComponent implements OnInit {
 	//private imageSource: string[];
 	private msg: any;
   
-  	private config: ICarouselConfig = {
+  	/*private config: ICarouselConfig = {
     	verifyBeforeLoad: true,
       	log: false,
       	animation: true,
@@ -22,7 +22,7 @@ export class PhotosCarouselComponent implements OnInit {
       	autoplay: true,
       	autoplayDelay: 2000,
       	stopAutoplayMinWidth: 768
-    };
+    };*/
   	constructor(private carouseldataService: CarouseldataService) { 
 
   		//this.carouselImages = this.imageSources;

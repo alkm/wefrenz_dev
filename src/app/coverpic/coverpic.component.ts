@@ -4,10 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 
 import { ModalService } from '../modal/modal.service';
 import { UploadService } from '../services/data/upload.service';
-import { AppSettingsService } from 'app/services/settings/app-settings.service';
-import { ConfigurationService } from 'app/services/data/configuration.service';
-import { FriendsService } from 'app/services/data/friends.service';
-import { UtilityService } from 'app/services/utility/utility.service';
+import { AppSettingsService } from '../../app/services/settings/app-settings.service';
+import { ConfigurationService } from '../../app/services/data/configuration.service';
+import { FriendsService } from '../../app/services/data/friends.service';
+import { UtilityService } from '../../app/services/utility/utility.service';
 
 @Component({
   selector: 'app-coverpic',
@@ -240,7 +240,7 @@ export class CoverpicComponent implements OnInit, AfterViewInit {
   		this.isEditCoverPic = false;
   		this.isSaveCoverPic = true;
   		this.isUploadCoverPic = true;
-  		this.coverPicModal.close();
+  		this.modalService.close(this.modalId);
   	}
 
 

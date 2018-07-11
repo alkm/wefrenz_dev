@@ -1,8 +1,8 @@
 import { Component, ViewChild, ElementRef, ViewContainerRef, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { ValidationService } from 'app/services/validators/validation.service';
-import { AppSettingsService } from 'app/services/settings/app-settings.service';
-import { PhotosService } from 'app/services/data/photos.service';
+import { ValidationService } from '../../app/services/validators/validation.service';
+import { AppSettingsService } from '../../app/services/settings/app-settings.service';
+import { PhotosService } from '../../app/services/data/photos.service';
 import { PhotosCarouselComponent } from '../photos-carousel/photos-carousel.component';
 
 
@@ -216,11 +216,13 @@ export class PhotosComponent implements OnInit {
   private afterPhotosAbumInfo(result){
     let self = this;
     this.photosAlbumList = result;
-    self.imageSource = [];
-    for(let i in this.photosAlbumList[0].photosList){
-      self.imageSource.push(this.photosAlbumList[0].photosList[i].actualPhoto)
+    if(result.length > 0){
+      self.imageSource = [];
+      for(let i in this.photosAlbumList[0].photosList){
+        self.imageSource.push(this.photosAlbumList[0].photosList[i].actualPhoto)
+      }
+      this.createCarouselItems(self.imageSource);  
     }
-    this.createCarouselItems(self.imageSource);  
   }
   private afterAlbumPhotosInfo(result){
     this.photosList = result[0].photosList;

@@ -240,10 +240,13 @@ export class VideoPlayerComponent implements OnInit {
 
 	private afterVideoAbumInfo(result){
 		this.videoAlbumList = result;
-		this.videoSource = [];
-		this.videoSource = this.videoAlbumList[0].videosList;
-		this.createVideoList(this.videoSource);
-		this.playVideo(this.videoAlbumList[0].videosList[0], -1); 	
+		if(result.length > 0){
+			this.videoSource = [];
+			this.videoSource = this.videoAlbumList[0].videosList;
+			this.createVideoList(this.videoSource);
+			this.playVideo(this.videoAlbumList[0].videosList[0], -1);
+		}
+ 	
 	}
 	private afterAbumVideoInfo(result){
 		this.videosList = result[0].videosList;

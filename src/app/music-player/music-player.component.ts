@@ -1,8 +1,8 @@
 import { Component, ViewChild, ElementRef, ViewContainerRef, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { ValidationService } from 'app/services/validators/validation.service';
-import { AppSettingsService } from 'app/services/settings/app-settings.service';
-import { AudioService } from 'app/services/data/audio.service';
+import { ValidationService } from '../../app/services/validators/validation.service';
+import { AppSettingsService } from '../../app/services/settings/app-settings.service';
+import { AudioService } from '../../app/services/data/audio.service';
 import { MusicListComponent } from '../music-list/music-list.component';
 
 @Component({
@@ -210,12 +210,14 @@ export class MusicPlayerComponent implements OnInit {
 
 	private afterAudioAbumInfo(result){
 		this.audioAlbumList = result;
-		this.musicSource = [];
-		//for(var i in this.audioAlbumList[0].audiosList){
-			this.musicSource = this.audioAlbumList[0].audiosList;
-		//}
-		this.createMusicList(this.musicSource);
-		this.playAudio(this.audioAlbumList[0].audiosList[0], -1); 	
+		if(result.length > 0){
+			this.musicSource = [];
+			//for(var i in this.audioAlbumList[0].audiosList){
+				this.musicSource = this.audioAlbumList[0].audiosList;
+			//}
+			this.createMusicList(this.musicSource);
+			this.playAudio(this.audioAlbumList[0].audiosList[0], -1); 	
+		}
 	}
 	private afterAbumAudioInfo(result){
 		this.audioList = result[0].audiosList;

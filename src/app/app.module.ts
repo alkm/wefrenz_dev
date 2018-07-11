@@ -32,7 +32,7 @@ import { ModalComponent } from './modal/modal.component';
 
 import { ModalModule } from './modal/modal.module';
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { CarouselModule } from 'angular4-carousel';
+//import { CarouselModule } from 'angular4-carousel';
 import { ImageCropperComponent } from './image-cropper/image-cropper.component';
 import { CapturePicComponent } from './capture-pic/capture-pic.component';
 import { FriendRequestPendingListComponent } from './friend-request-pending-list/friend-request-pending-list.component';
@@ -150,7 +150,7 @@ enableProdMode();
     ReactiveFormsModule,
     HttpModule,
     ImageCropperModule,
-    CarouselModule,
+    //CarouselModule,
     ColorPickerModule,
     RouterModule.forRoot([
         {
