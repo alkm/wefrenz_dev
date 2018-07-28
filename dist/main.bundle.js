@@ -599,50 +599,49 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__coverpic_coverpic_component__ = __webpack_require__("../../../../../src/app/coverpic/coverpic.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__modal_modal_component__ = __webpack_require__("../../../../../src/app/modal/modal.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_ngx_image_cropper__ = __webpack_require__("../../../../ngx-image-cropper/ngx-image-cropper/ngx-image-cropper.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_angular4_carousel__ = __webpack_require__("../../../../angular4-carousel/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__image_cropper_image_cropper_component__ = __webpack_require__("../../../../../src/app/image-cropper/image-cropper.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__capture_pic_capture_pic_component__ = __webpack_require__("../../../../../src/app/capture-pic/capture-pic.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__friend_request_pending_list_friend_request_pending_list_component__ = __webpack_require__("../../../../../src/app/friend-request-pending-list/friend-request-pending-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__chat_chat_component__ = __webpack_require__("../../../../../src/app/chat/chat.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__chat_item_chat_item_component__ = __webpack_require__("../../../../../src/app/chat-item/chat-item.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__chat_window_chat_window_component__ = __webpack_require__("../../../../../src/app/chat-window/chat-window.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pipes_chat_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/chat-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__video_video_component__ = __webpack_require__("../../../../../src/app/video/video.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__avchat_avchat_component__ = __webpack_require__("../../../../../src/app/avchat/avchat.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__entertainment_entertainment_component__ = __webpack_require__("../../../../../src/app/entertainment/entertainment.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__video_player_video_player_component__ = __webpack_require__("../../../../../src/app/video-player/video-player.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__ad_ad_component__ = __webpack_require__("../../../../../src/app/ad/ad.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__video_album_icon_video_album_icon_component__ = __webpack_require__("../../../../../src/app/video-album-icon/video-album-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pipes_album_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/album-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__video_icon_video_icon_component__ = __webpack_require__("../../../../../src/app/video-icon/video-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__pipes_video_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/video-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__music_player_music_player_component__ = __webpack_require__("../../../../../src/app/music-player/music-player.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__audio_icon_audio_icon_component__ = __webpack_require__("../../../../../src/app/audio-icon/audio-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__audio_album_icon_audio_album_icon_component__ = __webpack_require__("../../../../../src/app/audio-album-icon/audio-album-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pipes_audio_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/audio-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__photos_photos_component__ = __webpack_require__("../../../../../src/app/photos/photos.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__photos_icon_photos_icon_component__ = __webpack_require__("../../../../../src/app/photos-icon/photos-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__photos_album_icon_photos_album_icon_component__ = __webpack_require__("../../../../../src/app/photos-album-icon/photos-album-icon.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pipes_photos_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/photos-search.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__photos_carousel_photos_carousel_component__ = __webpack_require__("../../../../../src/app/photos-carousel/photos-carousel.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53_angular4_color_picker__ = __webpack_require__("../../../../angular4-color-picker/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53_angular4_color_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_53_angular4_color_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__music_list_music_list_component__ = __webpack_require__("../../../../../src/app/music-list/music-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__video_list_video_list_component__ = __webpack_require__("../../../../../src/app/video-list/video-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__stories_stories_component__ = __webpack_require__("../../../../../src/app/stories/stories.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__story_box_story_box_component__ = __webpack_require__("../../../../../src/app/story-box/story-box.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__feeditem_feeditem_component__ = __webpack_require__("../../../../../src/app/feeditem/feeditem.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__checkin_checkin_component__ = __webpack_require__("../../../../../src/app/checkin/checkin.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__comment_box_comment_box_component__ = __webpack_require__("../../../../../src/app/comment-box/comment-box.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__commentitem_commentitem_component__ = __webpack_require__("../../../../../src/app/commentitem/commentitem.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__market_market_component__ = __webpack_require__("../../../../../src/app/market/market.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__add_item_add_item_component__ = __webpack_require__("../../../../../src/app/add-item/add-item.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__item_tile_item_tile_component__ = __webpack_require__("../../../../../src/app/item-tile/item-tile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_65__cart_tile_cart_tile_component__ = __webpack_require__("../../../../../src/app/cart-tile/cart-tile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_66__checkout_checkout_component__ = __webpack_require__("../../../../../src/app/checkout/checkout.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_67__address_info_address_info_component__ = __webpack_require__("../../../../../src/app/address-info/address-info.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_68__payment_info_payment_info_component__ = __webpack_require__("../../../../../src/app/payment-info/payment-info.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_69__people_people_component__ = __webpack_require__("../../../../../src/app/people/people.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__image_cropper_image_cropper_component__ = __webpack_require__("../../../../../src/app/image-cropper/image-cropper.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__capture_pic_capture_pic_component__ = __webpack_require__("../../../../../src/app/capture-pic/capture-pic.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__friend_request_pending_list_friend_request_pending_list_component__ = __webpack_require__("../../../../../src/app/friend-request-pending-list/friend-request-pending-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__chat_chat_component__ = __webpack_require__("../../../../../src/app/chat/chat.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__chat_item_chat_item_component__ = __webpack_require__("../../../../../src/app/chat-item/chat-item.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__chat_window_chat_window_component__ = __webpack_require__("../../../../../src/app/chat-window/chat-window.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pipes_chat_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/chat-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__video_video_component__ = __webpack_require__("../../../../../src/app/video/video.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__avchat_avchat_component__ = __webpack_require__("../../../../../src/app/avchat/avchat.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__entertainment_entertainment_component__ = __webpack_require__("../../../../../src/app/entertainment/entertainment.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__video_player_video_player_component__ = __webpack_require__("../../../../../src/app/video-player/video-player.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__ad_ad_component__ = __webpack_require__("../../../../../src/app/ad/ad.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__video_album_icon_video_album_icon_component__ = __webpack_require__("../../../../../src/app/video-album-icon/video-album-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pipes_album_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/album-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__video_icon_video_icon_component__ = __webpack_require__("../../../../../src/app/video-icon/video-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pipes_video_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/video-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__music_player_music_player_component__ = __webpack_require__("../../../../../src/app/music-player/music-player.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__audio_icon_audio_icon_component__ = __webpack_require__("../../../../../src/app/audio-icon/audio-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__audio_album_icon_audio_album_icon_component__ = __webpack_require__("../../../../../src/app/audio-album-icon/audio-album-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__pipes_audio_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/audio-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__photos_photos_component__ = __webpack_require__("../../../../../src/app/photos/photos.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__photos_icon_photos_icon_component__ = __webpack_require__("../../../../../src/app/photos-icon/photos-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__photos_album_icon_photos_album_icon_component__ = __webpack_require__("../../../../../src/app/photos-album-icon/photos-album-icon.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pipes_photos_search_pipe__ = __webpack_require__("../../../../../src/app/pipes/photos-search.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__photos_carousel_photos_carousel_component__ = __webpack_require__("../../../../../src/app/photos-carousel/photos-carousel.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52_angular4_color_picker__ = __webpack_require__("../../../../angular4-color-picker/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52_angular4_color_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_52_angular4_color_picker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__music_list_music_list_component__ = __webpack_require__("../../../../../src/app/music-list/music-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__video_list_video_list_component__ = __webpack_require__("../../../../../src/app/video-list/video-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__stories_stories_component__ = __webpack_require__("../../../../../src/app/stories/stories.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__story_box_story_box_component__ = __webpack_require__("../../../../../src/app/story-box/story-box.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__feeditem_feeditem_component__ = __webpack_require__("../../../../../src/app/feeditem/feeditem.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__checkin_checkin_component__ = __webpack_require__("../../../../../src/app/checkin/checkin.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__comment_box_comment_box_component__ = __webpack_require__("../../../../../src/app/comment-box/comment-box.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__commentitem_commentitem_component__ = __webpack_require__("../../../../../src/app/commentitem/commentitem.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__market_market_component__ = __webpack_require__("../../../../../src/app/market/market.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__add_item_add_item_component__ = __webpack_require__("../../../../../src/app/add-item/add-item.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__item_tile_item_tile_component__ = __webpack_require__("../../../../../src/app/item-tile/item-tile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__cart_tile_cart_tile_component__ = __webpack_require__("../../../../../src/app/cart-tile/cart-tile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_65__checkout_checkout_component__ = __webpack_require__("../../../../../src/app/checkout/checkout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_66__address_info_address_info_component__ = __webpack_require__("../../../../../src/app/address-info/address-info.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_67__payment_info_payment_info_component__ = __webpack_require__("../../../../../src/app/payment-info/payment-info.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_68__people_people_component__ = __webpack_require__("../../../../../src/app/people/people.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -677,7 +676,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
+//import { CarouselModule } from 'angular4-carousel';
 
 
 
@@ -747,47 +746,47 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_23__profile_profile_component__["a" /* ProfileComponent */],
             __WEBPACK_IMPORTED_MODULE_24__coverpic_coverpic_component__["a" /* CoverpicComponent */],
             __WEBPACK_IMPORTED_MODULE_25__modal_modal_component__["a" /* ModalComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__image_cropper_image_cropper_component__["a" /* ImageCropperComponent */],
-            __WEBPACK_IMPORTED_MODULE_29__capture_pic_capture_pic_component__["a" /* CapturePicComponent */],
-            __WEBPACK_IMPORTED_MODULE_30__friend_request_pending_list_friend_request_pending_list_component__["a" /* FriendRequestPendingListComponent */],
-            __WEBPACK_IMPORTED_MODULE_31__chat_chat_component__["a" /* ChatComponent */],
-            __WEBPACK_IMPORTED_MODULE_32__chat_item_chat_item_component__["a" /* ChatItemComponent */],
-            __WEBPACK_IMPORTED_MODULE_34__pipes_chat_search_pipe__["a" /* ChatSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_33__chat_window_chat_window_component__["a" /* ChatWindowComponent */],
-            __WEBPACK_IMPORTED_MODULE_35__video_video_component__["a" /* VideoComponent */],
-            __WEBPACK_IMPORTED_MODULE_36__avchat_avchat_component__["a" /* AvchatComponent */],
-            __WEBPACK_IMPORTED_MODULE_37__entertainment_entertainment_component__["a" /* EntertainmentComponent */],
-            __WEBPACK_IMPORTED_MODULE_38__video_player_video_player_component__["a" /* VideoPlayerComponent */],
-            __WEBPACK_IMPORTED_MODULE_39__ad_ad_component__["a" /* AdComponent */],
-            __WEBPACK_IMPORTED_MODULE_40__video_album_icon_video_album_icon_component__["a" /* VideoAlbumIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_41__pipes_album_search_pipe__["a" /* AlbumSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_42__video_icon_video_icon_component__["a" /* VideoIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_43__pipes_video_search_pipe__["a" /* VideoSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_44__music_player_music_player_component__["a" /* MusicPlayerComponent */],
-            __WEBPACK_IMPORTED_MODULE_45__audio_icon_audio_icon_component__["a" /* AudioIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_46__audio_album_icon_audio_album_icon_component__["a" /* AudioAlbumIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_47__pipes_audio_search_pipe__["a" /* AudioSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_48__photos_photos_component__["a" /* PhotosComponent */],
-            __WEBPACK_IMPORTED_MODULE_49__photos_icon_photos_icon_component__["a" /* PhotosIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_50__photos_album_icon_photos_album_icon_component__["a" /* PhotosAlbumIconComponent */],
-            __WEBPACK_IMPORTED_MODULE_51__pipes_photos_search_pipe__["a" /* PhotosSearchPipe */],
-            __WEBPACK_IMPORTED_MODULE_52__photos_carousel_photos_carousel_component__["a" /* PhotosCarouselComponent */],
-            __WEBPACK_IMPORTED_MODULE_54__music_list_music_list_component__["a" /* MusicListComponent */],
-            __WEBPACK_IMPORTED_MODULE_55__video_list_video_list_component__["a" /* VideoListComponent */],
-            __WEBPACK_IMPORTED_MODULE_56__stories_stories_component__["a" /* StoriesComponent */],
-            __WEBPACK_IMPORTED_MODULE_57__story_box_story_box_component__["a" /* StoryBoxComponent */],
-            __WEBPACK_IMPORTED_MODULE_58__feeditem_feeditem_component__["a" /* FeeditemComponent */],
-            __WEBPACK_IMPORTED_MODULE_59__checkin_checkin_component__["a" /* CheckinComponent */],
-            __WEBPACK_IMPORTED_MODULE_60__comment_box_comment_box_component__["a" /* CommentBoxComponent */],
-            __WEBPACK_IMPORTED_MODULE_61__commentitem_commentitem_component__["a" /* CommentitemComponent */],
-            __WEBPACK_IMPORTED_MODULE_62__market_market_component__["a" /* MarketComponent */],
-            __WEBPACK_IMPORTED_MODULE_63__add_item_add_item_component__["a" /* AddItemComponent */],
-            __WEBPACK_IMPORTED_MODULE_64__item_tile_item_tile_component__["a" /* ItemTileComponent */],
-            __WEBPACK_IMPORTED_MODULE_65__cart_tile_cart_tile_component__["a" /* CartTileComponent */],
-            __WEBPACK_IMPORTED_MODULE_66__checkout_checkout_component__["a" /* CheckoutComponent */],
-            __WEBPACK_IMPORTED_MODULE_67__address_info_address_info_component__["a" /* AddressInfoComponent */],
-            __WEBPACK_IMPORTED_MODULE_68__payment_info_payment_info_component__["a" /* PaymentInfoComponent */],
-            __WEBPACK_IMPORTED_MODULE_69__people_people_component__["a" /* PeopleComponent */]
+            __WEBPACK_IMPORTED_MODULE_27__image_cropper_image_cropper_component__["a" /* ImageCropperComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__capture_pic_capture_pic_component__["a" /* CapturePicComponent */],
+            __WEBPACK_IMPORTED_MODULE_29__friend_request_pending_list_friend_request_pending_list_component__["a" /* FriendRequestPendingListComponent */],
+            __WEBPACK_IMPORTED_MODULE_30__chat_chat_component__["a" /* ChatComponent */],
+            __WEBPACK_IMPORTED_MODULE_31__chat_item_chat_item_component__["a" /* ChatItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_33__pipes_chat_search_pipe__["a" /* ChatSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_32__chat_window_chat_window_component__["a" /* ChatWindowComponent */],
+            __WEBPACK_IMPORTED_MODULE_34__video_video_component__["a" /* VideoComponent */],
+            __WEBPACK_IMPORTED_MODULE_35__avchat_avchat_component__["a" /* AvchatComponent */],
+            __WEBPACK_IMPORTED_MODULE_36__entertainment_entertainment_component__["a" /* EntertainmentComponent */],
+            __WEBPACK_IMPORTED_MODULE_37__video_player_video_player_component__["a" /* VideoPlayerComponent */],
+            __WEBPACK_IMPORTED_MODULE_38__ad_ad_component__["a" /* AdComponent */],
+            __WEBPACK_IMPORTED_MODULE_39__video_album_icon_video_album_icon_component__["a" /* VideoAlbumIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_40__pipes_album_search_pipe__["a" /* AlbumSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_41__video_icon_video_icon_component__["a" /* VideoIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_42__pipes_video_search_pipe__["a" /* VideoSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_43__music_player_music_player_component__["a" /* MusicPlayerComponent */],
+            __WEBPACK_IMPORTED_MODULE_44__audio_icon_audio_icon_component__["a" /* AudioIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_45__audio_album_icon_audio_album_icon_component__["a" /* AudioAlbumIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_46__pipes_audio_search_pipe__["a" /* AudioSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_47__photos_photos_component__["a" /* PhotosComponent */],
+            __WEBPACK_IMPORTED_MODULE_48__photos_icon_photos_icon_component__["a" /* PhotosIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_49__photos_album_icon_photos_album_icon_component__["a" /* PhotosAlbumIconComponent */],
+            __WEBPACK_IMPORTED_MODULE_50__pipes_photos_search_pipe__["a" /* PhotosSearchPipe */],
+            __WEBPACK_IMPORTED_MODULE_51__photos_carousel_photos_carousel_component__["a" /* PhotosCarouselComponent */],
+            __WEBPACK_IMPORTED_MODULE_53__music_list_music_list_component__["a" /* MusicListComponent */],
+            __WEBPACK_IMPORTED_MODULE_54__video_list_video_list_component__["a" /* VideoListComponent */],
+            __WEBPACK_IMPORTED_MODULE_55__stories_stories_component__["a" /* StoriesComponent */],
+            __WEBPACK_IMPORTED_MODULE_56__story_box_story_box_component__["a" /* StoryBoxComponent */],
+            __WEBPACK_IMPORTED_MODULE_57__feeditem_feeditem_component__["a" /* FeeditemComponent */],
+            __WEBPACK_IMPORTED_MODULE_58__checkin_checkin_component__["a" /* CheckinComponent */],
+            __WEBPACK_IMPORTED_MODULE_59__comment_box_comment_box_component__["a" /* CommentBoxComponent */],
+            __WEBPACK_IMPORTED_MODULE_60__commentitem_commentitem_component__["a" /* CommentitemComponent */],
+            __WEBPACK_IMPORTED_MODULE_61__market_market_component__["a" /* MarketComponent */],
+            __WEBPACK_IMPORTED_MODULE_62__add_item_add_item_component__["a" /* AddItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_63__item_tile_item_tile_component__["a" /* ItemTileComponent */],
+            __WEBPACK_IMPORTED_MODULE_64__cart_tile_cart_tile_component__["a" /* CartTileComponent */],
+            __WEBPACK_IMPORTED_MODULE_65__checkout_checkout_component__["a" /* CheckoutComponent */],
+            __WEBPACK_IMPORTED_MODULE_66__address_info_address_info_component__["a" /* AddressInfoComponent */],
+            __WEBPACK_IMPORTED_MODULE_67__payment_info_payment_info_component__["a" /* PaymentInfoComponent */],
+            __WEBPACK_IMPORTED_MODULE_68__people_people_component__["a" /* PeopleComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__agm_core__["a" /* AgmCoreModule */].forRoot({
@@ -801,8 +800,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_5__angular_forms__["g" /* ReactiveFormsModule */],
             __WEBPACK_IMPORTED_MODULE_6__angular_http__["c" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_26_ngx_image_cropper__["a" /* ImageCropperModule */],
-            __WEBPACK_IMPORTED_MODULE_27_angular4_carousel__["b" /* CarouselModule */],
-            __WEBPACK_IMPORTED_MODULE_53_angular4_color_picker__["ColorPickerModule"],
+            //CarouselModule,
+            __WEBPACK_IMPORTED_MODULE_52_angular4_color_picker__["ColorPickerModule"],
             __WEBPACK_IMPORTED_MODULE_7__angular_router__["e" /* RouterModule */].forRoot([
                 {
                     path: 'public',
@@ -818,28 +817,28 @@ AppModule = __decorate([
                 },
                 {
                     path: 'entertainment/:id',
-                    component: __WEBPACK_IMPORTED_MODULE_37__entertainment_entertainment_component__["a" /* EntertainmentComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_36__entertainment_entertainment_component__["a" /* EntertainmentComponent */]
                 },
                 {
                     path: 'stories/:id',
-                    component: __WEBPACK_IMPORTED_MODULE_56__stories_stories_component__["a" /* StoriesComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_55__stories_stories_component__["a" /* StoriesComponent */]
                 },
                 {
                     path: 'market/:id',
-                    component: __WEBPACK_IMPORTED_MODULE_62__market_market_component__["a" /* MarketComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_61__market_market_component__["a" /* MarketComponent */]
                 },
                 {
                     path: 'checkout/:id',
-                    component: __WEBPACK_IMPORTED_MODULE_66__checkout_checkout_component__["a" /* CheckoutComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_65__checkout_checkout_component__["a" /* CheckoutComponent */]
                 },
                 {
                     path: 'people/:id',
-                    component: __WEBPACK_IMPORTED_MODULE_69__people_people_component__["a" /* PeopleComponent */]
+                    component: __WEBPACK_IMPORTED_MODULE_68__people_people_component__["a" /* PeopleComponent */]
                 }
             ], { useHash: true })
         ],
         providers: [__WEBPACK_IMPORTED_MODULE_8_app_services_shareobject_routeinfo_service__["a" /* RouteinfoService */], __WEBPACK_IMPORTED_MODULE_9_app_modal_modal_service__["a" /* ModalService */], __WEBPACK_IMPORTED_MODULE_10__globals_global__["a" /* Globals */]],
-        entryComponents: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_13__login_login_component__["a" /* LoginComponent */], __WEBPACK_IMPORTED_MODULE_14__signup_signup_component__["a" /* SignupComponent */], __WEBPACK_IMPORTED_MODULE_52__photos_carousel_photos_carousel_component__["a" /* PhotosCarouselComponent */], __WEBPACK_IMPORTED_MODULE_54__music_list_music_list_component__["a" /* MusicListComponent */], __WEBPACK_IMPORTED_MODULE_55__video_list_video_list_component__["a" /* VideoListComponent */]],
+        entryComponents: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_13__login_login_component__["a" /* LoginComponent */], __WEBPACK_IMPORTED_MODULE_14__signup_signup_component__["a" /* SignupComponent */], __WEBPACK_IMPORTED_MODULE_51__photos_carousel_photos_carousel_component__["a" /* PhotosCarouselComponent */], __WEBPACK_IMPORTED_MODULE_53__music_list_music_list_component__["a" /* MusicListComponent */], __WEBPACK_IMPORTED_MODULE_54__video_list_video_list_component__["a" /* VideoListComponent */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -2595,10 +2594,10 @@ module.exports = "<div id=\"coverPic\" #coverPic class=\"cover-pic\" (mousedown)
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modal_modal_service__ = __webpack_require__("../../../../../src/app/modal/modal.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_data_upload_service__ = __webpack_require__("../../../../../src/app/services/data/upload.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_services_data_configuration_service__ = __webpack_require__("../../../../../src/app/services/data/configuration.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__ = __webpack_require__("../../../../../src/app/services/data/friends.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_app_services_utility_utility_service__ = __webpack_require__("../../../../../src/app/services/utility/utility.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_services_data_configuration_service__ = __webpack_require__("../../../../../src/app/services/data/configuration.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_services_data_friends_service__ = __webpack_require__("../../../../../src/app/services/data/friends.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_services_utility_utility_service__ = __webpack_require__("../../../../../src/app/services/utility/utility.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2717,8 +2716,8 @@ var CoverpicComponent = (function () {
             console.log(actualImage.width + ',' + actualImage.height);
             self.scalableHeight = (self.coverPicWidth / actualImage.width) * actualImage.height;
         };
-        this.posX = __WEBPACK_IMPORTED_MODULE_8_app_services_utility_utility_service__["a" /* UtilityService */].getPicPosition(coverPicSettings.wallpicpos).position.x;
-        this.posY = __WEBPACK_IMPORTED_MODULE_8_app_services_utility_utility_service__["a" /* UtilityService */].getPicPosition(coverPicSettings.wallpicpos).position.y;
+        this.posX = __WEBPACK_IMPORTED_MODULE_8__app_services_utility_utility_service__["a" /* UtilityService */].getPicPosition(coverPicSettings.wallpicpos).position.x;
+        this.posY = __WEBPACK_IMPORTED_MODULE_8__app_services_utility_utility_service__["a" /* UtilityService */].getPicPosition(coverPicSettings.wallpicpos).position.y;
     };
     CoverpicComponent.prototype.canvasMouseDown = function () {
         //this.mousePressed = true;
@@ -2906,7 +2905,7 @@ var CoverpicComponent = (function () {
         formData.append('coverpicpos', coverPicPos);
         formData.append('userid', this.userId);
         var xhr = new XMLHttpRequest();
-        xhr.open('post', __WEBPACK_IMPORTED_MODULE_5_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + '/api/uploadCoverPic', true);
+        xhr.open('post', __WEBPACK_IMPORTED_MODULE_5__app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + '/api/uploadCoverPic', true);
         xhr.upload.onprogress = function (e) {
             if (e.lengthComputable) {
                 var percentage = (e.loaded / e.total) * 100;
@@ -3007,9 +3006,9 @@ CoverpicComponent = __decorate([
         selector: 'app-coverpic',
         template: __webpack_require__("../../../../../src/app/coverpic/coverpic.component.html"),
         styles: [__webpack_require__("../../../../../src/app/coverpic/coverpic.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_4__services_data_upload_service__["a" /* UploadService */], __WEBPACK_IMPORTED_MODULE_6_app_services_data_configuration_service__["a" /* ConfigurationService */], __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__["a" /* FriendsService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_4__services_data_upload_service__["a" /* UploadService */], __WEBPACK_IMPORTED_MODULE_6__app_services_data_configuration_service__["a" /* ConfigurationService */], __WEBPACK_IMPORTED_MODULE_7__app_services_data_friends_service__["a" /* FriendsService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__modal_modal_service__["a" /* ModalService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_4__services_data_upload_service__["a" /* UploadService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_data_upload_service__["a" /* UploadService */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_6_app_services_data_configuration_service__["a" /* ConfigurationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_app_services_data_configuration_service__["a" /* ConfigurationService */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _k || Object])
+    __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ElementRef */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__modal_modal_service__["a" /* ModalService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_4__services_data_upload_service__["a" /* UploadService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_data_upload_service__["a" /* UploadService */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_6__app_services_data_configuration_service__["a" /* ConfigurationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__app_services_data_configuration_service__["a" /* ConfigurationService */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_7__app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _k || Object])
 ], CoverpicComponent);
 
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
@@ -5055,9 +5054,9 @@ module.exports = "<div class=\"audio-container\">\n    <canvas id='canvas'></can
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MusicPlayerComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_validators_validation_service__ = __webpack_require__("../../../../../src/app/services/validators/validation.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_data_audio_service__ = __webpack_require__("../../../../../src/app/services/data/audio.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_services_validators_validation_service__ = __webpack_require__("../../../../../src/app/services/validators/validation.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_services_data_audio_service__ = __webpack_require__("../../../../../src/app/services/data/audio.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__music_list_music_list_component__ = __webpack_require__("../../../../../src/app/music-list/music-list.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -5101,8 +5100,8 @@ var MusicPlayerComponent = (function () {
             file: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]()
         });
         this.albumForm = this.formBuilder.group({
-            'albumTitle': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2_app_services_validators_validation_service__["a" /* ValidationService */].blankDataValidator]],
-            'albumDesc': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2_app_services_validators_validation_service__["a" /* ValidationService */].blankDataValidator]]
+            'albumTitle': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__app_services_validators_validation_service__["a" /* ValidationService */].blankDataValidator]],
+            'albumDesc': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__app_services_validators_validation_service__["a" /* ValidationService */].blankDataValidator]]
         });
         this.fetchAudioAlbumInfo();
     }
@@ -5128,7 +5127,7 @@ var MusicPlayerComponent = (function () {
                 formData.append('album', 'untitled');
             }
             var xhr = new XMLHttpRequest();
-            xhr.open('post', __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + '/api/uploadAudio', true);
+            xhr.open('post', __WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + '/api/uploadAudio', true);
             xhr.upload.onprogress = function (e) {
                 if (e.lengthComputable) {
                     var percentage = (e.loaded / e.total) * 100;
@@ -5400,9 +5399,9 @@ MusicPlayerComponent = __decorate([
         selector: 'app-music-player',
         template: __webpack_require__("../../../../../src/app/music-player/music-player.component.html"),
         styles: [__webpack_require__("../../../../../src/app/music-player/music-player.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_4_app_services_data_audio_service__["a" /* AudioService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_4__app_services_data_audio_service__["a" /* AudioService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_data_audio_service__["a" /* AudioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_data_audio_service__["a" /* AudioService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__app_services_data_audio_service__["a" /* AudioService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_services_data_audio_service__["a" /* AudioService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */]) === "function" && _e || Object])
 ], MusicPlayerComponent);
 
 var _a, _b, _c, _d, _e;
@@ -5759,7 +5758,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/photos-carousel/photos-carousel.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<carousel [sources]=\"imageSource\" [config]=\"config\"></carousel>"
+module.exports = "<!--<carousel [sources]=\"imageSource\" [config]=\"config\"></carousel>-->"
 
 /***/ }),
 
@@ -5769,8 +5768,7 @@ module.exports = "<carousel [sources]=\"imageSource\" [config]=\"config\"></caro
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PhotosCarouselComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular4_carousel__ = __webpack_require__("../../../../angular4-carousel/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_shareobject_carouseldata_service__ = __webpack_require__("../../../../../src/app/services/shareobject/carouseldata.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_shareobject_carouseldata_service__ = __webpack_require__("../../../../../src/app/services/shareobject/carouseldata.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5781,21 +5779,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
+//import { ICarouselConfig, AnimationConfig } from 'angular4-carousel';
 
 var PhotosCarouselComponent = (function () {
+    /*private config: ICarouselConfig = {
+        verifyBeforeLoad: true,
+        log: false,
+        animation: true,
+        animationType: AnimationConfig.SLIDE,
+        autoplay: true,
+        autoplayDelay: 2000,
+        stopAutoplayMinWidth: 768
+    };*/
     function PhotosCarouselComponent(carouseldataService) {
         //this.carouselImages = this.imageSources;
         this.carouseldataService = carouseldataService;
-        this.config = {
-            verifyBeforeLoad: true,
-            log: false,
-            animation: true,
-            animationType: __WEBPACK_IMPORTED_MODULE_1_angular4_carousel__["a" /* AnimationConfig */].SLIDE,
-            autoplay: true,
-            autoplayDelay: 2000,
-            stopAutoplayMinWidth: 768
-        };
     }
     PhotosCarouselComponent.prototype.ngOnInit = function () {
         //this.imageSource = ["photo/original/photo_1517345597409.png","photo/original/photo_1517346068877.png","photo/original/photo_1517346220159.png","photo/original/photo_1517346343644.png"];
@@ -5812,9 +5810,9 @@ PhotosCarouselComponent = __decorate([
         selector: 'app-photos-carousel',
         template: __webpack_require__("../../../../../src/app/photos-carousel/photos-carousel.component.html"),
         styles: [__webpack_require__("../../../../../src/app/photos-carousel/photos-carousel.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_2_app_services_shareobject_carouseldata_service__["a" /* CarouseldataService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_1_app_services_shareobject_carouseldata_service__["a" /* CarouseldataService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_shareobject_carouseldata_service__["a" /* CarouseldataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_shareobject_carouseldata_service__["a" /* CarouseldataService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_app_services_shareobject_carouseldata_service__["a" /* CarouseldataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_services_shareobject_carouseldata_service__["a" /* CarouseldataService */]) === "function" && _a || Object])
 ], PhotosCarouselComponent);
 
 var _a;
@@ -5921,9 +5919,9 @@ module.exports = "<div class=\"photos-container\">\n    <div style=\"width: 100%
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PhotosComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_validators_validation_service__ = __webpack_require__("../../../../../src/app/services/validators/validation.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_data_photos_service__ = __webpack_require__("../../../../../src/app/services/data/photos.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_services_validators_validation_service__ = __webpack_require__("../../../../../src/app/services/validators/validation.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_services_data_photos_service__ = __webpack_require__("../../../../../src/app/services/data/photos.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__photos_carousel_photos_carousel_component__ = __webpack_require__("../../../../../src/app/photos-carousel/photos-carousel.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -5965,8 +5963,8 @@ var PhotosComponent = (function () {
             file: new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]()
         });
         this.albumForm = this.formBuilder.group({
-            'albumTitle': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2_app_services_validators_validation_service__["a" /* ValidationService */].blankDataValidator]],
-            'albumDesc': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2_app_services_validators_validation_service__["a" /* ValidationService */].blankDataValidator]]
+            'albumTitle': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__app_services_validators_validation_service__["a" /* ValidationService */].blankDataValidator]],
+            'albumDesc': ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["h" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__app_services_validators_validation_service__["a" /* ValidationService */].blankDataValidator]]
         });
         this.fetchPhotosAlbumInfo();
     }
@@ -6001,7 +5999,7 @@ var PhotosComponent = (function () {
                 formData.append('album', 'untitled');
             }
             var xhr = new XMLHttpRequest();
-            xhr.open('post', __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + '/api/uploadPhotos', true);
+            xhr.open('post', __WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + '/api/uploadPhotos', true);
             xhr.upload.onprogress = function (e) {
                 if (e.lengthComputable) {
                     var percentage = (e.loaded / e.total) * 100;
@@ -6178,9 +6176,9 @@ PhotosComponent = __decorate([
         selector: 'app-photos',
         template: __webpack_require__("../../../../../src/app/photos/photos.component.html"),
         styles: [__webpack_require__("../../../../../src/app/photos/photos.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_4_app_services_data_photos_service__["a" /* PhotosService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_4__app_services_data_photos_service__["a" /* PhotosService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_data_photos_service__["a" /* PhotosService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_data_photos_service__["a" /* PhotosService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__app_services_data_photos_service__["a" /* PhotosService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_services_data_photos_service__["a" /* PhotosService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ComponentFactoryResolver */]) === "function" && _d || Object])
 ], PhotosComponent);
 
 var _a, _b, _c, _d;
@@ -8027,7 +8025,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8082,7 +8080,7 @@ var UploadService = (function () {
     UploadService.prototype.uploadEncodedProfilePic = function (postObj) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Accept': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/uploadEncodedProfilePic", postObj, options)
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/uploadEncodedProfilePic", postObj, options)
             .map(function (res) { return res.json(); });
     };
     return UploadService;
@@ -8106,7 +8104,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8127,25 +8125,25 @@ var VideoService = (function () {
     VideoService.prototype.createVideoAlbum = function (postObj) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/createVideoAlbum", postObj, options)
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/createVideoAlbum", postObj, options)
             .map(function (res) { return res.json(); });
     };
     VideoService.prototype.updateVideoAlbum = function (postObj) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/updateVideoAlbum", postObj, options)
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/updateVideoAlbum", postObj, options)
             .map(function (res) { return res.json(); });
     };
     VideoService.prototype.fetchVideoAlbumInfo = function (postObj) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchVideoAlbumInfo", postObj, options)
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchVideoAlbumInfo", postObj, options)
             .map(function (res) { return res.json(); });
     };
     VideoService.prototype.fetchAlbumVideoInfo = function (postObj) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchAlbumVideoInfo", postObj, options)
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchAlbumVideoInfo", postObj, options)
             .map(function (res) { return res.json(); });
     };
     return VideoService;
@@ -9978,6 +9976,8 @@ var VideoPlayerComponent = (function () {
         this.videoService = videoService;
         this.componentFactoryResolver = componentFactoryResolver;
         this.userId = '';
+        this.fullName = '';
+        this.profilePic = '';
         this.uploadProgress = 0;
         this.isProgress = false;
         this.albumTitle = '';
@@ -9995,6 +9995,8 @@ var VideoPlayerComponent = (function () {
         this.loadCount = 0;
         var loginData = JSON.parse(localStorage.getItem('loginData'));
         this.userId = loginData.username;
+        this.fullName = loginData.fullname;
+        this.profilePic = JSON.stringify(loginData.profilepic);
         this.videoUploadForm = this.formBuilder.group({
             'file': ['']
         });
@@ -10031,6 +10033,8 @@ var VideoPlayerComponent = (function () {
             return;
         }
         var userId = this.userId;
+        var fullName = this.fullName;
+        var profilePic = this.profilePic;
         var file;
         if (event.target.files && event.target.files[0]) {
             file = event.target.files[0];
@@ -10041,6 +10045,9 @@ var VideoPlayerComponent = (function () {
             var formData = new FormData();
             formData.append('uploadfile', file);
             formData.append('userid', userId);
+            formData.append('fullname', fullName);
+            formData.append('profilepic', profilePic);
+            //formData.append('fullname', );
             if (!directUpload) {
                 formData.append('album', self.videoInfo.title);
             }
@@ -10167,12 +10174,33 @@ var VideoPlayerComponent = (function () {
         var postObj = { 'username': this.userId, 'album': this.albumTitle };
         this.videoService.fetchAlbumVideoInfo(postObj).subscribe(function (data) { return _this.afterAbumVideoInfo(data); });
     };
+    /*private setNotification(){
+        var dateNow = new Date();
+        notificationInfo.create({
+            userid : req.body.username,
+            fullname : req.body.fullname,
+            profilepic : req.body.profilePicObj,
+            type : req.body.notificationType,
+            text : req.body.notificationText,
+            filePath : req.body.filePath,
+            isReady : req.body.isReady,
+            isShown : req.body.isShown
+        }, function(err, info) {
+            if (err){
+                res.send(err);
+            }else{
+                res.json({"status": "success", "message": "Notification Configured", "info": info});
+            }
+        });
+    }*/
     VideoPlayerComponent.prototype.afterVideoAbumInfo = function (result) {
         this.videoAlbumList = result;
-        this.videoSource = [];
-        this.videoSource = this.videoAlbumList[0].videosList;
-        this.createVideoList(this.videoSource);
-        this.playVideo(this.videoAlbumList[0].videosList[0], -1);
+        if (result.length > 0) {
+            this.videoSource = [];
+            this.videoSource = this.videoAlbumList[0].videosList;
+            this.createVideoList(this.videoSource);
+            this.playVideo(this.videoAlbumList[0].videosList[0], -1);
+        }
     };
     VideoPlayerComponent.prototype.afterAbumVideoInfo = function (result) {
         this.videosList = result[0].videosList;
