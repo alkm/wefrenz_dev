@@ -28,7 +28,7 @@ module.exports = function(app) {
 				if(item === null){
 					res.json({"status": "failure", "message": "The address is not added."});
 				}else{
-					res.json({"status": "success", "message": "Address is aleady there1", "info": item});
+					res.json({"status": "success", "message": "Address is aleady exist", "info": item});
 				}
 			}
 		});

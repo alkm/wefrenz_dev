@@ -21,6 +21,7 @@ export class CheckoutComponent implements OnInit {
   private grandTotal: number =  0;
   private modalId: string = "addAddressModal";
   private isAddressAdded: boolean = false;
+  private modalTitle: string = '';
 
   @Output() onAppLoggedIn: EventEmitter<any> = new EventEmitter();
 	@Output() onAppLoggedOut: EventEmitter<any> = new EventEmitter();
@@ -77,12 +78,11 @@ export class CheckoutComponent implements OnInit {
 
     private placeOrder(event){
       if(this.isAddressAdded){
-        alert('proceed to checkout');
+        this.modalTitle = 'Make Payment';
       }else{
-        this.openAppModal();
-
+        this.modalTitle = 'Add Address'
       }
-      
+      this.openAppModal();
     }
 
     private openAppModal(modalType = null){
@@ -126,7 +126,7 @@ export class CheckoutComponent implements OnInit {
     }
 
     private addressSaved(event: any){
-      this.modalService.close(this.modalId);
+      //this.modalService.close(this.modalId);
       this.isAddressAdded = true;
     }
 

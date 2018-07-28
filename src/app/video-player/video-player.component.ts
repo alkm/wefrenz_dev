@@ -19,6 +19,8 @@ export class VideoPlayerComponent implements OnInit {
 
 	private files: any;
 	private userId: string = '';
+	private fullName: string = '';
+	private profilePic: string = '';
 	private videoUploadForm: any;
 	private videoGroup: any;
 	private uploadProgress: number = 0;
@@ -47,6 +49,8 @@ export class VideoPlayerComponent implements OnInit {
   		this.loadCount = 0;
   		let loginData = JSON.parse(localStorage.getItem('loginData'));
 	    this.userId = loginData.username;
+	    this.fullName = loginData.fullname;
+	    this.profilePic = JSON.stringify(loginData.profilepic);
 
 	    this.videoUploadForm = this.formBuilder.group({
 		  'file': ['']
@@ -91,6 +95,8 @@ export class VideoPlayerComponent implements OnInit {
 			return;
 		}
 		let userId = this.userId;
+		let fullName = this.fullName;
+		let profilePic = this.profilePic;
 		let file: any;
 		if (event.target.files && event.target.files[0]) {
 			file = event.target.files[0];
@@ -101,6 +107,9 @@ export class VideoPlayerComponent implements OnInit {
 			let formData = new FormData();
 			formData.append('uploadfile', file);
 			formData.append('userid', userId);
+			formData.append('fullname', fullName);
+			formData.append('profilepic', profilePic);
+			//formData.append('fullname', );
 			if(!directUpload){
 				formData.append('album', self.videoInfo.title);
 			}else{
@@ -238,6 +247,25 @@ export class VideoPlayerComponent implements OnInit {
 	    this.videoService.fetchAlbumVideoInfo(postObj).subscribe(data => this.afterAbumVideoInfo(data));
 	}
 
+	/*private setNotification(){
+		var dateNow = new Date();
+		notificationInfo.create({
+			userid : req.body.username,
+			fullname : req.body.fullname,
+			profilepic : req.body.profilePicObj,
+			type : req.body.notificationType,
+			text : req.body.notificationText,
+			filePath : req.body.filePath,
+			isReady : req.body.isReady,
+			isShown : req.body.isShown
+		}, function(err, info) {
+			if (err){
+				res.send(err);
+			}else{
+				res.json({"status": "success", "message": "Notification Configured", "info": info});
+			}
+		});	
+	}*/
 	private afterVideoAbumInfo(result){
 		this.videoAlbumList = result;
 		if(result.length > 0){

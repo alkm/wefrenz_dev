@@ -36,5 +36,4 @@ export class PhotosService {
 		.map((res:Response) => res.json());
 	}
 
-
 }

@@ -215,8 +215,8 @@ export class PhotosComponent implements OnInit {
 
   private afterPhotosAbumInfo(result){
     let self = this;
-    this.photosAlbumList = result;
     if(result.length > 0){
+      this.photosAlbumList = result;
       self.imageSource = [];
       for(let i in this.photosAlbumList[0].photosList){
         self.imageSource.push(this.photosAlbumList[0].photosList[i].actualPhoto)
@@ -225,7 +225,10 @@ export class PhotosComponent implements OnInit {
     }
   }
   private afterAlbumPhotosInfo(result){
-    this.photosList = result[0].photosList;
+    if(result.length > 0){
+       this.photosList = result[0].photosList;
+    }
+   
   }
 
   //Need to activate/deactivate edit btn later based on changes in title field
@@ -266,6 +269,10 @@ export class PhotosComponent implements OnInit {
   private triggerWindowEvent(eventType, evtObj) {
     var evt = new CustomEvent(eventType, {'detail': evtObj});
     window.dispatchEvent(evt);
+  }
+
+  private showPicModal(item){
+    console.log(item);
   }
 
 }

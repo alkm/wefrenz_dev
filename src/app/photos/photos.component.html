@@ -127,7 +127,7 @@
                 </div>
             </div>
             <div class="album-icons">
-                <app-photos-icon (click)="playAudio(item)" class="pull-left" *ngFor="let item of photosList | photosSearch : photosText" [item]="item"></app-photos-icon>
+                <app-photos-icon (click)="showPicModal(item)" class="pull-left" *ngFor="let item of photosList | photosSearch : photosText" [item]="item"></app-photos-icon>
             </div>
         </ng-template>
     </div>

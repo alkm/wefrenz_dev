@@ -1,4 +1,4 @@
-.checkout-content{
+.add-address-content, .add-payment-content{
 	overflow-y: auto;
     overflow-x: hidden;
     display: inline-block;

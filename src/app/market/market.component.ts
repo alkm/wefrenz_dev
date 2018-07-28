@@ -91,8 +91,9 @@ export class MarketComponent implements OnInit {
 	private triggerLoggedInCheck(eventType: string, evtObj: any) {
     	let evt = new CustomEvent(eventType, evtObj);
     	window.dispatchEvent(evt);
-    }
-    @HostListener('scroll', ['$event'])
+  }
+  
+  @HostListener('scroll', ['$event'])
 	private onScroll(event: any) {
 		let element = this.myScrollContainer.nativeElement
 	    let atBottom = element.scrollHeight - element.scrollTop === element.clientHeight

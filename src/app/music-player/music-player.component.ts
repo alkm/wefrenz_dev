@@ -209,8 +209,8 @@ export class MusicPlayerComponent implements OnInit {
 	}
 
 	private afterAudioAbumInfo(result){
-		this.audioAlbumList = result;
 		if(result.length > 0){
+			this.audioAlbumList = result;
 			this.musicSource = [];
 			//for(var i in this.audioAlbumList[0].audiosList){
 				this.musicSource = this.audioAlbumList[0].audiosList;
@@ -220,7 +220,9 @@ export class MusicPlayerComponent implements OnInit {
 		}
 	}
 	private afterAbumAudioInfo(result){
-		this.audioList = result[0].audiosList;
+		if(result.length){
+			this.audioList = result[0].audiosList;
+		}
 	}
 
 	//Need to activate/deactivate edit btn later based on changes in title field

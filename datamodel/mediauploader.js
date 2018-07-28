@@ -5,6 +5,7 @@ var path = require('path');
 var ffmpeg = require('ffmpeg');
 var events = require('events');
 var uploadedCoverPicPath = '';
+var notificationInfo = require('./model/notificationinfo');
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'media/images/coverpics/')
@@ -202,6 +203,8 @@ module.exports = function(app) {
 		console.log('file uploaded');
 		var userId = req.body.userid;
 		var albumTitle = req.body.album;
+		var fullName = req.body.fullname;
+		var profilePic = req.body.profilepic;
 		/*try{
 			if(ssn === undefined){
 				res.json({"status": "sessionExpired", "message": "Please Login"});
@@ -214,6 +217,7 @@ module.exports = function(app) {
 		var albumDesc = '';
 		
 		processVideo(userId, albumTitle, albumDesc);
+		res.json({"status": "success", "message": "Video Uploaded"});
 		function processVideo(userId, albumTitle, albumDesc){
 			var actualVideoPath = 'media/videos/myvideos/original/'+uploadedVideoPath;
 			var saveVideoPathMP4 = 'media/videos/myvideos/mp4/video_'+Date.now()+'.mp4';
@@ -238,25 +242,36 @@ module.exports = function(app) {
 								console.log('Frames: ' + files);
 								posterImg = files[files.length-1];
 								posterImg = 'video/poster/'+posterImg.split('/poster/')[1]; //Setting the virtual path
+								let videoObj = {};
+								videoObj.extension = 'mp4';
+								videoObj.fullname = fullName;
+								videoObj.userid = userId;
+
+								if(videoExt !== '.mp4'){
+									console.log('video Ext'+videoExt);
+									video.save(saveVideoPathMP4, function (error, file) {
+										if (!error){
+											console.log('Video file: ' + file);
+											saveVideoPathMP4 = 'video/mp4/'+saveVideoPathMP4.split('/mp4/')[1];//Setting virtual path
+											videoObj.videoPath = saveVideoPathMP4;
+											emtr.emit('onVideoReady', videoObj);
+											
+										}	
+									});
+								}else{
+									//saveVideoPathMP4 = actualVideoPath;
+									
+									saveVideoPathMP4 = 'video/original/'+uploadedVideoPath//Setting virtual path
+									videoObj.videoPath = saveVideoPathMP4;
+									emtr.emit('onVideoReady', videoObj);
+									console.log('The format is mp4, so keeping it as original poster'+posterImg);
+									
+								}
+
+
 							}
 						});
 
-						//if(videoExt !== '.mp4'){
-							video.save(saveVideoPathMP4, function (error, file) {
-								if (!error){
-									console.log('Video file: ' + file);
-									saveVideoPathMP4 = 'video/mp4/'+saveVideoPathMP4.split('/mp4/')[1];//Setting virtual path
-									emtr.emit('onVideoReady', 'mp4');
-									
-								}	
-							});
-						/*}else{
-							saveVideoPathMP4 = actualVideoPath;
-							saveVideoPathMP4 = 'video/original/'+saveVideoPathMP4.split('/mp4/')[1];//Setting virtual path
-							emtr.emit('onVideoReady', 'mp4');
-							console.log('The format is mp4, so keeping it as original');
-							
-						}*/
 
 						/*if(videoExt !== '.webm'){
 							video.save(saveVideoPathWEBM, function (error, file) {
@@ -290,7 +305,7 @@ module.exports = function(app) {
 
 			emtr.on('onVideoReady', function (data) {
 				console.log('Here are the arguments' + data);
-				if(data === 'mp4'){
+				if(data.extension === 'mp4'){
 					videoReadyArr.push('mp4');
 				}
 				/*if(data === 'webm'){
@@ -298,12 +313,13 @@ module.exports = function(app) {
 				}*/
 				if(videoReadyArr.length === 1){
 					videoReadyArr = [];
-					updateVideoList(userId, albumTitle, albumDesc, saveVideoPathMP4, posterImg);
+					console.log('un formatted video'+saveVideoPathMP4);
+					updateVideoList(userId, albumTitle, albumDesc, saveVideoPathMP4, posterImg, data);
 				}
 			});
 		}
 
-		function updateVideoList(userId, albumTitle, albumDesc, saveVideoPathMP4, posterImg){
+		function updateVideoList(userId, albumTitle, albumDesc, saveVideoPathMP4, posterImg, data){
 			var videoObj = {}
 			videoObj.actualVideo = 'video/original/'+uploadedVideoPath;
 			videoObj.oggVideo = '';
@@ -330,9 +346,10 @@ module.exports = function(app) {
 							sharedWith: []
 						}, function(err, info) {
 							if (err){
-								res.send(err);
+								console.log("Error"+err);
 							}else{
-								res.json({"status": "success", "message": "Album created successfully", "info": info});
+								//res.json({"status": "success", "message": "Album created successfully", "info": info});
+								configureNotification(data);
 							}
 						});	
 
@@ -343,14 +360,35 @@ module.exports = function(app) {
 						videoInfo.update({userid: userId, title: albumTitle}, {$set: {videosList: videosList}}, function(err, info){
 							if(err){
 								console.log("Error"+err);
-								res.json({"status": "failure", "message": "Failed to update video now, please try again later."});
+								//res.json({"status": "failure", "message": "Failed to update video now, please try again later."});
 							}else{
-								res.json({"status": "success", "message": "Video updated successfully.", "info": info});
+								//res.json({"status": "success", "message": "Video updated successfully.", "info": info});
+								configureNotification(data);
 							}
 						});
 					}
 				}
 			});
+		}
+
+		function configureNotification(obj){
+			var dateNow = new Date();
+			notificationInfo.create({
+				userid : userId,
+				fullname : fullName,
+				profilepic : profilePic,
+				type : 'video',
+				text : '',
+				filePath : obj.videoPath,
+				isReady : true,
+				isShown : false
+			}, function(err, info) {
+				if (err){
+					console.log('issue configuring notification');
+				}else{
+					console.log("Notification Configured");
+				}
+			});	
 		}
 
 	});

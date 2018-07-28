@@ -20,7 +20,6 @@ import { ModalService } from '../modal/modal.service';
     ]})
 
 export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
-t
 	private chatBuddyList: any;
 	private userId: string = '';
 	private intervalId: any;
@@ -194,7 +193,7 @@ t
 		let chatObj = {'userid': this.userId, 'easyrtcid': easyrtcId};
 		//require(['socket-io'], function(io) {
 		//this.socket = io('https://192.168.1.3:3000/');
-		//this.socket = io('http://wefrenz.com/');
+		//this.socket = io('https://wefrenz.com/');
 		//this.socket = io("'"+ AppSettingsService.API_ENDPOINT("local") +"'");
 		this.socket = io('http://localhost:3000');
 		//this.socket = io('https://13.127.194.58:3000/');
