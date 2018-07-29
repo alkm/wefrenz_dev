@@ -3,5 +3,6 @@
     width:  35px;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: inherit;
     margin: 2px; 
 }
