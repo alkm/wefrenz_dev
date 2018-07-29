@@ -349,7 +349,7 @@ module.exports = function(app) {
 								console.log("Error"+err);
 							}else{
 								//res.json({"status": "success", "message": "Album created successfully", "info": info});
-								configureNotification(data);
+								configureNotification(data, posterImg);
 							}
 						});	
 
@@ -363,7 +363,7 @@ module.exports = function(app) {
 								//res.json({"status": "failure", "message": "Failed to update video now, please try again later."});
 							}else{
 								//res.json({"status": "success", "message": "Video updated successfully.", "info": info});
-								configureNotification(data);
+								configureNotification(data, posterImg);
 							}
 						});
 					}
@@ -371,12 +371,13 @@ module.exports = function(app) {
 			});
 		}
 
-		function configureNotification(obj){
+		function configureNotification(obj, pic){
 			var dateNow = new Date();
 			notificationInfo.create({
 				userid : userId,
 				fullname : fullName,
 				profilepic : profilePic,
+				notificationpic: pic,
 				type : 'video',
 				text : '',
 				filePath : obj.videoPath,
