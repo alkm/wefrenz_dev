@@ -22,7 +22,19 @@
         <a class="nav-link" href=""><i class="fa fa-envelope" aria-hidden="true"></i><span>Messages</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href=""><i class="fa fa-bell" aria-hidden="true"></i><span>Notifications</span></a>
+        <a class="nav-link" href="">
+          <i class="fa fa-bell" aria-hidden="true">
+              <ng-container *ngIf="isNotificationCountDisplay">
+                <div class="request-count cursor-pointer" (click)='notificationCountClick($event)'>{{notificationCount}}</div>
+              </ng-container>
+          </i>
+          <span>Notifications</span></a>
+          <div class='notification-list' [ngClass]="(isFriendReuestBorder ? 'add-border' : '')" (click)="clickedInside($event)">
+            <ng-container *ngIf="isNotificationDisplay">
+              <app-notification-list  class="in-line" *ngFor="let item of notificationList" [item]="item" >
+              </app-notification-list>
+            </ng-container>
+          </div>
       </li>
       <li class="nav-item search-box">
         <div>

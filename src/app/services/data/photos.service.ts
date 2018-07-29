@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import { AppSettingsService } from 'app/services/settings/app-settings.service';
+import { AppSettingsService } from '../../../app/services/settings/app-settings.service';
 
 @Injectable()
 export class PhotosService {

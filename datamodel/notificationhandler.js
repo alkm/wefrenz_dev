@@ -24,15 +24,29 @@ module.exports = function(app) {
 	});
 
 	app.post('/api/checkNotification/', function(req, res) {	
-		addressInfo.findOne({userid: req.body.username}, function(err, item){
+		notificationInfo.find({userid: req.body.userid, isReady: true, isShown: false}, function(err, item){
 			if(err){
 				res.send(err);
 			}else{
 				if(item === null){
-					res.json({"status": "failure", "message": "The address is not added."});
+					res.json({"status": "failure", "message": "There is no new notification."});
 				}else{
-					res.json({"status": "success", "message": "Address is aleady exist", "info": item});
+					res.json({"status": "success", "message": "Fetching new notification.", "info": item});
 				}
+			}
+		});
+	});
+	
+	app.post('/api/updateNotificationDisplay/', function(req, res) {	
+		//This is happenoing in home page
+		// check a friend info, information comes from AJAX request from Angular
+		var notArr = req.body.notarr;
+
+		notificationInfo.update({userid : {$in : notArr}, isShown: false }, { $set: {isShown: true}}, { multi: true }, function(error, infos){
+			if(error){
+				console.log("Error"+err);
+			}else{
+				res.json({"status": "success", "message": "Notification updated."});
 			}
 		});
 	});

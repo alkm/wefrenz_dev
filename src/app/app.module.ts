@@ -9,8 +9,8 @@ import { HttpModule } from "@angular/http";
 import { RouterModule } from "@angular/router";
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
-import { RouteinfoService } from 'app/services/shareobject/routeinfo.service';
-import { ModalService } from 'app/modal/modal.service';
+import { RouteinfoService } from '../app/services/shareobject/routeinfo.service';
+import { ModalService } from '../app/modal/modal.service';
 import { Globals } from './globals/global';
 import { AppComponent } from './app.component';
 import { PublicComponent } from './public/public.component';
@@ -77,6 +77,7 @@ import { enableProdMode } from '@angular/core';
 import { AddressInfoComponent } from './address-info/address-info.component';
 import { PaymentInfoComponent } from './payment-info/payment-info.component';
 import { PeopleComponent } from './people/people.component';
+import { NotificationListComponent } from './notification-list/notification-list.component';
 
 
 enableProdMode();
@@ -139,7 +140,8 @@ enableProdMode();
     CheckoutComponent,
     AddressInfoComponent,
     PaymentInfoComponent,
-    PeopleComponent
+    PeopleComponent,
+    NotificationListComponent
   ],
   imports: [
     AgmCoreModule.forRoot({

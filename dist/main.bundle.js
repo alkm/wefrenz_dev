@@ -580,8 +580,8 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_app_services_shareobject_routeinfo_service__ = __webpack_require__("../../../../../src/app/services/shareobject/routeinfo.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_app_modal_modal_service__ = __webpack_require__("../../../../../src/app/modal/modal.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_services_shareobject_routeinfo_service__ = __webpack_require__("../../../../../src/app/services/shareobject/routeinfo.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_modal_modal_service__ = __webpack_require__("../../../../../src/app/modal/modal.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__globals_global__ = __webpack_require__("../../../../../src/app/globals/global.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__public_public_component__ = __webpack_require__("../../../../../src/app/public/public.component.ts");
@@ -642,6 +642,7 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_66__address_info_address_info_component__ = __webpack_require__("../../../../../src/app/address-info/address-info.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_67__payment_info_payment_info_component__ = __webpack_require__("../../../../../src/app/payment-info/payment-info.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_68__people_people_component__ = __webpack_require__("../../../../../src/app/people/people.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_69__notification_list_notification_list_component__ = __webpack_require__("../../../../../src/app/notification-list/notification-list.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -689,6 +690,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 ;
+
 
 
 
@@ -786,7 +788,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_65__checkout_checkout_component__["a" /* CheckoutComponent */],
             __WEBPACK_IMPORTED_MODULE_66__address_info_address_info_component__["a" /* AddressInfoComponent */],
             __WEBPACK_IMPORTED_MODULE_67__payment_info_payment_info_component__["a" /* PaymentInfoComponent */],
-            __WEBPACK_IMPORTED_MODULE_68__people_people_component__["a" /* PeopleComponent */]
+            __WEBPACK_IMPORTED_MODULE_68__people_people_component__["a" /* PeopleComponent */],
+            __WEBPACK_IMPORTED_MODULE_69__notification_list_notification_list_component__["a" /* NotificationListComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__agm_core__["a" /* AgmCoreModule */].forRoot({
@@ -837,7 +840,7 @@ AppModule = __decorate([
                 }
             ], { useHash: true })
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_8_app_services_shareobject_routeinfo_service__["a" /* RouteinfoService */], __WEBPACK_IMPORTED_MODULE_9_app_modal_modal_service__["a" /* ModalService */], __WEBPACK_IMPORTED_MODULE_10__globals_global__["a" /* Globals */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_8__app_services_shareobject_routeinfo_service__["a" /* RouteinfoService */], __WEBPACK_IMPORTED_MODULE_9__app_modal_modal_service__["a" /* ModalService */], __WEBPACK_IMPORTED_MODULE_10__globals_global__["a" /* Globals */]],
         entryComponents: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_13__login_login_component__["a" /* LoginComponent */], __WEBPACK_IMPORTED_MODULE_14__signup_signup_component__["a" /* SignupComponent */], __WEBPACK_IMPORTED_MODULE_51__photos_carousel_photos_carousel_component__["a" /* PhotosCarouselComponent */], __WEBPACK_IMPORTED_MODULE_53__music_list_music_list_component__["a" /* MusicListComponent */], __WEBPACK_IMPORTED_MODULE_54__video_list_video_list_component__["a" /* VideoListComponent */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */]]
     })
@@ -3513,8 +3516,8 @@ module.exports = "<div class=\"row no-margin pull-left inline-block hand-cursor 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FriendRequestPendingListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_utility_utility_service__ = __webpack_require__("../../../../../src/app/services/utility/utility.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services_data_friends_service__ = __webpack_require__("../../../../../src/app/services/data/friends.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_services_utility_utility_service__ = __webpack_require__("../../../../../src/app/services/utility/utility.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_services_data_friends_service__ = __webpack_require__("../../../../../src/app/services/data/friends.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3537,8 +3540,8 @@ var FriendRequestPendingListComponent = (function () {
         this.fullName = this.item.fullname;
         this.friendId = this.item.username;
         this.userId = localStorage.getItem('currentUser');
-        this.profilePicWidth = __WEBPACK_IMPORTED_MODULE_1_app_services_utility_utility_service__["a" /* UtilityService */].getPicDimension(this.item.profilepic.profilePicDimension).dimension.width + 'px';
-        this.profilePicHeight = __WEBPACK_IMPORTED_MODULE_1_app_services_utility_utility_service__["a" /* UtilityService */].getPicDimension(this.item.profilepic.profilePicDimension).dimension.height + 'px';
+        this.profilePicWidth = __WEBPACK_IMPORTED_MODULE_1__app_services_utility_utility_service__["a" /* UtilityService */].getPicDimension(this.item.profilepic.profilePicDimension).dimension.width + 'px';
+        this.profilePicHeight = __WEBPACK_IMPORTED_MODULE_1__app_services_utility_utility_service__["a" /* UtilityService */].getPicDimension(this.item.profilepic.profilePicDimension).dimension.height + 'px';
     };
     FriendRequestPendingListComponent.prototype.confirm = function (event) {
         var _this = this;
@@ -3566,7 +3569,7 @@ FriendRequestPendingListComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/friend-request-pending-list/friend-request-pending-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/friend-request-pending-list/friend-request-pending-list.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _b || Object])
 ], FriendRequestPendingListComponent);
 
 var _a, _b;
@@ -5409,6 +5412,74 @@ var _a, _b, _c, _d, _e;
 
 /***/ }),
 
+/***/ "../../../../../src/app/notification-list/notification-list.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".notification-pic{\n    height: 35px;\n    width:  35px;\n    background-size: cover;\n    background-repeat: no-repeat;\n    margin: 2px; \n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/notification-list/notification-list.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row no-margin pull-left colw100 inline-block hand-cursor item-row\">\n\t<div class=\"profile-pic-medium pull-left\" [ngStyle]=\"{ 'background-image': 'url(' + profilePic + ')'}\"></div>\n\t<div class=\"row no-margin blue-fonts full-name pull-left\">{{fullName}}</div> \n\t<div class=\"notification-pic pull-right\" [ngStyle]=\"{ 'background-image': 'url(' + notificationPic + ')'}\"></div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/notification-list/notification-list.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotificationListComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var NotificationListComponent = (function () {
+    function NotificationListComponent() {
+    }
+    NotificationListComponent.prototype.ngOnInit = function () {
+        this.profilePic = JSON.parse(this.item.profilepic).imageBuffer;
+        this.fullName = this.item.fullname;
+        this.notificationPic = this.item.notificationpic;
+    };
+    return NotificationListComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Input */])(),
+    __metadata("design:type", Object)
+], NotificationListComponent.prototype, "item", void 0);
+NotificationListComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
+        selector: 'app-notification-list',
+        template: __webpack_require__("../../../../../src/app/notification-list/notification-list.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/notification-list/notification-list.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], NotificationListComponent);
+
+//# sourceMappingURL=notification-list.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/payment-info/payment-info.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6388,7 +6459,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".search-box:hover, .setting-btn:hover, .logout-btn:hover{\n\tborder: none;\n}\n.setting-btn, .logout-btn{\n\twidth: 15px;\n    margin: 0px 5px;\n\n}\n.search-box{\n    background-color: #f5f8fa;\n    border-radius: 2px;\n    box-sizing: border-box;\n    color: #14171a;\n    display: block;\n    font-size: 12px;\n    height: 25px;\n    line-height: 16px;\n    width: 180px;\n    margin-top: 15px;\n}\n@-moz-document url-prefix() { \n    .search-box{\n        margin-top: 2px !important;\n    }\n}\n.search-input{\n    line-height: 25px;\n    height: 25px;\n    display: block;\n    width: 154px;\n    border: none;\n    outline: none;\n    margin-left: 2px;\n}\n\n.fa-search{\n\tfloat: right;\n\tcolor: #2b90d9 !important;\n\tfont-size: 15px;\n\tline-height: 25px;\n}\n.fa-search:hover{\n\tcolor: #1da1f2;\n}\n.search-result-contents{\n    position: absolute;\n    width: 180px;\n    top: 34px;\n    z-index: 1000;\n    background: #fff;\n\n}\n\n.friend-request-pending-list{\n    position: absolute;\n    width: 301px;\n    top: 34px;\n    z-index: 1000;\n    background: #fff;\n}\n\napp-search-result-list-item{\n    width: 179px;\n    line-height: 30px;\n}\napp-friend-request-pending-list{\n    width: 300px;\n    line-height: 40px;\n}\n\n.add-border{\n    border: 1px solid #e6e6e6;\n    border-bottom: none;\n}\n.request-count{\n    position: absolute;\n    height: 15px;\n    width: auto;\n    background: red;\n    margin-top: 0px;\n    margin-left: 12px;\n    border: 1px solid white;\n    color: white;\n    padding: 0px 3px 1px 1px;\n}\n.request-count:hover{\n    background: #E74C3C;\n}\n\n", ""]);
+exports.push([module.i, ".search-box:hover, .setting-btn:hover, .logout-btn:hover{\n\tborder: none;\n}\n.setting-btn, .logout-btn{\n\twidth: 15px;\n    margin: 0px 5px;\n\n}\n.search-box{\n    background-color: #f5f8fa;\n    border-radius: 2px;\n    box-sizing: border-box;\n    color: #14171a;\n    display: block;\n    font-size: 12px;\n    height: 25px;\n    line-height: 16px;\n    width: 180px;\n    margin-top: 15px;\n}\n@-moz-document url-prefix() { \n    .search-box{\n        margin-top: 2px !important;\n    }\n}\n.search-input{\n    line-height: 25px;\n    height: 25px;\n    display: block;\n    width: 154px;\n    border: none;\n    outline: none;\n    margin-left: 2px;\n}\n\n.fa-search{\n\tfloat: right;\n\tcolor: #2b90d9 !important;\n\tfont-size: 15px;\n\tline-height: 25px;\n}\n.fa-search:hover{\n\tcolor: #1da1f2;\n}\n.search-result-contents{\n    position: absolute;\n    width: 180px;\n    top: 34px;\n    z-index: 1000;\n    background: #fff;\n\n}\n\n.friend-request-pending-list, .notification-list{\n    position: absolute;\n    width: 301px;\n    top: 34px;\n    z-index: 1000;\n    background: #fff;\n}\n\napp-search-result-list-item{\n    width: 179px;\n    line-height: 30px;\n}\napp-friend-request-pending-list, app-notification-list{\n    width: 300px;\n    line-height: 40px;\n    border-bottom: 1px solid #2b90d9;\n}\n\n.add-border{\n    border: 1px solid #e6e6e6;\n    border-bottom: none;\n}\n.request-count{\n    position: absolute;\n    height: 15px;\n    width: auto;\n    background: red;\n    margin-top: 0px;\n    margin-left: 12px;\n    border: 1px solid white;\n    color: white;\n    padding: 0px 3px 1px 1px;\n}\n.request-count:hover{\n    background: #E74C3C;\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -6401,7 +6472,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/private-nav/private-nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-light bg-faded\" (window:resize)=\"onResize($event)\">\n  <button (click)=\"toggleNav()\" class=\"navbar-toggler navbar-toggler-right fa fa-bars\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarTogglerDemo02\" aria-controls=\"navbarTogglerDemo02\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n  </button>\n  <div [ngClass]=\"('navbar-collapse ' + (active ? 'collapse' : ''))\" id=\"navbarTogglerDemo02\">\n    <ul class=\"navbar-nav mr-auto mt-2 mt-md-0\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#/home\"><i class=\"fa fa-home\" aria-hidden=\"true\"></i><span>Home</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\">\n          <i class=\"fa fa-users\" aria-hidden=\"true\">\n            <ng-container *ngIf=\"isFriendRequestPendingDisplay\">\n              <div class=\"request-count cursor-pointer\" (click)='requestCountClick($event)'>{{friendRequestCount}}</div>\n            </ng-container>\n          </i><span>Friends</span></a>\n          <div class='friend-request-pending-list' [ngClass]=\"(isFriendReuestBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n            <app-friend-request-pending-list (onFriendConfirmed)='onFriendConfirmed($event)'  class=\"in-line\" *ngFor=\"let item of friendRequestPendingList\" [item]=\"item\" >\n            </app-friend-request-pending-list>\n          </div>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\"><i class=\"fa fa-envelope\" aria-hidden=\"true\"></i><span>Messages</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\"><i class=\"fa fa-bell\" aria-hidden=\"true\"></i><span>Notifications</span></a>\n      </li>\n      <li class=\"nav-item search-box\">\n        <div>\n          <input class=\"search-input pull-left blue-fonts\" type=\"text\" id=\"search-query\" placeholder=\"Search Wefrenz\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [value]=\"searchValue\" (input)=\"querySearch($event.target.value)\"/>\n          <i class=\"fa fa-search pull-right cursor-pointer\" aria-hidden=\"true\"></i>\n        </div>\n        <div class='search-result-contents' [ngClass]=\"(isBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n          <app-search-result-list-item  class=\"in-line\" *ngFor=\"let item of searchResultList\" [item]=\"item\">\n          </app-search-result-list-item>\n        </div>\n      </li>\n      <li class=\"nav-item setting-btn\">\n        <span class=\"nav-link\"><i class=\"fa fa-cog cursor-pointer\" aria-hidden=\"true\"></i></span>\n      </li>\n      <li class=\"nav-item logout-btn\" >\n        <span class=\"nav-link\">\n          <i class=\"fa fa-sign-out cursor-pointer\" aria-hidden=\"true\" (click)=\"logOut()\"></i>\n        </span>\n      </li>\n    </ul>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-light bg-faded\" (window:resize)=\"onResize($event)\">\n  <button (click)=\"toggleNav()\" class=\"navbar-toggler navbar-toggler-right fa fa-bars\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarTogglerDemo02\" aria-controls=\"navbarTogglerDemo02\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n  </button>\n  <div [ngClass]=\"('navbar-collapse ' + (active ? 'collapse' : ''))\" id=\"navbarTogglerDemo02\">\n    <ul class=\"navbar-nav mr-auto mt-2 mt-md-0\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#/home\"><i class=\"fa fa-home\" aria-hidden=\"true\"></i><span>Home</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\">\n          <i class=\"fa fa-users\" aria-hidden=\"true\">\n            <ng-container *ngIf=\"isFriendRequestPendingDisplay\">\n              <div class=\"request-count cursor-pointer\" (click)='requestCountClick($event)'>{{friendRequestCount}}</div>\n            </ng-container>\n          </i><span>Friends</span></a>\n          <div class='friend-request-pending-list' [ngClass]=\"(isFriendReuestBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n            <app-friend-request-pending-list (onFriendConfirmed)='onFriendConfirmed($event)'  class=\"in-line\" *ngFor=\"let item of friendRequestPendingList\" [item]=\"item\" >\n            </app-friend-request-pending-list>\n          </div>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\"><i class=\"fa fa-envelope\" aria-hidden=\"true\"></i><span>Messages</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\">\n          <i class=\"fa fa-bell\" aria-hidden=\"true\">\n              <ng-container *ngIf=\"isNotificationCountDisplay\">\n                <div class=\"request-count cursor-pointer\" (click)='notificationCountClick($event)'>{{notificationCount}}</div>\n              </ng-container>\n          </i>\n          <span>Notifications</span></a>\n          <div class='notification-list' [ngClass]=\"(isFriendReuestBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n            <ng-container *ngIf=\"isNotificationDisplay\">\n              <app-notification-list  class=\"in-line\" *ngFor=\"let item of notificationList\" [item]=\"item\" >\n              </app-notification-list>\n            </ng-container>\n          </div>\n      </li>\n      <li class=\"nav-item search-box\">\n        <div>\n          <input class=\"search-input pull-left blue-fonts\" type=\"text\" id=\"search-query\" placeholder=\"Search Wefrenz\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [value]=\"searchValue\" (input)=\"querySearch($event.target.value)\"/>\n          <i class=\"fa fa-search pull-right cursor-pointer\" aria-hidden=\"true\"></i>\n        </div>\n        <div class='search-result-contents' [ngClass]=\"(isBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n          <app-search-result-list-item  class=\"in-line\" *ngFor=\"let item of searchResultList\" [item]=\"item\">\n          </app-search-result-list-item>\n        </div>\n      </li>\n      <li class=\"nav-item setting-btn\">\n        <span class=\"nav-link\"><i class=\"fa fa-cog cursor-pointer\" aria-hidden=\"true\"></i></span>\n      </li>\n      <li class=\"nav-item logout-btn\" >\n        <span class=\"nav-link\">\n          <i class=\"fa fa-sign-out cursor-pointer\" aria-hidden=\"true\" (click)=\"logOut()\"></i>\n        </span>\n      </li>\n    </ul>\n  </div>\n</nav>"
 
 /***/ }),
 
@@ -6414,8 +6485,9 @@ module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-light bg-faded
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_filter__ = __webpack_require__("../../../../rxjs/add/operator/filter.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_filter__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_data_friends_service__ = __webpack_require__("../../../../../src/app/services/data/friends.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services_data_search_service__ = __webpack_require__("../../../../../src/app/services/data/search.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_data_friends_service__ = __webpack_require__("../../../../../src/app/services/data/friends.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_services_data_notification_service__ = __webpack_require__("../../../../../src/app/services/data/notification.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_services_data_search_service__ = __webpack_require__("../../../../../src/app/services/data/search.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6430,21 +6502,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var PrivateNavComponent = (function () {
-    function PrivateNavComponent(router, searchService, friendsService) {
+    function PrivateNavComponent(router, searchService, friendsService, notificationService) {
         this.router = router;
         this.searchService = searchService;
         this.friendsService = friendsService;
+        this.notificationService = notificationService;
         this.active = false;
         this.innerWidth = 0;
         this.searchResultList = undefined;
         this.friendRequestPendingList = undefined;
+        this.notificationList = undefined;
         this.reqArr = undefined;
+        this.notArr = undefined;
         this.isBorder = false;
         this.isFriendReuestBorder = false;
         this.searchValue = '';
         this.friendRequestCount = 0;
+        this.notificationCount = 0;
+        this.isNotificationCountDisplay = false;
         this.isFriendRequestPendingDisplay = false;
+        this.isNotificationDisplay = false;
         this.userId = '';
         this.onFriendConfirmedFromNotification = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.userId = localStorage.getItem('currentUser');
@@ -6511,6 +6590,8 @@ var PrivateNavComponent = (function () {
     PrivateNavComponent.prototype.clickedOutside = function ($event) {
         this.searchResultList = [];
         this.friendRequestPendingList = [];
+        //this.notificationList = [];
+        this.isNotificationDisplay = false;
         this.isFriendReuestBorder = false;
     };
     PrivateNavComponent.prototype.clickedInside = function ($event) {
@@ -6527,6 +6608,23 @@ var PrivateNavComponent = (function () {
         this.friendRequestCount = 0;
         var postObj = { 'reqarr': this.reqArr };
         this.friendsService.getRequestDetails(postObj).subscribe(function (data) { return _this.afterGetRequestDetails(data); });
+    };
+    PrivateNavComponent.prototype.notificationCountClick = function (event) {
+        var _this = this;
+        event.preventDefault();
+        event.stopPropagation();
+        this.isNotificationDisplay = true;
+        var postObj = { 'notarr': this.notArr };
+        this.notificationService.updateNotificationDisplay(postObj).subscribe(function (data) { return _this.afterUpdateNotificationDisplay(data); });
+    };
+    PrivateNavComponent.prototype.afterUpdateNotificationDisplay = function (data) {
+        if (data.length > 0) {
+            this.isFriendReuestBorder = true;
+            this.friendRequestPendingList = data;
+        }
+        else {
+            this.isFriendReuestBorder = false;
+        }
     };
     PrivateNavComponent.prototype.afterGetRequestDetails = function (data) {
         if (data.length > 0) {
@@ -6546,6 +6644,7 @@ var PrivateNavComponent = (function () {
         var _this = this;
         var postObj = { 'userid': this.userId };
         this.friendsService.getFriendReq(postObj).subscribe(function (data) { return _this.afterGetFriendReq(data); });
+        this.notificationService.checkNotification(postObj).subscribe(function (data) { return _this.afterCheckNotification(data); });
     };
     //Keeping the requester userid in array to query from userinfo collection
     PrivateNavComponent.prototype.afterGetFriendReq = function (data) {
@@ -6559,6 +6658,21 @@ var PrivateNavComponent = (function () {
         }
         else {
             this.isFriendRequestPendingDisplay = false;
+            ;
+        }
+    };
+    PrivateNavComponent.prototype.afterCheckNotification = function (data) {
+        this.notificationCount = data.info.length;
+        this.notArr = [];
+        if (this.notificationCount > 0) {
+            this.isNotificationCountDisplay = true;
+            this.notificationList = data.info;
+            for (var obj in data.info) {
+                this.notArr.push(data.info[obj].userid);
+            }
+        }
+        else {
+            this.isNotificationCountDisplay = false;
             ;
         }
     };
@@ -6593,12 +6707,12 @@ PrivateNavComponent = __decorate([
         selector: 'app-private-nav',
         template: __webpack_require__("../../../../../src/app/private-nav/private-nav.component.html"),
         styles: [__webpack_require__("../../../../../src/app/private-nav/private-nav.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_4_app_services_data_search_service__["a" /* SearchService */], __WEBPACK_IMPORTED_MODULE_3_app_services_data_friends_service__["a" /* FriendsService */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_5__app_services_data_search_service__["a" /* SearchService */], __WEBPACK_IMPORTED_MODULE_3__app_services_data_friends_service__["a" /* FriendsService */], __WEBPACK_IMPORTED_MODULE_4__app_services_data_notification_service__["a" /* NotificationService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_app_services_data_search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_app_services_data_search_service__["a" /* SearchService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__app_services_data_search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__app_services_data_search_service__["a" /* SearchService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__app_services_data_notification_service__["a" /* NotificationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_services_data_notification_service__["a" /* NotificationService */]) === "function" && _e || Object])
 ], PrivateNavComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=private-nav.component.js.map
 
 /***/ }),
@@ -7812,6 +7926,57 @@ var _a;
 
 /***/ }),
 
+/***/ "../../../../../src/app/services/data/notification.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotificationService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var NotificationService = (function () {
+    function NotificationService(http) {
+        this.http = http;
+    }
+    NotificationService.prototype.updateNotificationDisplay = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/updateNotificationDisplay", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    NotificationService.prototype.checkNotification = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/checkNotification", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    return NotificationService;
+}());
+NotificationService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+], NotificationService);
+
+var _a;
+//# sourceMappingURL=notification.service.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/services/data/photos.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -7821,7 +7986,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7842,25 +8007,25 @@ var PhotosService = (function () {
     PhotosService.prototype.createPhotosAlbum = function (postObj) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/createPhotosAlbum", postObj, options)
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/createPhotosAlbum", postObj, options)
             .map(function (res) { return res.json(); });
     };
     PhotosService.prototype.updatePhotosAlbum = function (postObj) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/updatePhotosAlbum", postObj, options)
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/updatePhotosAlbum", postObj, options)
             .map(function (res) { return res.json(); });
     };
     PhotosService.prototype.fetchPhotosAlbumInfo = function (postObj) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchPhotosAlbumInfo", postObj, options)
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchPhotosAlbumInfo", postObj, options)
             .map(function (res) { return res.json(); });
     };
     PhotosService.prototype.fetchAlbumPhotosInfo = function (postObj) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchAlbumPhotosInfo", postObj, options)
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchAlbumPhotosInfo", postObj, options)
             .map(function (res) { return res.json(); });
     };
     return PhotosService;
@@ -7884,7 +8049,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7905,7 +8070,7 @@ var ProfileService = (function () {
     ProfileService.prototype.profileInfo = function (postObj) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/profileInfo", postObj, options)
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/profileInfo", postObj, options)
             .map(function (res) { return res.json(); });
     };
     return ProfileService;
@@ -7929,7 +8094,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7950,13 +8115,13 @@ var RegistrationService = (function () {
     RegistrationService.prototype.signUp = function (postObj) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Accept': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/signUp", postObj, options)
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/signUp", postObj, options)
             .map(function (res) { return res.json(); });
     };
     RegistrationService.prototype.logIn = function (postObj) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/logIn", postObj, options)
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/logIn", postObj, options)
             .map(function (res) { return res.json(); });
     };
     return RegistrationService;
@@ -7980,7 +8145,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8001,7 +8166,7 @@ var SearchService = (function () {
     SearchService.prototype.querySearch = function (postObj) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/querySearch", postObj, options)
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/querySearch", postObj, options)
             .map(function (res) { return res.json(); });
     };
     return SearchService;

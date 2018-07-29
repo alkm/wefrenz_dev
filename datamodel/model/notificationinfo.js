@@ -6,7 +6,8 @@ module.exports = mongoose.model('notificationinfo', {
 	profilepic : Object,
 	type : String,
 	text : String,
-	filePath : String,
+	filepath : String,
+	notificationpic: String,
 	isReady : Boolean,
 	isShown : Boolean
 });

@@ -1,6 +1,6 @@
 import { Component, Output, Input, EventEmitter, OnInit } from '@angular/core';
-import { UtilityService } from 'app/services/utility/utility.service';
-import { FriendsService } from 'app/services/data/friends.service';
+import { UtilityService } from '../../app/services/utility/utility.service';
+import { FriendsService } from '../../app/services/data/friends.service';
 
 @Component({
   selector: 'app-friend-request-pending-list',

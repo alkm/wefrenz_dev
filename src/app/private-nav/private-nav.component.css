@@ -51,7 +51,7 @@
 
 }
 
-.friend-request-pending-list{
+.friend-request-pending-list, .notification-list{
     position: absolute;
     width: 301px;
     top: 34px;
@@ -63,9 +63,10 @@ app-search-result-list-item{
     width: 179px;
     line-height: 30px;
 }
-app-friend-request-pending-list{
+app-friend-request-pending-list, app-notification-list{
     width: 300px;
     line-height: 40px;
+    border-bottom: 1px solid #2b90d9;
 }
 
 .add-border{
@@ -86,4 +87,6 @@ app-friend-request-pending-list{
 .request-count:hover{
     background: #E74C3C;
 }
+
+
 

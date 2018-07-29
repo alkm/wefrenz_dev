@@ -144,6 +144,7 @@ app.use(function(req, res, next) {
 	require('./datamodel/markethandler.js')(app);
 	require('./datamodel/checkouthandler.js')(app);
 	require('./datamodel/addresshandler.js')(app);
+	require('./datamodel/notificationhandler.js')(app);
 	var easyRTCHandler = require('./datamodel/shared/easyrtchandler');
 	//Handling the chat on socket
 	io.sockets.on('connection', function(socket){//Similar to document.ready when the socket initialized

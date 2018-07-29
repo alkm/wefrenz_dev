@@ -1,15 +1,15 @@
 import { Component, HostListener, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, NavigationStart } from '@angular/router'; 
 import 'rxjs/add/operator/filter';
-import { FriendsService } from 'app/services/data/friends.service';
-
-import { SearchService } from 'app/services/data/search.service';
+import { FriendsService } from '../../app/services/data/friends.service';
+import { NotificationService } from '../../app/services/data/notification.service';
+import { SearchService } from '../../app/services/data/search.service';
 
 @Component({
   selector: 'app-private-nav',
   templateUrl: './private-nav.component.html',
   styleUrls: ['./private-nav.component.css'],
-  providers: [SearchService, FriendsService]
+  providers: [SearchService, FriendsService, NotificationService]
 })
 export class PrivateNavComponent implements OnInit, AfterViewInit {
 
@@ -17,13 +17,18 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
 	private innerWidth: number = 0;
 	private searchResultList = undefined;
 	private friendRequestPendingList = undefined;
+	private notificationList = undefined;
 	private reqArr = undefined;
+	private notArr = undefined;
 	private isBorder: boolean = false;
 	private isFriendReuestBorder: boolean = false;
 	private navRef: any;
 	private searchValue: string = '';
 	private friendRequestCount: number = 0;
+	private notificationCount: number = 0;
+	private isNotificationCountDisplay: boolean = false;
 	private isFriendRequestPendingDisplay: boolean = false;
+	private isNotificationDisplay: boolean = false;
 	private timerSubscription: any;
 	private userId: string = '';
 	private intervalId: any;
@@ -31,7 +36,7 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
 	@Output() onFriendConfirmedFromNotification: EventEmitter<any> = new EventEmitter();
 
 
-	constructor(private router: Router, private searchService: SearchService, private friendsService: FriendsService) { 
+	constructor(private router: Router, private searchService: SearchService, private friendsService: FriendsService, private notificationService: NotificationService) { 
 		this.userId = localStorage.getItem('currentUser');
 		let self = this;
 		this.router.events.filter(e => e instanceof   NavigationStart).pairwise().subscribe((e) => {
@@ -101,6 +106,8 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
 	@HostListener('document:click', ['$event']) clickedOutside($event){
 		this.searchResultList = [];
 		this.friendRequestPendingList = [];
+		//this.notificationList = [];
+		this.isNotificationDisplay = false;
 		this.isFriendReuestBorder = false;
 	}
 
@@ -119,6 +126,22 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
   		this.friendsService.getRequestDetails(postObj).subscribe(data => this.afterGetRequestDetails(data));
   	}
 
+  	private notificationCountClick(event){
+  		event.preventDefault();
+  		event.stopPropagation();
+  		this.isNotificationDisplay = true;
+  		let postObj = {'notarr': this.notArr};
+  		this.notificationService.updateNotificationDisplay(postObj).subscribe(data => this.afterUpdateNotificationDisplay(data));
+  	}
+  	private afterUpdateNotificationDisplay(data){
+  		if(data.length > 0){
+  			this.isFriendReuestBorder = true;
+  			this.friendRequestPendingList = data;
+  		}else{
+  			this.isFriendReuestBorder = false;
+  		}
+  	}
+
   	private afterGetRequestDetails(data){
   		if(data.length > 0){
   			this.isFriendReuestBorder = true;
@@ -129,13 +152,14 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
   	}
 
   	private subscribeToNotifications(): void {
-    	 this.intervalId = setInterval(() => { this.pullNotifications(); }, 1000 * 10);
+    	this.intervalId = setInterval(() => { this.pullNotifications(); }, 1000 * 10);
 	}
 
  	//Pulling notifications in every 5 seconds
 	private pullNotifications(): void {
 		let postObj = {'userid': this.userId};
 		this.friendsService.getFriendReq(postObj).subscribe(data => this.afterGetFriendReq(data));
+		this.notificationService.checkNotification(postObj).subscribe(data => this.afterCheckNotification(data));
 	}
 
 	//Keeping the requester userid in array to query from userinfo collection
@@ -151,6 +175,21 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
 			this.isFriendRequestPendingDisplay = false;;
 		}
 	}
+
+	private afterCheckNotification(data){
+		this.notificationCount = data.info.length;
+		this.notArr = [];
+		if(this.notificationCount > 0){
+			this.isNotificationCountDisplay = true;
+			this.notificationList = data.info;
+			for(let obj in data.info){
+				this.notArr.push(data.info[obj].userid);
+			}
+		}else{
+			this.isNotificationCountDisplay = false;;
+		}
+	}
+
 
  	//Removing the confirmed friend from the list
 	private onFriendConfirmed(event){

@@ -1,0 +1,7 @@
+.notification-pic{
+    height: 35px;
+    width:  35px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 2px; 
+}
