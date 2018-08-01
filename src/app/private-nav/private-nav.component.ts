@@ -129,6 +129,7 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
   	private notificationCountClick(event){
   		event.preventDefault();
   		event.stopPropagation();
+  		this.isNotificationCountDisplay = false;
   		this.isNotificationDisplay = true;
   		let postObj = {'notarr': this.notArr};
   		this.notificationService.updateNotificationDisplay(postObj).subscribe(data => this.afterUpdateNotificationDisplay(data));
@@ -162,6 +163,11 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
 		this.notificationService.checkNotification(postObj).subscribe(data => this.afterCheckNotification(data));
 	}
 
+	private fetchAllNotifications(): void{
+		let postObj = {'userid': this.userId};
+		this.notificationService.fetchAllNotifications(postObj).subscribe(data => this.afterFetchAllNotifications(data));	
+	}
+
 	//Keeping the requester userid in array to query from userinfo collection
 	private afterGetFriendReq(data){
 		this.friendRequestCount = data.length;
@@ -190,6 +196,14 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
 		}
 	}
 
+	private afterFetchAllNotifications(data){
+		this.notificationCount = data.info.length;
+		this.notArr = [];
+		if(this.notificationCount > 0){
+			this.notificationList = data.info;
+			this.isNotificationDisplay = true;
+		}
+	}
 
  	//Removing the confirmed friend from the list
 	private onFriendConfirmed(event){

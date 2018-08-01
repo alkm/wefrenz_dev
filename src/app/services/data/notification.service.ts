@@ -22,5 +22,12 @@ export class NotificationService {
 		return this.http.post(AppSettingsService.API_ENDPOINT("local")+"/api/checkNotification", postObj, options)
 		.map((res:Response) => res.json());
 	}
+	
+	public fetchAllNotifications(postObj) {
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.post(AppSettingsService.API_ENDPOINT("local")+"/api/fetchAllNotifications", postObj, options)
+		.map((res:Response) => res.json());
+	}
 
 }

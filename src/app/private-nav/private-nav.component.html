@@ -22,7 +22,7 @@
         <a class="nav-link" href=""><i class="fa fa-envelope" aria-hidden="true"></i><span>Messages</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" (click)="fetchAllNotifications($event)">
           <i class="fa fa-bell" aria-hidden="true">
               <ng-container *ngIf="isNotificationCountDisplay">
                 <div class="request-count cursor-pointer" (click)='notificationCountClick($event)'>{{notificationCount}}</div>

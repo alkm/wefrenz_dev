@@ -36,6 +36,21 @@ module.exports = function(app) {
 			}
 		});
 	});
+
+	
+	app.post('/api/fetchAllNotifications/', function(req, res) {	
+		notificationInfo.find({userid: req.body.userid}, function(err, item){
+			if(err){
+				res.send(err);
+			}else{
+				if(item === null){
+					res.json({"status": "failure", "message": "There is no new notification."});
+				}else{
+					res.json({"status": "success", "message": "Fetching new notification.", "info": item});
+				}
+			}
+		});
+	});
 	
 	app.post('/api/updateNotificationDisplay/', function(req, res) {	
 		//This is happenoing in home page
@@ -50,4 +65,5 @@ module.exports = function(app) {
 			}
 		});
 	});
+
 }

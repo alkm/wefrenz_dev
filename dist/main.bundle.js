@@ -5420,7 +5420,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".notification-pic{\n    height: 35px;\n    width:  35px;\n    background-size: cover;\n    background-repeat: no-repeat;\n    margin: 2px; \n}", ""]);
+exports.push([module.i, ".notification-pic{\n    height: 35px;\n    width:  35px;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: inherit;\n    margin: 2px; \n}", ""]);
 
 // exports
 
@@ -6472,7 +6472,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/private-nav/private-nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-light bg-faded\" (window:resize)=\"onResize($event)\">\n  <button (click)=\"toggleNav()\" class=\"navbar-toggler navbar-toggler-right fa fa-bars\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarTogglerDemo02\" aria-controls=\"navbarTogglerDemo02\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n  </button>\n  <div [ngClass]=\"('navbar-collapse ' + (active ? 'collapse' : ''))\" id=\"navbarTogglerDemo02\">\n    <ul class=\"navbar-nav mr-auto mt-2 mt-md-0\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#/home\"><i class=\"fa fa-home\" aria-hidden=\"true\"></i><span>Home</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\">\n          <i class=\"fa fa-users\" aria-hidden=\"true\">\n            <ng-container *ngIf=\"isFriendRequestPendingDisplay\">\n              <div class=\"request-count cursor-pointer\" (click)='requestCountClick($event)'>{{friendRequestCount}}</div>\n            </ng-container>\n          </i><span>Friends</span></a>\n          <div class='friend-request-pending-list' [ngClass]=\"(isFriendReuestBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n            <app-friend-request-pending-list (onFriendConfirmed)='onFriendConfirmed($event)'  class=\"in-line\" *ngFor=\"let item of friendRequestPendingList\" [item]=\"item\" >\n            </app-friend-request-pending-list>\n          </div>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\"><i class=\"fa fa-envelope\" aria-hidden=\"true\"></i><span>Messages</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\">\n          <i class=\"fa fa-bell\" aria-hidden=\"true\">\n              <ng-container *ngIf=\"isNotificationCountDisplay\">\n                <div class=\"request-count cursor-pointer\" (click)='notificationCountClick($event)'>{{notificationCount}}</div>\n              </ng-container>\n          </i>\n          <span>Notifications</span></a>\n          <div class='notification-list' [ngClass]=\"(isFriendReuestBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n            <ng-container *ngIf=\"isNotificationDisplay\">\n              <app-notification-list  class=\"in-line\" *ngFor=\"let item of notificationList\" [item]=\"item\" >\n              </app-notification-list>\n            </ng-container>\n          </div>\n      </li>\n      <li class=\"nav-item search-box\">\n        <div>\n          <input class=\"search-input pull-left blue-fonts\" type=\"text\" id=\"search-query\" placeholder=\"Search Wefrenz\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [value]=\"searchValue\" (input)=\"querySearch($event.target.value)\"/>\n          <i class=\"fa fa-search pull-right cursor-pointer\" aria-hidden=\"true\"></i>\n        </div>\n        <div class='search-result-contents' [ngClass]=\"(isBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n          <app-search-result-list-item  class=\"in-line\" *ngFor=\"let item of searchResultList\" [item]=\"item\">\n          </app-search-result-list-item>\n        </div>\n      </li>\n      <li class=\"nav-item setting-btn\">\n        <span class=\"nav-link\"><i class=\"fa fa-cog cursor-pointer\" aria-hidden=\"true\"></i></span>\n      </li>\n      <li class=\"nav-item logout-btn\" >\n        <span class=\"nav-link\">\n          <i class=\"fa fa-sign-out cursor-pointer\" aria-hidden=\"true\" (click)=\"logOut()\"></i>\n        </span>\n      </li>\n    </ul>\n  </div>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-light bg-faded\" (window:resize)=\"onResize($event)\">\n  <button (click)=\"toggleNav()\" class=\"navbar-toggler navbar-toggler-right fa fa-bars\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarTogglerDemo02\" aria-controls=\"navbarTogglerDemo02\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n  </button>\n  <div [ngClass]=\"('navbar-collapse ' + (active ? 'collapse' : ''))\" id=\"navbarTogglerDemo02\">\n    <ul class=\"navbar-nav mr-auto mt-2 mt-md-0\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#/home\"><i class=\"fa fa-home\" aria-hidden=\"true\"></i><span>Home</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\">\n          <i class=\"fa fa-users\" aria-hidden=\"true\">\n            <ng-container *ngIf=\"isFriendRequestPendingDisplay\">\n              <div class=\"request-count cursor-pointer\" (click)='requestCountClick($event)'>{{friendRequestCount}}</div>\n            </ng-container>\n          </i><span>Friends</span></a>\n          <div class='friend-request-pending-list' [ngClass]=\"(isFriendReuestBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n            <app-friend-request-pending-list (onFriendConfirmed)='onFriendConfirmed($event)'  class=\"in-line\" *ngFor=\"let item of friendRequestPendingList\" [item]=\"item\" >\n            </app-friend-request-pending-list>\n          </div>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\"><i class=\"fa fa-envelope\" aria-hidden=\"true\"></i><span>Messages</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"fetchAllNotifications($event)\">\n          <i class=\"fa fa-bell\" aria-hidden=\"true\">\n              <ng-container *ngIf=\"isNotificationCountDisplay\">\n                <div class=\"request-count cursor-pointer\" (click)='notificationCountClick($event)'>{{notificationCount}}</div>\n              </ng-container>\n          </i>\n          <span>Notifications</span></a>\n          <div class='notification-list' [ngClass]=\"(isFriendReuestBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n            <ng-container *ngIf=\"isNotificationDisplay\">\n              <app-notification-list  class=\"in-line\" *ngFor=\"let item of notificationList\" [item]=\"item\" >\n              </app-notification-list>\n            </ng-container>\n          </div>\n      </li>\n      <li class=\"nav-item search-box\">\n        <div>\n          <input class=\"search-input pull-left blue-fonts\" type=\"text\" id=\"search-query\" placeholder=\"Search Wefrenz\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [value]=\"searchValue\" (input)=\"querySearch($event.target.value)\"/>\n          <i class=\"fa fa-search pull-right cursor-pointer\" aria-hidden=\"true\"></i>\n        </div>\n        <div class='search-result-contents' [ngClass]=\"(isBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n          <app-search-result-list-item  class=\"in-line\" *ngFor=\"let item of searchResultList\" [item]=\"item\">\n          </app-search-result-list-item>\n        </div>\n      </li>\n      <li class=\"nav-item setting-btn\">\n        <span class=\"nav-link\"><i class=\"fa fa-cog cursor-pointer\" aria-hidden=\"true\"></i></span>\n      </li>\n      <li class=\"nav-item logout-btn\" >\n        <span class=\"nav-link\">\n          <i class=\"fa fa-sign-out cursor-pointer\" aria-hidden=\"true\" (click)=\"logOut()\"></i>\n        </span>\n      </li>\n    </ul>\n  </div>\n</nav>"
 
 /***/ }),
 
@@ -6613,6 +6613,7 @@ var PrivateNavComponent = (function () {
         var _this = this;
         event.preventDefault();
         event.stopPropagation();
+        this.isNotificationCountDisplay = false;
         this.isNotificationDisplay = true;
         var postObj = { 'notarr': this.notArr };
         this.notificationService.updateNotificationDisplay(postObj).subscribe(function (data) { return _this.afterUpdateNotificationDisplay(data); });
@@ -6646,6 +6647,11 @@ var PrivateNavComponent = (function () {
         this.friendsService.getFriendReq(postObj).subscribe(function (data) { return _this.afterGetFriendReq(data); });
         this.notificationService.checkNotification(postObj).subscribe(function (data) { return _this.afterCheckNotification(data); });
     };
+    PrivateNavComponent.prototype.fetchAllNotifications = function () {
+        var _this = this;
+        var postObj = { 'userid': this.userId };
+        this.notificationService.fetchAllNotifications(postObj).subscribe(function (data) { return _this.afterFetchAllNotifications(data); });
+    };
     //Keeping the requester userid in array to query from userinfo collection
     PrivateNavComponent.prototype.afterGetFriendReq = function (data) {
         this.friendRequestCount = data.length;
@@ -6674,6 +6680,14 @@ var PrivateNavComponent = (function () {
         else {
             this.isNotificationCountDisplay = false;
             ;
+        }
+    };
+    PrivateNavComponent.prototype.afterFetchAllNotifications = function (data) {
+        this.notificationCount = data.info.length;
+        this.notArr = [];
+        if (this.notificationCount > 0) {
+            this.notificationList = data.info;
+            this.isNotificationDisplay = true;
         }
     };
     //Removing the confirmed friend from the list
@@ -7963,6 +7977,12 @@ var NotificationService = (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
         return this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/checkNotification", postObj, options)
+            .map(function (res) { return res.json(); });
+    };
+    NotificationService.prototype.fetchAllNotifications = function (postObj) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + "/api/fetchAllNotifications", postObj, options)
             .map(function (res) { return res.json(); });
     };
     return NotificationService;
