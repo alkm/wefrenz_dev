@@ -7,7 +7,7 @@
         <a class="nav-link" href="#/home"><i class="fa fa-home" aria-hidden="true"></i><span>Home</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link">
+        <a class="nav-link" (click)="getAllFriendReq($event)">
           <i class="fa fa-users" aria-hidden="true">
             <ng-container *ngIf="isFriendRequestPendingDisplay">
               <div class="request-count cursor-pointer" (click)='requestCountClick($event)'>{{friendRequestCount}}</div>

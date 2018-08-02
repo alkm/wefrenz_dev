@@ -117,6 +117,7 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
 	    this.searchResultList = [];
 	    //this.friendRequestPendingList = [];
   	}
+
   	private requestCountClick(event){
   		event.preventDefault();
   		event.stopPropagation();
@@ -126,6 +127,22 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
   		this.friendsService.getRequestDetails(postObj).subscribe(data => this.afterGetRequestDetails(data));
   	}
 
+  	private getAllFriendReq(event): void{
+		let postObj = {'userid': this.userId};
+		this.friendsService.getAllFriendReq(postObj).subscribe(data => this.afterGetAllFriendReq(data));
+	}
+
+	private afterGetAllFriendReq(data){
+		this.reqArr = [];
+		if(data.length > 0){
+			for(let obj in data){
+				this.reqArr.push(data[obj].requester);
+			}
+			let postObj = {'reqarr': this.reqArr};
+			this.friendsService.getRequestDetails(postObj).subscribe(data => this.afterGetRequestDetails(data));
+		}
+	}
+
   	private notificationCountClick(event){
   		event.preventDefault();
   		event.stopPropagation();
@@ -134,6 +151,7 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
   		let postObj = {'notarr': this.notArr};
   		this.notificationService.updateNotificationDisplay(postObj).subscribe(data => this.afterUpdateNotificationDisplay(data));
   	}
+
   	private afterUpdateNotificationDisplay(data){
   		if(data.length > 0){
   			this.isFriendReuestBorder = true;
@@ -163,7 +181,7 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
 		this.notificationService.checkNotification(postObj).subscribe(data => this.afterCheckNotification(data));
 	}
 
-	private fetchAllNotifications(): void{
+	private fetchAllNotifications(event): void{
 		let postObj = {'userid': this.userId};
 		this.notificationService.fetchAllNotifications(postObj).subscribe(data => this.afterFetchAllNotifications(data));	
 	}
