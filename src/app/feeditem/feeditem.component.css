@@ -1,10 +1,9 @@
 .profile-pic{
-    margin: -3px 2px;
-    width: 45px;
-    height: 45px;
-    position: absolute;
-    left: 5px;
-    border-radius: 50%;  	
+    width: 50px;
+    height: 50px;
+    margin: 3px;
+    border-radius: 50%;  
+    border: 2px solid #e6e6e6;	
 }
 .feed-controls .fa-thumbs-up, .feed-controls .fa-heart, .feed-controls .fa-comment{
     margin: 0px 3px 0px 0px;
@@ -18,7 +17,7 @@
  .feed-edit-items{
     position: absolute !important;
     right: 18px !important;
-    margin-top: 16px;
+    margin-top: 38px;
     z-index: 1000;
  }
  .edit-feed:hover{
@@ -43,8 +42,8 @@
     display: inline-block;
 }
 .comment-box-items{
-    border: 1px solid #2b90d9;
-    width: 280px;
+    border: 1px solid #e6e6e6;
+    width: 320px;
     border-radius: 3px;
     padding: 3px;
     /*max-height: 220px;*/
@@ -64,3 +63,26 @@
  .feed-item{
     word-wrap: break-word;
  }
+ .edit-feed{
+    height: 30px;
+    width: 30px;
+    line-height: 29px;
+    border: 1px solid #e6e6e6 !important;
+    border-radius: 3px;
+ }
+
+ .edit-feed i{
+    margin: 0px 9px;    
+ }
+  .edit-feed:hover{
+    border: 1px solid red !important;
+  }
+  .edit-feed:hover i{
+    color: red !important;
+  }
+  .edit-arrow{
+    position: absolute;
+    right: 16px;
+    margin-top:29px;
+  }
+

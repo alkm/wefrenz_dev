@@ -1,7 +1,7 @@
 <div *ngIf="isEditCommentItem; then editCommentItemControls"></div>
 <ng-template #editCommentItemControls>
+	<div class="arrow-up white-bg comment-arrow"></div>
 	<div class="list-items comment-edit-items font-items pull-right">
-		<div class="arrow-up white-bg"></div>
 		<div *ngIf="isMyComment; then editThisCommentItem else reportThisCommentItem"></div>
 		<ng-template #editThisCommentItem>
 			<div class="cursor-pointer list-item" (click)="editCommentItem($event)">Edit</div>
@@ -17,9 +17,9 @@
 <div class="comment-profile-pic no-padding pull-left contain-bg" [ngStyle]="{ 'background-image': 'url(' + commentItem.profilepic + ')'}">
 </div>
 <div class="full-name blue-fonts bold-fonts pull-left med-line-height">{{commentItem.fullname}}</div>
-<div class="pull-left blue-fonts time-ago med-line-height"><span>&nbsp;commented&nbsp;</span>{{commentMoment}}</div>
-<div class="pull-right edit-feed hand-cursor">
-	<i aria-hidden="true" class="fa fa-pencil-square-o blue-fonts" id="editItem" (click)="clickedInside($event);"></i>
+<div class="pull-left time-ago med-line-height"><span>&nbsp;commented&nbsp;</span>{{commentMoment}}</div>
+<div class="pull-right edit-feed hand-cursor" (click)="clickedInside($event);">
+	<i aria-hidden="true" class="fa fa-pencil-square-o gray-fonts" id="editItem"></i>
 </div>
 <div *ngIf="commentItem.commenttype === 'text'; then textComment"></div>
 <div *ngIf="commentItem.commenttype === 'image'; then imageComment"></div>

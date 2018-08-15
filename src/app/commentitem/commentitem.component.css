@@ -6,8 +6,9 @@
  }
  .comment-edit-items{
  	position: absolute;
- 	left: 245px;
- 	margin-top: 15px;
+    left: 233px;
+    margin-top: 38px;
+    z-index: 1000;
  }
  .comment-profile-pic{
  	height: 26px;
@@ -20,3 +21,27 @@
  .feed-item{
     word-wrap: break-word;
  }
+ .edit-feed{
+ 	height: 30px;
+    width: 30px;
+    line-height: 29px;
+    border: 1px solid #e6e6e6 !important;
+    border-radius: 3px;
+ }
+ .edit-feed i{
+ 	margin: 0px 9px;
+ }
+
+  .edit-feed:hover{
+  	border: 1px solid red !important;
+  }
+  .edit-feed:hover i{
+  	color: red !important;
+  }
+
+  .comment-arrow{
+  	position: absolute;
+    left: 296px;
+    margin-top: 29px;
+  }
+

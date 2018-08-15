@@ -1,3 +1,5 @@
+
+@import "device/tablet.css";
 /* You can add global styles to this file, and also import other style files */
 
 html{
@@ -89,6 +91,12 @@ button{
 .blue-fonts{
 	color: #2b90d9 !important;
 }
+.gray-fonts{
+	color: #657786;
+}
+.black-fonts{
+	color: #000;
+}
 .bold-fonts{
 	font-weight: bold;
 }
@@ -130,6 +138,20 @@ button{
 }
 .no-text-decoration{
 	text-decoration: none !important;
+}
+app-login, app-signup{
+	width: 320px;
+    padding: 30px;
+    max-width: 98%;
+    left: 0;
+    right: 0;
+    top: 50;
+    bottom: 0;
+    margin: auto;
+    background: rgba(255, 255 ,255, 0.7);
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 10px;
+    text-align: center;
 }
 .server-msg{width: 205px;}
 
@@ -294,7 +316,7 @@ i.fa-3x{
 .list-items{
 	background: rgba(255, 255, 255, 0.8);
     border-radius: 3px;
-    margin-top: 10px;
+    margin: 10px 8px;
     width: 100px;
     padding: 5px 0px;
     border: 1px solid #2b90d9;
@@ -339,9 +361,6 @@ i.fa-3x{
     background-size: contain;
     background-repeat: no-repeat;
     margin: 2px;
-}
-.profile-pic{
-	background-size: cover !important;
 }
 
 .profile-pic-medium{
@@ -508,13 +527,18 @@ i.fa-3x{
 	margin-top: 10px;
 }
 .color-picker-icon{
-	border: 1px solid #2b90d9;
+	border: 1px solid #e6e6e6;
+	border-radius: 3px;
 }
+.color-picker-icon:hover{
+	border: 1px solid red;
+}
+
 .color-picker-icon input{
     border: 2px solid #d2d2d2;
     outline: none;
-    height: 15px;
-    width: 15px;
+    height: 30px;
+    width: 30px;
     color: transparent;
 }
 .color-picker-icon:hover{
@@ -527,10 +551,10 @@ i.fa-3x{
     overflow-y: auto;
 }
 .font-family-btn, .text-style-btn{
-    border: 1px solid #2b90d9;
+    border: 1px solid #e6e6e6;
     font-size: 13px;
-    width: 17px;
-    height: 17px;
+    width: 30px;
+    height: 30px;
     margin: 0px 5px;
 }
 .text-style-btn:hover{
@@ -540,30 +564,35 @@ i.fa-3x{
 	color: red;
 }
 .up-img-btn, .up-mus-btn, .up-vid-btn{
-    border: 1px solid #2b90d9;
-    font-size: 11px;
-    width: 17px;
-    height: 17px;
+    border: 1px solid #e6e6e6;
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
     margin: 0px 0px 0px 5px;
+    border-radius: 3px;
+    line-height: 29px;
 }
 .font-size-btn{
-    border: 1px solid #2b90d9;
-    font-size:11px;
-    width: 32px;
-    height: 17px;
+	border: 1px solid #e6e6e6;
+    font-size: 11px;
+    width: 50px;
+    height: 30px;
+    border-radius: 3px;
+    line-height: 29px;
 }
 .font-family-btn i{
-	margin: 1px 2px;
-    position: absolute;
+    margin: 2px 7px;
+    line-height: 24px;
 }
 .text-style-btn{
 	margin-right: 0px !important;
 }
 .text-style-btn .fa-edit{
-    font-size: 12px;
-    top: -1px;
-    position: relative;
-    right: -2px;
+	font-size: 12px;
+    /* top: -1px; */
+    /* position: relative; */
+    /* right: -2px; */
+    margin: 9px 0px;
 }
 .font-family-btn, .font-size-btn{margin-top: 5px;}
 .font-family-btn:hover, .font-size-btn:hover, .font-bold-btn:hover,
@@ -579,12 +608,14 @@ i.fa-3x{
 	color: red !important;
 }
 .font-bold-btn, .font-ul-btn, .font-italic-btn, .smiley-btn{
-	border: 1px solid #2b90d9;
-    font-size: 11px;
-    width: 17px;
-    height: 17px;
+    border: 1px solid #e6e6e6;
+    font-size: 12px !important;
+    width: 30px;
+    height: 30px;
     margin: 0px 0px 0px 5px;
     font-weight: bold;
+    line-height: 29px;
+    border-radius: 3px;
 }
 .color-picker .arrow-right{
 	top: 5px !important;
@@ -601,8 +632,21 @@ i.fa-3x{
 }
 .emo-list{
     width: 102px !important;
-    margin: 8px -8px;
+    margin: 40px 72px;
+    position: absolute;
 }
+.sqr-btn{
+	display: block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: #fff;
+    font-size: 0;
+    border-radius: 3px;
+}
+input{
+	color: #000 !important;
+}  
 /*
 .modal{
 	width: 90% !important;

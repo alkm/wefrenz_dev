@@ -29,7 +29,7 @@
               </ng-container>
           </i>
           <span>Notifications</span></a>
-          <div class='notification-list' [ngClass]="(isFriendReuestBorder ? 'add-border' : '')" (click)="clickedInside($event)">
+          <div class='notification-list' [ngClass]="(isNotificationBorder ? 'add-border' : '')" (click)="clickedInside($event)">
             <ng-container *ngIf="isNotificationDisplay">
               <app-notification-list  class="in-line" *ngFor="let item of notificationList" [item]="item" >
               </app-notification-list>

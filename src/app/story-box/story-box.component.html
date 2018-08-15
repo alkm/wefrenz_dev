@@ -1,8 +1,8 @@
 <div class="inline-block colw100 story-feed" [ngClass]="{'comment-box': isComment === true}" id="feedTop">
 	<div *ngIf="!isComment; then profilePicBox"></div>
 	<ng-template #profilePicBox>
-		<div class="profile-pic no-padding pull-left contain-bg" [ngStyle]="{ 'background-image': 'url(' + profilePic + ')'}">
-		</div>
+		<!--<div class="profile-pic no-padding pull-left contain-bg" [ngStyle]="{ 'background-image': 'url(' + profilePic + ')'}">
+		</div>-->
 	</ng-template>
 	<div name="story" #storyBox class="story-box colw100 inline-block no-outline auto-overflow pull-left" contenteditable="true" spellcheck="true" role="textbox" aria-multiline="true" data-placeholder-default="What’s happening?" aria-autocomplete="list" aria-expanded="false" [style.color]="color" [style.font-family]="fontFamily" [style.font-size]="fontSize" [style.font-weight]="fontWeight" [style.text-decoration]="txtDeco" [style.font-style]="fontStyle"  [innerHTML]="storyContent" 
 	(keyup)="onStoryContentChange($event)" (keydown)="onStoryContentChanged($event.keyCode)">
@@ -11,25 +11,25 @@
 		<div class="pull-left color-picker-icon">
 			<input [colorPicker]="color" (colorPickerChange)="color=$event; colorPickerChange($event);" [style.background]="color" class="cursor-pointer"/>
 		</div>
-		<div class="pull-left text-style-btn blue-fonts cursor-pointer" (click)="toggleTextStyling($event); clickedInside($event);">
+		<div class="pull-left text-style-btn gray-fonts cursor-pointer sqr-btn" (click)="toggleTextStyling($event); clickedInside($event);">
 			<i class="fa fa-edit"></i>
 		</div>
 		<div *ngIf="isShowTextStyling; then textStyling"></div>
 		<ng-template #textStyling>
 			<div class="list-items pull-left text-styles">
 				<div class="arrow-up white-bg"></div>
-				<div class="pull-left font-bold-btn blue-fonts cursor-pointer text-center" [class.high-light]="isBoldBtnHighLight" (click)="applyBold($event); clickedInside($event);">
+				<div class="pull-left font-bold-btn gray-fonts cursor-pointer text-center" [class.high-light]="isBoldBtnHighLight" (click)="applyBold($event); clickedInside($event);">
 					<span>B</span>
 				</div>
-				<div class="pull-left font-ul-btn blue-fonts cursor-pointer text-center" [class.high-light]="isULBtnHighLight" (click)="applyUnderline($event); clickedInside($event);">
+				<div class="pull-left font-ul-btn gray-fonts cursor-pointer text-center" [class.high-light]="isULBtnHighLight" (click)="applyUnderline($event); clickedInside($event);">
 					<span>U</span>
 				</div>
-				<div class="pull-left font-italic-btn blue-fonts cursor-pointer text-center" [class.high-light]="isIBtnHighLight"  (click)="applyItalic($event);clickedInside($event);">
+				<div class="pull-left font-italic-btn gray-fonts cursor-pointer text-center" [class.high-light]="isIBtnHighLight"  (click)="applyItalic($event);clickedInside($event);">
 					<span>I</span>
 				</div>
 				<div class="pull-left font-family-btn" (click)="toggleFontFamily($event); clickedInside($event);">
 					<div>
-						<i class="fa fa-font blue-fonts cursor-pointer"></i>
+						<i class="fa fa-font gray-fonts cursor-pointer"></i>
 					</div>
 					<div *ngIf="isShowFontFamily; then fontFamilies"></div>
 					<ng-template #fontFamilies>
@@ -42,7 +42,7 @@
 					</ng-template>
 				</div>
 				<div class="pull-left font-size-btn" (click)="clickedInside($event)">
-					<div class="blue-fonts cursor-pointer text-center" (click)="toggleFontSize($event)"><span>{{fontSize}}</span></div>
+					<div class="gray-fonts cursor-pointer text-center" (click)="toggleFontSize($event)"><span>{{fontSize}}</span></div>
 					<div *ngIf="isShowFontSize; then fontSizes"></div>
 					<ng-template #fontSizes>
 						<div class="list-items font-sizes pull-left">
@@ -69,76 +69,74 @@
 				</div>
 			</div>
 		</ng-template>
-		<div class="pull-left smiley-btn blue-fonts cursor-pointer text-center" [class.high-light]="isEmotionsHighLight"  (click)="showEmotions($event);clickedInside($event);">
-			<div>
-				<i class="fa fa-smile-o"></i>
-			</div>
-			<div *ngIf="isEmotionsHighLight; then emotions"></div>
-			<ng-template #emotions>
-				<div class="list-items font-items pull-left emo-list">
-					<div class="arrow-up white-bg"></div>
-					<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ':)')">
-						<span><img src="assets/images/smileys/socialutility-emotion0-smile.gif"/></span>
-					</div>
-					<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ':(')">
-						<span><img src="assets/images/smileys/socialutility-emotion1-sadsmile.gif"/></span>
-					</div>
-					<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ':D')">
-						<span><img src="assets/images/smileys/socialutility-emotion2-bigsmile.gif"/></span>
-					</div>
-					<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, '8=)')">
-						<span><img src="assets/images/smileys/socialutility-emotion3-cool.gif"/></span>
-					</div>
-					<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ':o')">
-						<span><img src="assets/images/smileys/socialutility-emotion4-surprised.gif"/></span>
-					</div>
-					<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ';)')">
-						<span><img src="assets/images/smileys/socialutility-emotion5-wink.gif"/></span>
-					</div>
-
-
-					<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ';(')">
-						<span><img src="assets/images/smileys/socialutility-emotion6-crying.gif"/></span>
-					</div>
-					<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, '(:|')">
-						<span><img src="assets/images/smileys/socialutility-emotion7-sweating.gif"/></span>
-					</div>					
-					<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ':|')">
-						<span><img src="assets/images/smileys/socialutility-emotion8-speechless.gif"/></span>
-					</div>					
-					<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ':*')">
-						<span><img src="assets/images/smileys/socialutility-emotion9-kiss.gif"/></span>
-					</div>					
-					<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, 'emotion10-tongueout')">
-						<span><img src="assets/images/smileys/socialutility-emotion10-tongueout.gif"/></span>
-					</div>					
-					<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ':$')">
-						<span><img src="assets/images/smileys/socialutility-emotion11-blush.gif"/></span>
-					</div>					
-					<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ':^)')">
-						<span><img src="assets/images/smileys/socialutility-emotion12-wondering.gif"/></span>
-					</div>					
-					<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, '|-)')">
-						<span><img src="assets/images/smileys/socialutility-emotion13-sleepy.gif"/></span>
-					</div>					
-					<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, '|(')">
-						<span><img src="assets/images/smileys/socialutility-emotion14-dull.gif"/></span>
-					</div>
-				</div>
-			</ng-template>
+		<div class="pull-left smiley-btn gray-fonts cursor-pointer text-center sqr-btn" [class.high-light]="isEmotionsHighLight"  (click)="showEmotions($event);clickedInside($event);">
+			<i class="fa fa-smile-o"></i>
 		</div>
-		<div class="pull-left up-img-btn blue-fonts cursor-pointer text-center" (click)= "imageInput.value = ''; imageInput.click();">
+		<div *ngIf="isEmotionsHighLight; then emotions"></div>
+		<ng-template #emotions>
+			<div class="arrow-up white-bg" id="emotionArrow"></div>
+			<div class="list-items font-items pull-left emo-list">
+				<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ':)')">
+					<span><img src="assets/images/smileys/socialutility-emotion0-smile.gif"/></span>
+				</div>
+				<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ':(')">
+					<span><img src="assets/images/smileys/socialutility-emotion1-sadsmile.gif"/></span>
+				</div>
+				<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ':D')">
+					<span><img src="assets/images/smileys/socialutility-emotion2-bigsmile.gif"/></span>
+				</div>
+				<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, '8=)')">
+					<span><img src="assets/images/smileys/socialutility-emotion3-cool.gif"/></span>
+				</div>
+				<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ':o')">
+					<span><img src="assets/images/smileys/socialutility-emotion4-surprised.gif"/></span>
+				</div>
+				<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ';)')">
+					<span><img src="assets/images/smileys/socialutility-emotion5-wink.gif"/></span>
+				</div>
+
+
+				<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ';(')">
+					<span><img src="assets/images/smileys/socialutility-emotion6-crying.gif"/></span>
+				</div>
+				<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, '(:|')">
+					<span><img src="assets/images/smileys/socialutility-emotion7-sweating.gif"/></span>
+				</div>					
+				<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ':|')">
+					<span><img src="assets/images/smileys/socialutility-emotion8-speechless.gif"/></span>
+				</div>					
+				<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ':*')">
+					<span><img src="assets/images/smileys/socialutility-emotion9-kiss.gif"/></span>
+				</div>					
+				<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, 'emotion10-tongueout')">
+					<span><img src="assets/images/smileys/socialutility-emotion10-tongueout.gif"/></span>
+				</div>					
+				<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ':$')">
+					<span><img src="assets/images/smileys/socialutility-emotion11-blush.gif"/></span>
+				</div>					
+				<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, ':^)')">
+					<span><img src="assets/images/smileys/socialutility-emotion12-wondering.gif"/></span>
+				</div>					
+				<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, '|-)')">
+					<span><img src="assets/images/smileys/socialutility-emotion13-sleepy.gif"/></span>
+				</div>					
+				<div class="cursor-pointer list-item pull-left" (click)="addEmotion($event, '|(')">
+					<span><img src="assets/images/smileys/socialutility-emotion14-dull.gif"/></span>
+				</div>
+			</div>
+		</ng-template>
+		<div class="pull-left up-img-btn gray-fonts cursor-pointer text-center" (click)= "imageInput.value = ''; imageInput.click();">
 			<i class="fa fa-picture-o" aria-hidden="true"></i>
 		</div>
-		<div class="pull-left up-mus-btn blue-fonts cursor-pointer text-center" (click)= "musicInput.value = ''; musicInput.click();">
+		<div class="pull-left up-mus-btn gray-fonts cursor-pointer text-center" (click)= "musicInput.value = ''; musicInput.click();">
 			<i class="fa fa-music" aria-hidden="true"></i>
 		</div>
-		<div class="pull-left up-vid-btn blue-fonts cursor-pointer text-center" (click)= "videoInput.value = ''; videoInput.click();">
+		<div class="pull-left up-vid-btn gray-fonts cursor-pointer text-center" (click)= "videoInput.value = ''; videoInput.click();">
 			<i class="fa fa-file-video-o" aria-hidden="true"></i>
 		</div>
 		<div  *ngIf="!isComment; then checkIn"></div>
 		<ng-template #checkIn>
-			<div class="checkin-btn pull-left up-vid-btn blue-fonts cursor-pointer text-center" (click)="doCheckIn($event)">
+			<div class="checkin-btn pull-left up-vid-btn gray-fonts cursor-pointer text-center" (click)="doCheckIn($event)">
 					<i class="fa fa-map-marker" aria-hidden="true"></i>
 			</div>
 		</ng-template>

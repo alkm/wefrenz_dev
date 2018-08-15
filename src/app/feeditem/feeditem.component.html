@@ -1,7 +1,7 @@
 <div *ngIf="isEditFeedItem; then editFeedItemControls"></div>
 <ng-template #editFeedItemControls>
+	<div class="arrow-up white-bg edit-arrow"></div>
 	<div class="list-items feed-edit-items font-items pull-right">
-		<div class="arrow-up white-bg"></div>
 		<div *ngIf="isMyFeed; then editThisFeedItem else reportThisFeedItem"></div>
 		<ng-template #editThisFeedItem>
 			<div class="cursor-pointer list-item" (click)="editFeedItem($event)">Edit</div>
@@ -17,10 +17,12 @@
 <div class="profile-pic no-padding pull-left contain-bg" [ngStyle]="{ 'background-image': 'url(' + item.profilepic + ')'}">
 </div>
 <div class="full-name blue-fonts bold-fonts pull-left">{{item.fullname}}</div>
-<div class="pull-left blue-fonts time-ago"><span>&nbsp;posted&nbsp;</span>{{feedMoment}}</div>
-<div class="pull-right edit-feed hand-cursor">
-	<i aria-hidden="true" class="fa fa-pencil-square-o blue-fonts" id="editItem" (click)="clickedInside($event);"></i>
+<div class="pull-right edit-feed hand-cursor"  (click)="clickedInside($event);">
+	<i aria-hidden="true" class="fa fa-pencil-square-o gray-fonts" id="editItem"></i>
 </div>
+<br/>
+<div class="pull-left time-ago"><span>posted&nbsp;</span>{{feedMoment}}</div>
+
 <div *ngIf="item.type === 'text'; then textFeed"></div>
 <div *ngIf="item.type === 'image'; then imageFeed"></div>
 <div *ngIf="item.type === 'music'; then musicFeed"></div>

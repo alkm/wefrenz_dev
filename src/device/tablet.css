@@ -1,0 +1,35 @@
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 1199px) {
+  .profile-pic {
+   	min-width: 198px !important;
+   	min-height: 198px !important;
+  }
+
+  .profile-card .title-bar{
+  	width: 196px !important;
+  	top: 168px !important;
+  }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 991px) {
+.profile-pic {
+   	min-width: 138px !important;
+   	min-height: 138px !important;
+  }
+  .profile-card .title-bar{
+  	width: 136px !important;
+  	top: 109px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+.profile-pic {
+   	min-width: 93px !important;
+   	min-height: 93px !important;
+  }
+  .profile-card .title-bar{
+  	width: 91px !important;
+  	top: 65px !important;
+  }
+}

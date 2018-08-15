@@ -1,10 +1,10 @@
 .story-feed{
-	padding: 6px 6px 0px 57px;
+	padding: 5px;
 }
 .story-box{
 	height: 100px;
 	padding: 3px ;
-	border: 1px solid #2b90d9;
+	border: 1px solid #e6e6e6;
 }
 .profile-pic{
     margin: 0px 2px;
@@ -32,6 +32,8 @@
     border: 1px solid #2b90d9 !important;
     color: #2b90d9 !important;
     background: #d9e1e8 !important;
+    height: 30px;
+    border-radius: 3px;
 }
 .post-btn:hover *{
     color: red;
@@ -74,9 +76,9 @@ app-feeditem{
     font-size: 14px;
 }
 .text-styles{
-    margin: 25px 15px;
+    margin: 40px 35px;
     position: absolute;
-    width: 73px;
+    width: 112px;
 }
 .comment-box{
     height: 60px;
@@ -85,7 +87,7 @@ app-feeditem{
 }
 .comment-box .story-box{
     height: 60px;
-    width: 260px;
+    width: 275px;
 }
 .comment-box .control-bar{
     width: 100%;
@@ -93,4 +95,8 @@ app-feeditem{
 .font-sizes{
     height: 100px;
     overflow: auto;
+}
+
+#emotionArrow{
+    margin: 30px 80px;
 }

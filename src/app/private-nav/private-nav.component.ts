@@ -22,6 +22,7 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
 	private notArr = undefined;
 	private isBorder: boolean = false;
 	private isFriendReuestBorder: boolean = false;
+	private isNotificationBorder: boolean = false;
 	private navRef: any;
 	private searchValue: string = '';
 	private friendRequestCount: number = 0;
@@ -137,6 +138,7 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
 		if(data.length > 0){
 			for(let obj in data){
 				this.reqArr.push(data[obj].requester);
+				this.isFriendReuestBorder = true;
 			}
 			let postObj = {'reqarr': this.reqArr};
 			this.friendsService.getRequestDetails(postObj).subscribe(data => this.afterGetRequestDetails(data));
@@ -154,10 +156,10 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
 
   	private afterUpdateNotificationDisplay(data){
   		if(data.length > 0){
-  			this.isFriendReuestBorder = true;
+  			this.isNotificationBorder = true;
   			this.friendRequestPendingList = data;
   		}else{
-  			this.isFriendReuestBorder = false;
+  			this.isNotificationBorder = false;
   		}
   	}
 

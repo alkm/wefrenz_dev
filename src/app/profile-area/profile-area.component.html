@@ -28,7 +28,10 @@
 		</form>-->
 		<input type="file" class="file-input" name="uploadfile" #fileInput (change)="fileChangeEvent($event)"/>
 	</div>
-	<div class="profile-pic col-xs-12 col-sm-4 col-md-12 col-lg-4 col-xl-4 no-padding" [ngStyle]="{ 'background-image': 'url(' + profilePic + ')', 'height': 'auto', 'width': profilePicWidth}">
+	<!--<div class="profile-pic" [ngStyle]="{ 'background-image': 'url(' + profilePic + ')', 'height': 'auto', 'width': profilePicWidth}">-->
+	<div class="profile-pic" [ngStyle]="{ 'background-image': 'url(' + profilePic + ')'}">
+	<!--<div class="profile-pic">
+		<img [src]="profilePic"/>-->
 		<div class="title-bar">
 			<div class="pull-left cam-icon">
 				<i class="fa fa-camera white-fonts hand-cursor" aria-hidden="true" (click)="camInputClick()"></i>
@@ -38,8 +41,8 @@
 		</div>
 	</div>
 
-	<div class="col-xs-12 col-sm-8 col-md-12 col-lg-8 col-xl-8 no-padding user-info">
-		<div class="row no-margin blue-fonts full-name hand-cursor" (click)="navigateToMyProfile($event);">{{fullName}}</div>
-		<div class="row no-margin email-id"><a href="mailto:" class="no-text-decoration blue-fonts">{{userId}}</a></div>
+	<div class="colw100 user-info">
+		<div class="row no-margin full-name hand-cursor" (click)="navigateToMyProfile($event);"><h4 class="no-margin">{{fullName}}</h4></div>
+		<div class="row no-margin email-id"><a href="mailto:" class="no-text-decoration">{{userId}}</a></div>
 	<div>
 </div>
