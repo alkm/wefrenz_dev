@@ -505,7 +505,7 @@ i.fa-3x{
 	border: 1px solid red;
 }
 .action:hover i{
-	color: red;
+	color: red !important
 }
 
 @media only screen and (max-width: 768px) {
