@@ -251,4 +251,7 @@ export class FeeditemComponent implements OnInit {
           this.isViewMore = false;
         }
     }
+    private closeStory(event){
+      this.addComment = false;
+    }
 }

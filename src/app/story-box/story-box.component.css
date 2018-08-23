@@ -57,9 +57,9 @@ app-feeditem{
     width: 100%;
     min-height: 60px;
     border: 1px solid #e6e6e6;
-    margin: 3px 0px;
+    margin: 5px 0px 0px 0px;
     border-radius: 3px;
-    padding: 3px;
+    padding: 5px;
 }
 .preview-posted-pic{
     width: 300px;
@@ -88,6 +88,7 @@ app-feeditem{
 .comment-box .story-box{
     height: 60px;
     width: 275px;
+    padding-right: 15px;
 }
 .comment-box .control-bar{
     width: 100%;

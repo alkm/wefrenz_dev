@@ -78,87 +78,93 @@
 </ng-template>
 
 <div class="colw100 feed-controls">
-	<div class="pull-left blue-fonts inline-block cursor-pointer" (click)="likeClick($event)"> 
-		<div *ngIf="alreadyLiked === true; then thumbsDown else thumbsUp"></div>
-		<ng-template #thumbsUp>
-			<span>
-				<i class="fa fa-thumbs-up"></i>
-			</span>
-		</ng-template>
-		<ng-template #thumbsDown>
-			<span>
-				<i class="fa fa-thumbs-down"></i>
-			</span>
-		</ng-template>
-		<div *ngIf="likeCount > 0; then  likeItemsCount else likeItemCount">
-  		</div>
-  		<ng-template #likeItemsCount>
-  			<span>{{likeCount}}</span>
-  			<span>Like</span>
-		</ng-template>
-  		<ng-template #likeItemCount>
-  			<span>Like</span>
+	<div class="colw100 pull-left">
+		<div class="pull-left blue-fonts inline-block"> 
+			<div *ngIf="alreadyLiked === true; then thumbsDown else thumbsUp"></div>
+			<ng-template #thumbsUp>
+				<div class="action cursor-pointer" (click)="likeClick($event)">
+					<i class="fa fa-thumbs-up"></i>
+				</div>
+			</ng-template>
+			<ng-template #thumbsDown>
+				<div class="action cursor-pointer" (click)="likeClick($event)">
+					<i class="fa fa-thumbs-down"></i>
+				</div>
+			</ng-template>
+			<div *ngIf="likeCount > 0; then  likeItemsCount else likeItemCount">
+	  		</div>
+	  		<ng-template #likeItemsCount>
+	  			<div class="pull-left no-count text-center">{{likeCount}}</div>
+	  			<!--<span>Like</span>-->
+			</ng-template>
+	  		<ng-template #likeItemCount>
+	  			<!--<span>Like</span>-->
+			</ng-template>
+		</div>	
+		<div class="pull-left blue-fonts">
+			<div *ngIf="alreadyLoved === true; then lovedSymbol else loveSymbol"></div>
+			<ng-template #lovedSymbol>
+				<div class="action cursor-pointer" (click)="loveClick($event)">
+					<i class="fa fa-heart red-fonts"></i>
+				</div>
+			</ng-template>
+			<ng-template #loveSymbol>
+				<div class="action cursor-pointer" (click)="loveClick($event)">
+					<i class="fa fa-heart blue-fonts"></i>
+				</div>
+			</ng-template>
+			<div *ngIf="loveCount > 0; then  loveItemsCount else loveItemCount">
+	  		</div>
+	  		<ng-template #loveItemsCount>
+	  			<div class="no-count text-center">{{loveCount}}</div>
+	  			<!--<span>Love</span>-->
+			</ng-template>
+	  		<ng-template #loveItemCount>
+	  			<!--<span>Love</span>-->
+			</ng-template>
+		</div>
+		<div class="pull-left cursor-pointer blue-fonts action" (click)="commentClick($event)"><i class="fa fa-comment"></i><!--<span>Comment</span>-->
+		</div>
+	</div>
+	<div class="colw100 pull-left">
+		<ng-template [ngIf]="(isCommentsAdded && (feedItemCommentArr.length > 0))">
+			<div class="comment-box">
+				<div class="comment-box-items" #commentBoxItems>
+					<!--<div class="inline-block colw100" *ngFor="let commentItem of feedItemCommentArr">
+						{{commentItem.commenttext}}
+					</div>-->
+					<app-commentitem *ngFor="let commentItem of feedItemCommentArr" 
+					(refreshUpdatedComment)="refreshCommentItem($event)" [item]="item" [commentItem]="commentItem" [userId]="userId"  (refreshFeed)="refreshFeedItem($event)" (editCurrentCommentItem)= "editCurrentCommentItem($event)">
+					</app-commentitem>
+
+					<ng-template [ngIf]="isViewMore">
+						<div class="colw100 inline-block">
+							<div class="view-more text-center hand-cursor blue-fonts" (click)="viewMore($event)">View More</div>
+						</div>
+					</ng-template>
+					<div *ngIf="isLoading then loading"></div>
+					<ng-template #loading>
+						<div class="spinner-bg">
+							<div class="spinner">
+								<i class="fa fa-2x fa-spin fa-spinner blue-fonts"></i>
+								<span class="blue-fonts">&nbsp;Loading...</span>
+							</div>
+						</div>
+					</ng-template>
+					<div *ngIf="(!isViewMore && (total > limit)) then endResult"></div>
+					<ng-template #endResult>
+						<div class="end-result blue-fonts text-center colw100 inline-block">--- End Of Result ---</div>
+					</ng-template>
+				</div>
+			</div>
 		</ng-template>
 	</div>	
-	<div class="pull-left blue-fonts cursor-pointer" (click)="loveClick($event)">
-		<div *ngIf="alreadyLoved === true; then lovedSymbol else loveSymbol"></div>
-		<ng-template #lovedSymbol>
-			<span>
-				<i class="fa fa-heart red-fonts"></i>
-			</span>
-		</ng-template>
-		<ng-template #loveSymbol>
-			<span>
-				<i class="fa fa-heart blue-fonts"></i>
-			</span>
-		</ng-template>
-		<div *ngIf="loveCount > 0; then  loveItemsCount else loveItemCount">
-  		</div>
-  		<ng-template #loveItemsCount>
-  			<span>{{loveCount}}</span>
-  			<span>Love</span>
-		</ng-template>
-  		<ng-template #loveItemCount>
-  			<span>Love</span>
-		</ng-template>
-	</div>
-	<div class="pull-left cursor-pointer blue-fonts" (click)="commentClick($event)"><i class="fa fa-comment"></i><span>Comment</span>
-	</div>
-	<ng-template [ngIf]="(isCommentsAdded && (feedItemCommentArr.length > 0))">
-		<div class="comment-box">
-			<div class="comment-box-items" #commentBoxItems>
-				<!--<div class="inline-block colw100" *ngFor="let commentItem of feedItemCommentArr">
-					{{commentItem.commenttext}}
-				</div>-->
-				<app-commentitem *ngFor="let commentItem of feedItemCommentArr" 
-				(refreshUpdatedComment)="refreshCommentItem($event)" [item]="item" [commentItem]="commentItem" [userId]="userId"  (refreshFeed)="refreshFeedItem($event)" (editCurrentCommentItem)= "editCurrentCommentItem($event)">
-				</app-commentitem>
-
-				<ng-template [ngIf]="isViewMore">
-					<div class="colw100 inline-block">
-						<div class="view-more text-center hand-cursor blue-fonts" (click)="viewMore($event)">View More</div>
-					</div>
-				</ng-template>
-				<div *ngIf="isLoading then loading"></div>
-				<ng-template #loading>
-					<div class="spinner-bg">
-						<div class="spinner">
-							<i class="fa fa-2x fa-spin fa-spinner blue-fonts"></i>
-							<span class="blue-fonts">&nbsp;Loading...</span>
-						</div>
-					</div>
-				</ng-template>
-				<div *ngIf="(!isViewMore && (total > limit)) then endResult"></div>
-				<ng-template #endResult>
-					<div class="end-result blue-fonts text-center colw100 inline-block">--- End Of Result ---</div>
-				</ng-template>
-			</div>
-		</div>
-	</ng-template>
 </div>
 <div class="pull-left colw100 inline-block">
 	<ng-template [ngIf]="addComment">
-		<app-story-box [action]="action" [feedCommentItem]="item" (refreshCommentItem)="refreshCommentItem($event)"></app-story-box>
+		<i class="fa fa-times story-close-icon blue-fonts hand-cursor" (click)="closeStory($event)"></i>
+		<app-story-box [action]="action" [feedCommentItem]="item" (refreshCommentItem)="refreshCommentItem($event)">
+		</app-story-box>
 	</ng-template>	
 </div>
 

@@ -196,9 +196,7 @@ app-login, app-signup{
 .cursor-pointer {
    cursor: pointer;
 }
-.cursor-pointer:hover{
-	color: #fff;
-}
+
 .opaque-bg{
 	background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid #e6e6e6;
@@ -489,6 +487,27 @@ i.fa-3x{
 	background-size: contain;
 }
 
+.action{
+	height: 30px;
+	width: 30px;
+	line-height: 28px;
+	border: 1px solid #e6e6e6;
+	border-radius: 3px;
+	margin: 5px 10px 0px 0px;
+}
+
+.action i{
+	margin: 1px 9px !important;
+	text-align: center;
+}
+
+.action:hover{
+	border: 1px solid red;
+}
+.action:hover i{
+	color: red;
+}
+
 @media only screen and (max-width: 768px) {
 	.navbar-toggler{
 		display: block;
@@ -647,6 +666,10 @@ i.fa-3x{
 input{
 	color: #000 !important;
 }  
+
+.no-count{
+	width: 30px;
+}
 /*
 .modal{
 	width: 90% !important;

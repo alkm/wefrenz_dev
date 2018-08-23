@@ -14,6 +14,7 @@
  	height: 26px;
  	width: 26px;
  	border-radius: 50%;
+  border: 1px solid #2b90d9;
  }
 .full-name{
 	padding-left: 3px;
@@ -43,5 +44,15 @@
   	position: absolute;
     left: 296px;
     margin-top: 29px;
+  }
+  .comment-controls{
+  	display: inline-block;
+    padding: 0px 5px 0px 0px;
+  }
+
+  .story-close-icon{
+    left: 278px;
+    margin-top: 8px;
+    position: absolute;
   }
 

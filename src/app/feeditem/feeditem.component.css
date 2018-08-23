@@ -3,7 +3,7 @@
     height: 50px;
     margin: 3px;
     border-radius: 50%;  
-    border: 2px solid #e6e6e6;	
+    border: 2px solid #2b90d9;	
 }
 .feed-controls .fa-thumbs-up, .feed-controls .fa-heart, .feed-controls .fa-comment{
     margin: 0px 3px 0px 0px;
@@ -34,22 +34,20 @@
  .feed-music-player{
 
  }
- .feed-controls .pull-left{
-    margin-right: 10px;
- }
 .comment-box{
     width: 100%;
-    display: inline-block;
 }
 .comment-box-items{
     border: 1px solid #e6e6e6;
     width: 320px;
     border-radius: 3px;
-    padding: 3px;
+    padding: 5px;
     /*max-height: 220px;*/
     overflow-y: auto;
     overflow-x: hidden;
     display: block;
+    padding: 5px 5px 0px 5px;
+    margin-top: 5px;
 }
 .view-more{
     width: 60px;
@@ -84,5 +82,10 @@
     position: absolute;
     right: 16px;
     margin-top:29px;
+  }
+  .story-close-icon{
+    left: 273px;
+    margin-top: 8px;
+    position: absolute;
   }
 

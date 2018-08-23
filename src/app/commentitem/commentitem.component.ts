@@ -175,4 +175,9 @@ export class CommentitemComponent implements OnInit {
           }
       }
     }
+
+    private closeStory(event){
+      this.addComment = false;
+      this.editComment = false;
+    }
 }
