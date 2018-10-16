@@ -1,9 +1,9 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { RouteinfoService } from 'app/services/shareobject/routeinfo.service';
-import { ValidationService } from 'app/services/validators/validation.service';
-import { RegistrationService } from 'app/services/data/registration.service';
+import { RouteinfoService } from '../../app/services/shareobject/routeinfo.service';
+import { ValidationService } from '../../app/services/validators/validation.service';
+import { RegistrationService } from '../../app/services/data/registration.service';
 
 @Component({
   selector: 'app-login',

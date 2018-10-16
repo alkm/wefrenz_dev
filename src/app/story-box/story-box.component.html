@@ -249,6 +249,7 @@
 		<div class="colw100 inline-block">
 			<div *ngIf="fileType === 'image' then previewPic"></div>
 			<div *ngIf="fileType === 'music' then previewMusic"></div>
+			<div *ngIf="fileType === 'video' then previewVideo"></div>
 			<div *ngIf="fileType === 'checkin' then previewCheckIn"></div>
 			<ng-template #previewPic>
 				<div class="preview-posted-pic pull-left" [ngStyle]="{'background': 'url(' + encodedImage+ ')'}"></div>
@@ -298,6 +299,30 @@
 		        </div>
 		        <div class="colw100 inline-block">			
 					<button id="okBtn" type="button" class="btn btn-primary text-center small-btn ok-btn" (click)="postMusic($event)" [disabled]="isProgress">
+						<span class="pull-left">Post</span>
+						<i class="fa fa-share-square-o" aria-hidden="true"></i>
+					</button>
+				</div>
+			</ng-template>
+			<ng-template #previewVideo>
+				<div class="preview-posted-video pull-left">
+				    <video #videoPlayer id='previewVideoPlayer' controls poster="{{posterPath}}">
+				        <source src="{{postedVideoPath}}" type='video/mp4'>
+				      	<p>Your browser does not support the HTML5 Video element.</p>
+				    </video>
+				    <progress value="0" max="100" id="progressBar" [value]="uploadProgress" [hidden]="!isProgress"></progress>  
+				</div>
+				<div class="pull-right">
+		            <div>
+		                <input type="text" class="form-control no-bg no-brder-radius blue-fonts blue-border" placeholder="title" id="postTitle" [(ngModel)]="postTitle">
+		            </div>
+		            <div class="form-group">
+		                <textarea class="form-control no-resize no-bg no-brder-radius blue-fonts blue-border" rows="5" cols="30" placeholder="Add Description..." id="postDesc" [(ngModel)]="postDesc">
+		                </textarea>
+		            </div>
+		        </div>
+		        <div class="colw100 inline-block">			
+					<button id="okBtn" type="button" class="btn btn-primary text-center small-btn ok-btn" (click)="postVideo($event)" [disabled]="isProgress">
 						<span class="pull-left">Post</span>
 						<i class="fa fa-share-square-o" aria-hidden="true"></i>
 					</button>

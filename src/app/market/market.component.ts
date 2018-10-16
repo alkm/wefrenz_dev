@@ -41,7 +41,7 @@ export class MarketComponent implements OnInit {
   private totalCartItem = 0;
 
 	constructor(private route: ActivatedRoute, private router: Router, private modalService: ModalService, private marketService: MarketService) { 
-		  this.screenHeight = window.screen.height - 175;
+		  this.screenHeight = window.screen.height - 300;
     	route.params.subscribe(val => {
   			let currentUser = localStorage.getItem('currentUser');
   			let id = this.route.snapshot.paramMap.get('id');

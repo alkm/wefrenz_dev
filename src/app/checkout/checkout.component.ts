@@ -1,9 +1,9 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap, NavigationEnd } from '@angular/router';
 
-import { MarketService } from 'app/services/data/market.service';
+import { MarketService } from '../../app/services/data/market.service';
 import { ModalService } from '../modal/modal.service';
-import { AddressService } from 'app/services/data/address.service';
+import { AddressService } from '../../app/services/data/address.service';
 
 @Component({
   selector: 'app-checkout',

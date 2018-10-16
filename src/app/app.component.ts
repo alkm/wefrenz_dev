@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
-import {AppService} from 'app/services/app/app.service';
+import {AppService} from '../app/services/app/app.service';
 
 @Component({
   selector: 'app-root',

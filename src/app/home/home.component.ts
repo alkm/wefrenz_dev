@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 
-import { RouteinfoService } from 'app/services/shareobject/routeinfo.service';
+import { RouteinfoService } from '../../app/services/shareobject/routeinfo.service';
 
 @Component({
   selector: 'app-home',
