@@ -100,15 +100,17 @@ export class VideoPlayerComponent implements OnInit {
 		let file: any;
 		if (event.target.files && event.target.files[0]) {
 			file = event.target.files[0];
-			uploadVideo();
+			let fileName = event.target.files[0].name;
+			uploadVideo(fileName);
 		}
-		function uploadVideo() {
+		function uploadVideo(fileName) {
 			self.loadCount++;
 			let formData = new FormData();
 			formData.append('uploadfile', file);
 			formData.append('userid', userId);
 			formData.append('fullname', fullName);
 			formData.append('profilepic', profilePic);
+			formData.append('fileName', fileName);
 			//formData.append('fullname', );
 			if(!directUpload){
 				formData.append('album', self.videoInfo.title);

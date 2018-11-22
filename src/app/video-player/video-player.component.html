@@ -41,7 +41,7 @@
                 <div class="file-input-container">
                     <form [formGroup]="videoUploadForm" action="/upload" method="post" enctype="multipart/form-data">
                         <div class="form-group" [formGroup]="videoGroup">
-                            <input type="file" accept="video/*" class="file-input" name="uploadfile" #fileInput (change)="fileChangeEvent($event, true)"/>
+                            <input type="file" accept="video/mp4,video/x-m4v,video/3gp,video/flv,video/*" class="file-input" name="uploadfile" #fileInput (change)="fileChangeEvent($event, true)"/>
                         </div>
                     </form>
                 </div>
