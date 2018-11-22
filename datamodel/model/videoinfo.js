@@ -6,6 +6,6 @@ module.exports = mongoose.model('videoinfo', {
 	videosList : Array,
 	albumCover : String,
 	sharedWith: Array,
-	conversion: String,
+	fileName: String,
 	created: {type: Date, default: Date.now()}
 });

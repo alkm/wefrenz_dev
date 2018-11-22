@@ -9,18 +9,21 @@ export class NotificationListComponent implements OnInit {
 	@Input() item;
 
 	private profilePic: string;
-	private fullName: string;
+	private notificationMsg: string;
 	private notificationPic: string;
 	constructor() { }
 
 	ngOnInit() {
 		this.profilePic = JSON.parse(this.item.profilepic).imageBuffer;
-		this.fullName = this.item.fullname;
+		
 		this.notificationPic = this.item.notificationpic;
 		if(this.item.type === 'video'){
 			 if(this.item.conversion === 'failure'){
-			 	this.fullName = 'Your video can not be processed.';
+			 	this.notificationMsg = "Your video "+this.item.filename+" can't be processed.";
+			 }else{
+			 	this.notificationMsg = "Your video "+this.item.filename+" is ready.";
 			 }
+
 		}
 	}
 

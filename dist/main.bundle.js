@@ -5427,7 +5427,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".notification-pic{\n    height: 35px;\n    width:  35px;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: inherit;\n    margin: 2px; \n}", ""]);
+exports.push([module.i, ".notification-pic{\n    height: 35px;\n    width:  35px;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: inherit;\n    margin: 2px; \n}\n.not-msg{\n\twidth: 220px;\n    line-height: 13px;\n    word-break: break-word;\n    text-align: left;\n}", ""]);
 
 // exports
 
@@ -5440,7 +5440,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/notification-list/notification-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row no-margin pull-left colw100 inline-block hand-cursor item-row\">\n\t<div class=\"profile-pic-medium pull-left\" [ngStyle]=\"{ 'background-image': 'url(' + profilePic + ')'}\"></div>\n\t<div class=\"row no-margin blue-fonts full-name pull-left\">{{fullName}}</div> \n\t<div class=\"notification-pic pull-right\" [ngStyle]=\"{ 'background-image': 'url(' + notificationPic + ')'}\"></div>\n</div>"
+module.exports = "<div class=\"row no-margin pull-left colw100 inline-block hand-cursor item-row\">\n\t<div class=\"profile-pic-medium pull-left\" [ngStyle]=\"{ 'background-image': 'url(' + profilePic + ')'}\"></div>\n\t<div class=\"row no-margin blue-fonts full-name pull-left not-msg\">{{notificationMsg}}</div> \n\t<div class=\"notification-pic pull-right\" [ngStyle]=\"{ 'background-image': 'url(' + notificationPic + ')'}\"></div>\n</div>"
 
 /***/ }),
 
@@ -5465,11 +5465,13 @@ var NotificationListComponent = (function () {
     }
     NotificationListComponent.prototype.ngOnInit = function () {
         this.profilePic = JSON.parse(this.item.profilepic).imageBuffer;
-        this.fullName = this.item.fullname;
         this.notificationPic = this.item.notificationpic;
         if (this.item.type === 'video') {
             if (this.item.conversion === 'failure') {
-                this.fullName = 'Your video can not be processed.';
+                this.notificationMsg = "Your video " + this.item.filename + " can't be processed.";
+            }
+            else {
+                this.notificationMsg = "Your video " + this.item.filename + " is ready.";
             }
         }
     };
@@ -10253,15 +10255,17 @@ var VideoPlayerComponent = (function () {
         var file;
         if (event.target.files && event.target.files[0]) {
             file = event.target.files[0];
-            uploadVideo();
+            var fileName = event.target.files[0].name;
+            uploadVideo(fileName);
         }
-        function uploadVideo() {
+        function uploadVideo(fileName) {
             self.loadCount++;
             var formData = new FormData();
             formData.append('uploadfile', file);
             formData.append('userid', userId);
             formData.append('fullname', fullName);
             formData.append('profilepic', profilePic);
+            formData.append('fileName', fileName);
             //formData.append('fullname', );
             if (!directUpload) {
                 formData.append('album', self.videoInfo.title);

@@ -6,3 +6,9 @@
     background-position: inherit;
     margin: 2px; 
 }
+.not-msg{
+	width: 220px;
+    line-height: 13px;
+    word-break: break-word;
+    text-align: left;
+}

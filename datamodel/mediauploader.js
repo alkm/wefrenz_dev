@@ -205,6 +205,7 @@ module.exports = function(app) {
 		var albumTitle = req.body.album;
 		var fullName = req.body.fullname;
 		var profilePic = req.body.profilepic;
+		var fileName = req.body.fileName;
 		/*try{
 			if(ssn === undefined){
 				res.json({"status": "sessionExpired", "message": "Please Login"});
@@ -240,6 +241,7 @@ module.exports = function(app) {
 							file_name : 'poster_'+Date.now()
 						}, function (error, files) {
 							let videoObj = {};
+							videoObj.fileName = fileName;
 							if (!error){
 								console.log('Frames: ' + files);
 								posterImg = files[files.length-1];
@@ -356,6 +358,7 @@ module.exports = function(app) {
 								title: albumTitle,
 								description: albumDesc,
 								videosList : videosList,
+								fileName: data.fileName,
 								albumCover : '',
 								sharedWith: []
 							}, function(err, info) {
@@ -389,6 +392,7 @@ module.exports = function(app) {
 		}
 
 		function configureNotification(obj, pic){
+			console.log('failed ++++++'+obj.videoPath);
 			var dateNow = new Date();
 			notificationInfo.create({
 				userid : userId,
@@ -397,7 +401,8 @@ module.exports = function(app) {
 				notificationpic: pic,
 				type : 'video',
 				text : '',
-				filePath : obj.videoPath,
+				filepath : obj.videoPath,
+				filename: obj.fileName,
 				conversion: obj.conversion,
 				isReady : true,
 				isShown : false
