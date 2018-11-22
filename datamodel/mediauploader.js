@@ -229,6 +229,7 @@ module.exports = function(app) {
 			
 			try {
 				if (fs.existsSync(actualVideoPath)) {
+					console.log('actual video path'+ actualVideoPath);
 					var process = new ffmpeg(actualVideoPath);
 					process.then(function (video) {
 						var posterPath = 'media/videos/myvideos/poster/';
@@ -238,11 +239,12 @@ module.exports = function(app) {
 							number : 1,
 							file_name : 'poster_'+Date.now()
 						}, function (error, files) {
+							let videoObj = {};
 							if (!error){
 								console.log('Frames: ' + files);
 								posterImg = files[files.length-1];
 								posterImg = 'video/poster/'+posterImg.split('/poster/')[1]; //Setting the virtual path
-								let videoObj = {};
+								
 								videoObj.extension = 'mp4';
 								videoObj.fullname = fullName;
 								videoObj.userid = userId;
@@ -254,6 +256,7 @@ module.exports = function(app) {
 											console.log('Video file: ' + file);
 											saveVideoPathMP4 = 'video/mp4/'+saveVideoPathMP4.split('/mp4/')[1];//Setting virtual path
 											videoObj.videoPath = saveVideoPathMP4;
+											videoObj.conversion = 'success';
 											emtr.emit('onVideoReady', videoObj);
 											
 										}	
@@ -263,12 +266,19 @@ module.exports = function(app) {
 									
 									saveVideoPathMP4 = 'video/original/'+uploadedVideoPath//Setting virtual path
 									videoObj.videoPath = saveVideoPathMP4;
+									videoObj.conversion = 'success';
 									emtr.emit('onVideoReady', videoObj);
 									console.log('The format is mp4, so keeping it as original poster'+posterImg);
 									
 								}
 
 
+							}else{
+								console.log('Error Converting Videos'+error);
+								videoObj.videoPath = 'N/A';
+								videoObj.extension = 'N/A';
+								videoObj.conversion = 'failure';
+								emtr.emit('onVideoReady', videoObj);
 							}
 						});
 
@@ -304,16 +314,19 @@ module.exports = function(app) {
 			}
 
 			emtr.on('onVideoReady', function (data) {
-				console.log('Here are the arguments' + data);
+				//console.log('Here are the arguments' + data);
 				if(data.extension === 'mp4'){
 					videoReadyArr.push('mp4');
 				}
 				/*if(data === 'webm'){
 					videoReadyArr.push('webm');
 				}*/
+				if(data.conversion === 'failure'){
+					updateVideoList(userId, albumTitle, albumDesc, 'N/A', 'N/A', data);
+				}
 				if(videoReadyArr.length === 1){
 					videoReadyArr = [];
-					console.log('un formatted video'+saveVideoPathMP4);
+					//console.log('un formatted video'+saveVideoPathMP4);
 					updateVideoList(userId, albumTitle, albumDesc, saveVideoPathMP4, posterImg, data);
 				}
 			});
@@ -334,38 +347,42 @@ module.exports = function(app) {
 				if(err){
 					res.send(err);
 				}else{
-					if(info === null){
-						operation = 'create';
-						videosList.push(videoObj);
-						videoInfo.create({
-							userid : userId,
-							title: albumTitle,
-							description: albumDesc,
-							videosList : videosList,
-							albumCover : '',
-							sharedWith: []
-						}, function(err, info) {
-							if (err){
-								console.log("Error"+err);
-							}else{
-								//res.json({"status": "success", "message": "Album created successfully", "info": info});
-								configureNotification(data, posterImg);
-							}
-						});	
+					if(data.conversion === 'success'){
+						if(info === null){
+							operation = 'create';
+							videosList.push(videoObj);
+							videoInfo.create({
+								userid : userId,
+								title: albumTitle,
+								description: albumDesc,
+								videosList : videosList,
+								albumCover : '',
+								sharedWith: []
+							}, function(err, info) {
+								if (err){
+									console.log("Error"+err);
+								}else{
+									//res.json({"status": "success", "message": "Album created successfully", "info": info});
+									configureNotification(data, posterImg);
+								}
+							});	
 
+						}else{
+							operation = 'update';
+							videosList = info.videosList;
+							videosList.push(videoObj);
+							videoInfo.update({userid: userId, title: albumTitle}, {$set: {videosList: videosList}}, function(err, info){
+								if(err){
+									console.log("Error"+err);
+									//res.json({"status": "failure", "message": "Failed to update video now, please try again later."});
+								}else{
+									//res.json({"status": "success", "message": "Video updated successfully.", "info": info});
+									configureNotification(data, posterImg);
+								}
+							});
+						}
 					}else{
-						operation = 'update';
-						videosList = info.videosList;
-						videosList.push(videoObj);
-						videoInfo.update({userid: userId, title: albumTitle}, {$set: {videosList: videosList}}, function(err, info){
-							if(err){
-								console.log("Error"+err);
-								//res.json({"status": "failure", "message": "Failed to update video now, please try again later."});
-							}else{
-								//res.json({"status": "success", "message": "Video updated successfully.", "info": info});
-								configureNotification(data, posterImg);
-							}
-						});
+						configureNotification(data, 'N/A');
 					}
 				}
 			});
@@ -381,6 +398,7 @@ module.exports = function(app) {
 				type : 'video',
 				text : '',
 				filePath : obj.videoPath,
+				conversion: obj.conversion,
 				isReady : true,
 				isShown : false
 			}, function(err, info) {

@@ -8,6 +8,7 @@ module.exports = mongoose.model('notificationinfo', {
 	text : String,
 	filepath : String,
 	notificationpic: String,
+	conversion: String,
 	isReady : Boolean,
 	isShown : Boolean
 });

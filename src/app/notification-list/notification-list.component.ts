@@ -17,6 +17,11 @@ export class NotificationListComponent implements OnInit {
 		this.profilePic = JSON.parse(this.item.profilepic).imageBuffer;
 		this.fullName = this.item.fullname;
 		this.notificationPic = this.item.notificationpic;
+		if(this.item.type === 'video'){
+			 if(this.item.conversion === 'failure'){
+			 	this.fullName = 'Your video can not be processed.';
+			 }
+		}
 	}
 
 }

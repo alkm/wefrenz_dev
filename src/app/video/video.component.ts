@@ -57,7 +57,7 @@ export class VideoComponent {
   }
 
   connect():void {
-    easyrtc.setVideoDims(320,240,undefined);
+    easyrtc.setVideoDims(320, 240, undefined);
     let convertListToButtonShim = (roomName:string, data:Easyrtc_PerRoomData, isPrimary:boolean):void => {
       this.convertListToButtons(roomName, data, isPrimary);
     }
