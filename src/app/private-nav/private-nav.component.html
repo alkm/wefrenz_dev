@@ -29,9 +29,9 @@
               </ng-container>
           </i>
           <span>Notifications</span></a>
-          <div class='notification-list' [ngClass]="(isNotificationBorder ? 'add-border' : '')" (click)="clickedInside($event)">
+          <div class='notification-list' [ngClass]="(isNotificationDisplay ? 'add-border' : '')" (click)="clickedInside($event)">
             <ng-container *ngIf="isNotificationDisplay">
-              <app-notification-list  class="in-line" *ngFor="let item of notificationList" [item]="item" >
+              <app-notification-list  class="in-line" *ngFor="let item of notificationList" [item]="item" (onPreviewClick)="previewClicked($event)">
               </app-notification-list>
             </ng-container>
           </div>
@@ -57,3 +57,10 @@
     </ul>
   </div>
 </nav>
+
+<app-modal [modalTitle]="'Notification Info'" [blocking]='false' [modalId]='modalId' (onModalClose)="onModalClosed($event)">
+  <div *ngIf="isShowPreview then previewShow"></div>
+  <ng-template #previewShow>
+    <app-preview [previewInfo]="previewInfo" (onPreviewWindowReady)="previewWindowReady($event)"></app-preview>
+  </ng-template>
+</app-modal>

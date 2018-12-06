@@ -4,11 +4,13 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: inherit;
-    margin: 2px; 
+    margin: 3px; 
+    border: 1px solid #e6e6e6;
 }
 .not-msg{
-	width: 220px;
-    line-height: 13px;
+    max-width: 217px;
+    line-height: 18px;
     word-break: break-word;
     text-align: left;
+    float: left;
 }

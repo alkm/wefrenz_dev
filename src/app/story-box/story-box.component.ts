@@ -724,7 +724,6 @@ export class StoryBoxComponent implements OnInit {
   	}
 
   	private doCheckIn(event){
-
   		this.fileType = 'checkin';
   		this.openAppModal('checkin');
   	}
@@ -732,6 +731,7 @@ export class StoryBoxComponent implements OnInit {
   	private onModalClosed(event){
     	alert('modal closed');
   	}
+  	
   	public onFeedScrollEnd(){
   		this.skip = this.skip + this.limit;
         if(this.skip < this.total){

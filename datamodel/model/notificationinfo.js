@@ -9,7 +9,9 @@ module.exports = mongoose.model('notificationinfo', {
 	filepath : String,
 	filename: String,
 	notificationpic: String,
+	notificationmodule: String,
 	conversion: String,
 	isReady : Boolean,
+	state: String,
 	isShown : Boolean
 });

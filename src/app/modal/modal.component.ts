@@ -8,6 +8,7 @@ import { ModalService } from './modal.service';
 })
 export class ModalComponent implements OnInit {
   @Output() onModalClose:EventEmitter<any> = new EventEmitter();
+  @Output() onModalInitialize:EventEmitter<any> = new EventEmitter();
   @Input() modalId: string;
   @Input() modalTitle: string;
   @Input() blocking = false;
@@ -22,6 +23,11 @@ export class ModalComponent implements OnInit {
 
   ngOnInit() {
     this.modalService.registerModal(this);
+    this.onModalInitialize.emit('initialize');
+  }
+
+  ngAfterViewInit(){
+    
   }
 
   close(checkBlocking = false): void {

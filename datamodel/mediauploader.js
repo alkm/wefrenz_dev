@@ -402,9 +402,11 @@ module.exports = function(app) {
 				type : 'video',
 				text : '',
 				filepath : obj.videoPath,
-				filename: obj.fileName,
+				filename : obj.fileName,
+				notificationmodule : 'videoAlbum',
 				conversion: obj.conversion,
 				isReady : true,
+				state : 'shown',
 				isShown : false
 			}, function(err, info) {
 				if (err){

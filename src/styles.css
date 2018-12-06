@@ -366,7 +366,8 @@ i.fa-3x{
     width: 35px;
     background-size: contain;
     background-repeat: no-repeat;
-    margin: 2px;	
+    margin: 3px;
+    border: 1px solid #e6e6e6;	
 }
 
 #avModal .modal{
@@ -669,6 +670,14 @@ input{
 
 .no-count{
 	width: 30px;
+}
+.txt-btn{
+    color: #e2e2e2  !important;
+    margin-right: 3px;
+}
+
+.txt-btn:hover{
+    color: #2b90d9 !important;
 }
 /*
 .modal{

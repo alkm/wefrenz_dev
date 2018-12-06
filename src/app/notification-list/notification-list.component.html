@@ -1,5 +1,19 @@
-<div class="row no-margin pull-left colw100 inline-block hand-cursor item-row">
+<div class="row no-margin pull-left colw100 inline-block item-row">
 	<div class="profile-pic-medium pull-left" [ngStyle]="{ 'background-image': 'url(' + profilePic + ')'}"></div>
-	<div class="row no-margin blue-fonts full-name pull-left not-msg">{{notificationMsg}}</div> 
+	<div class="row no-margin blue-fonts full-name pull-left not-msg">
+		<div class="colw100">{{notificationMsg}}</div>
+		<ng-container *ngIf="isVideoProcessed">
+			<div class="colw100">
+				<div class="hand-cursor txt-btn pull-left" (click)= "previewClickEvent($event, 'video')">Preview</div>
+				<div class="hand-cursor txt-btn pull-left">Detail</div>
+			</div>
+		</ng-container>
+		<ng-container *ngIf="!isVideoProcessed">
+			<div class="colw100">
+				<div class="hand-cursor txt-btn pull-left">Hide</div>
+				<div class="hand-cursor txt-btn pull-left">Detail</div>
+			</div>
+		</ng-container>
+	</div> 
 	<div class="notification-pic pull-right" [ngStyle]="{ 'background-image': 'url(' + notificationPic + ')'}"></div>
 </div>

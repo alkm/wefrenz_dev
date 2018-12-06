@@ -78,6 +78,7 @@ import { AddressInfoComponent } from './address-info/address-info.component';
 import { PaymentInfoComponent } from './payment-info/payment-info.component';
 import { PeopleComponent } from './people/people.component';
 import { NotificationListComponent } from './notification-list/notification-list.component';
+import { PreviewComponent } from './preview/preview.component';
 
 
 enableProdMode();
@@ -141,7 +142,8 @@ enableProdMode();
     AddressInfoComponent,
     PaymentInfoComponent,
     PeopleComponent,
-    NotificationListComponent
+    NotificationListComponent,
+    PreviewComponent
   ],
   imports: [
     AgmCoreModule.forRoot({

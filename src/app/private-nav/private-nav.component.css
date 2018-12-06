@@ -54,9 +54,16 @@
 .friend-request-pending-list, .notification-list{
     position: absolute;
     width: 301px;
-    top: 34px;
+    top: 48px;
     z-index: 1000;
     background: #fff;
+    margin-left: 19px;
+    max-height: 250px;
+    overflow-y: auto;
+
+}
+.friend-request-pending-list{
+    margin-left: 29px;
 }
 
 app-search-result-list-item{
@@ -70,19 +77,25 @@ app-friend-request-pending-list, app-notification-list{
 }
 
 .add-border{
-    border: 1px solid #ff0;
+    border: 1px solid #e6e6e6;
     border-bottom: none;
+    overflow-x: hidden;
 }
 .request-count{
     position: absolute;
     height: 15px;
+    min-width: 15px;
     width: auto;
     background: red;
-    margin-top: 0px;
-    margin-left: 12px;
+    margin-top: -21px;
+    margin-left: 5px;
     border: 1px solid white;
     color: white;
     padding: 0px 3px 1px 1px;
+    z-index: 10000;
+    border-radius: 50%;
+    text-align: right;
+    font-size: 13px;
 }
 .request-count:hover{
     background: #E74C3C;

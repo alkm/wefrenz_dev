@@ -1,8 +1,8 @@
 import { Component, ViewChild, ViewContainerRef, ElementRef, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { ValidationService } from 'app/services/validators/validation.service';
-import { AppSettingsService } from 'app/services/settings/app-settings.service';
-import { VideoService } from 'app/services/data/video.service';
+import { ValidationService } from '../../app/services/validators/validation.service';
+import { AppSettingsService } from '../../app/services/settings/app-settings.service';
+import { VideoService } from '../../app/services/data/video.service';
 import { VideoListComponent } from '../video-list/video-list.component';
 
 

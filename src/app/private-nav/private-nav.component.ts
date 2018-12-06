@@ -4,6 +4,7 @@ import 'rxjs/add/operator/filter';
 import { FriendsService } from '../../app/services/data/friends.service';
 import { NotificationService } from '../../app/services/data/notification.service';
 import { SearchService } from '../../app/services/data/search.service';
+import { ModalService } from '../modal/modal.service';
 
 @Component({
   selector: 'app-private-nav',
@@ -14,7 +15,9 @@ import { SearchService } from '../../app/services/data/search.service';
 export class PrivateNavComponent implements OnInit, AfterViewInit {
 
 	private active: boolean = false;
+	private isShowPreview: boolean = false;
 	private innerWidth: number = 0;
+	private modalId = 'notificationModal';
 	private searchResultList = undefined;
 	private friendRequestPendingList = undefined;
 	private notificationList = undefined;
@@ -33,11 +36,12 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
 	private timerSubscription: any;
 	private userId: string = '';
 	private intervalId: any;
+	private isPreviewReady = false;
+	private notificationInfo = {};
 
 	@Output() onFriendConfirmedFromNotification: EventEmitter<any> = new EventEmitter();
 
-
-	constructor(private router: Router, private searchService: SearchService, private friendsService: FriendsService, private notificationService: NotificationService) { 
+	constructor(private router: Router, private searchService: SearchService, private friendsService: FriendsService, private notificationService: NotificationService, private modalService: ModalService) { 
 		this.userId = localStorage.getItem('currentUser');
 		let self = this;
 		this.router.events.filter(e => e instanceof   NavigationStart).pairwise().subscribe((e) => {
@@ -217,9 +221,10 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
 	}
 
 	private afterFetchAllNotifications(data){
-		this.notificationCount = data.info.length;
+		//this.notificationCount = data.info.length;
+		let notCount = data.info.length; 
 		this.notArr = [];
-		if(this.notificationCount > 0){
+		if(notCount > 0){
 			this.notificationList = data.info;
 			this.isNotificationDisplay = true;
 		}
@@ -239,5 +244,39 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
 			}
 		}
 	}
+
+	private previewWindowReady(event){
+		if(!this.isPreviewReady){
+			this.playVideo(this.notificationInfo);
+			this.isPreviewReady = true;
+		}
+	}
+	private previewClicked(event){
+		this.notificationInfo = event.data;
+		this.isShowPreview = true;
+		this.openAppModal();
+		if(this.isPreviewReady){
+			this.playVideo(this.notificationInfo);
+		}
+  		
+	}
+
+	private openAppModal(modalType = null){
+  		let self = this;
+  		self.modalService.open(self.modalId);
+  	}
+
+  	private onModalClosed(event){
+  		let video = <HTMLVideoElement> document.getElementById('videoPreview');
+  		video.pause();
+  		video.src = '';
+  	}
+
+  	private playVideo(data){
+  		let video = <HTMLVideoElement> document.getElementById('videoPreview');
+  		//this.previewMP4VideoPath = data.filepath;
+  		//this.previewPosterPath = data.notificationpic;
+  		video.src = data.filepath;
+  	}
 
 }

@@ -39,7 +39,7 @@ module.exports = function(app) {
 
 	
 	app.post('/api/fetchAllNotifications/', function(req, res) {	
-		notificationInfo.find({userid: req.body.userid}, function(err, item){
+		notificationInfo.find({userid: req.body.userid, state: 'shown'}, function(err, item){
 			if(err){
 				res.send(err);
 			}else{
