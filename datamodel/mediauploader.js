@@ -1,7 +1,6 @@
 var path = require('path');
 var fs = require('fs');
 var multer = require('multer');
-var path = require('path');
 var ffmpeg = require('ffmpeg');
 var events = require('events');
 var uploadedCoverPicPath = '';
@@ -234,7 +233,7 @@ module.exports = function(app) {
 					var process = new ffmpeg(actualVideoPath);
 					process.then(function (video) {
 						var posterPath = 'media/videos/myvideos/poster/';
-						//video.setVideoAspectRatio('16:9')
+						video.setVideoAspectRatio('16:9')
 						video.fnExtractFrameToJPG(posterPath, {
 							frame_rate : 1,
 							number : 1,

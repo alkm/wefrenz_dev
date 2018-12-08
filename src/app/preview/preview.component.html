@@ -6,3 +6,13 @@
 			<p>Your browser does not support the HTML5 Video element.</p>-->
 	</video>
 </div>
+<div class="prev-btn-group row justify-content-center align-items-center colw100 no-margin">
+	<button type="button" class="btn btn-primary">
+		<i class="fa fa-share rotate-left" aria-hidden="true"></i>
+		<span>Share</span>
+	</button>
+	<button type="button" class="btn btn-primary" (click)="deletePreviewVideo($event)">
+		<span>Delete</span>
+		<i class="fa fa-trash" aria-hidden="true"></i>
+	</button>
+</div>

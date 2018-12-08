@@ -13,5 +13,6 @@ module.exports = mongoose.model('notificationinfo', {
 	conversion: String,
 	isReady : Boolean,
 	state: String,
-	isShown : Boolean
+	isShown : Boolean,
+	created: {type: Date, default: Date.now}
 });

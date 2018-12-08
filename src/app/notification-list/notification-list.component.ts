@@ -14,7 +14,7 @@ export class NotificationListComponent implements OnInit {
 	private notificationMsg: string;
 	private notificationPic: string;
 	private isVideoProcessed: boolean = false;
-	private previewInfo = {};
+	
 	//private videoInfo: Observable<videoInfo{}>;
 	constructor() { }
 

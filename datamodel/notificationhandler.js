@@ -24,7 +24,7 @@ module.exports = function(app) {
 	});
 
 	app.post('/api/checkNotification/', function(req, res) {	
-		notificationInfo.find({userid: req.body.userid, isReady: true, isShown: false}, function(err, item){
+		notificationInfo.find({userid: req.body.userid, isReady: true, isShown: false}).sort('-created').exec(function(err, item){
 			if(err){
 				res.send(err);
 			}else{
@@ -39,7 +39,7 @@ module.exports = function(app) {
 
 	
 	app.post('/api/fetchAllNotifications/', function(req, res) {	
-		notificationInfo.find({userid: req.body.userid, state: 'shown'}, function(err, item){
+		notificationInfo.find({userid: req.body.userid, state: 'shown'}).sort('-created').exec(function(err, item){
 			if(err){
 				res.send(err);
 			}else{

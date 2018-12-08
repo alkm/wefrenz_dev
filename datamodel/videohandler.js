@@ -1,4 +1,6 @@
+var fs = require('fs');
 var videoInfo = require('./model/videoinfo');
+var notificationInfo = require('./model/notificationinfo');
 
 module.exports = function(app) {
 
@@ -66,6 +68,29 @@ module.exports = function(app) {
 				}else{
 					res.json({"status": "failure", "message": "This album title already exist, add a different title ", "info": item});
 				}
+			}
+		});
+	});
+
+	app.post('/api/deletePreviewVideo/', function(req, res) {	
+		var videoPath = req.body.filapath;
+		console.log('>>><<<'+videoPath);
+		notificationInfo.remove({filepath: videoPath}, function(err, item){
+			if(err){
+				res.send(err);
+			}else{
+				fs.unlink('media/videos/myvideos/original/'+videoPath.split('/')[2], (err) => {
+			        if (err) {
+			            console.log("failed to delete local image:"+err);
+			        } else {
+			            console.log('successfully deleted local image');
+			            res.send ({
+				        	status: "200",
+				        	responseType: "string",
+				        	response: "success"
+				      	});                                 
+			        }
+				});
 			}
 		});
 	});

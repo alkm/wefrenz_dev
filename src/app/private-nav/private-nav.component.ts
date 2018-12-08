@@ -38,6 +38,7 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
 	private intervalId: any;
 	private isPreviewReady = false;
 	private notificationInfo = {};
+	private previewInfo = {};
 
 	@Output() onFriendConfirmedFromNotification: EventEmitter<any> = new EventEmitter();
 
@@ -277,6 +278,12 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
   		//this.previewMP4VideoPath = data.filepath;
   		//this.previewPosterPath = data.notificationpic;
   		video.src = data.filepath;
+  		video.poster = data.notificationpic;
+  	}
+
+  	private videoDeleted(event){
+  		let self = this;
+  		self.modalService.close(self.modalId);
   	}
 
 }

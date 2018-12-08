@@ -61,6 +61,6 @@
 <app-modal [modalTitle]="'Notification Info'" [blocking]='false' [modalId]='modalId' (onModalClose)="onModalClosed($event)">
   <div *ngIf="isShowPreview then previewShow"></div>
   <ng-template #previewShow>
-    <app-preview [previewInfo]="previewInfo" (onPreviewWindowReady)="previewWindowReady($event)"></app-preview>
+    <app-preview [previewInfo]="notificationInfo" (onPreviewWindowReady)="previewWindowReady($event)" (onVideoDeleted)="videoDeleted($event)"></app-preview>
   </ng-template>
 </app-modal>

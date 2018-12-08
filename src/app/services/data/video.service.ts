@@ -36,4 +36,11 @@ export class VideoService {
 		return this.http.post(AppSettingsService.API_ENDPOINT("local")+"/api/fetchAlbumVideoInfo", postObj, options)
 		.map((res:Response) => res.json());
 	}
+
+	public deletePreviewVideo(postObj){
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.post(AppSettingsService.API_ENDPOINT("local")+"/api/deletePreviewVideo", postObj, options)
+		.map((res:Response) => res.json());
+	}
 }
