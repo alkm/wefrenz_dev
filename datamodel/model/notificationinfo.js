@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 module.exports = mongoose.model('notificationinfo', {
 	userid : String,
+	itemid: String,
 	fullname : String,
 	profilepic : Object,
 	type : String,

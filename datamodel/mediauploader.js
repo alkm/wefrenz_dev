@@ -340,6 +340,7 @@ module.exports = function(app) {
 			videoObj.webmVideo = '';
 			videoObj.mp4Video = saveVideoPathMP4;
 			videoObj.poster = posterImg;
+			var itemId = '';
 			
 
 			videoInfo.findOne({userid: userId, title: albumTitle}, function(err, info){
@@ -365,7 +366,8 @@ module.exports = function(app) {
 									console.log("Error"+err);
 								}else{
 									//res.json({"status": "success", "message": "Album created successfully", "info": info});
-									configureNotification(data, posterImg);
+									itemId = info._id;
+									configureNotification(data, posterImg, itemId);
 								}
 							});	
 
@@ -373,28 +375,31 @@ module.exports = function(app) {
 							operation = 'update';
 							videosList = info.videosList;
 							videosList.push(videoObj);
+							itemId = info._id;
 							videoInfo.update({userid: userId, title: albumTitle}, {$set: {videosList: videosList}}, function(err, info){
 								if(err){
 									console.log("Error"+err);
 									//res.json({"status": "failure", "message": "Failed to update video now, please try again later."});
 								}else{
 									//res.json({"status": "success", "message": "Video updated successfully.", "info": info});
-									configureNotification(data, posterImg);
+
+									configureNotification(data, posterImg, itemId);
 								}
 							});
 						}
 					}else{
-						configureNotification(data, 'N/A');
+						configureNotification(data, 'N/A', 'N/A');
 					}
 				}
 			});
 		}
 
-		function configureNotification(obj, pic){
+		function configureNotification(obj, pic, itemId){
 			console.log('failed ++++++'+obj.videoPath);
 			var dateNow = new Date();
 			notificationInfo.create({
 				userid : userId,
+				itemid: itemId,
 				fullname : fullName,
 				profilepic : profilePic,
 				notificationpic: pic,

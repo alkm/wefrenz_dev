@@ -29,7 +29,7 @@ export class PreviewComponent implements OnInit  {
   	}
 
     private deletePreviewVideo(event, data){
-      let postObj = {'filapath': this.previewInfo.filepath};
+      let postObj = {'filepath': this.previewInfo.filepath, 'itemid': this.previewInfo.itemid};
       this.videoService.deletePreviewVideo(postObj).subscribe(data => this.afterVideoDeleted(data));
     }
 

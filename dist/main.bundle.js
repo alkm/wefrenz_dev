@@ -6549,7 +6549,7 @@ var PreviewComponent = (function () {
     };
     PreviewComponent.prototype.deletePreviewVideo = function (event, data) {
         var _this = this;
-        var postObj = { 'filapath': this.previewInfo.filepath };
+        var postObj = { 'filepath': this.previewInfo.filepath, 'itemid': this.previewInfo.itemid };
         this.videoService.deletePreviewVideo(postObj).subscribe(function (data) { return _this.afterVideoDeleted(data); });
     };
     PreviewComponent.prototype.afterVideoDeleted = function (result) {

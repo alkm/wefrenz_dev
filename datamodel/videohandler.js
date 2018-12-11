@@ -73,26 +73,87 @@ module.exports = function(app) {
 	});
 
 	app.post('/api/deletePreviewVideo/', function(req, res) {	
-		var videoPath = req.body.filapath;
-		console.log('>>><<<'+videoPath);
-		notificationInfo.remove({filepath: videoPath}, function(err, item){
+		var videoPath = req.body.filepath;
+		var videoList = [];
+		var actualVideoPath = '';
+		var mp4VideoPath = '';
+		var posterPath = '';
+		var itemId = req.body.itemid;
+		console.log('itemId----'+ itemId);
+		notificationInfo.remove({itemid: itemId}, function(err, item){
 			if(err){
 				res.send(err);
 			}else{
-				fs.unlink('media/videos/myvideos/original/'+videoPath.split('/')[2], (err) => {
-			        if (err) {
-			            console.log("failed to delete local image:"+err);
-			        } else {
-			            console.log('successfully deleted local image');
-			            res.send ({
-				        	status: "200",
-				        	responseType: "string",
-				        	response: "success"
-				      	});                                 
-			        }
-				});
+				videoInfo.findOne({_id: itemId}, function(err, docs){
+					if(err){
+						res.send(err);
+					}else{
+		            	videoList = docs.videosList;
+		            	for(var o in videoList){
+		            		if(videoPath === videoList[o].mp4Video){
+		            			console.log('$ Match Found');
+		            			mp4VideoPath = videoList[o].mp4Video;
+		            			actualVideoPath = videoList[o].actualVideo;
+		            			posterPath = videoList[o].poster;
+		            			console.log('&'+mp4VideoPath+'$'+actualVideoPath);
+		            			videoList.splice(o, 1);
+		            		}
+		            	}
+            			videoInfo.update({_id: itemId}, {$set: {videosList: videoList}}, function(err, info){
+            				if(err){
+            					cosole.log('Error Deleting video collection');
+            				}else{
+            					if(actualVideoPath === mp4VideoPath){
+            						deleteVideo('original');
+            					}else{
+            						deleteVideo('mp4');
+            					}
+            				}
+            			})
+					}
+	            }); 
 			}
 		});
+
+	    function deleteVideo(type){
+        	var fileArr= [];
+        	fileArr.push('media/videos/myvideos/poster/'+posterPath.split('/')[2]);
+        	if(type === 'original'){
+        		fileArr.push('media/videos/myvideos/original/'+mp4VideoPath.split('/')[2]);
+        	}else{
+        		fileArr.push('media/videos/myvideos/original/'+actualVideoPath.split('/')[2]);
+        		fileArr.push('media/videos/myvideos/mp4/'+mp4VideoPath.split('/')[2]);
+        	}
+        	deleteFiles(fileArr);
+        }
+
+        function deleteFiles(files){
+			if (files.length === 0){
+				res.send({
+		        	status: "200",
+		        	responseType: "string",
+		        	response: "No files to delete"
+		      	});
+		   	}
+		   	else {
+		    	for(var i in files){
+		    		console.log(files[i]);
+			    	fs.unlink(files[i], function(err){
+			        	if(err) {
+			        		console.log('Error deleting files.');
+			        	}
+				        else {
+				            console.log(files[i] + ' deleted.');
+				        }
+				    });
+		    	}
+		    	res.send ({
+		        	status: "200",
+		        	responseType: "string",
+		        	response: "success"
+		      	}); 
+		   	}
+		}
 	});
 }
 /*	//usedSockets[data.userid].emit("ON_VIDEO_PUBLISH", data.videoPath);
