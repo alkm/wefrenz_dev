@@ -73,14 +73,14 @@ module.exports = function(app) {
 	});
 
 	app.post('/api/deletePreviewVideo/', function(req, res) {	
-		var videoPath = req.body.filepath;
+		var filePath = req.body.filepath;
 		var videoList = [];
 		var actualVideoPath = '';
 		var mp4VideoPath = '';
 		var posterPath = '';
 		var itemId = req.body.itemid;
 		console.log('itemId----'+ itemId);
-		notificationInfo.remove({itemid: itemId}, function(err, item){
+		notificationInfo.remove({filepath: filePath}, function(err, item){
 			if(err){
 				res.send(err);
 			}else{

@@ -273,8 +273,10 @@ export class VideoPlayerComponent implements OnInit {
 		if(result.length > 0){
 			this.videoSource = [];
 			this.videoSource = this.videoAlbumList[0].videosList;
-			this.createVideoList(this.videoSource);
-			this.playVideo(this.videoAlbumList[0].videosList[0], -1);
+			if(this.videoSource && (this.videoSource.length > 0)){
+				this.createVideoList(this.videoSource);
+				this.playVideo(this.videoAlbumList[0].videosList[0], -1);
+			}
 		}
  	
 	}

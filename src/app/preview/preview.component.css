@@ -4,3 +4,12 @@
 .prev-btn-group{
 	padding-top: 15px;
 }
+.share-video{
+	width: 280px;
+	margin-top: 20px;
+}
+
+.share-video textarea{
+	height: 100px !important;
+}
+

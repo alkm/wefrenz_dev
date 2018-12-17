@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { VideoService } from '../../app/services/data/video.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-preview',
@@ -15,13 +16,24 @@ export class PreviewComponent implements OnInit  {
 
 	private previewPosterPath: string = '';
 	private previewMP4VideoPath: string = '';
+  private isShareVideo : boolean = false;
+  private videoTitle : string = '';
+  private videoDesc : string = '';
+  private serverMessage : string = '';
+  private isError : boolean = false;
+  private isStatus : boolean = false;
+  private videoForm : any;
 
-	constructor(private videoService: VideoService) {
 
+	constructor(private formBuilder: FormBuilder, private videoService: VideoService) {
+    this.videoForm = this.formBuilder.group({
+      'videoTitle': [],
+      'videoDesc': []
+    });
   }
 
-  	ngOnInit() {
-  	}
+  ngOnInit() {
+  }
 
   	ngAfterViewInit(){
   		this.onPreviewWindowReady.emit('previewready');
@@ -34,7 +46,17 @@ export class PreviewComponent implements OnInit  {
     }
 
      private afterVideoDeleted(result) {
+       this.isShareVideo = false;
        this.onVideoDeleted.emit('videodeleted');
+    }
+
+    private shareVideo(event){
+      this.isShareVideo = true;
+    }
+
+    private onModalClose($event){
+      alert('modal closed');
+      this.isShareVideo = false;
     }
 }
 

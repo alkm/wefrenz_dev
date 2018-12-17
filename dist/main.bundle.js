@@ -6499,7 +6499,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#videoPreview{\n\twidth: 100%;\n}\n.prev-btn-group{\n\tpadding-top: 15px;\n}", ""]);
+exports.push([module.i, "#videoPreview{\n\twidth: 100%;\n}\n.prev-btn-group{\n\tpadding-top: 15px;\n}\n.share-video{\n\twidth: 280px;\n\tmargin-top: 20px;\n}\n\n.share-video textarea{\n\theight: 100px !important;\n}\n\n", ""]);
 
 // exports
 
@@ -6512,7 +6512,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/preview/preview.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"video-container\">\n\t<video #previewVideo id='videoPreview'controls autoplay>\n\t\t<!--<source id='previewMP4'\n    \tsrc=\"{{previewMP4VideoPath}}\" \n    \ttype='video/mp4'>\n\t\t\t<p>Your browser does not support the HTML5 Video element.</p>-->\n\t</video>\n</div>\n<div class=\"prev-btn-group row justify-content-center align-items-center colw100 no-margin\">\n\t<button type=\"button\" class=\"btn btn-primary\">\n\t\t<i class=\"fa fa-share rotate-left\" aria-hidden=\"true\"></i>\n\t\t<span>Share</span>\n\t</button>\n\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"deletePreviewVideo($event)\">\n\t\t<span>Delete</span>\n\t\t<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>\n\t</button>\n</div>"
+module.exports = "<div class=\"video-container\">\n\t<video #previewVideo id='videoPreview'controls autoplay>\n\t\t<!--<source id='previewMP4'\n    \tsrc=\"{{previewMP4VideoPath}}\" \n    \ttype='video/mp4'>\n\t\t\t<p>Your browser does not support the HTML5 Video element.</p>-->\n\t</video>\n</div>\n<div class=\"prev-btn-group row justify-content-center align-items-center colw100 no-margin\">\n\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"shareVideo($event)\">\n\t\t<i class=\"fa fa-share rotate-left\" aria-hidden=\"true\"></i>\n\t\t<span>Share</span>\n\t</button>\n\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"deletePreviewVideo($event)\">\n\t\t<span>Delete</span>\n\t\t<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>\n\t</button>\n</div>\n<div *ngIf=\"isShareVideo ; then postVideo\"></div>\n<ng-template #postVideo>\n\t<div class=\"share-video\">\n\t   \t<form [formGroup]=\"videoForm\">\n\t        <div class=\"form-group\">\n\t            <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" placeholder=\"video title\" formControlName=\"videoTitle\" \n\t            [(ngModel)]=\"videoTitle\"/>\n\t        </div>\n\t        <div class=\"form-group\">\n\t        \t<textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" \n\t        \tformControlName=\"videoDesc\" [(ngModel)]=\"videoDesc\"></textarea>\n\t        </div>\n\t        <div class=\"form-group row justify-content-center align-items-center no-margin\">\n\t            <button type=\"button\" class=\"btn btn-primary\">\n\t                <i class=\"fa fa-times no-margin\" aria-hidden=\"true\"></i>\n\t                <span>Cancel</span>\n\t            </button>\n\t            <button type=\"button\" class=\"btn btn-primary\">\n\t                <span>Post</span>\n\t                <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n\t            </button>\n\t        </div>\n\t        <div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n\t            <div class=\"server-msg text-center\">{{serverMessage}}</div>\n\t        </div>\n\t    </form>\n\t</div>\n</ng-template>"
 
 /***/ }),
 
@@ -6523,6 +6523,7 @@ module.exports = "<div class=\"video-container\">\n\t<video #previewVideo id='vi
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PreviewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_services_data_video_service__ = __webpack_require__("../../../../../src/app/services/data/video.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6534,13 +6535,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var PreviewComponent = (function () {
-    function PreviewComponent(videoService) {
+    function PreviewComponent(formBuilder, videoService) {
+        this.formBuilder = formBuilder;
         this.videoService = videoService;
         this.onPreviewWindowReady = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.onVideoDeleted = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.previewPosterPath = '';
         this.previewMP4VideoPath = '';
+        this.isShareVideo = false;
+        this.videoTitle = '';
+        this.videoDesc = '';
+        this.serverMessage = '';
+        this.isError = false;
+        this.isStatus = false;
+        this.videoForm = this.formBuilder.group({
+            'videoTitle': [],
+            'videoDesc': []
+        });
     }
     PreviewComponent.prototype.ngOnInit = function () {
     };
@@ -6553,7 +6566,15 @@ var PreviewComponent = (function () {
         this.videoService.deletePreviewVideo(postObj).subscribe(function (data) { return _this.afterVideoDeleted(data); });
     };
     PreviewComponent.prototype.afterVideoDeleted = function (result) {
+        this.isShareVideo = false;
         this.onVideoDeleted.emit('videodeleted');
+    };
+    PreviewComponent.prototype.shareVideo = function (event) {
+        this.isShareVideo = true;
+    };
+    PreviewComponent.prototype.onModalClose = function ($event) {
+        alert('modal closed');
+        this.isShareVideo = false;
     };
     return PreviewComponent;
 }());
@@ -6580,10 +6601,10 @@ PreviewComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/preview/preview.component.css")],
         providers: [__WEBPACK_IMPORTED_MODULE_1__app_services_data_video_service__["a" /* VideoService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__app_services_data_video_service__["a" /* VideoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__app_services_data_video_service__["a" /* VideoService */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__app_services_data_video_service__["a" /* VideoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__app_services_data_video_service__["a" /* VideoService */]) === "function" && _e || Object])
 ], PreviewComponent);
 
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=preview.component.js.map
 
 /***/ }),
@@ -6609,7 +6630,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/private-nav/private-nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-light bg-faded\" (window:resize)=\"onResize($event)\">\n  <button (click)=\"toggleNav()\" class=\"navbar-toggler navbar-toggler-right fa fa-bars\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarTogglerDemo02\" aria-controls=\"navbarTogglerDemo02\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n  </button>\n  <div [ngClass]=\"('navbar-collapse ' + (active ? 'collapse' : ''))\" id=\"navbarTogglerDemo02\">\n    <ul class=\"navbar-nav mr-auto mt-2 mt-md-0\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#/home\"><i class=\"fa fa-home\" aria-hidden=\"true\"></i><span>Home</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"getAllFriendReq($event)\">\n          <i class=\"fa fa-users\" aria-hidden=\"true\">\n            <ng-container *ngIf=\"isFriendRequestPendingDisplay\">\n              <div class=\"request-count cursor-pointer\" (click)='requestCountClick($event)'>{{friendRequestCount}}</div>\n            </ng-container>\n          </i><span>Friends</span></a>\n          <div class='friend-request-pending-list' [ngClass]=\"(isFriendReuestBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n            <app-friend-request-pending-list (onFriendConfirmed)='onFriendConfirmed($event)'  class=\"in-line\" *ngFor=\"let item of friendRequestPendingList\" [item]=\"item\" >\n            </app-friend-request-pending-list>\n          </div>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\"><i class=\"fa fa-envelope\" aria-hidden=\"true\"></i><span>Messages</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"fetchAllNotifications($event)\">\n          <i class=\"fa fa-bell\" aria-hidden=\"true\">\n              <ng-container *ngIf=\"isNotificationCountDisplay\">\n                <div class=\"request-count cursor-pointer\" (click)='notificationCountClick($event)'>{{notificationCount}}</div>\n              </ng-container>\n          </i>\n          <span>Notifications</span></a>\n          <div class='notification-list' [ngClass]=\"(isNotificationDisplay ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n            <ng-container *ngIf=\"isNotificationDisplay\">\n              <app-notification-list  class=\"in-line\" *ngFor=\"let item of notificationList\" [item]=\"item\" (onPreviewClick)=\"previewClicked($event)\">\n              </app-notification-list>\n            </ng-container>\n          </div>\n      </li>\n      <li class=\"nav-item search-box\">\n        <div>\n          <input class=\"search-input pull-left blue-fonts\" type=\"text\" id=\"search-query\" placeholder=\"Search Wefrenz\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [value]=\"searchValue\" (input)=\"querySearch($event.target.value)\"/>\n          <i class=\"fa fa-search pull-right cursor-pointer\" aria-hidden=\"true\"></i>\n        </div>\n        <div class='search-result-contents' [ngClass]=\"(isBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n          <app-search-result-list-item  class=\"in-line\" *ngFor=\"let item of searchResultList\" [item]=\"item\">\n          </app-search-result-list-item>\n        </div>\n      </li>\n      <li class=\"nav-item setting-btn\">\n        <span class=\"nav-link\"><i class=\"fa fa-cog cursor-pointer\" aria-hidden=\"true\"></i></span>\n      </li>\n      <li class=\"nav-item logout-btn\" >\n        <span class=\"nav-link\">\n          <i class=\"fa fa-sign-out cursor-pointer\" aria-hidden=\"true\" (click)=\"logOut()\"></i>\n        </span>\n      </li>\n    </ul>\n  </div>\n</nav>\n\n<app-modal [modalTitle]=\"'Notification Info'\" [blocking]='false' [modalId]='modalId' (onModalClose)=\"onModalClosed($event)\">\n  <div *ngIf=\"isShowPreview then previewShow\"></div>\n  <ng-template #previewShow>\n    <app-preview [previewInfo]=\"notificationInfo\" (onPreviewWindowReady)=\"previewWindowReady($event)\" (onVideoDeleted)=\"videoDeleted($event)\"></app-preview>\n  </ng-template>\n</app-modal>"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-light bg-faded\" (window:resize)=\"onResize($event)\">\n  <button (click)=\"toggleNav()\" class=\"navbar-toggler navbar-toggler-right fa fa-bars\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarTogglerDemo02\" aria-controls=\"navbarTogglerDemo02\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n  </button>\n  <div [ngClass]=\"('navbar-collapse ' + (active ? 'collapse' : ''))\" id=\"navbarTogglerDemo02\">\n    <ul class=\"navbar-nav mr-auto mt-2 mt-md-0\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#/home\"><i class=\"fa fa-home\" aria-hidden=\"true\"></i><span>Home</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"getAllFriendReq($event)\">\n          <i class=\"fa fa-users\" aria-hidden=\"true\">\n            <ng-container *ngIf=\"isFriendRequestPendingDisplay\">\n              <div class=\"request-count cursor-pointer\" (click)='requestCountClick($event)'>{{friendRequestCount}}</div>\n            </ng-container>\n          </i><span>Friends</span></a>\n          <div class='friend-request-pending-list' [ngClass]=\"(isFriendReuestBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n            <app-friend-request-pending-list (onFriendConfirmed)='onFriendConfirmed($event)'  class=\"in-line\" *ngFor=\"let item of friendRequestPendingList\" [item]=\"item\" >\n            </app-friend-request-pending-list>\n          </div>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\"><i class=\"fa fa-envelope\" aria-hidden=\"true\"></i><span>Messages</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"fetchAllNotifications($event)\">\n          <i class=\"fa fa-bell\" aria-hidden=\"true\">\n              <ng-container *ngIf=\"isNotificationCountDisplay\">\n                <div class=\"request-count cursor-pointer\" (click)='notificationCountClick($event)'>{{notificationCount}}</div>\n              </ng-container>\n          </i>\n          <span>Notifications</span></a>\n          <div class='notification-list' [ngClass]=\"(isNotificationDisplay ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n            <ng-container *ngIf=\"isNotificationDisplay\">\n              <app-notification-list  class=\"in-line\" *ngFor=\"let item of notificationList\" [item]=\"item\" (onPreviewClick)=\"previewClicked($event)\">\n              </app-notification-list>\n            </ng-container>\n          </div>\n      </li>\n      <li class=\"nav-item search-box\">\n        <div>\n          <input class=\"search-input pull-left blue-fonts\" type=\"text\" id=\"search-query\" placeholder=\"Search Wefrenz\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [value]=\"searchValue\" (input)=\"querySearch($event.target.value)\"/>\n          <i class=\"fa fa-search pull-right cursor-pointer\" aria-hidden=\"true\"></i>\n        </div>\n        <div class='search-result-contents' [ngClass]=\"(isBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n          <app-search-result-list-item  class=\"in-line\" *ngFor=\"let item of searchResultList\" [item]=\"item\">\n          </app-search-result-list-item>\n        </div>\n      </li>\n      <li class=\"nav-item setting-btn\">\n        <span class=\"nav-link\"><i class=\"fa fa-cog cursor-pointer\" aria-hidden=\"true\"></i></span>\n      </li>\n      <li class=\"nav-item logout-btn\" >\n        <span class=\"nav-link\">\n          <i class=\"fa fa-sign-out cursor-pointer\" aria-hidden=\"true\" (click)=\"logOut()\"></i>\n        </span>\n      </li>\n    </ul>\n  </div>\n</nav>\n\n<app-modal [modalTitle]=\"'Notification Info'\" [blocking]='false' [modalId]='modalId' (onModalClose)=\"onModalClosed($event)\">\n  <div *ngIf=\"isShowPreview then previewShow\"></div>\n  <ng-template #previewShow>\n    <app-preview [previewInfo]=\"notificationInfo\" (onPreviewWindowReady)=\"previewWindowReady($event)\" (onVideoDeleted)=\"videoDeleted($event)\" (onModalClose)=\"onModalClose($event)\"></app-preview>\n  </ng-template>\n</app-modal>"
 
 /***/ }),
 
@@ -10590,8 +10611,10 @@ var VideoPlayerComponent = (function () {
         if (result.length > 0) {
             this.videoSource = [];
             this.videoSource = this.videoAlbumList[0].videosList;
-            this.createVideoList(this.videoSource);
-            this.playVideo(this.videoAlbumList[0].videosList[0], -1);
+            if (this.videoSource && (this.videoSource.length > 0)) {
+                this.createVideoList(this.videoSource);
+                this.playVideo(this.videoAlbumList[0].videosList[0], -1);
+            }
         }
     };
     VideoPlayerComponent.prototype.afterAbumVideoInfo = function (result) {

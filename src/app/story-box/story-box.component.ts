@@ -574,7 +574,7 @@ export class StoryBoxComponent implements OnInit {
 			'fontWeight' : fontWeight,
 			'addWatcherArr' : []
      	};
-          	this.feedService.savePost(postObj).subscribe(data => this.afterPostSaved(data));
+        this.feedService.savePost(postObj).subscribe(data => this.afterPostSaved(data));
     }
 
     private saveComment(commentId, type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight){
@@ -600,7 +600,7 @@ export class StoryBoxComponent implements OnInit {
 			'fontWeight' : fontWeight,
 			'addWatcherArr' : []
      	};
-          this.commentService.saveComment(postObj).subscribe(data => this.afterCommentSaved(data));
+        this.commentService.saveComment(postObj).subscribe(data => this.afterCommentSaved(data));
     }
 
     private updateComment(commentId, type, storyContent, filePath, title, desc, color, fontFamily, fontSize, fontStyle, txtDeco, fontWeight){

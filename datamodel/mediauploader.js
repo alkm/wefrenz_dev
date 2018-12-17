@@ -395,7 +395,6 @@ module.exports = function(app) {
 		}
 
 		function configureNotification(obj, pic, itemId){
-			console.log('failed ++++++'+obj.videoPath);
 			var dateNow = new Date();
 			notificationInfo.create({
 				userid : userId,
