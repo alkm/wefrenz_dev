@@ -38,7 +38,6 @@ export class ModalService {
       if (checkBlocking && modal.blocking) {
         return;
       }
-
       modal.isOpen = false;
     }
 

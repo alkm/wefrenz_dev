@@ -6499,7 +6499,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#videoPreview{\n\twidth: 100%;\n}\n.prev-btn-group{\n\tpadding-top: 15px;\n}\n.share-video{\n\twidth: 280px;\n\tmargin-top: 20px;\n}\n\n.share-video textarea{\n\theight: 100px !important;\n}\n\n", ""]);
+exports.push([module.i, "#videoPreview{\n\twidth: 100%;\n}\n.prev-btn-group{\n\tpadding-top: 15px;\n}\n.share-video{\n\twidth: 280px;\n    margin-top: 20px;\n    position: absolute;\n    top: 100px;\n    left: 189px;\n    left: calc(50% - 140px);\n}\n\n.share-video textarea{\n\theight: 100px !important;\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -6512,7 +6512,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/preview/preview.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"video-container\">\n\t<video #previewVideo id='videoPreview'controls autoplay>\n\t\t<!--<source id='previewMP4'\n    \tsrc=\"{{previewMP4VideoPath}}\" \n    \ttype='video/mp4'>\n\t\t\t<p>Your browser does not support the HTML5 Video element.</p>-->\n\t</video>\n</div>\n<div class=\"prev-btn-group row justify-content-center align-items-center colw100 no-margin\">\n\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"shareVideo($event)\">\n\t\t<i class=\"fa fa-share rotate-left\" aria-hidden=\"true\"></i>\n\t\t<span>Share</span>\n\t</button>\n\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"deletePreviewVideo($event)\">\n\t\t<span>Delete</span>\n\t\t<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>\n\t</button>\n</div>\n<div *ngIf=\"isShareVideo ; then postVideo\"></div>\n<ng-template #postVideo>\n\t<div class=\"share-video\">\n\t   \t<form [formGroup]=\"videoForm\">\n\t        <div class=\"form-group\">\n\t            <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" placeholder=\"video title\" formControlName=\"videoTitle\" \n\t            [(ngModel)]=\"videoTitle\"/>\n\t        </div>\n\t        <div class=\"form-group\">\n\t        \t<textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" \n\t        \tformControlName=\"videoDesc\" [(ngModel)]=\"videoDesc\"></textarea>\n\t        </div>\n\t        <div class=\"form-group row justify-content-center align-items-center no-margin\">\n\t            <button type=\"button\" class=\"btn btn-primary\">\n\t                <i class=\"fa fa-times no-margin\" aria-hidden=\"true\"></i>\n\t                <span>Cancel</span>\n\t            </button>\n\t            <button type=\"button\" class=\"btn btn-primary\">\n\t                <span>Post</span>\n\t                <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n\t            </button>\n\t        </div>\n\t        <div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n\t            <div class=\"server-msg text-center\">{{serverMessage}}</div>\n\t        </div>\n\t    </form>\n\t</div>\n</ng-template>"
+module.exports = "<div class=\"video-container\">\n\t<video #previewVideo id='videoPreview'controls autoplay>\n\t\t<!--<source id='previewMP4'\n    \tsrc=\"{{previewMP4VideoPath}}\" \n    \ttype='video/mp4'>\n\t\t\t<p>Your browser does not support the HTML5 Video element.</p>-->\n\t</video>\n</div>\n<div class=\"prev-btn-group row justify-content-center align-items-center colw100 no-margin\">\n\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"shareVideo($event)\">\n\t\t<i class=\"fa fa-share rotate-left\" aria-hidden=\"true\"></i>\n\t\t<span>Share</span>\n\t</button>\n\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"deletePreviewVideo($event)\">\n\t\t<span>Delete</span>\n\t\t<i class=\"fa fa-trash\" aria-hidden=\"true\"></i>\n\t</button>\n</div>\n<div *ngIf=\"isShareVideo ; then postVideo\"></div>\n<ng-template #postVideo>\n\t<div class=\"share-video\" (click)=\"clickedInside($event)\">\n\t   \t<form [formGroup]=\"videoForm\">\n\t        <div class=\"form-group\">\n\t            <input type=\"text\" class=\"form-control no-bg no-brder-radius blue-fonts blue-border\" placeholder=\"video title\" formControlName=\"videoTitle\" \n\t            [(ngModel)]=\"videoTitle\"/>\n\t        </div>\n\t        <div class=\"form-group\">\n\t        \t<textarea class=\"form-control no-resize no-bg no-brder-radius blue-fonts blue-border\" rows=\"5\" cols=\"30\" placeholder=\"Add Description...\" \n\t        \tformControlName=\"videoDesc\" [(ngModel)]=\"videoDesc\"></textarea>\n\t        </div>\n\t        <div class=\"form-group row justify-content-center align-items-center no-margin\">\n\t            <button type=\"button\" class=\"btn btn-primary\">\n\t                <i class=\"fa fa-times no-margin\" aria-hidden=\"true\"></i>\n\t                <span>Cancel</span>\n\t            </button>\n\t            <button type=\"button\" class=\"btn btn-primary\">\n\t                <span>Post</span>\n\t                <i class=\"fa fa-pencil-square\" aria-hidden=\"true\"></i>\n\t            </button>\n\t        </div>\n\t        <div [ngClass]=\"{'error-message': isError, 'status-message': isStatus}\">\n\t            <div class=\"server-msg text-center\">{{serverMessage}}</div>\n\t        </div>\n\t    </form>\n\t</div>\n</ng-template>"
 
 /***/ }),
 
@@ -6572,8 +6572,7 @@ var PreviewComponent = (function () {
     PreviewComponent.prototype.shareVideo = function (event) {
         this.isShareVideo = true;
     };
-    PreviewComponent.prototype.onModalClose = function ($event) {
-        alert('modal closed');
+    PreviewComponent.prototype.previewModalClosed = function () {
         this.isShareVideo = false;
     };
     return PreviewComponent;
@@ -6630,7 +6629,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/private-nav/private-nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-light bg-faded\" (window:resize)=\"onResize($event)\">\n  <button (click)=\"toggleNav()\" class=\"navbar-toggler navbar-toggler-right fa fa-bars\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarTogglerDemo02\" aria-controls=\"navbarTogglerDemo02\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n  </button>\n  <div [ngClass]=\"('navbar-collapse ' + (active ? 'collapse' : ''))\" id=\"navbarTogglerDemo02\">\n    <ul class=\"navbar-nav mr-auto mt-2 mt-md-0\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#/home\"><i class=\"fa fa-home\" aria-hidden=\"true\"></i><span>Home</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"getAllFriendReq($event)\">\n          <i class=\"fa fa-users\" aria-hidden=\"true\">\n            <ng-container *ngIf=\"isFriendRequestPendingDisplay\">\n              <div class=\"request-count cursor-pointer\" (click)='requestCountClick($event)'>{{friendRequestCount}}</div>\n            </ng-container>\n          </i><span>Friends</span></a>\n          <div class='friend-request-pending-list' [ngClass]=\"(isFriendReuestBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n            <app-friend-request-pending-list (onFriendConfirmed)='onFriendConfirmed($event)'  class=\"in-line\" *ngFor=\"let item of friendRequestPendingList\" [item]=\"item\" >\n            </app-friend-request-pending-list>\n          </div>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\"><i class=\"fa fa-envelope\" aria-hidden=\"true\"></i><span>Messages</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"fetchAllNotifications($event)\">\n          <i class=\"fa fa-bell\" aria-hidden=\"true\">\n              <ng-container *ngIf=\"isNotificationCountDisplay\">\n                <div class=\"request-count cursor-pointer\" (click)='notificationCountClick($event)'>{{notificationCount}}</div>\n              </ng-container>\n          </i>\n          <span>Notifications</span></a>\n          <div class='notification-list' [ngClass]=\"(isNotificationDisplay ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n            <ng-container *ngIf=\"isNotificationDisplay\">\n              <app-notification-list  class=\"in-line\" *ngFor=\"let item of notificationList\" [item]=\"item\" (onPreviewClick)=\"previewClicked($event)\">\n              </app-notification-list>\n            </ng-container>\n          </div>\n      </li>\n      <li class=\"nav-item search-box\">\n        <div>\n          <input class=\"search-input pull-left blue-fonts\" type=\"text\" id=\"search-query\" placeholder=\"Search Wefrenz\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [value]=\"searchValue\" (input)=\"querySearch($event.target.value)\"/>\n          <i class=\"fa fa-search pull-right cursor-pointer\" aria-hidden=\"true\"></i>\n        </div>\n        <div class='search-result-contents' [ngClass]=\"(isBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n          <app-search-result-list-item  class=\"in-line\" *ngFor=\"let item of searchResultList\" [item]=\"item\">\n          </app-search-result-list-item>\n        </div>\n      </li>\n      <li class=\"nav-item setting-btn\">\n        <span class=\"nav-link\"><i class=\"fa fa-cog cursor-pointer\" aria-hidden=\"true\"></i></span>\n      </li>\n      <li class=\"nav-item logout-btn\" >\n        <span class=\"nav-link\">\n          <i class=\"fa fa-sign-out cursor-pointer\" aria-hidden=\"true\" (click)=\"logOut()\"></i>\n        </span>\n      </li>\n    </ul>\n  </div>\n</nav>\n\n<app-modal [modalTitle]=\"'Notification Info'\" [blocking]='false' [modalId]='modalId' (onModalClose)=\"onModalClosed($event)\">\n  <div *ngIf=\"isShowPreview then previewShow\"></div>\n  <ng-template #previewShow>\n    <app-preview [previewInfo]=\"notificationInfo\" (onPreviewWindowReady)=\"previewWindowReady($event)\" (onVideoDeleted)=\"videoDeleted($event)\" (onModalClose)=\"onModalClose($event)\"></app-preview>\n  </ng-template>\n</app-modal>"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-light bg-faded\" (window:resize)=\"onResize($event)\">\n  <button (click)=\"toggleNav()\" class=\"navbar-toggler navbar-toggler-right fa fa-bars\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarTogglerDemo02\" aria-controls=\"navbarTogglerDemo02\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n  </button>\n  <div [ngClass]=\"('navbar-collapse ' + (active ? 'collapse' : ''))\" id=\"navbarTogglerDemo02\">\n    <ul class=\"navbar-nav mr-auto mt-2 mt-md-0\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"#/home\"><i class=\"fa fa-home\" aria-hidden=\"true\"></i><span>Home</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"getAllFriendReq($event)\">\n          <i class=\"fa fa-users\" aria-hidden=\"true\">\n            <ng-container *ngIf=\"isFriendRequestPendingDisplay\">\n              <div class=\"request-count cursor-pointer\" (click)='requestCountClick($event)'>{{friendRequestCount}}</div>\n            </ng-container>\n          </i><span>Friends</span></a>\n          <div class='friend-request-pending-list' [ngClass]=\"(isFriendReuestBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n            <app-friend-request-pending-list (onFriendConfirmed)='onFriendConfirmed($event)'  class=\"in-line\" *ngFor=\"let item of friendRequestPendingList\" [item]=\"item\" >\n            </app-friend-request-pending-list>\n          </div>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" href=\"\"><i class=\"fa fa-envelope\" aria-hidden=\"true\"></i><span>Messages</span></a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"fetchAllNotifications($event)\">\n          <i class=\"fa fa-bell\" aria-hidden=\"true\">\n              <ng-container *ngIf=\"isNotificationCountDisplay\">\n                <div class=\"request-count cursor-pointer\" (click)='notificationCountClick($event)'>{{notificationCount}}</div>\n              </ng-container>\n          </i>\n          <span>Notifications</span></a>\n          <div class='notification-list' [ngClass]=\"(isNotificationDisplay ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n            <ng-container *ngIf=\"isNotificationDisplay\">\n              <app-notification-list  class=\"in-line\" *ngFor=\"let item of notificationList\" [item]=\"item\" (onPreviewClick)=\"previewClicked($event)\">\n              </app-notification-list>\n            </ng-container>\n          </div>\n      </li>\n      <li class=\"nav-item search-box\">\n        <div>\n          <input class=\"search-input pull-left blue-fonts\" type=\"text\" id=\"search-query\" placeholder=\"Search Wefrenz\"  autocomplete=\"off\" spellcheck=\"false\" aria-autocomplete=\"list\" aria-expanded=\"false\" [value]=\"searchValue\" (input)=\"querySearch($event.target.value)\"/>\n          <i class=\"fa fa-search pull-right cursor-pointer\" aria-hidden=\"true\"></i>\n        </div>\n        <div class='search-result-contents' [ngClass]=\"(isBorder ? 'add-border' : '')\" (click)=\"clickedInside($event)\">\n          <app-search-result-list-item  class=\"in-line\" *ngFor=\"let item of searchResultList\" [item]=\"item\">\n          </app-search-result-list-item>\n        </div>\n      </li>\n      <li class=\"nav-item setting-btn\">\n        <span class=\"nav-link\"><i class=\"fa fa-cog cursor-pointer\" aria-hidden=\"true\"></i></span>\n      </li>\n      <li class=\"nav-item logout-btn\" >\n        <span class=\"nav-link\">\n          <i class=\"fa fa-sign-out cursor-pointer\" aria-hidden=\"true\" (click)=\"logOut()\"></i>\n        </span>\n      </li>\n    </ul>\n  </div>\n</nav>\n\n<app-modal [modalTitle]=\"'Notification Info'\" [blocking]='false' [modalId]='modalId' (onModalClose)=\"onModalClosed($event)\">\n  <div *ngIf=\"isShowPreview then previewShow\"></div>\n  <ng-template #previewShow>\n    <app-preview [previewInfo]=\"notificationInfo\" (onPreviewWindowReady)=\"previewWindowReady($event)\" (onVideoDeleted)=\"videoDeleted($event)\" #appPreview></app-preview>\n  </ng-template>\n</app-modal>"
 
 /***/ }),
 
@@ -6647,6 +6646,7 @@ module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-light bg-faded
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_services_data_notification_service__ = __webpack_require__("../../../../../src/app/services/data/notification.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_services_data_search_service__ = __webpack_require__("../../../../../src/app/services/data/search.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modal_modal_service__ = __webpack_require__("../../../../../src/app/modal/modal.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__preview_preview_component__ = __webpack_require__("../../../../../src/app/preview/preview.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6656,6 +6656,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -6909,6 +6910,7 @@ var PrivateNavComponent = (function () {
         self.modalService.open(self.modalId);
     };
     PrivateNavComponent.prototype.onModalClosed = function (event) {
+        this.appPreview.previewModalClosed();
         var video = document.getElementById('videoPreview');
         video.pause();
         video.src = '';
@@ -6931,6 +6933,10 @@ __decorate([
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
 ], PrivateNavComponent.prototype, "onFriendConfirmedFromNotification", void 0);
 __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ViewChild */])('appPreview'),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_7__preview_preview_component__["a" /* PreviewComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__preview_preview_component__["a" /* PreviewComponent */]) === "function" && _b || Object)
+], PrivateNavComponent.prototype, "appPreview", void 0);
+__decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* HostListener */])('document:click', ['$event']),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -6943,10 +6949,10 @@ PrivateNavComponent = __decorate([
         styles: [__webpack_require__("../../../../../src/app/private-nav/private-nav.component.css")],
         providers: [__WEBPACK_IMPORTED_MODULE_5__app_services_data_search_service__["a" /* SearchService */], __WEBPACK_IMPORTED_MODULE_3__app_services_data_friends_service__["a" /* FriendsService */], __WEBPACK_IMPORTED_MODULE_4__app_services_data_notification_service__["a" /* NotificationService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__app_services_data_search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__app_services_data_search_service__["a" /* SearchService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__app_services_data_notification_service__["a" /* NotificationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_services_data_notification_service__["a" /* NotificationService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__modal_modal_service__["a" /* ModalService */]) === "function" && _f || Object])
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__app_services_data_search_service__["a" /* SearchService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__app_services_data_search_service__["a" /* SearchService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__app_services_data_notification_service__["a" /* NotificationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_services_data_notification_service__["a" /* NotificationService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_6__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__modal_modal_service__["a" /* ModalService */]) === "function" && _g || Object])
 ], PrivateNavComponent);
 
-var _a, _b, _c, _d, _e, _f;
+var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=private-nav.component.js.map
 
 /***/ }),
@@ -8757,6 +8763,7 @@ var State = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UtilityService; });
+var isInvokeWindow = false;
 var UtilityService = (function () {
     function UtilityService() {
     }
@@ -8780,6 +8787,12 @@ var UtilityService = (function () {
             .replace(/:\=\O/, "<span><img src='/assets/images/smileys/socialutility-emotion4-surprised.gif'></img></span>")
             .replace(/;\)/, "<span><img src='/assets/images/smileys/socialutility-emotion5-wink.gif'></img></span>")
             .replace(/;\(/, "<span><img src='/assets/images/smileys/socialutility-emotion6-crying.gif'></img></span>");
+    };
+    UtilityService.setWindowInvocation = function (state) {
+        isInvokeWindow = state;
+    };
+    UtilityService.getWindowInvocation = function () {
+        return isInvokeWindow;
     };
     return UtilityService;
 }());
@@ -9148,12 +9161,12 @@ module.exports = "<div class=\"inline-block colw100 story-feed\" [ngClass]=\"{'c
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services_utility_utility_service__ = __webpack_require__("../../../../../src/app/services/utility/utility.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_utility_utility_service__ = __webpack_require__("../../../../../src/app/services/utility/utility.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__ = __webpack_require__("../../../../../src/app/modal/modal.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services_data_feed_service__ = __webpack_require__("../../../../../src/app/services/data/feed.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_services_data_comment_service__ = __webpack_require__("../../../../../src/app/services/data/comment.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__ = __webpack_require__("../../../../../src/app/services/data/friends.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_services_data_feed_service__ = __webpack_require__("../../../../../src/app/services/data/feed.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_services_data_comment_service__ = __webpack_require__("../../../../../src/app/services/data/comment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_services_data_friends_service__ = __webpack_require__("../../../../../src/app/services/data/friends.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_services_settings_app_settings_service__ = __webpack_require__("../../../../../src/app/services/settings/app-settings.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__checkin_checkin_component__ = __webpack_require__("../../../../../src/app/checkin/checkin.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9437,7 +9450,7 @@ var StoryBoxComponent = (function () {
         var _this = this;
         this.isSmileyAdded = true;
         var storyContents = this.storyBox.nativeElement.innerHTML + symbol;
-        storyContents = __WEBPACK_IMPORTED_MODULE_3_app_services_utility_utility_service__["a" /* UtilityService */].setSmileys(storyContents);
+        storyContents = __WEBPACK_IMPORTED_MODULE_3__app_services_utility_utility_service__["a" /* UtilityService */].setSmileys(storyContents);
         console.log('change' + storyContents);
         this.storyContent = storyContents;
         setTimeout(function () {
@@ -9510,7 +9523,7 @@ var StoryBoxComponent = (function () {
             formData.append('uploadfile', self.files);
             formData.append('userid', self.userId);
             var xhr = new XMLHttpRequest();
-            xhr.open('post', __WEBPACK_IMPORTED_MODULE_8_app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + '/api/uploadMusicFeed', true);
+            xhr.open('post', __WEBPACK_IMPORTED_MODULE_8__app_services_settings_app_settings_service__["a" /* AppSettingsService */].API_ENDPOINT("local") + '/api/uploadMusicFeed', true);
             xhr.upload.onprogress = function (e) {
                 if (e.lengthComputable) {
                     var percentage = (e.loaded / e.total) * 100;
@@ -9891,9 +9904,9 @@ StoryBoxComponent = __decorate([
         selector: 'app-story-box',
         template: __webpack_require__("../../../../../src/app/story-box/story-box.component.html"),
         styles: [__webpack_require__("../../../../../src/app/story-box/story-box.component.css")],
-        providers: [__WEBPACK_IMPORTED_MODULE_5_app_services_data_feed_service__["a" /* FeedService */], __WEBPACK_IMPORTED_MODULE_6_app_services_data_comment_service__["a" /* CommentService */], __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__["a" /* FriendsService */], __WEBPACK_IMPORTED_MODULE_9__checkin_checkin_component__["a" /* CheckinComponent */]]
+        providers: [__WEBPACK_IMPORTED_MODULE_5__app_services_data_feed_service__["a" /* FeedService */], __WEBPACK_IMPORTED_MODULE_6__app_services_data_comment_service__["a" /* CommentService */], __WEBPACK_IMPORTED_MODULE_7__app_services_data_friends_service__["a" /* FriendsService */], __WEBPACK_IMPORTED_MODULE_9__checkin_checkin_component__["a" /* CheckinComponent */]]
     }),
-    __metadata("design:paramtypes", [typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_9__checkin_checkin_component__["a" /* CheckinComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__checkin_checkin_component__["a" /* CheckinComponent */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__["a" /* ModalService */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_5_app_services_data_feed_service__["a" /* FeedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_app_services_data_feed_service__["a" /* FeedService */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_6_app_services_data_comment_service__["a" /* CommentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_app_services_data_comment_service__["a" /* CommentService */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7_app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _l || Object])
+    __metadata("design:paramtypes", [typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_9__checkin_checkin_component__["a" /* CheckinComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__checkin_checkin_component__["a" /* CheckinComponent */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__["a" /* ModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__modal_modal_service__["a" /* ModalService */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_5__app_services_data_feed_service__["a" /* FeedService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__app_services_data_feed_service__["a" /* FeedService */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_6__app_services_data_comment_service__["a" /* CommentService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__app_services_data_comment_service__["a" /* CommentService */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_7__app_services_data_friends_service__["a" /* FriendsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__app_services_data_friends_service__["a" /* FriendsService */]) === "function" && _l || Object])
 ], StoryBoxComponent);
 
 var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;

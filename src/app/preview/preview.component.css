@@ -6,10 +6,18 @@
 }
 .share-video{
 	width: 280px;
-	margin-top: 20px;
+    margin-top: 20px;
+    position: absolute;
+    top: 100px;
+    left: 189px;
+    left: -webkit-calc(50% - 140px);
+    left: -moz-calc(50% - 140px);
+    left: calc(50% - 140px);
 }
 
 .share-video textarea{
 	height: 100px !important;
 }
+
+
 

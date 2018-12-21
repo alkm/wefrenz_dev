@@ -1,5 +1,5 @@
+let isInvokeWindow : boolean =  false;
 export class UtilityService {
-
     static getPicDimension(dimension: any) {
         let width = dimension.split('x')[0];
         let height = dimension.split('x')[1];
@@ -22,5 +22,13 @@ export class UtilityService {
         .replace(/:\=\O/,"<span><img src='/assets/images/smileys/socialutility-emotion4-surprised.gif'></img></span>")
         .replace(/;\)/,"<span><img src='/assets/images/smileys/socialutility-emotion5-wink.gif'></img></span>")
         .replace(/;\(/,"<span><img src='/assets/images/smileys/socialutility-emotion6-crying.gif'></img></span>");
+    }
+
+    static setWindowInvocation(state){
+        isInvokeWindow = state; 
+    }
+
+    static getWindowInvocation(){
+        return isInvokeWindow; 
     }
 }

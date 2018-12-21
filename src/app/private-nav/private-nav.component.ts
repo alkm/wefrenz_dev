@@ -1,10 +1,11 @@
-import { Component, HostListener, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, HostListener, OnInit, AfterViewInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, NavigationStart } from '@angular/router'; 
 import 'rxjs/add/operator/filter';
 import { FriendsService } from '../../app/services/data/friends.service';
 import { NotificationService } from '../../app/services/data/notification.service';
 import { SearchService } from '../../app/services/data/search.service';
 import { ModalService } from '../modal/modal.service';
+import { PreviewComponent } from '../preview/preview.component';
 
 @Component({
   selector: 'app-private-nav',
@@ -41,6 +42,7 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
 	private previewInfo = {};
 
 	@Output() onFriendConfirmedFromNotification: EventEmitter<any> = new EventEmitter();
+	@ViewChild('appPreview') appPreview: PreviewComponent;
 
 	constructor(private router: Router, private searchService: SearchService, private friendsService: FriendsService, private notificationService: NotificationService, private modalService: ModalService) { 
 		this.userId = localStorage.getItem('currentUser');
@@ -268,6 +270,7 @@ export class PrivateNavComponent implements OnInit, AfterViewInit {
   	}
 
   	private onModalClosed(event){
+  		this.appPreview.previewModalClosed();
   		let video = <HTMLVideoElement> document.getElementById('videoPreview');
   		video.pause();
   		video.src = '';

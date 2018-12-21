@@ -1,12 +1,12 @@
 import { Component, HostListener, ElementRef, Input, ViewChild, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd, NavigationError, NavigationCancel, RoutesRecognized } from "@angular/router";
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { UtilityService } from 'app/services/utility/utility.service';
+import { UtilityService } from '../../app/services/utility/utility.service';
 import { ModalService } from '../modal/modal.service';
-import { FeedService } from 'app/services/data/feed.service';
-import { CommentService } from 'app/services/data/comment.service';
-import { FriendsService } from 'app/services/data/friends.service';
-import { AppSettingsService } from 'app/services/settings/app-settings.service';
+import { FeedService } from '../../app/services/data/feed.service';
+import { CommentService } from '../../app/services/data/comment.service';
+import { FriendsService } from '../../app/services/data/friends.service';
+import { AppSettingsService } from '../../app/services/settings/app-settings.service';
 import { CheckinComponent } from '../checkin/checkin.component';
 
 @Component({

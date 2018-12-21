@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, Input, Output, EventEmitter } from '@angular/core';
+import { Component, HostListener, OnInit, ElementRef, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { VideoService } from '../../app/services/data/video.service';
 import { FormBuilder } from '@angular/forms';
 
@@ -33,31 +33,30 @@ export class PreviewComponent implements OnInit  {
   }
 
   ngOnInit() {
+
   }
 
-  	ngAfterViewInit(){
-  		this.onPreviewWindowReady.emit('previewready');
+  ngAfterViewInit(){
+  	this.onPreviewWindowReady.emit('previewready');
+  }
 
-  	}
+  private deletePreviewVideo(event, data){
+    let postObj = {'filepath': this.previewInfo.filepath, 'itemid': this.previewInfo.itemid};
+    this.videoService.deletePreviewVideo(postObj).subscribe(data => this.afterVideoDeleted(data));
+  }
 
-    private deletePreviewVideo(event, data){
-      let postObj = {'filepath': this.previewInfo.filepath, 'itemid': this.previewInfo.itemid};
-      this.videoService.deletePreviewVideo(postObj).subscribe(data => this.afterVideoDeleted(data));
-    }
+   private afterVideoDeleted(result) {
+     this.isShareVideo = false;
+     this.onVideoDeleted.emit('videodeleted');
+  }
 
-     private afterVideoDeleted(result) {
-       this.isShareVideo = false;
-       this.onVideoDeleted.emit('videodeleted');
-    }
+  private shareVideo(event){
+    this.isShareVideo = true;
+  }
 
-    private shareVideo(event){
-      this.isShareVideo = true;
-    }
-
-    private onModalClose($event){
-      alert('modal closed');
-      this.isShareVideo = false;
-    }
+  public previewModalClosed(){
+    this.isShareVideo = false;
+  }
 }
 
 
